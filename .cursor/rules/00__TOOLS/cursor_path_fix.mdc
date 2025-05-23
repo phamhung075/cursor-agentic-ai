@@ -221,7 +221,7 @@ This guide is a **living document** that must be continuously updated as the pro
 
 **When new files are suggested or discovered:**
 
-1. **AI Agent Responsibility**: If suggestions are provided for missing files, the AI agent MUST immediately re-update this `cursor_path_fix.mdc` [cursor_path_fix.mdc](mdc:.cursor/rules/00__TOOLS/cursor_path_fix.mdc) file to include:
+1. **AI Agent Responsibility**: If suggestions are provided for missing files, the AI agent MUST immediately re-update this `cursor_path_fix.mdc` [cursor_path_fix.mdc](.cursor/rules/00__TOOLS/cursor_path_fix.mdc) file to include:
    - New file paths in the File Structure Reference
    - Updated Quick Reference Map entries
    - Any new broken link patterns specific to the new files

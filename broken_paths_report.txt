@@ -1,0 +1,49 @@
+## BROKEN PATH REFERENCES FOUND IN PROJECT
+
+### Files with 'mdc:' prefix (incorrect format):
+1. `.cursor/rules/01__AI-RUN/09_Deployment.mdc`
+   - Line 22: `mdc:.cursor/rules/01__AI-RUN/08_Testing.mdc` → should be `.cursor/rules/01__AI-RUN/08_Testing.mdc`
+   - Line 27: `mdc:.cursor/rules/02__AI-DOCS/Deployment/deployment_guide.mdc` → should be `.cursor/rules/02__AI-DOCS/Deployment/deployment_guide.mdc`
+   - Line 46: `mdc:.cursor/rules/02__AI-DOCS/Deployment/deployment_guide.mdc` → should be `.cursor/rules/02__AI-DOCS/Deployment/deployment_guide.mdc`
+   - Line 56: `mdc:.cursor/rules/02__AI-DOCS/Deployment/deployment_guide.mdc` → should be `.cursor/rules/02__AI-DOCS/Deployment/deployment_guide.mdc`
+   - Line 76: `mdc:.cursor/rules/project_session_state.json` → should be `.cursor/rules/project_session_state.json`
+   - Line 79: `mdc:.cursor/rules/02__AI-DOCS/Deployment/deployment_guide.mdc` → should be `.cursor/rules/02__AI-DOCS/Deployment/deployment_guide.mdc`
+
+2. `.cursor/rules/README.mdc`
+   - Multiple `mdc:` prefixes in badge links and file references
+   - Lines 12-15: Badge URLs with `mdc:` prefix
+   - Multiple file references throughout with `mdc:` prefix
+
+3. `.cursor/rules/01__AI-RUN/01_Idea.mdc`
+   - Line 154: `mdc:.cursor/rules/01__AI-RUN/01_AutoPilot.mdc` → should be `.cursor/rules/01__AI-RUN/01_AutoPilot.mdc`
+
+4. `.cursor/rules/01__AI-RUN/00_Getting_Started.mdc`
+   - Multiple `mdc:` prefixes throughout
+
+5. `.cursor/rules/00__TOOLS/cursor_path_fix.mdc`
+   - Line 223: `mdc:.cursor/rules/00__TOOLS/cursor_path_fix.mdc` → should be `.cursor/rules/00__TOOLS/cursor_path_fix.mdc`
+
+### Files with relative '../' paths that need .cursor/rules/ prefix:
+1. `.cursor/rules/01__AI-RUN/04_PRD_Generation.mdc`
+2. `.cursor/rules/01__AI-RUN/06_Task_Manager.mdc`
+3. `.cursor/rules/01__AI-RUN/07_Start_Building.mdc`
+4. `.cursor/rules/01__AI-RUN/01_AutoPilot.mdc`
+5. `.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc`
+
+### Files with plain references like '01_Idea.mdc' without proper paths:
+1. `.cursor/rules/workflow.mdc`
+2. `.cursor/rules/logic.mdc`
+3. `.cursor/rules/01__AI-RUN/03_Core_Concept.mdc`
+4. `.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc`
+5. `.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`
+6. `.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`
+
+### Files with incorrect feature spec template path references:
+1. `.cursor/rules/03__SPECS/features/feature_spec_template.mdc`
+   - Line 29: Relative path should use `.cursor/rules/` prefix
+
+## PRIORITY FIXES NEEDED:
+1. Fix all 'mdc:' prefixes to proper format
+2. Convert all '../' relative paths to '.cursor/rules/' absolute paths  
+3. Add proper linking for all plain '.mdc' file references
+4. Ensure all paths follow the cursor path fix guide format 
