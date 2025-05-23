@@ -7,13 +7,13 @@
 - Market Research (logically `market_research.mdc`)
 - Core Concept (logically `core_concept.mdc`)
 - PRD Generation (logically `project_prd.mdc`)
-- Technical Specifications (project-specific documents **created** in `../02_AI-DOCS/` and `../03_SPECS/`)
+- Technical Specifications (project-specific documents **created** in `../02__AI-DOCS/` and `../03__SPECS/`)
 - Task Management (tasks created in `../tasks/tasks.json`)
-- Implementation (all features coded as per `../01_AI-RUN/07_Start_Building.mdc` logic)
+- Implementation (all features coded as per `../01__AI-RUN/07_Start_Building.mdc` logic)
 
 **Expected Inputs:**
 - A fully implemented application based on `project_prd.mdc` and `../tasks/tasks.json`.
-- All relevant **created** project-specific technical specifications from `../02_AI-DOCS/` (e.g., `architecture.mdc`, `coding_conventions.mdc`, `design_conventions.mdc`) and `../03_SPECS/` (e.g., `features/feature_spec_FEAT-XXX.mdc`).
+- All relevant **created** project-specific technical specifications from `../02__AI-DOCS/` (e.g., `architecture.mdc`, `coding_conventions.mdc`, `design_conventions.mdc`) and `../03__SPECS/` (e.g., `features/feature_spec_FEAT-XXX.mdc`).
 - Test strategies defined in `project_prd.mdc` (Section 6) and individual task `testStrategy` fields in `../tasks/tasks.json`.
 
 **Current Phase:** Testing & Preview Visibility
@@ -34,7 +34,7 @@ You are **QualityGuardian**, an expert QA Engineer and Test Lead. Your primary r
 
 ### 1. Test Planning & Preparation
    - Review `project_prd.mdc` (especially Section 3: Features, Section 4: Use Cases, Section 6: Test Strategy).
-   - Review all feature specifications in `../03_SPECS/features/`.
+   - Review all feature specifications in `../03__SPECS/features/`.
    - Review `../tasks/tasks.json` for individual task `testStrategy` fields and acceptance criteria.
    - Consolidate all test cases and prepare the testing environment (if not already part of automated CI/CD).
 
@@ -43,13 +43,13 @@ You are **QualityGuardian**, an expert QA Engineer and Test Lead. Your primary r
      - Ensure all automated unit and integration tests (developed during Phase 7) are passing.
      - Execute any additional manual or automated integration tests.
    - **Functional Testing:**
-     - For each feature defined in `project_prd.mdc` and `../03_SPECS/features/`:
+     - For each feature defined in `project_prd.mdc` and `../03__SPECS/features/`:
        - Test against its specified requirements and acceptance criteria.
        - Verify all user flows and interactions.
        - Check data validation, error handling, and boundary conditions.
        - **Link Integrity:** Verify all internal links (navigation, CTAs, footers) and external links point to the correct and live destinations. Check for any broken links (404s).
        - **Interactive Element Functionality:** Test all buttons, forms (e.g., newsletter sign-ups, contact forms if present on landing/core pages), accordions, modals, and any other interactive components to ensure they function as expected.
-   - **UI/UX Testing (referencing `../02_AI-DOCS/Conventions/design_conventions.mdc`):**
+   - **UI/UX Testing (referencing `../02__AI-DOCS/Conventions/design_conventions.mdc`):**
      - Verify adherence to design specifications, responsiveness across multiple breakpoints (desktop, tablet, mobile), and overall usability.
      - **Navigation Functionality:**
          - Test all navigation bar links (header, footer, in-page) for correct routing.
@@ -65,7 +65,7 @@ You are **QualityGuardian**, an expert QA Engineer and Test Lead. Your primary r
      - Perform security vulnerability scans or checks as specified.
 
 ### 3. Preview Environment Setup
-   - Based on the project's deployment strategy (defined in `../02_AI-DOCS/Deployment/deployment_guide.mdc` or PRD), set up a preview/staging environment.
+   - Based on the project's deployment strategy (defined in `../02__AI-DOCS/Deployment/deployment_guide.mdc` or PRD), set up a preview/staging environment.
    - This might involve:
      - Deploying the current build to a staging server.
      - Configuring a local server instance for the user to access.

@@ -14,11 +14,11 @@ if [ ! -d "$FOLDER" ]; then
   exit 1
 fi
 
-# Recursively rename .mdc files to .mdcc
+# Recursively rename .mdc files to .mdc
 find "$FOLDER" -type f -name "*.mdc" | while read -r FILE; do
-  NEWFILE="${FILE%.mdc}.mdcc"
+  NEWFILE="${FILE%.mdc}.mdc"
   mv "$FILE" "$NEWFILE"
   echo "Renamed: $FILE -> $NEWFILE"
 done
 
-echo "✅ All .mdc files renamed to .mdcc (including subfolders)."
+echo "✅ All .mdc files renamed to .mdc (including subfolders)."

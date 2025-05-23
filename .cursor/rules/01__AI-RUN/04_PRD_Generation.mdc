@@ -9,7 +9,7 @@
 
 **Expected Inputs:**
 - A refined `core_concept.mdc` document.
-- The PRD template structure (typically `01_AI-RUN/Template/PRD_template.mdc`, and this prompt itself guides its completion).
+- The PRD template structure (typically `01__AI-RUN/Template/PRD_template.mdc`, and this prompt itself guides its completion).
 
 **Current Phase:** PRD Generation
 
@@ -19,14 +19,14 @@ You are **PRDarchitect**, a world-class product management and full-stack archit
 
 ## Your Mission
 
-Create an exhaustive, meticulously detailed Product Requirements Document (PRD) that precisely follows the provided template structure while incorporating the refined core concept and adapting to user-specific information. Your PRD must serve as the definitive blueprint for product development, leaving no ambiguity for implementation teams. When defining sections related to AI agent instructions, coding standards, or design systems, keep in mind the principles outlined in [`../02_AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc`](../02_AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) and [`../02_AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](../02_AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
+Create an exhaustive, meticulously detailed Product Requirements Document (PRD) that precisely follows the provided template structure while incorporating the refined core concept and adapting to user-specific information. Your PRD must serve as the definitive blueprint for product development, leaving no ambiguity for implementation teams. When defining sections related to AI agent instructions, coding standards, or design systems, keep in mind the principles outlined in [`../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc`](../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) and [`../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
 
 ## Input Context
 
 You have access to three critical documents:
 
 1. **The Core Concept Document** - Contains the refined, market-validated concept with target users, value proposition, and key features
-2. **The PRD Template (`01_AI-RUN/Template/PRD_template.mdc`)** - Provides the exact structure and sections to be copied and then followed in the new `project_prd.mdc` file.
+2. **The PRD Template (`01__AI-RUN/Template/PRD_template.mdc`)** - Provides the exact structure and sections to be copied and then followed in the new `project_prd.mdc` file.
 3. **User-Specific Information** - Any additional context, preferences, or requirements provided by the user to be incorporated into `project_prd.mdc`.
  
 ## Approach and Methodology
@@ -93,7 +93,7 @@ Leverage your full-stack architecture expertise to provide detailed technical sp
 - Address accessibility compliance with WCAG standards
 
 ### Design and Architecture (Section 5)
-- **(Section 5.2 - Design System and Branding or equivalent): Elicit and document the user's core design preferences. If not provided, ask targeted questions about desired color palettes (primary, secondary, accent), typographic styles (e.g., modern, classic, playful), overall application mood/feel, and examples of admired designs. This information is crucial for populating the project-specific `../02_AI-DOCS/Conventions/design_conventions.mdc` file that will be created in the next phase.**
+- **(Section 5.2 - Design System and Branding or equivalent): Elicit and document the user's core design preferences. If not provided, ask targeted questions about desired color palettes (primary, secondary, accent), typographic styles (e.g., modern, classic, playful), overall application mood/feel, and examples of admired designs. This information is crucial for populating the project-specific `../02__AI-DOCS/Conventions/design_conventions.mdc` file that will be created in the next phase.**
 - Propose a scalable, maintainable architecture with clear diagrams (Section 5.3)
 - Specify technology choices with justification for each selection
 - Define comprehensive data models with relationships and constraints
@@ -111,7 +111,7 @@ Leverage your full-stack architecture expertise to provide detailed technical sp
 
 ### AI Agent Specific Instructions (Section 9)
 - Provide clear guidance on feature decomposition process
-- Define coding standards and documentation requirements (which will be further detailed in the project-specific `../02_AI-DOCS/Conventions/coding_conventions.mdc` created in the next phase)
+- Define coding standards and documentation requirements (which will be further detailed in the project-specific `../02__AI-DOCS/Conventions/coding_conventions.mdc` created in the next phase)
 - Establish commit conventions and versioning strategy
 
 ## Output Format and Style
@@ -156,14 +156,14 @@ As you develop the PRD:
 Once this PRD generation is complete:
 
 1. Ensure the completed PRD content is saved in the **copied file**, `project_prd.mdc`, located in the project's root directory (or designated output location).
-2. Confirm the original template file (`01_AI-RUN/Template/PRD_template.mdc`) remains unmodified.
+2. Confirm the original template file (`01__AI-RUN/Template/PRD_template.mdc`) remains unmodified.
 3. This comprehensive `project_prd.mdc` will guide all subsequent development activities.
  
 ### Moving to Technical Specifications & Documentation
 
 To proceed with updating the technical specifications and documentation:
 
-1. Open the prompt file in `01_AI-RUN/` that corresponds to the `05_Specs_Docs.mdc` logical step. (Ensure `00_AutoPilot.mdc` or your manual process calls the correct actual filename for specs & docs).
+1. Open the prompt file in `01__AI-RUN/` that corresponds to the `05_Specs_Docs.mdc` logical step. (Ensure `00_AutoPilot.mdc` or your manual process calls the correct actual filename for specs & docs).
 2. Share it with your AI agent.
 3. Reference your completed `project_prd.mdc`.
 
@@ -182,8 +182,8 @@ In the Technical Specifications & Documentation phase, the AI will:
 
 1. Analyze the `project_prd.mdc` to identify all technologies, frameworks, libraries, and APIs.
 2. Gather relevant documentation from official sources, GitHub, and other repositories (using MCPs like context7, github, firecrawl).
-3. **Create new project-specific files** within `02_AI-DOCS/` and `03_SPECS/` directories by copying the relevant templates and then populating these new files with the gathered and project-specific information. The original templates will remain untouched.
+3. **Create new project-specific files** within `02__AI-DOCS/` and `03__SPECS/` directories by copying the relevant templates and then populating these new files with the gathered and project-specific information. The original templates will remain untouched.
 4. Generate supplementary documentation for any gaps and integrate it into the relevant existing files.
-5. Create/Update a master index of all technical resources (e.g., `03_SPECS/documentation_index.mdc`).
+5. Create/Update a master index of all technical resources (e.g., `03__SPECS/documentation_index.mdc`).
 
 This technical documentation repository will serve as the persistent memory for the development team during implementation.

@@ -8,12 +8,12 @@ This workflow is designed to guide a software development project from the initi
 
 ## Fundamental Principles
 
-1.  **Orchestration:** The [`01_AI-RUN/01_AutoPilot.mdc`](01_AI-RUN/01_AutoPilot.mdc) file serves as the main orchestrator, guiding the AI through the different phases.
+1.  **Orchestration:** The [`01__AI-RUN/01_AutoPilot.mdc`](01__AI-RUN/01_AutoPilot.mdc) file serves as the main orchestrator, guiding the AI through the different phases.
 2.  **State Management:** The [`project_session_state.json`](project_session_state.json) file at the root of the project is crucial. It maintains the current state of the workflow (current phase, last completed step, project information, etc.) and allows the process to be resumed in case of interruption.
-3.  **Prompt Sequence:** The workflow relies on a series of prompts (`.mdc` files in `01_AI-RUN/`) that define the AI's role and the tasks to be accomplished for each phase.
+3.  **Prompt Sequence:** The workflow relies on a series of prompts (`.mdc` files in `01__AI-RUN/`) that define the AI's role and the tasks to be accomplished for each phase.
 4.  **Document Generation:** Each phase produces specific documents (e.g., `idea_document.mdc`, `project_prd.mdc`, `tasks/tasks.json`) which serve as input for subsequent phases.
-5.  **Template Management:** For technical documentation (`02_AI-DOCS/`) and specifications (`03_SPECS/`), the system **creates new project-specific files** based on the provided templates. The original templates remain intact.
-6.  **Spec-Driven Vision:** The entire process is guided by the principle of spec-driven development, with AI agents consistently referring to and being guided by documentation. The overarching vision for AI collaboration and task management is detailed in [`02_AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc`](02_AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc).
+5.  **Template Management:** For technical documentation (`02__AI-DOCS/`) and specifications (`03__SPECS/`), the system **creates new project-specific files** based on the provided templates. The original templates remain intact.
+6.  **Spec-Driven Vision:** The entire process is guided by the principle of spec-driven development, with AI agents consistently referring to and being guided by documentation. The overarching vision for AI collaboration and task management is detailed in [`02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc`](02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc).
 
 ## General Workflow Diagram
 
@@ -38,8 +38,8 @@ flowchart TD
     B -- Creates --> market_research.mdc
     C -- Creates --> core_concept.mdc
     D -- Creates --> project_prd.mdc
-    E -- Creates/Populates --> Files in 02_AI-DOCS/ and 03_SPECS/
-    E -- Creates/Updates --> 03_SPECS/documentation_index.mdc
+    E -- Creates/Populates --> Files in 02__AI-DOCS/ and 03__SPECS/
+    E -- Creates/Updates --> 03__SPECS/documentation_index.mdc
     F -- Creates --> tasks/tasks.json
     G -- Creates/Updates --> README.mdc
     H -- Implements code --> Project source code
@@ -52,16 +52,16 @@ flowchart TD
 ### Phase 0: Initialization and Startup
 
 *   **Files Involved:**
-    *   [`01_AI-RUN/00_Getting_Started.mdc`](01_AI-RUN/00_Getting_Started.mdc): General workflow guide, conventions.
-    *   [`01_AI-RUN/01_AutoPilot.mdc`](01_AI-RUN/01_AutoPilot.mdc): Main orchestration prompt.
+    *   [`01__AI-RUN/00_Getting_Started.mdc`](01__AI-RUN/00_Getting_Started.mdc): General workflow guide, conventions.
+    *   [`01__AI-RUN/01_AutoPilot.mdc`](01__AI-RUN/01_AutoPilot.mdc): Main orchestration prompt.
     *   [`project_session_state.json`](project_session_state.json): Session state file.
 *   **Logic:**
-    1.  The AI agent (initially "ProjectArchitect") is instructed by [`01_AI-RUN/01_AutoPilot.mdc`](01_AI-RUN/01_AutoPilot.mdc).
+    1.  The AI agent (initially "ProjectArchitect") is instructed by [`01__AI-RUN/01_AutoPilot.mdc`](01__AI-RUN/01_AutoPilot.mdc).
     2.  **State Check:** Attempts to load [`project_session_state.json`](project_session_state.json).
         *   If existing and populated, confirms with the user whether to resume or not.
         *   Manages pending actions or previous errors.
         *   If non-existent or empty, proceeds with a new initialization.
-    3.  **Guide Reading:** The AI reads and internalizes [`01_AI-RUN/00_Getting_Started.mdc`](01_AI-RUN/00_Getting_Started.mdc) to understand the overall framework.
+    3.  **Guide Reading:** The AI reads and internalizes [`01__AI-RUN/00_Getting_Started.mdc`](01__AI-RUN/00_Getting_Started.mdc) to understand the overall framework.
     4.  **Initial Information Gathering:** If a new project starts, the AI asks targeted questions to the user to define:
         *   `projectType` (Main project type, e.g., "React Web Application")
         *   `projectName` (Project name)
@@ -72,7 +72,7 @@ flowchart TD
 
 ### Phase 1: Expansion of the Initial Idea
 
-*   **Logic Prompt File:** [`01_AI-RUN/01_Idea.mdc`](01_AI-RUN/01_Idea.mdc)
+*   **Logic Prompt File:** [`01__AI-RUN/01_Idea.mdc`](01__AI-RUN/01_Idea.mdc)
 *   **AI Role:** Idea structuring assistant.
 *   **Inputs:** Initial project information (collected in Phase 0 or from [`project_session_state.json`](project_session_state.json)).
 *   **Process:**
@@ -93,7 +93,7 @@ flowchart TD
 
 ### Phase 2: Automated (Interactive) Market Research
 
-*   **Logic Prompt File:** [`01_AI-RUN/02_Market_Research.mdc`](01_AI-RUN/02_Market_Research.mdc)
+*   **Logic Prompt File:** [`01__AI-RUN/02_Market_Research.mdc`](01__AI-RUN/02_Market_Research.mdc)
 *   **AI Role:** "MarketResearch Assistant".
 *   **Input:** The `idea_document.mdc` file.
 *   **Process:**
@@ -114,7 +114,7 @@ flowchart TD
 
 ### Phase 3: Core Concept Development
 
-*   **Logic Prompt File:** [`01_AI-RUN/03_Core_Concept.mdc`](01_AI-RUN/03_Core_Concept.mdc)
+*   **Logic Prompt File:** [`01__AI-RUN/03_Core_Concept.mdc`](01__AI-RUN/03_Core_Concept.mdc)
 *   **AI Role:** "ConceptForge", product strategist.
 *   **Inputs:** `idea_document.mdc` and `market_research.mdc`.
 *   **Process:**
@@ -138,11 +138,11 @@ flowchart TD
 
 ### Phase 4: PRD (Product Requirements Document) Generation
 
-*   **Logic Prompt File:** [`01_AI-RUN/04_PRD_Generation.mdc`](01_AI-RUN/04_PRD_Generation.mdc)
+*   **Logic Prompt File:** [`01__AI-RUN/04_PRD_Generation.mdc`](01__AI-RUN/04_PRD_Generation.mdc)
 *   **AI Role:** "PRDarchitect", expert in product management and full-stack architecture.
 *   **Inputs:**
     *   `core_concept.mdc`.
-    *   The PRD template (typically [`01_AI-RUN/Template/PRD_template.mdc`](01_AI-RUN/Template/PRD_template.mdc)).
+    *   The PRD template (typically [`01__AI-RUN/Template/PRD_template.mdc`](01__AI-RUN/Template/PRD_template.mdc)).
     *   Specific user information.
 *   **Process:**
     1.  The AI announces the PRD creation.
@@ -160,7 +160,7 @@ flowchart TD
 
 ### Phase 5: Creation of Technical Specifications and Documentation
 
-*   **Logic Prompt File:** [`01_AI-RUN/05_Specs_Docs.mdc`](01_AI-RUN/05_Specs_Docs.mdc)
+*   **Logic Prompt File:** [`01__AI-RUN/05_Specs_Docs.mdc`](01__AI-RUN/05_Specs_Docs.mdc)
 *   **AI Role:** "TechDocNavigator", technical documentation specialist.
 *   **Input:** The `project_prd.mdc` file.
 *   **Process:**
@@ -168,42 +168,42 @@ flowchart TD
     2.  **PRD Analysis:** Extracts all technologies, frameworks, APIs, etc., from `project_prd.mdc`.
     3.  **Information Gathering:** Uses MCPs (like `context7`, `github`, `firecrawl`) to retrieve official documentation, code examples, etc., for each identified technical element.
     4.  **Creation of Project-Specific Documents:**
-        *   The AI **creates new files** in the subdirectories of `02_AI-DOCS/` (e.g., `02_AI-DOCS/Architecture/architecture.mdc`) and `03_SPECS/` (e.g., `03_SPECS/features/feature_spec_FEAT-001.mdc`). For feature specifications, filenames should follow the pattern `03_SPECS/features/feature_spec_[FEATURE_ID].mdc`, where `[FEATURE_ID]` is derived from the PRD or the task structure managed by Roo Orchestrator (see [`02_AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](02_AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)).
+        *   The AI **creates new files** in the subdirectories of `02__AI-DOCS/` (e.g., `02__AI-DOCS/Architecture/architecture.mdc`) and `03__SPECS/` (e.g., `03__SPECS/features/feature_spec_FEAT-001.mdc`). For feature specifications, filenames should follow the pattern `03__SPECS/features/feature_spec_[FEATURE_ID].mdc`, where `[FEATURE_ID]` is derived from the PRD or the task structure managed by Roo Orchestrator (see [`02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)).
         *   To do this, it **copies** the appropriate template (e.g., `architecture_template.mdc`) to the new file name. The `write_to_file` tool will handle directory creation if needed.
         *   It reads the structure of the newly copied file and **populates** it with relevant information extracted from the PRD and collected documentation.
         *   The original templates (`*_template.mdc`) **are not modified**.
-        *   Particular attention is given to `02_AI-DOCS/Conventions/design_conventions.mdc` which is populated based on `02_AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc` and PRD preferences.
-    5.  **Indexing:** Creates or updates `03_SPECS/documentation_index.mdc` to list and link all created technical documents and reference documents (like `AI_Coding_Agent_Optimization.mdc`). The AI should be capable of listing files in specified directories and generating markdown links.
-    6.  The documents `02_AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc` and `AI_Design_Agent_Optimization.mdc` serve as references and are not copied/modified.
+        *   Particular attention is given to `02__AI-DOCS/Conventions/design_conventions.mdc` which is populated based on `02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc` and PRD preferences.
+    5.  **Indexing:** Creates or updates `03__SPECS/documentation_index.mdc` to list and link all created technical documents and reference documents (like `AI_Coding_Agent_Optimization.mdc`). The AI should be capable of listing files in specified directories and generating markdown links.
+    6.  The documents `02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc` and `AI_Design_Agent_Optimization.mdc` serve as references and are not copied/modified.
 *   **Output:**
-    *   Set of project-specific technical documents created and populated in `02_AI-DOCS/` and `03_SPECS/`.
-    *   An updated `03_SPECS/documentation_index.mdc` file.
+    *   Set of project-specific technical documents created and populated in `02__AI-DOCS/` and `03__SPECS/`.
+    *   An updated `03__SPECS/documentation_index.mdc` file.
     *   The AI presents a summary of the technical stack and key integrations.
 *   **Transition:** Once all documents are generated and `documentation_index.mdc` is updated, `lastCompletedStep` is set to "technicalDocumentationCompleted" in [`project_session_state.json`](project_session_state.json), and `currentWorkflowPhase` transitions to "taskManagement".
 *   **Why:** Build a solid, project-specific technical knowledge repository that will serve as a basis for task breakdown and implementation.
 
 ### Phase 6: Task Manager
 
-*   **Logic Prompt File:** (The old [`01_AI-RUN/06_Task_Manager.mdc`](01_AI-RUN/06_Task_Manager.mdc) now redirects to the primary workflow document: [`02_AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](02_AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc))
+*   **Logic Prompt File:** (The old [`01__AI-RUN/06_Task_Manager.mdc`](01__AI-RUN/06_Task_Manager.mdc) now redirects to the primary workflow document: [`02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc))
 *   **AI Role:** Interface with Roo Orchestrator for task management.
 *   **Inputs:**
     *   `project_prd.mdc`.
-    *   Project-specific technical documents created in `02_AI-DOCS/` and `03_SPECS/`.
-    *   Design principles from `02_AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`.
+    *   Project-specific technical documents created in `02__AI-DOCS/` and `03__SPECS/`.
+    *   Design principles from `02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`.
 *   **Process:**
     1.  The AI announces the project breakdown into tasks.
-    2.  It prepares a prompt for Roo Orchestrator by extracting project contextual information (name, objective) and the list of features (Section 3.1 of the PRD) in JSON format, as outlined in [`02_AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](02_AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc).
+    2.  It prepares a prompt for Roo Orchestrator by extracting project contextual information (name, objective) and the list of features (Section 3.1 of the PRD) in JSON format, as outlined in [`02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc).
     3.  **Interaction with Roo Orchestrator:**
         *   Instructs Roo Orchestrator to initialize project tracking.
         *   Instructs Roo Orchestrator to create epics from the feature list.
-        *   For each epic, instructs Roo Orchestrator to perform a detailed breakdown into tasks (max 4h per task), emphasizing the inclusion of technical details and design requirements (referencing [`02_AI-DOCS/Conventions/design_conventions.mdc`](02_AI-DOCS/Conventions/design_conventions.mdc) and [`02_AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](02_AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)). Roo Orchestrator may engage Roo Code mode for these technical specifics.
-        *   Ensures that the `details` field of each task (as defined in [`02_AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](02_AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) contains direct links or embedded references to specific feature specifications (e.g., `03_SPECS/features/feature_spec_FEAT-XXX.mdc`), relevant design mockups/guidelines (from [`02_AI-DOCS/Conventions/design_conventions.mdc`](02_AI-DOCS/Conventions/design_conventions.mdc)), and any other necessary technical documentation.
+        *   For each epic, instructs Roo Orchestrator to perform a detailed breakdown into tasks (max 4h per task), emphasizing the inclusion of technical details and design requirements (referencing [`02__AI-DOCS/Conventions/design_conventions.mdc`](02__AI-DOCS/Conventions/design_conventions.mdc) and [`02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)). Roo Orchestrator may engage Roo Code mode for these technical specifics.
+        *   Ensures that the `details` field of each task (as defined in [`02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) contains direct links or embedded references to specific feature specifications (e.g., `03__SPECS/features/feature_spec_FEAT-XXX.mdc`), relevant design mockups/guidelines (from [`02__AI-DOCS/Conventions/design_conventions.mdc`](02__AI-DOCS/Conventions/design_conventions.mdc)), and any other necessary technical documentation.
         *   Instructs Roo Orchestrator to perform a complexity analysis for each task and epic.
         *   Instructs Roo Orchestrator to generate an implementation roadmap (this might involve Roo Orchestrator synthesizing task information).
     4.  The AI may initiate additional refinement requests to Roo Orchestrator if some tasks still seem too large or ambiguous.
     5.  [`project_session_state.json`](project_session_state.json) is updated with `pendingAction` set to `generate_tasks_file` before `tasks/tasks.json` is finalized.
 *   **Output:**
-    *   [`tasks/tasks.json`](tasks/tasks.json) file created/updated with the complete task hierarchy (including `meta` block, epics, tasks, sub-tasks), their `id`, `title`, `description`, `status`, `dependencies`, `priority`, `details` (with design specifications), `testStrategy`, etc., as defined in [`02_AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](02_AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
+    *   [`tasks/tasks.json`](tasks/tasks.json) file created/updated with the complete task hierarchy (including `meta` block, epics, tasks, sub-tasks), their `id`, `title`, `description`, `status`, `dependencies`, `priority`, `details` (with design specifications), `testStrategy`, etc., as defined in [`02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
     *   The AI presents high-level epics and priority tasks.
     *   Asks the user if they want to modify priorities before implementation.
 *   **Transition:** After user confirmation of priorities, `lastCompletedStep` is updated to "taskPrioritiesConfirmed" in [`project_session_state.json`](project_session_state.json) (and `pendingAction` cleared), and `currentWorkflowPhase` transitions to "readmeGeneration".
@@ -211,11 +211,11 @@ flowchart TD
 
 ### Phase 6.5: README Generation
 
-*   **Logic Prompt File:** Managed within [`01_AI-RUN/01_AutoPilot.mdc`](01_AI-RUN/01_AutoPilot.mdc) (section "Phase 6.5").
+*   **Logic Prompt File:** Managed within [`01__AI-RUN/01_AutoPilot.mdc`](01__AI-RUN/01_AutoPilot.mdc) (section "Phase 6.5").
 *   **AI Role:** Technical writer.
 *   **Inputs:**
     *   `projectName`, `projectType`, `projectObjective` from [`project_session_state.json`](project_session_state.json).
-    *   Technical stack details from `02_AI-DOCS/Architecture/architecture.mdc` (created in phase 5) or `project_prd.mdc`.
+    *   Technical stack details from `02__AI-DOCS/Architecture/architecture.mdc` (created in phase 5) or `project_prd.mdc`.
 *   **Process:**
     1.  The AI announces the `README.mdc` generation.
     2.  It assembles the Markdown content including:
@@ -233,13 +233,13 @@ flowchart TD
 
 ### Phase 7: Implementation
 
-*   **Logic Prompt File:** [`01_AI-RUN/07_Start_Building.mdc`](01_AI-RUN/07_Start_Building.mdc)
+*   **Logic Prompt File:** [`01__AI-RUN/07_Start_Building.mdc`](01__AI-RUN/07_Start_Building.mdc)
 *   **AI Role:** "ImplementationArchitect", full-stack developer and technical lead.
 *   **Inputs:**
     *   `project_prd.mdc`.
-    *   Project-specific technical documents in `02_AI-DOCS/` (notably `architecture.mdc`, `coding_conventions.mdc`, `design_conventions.mdc`) and `03_SPECS/` (notably `feature_spec_[ID].mdc`).
+    *   Project-specific technical documents in `02__AI-DOCS/` (notably `architecture.mdc`, `coding_conventions.mdc`, `design_conventions.mdc`) and `03__SPECS/` (notably `feature_spec_[ID].mdc`).
     *   `tasks/tasks.json`.
-    *   Design principles from `02_AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`.
+    *   Design principles from `02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`.
 *   **Process:**
     1.  **Project Setup:**
         *   Set up the development environment according to the PRD stack.
@@ -249,10 +249,10 @@ flowchart TD
         *   Implement core architectural components as per `architecture.mdc` and high-priority architectural tasks from `tasks/tasks.json`.
         *   Configure the database schema based on `project_prd.mdc` and `architecture.mdc`.
     3.  **Systematic Task Implementation:**
-        *   The AI interacts with Roo Orchestrator to get the next task to implement (as per the workflow in [`02_AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](02_AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)).
+        *   The AI interacts with Roo Orchestrator to get the next task to implement (as per the workflow in [`02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)).
         *   For each task:
-            *   Analyzes detailed specifications and acceptance criteria for the task (obtained by querying Roo Orchestrator for task details, which include direct links or embedded content from relevant documents like `feature_spec_[ID].mdc`, design mockups, and convention documents found in the task's `details` field as per [`02_AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](02_AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)).
-            *   Writes code, scrupulously respecting coding and design conventions (references to [`02_AI-DOCS/Conventions/coding_conventions.mdc`](02_AI-DOCS/Conventions/coding_conventions.mdc), [`02_AI-DOCS/Conventions/design_conventions.mdc`](02_AI-DOCS/Conventions/design_conventions.mdc), [`02_AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](02_AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)).
+            *   Analyzes detailed specifications and acceptance criteria for the task (obtained by querying Roo Orchestrator for task details, which include direct links or embedded content from relevant documents like `feature_spec_[ID].mdc`, design mockups, and convention documents found in the task's `details` field as per [`02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)).
+            *   Writes code, scrupulously respecting coding and design conventions (references to [`02__AI-DOCS/Conventions/coding_conventions.mdc`](02__AI-DOCS/Conventions/coding_conventions.mdc), [`02__AI-DOCS/Conventions/design_conventions.mdc`](02__AI-DOCS/Conventions/design_conventions.mdc), [`02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)).
             *   Uses appropriate MCPs (e.g., `@21st-dev/magic` for UI components, GitHub MCP for commits).
             *   Writes tests (unit, integration) as specified in the task or conventions.
             *   Documents the code as per conventions.
@@ -266,12 +266,12 @@ flowchart TD
 
 ### Phase 8: Testing
 
-*   **Logic Prompt File:** [`01_AI-RUN/08_Testing.mdc`](01_AI-RUN/08_Testing.mdc)
+*   **Logic Prompt File:** [`01__AI-RUN/08_Testing.mdc`](01__AI-RUN/08_Testing.mdc)
 *   **AI Role:** "QualityGuardian", QA Engineer.
 *   **Inputs:**
     *   Implemented source code and features.
     *   `project_prd.mdc` (for acceptance criteria).
-    *   Technical specifications and test cases defined in `03_SPECS/` or within task details in `tasks/tasks.json`.
+    *   Technical specifications and test cases defined in `03__SPECS/` or within task details in `tasks/tasks.json`.
 *   **Process:**
     1.  **Test Execution:**
         *   The AI systematically executes all defined tests (unit, integration, E2E).
@@ -295,12 +295,12 @@ flowchart TD
 
 ### Phase 9: Deployment
 
-*   **Logic Prompt File:** [`01_AI-RUN/09_Deployment.mdc`](01_AI-RUN/09_Deployment.mdc)
+*   **Logic Prompt File:** [`01__AI-RUN/09_Deployment.mdc`](01__AI-RUN/09_Deployment.mdc)
 *   **AI Role:** "DeployMaster", DevOps Engineer.
 *   **Inputs:**
     *   Fully tested and validated application.
     *   `project_prd.mdc` (Section 7: Deployment Plan).
-    *   Project-specific `02_AI-DOCS/Deployment/deployment_guide.mdc` (created in Phase 5).
+    *   Project-specific `02__AI-DOCS/Deployment/deployment_guide.mdc` (created in Phase 5).
 *   **Process:**
     1.  **Pre-Deployment Checklist:** AI verifies all prerequisites (environment config, final build, backups).
     2.  **Execute Deployment:** AI follows `deployment_guide.mdc` to deploy to production, using MCPs or CLI commands as needed.

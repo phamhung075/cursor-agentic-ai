@@ -27,7 +27,7 @@
 ## Design and UX/UI Principles for this Feature
  
 - **Main Objective:** The design and user experience of this feature must actively contribute to the overall goal of a "Silicon Valley / Y Combinator" quality application. This means meticulous attention to detail, modernity, intuitiveness, and aesthetics.
-- **Reference:** Refer to the general design and UX/UI principles defined in the Design Conventions document ([`02_AI-DOCS/Conventions/design_conventions_template.mdc`](02_AI-DOCS/Conventions/design_conventions_template.mdc)).
+- **Reference:** Refer to the general design and UX/UI principles defined in the Design Conventions document ([`02__AI-DOCS/Conventions/design_conventions_template.mdc`](02__AI-DOCS/Conventions/design_conventions_template.mdc)).
 - **Specifics for this feature:**
     - `[Describe here how the "YC standard" design objective specifically applies to this feature. What design aspects are particularly critical? Is there a specific "vibe" to achieve?]`
     - `[The AI should propose UI/UX solutions that embody these principles.]`

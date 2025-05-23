@@ -42,11 +42,11 @@ Each object within the `tasks` array must have the following fields:
 *   `dependencies` (Array of Numbers/Strings): An array of `id`s for tasks that must be completed before this task can begin. (e.g., `[1, 2]`).
 *   `priority` (String): The importance level of the task. Recommended values: "high", "medium", "low".
 *   `details` (String): **CRITICAL FIELD.** In-depth implementation instructions, notes, technical specifications, or context. Can be multi-line. **This field MUST contain direct links to, or embed the necessary content from, all relevant *created* project-specific documents that guide the task's execution.** This includes, but is not limited to:
-    *   Specific feature specifications (e.g., `../03_SPECS/features/feature_spec_FEAT-XXX.mdc`).
+    *   Specific feature specifications (e.g., `../03__SPECS/features/feature_spec_FEAT-XXX.mdc`).
     *   Relevant sections of `project_prd.mdc`.
-    *   Architectural diagrams or guidelines from the created `../02_AI-DOCS/Architecture/architecture.mdc`.
-    *   For UI tasks: Links to mockups, wireframes, component designs, and the created `../02_AI-DOCS/Conventions/design_conventions.mdc`.
-    *   For backend tasks: API contracts (from `../02_AI-DOCS/Integrations/` or `../03_SPECS/`), data models, and the created `../02_AI-DOCS/Conventions/coding_conventions.mdc`.
+    *   Architectural diagrams or guidelines from the created `../02__AI-DOCS/Architecture/architecture.mdc`.
+    *   For UI tasks: Links to mockups, wireframes, component designs, and the created `../02__AI-DOCS/Conventions/design_conventions.mdc`.
+    *   For backend tasks: API contracts (from `../02__AI-DOCS/Integrations/` or `../03__SPECS/`), data models, and the created `../02__AI-DOCS/Conventions/coding_conventions.mdc`.
     *   For database tasks: Schema details, migration plans, etc.
     The AI agent relies on this field to find and use the precise specifications needed for any development work (frontend, backend, database, design).
 *   `testStrategy` (String): The approach for verifying that the task is completed correctly (e.g., "Unit tests for all new functions", "Manual QA on staging environment"), which should align with the specifications linked in `details`.
