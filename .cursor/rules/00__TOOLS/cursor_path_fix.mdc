@@ -88,7 +88,7 @@ This guide helps AI agents systematically identify and fix broken file path link
 
 ### Pattern 2: Relative Path
 # BROKEN
-[architecture_template.mdc](../02__AI-DOCS/Architecture/architecture_template.mdc)
+[architecture_template.mdc](.cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc)
 
 # FIXED
 [architecture_template.mdc](.cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc)

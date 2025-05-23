@@ -15,9 +15,9 @@ Roo, as your integrated AI assistant, handles task management directly. No separ
 
 **Expected Inputs:**
 - A comprehensive `project_prd.mdc`.
-- **Created** project-specific technical specifications and documentation within `02__AI-DOCS/` (including the created [`../Conventions/coding_conventions.mdc`](../Conventions/coding_conventions.mdc) and [`../Conventions/design_conventions.mdc`](../Conventions/design_conventions.mdc)) and `../../03__SPECS/`.
-- Foundational design principles outlined in [`../Documentation/AI_Design_Agent_Optimization.mdc`](../Documentation/AI_Design_Agent_Optimization.mdc).
-- Coding best practices from [`../Documentation/AI_Coding_Agent_Optimization.mdc`](../Documentation/AI_Coding_Agent_Optimization.mdc).
+- **Created** project-specific technical specifications and documentation within `02__AI-DOCS/` (including the created [`../Conventions/coding_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions.mdc) and [`../Conventions/design_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/design_conventions.mdc)) and `../../03__SPECS/`.
+- Foundational design principles outlined in [`../Documentation/AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
+- Coding best practices from [`../Documentation/AI_Coding_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc).
 
 **Current Phase:** Task Management
 
@@ -27,7 +27,7 @@ This document establishes a structured workflow for breaking down the PRD into a
 
 ### Advanced Concepts and Vision for AI Task Management
 
-For a deeper dive into advanced AI-driven task management systems and a vision for future capabilities, refer to the **Product Requirements Document for Vibe-Task**. This document, available at [`../../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc`](../../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc), serves as a detailed example and conceptual blueprint.
+For a deeper dive into advanced AI-driven task management systems and a vision for future capabilities, refer to the **Product Requirements Document for Vibe-Task**. This document, available at [`../../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc), serves as a detailed example and conceptual blueprint.
 
 The Vibe-Task PRD can be used as a source of inspiration for:
 - Optimizing the current Roo-based task workflow.
@@ -76,8 +76,8 @@ Please perform the following operations in sequence:
    - Relevant sections of `project_prd.mdc`.
    - Specific feature specifications (e.g., `../03__SPECS/features/feature_spec_FEAT-XXX.mdc`).
    - Architectural diagrams or guidelines from the created `../02__AI-DOCS/Architecture/architecture.mdc`.
-   - For UI tasks: links to mockups, wireframes, component designs, and the created `../Conventions/design_conventions.mdc`. Adherence to [`../Documentation/AI_Design_Agent_Optimization.mdc`](../Documentation/AI_Design_Agent_Optimization.mdc) is paramount.
-   - For backend tasks: API contracts (from `../02__AI-DOCS/Integrations/` or `../03__SPECS/`), data models, and the created `../Conventions/coding_conventions.mdc`. Adherence to [`../Documentation/AI_Coding_Agent_Optimization.mdc`](../Documentation/AI_Coding_Agent_Optimization.mdc) is key.
+   - For UI tasks: links to mockups, wireframes, component designs, and the created `../Conventions/design_conventions.mdc`. Adherence to [`../Documentation/AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc) is paramount.
+   - For backend tasks: API contracts (from `../02__AI-DOCS/Integrations/` or `../03__SPECS/`), data models, and the created `../Conventions/coding_conventions.mdc`. Adherence to [`../Documentation/AI_Coding_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) is key.
    - For database tasks: schema details, migration scripts, etc.
 - Create logical dependencies between tasks.
 - Prioritize tasks based on technical dependencies and user value.
@@ -143,7 +143,7 @@ Roo Orchestrator will typically prompt you for the next steps or await your inst
    Requirements for decomposition:
    - Maximum task size: 4 hours of development work
    - Include technical implementation details
-   - Specify UI components, API endpoints, database changes, etc. **in accordance with the project's "Y Combinator" design standards, as detailed in [`../Conventions/design_conventions.mdc`](../Conventions/design_conventions.mdc) and [`../Documentation/AI_Design_Agent_Optimization.mdc`](../Documentation/AI_Design_Agent_Optimization.mdc).**
+   - Specify UI components, API endpoints, database changes, etc. **in accordance with the project's "Y Combinator" design standards, as detailed in [`../Conventions/design_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/design_conventions.mdc) and [`../Documentation/AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).**
    - Create clear acceptance criteria for each task, **including design and UX/UI aspects for relevant tasks, referring to the convention documents.**
    - Establish dependencies between tasks
    - Tag tasks with appropriate categories'
@@ -251,7 +251,7 @@ This task structure will serve as the foundation for the implementation phase, g
 
 Once this task management setup is complete:
 
-1. Roo (either Orchestrator mode directly or via a delegated task to Code mode) will save the task breakdown as [`../tasks/tasks.json`](../tasks/tasks.json). The detailed structure for this JSON file is defined in [`./Tasks_JSON_Structure.mdc`](./Tasks_JSON_Structure.mdc).
+1. Roo (either Orchestrator mode directly or via a delegated task to Code mode) will save the task breakdown as [`../tasks/tasks.json`](.cursor/rules/tasks/tasks.json). The detailed structure for this JSON file is defined in [`./Tasks_JSON_Structure.mdc`](./Tasks_JSON_Structure.mdc).
 2. This task hierarchy will guide the implementation phase.
 
 ### Moving to Implementation
@@ -260,15 +260,15 @@ To proceed with implementing the project:
 
 1. Open the prompt file in `../01__AI-RUN/` that corresponds to the `07_Start_Building.mdc` logical step. (Ensure `../01__AI-RUN/01_AutoPilot.mdc` or your manual process calls the correct actual filename).
 2. Share it with your AI agent.
-3. Reference your `project_prd.mdc`, the **created** project-specific documentation in `02__AI-DOCS/` and `../../03__SPECS/`, and the task breakdown in [`../tasks/tasks.json`](../tasks/tasks.json).
+3. Reference your `project_prd.mdc`, the **created** project-specific documentation in `02__AI-DOCS/` and `../../03__SPECS/`, and the task breakdown in [`../tasks/tasks.json`](.cursor/rules/tasks/tasks.json).
 
 ```
 @ImplementationArchitect
 
 Please help me implement my project according to the PRD and task breakdown. You can find:
 - The complete PRD at: `project_prd.mdc`
-- The task breakdown at: [`../tasks/tasks.json`](../tasks/tasks.json)
-- Technical documentation in the `02__AI-DOCS/` (notably [`../Conventions/coding_conventions.mdc`](../Conventions/coding_conventions.mdc) and [`../Conventions/design_conventions.mdc`](../Conventions/design_conventions.mdc)) and `../../03__SPECS/` directories, as well as the guiding principles from [`../Documentation/AI_Design_Agent_Optimization.mdc`](../Documentation/AI_Design_Agent_Optimization.mdc).
+- The task breakdown at: [`../tasks/tasks.json`](.cursor/rules/tasks/tasks.json)
+- Technical documentation in the `02__AI-DOCS/` (notably [`../Conventions/coding_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions.mdc) and [`../Conventions/design_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/design_conventions.mdc)) and `../../03__SPECS/` directories, as well as the guiding principles from [`../Documentation/AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
 
 I'm ready to start building, beginning with the first task in the hierarchy.
 ```
@@ -288,7 +288,7 @@ This implementation phase will transform the detailed plans and specifications i
 
 **Output Storage:**
 
-* All task data, managed and generated through Roo's orchestration, will be stored in [`../tasks/tasks.json`](../tasks/tasks.json). Each task object in this JSON file should include a `status` attribute (e.g., `"status": "todo"`, `"status": "in progress"`, `"status": "done"`). The detailed structure for this JSON file is defined in [`./Tasks_JSON_Structure.mdc`](./Tasks_JSON_Structure.mdc).
+* All task data, managed and generated through Roo's orchestration, will be stored in [`../tasks/tasks.json`](.cursor/rules/tasks/tasks.json). Each task object in this JSON file should include a `status` attribute (e.g., `"status": "todo"`, `"status": "in progress"`, `"status": "done"`). The detailed structure for this JSON file is defined in [`./Tasks_JSON_Structure.mdc`](./Tasks_JSON_Structure.mdc).
 * This file will be referenced in the implementation phase.
 
 ---

@@ -54,7 +54,7 @@ flowchart TD
 ## Key Operational Principles:
 
 *   **Orchestration:** The entire workflow is primarily orchestrated by the script and logic defined in [`.cursor/rules/01__AI-RUN/01_AutoPilot.mdc`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc).
-*   **State Management:** The [`project_session_state.json`](mdc:project_session_state.json) file is critical. It's read at startup and **continuously updated** by the AI agent after every significant step within each phase to track progress, store key information, and manage state.
+*   **State Management:** The [`project_session_state.json`](.cursor/rules/project_session_state.json) file is critical. It's read at startup and **continuously updated** by the AI agent after every significant step within each phase to track progress, store key information, and manage state.
 *   **Sequential Prompts:** Each phase (1-9) is driven by a corresponding `.mdc` file in the `01__AI-RUN/` directory, which defines the AI's role and tasks for that phase.
 *   **Document Generation:** Specific documents are generated at each phase (e.g., `idea_document.mdc`, `project_prd.mdc`, `tasks/tasks.json`), serving as inputs for subsequent phases. Technical documentation and specifications in `02__AI-DOCS/` and `03__SPECS/` are created from templates.
 *   **User Validation:** The workflow includes explicit points for user validation and intervention, as indicated in the diagram and detailed in [`.cursor/rules/01__AI-RUN/01_AutoPilot.mdc`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc).

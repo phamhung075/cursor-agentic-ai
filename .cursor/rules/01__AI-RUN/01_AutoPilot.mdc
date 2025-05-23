@@ -141,10 +141,10 @@ With the technical specifications updated:
 
 1. Announce that you are breaking down the project into tasks, following the workflow in [`.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc).
 2. Use the workflow defined in [`.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc) internally.
-3. Create a hierarchical task structure in [`tasks/tasks.json`](mdc:tasks/tasks.json), adhering to [`.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc). Ensure the `details` field for each task appropriately links to or embeds the specific requirements from the PRD and the created specification documents.
-   - (Roo Orchestrator will handle epic creation directly in [`tasks/tasks.json`](mdc:tasks/tasks.json))
-   - (Roo Orchestrator will handle task breakdown directly in [`tasks/tasks.json`](mdc:tasks/tasks.json))
-   - (Roo Orchestrator will handle sub-task breakdown directly in [`tasks/tasks.json`](mdc:tasks/tasks.json))
+3. Create a hierarchical task structure in [`tasks/tasks.json`](.cursor/rules/tasks/tasks.json), adhering to [`.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc). Ensure the `details` field for each task appropriately links to or embeds the specific requirements from the PRD and the created specification documents.
+   - (Roo Orchestrator will handle epic creation directly in [`tasks/tasks.json`](.cursor/rules/tasks/tasks.json))
+   - (Roo Orchestrator will handle task breakdown directly in [`tasks/tasks.json`](.cursor/rules/tasks/tasks.json))
+   - (Roo Orchestrator will handle sub-task breakdown directly in [`tasks/tasks.json`](.cursor/rules/tasks/tasks.json))
 4. Present the high-level epics and priority tasks.
 5. Ask if the user wants to modify task priorities before implementation.
    - **Action (State Update 6.1):** After potential modifications and user confirmation to proceed, update `project_session_state.json`:
@@ -175,7 +175,7 @@ With the project structure and tasks defined:
      ---
      ```
    - Project Title (`# {{projectName}}`)
-   - Project Type Badge (e.g., `![Type](mdc:https:/img.shields.io/badge/Type-{{projectType}}-blue)`)
+   - Project Type Badge (e.g., `![Type](https://img.shields.io/badge/Type-{{projectType}}-blue)`)
    - Short Description (`{{projectObjective}}`)
    - Section: "Main Technical Stack" (listing key technologies)
    - Section: "Quick Start (Manual)" (Placeholder: `Instructions coming soon...` or basic steps if known)
@@ -192,7 +192,7 @@ With the task breakdown approved:
 2. Use the prompt corresponding to `07_Start_Building.mdc` internally. This prompt will guide you to:
    a. **Set up the project environment:** Initialize the project structure (folders, boilerplate files for frontend, backend, database as per `../02__AI-DOCS/Architecture/architecture.mdc`), install dependencies, and set up version control.
    b. **Implement tasks systematically:**
-       i.  Fetch tasks one by one from [`tasks/tasks.json`](mdc:tasks/tasks.json) according to priority, via Roo Orchestrator.
+       i.  Fetch tasks one by one from [`tasks/tasks.json`](.cursor/rules/tasks/tasks.json) according to priority, via Roo Orchestrator.
        ii. For each task, **thoroughly analyze its `details` field** to understand specific requirements and to locate links to or embedded content from:
            *   `project_prd.mdc`
            *   Specific feature specifications (e.g., `../03__SPECS/features/feature_spec_FEAT-XXX.mdc`)
@@ -242,7 +242,7 @@ Throughout the process, you will:
 
 1. Maintain and **meticulously, persistently, and immediately update** `project_session_state.json` after *every distinct sub-step*. This includes `projectName`, `projectObjective`, `currentWorkflowPhase`, `lastCompletedStep` (use specific names like "prdExecutiveSummaryPresented", "technicalDocsIndexCreated", "taskPrioritiesConfirmed", "testingAndPreviewValidated", "productionDeploymentCompleted"), `pendingAction` (before critical operations), `errorState` (if errors occur), and paths to all key generated documents (`ideaDocumentPath`, `marketResearchReportPath`, `coreConceptPath`, `prdDocumentPath`, `specsIndexPath`, `tasksDocumentPath`).
 2. Reference the outputs of previous phases (e.g., `idea_document.mdc`, `market_research.mdc`, `core_concept.mdc`, `project_prd.mdc`, implemented and tested code) when executing each new phase. "Executing each new phase" means you, ProjectArchitect, fully adopt the role and follow all instructions within the corresponding phase-specific prompt file (e.g., `03_Core_Concept.mdc`, `08_Testing.mdc`) to achieve its objectives. These filenames MUST be accurately tracked in `project_session_state.json`.
-3. Ensure that **new project-specific documents are created** in `../02__AI-DOCS/` and `../03__SPECS/` from templates and populated with current project information. Ensure [`tasks/tasks.json`](mdc:tasks/tasks.json) is created/updated (adhering to [`../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)). The paths to these key documents should be noted in [`project_session_state.json`](mdc:project_session_state.json).
+3. Ensure that **new project-specific documents are created** in `../02__AI-DOCS/` and `../03__SPECS/` from templates and populated with current project information. Ensure [`tasks/tasks.json`](.cursor/rules/tasks/tasks.json) is created/updated (adhering to [`../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)). The paths to these key documents should be noted in [`project_session_state.json`](.cursor/rules/project_session_state.json).
 4. Keep track of the current phase and progress, primarily through `currentWorkflowPhase` and `lastCompletedStep` in `project_session_state.json`.
 
 ## User Intervention Points

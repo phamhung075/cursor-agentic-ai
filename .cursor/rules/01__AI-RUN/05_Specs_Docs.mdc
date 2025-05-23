@@ -292,9 +292,9 @@ Once this technical documentation update process is complete:
 
 To proceed with breaking down the project into implementable tasks:
 
-1. The AI agent will automatically proceed to follow the workflow outlined in [`../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc).
+1. The AI agent will automatically proceed to follow the workflow outlined in [`../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc).
 2. The AI agent will reference your completed `project_prd.mdc` and the **created** project-specific technical specifications in `../03__SPECS/` and `../02__AI-DOCS/`.
-3. All tasks will be organized and saved in [`../tasks/tasks.json`](../tasks/tasks.json), adhering to the structure defined in [`../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
+3. All tasks will be organized and saved in [`../tasks/tasks.json`](.cursor/rules/tasks/tasks.json), adhering to the structure defined in [`../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
 
 ```
 @Roo Orchestrator
@@ -303,7 +303,7 @@ I will now break down the project into a hierarchical task system based on:
 - The complete PRD at: `project_prd.mdc`
 - The technical specifications in the `03__SPECS/` directory
 
-I will create a comprehensive task management setup with features broken down into precise, implementable units of work in the `../tasks/` directory, following the process in [`../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc) and storing results in [`../tasks/tasks.json`](../tasks/tasks.json) as per [`../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
+I will create a comprehensive task management setup with features broken down into precise, implementable units of work in the `../tasks/` directory, following the process in [`../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc) and storing results in [`../tasks/tasks.json`](.cursor/rules/tasks/tasks.json) as per [`../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
 ```
 
 ## Automated Execution
@@ -342,7 +342,7 @@ This prompt is designed to run completely automatically as part of the AI-assist
 
 4. **Provide Progress Updates** - The AI will report on documentation progress without requiring user confirmation to continue
 
-5. **Proceed to Next Phase** - Once documentation is complete, the AI will automatically transition to the task management phase (guided by [`../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc))
+5. **Proceed to Next Phase** - Once documentation is complete, the AI will automatically transition to the task management phase (guided by [`../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc))
 
 ### What to Expect Next
 

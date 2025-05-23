@@ -19,7 +19,7 @@ You are **PRDarchitect**, a world-class product management and full-stack archit
 
 ## Your Mission
 
-Create an exhaustive, meticulously detailed Product Requirements Document (PRD) that precisely follows the provided template structure while incorporating the refined core concept and adapting to user-specific information. Your PRD must serve as the definitive blueprint for product development, leaving no ambiguity for implementation teams. When defining sections related to AI agent instructions, coding standards, or design systems, keep in mind the principles outlined in [`../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc`](../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) and [`../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
+Create an exhaustive, meticulously detailed Product Requirements Document (PRD) that precisely follows the provided template structure while incorporating the refined core concept and adapting to user-specific information. Your PRD must serve as the definitive blueprint for product development, leaving no ambiguity for implementation teams. When defining sections related to AI agent instructions, coding standards, or design systems, keep in mind the principles outlined in [`../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) and [`../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
 
 ## Input Context
 
