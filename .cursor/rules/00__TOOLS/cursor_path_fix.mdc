@@ -7,7 +7,7 @@ alwaysApply: false
 
 ## Overview
 
-This guide helps AI agents systematically identify and fix broken file ps within the cursor rules project structure. All links should use the full path format with proper markdown linking syntax.
+This guide helps AI agents systematically identify and fix broken file path links in .mdc files within the cursor rules project structure. All links should use the full path format with proper markdown linking syntax.
 
 ## File Structure Reference
 
@@ -75,29 +75,18 @@ This guide helps AI agents systematically identify and fix broken file ps within
 
 ## Link Format Standards
 
-### Correct Format
-```markdown
-[filename.mdc](.cursor/rules/path/to/filename.mdc)
-```
-
-### Examples of Correct Links
-- `[01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)`
-- `[AI_Coding_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)`
-- `[tasks.json](.cursor/rules/tasks/tasks.json)`
-
-## Common Broken Link Patterns
-
-### Pattern 1: Missing Path Prefix
+### Corremarkdown
+[filename.mdc](.cursor/rules/pdc)
+`
+- `[t.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)`
+- `[AI_Coding_Agent_Optimization.mdc](.cI-DOCS/Docing_Agent_Optimization.mdc)`
+- `[tasks.json](.cursor/rules/tan Broken L1: Missing Path Prefix
 ```markdown
 # BROKEN
-[01_AutoPilot.mdc](01__AI-RUN/01_AutoPilot.mdc)
-
-# FIXED
-[01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)
+[01_AutoPilot.mdc](01utoPilot.mAutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)
 ```
 
-### Pattern 2: Relative Path Only
-```markdown
+### Pattern 2: Relative Path
 # BROKEN
 [architecture_template.mdc](../02__AI-DOCS/Architecture/architecture_template.mdc)
 
@@ -210,8 +199,7 @@ find .cursor/rules -name "*.mdc" -exec grep -l "\](" {} \;
 find .cursor/rules -name "*.mdc" -exec grep -l "@\`" {} \;
 
 # Validate fixed links
-find .cursor/rules -name "*.mdc" -exec grep -l "\](.cursor/rules/" {} \;
-```
+find .cursor/rules -name "*.mdc" -exec grep -l "\](.cur`
 
 ## Quality Assurance
 
@@ -224,3 +212,51 @@ After applying fixes, ensure:
 - [ ] Markdown syntax is correct
 
 This guide ensures consistent, reliable file linking throughout the cursor rules project structure.
+
+## Continue Update and Development
+
+This guide is a **living document** that must be continuously updated as the project evolves. 
+
+### Dynamic Update Process
+
+**When new files are suggested or discovered:**
+
+1. **AI Agent Responsibility**: If suggestions are provided for missing files, the AI agent MUST immediately re-update this `cursor_path_fix.mdc` [cursor_path_fix.mdc](mdc:.cursor/rules/00__TOOLS/cursor_path_fix.mdc) file to include:
+   - New file paths in the File Structure Reference
+   - Updated Quick Reference Map entries
+   - Any new broken link patterns specific to the new files
+   - Updated validation procedures if needed
+
+2. **Path Discovery**: Regularly scan `./.cursor/rules` directory structure to identify:
+   - Newly created files not yet documented
+   - Changed file locations
+   - Removed files that should be cleaned from references
+   - New subdirectories or organizational changes
+
+3. **Adaptation Requirements**: When updating this guide, ensure:
+   - All new files follow the standard `.cursor/rules/` prefix format
+   - File structure reference section is updated with new entries
+   - Quick reference map includes correct paths for new files
+   - Any special linking rules for new file types are documented
+
+### Update Workflow
+
+```markdown
+1. Receive suggestion for missing file(s)
+2. Verify file existence in ./.cursor/rules
+3. Update File Structure Reference section
+4. Update Quick Reference Map section  
+5. Add any new broken link patterns if applicable
+6. Update validation checklist if needed
+7. Test all new path references
+```
+
+### Version Control
+
+Each update to this guide should maintain:
+- Consistency with existing format standards
+- Backward compatibility with current links
+- Clear documentation of new additions
+- Validation of all referenced paths
+
+**Note**: This guide will be re-updated each time new files are identified or project structure changes to ensure it remains the authoritative source for link fixing in the cursor rules project.
