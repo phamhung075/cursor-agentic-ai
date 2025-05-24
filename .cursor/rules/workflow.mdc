@@ -57,12 +57,12 @@ flowchart TD
 
 ## Key Operational Principles:
 
-*   **Orchestration:** The entire workflow is primarily orchestrated by the script and logic defined in [`[01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc).
-*   **State Management:** The [`[project_session_state.json](.cursor/rules/project_session_state.json)`](.cursor/rules/project_session_state.json) file is critical. It's read at startup and **continuously updated** by the AI agent after every significant step within each phase to track progress, store key information, and manage state.
+*   **Orchestration:** The entire workflow is primarily orchestrated by the script and logic defined in [01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc).
+*   **State Management:** The [project_session_state.json](.cursor/rules/project_session_state.json) file is critical. It's read at startup and **continuously updated** by the AI agent after every significant step within each phase to track progress, store key information, and manage state.
 *   **Sequential Prompts:** Each phase (1-9) is driven by a corresponding `.mdc` file in the `.cursor/rules/01__AI-RUN/` directory, which defines the AI's role and tasks for that phase.
-*   **Document Generation:** Specific documents are generated at each phase (e.g., [`[idea_document.mdc](.cursor/rules/projet/01_Idea/idea_document.mdc)`](.cursor/rules/projet/01_Idea/idea_document.mdc), [`[project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc)`](.cursor/rules/projet/PRD_template/project_prd.mdc), [`[tasks.json](.cursor/rules/tasks/tasks.json)`](.cursor/rules/tasks/tasks.json)), serving as inputs for subsequent phases. Technical documentation and specifications in `.cursor/rules/02__AI-DOCS/` and `.cursor/rules/03__SPECS/` are created from templates.
-*   **User Validation:** The workflow includes explicit points for user validation and intervention, as indicated in the diagram and detailed in [`[01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc).
+*   **Document Generation:** Specific documents are generated at each phase (e.g., [idea_document.mdc](.cursor/rules/projet/01_Idea/idea_document.mdc), [project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc), [tasks.json](.cursor/rules/tasks/tasks.json)), serving as inputs for subsequent phases. Technical documentation and specifications in `.cursor/rules/02__AI-DOCS/` and `.cursor/rules/03__SPECS/` are created from templates.
+*   **User Validation:** The workflow includes explicit points for user validation and intervention, as indicated in the diagram and detailed in [01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc).
 *   **MCP Integration:** The AI agents leverage Model Context Protocol (MCP) servers for extended capabilities like research, tool usage, and interaction with external services.
 *   **Spec-Driven Development:** The process emphasizes adherence to specifications detailed in the PRD and technical documents.
 
-This diagram provides a high-level overview. For detailed step-by-step logic, refer to [`[01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc) and [`[logic.mdc](.cursor/rules/logic.mdc)`](.cursor/rules/logic.mdc).
+This diagram provides a high-level overview. For detailed step-by-step logic, refer to [01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc) and [logic.mdc](.cursor/rules/logic.mdc).

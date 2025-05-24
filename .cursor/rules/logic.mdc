@@ -40,7 +40,7 @@ flowchart TD
     D -- Creates --> [project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc)
     E -- Creates/Populates --> Files in 02__AI-DOCS/ and 03__SPECS/
     E -- Creates/Updates --> 03__SPECS/documentation_index.mdc
-    F -- Creates --> tasks/[tasks.json](.cursor/rules/tasks/tasks.json)
+    F -- Creates --> [tasks.json](.cursor/rules/tasks/tasks.json)
     G -- Creates/Updates --> [README.mdc](.cursor/rules/README.mdc)
     H -- Implements code --> Project source code
     I -- Validates --> Preview Environment

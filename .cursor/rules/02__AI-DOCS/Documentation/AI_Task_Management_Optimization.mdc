@@ -96,15 +96,15 @@ The Vibe-Task MCP server exposes tools that mirror its CLI capabilities, allowin
 ### 5.2. Task Listing & Viewing
 *   **`list_tasks` (Enhanced)**:
     *   **Description:** Lists tasks from `[tasks.json](.cursor/rules/tasks/tasks.json)` with advanced filtering.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `status` (string, optional, filter by status), `priority` (string, optional), `assignee` (string, optional), `labels` (string, optional, comma-separated), `dueDateStart` (string, optional, YYYY-MM-DD), `dueDateEnd` (string, optional, YYYY-MM-DD), `withSubtasks` (boolean, optional, default: false).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `status` (string, optional, filter by status), `priority` (string, optional), `assignee` (string, optional), `labels` (string, optional, comma-separated), `dueDateStart` (string, optional, YYYY-MM-DD), `dueDateEnd` (string, optional, YYYY-MM-DD), `withSubtasks` (boolean, optional, default: false).
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains an array of task objects.
 *   **`show_task` (Enhanced)**:
     *   **Description:** Displays detailed information for a specific task or subtask, including all rich properties.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `id` (string, required, task ID or "parentID.subtaskID"), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `statusFilter` (string, optional, filter subtasks by status).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `id` (string, required, task ID or "parentID.subtaskID"), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `statusFilter` (string, optional, filter subtasks by status).
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the detailed task/subtask object.
 *   **`next_task` (Enhanced)**:
     *   **Description:** Identifies and displays the next actionable task using advanced prioritization (considering status, dependencies, priority, due dates).
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)").
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)").
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the next task object or a message if no task is available.
 *   **`complexity_report`**:
     *   **Description:** Displays the previously generated complexity analysis report.
@@ -114,37 +114,37 @@ The Vibe-Task MCP server exposes tools that mirror its CLI capabilities, allowin
 ### 5.3. Task Status & File Management
 *   **`set_task_status` (Enhanced)**:
     *   **Description:** Sets the status of one or more tasks/subtasks using a more granular status set.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `ids` (string, required, comma-separated task ID(s) or "parentID.subtaskID"), `status` (string, required, e.g., "todo", "in-progress", "blocked", "review", "qa_testing", "done", "deferred"), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)").
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `ids` (string, required, comma-separated task ID(s) or "parentID.subtaskID"), `status` (string, required, e.g., "todo", "in-progress", "blocked", "review", "qa_testing", "done", "deferred"), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)").
     *   **Output:** JSON object with `success` (boolean) and `message` (string).
 *   **`generate_task_files`**:
     *   **Description:** Generates individual task files from the main `[tasks.json](.cursor/rules/tasks/tasks.json)`.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `outputDir` (string, optional, default: "tasks").
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `outputDir` (string, optional, default: "tasks").
     *   **Output:** JSON object with `success` (boolean) and `message` (string).
 
 ### 5.4. Task Creation & Modification
 *   **`parse_prd` (Enhanced)**:
     *   **Description:** Parses a PRD to generate tasks, with improved AI for dependency inference and code context awareness if available.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `input` (string, optional, default: "scripts/prd.txt"), `numTasks` (string, optional, default: "10"), `output` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `force` (boolean, optional, default: false), `append` (boolean, optional, default: false), `codeContextPaths` (array of strings, optional, paths to relevant code files/dirs).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `input` (string, optional, default: "scripts/prd.txt"), `numTasks` (string, optional, default: "10"), `output` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `force` (boolean, optional, default: false), `append` (boolean, optional, default: false), `codeContextPaths` (array of strings, optional, paths to relevant code files/dirs).
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the list of generated tasks.
 *   **`add_task` (Enhanced)**:
     *   **Description:** Adds a new task, with options for richer properties and code context.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `prompt` (string, optional), `title` (string, optional), `description` (string, optional), `details` (string, optional), `testStrategy` (string, optional), `dependencies` (string, optional), `priority` (string, optional), `research` (boolean, optional), `estimatedEffort` (string, optional), `assignee` (string, optional), `labels` (string, optional, comma-separated), `dueDate` (string, optional, YYYY-MM-DD), `codeContextPaths` (array of strings, optional).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `prompt` (string, optional), `title` (string, optional), `description` (string, optional), `details` (string, optional), `testStrategy` (string, optional), `dependencies` (string, optional), `priority` (string, optional), `research` (boolean, optional), `estimatedEffort` (string, optional), `assignee` (string, optional), `labels` (string, optional, comma-separated), `dueDate` (string, optional, YYYY-MM-DD), `codeContextPaths` (array of strings, optional).
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the newly added task object.
 *   **`add_subtask` (Enhanced)**:
     *   **Description:** Adds a new subtask or converts an existing task, including richer properties.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `parentId` (string, required), `existingTaskId` (string, optional), `title` (string, optional), `description` (string, optional), `details` (string, optional), `dependencies` (string, optional), `status` (string, optional), `estimatedEffort` (string, optional), `assignee` (string, optional), `labels` (string, optional), `dueDate` (string, optional).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `parentId` (string, required), `existingTaskId` (string, optional), `title` (string, optional), `description` (string, optional), `details` (string, optional), `dependencies` (string, optional), `status` (string, optional), `estimatedEffort` (string, optional), `assignee` (string, optional), `labels` (string, optional), `dueDate` (string, optional).
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the added/modified subtask object.
 *   **`update_tasks` (Enhanced)**:
     *   **Description:** Updates multiple tasks (ID >= `fromId`) based on a new prompt, considering code context.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `fromId` (string, required), `prompt` (string, required), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `fromId` (string, required), `prompt` (string, required), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
     *   **Output:** JSON object with `success` (boolean) and `message` (string).
 *   **`update_task` (Enhanced)**:
     *   **Description:** Updates a single task by ID, considering code context and richer properties.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `id` (string, required), `prompt` (string, optional, for AI update), `title` (string, optional), `description` (string, optional), `details` (string, optional), `testStrategy` (string, optional), `status` (string, optional), `priority` (string, optional), `dependencies` (string, optional), `estimatedEffort` (string, optional), `assignee` (string, optional), `labels` (string, optional), `dueDate` (string, optional), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `id` (string, required), `prompt` (string, optional, for AI update), `title` (string, optional), `description` (string, optional), `details` (string, optional), `testStrategy` (string, optional), `status` (string, optional), `priority` (string, optional), `dependencies` (string, optional), `estimatedEffort` (string, optional), `assignee` (string, optional), `labels` (string, optional), `dueDate` (string, optional), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the updated task object.
 *   **`update_subtask` (Enhanced)**:
     *   **Description:** Updates a specific subtask, considering code context and richer properties.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `id` (string, required, "parentID.subtaskID"), `prompt` (string, optional), `title` (string, optional), etc. (similar to `update_task`), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `id` (string, required, "parentID.subtaskID"), `prompt` (string, optional), `title` (string, optional), etc. (similar to `update_task`), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the updated subtask object.
 *   **`remove_task`**: (Parameters and Output remain similar)
 *   **`remove_subtask`**: (Parameters and Output remain similar)
@@ -153,21 +153,21 @@ The Vibe-Task MCP server exposes tools that mirror its CLI capabilities, allowin
 ### 5.5. Task Analysis & Expansion
 *   **`analyze_project_complexity` (Enhanced)**:
     *   **Description:** Analyzes task complexity, potentially using code context for more accurate assessment.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `reportPath` (string, optional, default: "scripts/task-complexity-report.json"), `modelOverride` (string, optional), `thresholdScore` (number, optional, default: 5), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `reportPath` (string, optional, default: "scripts/task-complexity-report.json"), `modelOverride` (string, optional), `thresholdScore` (number, optional, default: 5), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
     *   **Output:** JSON object with `success` (boolean) and `message` (string).
 *   **`expand_task` (Enhanced)**:
     *   **Description:** Expands a task into subtasks, using AI and code context.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `id` (string, required), `numSubtasks` (number, optional), `research` (boolean, optional), `prompt` (string, optional), `force` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `id` (string, required), `numSubtasks` (number, optional), `research` (boolean, optional), `prompt` (string, optional), `force` (boolean, optional), `codeContextPaths` (array of strings, optional).
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the parent task with new subtasks.
 *   **`expand_all_tasks` (Enhanced)**:
     *   **Description:** Expands all pending tasks based on complexity, potentially using code context.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `numSubtasks` (number, optional), `research` (boolean, optional), `prompt` (string, optional), `force` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `numSubtasks` (number, optional), `research` (boolean, optional), `prompt` (string, optional), `force` (boolean, optional), `codeContextPaths` (array of strings, optional).
     *   **Output:** JSON object with `success` (boolean) and `data` (object) with counts.
 
 ### 5.6. Dependency Management
 *   **`add_dependency` (Potentially Enhanced)**:
     *   **Description:** Adds a dependency. AI could suggest dependencies based on task content.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `id` (string, required), `dependsOn` (string, required), `aiSuggestion` (boolean, optional, default: false).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `id` (string, required), `dependsOn` (string, required), `aiSuggestion` (boolean, optional, default: false).
     *   **Output:** JSON object with `success` (boolean) and `message` (string).
 *   **`remove_dependency`**: (Parameters and Output remain similar)
 *   **`validate_dependencies`**: (Parameters and Output remain similar)
@@ -176,11 +176,11 @@ The Vibe-Task MCP server exposes tools that mirror its CLI capabilities, allowin
 ### 5.7. Visualization & Reporting (New)
 *   **`generate_dependency_graph`**:
     *   **Description:** Generates a visual representation (e.g., DOT language string or image path if server can create images) of task dependencies.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `format` (string, optional, default: "dot", e.g., "dot", "svg", "png").
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `format` (string, optional, default: "dot", e.g., "dot", "svg", "png").
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the graph data or path to the image.
 *   **`generate_progress_overview`**:
     *   **Description:** Generates a summary or chart of project progress (e.g., task status distribution).
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/[tasks.json](.cursor/rules/tasks/tasks.json)"), `chartType` (string, optional, default: "status_distribution", e.g., "status_distribution", "burndown_data").
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: [tasks.json](.cursor/rules/tasks/tasks.json)"), `chartType` (string, optional, default: "status_distribution", e.g., "status_distribution", "burndown_data").
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the report data/chart.
 
 ### 5.8. Version Control Integration (Advanced - Future)
