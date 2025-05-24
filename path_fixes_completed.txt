@@ -12,7 +12,7 @@
 #### 2. **Fixed plain filename references**
 - **Files manually updated:**
   - `.cursor/rules/workflow.mdc` - Fixed all plain filename references to use proper `.cursor/rules/` paths
-  - `.cursor/rules/01__AI-RUN/03_Core_Concept.mdc` - Fixed references to other workflow files
+  - `.cursor/rules/01__AI-RUN/core_concept.mdc` - Fixed references to other workflow files
   - `.cursor/rules/01__AI-RUN/01_AutoPilot.mdc` - Fixed key relative path references
 
 #### 3. **Fixed relative path references**
@@ -30,7 +30,7 @@
 - `00_Getting_Started.mdc`: Fixed `mdc:` prefixes
 - `01_Idea.mdc`: Fixed `mdc:` prefixes  
 - `01_AutoPilot.mdc`: Fixed relative paths to documentation files
-- `03_Core_Concept.mdc`: Fixed plain filename references
+- `core_concept.mdc`: Fixed plain filename references
 - `09_Deployment.mdc`: Fixed `mdc:` prefixes
 
 #### **README and Documentation:**

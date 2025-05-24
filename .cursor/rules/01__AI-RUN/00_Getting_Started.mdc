@@ -28,25 +28,25 @@ flowchart TD
     E[Task Manager Initialization] -->|AI instructs Roo Orchestrator with PRD features| F
     F[Task Refinement] -->|Roo Orchestrator (with Roo Code) decomposes complex features into sub-tasks| G
     G[Builder] -->|AI executes tasks, codes via MCPs, Human reviews/validates code & features| H
-    H[Testing (08_Testing.mdc)] -->|AI tests features, sets up preview, Human validates| I
+    H[Testing (.cursor/rules/01__AI-RUN/08_Testing.mdc)] -->|AI tests features, sets up preview, Human validates| I
     I[Deployment (09_Deployment.mdc)] -->|AI executes deployment plan, Human verifies| J
     J[Iteration] -->|Collects feedback, Human decides next cycle| A
 ```
 
 ## File Naming Conventions
 
-The workflow uses consistent file naming for inputs and outputs. Note that prompt files mentioned here refer to their logical sequence (e.g., `01_Idea.mdc` is the first conceptual prompt for defining the idea, `05_Specs_Docs.mdc` handles technical documentation). You will need to ensure your actual prompt filenames in `01__AI-RUN/` are aligned or that [`01_AutoPilot.mdc`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc) correctly references your specific filenames.
+The workflow uses consistent file naming for inputs and outputs. Note that prompt files mentioned here refer to their logical sequence (e.g., `.cursor/rules/01__AI-RUN/01_Idea.mdc` is the first conceptual prompt for defining the idea, [`.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc`](.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc) handles technical documentation). You will need to ensure your actual prompt filenames in `01__AI-RUN/` are aligned or that [`01_AutoPilot.mdc`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc) correctly references your specific filenames.
 
 | Phase | Logical Prompt File | Primary Output / Location | Nature of Output |
 |-------|-----------------------|---------------------------|------------------|
-| Idea | 01_Idea.mdc | idea_document.mdc | Creation |
+| Idea | [`.cursor/rules/01__AI-RUN/01_Idea.mdc`](.cursor/rules/01__AI-RUN/01_Idea.mdc) | idea_document.mdc | Creation |
 | Market Research | 02_Market_Research.mdc | market_research.mdc | Creation |
-| Core Concept | 03_Core_Concept.mdc | core_concept.mdc | Creation |
+| Core Concept | core_concept.mdc | core_concept.mdc | Creation |
 | PRD Generation | 04_PRD_Generation.mdc | project_prd.mdc | Creation |
 | Specs & Docs | 05_Specs_Docs.mdc | `02__AI-DOCS/` & `03__SPECS/` | **Creation** of project-specific files from templates (templates remain untouched) & Reference/Annotation of Best Practices |
 | Task Manager | (See [`Roo_Task_Workflow.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)) | [`tasks.json`](.cursor/rules/tasks/tasks.json) (Structure: [`Tasks_JSON_Structure.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) | Creation |
 | Start Building | 07_Start_Building.mdc | Implementation code | N/A (code) |
-| Testing | 08_Testing.mdc | Tested features, Preview Environment | Validation |
+| Testing | .cursor/rules/01__AI-RUN/08_Testing.mdc | Tested features, Preview Environment | Validation |
 | Deployment | 09_Deployment.mdc | Deployed Application | Execution |
  
 ## AI Agent Initial Onboarding (Important!)
@@ -78,13 +78,13 @@ The workflow uses consistent file naming for inputs and outputs. Note that promp
 
 1. Review this Getting Started guide
 2. Create a project directory if you haven't already
-3. Ensure all prompt files (logically `01_Idea.mdc` through `09_Deployment.mdc`) are present in your `01__AI-RUN/` directory, correctly named and sequenced for the [`01_AutoPilot.mdc`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc) or manual execution.
+3. Ensure all prompt files (logically `.cursor/rules/01__AI-RUN/01_Idea.mdc` through `09_Deployment.mdc`) are present in your `01__AI-RUN/` directory, correctly named and sequenced for the [`01_AutoPilot.mdc`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc) or manual execution.
 
 ### Step 2: Complete Each Phase in Sequence
 
 For each phase of the workflow:
 
-1. Open the corresponding prompt file (e.g., the file serving as `01_Idea.mdc` for the Idea phase)
+1. Open the corresponding prompt file (e.g., the file serving as [`.cursor/rules/01__AI-RUN/01_Idea.mdc`](.cursor/rules/01__AI-RUN/01_Idea.mdc) for the Idea phase)
 2. Share the prompt with your AI agent
 3. Follow the instructions in the prompt to complete the phase
 4. Save the output in the designated location using the naming convention
@@ -108,7 +108,7 @@ Each prompt file includes a "Next Steps" section at the end that explains:
 
 ### Option 2: Step-by-Step Workflow
 
-1. **Start with the Idea phase**: Open the prompt file corresponding to `01_Idea.mdc` and share it with your AI agent
+1. **Start with the Idea phase**: Open the prompt file corresponding to [`.cursor/rules/01__AI-RUN/01_Idea.mdc`](.cursor/rules/01__AI-RUN/01_Idea.mdc) and share it with your AI agent
 2. **Fill in the template**: Provide your initial project concept
 3. **Save the output**: Store as `idea_document.mdc` in your project directory
 4. **Continue to Market Research**: Open the prompt file corresponding to `02_Market_Research.mdc` and proceed
@@ -125,7 +125,7 @@ If at any point the AI agent seems confused or lacks context:
 
 ## Workflow Stages and Responsibilities (Logical Sequence)
 
-### 1. Idea (using `01_Idea.mdc` logic)
+### 1. Idea (using [`.cursor/rules/01__AI-RUN/01_Idea.mdc`](.cursor/rules/01__AI-RUN/01_Idea.mdc) logic)
 - **Human Role**: Pre-writing, initial concept formulation
 - **AI Role**: Optional brainstorming assistance
 - **Output**: Initial project concept (`idea_document.mdc`)
@@ -135,7 +135,7 @@ If at any point the AI agent seems confused or lacks context:
 - **AI Role**: Assistance with rapid research via direct interaction/chat
 - **Output**: Market validation, competitor analysis, opportunity assessment (`market_research.mdc`)
 
-### 3. Concept Definition (using `03_Core_Concept.mdc` logic)
+### 3. Concept Definition (using `core_concept.mdc` logic)
 - **Human Role**: Finalizing the core concept
 - **AI Role**: Proposing Unique Value Propositions, refining personas
 - **Output**: Clearly defined project concept with target users (`core_concept.mdc`)
@@ -160,7 +160,7 @@ If at any point the AI agent seems confused or lacks context:
 - **AI Role**: Executing tasks, coding, utilizing MCPs
 - **Output**: Functional code implementation
 
-### 8. Testing (using `08_Testing.mdc` logic)
+### 8. Testing (using `.cursor/rules/01__AI-RUN/08_Testing.mdc` logic)
 - **Human Role**: Final validation of features and preview environment.
 - **AI Role**: Executing tests, setting up preview, addressing issues.
 - **Output**: Fully tested application, accessible preview, (optional) test reports.
@@ -197,4 +197,4 @@ You are now ready to start the AI-assisted development workflow!
 
 **Recommended Option**: Open the [`01_AutoPilot.mdc`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc) file and share it with your AI agent for a fully automated experience with minimal intervention. Ensure [`01_AutoPilot.mdc`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc) is configured to use the correct prompt filenames from your `01__AI-RUN/` directory.
 
-Alternatively, you can follow the step-by-step process by starting with opening the prompt file corresponding to `01_Idea.mdc` and sharing it with your AI agent.
+Alternatively, you can follow the step-by-step process by starting with opening the prompt file corresponding to [`.cursor/rules/01__AI-RUN/01_Idea.mdc`](.cursor/rules/01__AI-RUN/01_Idea.mdc) and sharing it with your AI agent.

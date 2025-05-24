@@ -60,7 +60,7 @@ Agentic Coding Framework operates on the principle of "Agentic Coding Logic," a 
 5.  **Technical Documentation & Specs:** Existing documentation templates within the project (in `.cursor/rules/02__AI-DOCS/` and `.cursor/rules/03__SPECS/`) are updated by the AI with project-specific details derived from the PRD. This includes architecture, coding conventions, feature specs, etc. The AI is guided by [`.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc).
 6.  **Task Management:** The PRD and specs are broken down into a detailed task list ([`.cursor/rules/tasks/tasks.json`](.cursor/rules/tasks/tasks.json)) by an AI orchestrator, following the workflow defined in [`.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc).
 7.  **Implementation:** AI coding agents take the structured tasks and specifications to build the project.
-8.  **Testing:** The implemented features are thoroughly tested against specifications (using logic from `.cursor/rules/01__AI-RUN/08_Testing.mdc`).
+8.  **Testing:** The implemented features are thoroughly tested against specifications (using logic from `.cursor/rules/01__AI-RUN/.cursor/rules/01__AI-RUN/08_Testing.mdc`).
 9.  **Deployment:** The validated application is deployed to the production environment (using logic from `.cursor/rules/01__AI-RUN/09_Deployment.mdc`).
 
 For a deeper dive into the underlying logic and phase-by-phase execution, please refer to [`.cursor/rules/logic.mdc`](.cursor/rules/logic.mdc) and the detailed roadmap below.
@@ -138,8 +138,8 @@ This workflow is designed for comprehensive AI assistance, orchestrated by the [
 
 **Phase 1: Initial Idea Expansion (Logic from [`.cursor/rules/01__AI-RUN/01_Idea.mdc`](.cursor/rules/01__AI-RUN/01_Idea.mdc))**
 
-8.  **AI Agent:** Based on the initial idea and clarifications, uses the `01_Idea.mdc` logical prompt structure to generate a structured idea document.
-9.  **AI Agent:** Saves this document as `idea_document.mdc` in the folder `./.cursor/rules/projet/01_Idea`.
+8.  **AI Agent:** Based on the initial idea and clarifications, uses the [`.cursor/rules/01__AI-RUN/01_Idea.mdc`](.cursor/rules/01__AI-RUN/01_Idea.mdc) logical prompt structure to generate a structured idea document.
+9.  **AI Agent:** Saves this document as `idea_document.mdc` in the project root directory.
 10. **AI Agent:** Presents the completed `idea_document.mdc` to the user for quick validation.
 11. **User:** Validates or requests minor adjustments.
 
@@ -149,16 +149,16 @@ This workflow is designed for comprehensive AI assistance, orchestrated by the [
 13. **AI Agent (as `MarketMaster Pro`):** Internally uses the `02_Market_Research.mdc` logical prompt, taking `idea_document.mdc` as input.
 14. **AI Agent:** Leverages MCPs (e.g., `context7`, `firecrawl`) as needed to simulate data gathering.
 15. **AI Agent:** Generates a comprehensive market analysis.
-16. **AI Agent:** Saves this analysis as `market_research.mdc` in the folder `./.cursor/rules/projet/02_Market_Research`.
+16. **AI Agent:** Saves this analysis as `market_research.mdc` in the folder `./project root directory
 17. **AI Agent:** Presents a summary of main findings to the user.
 18. **User:** Decides whether to review the full analysis or proceed.
 
-**Phase 3: Core Concept Development (Logic from [`.cursor/rules/01__AI-RUN/03_Core_Concept.mdc`](.cursor/rules/01__AI-RUN/03_Core_Concept.mdc))**
+**Phase 3: Core Concept Development (Logic from [`.cursor/rules/01__AI-RUN/core_concept.mdc`](.cursor/rules/01__AI-RUN/core_concept.mdc))**
 
 19. **AI Agent:** Announces it's developing the core concept.
-20. **AI Agent (as `ConceptForge`):** Internally uses the `03_Core_Concept.mdc` logical prompt, taking `idea_document.mdc` and `market_research.mdc` as inputs.
+20. **AI Agent (as `ConceptForge`):** Internally uses the `core_concept.mdc` logical prompt, taking `idea_document.mdc` and `market_research.mdc` as inputs.
 21. **AI Agent:** Synthesizes the idea and market research into a refined concept.
-22. **AI Agent:** Saves this concept as  in the folder `./.cursor/rules/projet/03_Core_Concept`.
+22. **AI Agent:** Saves this concept as  in the folder `./project root directory
 23. **AI Agent:** Presents the value proposition and key feature matrix to the user.
 24. **User:** Validates the core concept before proceeding.
 
@@ -167,7 +167,7 @@ This workflow is designed for comprehensive AI assistance, orchestrated by the [
 25. **AI Agent:** Announces it's creating the Product Requirements Document (PRD).
 26. **AI Agent (as `PRDarchitect`):** Internally uses the `04_PRD_Generation.mdc` logical prompt, taking `core_concept.mdc` as main input and referencing the [`.cursor/rules/01__AI-RUN/Template/PRD_template.mdc`](.cursor/rules/01__AI-RUN/Template/PRD_template.mdc).
 27. **AI Agent:** Generates a complete PRD.
-28. **AI Agent:** Saves the PRD in [project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc) in the folder `./.cursor/rules/projet/PRD_template`.
+28. **AI Agent:** Saves the PRD in ) in the folder `./project root directory
 29. **AI Agent:** Presents an executive summary with links to full sections.
 30. **User:** Decides whether to review specific sections or proceed.
 
@@ -202,10 +202,10 @@ This workflow is designed for comprehensive AI assistance, orchestrated by the [
 51. **AI Agent:** Marks tasks as complete by informing Roo Orchestrator.
 52. **Repeat (steps 45-51):** The task implementation cycle continues until all MVP tasks are completed.
 
-**Phase 8: Testing (Logic from [`.cursor/rules/01__AI-RUN/08_Testing.mdc`](.cursor/rules/01__AI-RUN/08_Testing.mdc))**
+**Phase 8: Testing (Logic from [`.cursor/rules/01__AI-RUN/.cursor/rules/01__AI-RUN/08_Testing.mdc`](.cursor/rules/01__AI-RUN/.cursor/rules/01__AI-RUN/08_Testing.mdc))**
 
 53. **AI Agent:** Announces it's initiating the testing phase.
-54. **AI Agent (as `QualityGuardian`):** Internally uses the `08_Testing.mdc` logical prompt. Systematically tests each implemented feature based on the PRD, technical specifications, and defined test cases. This includes unit, integration, and end-to-end tests.
+54. **AI Agent (as `QualityGuardian`):** Internally uses the `.cursor/rules/01__AI-RUN/08_Testing.mdc` logical prompt. Systematically tests each implemented feature based on the PRD, technical specifications, and defined test cases. This includes unit, integration, and end-to-end tests.
 55. **AI Agent:** Verifies features operate as expected, system calls are correct, and UI adheres to design conventions.
 56. **AI Agent:** Sets up a preview environment.
 57. **User & AI Agent:** Review the preview, conduct final user acceptance testing (UAT).
@@ -215,8 +215,8 @@ This workflow is designed for comprehensive AI assistance, orchestrated by the [
 **Phase 9: Deployment (Logic from [`.cursor/rules/01__AI-RUN/09_Deployment.mdc`](.cursor/rules/01__AI-RUN/09_Deployment.mdc))**
 
 60. **AI Agent:** Announces it's initiating the deployment phase.
-61. **AI Agent (as `DeployMaster`):** Internally uses the `09_Deployment.mdc` logical prompt.
-62. **AI Agent:** Follows the deployment plan in `project_prd.mdc` and the detailed steps in the project-specific `../.cursor/rules/02__AI-DOCS/Deployment/deployment_guide.mdc`.
+61. **AI Agent (as `DeployMaster`):** Internally uses the `.cursor/rules/01__AI-RUN/09_Deployment.mdc` logical prompt.
+62. **AI Agent:** Follows the deployment plan in `project_prd.mdc` and the detailed steps in the project-specific `.cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc`.
 63. **AI Agent:** Executes deployment to the production environment, monitors the process, and performs post-deployment verification (smoke tests).
 64. **AI Agent:** Confirms successful deployment and stability in production.
 

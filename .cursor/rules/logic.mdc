@@ -20,15 +20,15 @@ This workflow is designed to guide a software development project from the initi
 ```mermaid
 flowchart TD
     A0[Startup & Initialization (00_Getting_Started.mdc, 01_AutoPilot.mdc)] --> A
-    A[Phase 1: Idea (01_Idea.mdc)] --> B
+    A[Phase 1: Idea ([`.cursor/rules/01__AI-RUN/01_Idea.mdc`](.cursor/rules/01__AI-RUN/01_Idea.mdc))] --> B
     B[Phase 2: Market Research (02_Market_Research.mdc)] --> C
-    C[Phase 3: Core Concept (03_Core_Concept.mdc)] --> D
+    C[Phase 3: Core Concept (.cursor/rules/01__AI-RUN/core_concept.mdc)] --> D
     D[Phase 4: PRD Generation (04_PRD_Generation.mdc)] --> E
     E[Phase 5: Specifications & Technical Docs (05_Specs_Docs.mdc)] --> F
     F[Phase 6: Task Manager (06_Task_Manager.mdc)] --> G
     G[Phase 6.5: README Generation (in 01_AutoPilot.mdc)] --> H
     H[Phase 7: Implementation (07_Start_Building.mdc)] --> I
-    I[Phase 8: Testing (08_Testing.mdc)] --> J
+    I[Phase 8: Testing (.cursor/rules/01__AI-RUN/08_Testing.mdc)] --> J
     J[Phase 9: Deployment (09_Deployment.mdc)] --> K
     K[Phase 10: Iteration]
 
@@ -36,7 +36,7 @@ flowchart TD
     A0 -- Updates --> project_session_state.json
     A -- Creates --> idea_document.mdc
     B -- Creates --> market_research.mdc
-    C -- Creates --> core_concept.mdc
+    C -- Creates --> .cursor/rules/01__AI-RUN/core_concept.mdc
     D -- Creates --> project_prd.mdc
     E -- Creates/Populates --> Files in 02__AI-DOCS/ and 03__SPECS/
     E -- Creates/Updates --> 03__SPECS/documentation_index.mdc
@@ -76,7 +76,7 @@ flowchart TD
 *   **AI Role:** Idea structuring assistant.
 *   **Inputs:** Initial project information (collected in Phase 0 or from [`project_session_state.json`](.cursor/rules/project_session_state.json)).
 *   **Process:**
-    1.  The AI uses the template provided by the `01_Idea.mdc` prompt to guide the user (or guide itself if in full AutoPilot mode) to detail:
+    1.  The AI uses the template provided by the [`.cursor/rules/01__AI-RUN/01_Idea.mdc`](.cursor/rules/01__AI-RUN/01_Idea.mdc) prompt to guide the user (or guide itself if in full AutoPilot mode) to detail:
         *   Project title.
         *   Central concept (pitch).
         *   Main problem solved.
@@ -114,12 +114,12 @@ flowchart TD
 
 ### Phase 3: Core Concept Development
 
-*   **Logic Prompt File:** [`01__AI-RUN/03_Core_Concept.mdc`](.cursor/rules/01__AI-RUN/03_Core_Concept.mdc)
+*   **Logic Prompt File:** [`01__AI-RUN/.cursor/rules/01__AI-RUN/core_concept.mdc`](.cursor/rules/01__AI-RUN/.cursor/rules/01__AI-RUN/core_concept.mdc)
 *   **AI Role:** "ConceptForge", product strategist.
 *   **Inputs:** `idea_document.mdc` and `market_research.mdc`.
 *   **Process:**
     1.  The AI announces that it is developing the core concept.
-    2.  It uses the `03_Core_Concept.mdc` prompt to synthesize information from the input documents and define:
+    2.  It uses the `.cursor/rules/01__AI-RUN/core_concept.mdc` prompt to synthesize information from the input documents and define:
         *   Summary of concept evolution.
         *   Refined value proposition.
         *   Detailed user personas (primary and secondary).
@@ -131,7 +131,7 @@ flowchart TD
         *   Concept visualization.
     3.  [`project_session_state.json`](.cursor/rules/project_session_state.json) is updated with `pendingAction` set to `create_core_concept_document` before creation.
 *   **Output:**
-    *   `core_concept.mdc` file created at the root.
+    *   `.cursor/rules/01__AI-RUN/core_concept.mdc` file created at the root.
     *   The AI presents the value proposition and key feature matrix for validation.
 *   **Transition:** After user validation, `lastCompletedStep` is updated to "coreConceptValidated" in [`project_session_state.json`](.cursor/rules/project_session_state.json) (and `pendingAction` cleared), and `currentWorkflowPhase` transitions to "prdGeneration".
 *   **Why:** Refine the initial idea into a solid, market-validated concept that will serve as a direct foundation for the Product Requirements Document (PRD).
@@ -141,13 +141,13 @@ flowchart TD
 *   **Logic Prompt File:** [`01__AI-RUN/04_PRD_Generation.mdc`](.cursor/rules/01__AI-RUN/04_PRD_Generation.mdc)
 *   **AI Role:** "PRDarchitect", expert in product management and full-stack architecture.
 *   **Inputs:**
-    *   `core_concept.mdc`.
+    *   `.cursor/rules/01__AI-RUN/core_concept.mdc`.
     *   The PRD template (typically [`01__AI-RUN/Template/PRD_template.mdc`](.cursor/rules/01__AI-RUN/Template/PRD_template.mdc)).
     *   Specific user information.
 *   **Process:**
     1.  The AI announces the PRD creation.
     2.  It **scrupulously** follows the PRD template structure to create a new file.
-    3.  It integrates elements from `core_concept.mdc` into the appropriate sections of the PRD.
+    3.  It integrates elements from `.cursor/rules/01__AI-RUN/core_concept.mdc` into the appropriate sections of the PRD.
     4.  It adapts the PRD based on specific information provided by the user, particularly design preferences.
     5.  It uses its technical expertise to detail specifications (system architecture, data model, APIs, test strategies).
     6.  Particular attention is paid to section 5.2 (Design System) to obtain user design preferences, crucial for initializing `design_conventions.mdc` later.
@@ -196,8 +196,8 @@ flowchart TD
     3.  **Interaction with Roo Orchestrator:**
         *   Instructs Roo Orchestrator to initialize project tracking.
         *   Instructs Roo Orchestrator to create epics from the feature list.
-        *   For each epic, instructs Roo Orchestrator to perform a detailed breakdown into tasks (max 4h per task), emphasizing the inclusion of technical details and design requirements (referencing [`02__AI-DOCS/Conventions/design_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/design_conventions.mdc) and [`02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)). Roo Orchestrator may engage Roo Code mode for these technical specifics.
-        *   Ensures that the `details` field of each task (as defined in [`02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) contains direct links or embedded references to specific feature specifications (e.g., `03__SPECS/features/feature_spec_FEAT-XXX.mdc`), relevant design mockups/guidelines (from [`02__AI-DOCS/Conventions/design_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/design_conventions.mdc)), and any other necessary technical documentation.
+        *   For each epic, instructs Roo Orchestrator to perform a detailed breakdown into tasks (max 4h per task), emphasizing the inclusion of technical details and design requirements (referencing [`02__AI-DOCS/Conventions/design_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) and [`02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)). Roo Orchestrator may engage Roo Code mode for these technical specifics.
+        *   Ensures that the `details` field of each task (as defined in [`02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) contains direct links or embedded references to specific feature specifications (e.g., `03__SPECS/features/feature_spec_FEAT-XXX.mdc`), relevant design mockups/guidelines (from [`02__AI-DOCS/Conventions/design_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)), and any other necessary technical documentation.
         *   Instructs Roo Orchestrator to perform a complexity analysis for each task and epic.
         *   Instructs Roo Orchestrator to generate an implementation roadmap (this might involve Roo Orchestrator synthesizing task information).
     4.  The AI may initiate additional refinement requests to Roo Orchestrator if some tasks still seem too large or ambiguous.
@@ -252,7 +252,7 @@ flowchart TD
         *   The AI interacts with Roo Orchestrator to get the next task to implement (as per the workflow in [`02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)).
         *   For each task:
             *   Analyzes detailed specifications and acceptance criteria for the task (obtained by querying Roo Orchestrator for task details, which include direct links or embedded content from relevant documents like `feature_spec_[ID].mdc`, design mockups, and convention documents found in the task's `details` field as per [`02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)).
-            *   Writes code, scrupulously respecting coding and design conventions (references to [`02__AI-DOCS/Conventions/coding_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions.mdc), [`02__AI-DOCS/Conventions/design_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/design_conventions.mdc), [`02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)).
+            *   Writes code, scrupulously respecting coding and design conventions (references to [`02__AI-DOCS/Conventions/coding_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc), [`02__AI-DOCS/Conventions/design_conventions.mdc`](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc), [`02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)).
             *   Uses appropriate MCPs (e.g., `@21st-dev/magic` for UI components, GitHub MCP for commits).
             *   Writes tests (unit, integration) as specified in the task or conventions.
             *   Documents the code as per conventions.
@@ -266,7 +266,7 @@ flowchart TD
 
 ### Phase 8: Testing
 
-*   **Logic Prompt File:** [`01__AI-RUN/08_Testing.mdc`](.cursor/rules/01__AI-RUN/08_Testing.mdc)
+*   **Logic Prompt File:** [`01__AI-RUN/.cursor/rules/01__AI-RUN/08_Testing.mdc`](.cursor/rules/01__AI-RUN/.cursor/rules/01__AI-RUN/08_Testing.mdc)
 *   **AI Role:** "QualityGuardian", QA Engineer.
 *   **Inputs:**
     *   Implemented source code and features.

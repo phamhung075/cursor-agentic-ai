@@ -34,7 +34,7 @@ Please read and analyze the following files in order:
    - Purpose: Understand the core business rules specific to **this project**.
  
 6. **Project-Specific Coding Conventions**
-   - Location: `.cursor/rules/02__AI-DOCS/Conventions/coding_conventions.mdc` (**Generated** document)
+   - Location: `.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc` (**Generated** document)
    - Purpose: Understand **this project's** specific coding standards and patterns.
  
 7. **Project-Specific Design Conventions**
@@ -42,7 +42,7 @@ Please read and analyze the following files in order:
    - Purpose: Understand **this project's** specific design standards and critical design/UX guidelines.
  
 8. **Project-Specific Deployment Guide**
-   - Location: `/02__AI-DOCS/Deployment/deployment_guide.mdc` (**Generated** document)
+   - Location: `.cursor/rules/02__AI-DOCS/Deployment/deployment_guide.mdc` (**Generated** document)
    - Purpose: Understand the deployment strategy for **this project**.
  
 9. **Core AI Agent Guidance (Reference)**

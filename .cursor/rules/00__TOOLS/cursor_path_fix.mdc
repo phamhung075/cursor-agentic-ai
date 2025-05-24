@@ -20,7 +20,7 @@ This guide helps AI agents systematically identify and fix broken file path link
 │   ├── 01_AutoPilot.mdc
 │   ├── 01_Idea.mdc
 │   ├── 02_Market_Research.mdc
-│   ├── 03_Core_Concept.mdc
+│   ├── core_concept.mdc
 │   ├── 04_PRD_Generation.mdc
 │   ├── 05_Specs_Docs.mdc
 │   ├── 06_Task_Manager.mdc
@@ -149,9 +149,9 @@ After fixing links, verify:
 ### 01__AI-RUN Files
 - `00_Getting_Started.mdc` → `.cursor/rules/01__AI-RUN/00_Getting_Started.mdc`
 - `01_AutoPilot.mdc` → `.cursor/rules/01__AI-RUN/01_AutoPilot.mdc`
-- `01_Idea.mdc` → `.cursor/rules/01__AI-RUN/01_Idea.mdc`
+- `.cursor/rules/01__AI-RUN/01_Idea.mdc` → `.cursor/rules/01__AI-RUN/01_Idea.mdc`
 - `02_Market_Research.mdc` → `.cursor/rules/01__AI-RUN/02_Market_Research.mdc`
-- `03_Core_Concept.mdc` → `.cursor/rules/01__AI-RUN/03_Core_Concept.mdc`
+- `core_concept.mdc` → `.cursor/rules/01__AI-RUN/core_concept.mdc`
 - `04_PRD_Generation.mdc` → `.cursor/rules/01__AI-RUN/04_PRD_Generation.mdc`
 - `05_Specs_Docs.mdc` → `.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc`
 - `06_Task_Manager.mdc` → `.cursor/rules/01__AI-RUN/06_Task_Manager.mdc`

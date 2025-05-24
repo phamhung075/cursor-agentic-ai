@@ -1,41 +1,42 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 cursor_path_fix.mdc : .cursor/rules/00__TOOLS/cursor_path_fix.mdc
-tasks.json : .cursor/rules/tasks/tasks.json
-Inspiration.mdc : .cursor/rules/Inspiration.mdc
-04_PRD_Generation.mdc : .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc
-08_Testing.mdc : .cursor/rules/01__AI-RUN/08_Testing.mdc
-07_Start_Building.mdc : .cursor/rules/01__AI-RUN/07_Start_Building.mdc
+cursor_files_list.mdc : .cursor/rules/00__TOOLS/cursor_files_list.mdc
 00_Getting_Started.mdc : .cursor/rules/01__AI-RUN/00_Getting_Started.mdc
-MCP-Context.mdc : .cursor/rules/01__AI-RUN/Template/MCP-Context.mdc
-MCP-Server.json : .cursor/rules/01__AI-RUN/Template/MCP-Server.json
-PRD_template.mdc : .cursor/rules/01__AI-RUN/Template/PRD_template.mdc
-02_Market_Research.mdc : .cursor/rules/01__AI-RUN/02_Market_Research.mdc
-01_Idea.mdc : .cursor/rules/01__AI-RUN/01_Idea.mdc
-06_Task_Manager.mdc : .cursor/rules/01__AI-RUN/06_Task_Manager.mdc
 01_AutoPilot.mdc : .cursor/rules/01__AI-RUN/01_AutoPilot.mdc
+01_Idea.mdc : [`.cursor/rules/01__AI-RUN/01_Idea.mdc`](.cursor/rules/01__AI-RUN/01_Idea.mdc)
+02_Market_Research.mdc : .cursor/rules/01__AI-RUN/02_Market_Research.mdc
 03_Core_Concept.mdc : .cursor/rules/01__AI-RUN/03_Core_Concept.mdc
-09_Deployment.mdc : .cursor/rules/01__AI-RUN/09_Deployment.mdc
+04_PRD_Generation.mdc : .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc
 05_Specs_Docs.mdc : .cursor/rules/01__AI-RUN/05_Specs_Docs.mdc
-AI_Design_Agent_Optimization.mdc : .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc
-AI_Task_Management_Optimization.mdc : .cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc
-AI_Coding_Agent_Optimization.mdc : .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc
-.DS_Store : .cursor/rules/02__AI-DOCS/.DS_Store
-.DS_Store : .cursor/rules/02__AI-DOCS/AI-Coder/.DS_Store
+06_Task_Manager.mdc : .cursor/rules/01__AI-RUN/06_Task_Manager.mdc
+07_Start_Building.mdc : .cursor/rules/01__AI-RUN/07_Start_Building.mdc
+08_Testing.mdc : .cursor/rules/01__AI-RUN/08_Testing.mdc
+09_Deployment.mdc : .cursor/rules/01__AI-RUN/09_Deployment.mdc
+MCP-Context.mdc : .cursor/rules/01__AI-RUN/Template/MCP-Context.mdc
+PRD_template.mdc : .cursor/rules/01__AI-RUN/Template/PRD_template.mdc
 api_endpoint_template.mdc : .cursor/rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc
 context_prime_template.mdc : .cursor/rules/02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc
-test_generator_template.mdc : .cursor/rules/02__AI-DOCS/AI-Coder/TestGenerators/test_generator_template.mdc
 refactoring_template.mdc : .cursor/rules/02__AI-DOCS/AI-Coder/Refactoring/refactoring_template.mdc
-api_integration_template.mdc : .cursor/rules/02__AI-DOCS/Integrations/api_integration_template.mdc
+test_generator_template.mdc : .cursor/rules/02__AI-DOCS/AI-Coder/TestGenerators/test_generator_template.mdc
 architecture_template.mdc : .cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc
-deployment_guide_template.mdc : .cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc
 business_logic_template.mdc : .cursor/rules/02__AI-DOCS/BusinessLogic/business_logic_template.mdc
 coding_conventions_template.mdc : .cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc
 design_conventions_template.mdc : .cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc
-Tasks_JSON_Structure.mdc : .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc
+deployment_guide_template.mdc : .cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc
+AI_Coding_Agent_Optimization.mdc : .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc
+AI_Design_Agent_Optimization.mdc : .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc
+AI_Task_Management_Optimization.mdc : .cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc
+api_integration_template.mdc : .cursor/rules/02__AI-DOCS/Integrations/api_integration_template.mdc
 Roo_Task_Workflow.mdc : .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc
-project_session_state.json : .cursor/rules/project_session_state.json
+Tasks_JSON_Structure.mdc : .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc
+bugfix_spec_template.mdc : .cursor/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc
+feature_spec_template.mdc : .cursor/rules/03__SPECS/features/feature_spec_template.mdc
+Inspiration.mdc : .cursor/rules/Inspiration.mdc
 README.mdc : .cursor/rules/README.mdc
 logic.mdc : .cursor/rules/logic.mdc
 workflow.mdc : .cursor/rules/workflow.mdc
-.DS_Store : .cursor/rules/03__SPECS/.DS_Store
-feature_spec_template.mdc : .cursor/rules/03__SPECS/features/feature_spec_template.mdc
-bugfix_spec_template.mdc : .cursor/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc 
+project_session_state.json : .cursor/rules/project_session_state.json 

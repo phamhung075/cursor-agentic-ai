@@ -33,7 +33,7 @@
 ### Files with plain references like '01_Idea.mdc' without proper paths:
 1. `.cursor/rules/workflow.mdc`
 2. `.cursor/rules/logic.mdc`
-3. `.cursor/rules/01__AI-RUN/03_Core_Concept.mdc`
+3. `.cursor/rules/01__AI-RUN/core_concept.mdc`
 4. `.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc`
 5. `.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`
 6. `.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`
