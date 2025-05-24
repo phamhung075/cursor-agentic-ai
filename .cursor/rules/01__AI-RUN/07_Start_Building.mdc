@@ -12,7 +12,7 @@
 
 **Expected Inputs:**
 - A comprehensive `[project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc)`.
-- **Created** project-specific technical specifications and documentation within `.cursor/rules/02__AI-DOCS/` (e.g., `architecture.mdc`, `coding_conventions.mdc`, `design_conventions.mdc`) and `.cursor/rules/03__SPECS/` (e.g., `features/feature_spec_FEAT-XXX.mdc`).
+- **Created** project-specific technical specifications and documentation within `.cursor/rules/02__AI-DOCS/` (e.g., `architecture.mdc`, `coding_conventions.mdc`, `design_conventions.mdc`) and `.cursor/rules/03__SPECS/` (e.g., `.cursor/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`).
 - A detailed task breakdown in [tasks.json](.cursor/rules/tasks/tasks.json) (see [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)).
 - Foundational design principles outlined in `[AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)`.
 - Foundational coding principles outlined in `[AI_Coding_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)`.

@@ -13,7 +13,7 @@
 
 **Expected Inputs:**
 - A fully implemented application based on `[project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc)` and `[tasks.json](.cursor/rules/tasks/tasks.json)`.
-- All relevant **created** project-specific technical specifications from `.cursor/rules/02__AI-DOCS/` (e.g., `architecture.mdc`, `coding_conventions.mdc`, `design_conventions.mdc`) and `.cursor/rules/03__SPECS/` (e.g., `features/feature_spec_FEAT-XXX.mdc`).
+- All relevant **created** project-specific technical specifications from `.cursor/rules/02__AI-DOCS/` (e.g., `architecture.mdc`, `coding_conventions.mdc`, `design_conventions.mdc`) and `.cursor/rules/03__SPECS/` (e.g., `.cursor/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`).
 - Test strategies defined in `[project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc)` (Section 6) and individual task `testStrategy` fields in `[tasks.json](.cursor/rules/tasks/tasks.json)`.
 
 **Current Phase:** Testing & Preview Visibility

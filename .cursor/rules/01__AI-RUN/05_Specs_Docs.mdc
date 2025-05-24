@@ -326,14 +326,14 @@ This prompt is designed to run completely automatically as part of the AI-assist
    - Saving the populated content into the **new file**.
    - **The original template files MUST NOT be overwritten.**
    - This applies to templates such as:
-     - `[architecture_template.mdc](mdc:.cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc)` -> `.cursor/rules/02__AI-DOCS/Architecture/architecture.mdc`
-     - `[api_integration_template.mdc](mdc:.cursor/rules/02__AI-DOCS/Integrations/api_integration_template.mdc)` -> `api_integration.mdc`
+     - `[architecture_template.mdc](mdc:.cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc)` -> `.cursor/rules/projet/02__AI-DOCS/Architecture/architecture.mdc`
+     - `[api_integration_template.mdc](mdc:.cursor/rules/02__AI-DOCS/Integrations/api_integration_template.mdc)` -> `.cursor/rules/projet/api_integration.mdc`
      - `[business_logic_template.mdc](mdc:.cursor/rules/02__AI-DOCS/BusinessLogic/business_logic_template.mdc)` -> `[logic.mdc](mdc:.cursor/rules/logic.mdc)`
-     - `[coding_conventions_template.mdc](mdc:.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc)` -> `coding_conventions.mdc`
-     - `[design_conventions_template.mdc](mdc:.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)` -> `design_conventions.mdc`
-     - `[deployment_guide_template.mdc](mdc:.cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc)` -> `deployment_guide.mdc`
-     - `[feature_spec_template.mdc](mdc:.cursor/rules/03__SPECS/features/feature_spec_template.mdc)` -> `features/feature_spec_[ID].mdc`
-     - `[bugfix_spec_template.mdc](mdc:.cursor/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc)` -> `bugfixes/bugfix_spec_[ID].mdc`
+     - `[coding_conventions_template.mdc](mdc:.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc)` -> `.cursor/rules/projet/coding_conventions.mdc`
+     - `[design_conventions_template.mdc](mdc:.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)` -> `.cursor/rules/projet/design_conventions.mdc`
+     - `[deployment_guide_template.mdc](mdc:.cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc)` -> `.cursor/rules/projet/deployment_guide.mdc`
+     - `[feature_spec_template.mdc](mdc:.cursor/rules/03__SPECS/features/feature_spec_template.mdc)` -> `.cursor/rules/projet/features/feature_spec_[ID].mdc`
+     - `[bugfix_spec_template.mdc](mdc:.cursor/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc)` -> `.cursor/rules/projet/bugfixes/bugfix_spec_[ID].mdc`
    - AI Coder templates in `.cursor/rules/02__AI-DOCS/AI-Coder/` remain static unless explicitly instructed otherwise.
    - `[AI_Coding_Agent_Optimization.mdc](mdc:.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)` and `[AI_Design_Agent_Optimization.mdc](mdc:.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)` are for reference only and are not copied/modified per project. They serve as foundational knowledge for populating the convention documents and guiding development.
  

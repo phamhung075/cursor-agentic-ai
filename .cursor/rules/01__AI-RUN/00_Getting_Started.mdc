@@ -54,7 +54,7 @@ The workflow uses consistent file naming for inputs and outputs. Note that promp
 1.  **Analyze File Structure:** Carefully examine the list of files provided in the initial `environment_details`. Understand the purpose of the main directories:
     *   `.cursor/rules/01__AI-RUN/`: Contains the prompt files guiding the workflow stages.
     *   `.cursor/rules/02__AI-DOCS/`: Contains project documentation templates (architecture, conventions, etc.) and core AI guidance (`Documentation/`). **Crucially, during the 'Specs & Docs' phase, project-specific documents (e.g., `architecture.mdc`, `coding_conventions.mdc`) will be CREATED in these subdirectories based on the templates.**
-    *   `.cursor/rules/03__SPECS/`: Contains specification templates (features, bugs). **Similarly, project-specific specification files (e.g., `features/feature_spec_FEAT-XXX.mdc`) will be CREATED here during the 'Specs & Docs' phase.**
+    *   `.cursor/rules/03__SPECS/`: Contains specification templates (features, bugs). **Similarly, project-specific specification files (e.g., `.cursor/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`) will be CREATED here during the 'Specs & Docs' phase.**
     *   `tasks/`: Will contain the generated task breakdown (`[tasks.json](.cursor/rules/tasks/tasks.json)`).
 2.  **In-Depth Codebase Understanding (Pre-computation & Analysis):**
     *   Beyond just the file structure, you MUST strive to understand the *content and interconnections* of all relevant files within the project workspace.
