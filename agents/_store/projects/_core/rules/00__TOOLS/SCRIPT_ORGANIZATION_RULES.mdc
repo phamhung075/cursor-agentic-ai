@@ -3,6 +3,11 @@
 ## 📋 IMPORTANT RULES FOR AI AGENTS
 
 ### 🎯 **MANDATORY STORAGE LOCATIONS**
+# 🗂️ Script & Test Organization Rules
+
+## 📋 IMPORTANT RULES FOR AI AGENTS
+
+### 🎯 **MANDATORY STORAGE LOCATIONS**
 
 All scripts and tests created by AI agents for improvement or management MUST be stored in:
 
@@ -27,6 +32,45 @@ agents/_store/tests/       - All test files
 - `system/` - System tests
 - `performance/` - Performance tests
 
+### 🗃️ **CORE FILE MANAGEMENT SYSTEM**
+
+**CRITICAL:** For all operations involving `agents/_store/projects/_core/` files:
+
+#### **🚨 MANDATORY FILE ACCESS:**
+```javascript
+// ✅ REQUIRED - Use monitored API instead of direct file system
+const { readCoreFile, getCoreFileInfo } = require('../scripts/core/core_file_api.js');
+
+// Read core files with automatic path fixing and monitoring
+const content = await readCoreFile('rules/logic.mdc');
+
+// Get file metadata and status
+const fileInfo = await getCoreFileInfo('rules/workflow.mdc');
+```
+
+#### **🔧 CORE MANAGEMENT COMMANDS:**
+```bash
+npm run AAI:core-scan            # Scan and update core file database
+npm run AAI:core-api-status      # Check core framework health
+npm run AAI:core-monitor         # Start continuous monitoring
+npm run AAI:core-search          # Search core files by content
+npm run AAI:core-validate        # Validate all file links
+```
+
+#### **📊 MONITORING FEATURES:**
+- **Path Fixing:** Automatic correction of corrupt/broken file paths
+- **Link Validation:** Detection and tracking of broken cross-references  
+- **Access Logging:** All core file access is monitored and logged
+- **Health Scoring:** System health based on file validity and link integrity
+- **Metadata Tracking:** Title, description, status, and relationships
+
+#### **🛡️ CORE FILE RULES:**
+1. ✅ **Never use direct `fs.readFile()`** for core files
+2. ✅ **Always use relative paths** from `_core` directory
+3. ✅ **Handle path fixing scenarios** - files may have corrupt paths
+4. ✅ **Check file status** before processing
+5. ✅ **All access is automatically logged** for audit
+
 ### 🛡️ **MANDATORY REQUIREMENTS**
 
 #### **For All Scripts:**
@@ -35,6 +79,7 @@ agents/_store/tests/       - All test files
 3. ✅ **Backup Creation** - Before any destructive operations
 4. ✅ **Progress Reporting** - Clear status updates during execution
 5. ✅ **NPM Integration** - Register in package.json with AAI: prefix
+6. ✅ **Core File Compliance** - Use monitored API for core file access
 
 #### **For All Tests:**
 1. ✅ **Clear Test Names** - Descriptive and specific
@@ -85,8 +130,10 @@ When creating new utilities, AI agents MUST:
 4. 📝 **Document thoroughly** - Purpose, usage, examples
 5. 🔗 **Register in package.json** - For easy access
 6. 🧪 **Create tests** - If applicable, add corresponding test files
+7. 🗃️ **Follow core file rules** - Use monitored API for all core file operations
 
 ---
 
 **Status:** ✅ **ACTIVE RULES - ALL AGENTS MUST FOLLOW**  
-**Last Updated:** 2025-05-24
+**Last Updated:** 2025-05-24  
+**Core Management:** ✅ **FULLY OPERATIONAL**

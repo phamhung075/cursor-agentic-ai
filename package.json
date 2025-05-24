@@ -42,7 +42,15 @@
     "AAI:scripts-list": "node agents/_store/scripts/script_manager.js list",
     "AAI:scripts-organize": "node agents/_store/scripts/script_manager.js organize",
     "AAI:scripts-analyze": "node agents/_store/scripts/script_manager.js analyze",
-    "AAI:scripts-categories": "node agents/_store/scripts/script_manager.js categories"
+    "AAI:scripts-categories": "node agents/_store/scripts/script_manager.js categories",
+    "AAI:core-scan": "node agents/_store/scripts/core/core_file_manager.js scan",
+    "AAI:core-report": "node agents/_store/scripts/core/core_file_manager.js report",
+    "AAI:core-search": "node agents/_store/scripts/core/core_file_manager.js search",
+    "AAI:core-monitor": "node agents/_store/scripts/core/core_file_monitor.js start",
+    "AAI:core-monitor-status": "node agents/_store/scripts/core/core_file_monitor.js status",
+    "AAI:core-api": "node agents/_store/scripts/core/core_file_api.js",
+    "AAI:core-api-status": "node agents/_store/scripts/core/core_file_api.js status",
+    "AAI:core-validate": "node agents/_store/scripts/core/core_file_monitor.js validate"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^2.0.1",
