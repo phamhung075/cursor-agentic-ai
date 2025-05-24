@@ -195,60 +195,41 @@ secrets.json
 
 ### **1. Start with Memory**
 ```bash
-npm run agent
+npm run AAI:agent
 🤖 > status
 🤖 > memory stats
 ```
 
-### **2. Set Up Project**
+## 🔧 **Environment Files Created**
+
+### 1. **`agents/_store/templates/environment-template.env`** - Complete template with all properties
+- ✅ **Required API Keys**: Pinecone & OpenAI with clear instructions
+- ✅ **Memory Settings**: Retention, cache limits, feature toggles
+- ✅ **Performance Settings**: Rate limits, concurrent analyses, cleanup intervals
+- ✅ **Security Settings**: File size limits, API rate limiting
+- ✅ **UI/CLI Settings**: Colors, prompts, progress indicators
+- ✅ **Optional Integrations**: Slack, Discord webhooks
+
+### 2. **`agents/_store/scripts/setup-env.js`** - Interactive setup script
+- ✅ **Interactive prompts** for API keys and project name
+- ✅ **Smart defaults** for all configuration options
+- ✅ **Overwrites protection** with user confirmation
+- ✅ **Clear next steps** after setup completion
+- ✅ **Missing keys warning** with helpful links
+
+## 🚀 **Usage Instructions**
+
+### **Option 1: Interactive Setup (Recommended)**
 ```bash
-🤖 > projects set my-awesome-project
-🤖 > migrate my-awesome-project  # Migrate existing files
-🤖 > projects stats
+npm run AAI:setup-env
 ```
+This will:
+1. Prompt for your API keys
+2. Generate a complete `.env` file
+3. Provide next steps and helpful links
 
-### **3. Context-Aware Analysis**
+### **Option 2: Manual Setup**
 ```bash
-🤖 > context workflow
-🤖 > smart-detect
-🤖 > analyze package.json
+cp agents/_store/templates/environment-template.env .env
+# Edit .env with your actual API keys
 ```
-
-### **4. Memory Search**
-```bash
-🤖 > memory search "security improvements"
-🤖 > memory search "React best practices"
-```
-
-## 🎉 **Success Metrics**
-
-- ✅ **100% Test Pass Rate**: All 5 test categories passed
-- ✅ **Zero Breaking Changes**: Backward compatible with existing workflows
-- ✅ **Clean Architecture**: Modular, maintainable, and extensible
-- ✅ **Security Compliant**: Sensitive data properly protected
-- ✅ **Performance Optimized**: Efficient memory usage and retrieval
-
-## 🔄 **Migration Path**
-
-### **For Existing Projects**
-1. **Automatic Detection**: Agent detects existing files
-2. **Smart Migration**: `migrate <project-name>` command
-3. **Verification**: `projects stats` to confirm migration
-4. **Cleanup**: Original files safely moved to agent store
-
-### **For New Projects**
-1. **Set Project**: `projects set <name>`
-2. **Start Working**: Agent automatically creates project structure
-3. **Memory Learning**: Agent learns from your preferences
-4. **Context Awareness**: Set context for better suggestions
-
-## 🎯 **Next Steps**
-
-1. **Set API Keys**: Configure Pinecone and OpenAI for full functionality
-2. **Migrate Files**: Move existing AutoPilot files to agent store
-3. **Start Learning**: Use the agent to build memory and preferences
-4. **Explore Features**: Try memory search, context-aware analysis
-
----
-
-**🎉 The Self-Improvement Agent v2.0 is now ready with separated file storage and Pinecone memory integration!** 

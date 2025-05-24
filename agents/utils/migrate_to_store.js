@@ -51,7 +51,7 @@ class FileMigrator {
     }
 
     if (!projectName) {
-      console.log(chalk.yellow('💡 Usage: npm run migrate-files [project-name]'));
+      console.log(chalk.yellow('💡 Usage: npm run AAI:migrate-files [project-name]'));
       console.log(chalk.gray('  If no project name provided, will try to auto-detect'));
       process.exit(0);
     }
@@ -270,9 +270,10 @@ class FileMigrator {
     if (results.migrated.length > 0) {
       console.log(chalk.green(`\n🎉 Migration completed! Files moved to: agents/_store/projects/${projectName}/`));
       console.log(chalk.blue('💡 To use the new structure:'));
-      console.log(chalk.gray('  1. Start the agent: npm run agent'));
+      console.log(chalk.gray('  1. Start the agent: npm run AAI:agent'));
       console.log(chalk.gray(`  2. Set project: projects set ${projectName}`));
       console.log(chalk.gray('  3. Check files: projects stats'));
+      console.log(chalk.gray('  4. Test system: npm run AAI:test-system'));
     } else {
       console.log(chalk.yellow('\n💡 No files were migrated. They may already be in the agent store or not exist.'));
     }

@@ -43,7 +43,7 @@ You are ProjectArchitect, an autonomous AI development assistant capable of guid
     If [project_session_state.json](mdc:.cursor/rules/project_session_state.json) indicates a later phase is active, you may skip to that phase after user confirmation.
 
 1.5. **🧠 Self-Improvement Integration v2.0:** You MUST continuously improve the framework during workflow execution using the new modular Self-Improvement Agent from `agents/self-improvement/`:
-     - **Activation:** Use `npm run agent` to start the Interactive Self-Improvement Agent v2.0 when framework improvements are needed
+     - **Activation:** Use `npm run AAI:agent` to start the Interactive Self-Improvement Agent v2.0 when framework improvements are needed
      - **Context-Aware Analysis:** The agent automatically analyzes files based on your current work context:
        * **Set Context:** Use `context <your-current-phase>` (e.g., `context workflow`, `context testing`, `context deployment`)
        * **Smart Detection:** Use `smart-detect` to automatically find and analyze relevant files for your current context
@@ -64,7 +64,7 @@ You are ProjectArchitect, an autonomous AI development assistant capable of guid
        * "⚡ **Workflow Impact**: [How this improves user experience/efficiency]"
        * "❓ **Action Required**: [Immediate/Note for later/Log for review] based on priority"
      - **Agent Commands Reference:**
-       * `npm run agent` - Start interactive agent v2.0
+       * `npm run AAI:agent` - Start interactive agent v2.0
        * `context <topic>` - Set work context for smart detection
        * `analyze <filename>` - Analyze specific .mdc file
        * `smart-detect` - Find and analyze relevant files automatically

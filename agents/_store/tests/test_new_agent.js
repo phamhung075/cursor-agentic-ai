@@ -6,7 +6,7 @@
  * Tests the new modular architecture
  */
 
-const SelfImprovementAgent = require('./agents/self-improvement/index.js');
+const SelfImprovementAgent = require('../../self-improvement/index.js');
 
 async function testNewAgent() {
   console.log('🧪 Testing New Self-Improvement Agent v2.0');
@@ -50,14 +50,14 @@ async function testNewAgent() {
     
     // Test status
     console.log('\n📈 Testing status retrieval...');
-    const status = agent.getStatus();
+    const status = await agent.getStatus();
     console.log('✅ Status retrieval: SUCCESS');
     console.log(`   🤖 Agent: ${status.agent.name} v${status.agent.version}`);
     console.log(`   🔧 Security rules: ${status.patterns.securityRules}`);
     console.log(`   📋 Obsolete patterns: ${status.patterns.obsoletePatterns}`);
     
-    console.log('\n🎉 All tests completed successfully!');
-    console.log('\n💡 To use interactively: npm run agent');
+    console.log('\n🎉 All tests passed! Agent v2.0 is working correctly.');
+    console.log('\n💡 To use interactively: npm run AAI:agent');
     
   } catch (error) {
     console.error('❌ Test failed:', error.message);

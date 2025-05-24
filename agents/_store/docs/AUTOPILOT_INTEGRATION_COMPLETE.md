@@ -12,7 +12,7 @@ Successfully updated **AutoPilot workflow** to use the new **modular Self-Improv
 
 📄 Testing AutoPilot file...
 ✅ New agent path reference: FOUND
-✅ npm run agent command: FOUND
+✅ npm run AAI:agent command: FOUND
 ✅ Context commands: FOUND
 ✅ Smart detect feature: FOUND
 ✅ Version 2.0 reference: FOUND
@@ -41,7 +41,7 @@ Successfully updated **AutoPilot workflow** to use the new **modular Self-Improv
 
 **Changes**:
 - ✅ Updated from old monolithic agent reference
-- ✅ Added `npm run agent` activation command
+- ✅ Added `npm run AAI:agent` activation command
 - ✅ Integrated context-aware workflow commands
 - ✅ Added smart detection integration points
 - ✅ Enhanced priority-based action protocol
@@ -72,7 +72,7 @@ Successfully updated **AutoPilot workflow** to use the new **modular Self-Improv
 ### **Phase-Based Integration**
 ```bash
 # During workflow execution:
-npm run agent                    # Start the modular agent
+npm run AAI:agent                    # Start the modular agent
 
 # Set context for current phase:
 🤖 > context workflow           # General workflow improvements
@@ -122,13 +122,13 @@ npm run agent                    # Start the modular agent
 
 ```bash
 # Test the new agent
-npm run test-agent
+npm run AAI:test-agent
 
 # Test AutoPilot integration
 npm run test-integration
 
 # Start the new agent
-npm run agent
+npm run AAI:agent
 
 # Legacy fallback
 npm run legacy
@@ -139,7 +139,7 @@ npm run legacy
 1. **Start AutoPilot workflow as normal**
 2. **When prompted for framework improvements**:
    ```bash
-   npm run agent
+   npm run AAI:agent
    🤖 > context [current-phase]
    🤖 > smart-detect
    ```

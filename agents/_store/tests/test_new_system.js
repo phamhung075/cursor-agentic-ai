@@ -4,7 +4,7 @@
  * 🧪 Test New System - Verify file management and memory integration
  */
 
-const SelfImprovementAgent = require('./agents/self-improvement/index.js');
+const SelfImprovementAgent = require('../../self-improvement/index.js');
 const chalk = require('chalk');
 
 async function testNewSystem() {
@@ -86,7 +86,7 @@ async function testNewSystem() {
 
     // Test 5: Configuration
     console.log(chalk.cyan('\n⚙️ Testing Configuration...'));
-    const config = require('./agents/self-improvement/config/default.json');
+    const config = require('../../self-improvement/config/default.json');
     console.log(chalk.green('✅ Configuration loaded'));
     console.log(chalk.gray(`  Memory enabled: ${config.agent.memoryEnabled}`));
     console.log(chalk.gray(`  File store enabled: ${config.agent.fileStoreEnabled}`));
@@ -96,7 +96,7 @@ async function testNewSystem() {
     console.log(chalk.green('\n🎉 All tests completed!'));
     console.log(chalk.blue('\n💡 Next steps:'));
     console.log(chalk.gray('  1. Set environment variables (PINECONE_API_KEY, OPENAI_API_KEY)'));
-    console.log(chalk.gray('  2. Start agent: npm run agent'));
+    console.log(chalk.gray('  2. Start agent: npm run AAI:agent'));
     console.log(chalk.gray('  3. Test commands: status, memory stats, projects list'));
     console.log(chalk.gray('  4. Migrate existing files: migrate <project-name>'));
 

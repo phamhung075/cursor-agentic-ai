@@ -8,9 +8,10 @@ alwaysApply: false
 *Use the new modular Self-Improvement Agent during AutoPilot workflow execution.*
 
 ## 🚀 **Agent Activation**
+
 ```bash
 # Start the new modular agent
-npm run agent
+npm run AAI:agent
 
 # Legacy fallback (if needed)
 npm run legacy

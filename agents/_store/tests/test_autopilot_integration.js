@@ -21,13 +21,13 @@ async function testAutoPilotIntegration() {
     
     // Check for new agent references
     const hasNewAgentRef = autopilotContent.includes('agents/self-improvement/');
-    const hasNpmRunAgent = autopilotContent.includes('npm run agent');
+    const hasNpmRunAgent = autopilotContent.includes('npm run AAI:agent');
     const hasContextCommands = autopilotContent.includes('context <');
     const hasSmartDetect = autopilotContent.includes('smart-detect');
     const hasV2Reference = autopilotContent.includes('v2.0');
     
     console.log(`✅ New agent path reference: ${hasNewAgentRef ? 'FOUND' : 'MISSING'}`);
-    console.log(`✅ npm run agent command: ${hasNpmRunAgent ? 'FOUND' : 'MISSING'}`);
+    console.log(`✅ npm run AAI:agent command: ${hasNpmRunAgent ? 'FOUND' : 'MISSING'}`);
     console.log(`✅ Context commands: ${hasContextCommands ? 'FOUND' : 'MISSING'}`);
     console.log(`✅ Smart detect feature: ${hasSmartDetect ? 'FOUND' : 'MISSING'}`);
     console.log(`✅ Version 2.0 reference: ${hasV2Reference ? 'FOUND' : 'MISSING'}`);
@@ -39,7 +39,7 @@ async function testAutoPilotIntegration() {
     
     const hasModularRef = quickRefContent.includes('modular Self-Improvement Agent');
     const hasNewCommands = quickRefContent.includes('🤖 >');
-    const hasAgentActivation = quickRefContent.includes('npm run agent');
+    const hasAgentActivation = quickRefContent.includes('npm run AAI:agent');
     
     console.log(`✅ Modular agent reference: ${hasModularRef ? 'FOUND' : 'MISSING'}`);
     console.log(`✅ New CLI commands: ${hasNewCommands ? 'FOUND' : 'MISSING'}`);
@@ -102,7 +102,7 @@ async function testAutoPilotIntegration() {
     
     console.log('\n💡 To test the integration:');
     console.log('   1. Start AutoPilot workflow');
-    console.log('   2. When framework improvements are needed, run: npm run agent');
+    console.log('   2. When framework improvements are needed, run: npm run AAI:agent');
     console.log('   3. Set context and use smart detection features');
     
   } catch (error) {

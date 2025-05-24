@@ -54,7 +54,7 @@ agents/
 ### **Start the New Agent**
 ```bash
 # Recommended way
-npm run agent
+npm run AAI:agent
 
 # Direct execution
 node agents/self-improvement/index.js
@@ -134,64 +134,8 @@ npm run legacy
 
 ### **1. Start Using the New Agent**
 ```bash
-npm run agent
+npm run AAI:agent
 ```
 
 ### **2. Set Your Work Context**
-```bash
-🤖 > context workflow
-📍 Context set to: workflow
 ```
-
-### **3. Analyze Files**
-```bash
-🤖 > analyze getting_started
-🔍 Analyzing: getting_started
-📊 Found improvement opportunities...
-```
-
-### **4. Smart Detection**
-```bash
-🤖 > smart-detect
-🎯 Smart detection for context: workflow
-🎯 Found 4 relevant files
-📊 Total issues detected: 6
-```
-
-## 🔄 **Migration Benefits**
-
-✅ **60% faster** analysis (no full project scans)  
-✅ **10x better** user experience (colored CLI, context awareness)  
-✅ **5x easier** to maintain (modular architecture)  
-✅ **Infinitely extensible** (plugin architecture)  
-✅ **100% backward compatible** (legacy version preserved)
-
-## 🎉 **Success Metrics**
-
-- **📁 Structure**: 7 new organized modules vs 1 monolithic file
-- **⚡ Performance**: Context-aware analysis vs full project scans  
-- **🎨 UX**: Beautiful colored CLI vs basic text interface
-- **🔧 Config**: Centralized JSON vs scattered inline configs
-- **📚 Docs**: Comprehensive guides vs minimal documentation
-- **🧪 Tests**: Verification suite vs no testing
-
-## 💡 **Pro Tips**
-
-1. **Use context** - Set your work context for better results
-2. **Try smart-detect** - Let the agent find relevant files automatically  
-3. **Check configuration** - Customize patterns in `agents/self-improvement/config/default.json`
-4. **Explore commands** - Type `help` to see all available options
-5. **Legacy fallback** - Use `npm run legacy` if needed
-
-## 🚀 **Ready to Use!**
-
-Your self-improvement agent is now **organized**, **powerful**, and **ready for the future**! 
-
-The modular architecture makes it incredibly easy to:
-- Add new detection patterns
-- Extend functionality  
-- Maintain and debug
-- Scale to multiple agents
-- Integrate with other systems
-
-**Start exploring your new organized agent system now!** 🎉 

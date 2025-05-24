@@ -57,7 +57,7 @@ class EnvSetup {
       console.log(chalk.green('\n✅ .env file created successfully!'));
       console.log(chalk.blue('\n💡 Next steps:'));
       console.log(chalk.gray('  1. Update API keys in .env if you skipped them'));
-      console.log(chalk.gray('  2. Run: npm run agent'));
+      console.log(chalk.gray('  2. Run: npm run AAI:agent'));
       console.log(chalk.gray('  3. Test: memory stats, status'));
 
       if (!pineconeKey || !openaiKey) {
@@ -65,6 +65,7 @@ class EnvSetup {
         if (!pineconeKey) console.log(chalk.gray('  • Get Pinecone key: https://app.pinecone.io/'));
         if (!openaiKey) console.log(chalk.gray('  • Get OpenAI key: https://platform.openai.com/'));
         console.log(chalk.gray('  • Agent will work with local memory only until keys are added'));
+        console.log(chalk.blue('\n📄 Template available at: agents/_store/templates/environment-template.env'));
       }
 
     } catch (error) {

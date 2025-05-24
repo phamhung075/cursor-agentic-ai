@@ -6,21 +6,41 @@ Welcome to the **reorganized** and **modular** agents system for the Agentic Cod
 
 ```
 agents/
+├── _store/                   # 🗂️ Agent working files & utilities (organized)
+│   ├── scripts/              # 🔧 Agent utility scripts
+│   │   └── setup-env.js      # Environment setup script
+│   ├── tests/                # 🧪 Agent test files
+│   │   ├── test_new_agent.js # Agent functionality tests
+│   │   ├── test_new_system.js # System integration tests
+│   │   └── test_autopilot_integration.js # AutoPilot integration tests
+│   ├── templates/            # 📄 Template files
+│   │   └── environment-template.env # Environment configuration template
+│   ├── docs/                 # 📚 Agent documentation & completion reports
+│   │   ├── README.md         # Documentation index
+│   │   ├── AGENT_STORE_COMPLETE.md # Implementation reports
+│   │   └── ...               # Other agent documentation
+│   ├── projects/             # 📂 Project-specific working files
+│   │   └── [project-name]/   # Individual project directories
+│   ├── memory/               # 🧠 Pinecone memory storage
+│   │   ├── embeddings/       # Vector embeddings cache
+│   │   ├── contexts/         # Context memory
+│   │   └── learning/         # Learning patterns
+│   └── logs/                 # 📝 Agent operation logs
 ├── self-improvement/          # 🧠 Self-Improvement Agent v2.0
 │   ├── core/                 # Core functionality modules
 │   │   ├── analyzer.js       # File analysis engine
 │   │   ├── detector.js       # Pattern detection system
-│   │   └── context.js        # Context management
+│   │   ├── context.js        # Context management
+│   │   ├── memory.js         # Memory management system
+│   │   └── fileManager.js    # File organization system
 │   ├── cli/                  # Command line interface
 │   │   └── interface.js      # Interactive CLI
 │   ├── config/               # Configuration files
 │   │   └── default.json      # Default settings & patterns
-│   ├── data/                 # Runtime data (gitignored)
 │   ├── docs/                 # Documentation
 │   └── index.js              # Main entry point
-├── shared/                   # Shared utilities across agents
-│   ├── utils/                # Common utility functions
-│   └── types/                # Type definitions
+├── utils/                    # Shared utilities
+│   └── migrate_to_store.js   # File migration utility
 └── README.md                 # This file
 ```
 
@@ -29,7 +49,7 @@ agents/
 ### Start the Self-Improvement Agent
 ```bash
 # New modular version (recommended)
-npm run agent
+npm run AAI:agent
 
 # Or directly
 node agents/self-improvement/index.js
@@ -44,8 +64,19 @@ npm run legacy
 🤖 > improve <filename>        # Get improvement suggestions  
 🤖 > context <topic>           # Set current work context
 🤖 > smart-detect              # Analyze based on context
+🤖 > memory                    # Memory management commands
+🤖 > projects                  # Project management commands
+🤖 > migrate                   # Migrate files to agent store
 🤖 > help                      # Show help
 🤖 > exit                      # Stop agent
+```
+
+### Testing & Setup Commands
+```bash
+npm run AAI:setup-env          # Setup environment variables
+npm run AAI:test-agent         # Test agent functionality
+npm run AAI:test-system        # Test system integration
+npm run AAI:test-integration   # Test AutoPilot integration
 ```
 
 ## ✨ **What's New in v2.0**
@@ -153,7 +184,7 @@ Edit `agents/self-improvement/config/default.json`:
 
 ## 🎉 **Next Steps**
 
-1. **Try the new agent**: `npm run agent`
+1. **Try the new agent**: `npm run AAI:agent`
 2. **Set your context**: `context <your-current-work>`
 3. **Analyze files**: `analyze <filename>`
 4. **Get smart suggestions**: `smart-detect`
