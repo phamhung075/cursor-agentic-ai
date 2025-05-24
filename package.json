@@ -33,7 +33,16 @@
     "AAI:analyze-core": "node agents/_store/projects/core_path_analyzer.js",
     "AAI:fix-core": "node agents/_store/projects/core_path_fixer.js",
     "AAI:analyze-and-fix": "npm run AAI:analyze-core && npm run AAI:fix-core",
-    "AAI:core-health": "npm run AAI:analyze-core && echo '\\n🔧 To fix issues, run: npm run AAI:fix-core'"
+    "AAI:core-health": "npm run AAI:analyze-core && echo '\\n🔧 To fix issues, run: npm run AAI:fix-core'",
+    "AAI:backup-core": "bash agents/_store/scripts/backup_core_structure.sh",
+    "AAI:update-file-list": "python3 agents/_store/scripts/update_core_files_list.py",
+    "AAI:clean-scripts": "node agents/_store/scripts/cleanup_obsolete_scripts.js",
+    "AAI:scripts-help": "node agents/_store/scripts/script_manager.js help",
+    "AAI:scripts-migrate": "node agents/_store/scripts/migrate_scripts_to_store.js",
+    "AAI:scripts-list": "node agents/_store/scripts/script_manager.js list",
+    "AAI:scripts-organize": "node agents/_store/scripts/script_manager.js organize",
+    "AAI:scripts-analyze": "node agents/_store/scripts/script_manager.js analyze",
+    "AAI:scripts-categories": "node agents/_store/scripts/script_manager.js categories"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^2.0.1",
@@ -66,4 +75,3 @@
     "self-improvement-agent": "./agents/self-improvement/index.js"
   }
 }
- 
