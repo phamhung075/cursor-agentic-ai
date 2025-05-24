@@ -1,0 +1,13 @@
+{
+  "id": "190864ac-75c8-4f2e-a837-68b0c61949a5",
+  "type": "file_invalidation",
+  "content": "{\"fileName\":\"test-component.js\",\"filePath\":\"test-deps/test-component.js\",\"invalidated\":true,\"reason\":\"dependency_change\",\"timestamp\":1748069930383}",
+  "metadata": {
+    "content": "{\"fileName\":\"test-component.js\",\"filePath\":\"test-deps/test-component.js\",\"invalidated\":true,\"reason\":\"dependency_change\",\"timestamp\":1748069930383}",
+    "fileName": "test-component.js",
+    "projectType": "unknown",
+    "timestamp": 1748069930383,
+    "type": "file_invalidation"
+  },
+  "embedding": []
+}

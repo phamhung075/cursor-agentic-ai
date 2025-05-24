@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+// Load environment variables from .env file
+require('dotenv').config();
+
 /**
  * 🧠 Self-Improvement Agent v2.0 - Main Entry Point
  * 
@@ -30,7 +33,7 @@ class SelfImprovementAgent {
     this.fileDependencyManager = new FileDependencyManager(this.memoryManager);
     this.contextManager = new ContextManager();
     this.detector = new PatternDetector(this.config);
-    this.cli = new CLIInterface(this);
+    this.cli = new CLIInterface(this, this.config);
     this.rl = null;
     this.isInitialized = false;
   }
@@ -60,6 +63,10 @@ class SelfImprovementAgent {
         }
         
         console.log('✅ Test mode completed successfully');
+        
+        // Clean shutdown in test mode to ensure process exits
+        await this.shutdown();
+        
         return { success: true, message: 'Agent test completed' };
       }
       
@@ -437,11 +444,35 @@ class SelfImprovementAgent {
           const days = parseInt(args[0]) || 30;
           const deletedCount = await this.memoryManager.clearOldMemories(days);
           return { success: true, deletedCount, days };
+
+        case 'sync-status':
+          const syncStatus = await this.memoryManager.getSyncStatus();
+          return { success: true, syncStatus };
+
+        case 'sync-up':
+          const uploadResult = await this.memoryManager.syncLocalToPinecone();
+          return { success: true, operation: 'upload', ...uploadResult };
+
+        case 'sync-down':
+          const downloadResult = await this.memoryManager.syncPineconeToLocal();
+          return { success: true, operation: 'download', ...downloadResult };
+
+        case 'sync-both':
+          const bidirectionalResult = await this.memoryManager.bidirectionalSync();
+          return { success: true, operation: 'bidirectional', ...bidirectionalResult };
+
+        case 'reset-pinecone':
+          await this.memoryManager.resetPineconeIndex();
+          return { success: true, message: 'Pinecone index reset successfully' };
+
+        case 'fix-embeddings':
+          const fixResult = await this.memoryManager.fixEmbeddingDimensions();
+          return { success: true, operation: 'fix-embeddings', ...fixResult };
           
         default:
           return { 
             success: false, 
-            message: `Unknown memory command: ${subcommand}. Use: stats, search, cleanup` 
+            message: `Unknown memory command: ${subcommand}. Use: stats, search, cleanup, sync-status, sync-up, sync-down, sync-both, reset-pinecone, fix-embeddings` 
           };
       }
     } catch (error) {
@@ -696,6 +727,12 @@ if (require.main === module) {
   agent.start(options).catch(error => {
     console.error('💥 Agent failed to start:', error.message);
     process.exit(1);
+  }).then(result => {
+    // If in test mode, exit cleanly after completion
+    if (options.testMode && result && result.success) {
+      console.log('🎯 Test mode finished - exiting');
+      process.exit(0);
+    }
   });
 }
 

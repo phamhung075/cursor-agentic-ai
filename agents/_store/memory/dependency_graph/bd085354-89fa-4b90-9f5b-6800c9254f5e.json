@@ -1,0 +1,13 @@
+{
+  "id": "bd085354-89fa-4b90-9f5b-6800c9254f5e",
+  "type": "dependency_graph",
+  "content": "{\"dependencies\":[[\"test-deps/app.js\",{}],[\"test-deps/test-component.js\",{}],[\"test-deps/utils.js\",{}]],\"reverseDependencies\":[[\"test-deps/test-component.js\",{}],[\"test-deps/utils.js\",{}],[\"component:TestComponent\",{}]],\"fileHashes\":[[\"test-deps/utils.js\",\"d7910e4526e478a082bbb01a7e2fdb3f\"],[\"test-deps/app.js\",\"f27e38004421228be1adf96ed93c0082\"],[\"test-deps/test-component.js\",\"d23d7be0e7c9c0a6104ffe8cd61df586\"]],\"lastUpdated\":1748069927365}",
+  "metadata": {
+    "content": "{\"dependencies\":[[\"test-deps/app.js\",{}],[\"test-deps/test-component.js\",{}],[\"test-deps/utils.js\",{}]],\"reverseDependencies\":[[\"test-deps/test-component.js\",{}],[\"test-deps/utils.js\",{}],[\"component:TestComponent\",{}]],\"fileHashes\":[[\"test-deps/utils.js\",\"d7910e4526e478a082bbb01a7e2fdb3f\"],[\"test-deps/app.js\",\"f27e38004421228be1adf96ed93c0082\"],[\"test-deps/test-component.js\",\"d23d7be0e7c9c0a6104ffe8cd61df586\"]],\"lastUpdated\":1748069927365}",
+    "fileCount": 3,
+    "projectType": "unknown",
+    "timestamp": 1748069927365,
+    "type": "dependency_graph"
+  },
+  "embedding": []
+}

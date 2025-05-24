@@ -1,0 +1,14 @@
+{
+  "id": "9eda2650-0a96-4767-8a41-e77c9c412c55",
+  "type": "file_dependencies",
+  "content": "{\"filePath\":\"test-deps/test-component.js\",\"dependencies\":[\"test-deps/utils.js\"],\"dependentCount\":1,\"timestamp\":1748069930887}",
+  "metadata": {
+    "content": "{\"filePath\":\"test-deps/test-component.js\",\"dependencies\":[\"test-deps/utils.js\"],\"dependentCount\":1,\"timestamp\":1748069930887}",
+    "dependencyCount": 1,
+    "fileName": "test-component.js",
+    "projectType": "unknown",
+    "timestamp": 1748069930887,
+    "type": "file_dependencies"
+  },
+  "embedding": []
+}

@@ -19,14 +19,21 @@
     "AAI:migrate-files": "node agents/utils/migrate_to_store.js",
     "AAI:setup-env": "node agents/_store/scripts/setup-env.js",
     "AAI:install-to": "node agents/_store/scripts/install-agent-ai.js",
-    "AAI:test-startup": "node agents/self-improvement/index.js --test"
+    "AAI:test-startup": "node agents/self-improvement/index.js --test",
+    "AAI:sync-memory": "node agents/_store/scripts/sync-memory.js",
+    "AAI:sync-status": "node agents/_store/scripts/sync-memory.js status",
+    "AAI:sync-up": "node agents/_store/scripts/sync-memory.js up",
+    "AAI:sync-down": "node agents/_store/scripts/sync-memory.js down",
+    "AAI:sync-both": "node agents/_store/scripts/sync-memory.js both",
+    "AAI:fix-embeddings": "node agents/_store/scripts/sync-memory.js fix-embeddings"
   },
   "dependencies": {
-    "chokidar": "^3.5.3",
-    "marked": "^5.1.1",
-    "gray-matter": "^4.0.3",
-    "chalk": "^4.1.2",
     "@pinecone-database/pinecone": "^2.0.1",
+    "chalk": "^4.1.2",
+    "chokidar": "^3.5.3",
+    "dotenv": "^16.5.0",
+    "gray-matter": "^4.0.3",
+    "marked": "^5.1.1",
     "openai": "^4.28.0"
   },
   "devDependencies": {
@@ -50,4 +57,4 @@
   "bin": {
     "self-improvement-agent": "./agents/self-improvement/index.js"
   }
-} 
+}

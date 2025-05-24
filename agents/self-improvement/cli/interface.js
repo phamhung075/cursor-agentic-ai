@@ -254,7 +254,16 @@ class CLIInterface {
   async handleMemory(args) {
     if (args.length === 0) {
       console.log(chalk.yellow('💡 Usage: memory <subcommand>'));
-      console.log(chalk.gray('  Available subcommands: stats, search <query>, cleanup [days]'));
+      console.log(chalk.gray('  Available subcommands:'));
+      console.log(chalk.gray('    stats              - Show memory statistics'));
+      console.log(chalk.gray('    search <query>     - Search memories'));
+      console.log(chalk.gray('    cleanup [days]     - Clean old memories'));
+      console.log(chalk.gray('    sync-status        - Check sync status'));
+      console.log(chalk.gray('    sync-up           - Upload local → Pinecone'));
+      console.log(chalk.gray('    sync-down         - Download Pinecone → local'));
+      console.log(chalk.gray('    sync-both         - Bidirectional sync'));
+      console.log(chalk.gray('    reset-pinecone    - Reset Pinecone index'));
+      console.log(chalk.gray('    fix-embeddings    - Fix embedding dimensions'));
       return;
     }
 
@@ -263,7 +272,7 @@ class CLIInterface {
     
     console.log(chalk.blue(`🧠 Memory: ${subcommand}`));
     const result = await this.agent.handleMemoryCommand(subcommand, subArgs);
-    this.displayCommandResult(result, 'Memory');
+    this.displayMemoryResult(result, subcommand);
   }
 
   /**
@@ -614,6 +623,95 @@ class CLIInterface {
       console.log(chalk.white(`${index + 1}. Score: ${score}% - ${result.metadata.type || 'unknown'}`));
       console.log(chalk.gray(`   ${result.content.substring(0, 100)}...`));
     });
+  }
+
+  /**
+   * Display memory command results
+   */
+  displayMemoryResult(result, subcommand) {
+    if (!result.success) {
+      console.log(chalk.red(`❌ ${result.message}`));
+      return;
+    }
+
+    switch (subcommand) {
+      case 'stats':
+        this.displayMemoryStats(result.stats);
+        break;
+        
+      case 'search':
+        this.displayMemorySearchResults(result.results);
+        break;
+        
+      case 'cleanup':
+        console.log(chalk.green(`🧹 Cleaned up ${result.deletedCount} memories older than ${result.days} days`));
+        break;
+        
+      case 'sync-status':
+        this.displaySyncStatus(result.syncStatus);
+        break;
+        
+      case 'sync-up':
+        console.log(chalk.green(`📤 Upload complete: ${result.uploaded} uploaded, ${result.skipped} skipped`));
+        if (result.errors > 0) {
+          console.log(chalk.yellow(`⚠️ ${result.errors} errors occurred`));
+        }
+        break;
+        
+      case 'sync-down':
+        console.log(chalk.green(`📥 Download complete: ${result.downloaded} downloaded, ${result.skipped} skipped`));
+        if (result.errors > 0) {
+          console.log(chalk.yellow(`⚠️ ${result.errors} errors occurred`));
+        }
+        break;
+        
+      case 'sync-both':
+        console.log(chalk.green('🔄 Bidirectional sync complete!'));
+        console.log(chalk.blue(`📤 Upload: ${result.upload.uploaded} uploaded, ${result.upload.skipped} skipped`));
+        console.log(chalk.blue(`📥 Download: ${result.download.downloaded} downloaded, ${result.download.skipped} skipped`));
+        break;
+        
+      case 'reset-pinecone':
+        console.log(chalk.green('✅ Pinecone index reset successfully'));
+        console.log(chalk.yellow('⚠️ All cloud memories have been deleted'));
+        break;
+        
+      case 'fix-embeddings':
+        console.log(chalk.green('✅ Embedding dimensions fixed successfully'));
+        break;
+        
+      default:
+        this.displayCommandResult(result, 'Memory');
+    }
+  }
+
+  /**
+   * Display memory statistics
+   */
+  displayMemoryStats(stats) {
+    console.log(chalk.green('🧠 Memory Statistics:'));
+    console.log(chalk.blue(`  📡 Pinecone Connected: ${stats.pineconeConnected ? '✅' : '❌'}`));
+    console.log(chalk.blue(`  🤖 OpenAI Connected: ${stats.openaiConnected ? '✅' : '❌'}`));
+    console.log(chalk.blue(`  💾 Local Memories: ${stats.localMemories}`));
+    console.log(chalk.blue(`  🗂️ Cache Size: ${stats.cacheSize}`));
+  }
+
+  /**
+   * Display sync status
+   */
+  displaySyncStatus(status) {
+    console.log(chalk.green('🔄 Memory Sync Status:'));
+    console.log(chalk.blue(`  📡 Pinecone Connected: ${status.pineconeConnected ? '✅' : '❌'}`));
+    console.log(chalk.blue(`  🤖 OpenAI Connected: ${status.openaiConnected ? '✅' : '❌'}`));
+    console.log(chalk.blue(`  💾 Local Memories: ${status.localMemories}`));
+    console.log(chalk.blue(`  ☁️ Pinecone Memories: ${status.pineconeMemories}`));
+    
+    if (status.localMemories !== status.pineconeMemories) {
+      console.log(chalk.yellow('⚠️ Local and Pinecone memories are out of sync'));
+      console.log(chalk.gray('💡 Run "memory sync-both" to synchronize'));
+    } else {
+      console.log(chalk.green('✅ Local and Pinecone memories are in sync'));
+    }
   }
 
   /**
