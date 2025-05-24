@@ -1,0 +1,35 @@
+{
+  "name": "agentic-coding-framework-self-improvement",
+  "version": "1.0.0",
+  "description": "Self-improving AI agent for the Agentic Coding Framework",
+  "main": "scripts/self_improvement_agent.js",
+  "scripts": {
+    "start": "node scripts/self_improvement_agent.js",
+    "analyze": "node scripts/self_improvement_agent.js",
+    "improve": "node scripts/self_improvement_agent.js",
+    "demo-agent": "node demo_agent.js",
+    "install-deps": "npm install",
+    "test": "echo \"No tests specified yet\" && exit 0"
+  },
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "marked": "^5.1.1",
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "self-improvement",
+    "automation",
+    "coding-framework",
+    "analysis"
+  ],
+  "author": "Agentic Coding Framework",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+} 

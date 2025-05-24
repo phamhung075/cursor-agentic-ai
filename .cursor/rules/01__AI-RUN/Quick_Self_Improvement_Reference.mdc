@@ -1,0 +1,144 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 🧠 Quick Self-Improvement Reference for AI Agents
+
+*Use this during AutoPilot workflow execution to continuously improve the framework.*
+
+## 🎯 When to Analyze Files
+
+### Before Using Workflow Files (Phases 1-9)
+```
+🔍 Quick Check:
+- Does this workflow file reference outdated tech for current projectType?
+- Are there missing examples that would help the user?
+- Does the instruction clarity match user's experience level?
+```
+
+### After Generating Documents
+```
+📊 Template Analysis:
+- Could the template be improved based on what we learned?
+- Are there gaps in the template for this project type?
+- Would additional sections benefit future projects?
+```
+
+### During User Interactions
+```
+💬 User Experience Check:
+- Is the user confused by any instructions?
+- Are they asking for clarifications that indicate framework gaps?
+- Could the workflow be more efficient?
+```
+
+## 🚨 Priority Levels & Actions
+
+### High Priority (Pause Workflow)
+- **Outdated security practices** in current projectType
+- **Missing critical examples** in active workflow step
+- **Broken workflow logic** causing user confusion
+
+**Action**: Present improvement immediately, ask for approval
+
+### Medium Priority (Note for Review)
+- **Technology version updates** (React 16→18, Node 14→16)
+- **Template enhancements** based on project learnings
+- **Workflow efficiency optimizations**
+
+**Action**: Note for end-of-phase review
+
+### Low Priority (Log Silently)
+- **Documentation formatting** improvements
+- **Minor terminology** inconsistencies
+- **Nice-to-have features** for future versions
+
+**Action**: Log for post-project optimization
+
+## 💬 Communication Templates
+
+### High Priority Issue
+```
+🔍 **Framework Improvement Detected**: Outdated React patterns in current workflow
+💡 **Suggested Fix**: Update examples to use React 18 with hooks instead of class components
+⚡ **Impact**: Ensures users follow current best practices and avoid deprecated patterns
+❓ **Implement now?** This affects the current project's coding standards.
+```
+
+### Medium Priority Issue
+```
+🔍 **Framework Enhancement Opportunity**: Missing error handling examples in API integration guide
+💡 **Suggested Fix**: Add try-catch examples and error boundary patterns
+⚡ **Impact**: Helps users build more robust applications with proper error handling
+📝 **Note for later?** Can be addressed during Phase 5 (Technical Documentation)
+```
+
+## 🧠 Learning Integration
+
+### Track User Preferences
+```javascript
+// Example preference tracking
+userPreferences = {
+  "prefers_detailed_examples": true,
+  "technology_comfort_level": "intermediate", 
+  "workflow_pace": "thorough",
+  "improvement_notification_level": "medium" // high, medium, low
+}
+```
+
+### Adaptation Patterns
+- **User approves tech updates** → Suggest similar updates proactively
+- **User prefers minimal interruptions** → Lower notification threshold
+- **User asks for more examples** → Prioritize example-related improvements
+
+## 🔧 Implementation Commands
+
+### Interactive Analysis
+```bash
+# Analyze specific file during workflow
+analyze workflow_file_name
+
+# Get improvement suggestions  
+improve template_name
+
+# Set context for current phase
+context "Phase 3: Core Concept Development"
+
+# Smart detection for current context
+smart-detect
+```
+
+### Quick Framework Checks
+```javascript
+// Check for common issues
+detectObsoleteTech(content, projectType)
+checkMissingExamples(content, workflowPhase)
+validateWorkflowLogic(content, userFeedback)
+```
+
+## 📊 Success Metrics
+
+### Framework Quality Indicators
+- **Reduced user clarification questions** per phase
+- **Increased workflow completion rate** without interruptions  
+- **Higher user satisfaction** with generated templates
+- **Fewer repetitive issues** across projects
+
+### Learning Effectiveness
+- **Improvement suggestion acceptance rate** by priority
+- **Time saved** through proactive improvements
+- **User workflow efficiency** improvement over time
+
+## 🎯 Quick Decision Matrix
+
+| Issue Type | User Impact | Current Context | Action |
+|------------|-------------|-----------------|--------|
+| Security Gap | High | Active Phase | 🚨 Pause & Fix |
+| Missing Examples | Medium | Using File | 💡 Suggest Now |
+| Tech Update | Medium | Not Critical Path | 📝 Note for Later |
+| Typo/Format | Low | Any | 🔍 Log Silently |
+
+---
+
+**💡 Remember**: The goal is continuous improvement without disrupting user flow. Be smart about when to interrupt versus when to enhance silently.
