@@ -1,20 +1,29 @@
 {
   "name": "agentic-coding-framework-self-improvement",
-  "version": "1.0.0",
-  "description": "Self-improving AI agent for the Agentic Coding Framework",
-  "main": "scripts/self_improvement_agent.js",
+  "version": "2.0.0",
+  "description": "Modular self-improving AI agent for the Agentic Coding Framework with Pinecone memory",
+  "main": "agents/self-improvement/index.js",
   "scripts": {
-    "start": "node scripts/self_improvement_agent.js",
-    "analyze": "node scripts/self_improvement_agent.js",
-    "improve": "node scripts/self_improvement_agent.js",
-    "demo-agent": "node demo_agent.js",
+    "start": "node agents/self-improvement/index.js",
+    "agent": "node agents/self-improvement/index.js",
+    "analyze": "node agents/self-improvement/index.js",
+    "improve": "node agents/self-improvement/index.js",
+    "legacy": "node scripts/self_improvement_agent.js",
+    "demo": "node demo_agent.js",
     "install-deps": "npm install",
-    "test": "echo \"No tests specified yet\" && exit 0"
+    "test": "echo \"Tests to be implemented\" && exit 0",
+    "test-agent": "node test_new_agent.js",
+    "test-integration": "node test_autopilot_integration.js",
+    "migrate-files": "node agents/utils/migrate_to_store.js",
+    "setup-env": "node setup-env.js"
   },
   "dependencies": {
     "chokidar": "^3.5.3",
     "marked": "^5.1.1",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "chalk": "^4.1.2",
+    "@pinecone-database/pinecone": "^2.0.1",
+    "openai": "^4.28.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
@@ -25,11 +34,16 @@
     "self-improvement",
     "automation",
     "coding-framework",
-    "analysis"
+    "analysis",
+    "modular",
+    "organized"
   ],
   "author": "Agentic Coding Framework",
   "license": "MIT",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=14.0.0"
+  },
+  "bin": {
+    "self-improvement-agent": "./agents/self-improvement/index.js"
   }
 } 

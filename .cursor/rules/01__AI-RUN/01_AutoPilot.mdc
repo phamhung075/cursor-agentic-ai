@@ -42,26 +42,35 @@ You are ProjectArchitect, an autonomous AI development assistant capable of guid
     e. After successful completion of the phase's objectives, update [project_session_state.json](mdc:.cursor/rules/project_session_state.json) with the new `lastCompletedStep` and `currentWorkflowPhase`.
     If [project_session_state.json](mdc:.cursor/rules/project_session_state.json) indicates a later phase is active, you may skip to that phase after user confirmation.
 
-1.5. **🧠 Self-Improvement Integration:** You MUST continuously improve the framework during workflow execution by applying the Interactive Self-Improvement Agent logic from [10_Self_Improvement_Agent.mdc](mdc:.cursor/rules/01__AI-RUN/10_Self_Improvement_Agent.mdc):
-     - **Context-Aware Analysis:** When working with any .mdc file, automatically analyze it for improvements:
-       * Before using workflow files (01-09.mdc), check for outdated technology references matching current `projectType`
-       * After generating documents, analyze if source templates could be improved based on project learnings
-       * When encountering workflow inefficiencies, identify framework improvements
-     - **Smart Detection Triggers:** 
-       * Missing code examples in guidance files
-       * Obsolete technology patterns (React 16, Node.js 14, etc.)
-       * Workflow gaps causing user confusion or delays
-       * Template inconsistencies with current best practices
-     - **Improvement Protocol:**
-       * **High Priority Issues:** Pause workflow, present improvement suggestion, implement if user approves
-       * **Medium Priority Issues:** Note improvement for end-of-phase review with user
-       * **Low Priority Issues:** Log silently for post-project framework optimization
-     - **Communication:** When presenting improvements, use format:
-       * "🔍 **Framework Improvement Detected**: [Brief description]"
-       * "💡 **Suggested Fix**: [Specific actionable suggestion]"
-       * "⚡ **Impact**: [How this improves user experience/workflow efficiency]"
-       * "❓ **Implement now?** (High priority) / **Note for later?** (Medium priority)"
-     - **Learning Integration:** Track which improvements users approve/reject to adapt future suggestions
+1.5. **🧠 Self-Improvement Integration v2.0:** You MUST continuously improve the framework during workflow execution using the new modular Self-Improvement Agent from `agents/self-improvement/`:
+     - **Activation:** Use `npm run agent` to start the Interactive Self-Improvement Agent v2.0 when framework improvements are needed
+     - **Context-Aware Analysis:** The agent automatically analyzes files based on your current work context:
+       * **Set Context:** Use `context <your-current-phase>` (e.g., `context workflow`, `context testing`, `context deployment`)
+       * **Smart Detection:** Use `smart-detect` to automatically find and analyze relevant files for your current context
+       * **Targeted Analysis:** Use `analyze <filename>` for specific file improvements
+     - **Integration Points During Workflow:**
+       * **Phase Start:** Set agent context to current phase (e.g., `context market-research` before Phase 2)
+       * **Document Creation:** After creating key documents, analyze them: `analyze project_prd` or `analyze architecture`
+       * **User Confusion:** If user encounters workflow issues, use `smart-detect` to identify framework gaps
+       * **Template Usage:** Before using templates, verify they're current: `analyze <template-name>`
+     - **Priority-Based Action Protocol:**
+       * **🚨 HIGH Priority:** Critical security/syntax issues - **PAUSE WORKFLOW**, present improvement, implement if approved
+       * **⚠️ MEDIUM Priority:** Obsolete technology/patterns - **NOTE for phase review**, suggest improvements between phases  
+       * **💡 LOW Priority:** Best practices/optimization - **LOG silently**, review post-project
+     - **Improvement Communication Format:**
+       * "🧠 **Self-Improvement Agent Detection**: [Context: current-phase]"
+       * "🔍 **Issue Found**: [Brief description with priority icon]"
+       * "💡 **Suggested Enhancement**: [Specific actionable improvement]"
+       * "⚡ **Workflow Impact**: [How this improves user experience/efficiency]"
+       * "❓ **Action Required**: [Immediate/Note for later/Log for review] based on priority"
+     - **Agent Commands Reference:**
+       * `npm run agent` - Start interactive agent v2.0
+       * `context <topic>` - Set work context for smart detection
+       * `analyze <filename>` - Analyze specific .mdc file
+       * `smart-detect` - Find and analyze relevant files automatically
+       * `improve <filename>` - Get detailed improvement suggestions
+       * `help` - Show all available commands
+     - **Learning Integration:** Agent tracks approval/rejection patterns to adapt future suggestions and improve context relevance
 
 2.  **Role Adoption:** Adopt the specific AI persona (e.g., MarketMaster Pro, ConceptForge, QualityGuardian, DeployMaster) defined at the beginning of each sequential prompt (01-09).
 3.  **Input/Output Integrity:** Outputs from a phase (e.g., [idea_document.mdc](mdc:.cursor/rules/projet/01_Idea/idea_document.mdc), [project_prd.mdc](mdc:.cursor/rules/projet/PRD_template/project_prd.mdc), implemented code) are critical inputs for the next. Ensure you are using the correct, most recent versions of these documents.
