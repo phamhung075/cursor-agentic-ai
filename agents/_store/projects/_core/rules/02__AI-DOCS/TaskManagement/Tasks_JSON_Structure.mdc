@@ -1,4 +1,11 @@
-# [tasks.json](../tasks/tasks.json)` file is the central repository for all project tasks. It follows a specific JSON structure.
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Tasks JSON Structure
+
+The [tasks.json](mdc:agents/_store/projects/_core/tasks/tasks.json) file is the central repository for all project tasks. It follows a specific JSON structure.
 
 ## Root Object Structure
 
@@ -37,11 +44,18 @@ Each object within the `tasks` array must have the following fields:
 *   `title` (String): A brief, descriptive title for the task (e.g., "Initialize Project Repository").
 *   `description` (String): A concise summary of what the task involves.
 *   `status` (String): The current state of the task. Recommended values: "todo", "In Progress", "blocked", "review", "qa_testing", "Done", "pending", "deferred".
-*   `dependencies` (Array of Numbers/03__SPECS/features/projet/PRD_template/02__AI-DOCS/Architecture/02__AI-DOCS/Conventions/02__AI-DOCS/Integrations/03__SPECS/02__AI-DOCS/Conventions/coding_conventions.mdc`.
+*   `dependencies` (Array of Numbers/Strings): An array of task IDs that must be completed before this task can start.
+*   `priority` (String): The urgency or importance of the task. Recommended values: "low", "medium", "high", "critical".
+*   `details` (String): **This is the most critical field.** A comprehensive description containing all the information an AI agent needs to complete the task. This field **MUST** include direct links to or embed content from all relevant project-specific documents, including:
+    *   Relevant sections from the [project_prd.mdc](mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc).
+    *   Specific feature specifications (e.g., from `agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`).
+    *   Architectural guidelines from [architecture.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc).
+    *   For UI tasks: Links to mockups, wireframes, component designs, and the [design_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc). Adherence to [AI_Design_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc) principles.
+    *   For backend tasks: API contracts (from `agents/_store/projects/_core/rules/02__AI-DOCS/Integrations/` or `agents/_store/projects/_core/rules/03__SPECS/`), data models, and the [coding_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc). Adherence to [AI_Coding_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) principles.
     *   For database tasks: Schema details, migration plans, etc.
     The AI agent relies on this field to find and use the precise specifications needed for any development work (frontend, backend, database, design).
 *   `testStrategy` (String): The approach for verifying that the task is completed correctly (e.g., "Unit tests for all new functions", "Manual QA on staging environment"), which should align with the specifications linked in `details`.
-*   `subtasks` (Array of Task Objects): A list of smaller, more specific tasks that make up this main task. Each subtask object follows the same structure as a parent task object. Importantly, the `subtasks` array within a task object can itself contain task objects that also have their own `subtasks` array. This allows for multiple levels of nesting (e.g., task -> subtask -> sub-subtask -> ...), enabling detailed task breakdown. It is crucial to emphasize that each object at any level of nesting (whether a primary task, subtask, or sub-subtask) is a complete task object. As such, it should ideally include all standard fields, especially a detailed `description`, comprehensive `details` (which, like the parent task's `details` field, **MUST incorporate or reference all pertinent design specifications, coding conventions, technical specs, and context from parent tasks**), and a clear `testStrategy` to ensure clarity and quality at every level. Subtask IDs should be distinct, potentially following a hierarchical naming convention (e.g., `1.1`, `1.1.1`).
+*   `subtasks` (Array of Task Objects): A list of smaller, more specific tasks that make up this main task. Each subtask object follows the same structure as a parent task object. Importantly, the `subtasks` array within a task object can itself contain task objects that also have their own `subtasks` array. This allows for multiple levels of nesting (e.g., task → subtask → sub-subtask → ...), enabling detailed task breakdown. It is crucial to emphasize that each object at any level of nesting (whether a primary task, subtask, or sub-subtask) is a complete task object. As such, it should ideally include all standard fields, especially a detailed `description`, comprehensive `details` (which, like the parent task's `details` field, **MUST incorporate or reference all pertinent design specifications, coding conventions, technical specs, and context from parent tasks**), and a clear `testStrategy` to ensure clarity and quality at every level. Subtask IDs should be distinct, potentially following a hierarchical naming convention (e.g., `1.1`, `1.1.1`).
 *   `estimatedEffort` (String, optional): Estimated time or effort for the task (e.g., "4h", "2d", "5sp").
 *   `actualEffort` (String, optional): Actual time or effort spent on the task, updated upon completion.
 *   `assignee` (String, optional): Identifier for the person or AI agent assigned to the task (e.g., "developer_alice", "Roo-Code-Agent-1").
@@ -73,7 +87,7 @@ Each object within the `tasks` array must have the following fields:
   "recommendedSubtasks": 3,
   "subtasks": [
     {
-      "id": "1.1", / Example of a subtask ID convention
+      "id": "1.1",
       "title": "Design Auth Database Schema",
       "description": "Define the schema for the users table.",
       "status": "todo",
