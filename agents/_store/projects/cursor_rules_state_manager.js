@@ -259,7 +259,7 @@ class CursorRulesStateManager {
     }
     
     // Extract path references
-    const pathRefs = content.match(/\.cursor\/rules\/[^)\s]+/g);
+    const pathRefs = content.match(/agents\/_store\/projects\/_core\/rules\/[^)\s]+/g);
     if (pathRefs) {
       dependencies.push(...pathRefs);
     }

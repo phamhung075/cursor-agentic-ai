@@ -94,7 +94,7 @@ class EnhancedCursorRulesFixer {
       await this.createBackup(filePath);
 
       // 1. Fix .cursor/rules/ prefixed paths
-      const fullPathPattern = /\.cursor\/rules\/([^\s\)\]]+)/g;
+      const fullPathPattern = /agents\/_store\/projects\/_core\/rules\/([^\s\)\]]+)/g;
       content = content.replace(fullPathPattern, (match, relativePath) => {
         // Convert to proper relative path
         const currentDir = path.dirname(filePath);

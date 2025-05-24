@@ -1,0 +1,9 @@
+# Task Management Process
+
+The primary documentation for the project's task management process, including workflow with Roo Orchestrator/Code and the structure of `[tasks.json](../tasks/tasks.json)`, has been moved.
+
+Please refer to the new centralized documentation here:
+- **Main Workflow:** [Roo_Task_Workflow.mdc](../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)
+- **`[tasks.json](../tasks/tasks.json)` Structure:** [Tasks_JSON_Structure.mdc](../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+
+This file (`06_Task_Manager.mdc`) is now deprecated for detailed information.

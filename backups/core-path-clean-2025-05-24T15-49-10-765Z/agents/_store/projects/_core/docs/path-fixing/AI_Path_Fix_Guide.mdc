@@ -1,0 +1,187 @@
+# AI Agent Guide: Fixing Markdown Path Issues
+
+## 🎯 **Purpose**
+This guide provides a systematic approach for AI agents to identify and fix broken markdown file paths, based on successful resolution of `rules/01__AI-RUN/00_Getting_Started.mdc` path issues.
+
+## 🔍 **Common Path Issues Identified**
+
+### 1. **@ Symbol References (Causes Definition Lookup)**
+**Problem:** `(using @01_Idea.mdc logic)`
+**Solution:** Replace with proper markdown link format
+```bash
+# Remove @ symbols that cause definition lookups
+grep -n "@.*\.mdc" filename.mdc
+sed -i '' 's/@\([^\.]*\.mdc\)/[\1](.\/\1)/g' filename.mdc
+```
+
+### 2. **Incorrect Relative Paths**
+**Problem:** `/ ` patterns in paths like `(./.cursor/rules/)`
+**Solution:** Remove redundant `./` from middle of paths
+```bash
+# Fix / patterns
+sed -i '' 's/\/\.\/\/g' filename.mdc
+# Fix ./.cursor/ patterns
+sed -i '' 's/\.\/.cursor\/.cursor\/g' filename.mdc
+```
+
+### 3. **File-Relative vs Workspace-Relative Paths**
+**Problem:** Links work from file location but not from workspace root
+**Solution:** Use workspace-absolute paths for editor compatibility
+
+## 🛠️ **Systematic Fix Process**
+
+### **Step 1: Diagnostic Phase**
+```bash
+# Check current working directory context
+pwd
+
+# List actual files to verify what exists
+ls -la *.mdc
+
+# Find all problematic patterns
+grep -n "@.*\.mdc" filename.mdc                    # @ symbols
+grep -n "/\./" filename.mdc                        # / patterns
+grep -n "]\(\./" filename.mdc                      # Relative links
+grep -n " filename.mdc                        # Corrupted patterns
+```
+
+### **Step 2: Pattern Identification**
+Identify which of these patterns exist:
+- `@filename.mdc` → Definition lookup issue
+- `/ ` → Redundant path segments
+- `](./filename.mdc)` → File-relative paths
+- `](rules/path)` → May need workspace-relative conversion
+
+### **Step 3: Sequential Fixes**
+
+#### **Fix 1: Remove @ Symbols**
+```bash
+# Replace @filename.mdc with proper links
+sed -i '' 's/(using @\([^)]*\) logic)/(using [\1](.\/\1) logic)/g' filename.mdc
+```
+
+#### **Fix 2: Clean Redundant Path Segments**
+```bash
+# Remove / patterns
+sed -i '' 's/\/\.\/\/g' filename.mdc
+
+# Fix ./.cursor/ specifically
+sed -i '' 's/\.\/.cursor\/.cursor\/g' filename.mdc
+```
+
+#### **Fix 3: Standardize to Workspace-Relative Paths**
+```bash
+# Convert file-relative to workspace-relative
+sed -i '' 's/]\(\.\([^)]*\.mdc\))/](.cursor\/rules\/01__AI-RUN\2)/g' filename.mdc
+```
+
+#### **Fix 4: Handle Special Link Formats**
+```bash
+# Fix broken "Open File" links with absolute paths
+sed -i '' 's/\[Open File\](\([^)]*\.mdc\))/[Open File](.cursor\/rules\/01__AI-RUN\/\1)/g' filename.mdc
+
+# Remove double closing parentheses
+sed -i '' 's/))/)/g' filename.mdc
+```
+
+### **Step 4: Verification Phase**
+```bash
+# Verify no @ symbols remain
+grep -n "@" filename.mdc
+
+# Verify no / patterns remain
+grep -n "/\./../  # Go to workspace root
+for file in rules/01__AI-RUN/*.mdc; do
+    echo -n "$file: " [ -f "$file" ] && echo "✅ EXISTS" || echo "❌ MISSING"
+done
+```
+
+## 🎛️ **Advanced Patterns & Solutions**
+
+### **Pattern: Corrupted Previous Edits**
+If previous edits created patterns like ` instead of `./`:
+```bash
+# Fix corrupted patterns
+sed -i '' 's/ filename.mdc
+```
+
+### **Pattern: Mixed Path Types**
+```bash
+# Standardize all .mdc references to workspace-relative
+sed -i '' 's/]\(\./[^)]*\.mdc\)/](.cursor\/rules\/01__AI-RUN\/\1)/g' filename.mdc
+```
+
+### **Pattern: Double Path Segments**
+```bash
+# Fix accidentally doubled paths
+sed -i '' 's/.cursor\/rules\/01__AI-RUN\/.cursor\/rules\/01__AI-RUN/.cursor\/rules\/01__AI-RUN/g' filename.mdc
+```
+
+## 🚨 **Critical Success Factors**
+
+### **1. Working Directory Awareness**
+Always verify your current directory:
+```bash
+pwd  # Should be in the file's directory for relative operations
+```
+
+### **2. Backup Strategy**
+```bash
+# Create backup before major changes
+cp filename.mdc filename.mdc.backup
+```
+
+### **3. Incremental Testing**
+Test each change type separately, don't combine all fixes in one command.
+
+### **4. Editor-Specific Behavior**
+- VS Code/Cursor needs workspace-relative paths for clickable links
+- File-relative paths may work for reading but not for navigation
+- `@` symbols trigger definition lookup, not file opening
+
+## 📋 **Quick Fix Checklist**
+
+- [ ] **Diagnostic**: Run all grep commands to identify issues
+- [ ] **@ Symbols**: Remove and replace with proper markdown links
+- [ ] **/ Patterns**: Clean redundant path segments
+- [ ] **Relative Paths**: Convert to workspace-relative format
+- [ ] **Special Links**: Fix "Open File" and similar patterns
+- [ ] **Verification**: Test that all referenced files exist
+- [ ] **Manual Test**: Try clicking links in editor to confirm functionality
+
+## 🔄 **Reusable One-Liner Fixes**
+
+### **Complete Path Cleanup Sequence:**
+```bash
+filename="00_Getting_Started.mdc"
+
+# 1. Fix @ symbols
+sed -i '' 's/@\([^\.]*\.mdc\)/[\1]/g' "$filename"
+
+# 2. Clean redundant segments
+sed -i '' 's/\/\.\/\/g' "$filename"
+sed -i '' 's/\.\/.cursor\/.cursor\/g' "$filename"
+
+# 3. Standardize to workspace-relative
+sed -i '' 's/]\(\.\([^)]*\.mdc\))/](.cursor\/rules\/01__AI-RUN\2)/g' "$filename"
+
+# 4. Fix double parentheses
+sed -i '' 's/))/)/g' "$filename"
+
+# 5. Verify
+echo "Verification:"
+grep -c "@" "$filename" && echo "❌ @ symbols remain" || echo "✅ No @ symbols"
+grep -c "/\./" "$filename" && echo "❌ / patterns remain" || echo "✅ No / patterns"
+```
+
+## 💡 **Pro Tips for AI Agents**
+
+1. **Always check file existence** before creating links
+2. **Use workspace-relative paths** for maximum compatibility
+3. **Test links after fixing** - don't assume success
+4. **Handle edge cases** like double parentheses and corrupted patterns
+5. **Document your changes** for future reference
+
+---
+
+*Created by AI Agent - Tested and validated on real path fixing scenarios*

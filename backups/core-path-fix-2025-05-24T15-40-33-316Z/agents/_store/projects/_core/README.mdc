@@ -1,0 +1,115 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 🚀 Core Development Framework
+
+**Location:** `agents/_store/projects/_core`  
+**Migrated:** $(date)  
+**Source:** Originally from `.cursor/` directory  
+
+## 📋 Overview
+
+This directory contains the **complete core development framework** for project creation and development. It includes all guides, templates, workflows, and documentation needed to build projects using the Agentic Coding Framework.
+
+## 📁 Directory Structure
+
+### 🎯 **Core Framework Files**
+- `AI_AGENT_RULES.mdc` - **Critical rules for all AI agents**
+- `ORGANIZATION_COMPLETE.mdc` - **Organization summary and completion status**
+- `BACKUP_SAFETY_REPORT.mdc` - **Safety and backup procedures**
+
+### 📚 **Rules Directory** (`rules/`)
+Complete development workflow system:
+
+#### 🤖 **01__AI-RUN/** - **Primary Workflow Stages**
+- `00_Getting_Started.mdc` - **Master initialization guide**
+- `01_Idea.mdc` - **Project idea definition**
+- `02_Market_Research.mdc` - **Market validation process**
+- `03_Core_Concept.mdc` - **Core concept refinement**
+- `04_PRD_Generation.mdc` - **Product Requirements Document**
+- `05_Specs_Docs.mdc` - **Technical specifications**
+- `06_Task_Manager.mdc` - **Task breakdown management**
+- `07_Start_Building.mdc` - **Implementation phase**
+- `08_Testing.mdc` - **Testing and validation**
+- `09_Deployment.mdc` - **Deployment procedures**
+- `01_AutoPilot.mdc` - **Fully automated workflow**
+- `Quick_Self_Improvement_Reference.mdc` - **Agent AI command reference**
+
+#### 📖 **02__AI-DOCS/** - **Documentation Templates & Guides**
+- Architecture documentation templates
+- Coding conventions and standards
+- AI optimization guides
+- Task management frameworks
+
+#### 📋 **03__SPECS/** - **Specification Templates**
+- Feature specification templates
+- Bug tracking templates
+- Documentation index templates
+
+#### 🛠️ **00__TOOLS/** - **Development Tools**
+- Utility scripts and helpers
+- Development automation tools
+
+#### 📁 **projet/** - **Project Output Templates**
+- Structured project output directories
+- Template organization for generated content
+
+#### ⚙️ **tasks/** - **Task Management**
+- Task breakdown structures
+- Project management templates
+
+### 📚 **Documentation Directory** (`docs/`)
+- `README.mdc` - **Documentation index**
+- `path-fixing/` - **Path fixing guides and memory**
+
+## 🎯 **Purpose & Usage**
+
+This core framework serves as:
+
+1. **📋 Template Library** - Reusable templates for all project types
+2. **🔄 Workflow Engine** - Step-by-step development processes
+3. **🧠 Knowledge Base** - Accumulated best practices and patterns
+4. **🤖 AI Enhancement** - Guides for optimizing AI agent performance
+5. **📚 Documentation Hub** - Complete reference materials
+
+## 🚀 **Integration with Agent AI**
+
+The Agent AI system can now:
+- **Reference core patterns** from `_core` for new projects
+- **Learn from established workflows** in the framework
+- **Apply proven templates** to new development scenarios
+- **Maintain consistency** across all projects using core standards
+
+## 📖 **Key Entry Points**
+
+### **For New Projects:**
+1. Start with: `rules/01__AI-RUN/00_Getting_Started.mdc`
+2. Use AutoPilot: `rules/01__AI-RUN/01_AutoPilot.mdc`
+
+### **For AI Agent Commands:**
+- Reference: `rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc`
+
+### **For Documentation:**
+- Architecture: `rules/02__AI-DOCS/`
+- Specifications: `rules/03__SPECS/`
+
+## 🔧 **Maintenance**
+
+This core framework should be:
+- **🔄 Updated** when new patterns are discovered
+- **📚 Referenced** by all new projects
+- **🧠 Enhanced** based on Agent AI learning
+- **🔒 Protected** as the master template source
+
+## 📝 **Migration Notes**
+
+✅ **Complete migration successful**  
+✅ **All file structures preserved**  
+✅ **All .mdc extensions maintained**  
+✅ **Agent AI integration ready**  
+
+---
+
+*This core framework represents the accumulated knowledge and best practices for the Agentic Coding Framework. Treat it as the single source of truth for project development workflows.*

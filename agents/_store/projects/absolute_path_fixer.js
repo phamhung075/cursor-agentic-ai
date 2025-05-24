@@ -103,7 +103,7 @@ class AbsolutePathFixer {
       const fixPatterns = [
         // 1. Fix links with .cursor/rules/ prefix
         {
-          pattern: /\[([^\]]+)\]\(\.cursor\/rules\/([^)]+)\)/g,
+          pattern: /\[([^\]]+)\]\(agents\/_store\/projects\/_core\/rules\/([^)]+)\)/g,
           fix: (match, text, targetPath) => {
             const relativePath = this.calculateRelativePath(dirLevels, targetPath);
             return `[${text}](${relativePath})`;
@@ -113,7 +113,7 @@ class AbsolutePathFixer {
         
         // 2. Fix standalone .cursor/rules/ references 
         {
-          pattern: /(?<![\[\(])\.cursor\/rules\/([^\s\)\]\,\;]+)/g,
+          pattern: /(?<![\[\(])agents\/_store\/projects\/_core\/rules\/([^\s\)\]\,\;]+)/g,
           fix: (match, targetPath) => {
             const relativePath = this.calculateRelativePath(dirLevels, targetPath);
             return relativePath;
@@ -123,7 +123,7 @@ class AbsolutePathFixer {
 
         // 3. Fix backtick-wrapped paths
         {
-          pattern: /`\.cursor\/rules\/([^`]+)`/g,
+          pattern: /`agents\/_store\/projects\/_core\/rules\/([^`]+)`/g,
           fix: (match, targetPath) => {
             const relativePath = this.calculateRelativePath(dirLevels, targetPath);
             return `\`${relativePath}\``;
@@ -133,7 +133,7 @@ class AbsolutePathFixer {
 
         // 4. Fix table cell references
         {
-          pattern: /\|\s*\.cursor\/rules\/([^\s\|]+)\s*\|/g,
+          pattern: /\|\s*agents\/_store\/projects\/_core\/rules\/([^\s\|]+)\s*\|/g,
           fix: (match, targetPath) => {
             const relativePath = this.calculateRelativePath(dirLevels, targetPath);
             return `| ${relativePath} |`;
@@ -143,7 +143,7 @@ class AbsolutePathFixer {
 
         // 5. Fix markdown references in parentheses
         {
-          pattern: /\(\.cursor\/rules\/([^)]+)\)/g,
+          pattern: /\(agents\/_store\/projects\/_core\/rules\/([^)]+)\)/g,
           fix: (match, targetPath) => {
             const relativePath = this.calculateRelativePath(dirLevels, targetPath);
             return `(${relativePath})`;

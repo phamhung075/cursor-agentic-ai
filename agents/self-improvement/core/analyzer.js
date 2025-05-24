@@ -10,7 +10,7 @@ const path = require('path');
 class FileAnalyzer {
   constructor(detector) {
     this.detector = detector;
-    this.rulesPath = '.cursor/rules';
+    this.rulesPath = 'agents/_store/projects/_core/rules'; // Updated to use new path
   }
 
   /**
@@ -132,6 +132,68 @@ class FileAnalyzer {
       return null;
     }
   }
+
+  /**
+   * Find files in a directory with extension
+   */
+  findFiles(directory, extension) {
+    const files = [];
+    
+    try {
+      const items = require('fs').readdirSync(directory, { withFileTypes: true });
+      
+      for (const item of items) {
+        const fullPath = path.join(directory, item.name);
+        
+        if (item.isDirectory()) {
+          files.push(...this.findFiles(fullPath, extension));
+        } else if (item.name.endsWith(extension)) {
+          files.push(fullPath);
+        }
+      }
+    } catch (error) {
+      // Skip directories that don't exist
+    }
+    
+    return files;
+  }
+
+  /**
+   * Analyze core framework files
+   */
+  async analyzeCoreFramework() {
+    const coreFrameworkPath = 'agents/_store/projects/_core';
+    const workflowFiles = this.findFiles(path.join(coreFrameworkPath, 'rules/01__AI-RUN'), '.mdc');
+    
+    const analysis = {
+      workflowStages: workflowFiles.length,
+      templates: this.findFiles(path.join(coreFrameworkPath, 'rules/02__AI-DOCS'), '.mdc').length,
+      specifications: this.findFiles(path.join(coreFrameworkPath, 'rules/03__SPECS'), '.mdc').length,
+      totalFiles: this.findFiles(coreFrameworkPath, '.mdc').length
+    };
+    
+    return analysis;
+  }
+
+  /**
+   * Get core framework suggestions
+   */
+  async getCoreFrameworkSuggestions(context) {
+    const coreAnalysis = await this.analyzeCoreFramework();
+    
+    return {
+      framework: 'Agentic Coding Framework',
+      version: '2.0',
+      location: 'agents/_store/projects/_core',
+      analysis: coreAnalysis,
+      recommendations: [
+        'Use core workflow templates for new projects',
+        'Reference established patterns from core framework',
+        'Leverage proven specifications and documentation templates'
+      ]
+    };
+  }
+
 }
 
-module.exports = FileAnalyzer; 
+module.exports = FileAnalyzer;

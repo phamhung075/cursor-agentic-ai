@@ -319,6 +319,52 @@ class FileManager {
     const fileName = this.getStandardFileName(phase);
     return this.getFilePath(fileName, projectName);
   }
+
+  /**
+   * Get core framework path
+   */
+  getCoreFrameworkPath() {
+    return path.resolve('agents/_store/projects/_core');
+  }
+
+  /**
+   * Access core workflow files
+   */
+  getCoreWorkflowFiles() {
+    const workflowPath = path.join(this.getCoreFrameworkPath(), 'rules/01__AI-RUN');
+    return this.listFiles(workflowPath, '.mdc');
+  }
+
+  /**
+   * Access core templates
+   */
+  getCoreTemplates() {
+    const templatesPath = path.join(this.getCoreFrameworkPath(), 'rules/02__AI-DOCS');
+    return this.listFiles(templatesPath, '.mdc');
+  }
+
+  /**
+   * Access core specifications
+   */
+  getCoreSpecs() {
+    const specsPath = path.join(this.getCoreFrameworkPath(), 'rules/03__SPECS');
+    return this.listFiles(specsPath, '.mdc');
+  }
+
+  /**
+   * List files in directory with extension filter
+   */
+  async listFiles(directory, extension) {
+    try {
+      const files = await fs.readdir(directory);
+      return files
+        .filter(file => file.endsWith(extension))
+        .map(file => path.join(directory, file));
+    } catch (error) {
+      return [];
+    }
+  }
+
 }
 
-module.exports = FileManager; 
+module.exports = FileManager;

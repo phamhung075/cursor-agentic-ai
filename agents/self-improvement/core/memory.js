@@ -682,6 +682,33 @@ class MemoryManager {
       currentProject: this.currentProject
     };
   }
+
+  /**
+   * Store core framework learning
+   */
+  async storeCoreFrameworkLearning(pattern, context = {}) {
+    const metadata = {
+      type: 'core_framework',
+      source: 'agents/_store/projects/_core',
+      ...context,
+      timestamp: Date.now()
+    };
+    
+    return await this.storeAgentMemory('core_learning', JSON.stringify(pattern), metadata);
+  }
+
+  /**
+   * Retrieve core framework patterns
+   */
+  async getCoreFrameworkPatterns(query) {
+    const memories = await this.searchAgentMemories(query, {
+      filter: { type: 'core_framework' },
+      limit: 10
+    });
+    
+    return memories.map(memory => JSON.parse(memory.content));
+  }
+
 }
 
-module.exports = MemoryManager; 
+module.exports = MemoryManager;

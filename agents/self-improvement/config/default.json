@@ -34,7 +34,7 @@
         "fix": "Use textContent or sanitize input properly"
       },
       "hardcoded credentials",
-      "SQL injection vulnerability", 
+      "SQL injection vulnerability",
       "XSS vulnerability",
       "insecure randomness",
       "missing authentication",
@@ -89,7 +89,7 @@
         "betterApproach": "Use strict equality (===) for better type safety"
       },
       "missing error handling",
-      "no input validation", 
+      "no input validation",
       "hardcoded values",
       "missing documentation",
       "no type checking",
@@ -117,13 +117,29 @@
   },
   "detectionRules": {
     "maxIssuesPerAnalysis": 5,
-    "priorityOrder": ["HIGH", "MEDIUM", "LOW"],
+    "priorityOrder": [
+      "HIGH",
+      "MEDIUM",
+      "LOW"
+    ],
     "contextSensitive": true,
     "learningEnabled": true,
     "priorityLevels": {
-      "HIGH": ["security", "critical bugs", "breaking changes"],
-      "MEDIUM": ["obsolete technology", "performance issues", "maintainability"],
-      "LOW": ["code style", "minor improvements", "suggestions"]
+      "HIGH": [
+        "security",
+        "critical bugs",
+        "breaking changes"
+      ],
+      "MEDIUM": [
+        "obsolete technology",
+        "performance issues",
+        "maintainability"
+      ],
+      "LOW": [
+        "code style",
+        "minor improvements",
+        "suggestions"
+      ]
     }
   },
   "messages": {
@@ -146,7 +162,7 @@
     "prompt": "🤖 > ",
     "commands": {
       "analyze": "Analyze specific .mdc file",
-      "improve": "Get improvement suggestions", 
+      "improve": "Get improvement suggestions",
       "context": "Set current work context",
       "smart-detect": "Analyze based on current context",
       "memory": "Memory management commands",
@@ -163,9 +179,16 @@
     "storeSuccessPatterns": true,
     "contextAwareMemory": true,
     "feedbackWeight": {
-      "approved": 1.0,
+      "approved": 1,
       "rejected": -0.5,
       "modified": 0.5
     }
+  },
+  "coreFramework": {
+    "path": "agents/_store/projects/_core",
+    "rulesPath": "agents/_store/projects/_core/rules",
+    "workflowPath": "agents/_store/projects/_core/rules/01__AI-RUN",
+    "templatesPath": "agents/_store/projects/_core/rules/02__AI-DOCS",
+    "specsPath": "agents/_store/projects/_core/rules/03__SPECS"
   }
-} 
+}

@@ -1,0 +1,44 @@
+# Roo Task Workflow: A Comprehensive Guide
+### Leveraging Roo's Orchestration and Coding Capabilities for Task Management
+
+## Overview
+Roo, as your integrated AI assistant, handles task management directly. No separate installation or external tools are required. This document outlines how to guide Roo Orchestrator through the project task definition process. Roo Orchestrator will manage the overall workflow and may leverage Roo Code mode for specific technical task detailing or code stub generation.
+
+## Context Awareness
+
+**Previous Phases:**
+- Idea Document (AI_Design_Agent_Optimization.mdc).**
+   - Create clear acceptance criteria for each task, **including design and UX/02__AI-DOCS/TaskManagement/02__AI-DOCS/Conventions/02__AI-DOCS/Conventions/03__SPECS/features/02__AI-DOCS/Architecture/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc) ensures a correct and logical sequence of development. Prerequisites are explicitly stated, preventing out-of-order work and ensuring that foundational components are in place before dependent tasks are attempted.
+
+Roo Orchestrator plays a key role in guiding this detailed decomposition process, ensuring that features from the PRD are meticulously broken down. Subsequently, Roo Code mode benefits immensely from these well-defined, granular tasks, as they provide the precise instructions needed to generate accurate, testable, and high-quality code. This hierarchical and detailed approach to task management is a cornerstone of effective AI-driven (agentic) software development.
+### Step 3: Task Refinement
+
+After receiving the complete task breakdown:
+
+1. Review all tasks for clarity and appropriate sizing
+2. Identify any tasks that need further decomposition
+3. Request refinement of specific tasks if needed:
+   User to Roo: 'Roo, please refine task {{task_id}} - "{{task_name}}".
+
+   This task appears to be too large/tasks/02__AI-DOCS/TaskManagement/01__AI-RUN/01__AI-RUN/01__AI-RUN/projet/PRD_template/02__AI-DOCS/03__SPECS/tasks/tasks/02__AI-DOCS/02__AI-DOCS/Conventions/02__AI-DOCS/Conventions/03__SPECS/02__AI-DOCS/Documentation/tasks/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
+* This file will be referenced in the implementation phase.
+
+---
+
+## Task Refinement Follow-up
+
+After receiving the initial task breakdown, you may need to further refine complex tasks:
+
+User to Roo: '**Action:** Refine task breakdown for epic [epic_id] and identify subtasks.
+
+**Instructions:**
+
+1. Review the detailed specification for epic [epic_id]
+2. Identify complex components that need further breakdown
+3. For each complex component, create actionable subtasks
+4. Ensure subtasks are granular (4 hours max) but not fragmented
+5. Maintain clear parent-child relationships in the task hierarchy
+
+**Expected Response:**
+Roo will provide a list of newly created subtasks with their details and confirm their integration into the project's task structure.
+*   Confirmation that these subtasks have been added to the project tracking system under the parent epic.

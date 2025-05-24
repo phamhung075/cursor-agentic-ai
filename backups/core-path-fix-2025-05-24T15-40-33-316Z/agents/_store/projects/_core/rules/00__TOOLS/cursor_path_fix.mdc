@@ -1,0 +1,259 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Cursor Path Fix Guide
+
+## Overview
+
+This guide helps AI agents systematically identify and fix broken file path links in .mdc files within the cursor rules project structure. All links should use the full path format with proper markdown linking syntax.
+
+## File Structure Reference
+
+```
+.cursor/rules/
+├── 00__TOOLS/
+│   └── cursor_path_fix.mdc
+├── 01__AI-RUN/
+│   ├── [00_Getting_Started.mdc](../01__AI-RUN/00_Getting_Started.mdc)
+│   ├── 01_AutoPilot.mdc
+│   ├── [01_Idea.mdc](../01__AI-RUN/01_Idea.mdc)
+│   ├── [02_Market_Research.mdc](../01__AI-RUN/02_Market_Research.mdc)
+│   ├── [core_concept.mdc](../projet/03_Core_Concept/core_concept.mdc)
+│   ├── [04_PRD_Generation.mdc](../01__AI-RUN/04_PRD_Generation.mdc)
+│   ├── [05_Specs_Docs.mdc](../01__AI-RUN/05_Specs_Docs.mdc)
+│   ├── [06_Task_Manager.mdc](../01__AI-RUN/06_Task_Manager.mdc)
+│   ├── [07_Start_Building.mdc](../01__AI-RUN/07_Start_Building.mdc)
+│   ├── [08_Testing.mdc](../01__AI-RUN/08_Testing.mdc)
+│   ├── [09_Deployment.mdc](../01__AI-RUN/09_Deployment.mdc)
+│   └── Template/
+│       ├── [MCP-Context.mdc](../01__AI-RUN/Template/MCP-Context.mdc)
+│       ├── [MCP-Server.json](../01__AI-RUN/Template/MCP-Server.json)
+│       └── [PRD_template.mdc](../01__AI-RUN/Template/PRD_template.mdc)
+├── 02__AI-DOCS/
+│   ├── Documentation/
+│   │   ├── AI_Coding_Agent_Optimization.mdc
+│   │   ├── [AI_Design_Agent_Optimization.mdc](../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)
+│   │   └── [AI_Task_Management_Optimization.mdc](../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc)
+│   ├── AI-Coder/
+│   │   ├── CommonTasks/
+│   │   │   └── [api_endpoint_template.mdc](../02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc)
+│   │   ├── ContextPrime/
+│   │   │   └── [context_prime_template.mdc](../02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc)
+│   │   ├── TestGenerators/
+│   │   │   └── [test_generator_template.mdc](../02__AI-DOCS/AI-Coder/TestGenerators/test_generator_template.mdc)
+│   │   └── Refactoring/
+│   │       └── [refactoring_template.mdc](../02__AI-DOCS/AI-Coder/Refactoring/refactoring_template.mdc)
+│   ├── Architecture/
+│   │   └── architecture_template.mdc
+│   ├── BusinessLogic/
+│   │   └── [business_logic_template.mdc](../02__AI-DOCS/BusinessLogic/business_logic_template.mdc)
+│   ├── Conventions/
+│   │   ├── [coding_conventions_template.mdc](../02__AI-DOCS/Conventions/coding_conventions_template.mdc)
+│   │   └── [design_conventions_template.mdc](../02__AI-DOCS/Conventions/design_conventions_template.mdc)
+│   ├── Deployment/
+│   │   └── [deployment_guide_template.mdc](../02__AI-DOCS/Deployment/deployment_guide_template.mdc)
+│   ├── Integrations/
+│   │   └── [api_integration_template.mdc](../02__AI-DOCS/Integrations/api_integration_template.mdc)
+│   └── TaskManagement/
+│       ├── [Roo_Task_Workflow.mdc](../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)
+│       └── [Tasks_JSON_Structure.mdc](../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+├── 03__SPECS/
+│   ├── features/
+│   │   └── [feature_spec_template.mdc](../03__SPECS/features/feature_spec_template.mdc)
+│   └── bugfixes/
+│       └── [bugfix_spec_template.mdc](../03__SPECS/bugfixes/bugfix_spec_template.mdc)
+├── tasks/
+│   └── tasks.json
+├── [Inspiration.mdc](../Inspiration.mdc)
+├── [logic.mdc](../logic.mdc)
+├── [workflow.mdc](../workflow.mdc)
+├── [README.mdc](../README.mdc)
+└── [project_session_state.json](../project_session_state.json)
+```
+
+## Link Format Standards
+
+### Corremarkdown
+[filename.mdc](../pdc)
+`
+- `[t.mdc](../01__AI-RUN/01_AutoPilot.mdc)`
+- `[AI_Coding_Agent_Optimization.mdc](.cI-DOCS/Docing_Agent_Optimization.mdc)`
+- `[tasks.json](../tasks/tasks.json)
+```
+
+### Pattern 2: Relative Path
+# BROKEN
+[architecture_template.mdc](../02__AI-DOCS/Architecture/architecture_template.mdc)
+
+# FIXED
+[architecture_template.mdc](../02__AI-DOCS/Architecture/architecture_template.mdc)
+```
+
+### Pattern 3: Missing File Extension
+```markdown
+# BROKEN
+[01_AutoPilot](../01__AI-RUN/01_AutoPilot)
+
+# FIXED
+[01_AutoPilot.mdc](../01__AI-RUN/01_AutoPilot.mdc)
+```
+
+### Pattern 4: @ Symbol References
+```markdown
+# BROKEN
+@`[01_AutoPilot.mdc](../01__AI-RUN/01_AutoPilot.mdc)`
+
+# FIXED
+[01_AutoPilot.mdc](../01__AI-RUN/01_AutoPilot.mdc)
+```
+
+## Systematic Fix Process
+
+### Step 1: Identify Files to Check
+Search for all .mdc files in the project structure that may contain links:
+
+**Primary Files to Check:**
+- All files in `../01__AI-RUN/`
+- All files in `../02__AI-DOCS/`
+- All files in `../03__SPECS/`
+- Root level .mdc files
+
+### Step 2: Scan for Broken Link Patterns
+Look for these patterns in each file:
+1. `](` followed by paths not starting with `../`
+2. `@` followed by backticks and filename
+3. Links without proper file extensions
+4. Relative paths starting with `../`
+
+### Step 3: Apply Fixes
+For each broken link found:
+
+1. **Identify the target file** from the reference structure above
+2. **Construct the correct path** using format: `../[directory]/[filename]`
+3. **Replace the broken link** with the correct format
+
+### Step 4: Validation
+After fixing links, verify:
+- All paths start with `../`
+- All referenced files exist in the structure
+- Link text matches the actual filename
+- Proper markdown link syntax is used
+
+## Quick Reference Map
+
+### 01__AI-RUN Files
+- `[00_Getting_Started.mdc](../01__AI-RUN/00_Getting_Started.mdc)` → `[00_Getting_Started.mdc](../01__AI-RUN/00_Getting_Started.mdc)`
+- `[01_AutoPilot.mdc](../01__AI-RUN/01_AutoPilot.mdc)` → `[01_AutoPilot.mdc](../01__AI-RUN/01_AutoPilot.mdc)`
+- `[01_Idea.mdc](../01__AI-RUN/01_Idea.mdc)` → `[01_Idea.mdc](../01__AI-RUN/01_Idea.mdc)`
+- `[02_Market_Research.mdc](../01__AI-RUN/02_Market_Research.mdc)` → `[02_Market_Research.mdc](../01__AI-RUN/02_Market_Research.mdc)`
+- `[core_concept.mdc](../projet/03_Core_Concept/core_concept.mdc)` → `[core_concept.mdc](../projet/03_Core_Concept/core_concept.mdc)`
+- `[04_PRD_Generation.mdc](../01__AI-RUN/04_PRD_Generation.mdc)` → `[04_PRD_Generation.mdc](../01__AI-RUN/04_PRD_Generation.mdc)`
+- `[05_Specs_Docs.mdc](../01__AI-RUN/05_Specs_Docs.mdc)` → `[05_Specs_Docs.mdc](../01__AI-RUN/05_Specs_Docs.mdc)`
+- `[06_Task_Manager.mdc](../01__AI-RUN/06_Task_Manager.mdc)` → `[06_Task_Manager.mdc](../01__AI-RUN/06_Task_Manager.mdc)`
+- `[07_Start_Building.mdc](../01__AI-RUN/07_Start_Building.mdc)` → `[07_Start_Building.mdc](../01__AI-RUN/07_Start_Building.mdc)`
+- `[08_Testing.mdc](../01__AI-RUN/08_Testing.mdc)` → `[08_Testing.mdc](../01__AI-RUN/08_Testing.mdc)`
+- `[09_Deployment.mdc](../01__AI-RUN/09_Deployment.mdc)` → `[09_Deployment.mdc](../01__AI-RUN/09_Deployment.mdc)`
+
+### 02__AI-DOCS Files
+- `[AI_Coding_Agent_Optimization.mdc](../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)` → `[AI_Coding_Agent_Optimization.mdc](../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)`
+- `[AI_Design_Agent_Optimization.mdc](../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)` → `[AI_Design_Agent_Optimization.mdc](../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)`
+- `[AI_Task_Management_Optimization.mdc](../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc)` → `[AI_Task_Management_Optimization.mdc](../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc)`
+- `[architecture_template.mdc](../02__AI-DOCS/Architecture/architecture_template.mdc)` → `[architecture_template.mdc](../02__AI-DOCS/Architecture/architecture_template.mdc)`
+- `[coding_conventions_template.mdc](../02__AI-DOCS/Conventions/coding_conventions_template.mdc)` → `[coding_conventions_template.mdc](../02__AI-DOCS/Conventions/coding_conventions_template.mdc)`
+- `[design_conventions_template.mdc](../02__AI-DOCS/Conventions/design_conventions_template.mdc)` → `[design_conventions_template.mdc](../02__AI-DOCS/Conventions/design_conventions_template.mdc)`
+- `[Roo_Task_Workflow.mdc](../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)` → `[Roo_Task_Workflow.mdc](../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)`
+- `[Tasks_JSON_Structure.mdc](../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)` → `[Tasks_JSON_Structure.mdc](../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)`
+
+### 03__SPECS Files
+- `[feature_spec_template.mdc](../03__SPECS/features/feature_spec_template.mdc)` → `[feature_spec_template.mdc](../03__SPECS/features/feature_spec_template.mdc)`
+- `[bugfix_spec_template.mdc](../03__SPECS/bugfixes/bugfix_spec_template.mdc)` → `[bugfix_spec_template.mdc](../03__SPECS/bugfixes/bugfix_spec_template.mdc)`
+
+### Root Files
+- `[tasks.json](../tasks/tasks.json)` → `[tasks.json](../tasks/tasks.json)`
+- `[Inspiration.mdc](../Inspiration.mdc)` → `[Inspiration.mdc](../Inspiration.mdc)`
+- `[logic.mdc](../logic.mdc)` → `[logic.mdc](../logic.mdc)`
+- `[workflow.mdc](../workflow.mdc)` → `[workflow.mdc](../workflow.mdc)`
+- `[README.mdc](../README.mdc)` → `[README.mdc](../README.mdc)`
+- `[project_session_state.json](../project_session_state.json)` → `[project_session_state.json](../project_session_state.json)`
+
+## Implementation Instructions
+
+### For AI Agents:
+1. **Load this guide** before starting any link-fixing tasks
+2. **Scan each .mdc file** systematically for broken links
+3. **Apply fixes** using the reference map above
+4. **Validate** all links after fixing
+5. **Report** summary of fixes made
+
+### Automation Script Template:
+```bash
+# Find all .mdc files with potential broken links
+find .cursor/rules -name "*.mdc" -exec grep -l "\](" {} \;
+
+# Check for @ symbol references
+find .cursor/rules -name "*.mdc" -exec grep -l "@\`" {} \;
+
+# Validate fixed links
+find .cursor/rules -name "*.mdc" -exec grep -l "\](.cur`
+
+## Quality Assurance
+
+After applying fixes, ensure:
+- [ ] All links use the `../` prefix
+- [ ] All referenced files exist in the project structure
+- [ ] No broken relative paths remain
+- [ ] No @ symbol references remain
+- [ ] All file extensions are included
+- [ ] Markdown syntax is correct
+
+This guide ensures consistent, reliable file linking throughout the cursor rules project structure.
+
+## Continue Update and Development
+
+This guide is a **living document** that must be continuously updated as the project evolves. 
+
+### Dynamic Update Process
+
+**When new files are suggested or discovered:**
+
+1. **AI Agent Responsibility**: If suggestions are provided for missing files, the AI agent MUST immediately re-update this `[cursor_path_fix.mdc](../00__TOOLS/cursor_path_fix.mdc)` [cursor_path_fix.mdc](../00__TOOLS/cursor_path_fix.mdc) file to include:
+   - New file paths in the File Structure Reference
+   - Updated Quick Reference Map entries
+   - Any new broken link patterns specific to the new files
+   - Updated validation procedures if needed
+
+2. **Path Discovery**: Regularly scan `./.cursor/rules` directory structure to identify:
+   - Newly created files not yet documented
+   - Changed file locations
+   - Removed files that should be cleaned from references
+   - New subdirectories or organizational changes
+
+3. **Adaptation Requirements**: When updating this guide, ensure:
+   - All new files follow the standard `../` prefix format
+   - File structure reference section is updated with new entries
+   - Quick reference map includes correct paths for new files
+   - Any special linking rules for new file types are documented
+
+### Update Workflow
+
+```markdown
+1. Receive suggestion for missing file(s)
+2. Verify file existence in ./.cursor/rules
+3. Update File Structure Reference section
+4. Update Quick Reference Map section  
+5. Add any new broken link patterns if applicable
+6. Update validation checklist if needed
+7. Test all new path references
+```
+
+### Version Control
+
+Each update to this guide should maintain:
+- Consistency with existing format standards
+- Backward compatibility with current links
+- Clear documentation of new additions
+- Validation of all referenced paths
+
+**Note**: This guide will be re-updated each time new files are identified or project structure changes to ensure it remains the authoritative source for link fixing in the cursor rules project.
