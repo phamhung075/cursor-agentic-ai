@@ -16,61 +16,61 @@ This guide helps AI agents systematically identify and fix broken file path link
 ├── 00__TOOLS/
 │   └── cursor_path_fix.mdc
 ├── 01__AI-RUN/
-│   ├── 00_Getting_Started.mdc
+│   ├── [00_Getting_Started.mdc](.cursor/rules/01__AI-RUN/00_Getting_Started.mdc)
 │   ├── 01_AutoPilot.mdc
-│   ├── 01_Idea.mdc
-│   ├── 02_Market_Research.mdc
-│   ├── core_concept.mdc
-│   ├── 04_PRD_Generation.mdc
-│   ├── 05_Specs_Docs.mdc
-│   ├── 06_Task_Manager.mdc
-│   ├── 07_Start_Building.mdc
-│   ├── 08_Testing.mdc
-│   ├── 09_Deployment.mdc
+│   ├── [01_Idea.mdc](.cursor/rules/01__AI-RUN/01_Idea.mdc)
+│   ├── [02_Market_Research.mdc](.cursor/rules/01__AI-RUN/02_Market_Research.mdc)
+│   ├── [core_concept.mdc](.cursor/rules/projet/03_Core_Concept/core_concept.mdc)
+│   ├── [04_PRD_Generation.mdc](.cursor/rules/01__AI-RUN/04_PRD_Generation.mdc)
+│   ├── [05_Specs_Docs.mdc](.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc)
+│   ├── [06_Task_Manager.mdc](.cursor/rules/01__AI-RUN/06_Task_Manager.mdc)
+│   ├── [07_Start_Building.mdc](.cursor/rules/01__AI-RUN/07_Start_Building.mdc)
+│   ├── [08_Testing.mdc](.cursor/rules/01__AI-RUN/08_Testing.mdc)
+│   ├── [09_Deployment.mdc](.cursor/rules/01__AI-RUN/09_Deployment.mdc)
 │   └── Template/
-│       ├── MCP-Context.mdc
-│       ├── MCP-Server.json
-│       └── PRD_template.mdc
+│       ├── [MCP-Context.mdc](.cursor/rules/01__AI-RUN/Template/MCP-Context.mdc)
+│       ├── [MCP-Server.json](.cursor/rules/01__AI-RUN/Template/MCP-Server.json)
+│       └── [PRD_template.mdc](.cursor/rules/01__AI-RUN/Template/PRD_template.mdc)
 ├── 02__AI-DOCS/
 │   ├── Documentation/
 │   │   ├── AI_Coding_Agent_Optimization.mdc
-│   │   ├── AI_Design_Agent_Optimization.mdc
-│   │   └── AI_Task_Management_Optimization.mdc
+│   │   ├── [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)
+│   │   └── [AI_Task_Management_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc)
 │   ├── AI-Coder/
 │   │   ├── CommonTasks/
-│   │   │   └── api_endpoint_template.mdc
+│   │   │   └── [api_endpoint_template.mdc](.cursor/rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc)
 │   │   ├── ContextPrime/
-│   │   │   └── context_prime_template.mdc
+│   │   │   └── [context_prime_template.mdc](.cursor/rules/02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc)
 │   │   ├── TestGenerators/
-│   │   │   └── test_generator_template.mdc
+│   │   │   └── [test_generator_template.mdc](.cursor/rules/02__AI-DOCS/AI-Coder/TestGenerators/test_generator_template.mdc)
 │   │   └── Refactoring/
-│   │       └── refactoring_template.mdc
+│   │       └── [refactoring_template.mdc](.cursor/rules/02__AI-DOCS/AI-Coder/Refactoring/refactoring_template.mdc)
 │   ├── Architecture/
 │   │   └── architecture_template.mdc
 │   ├── BusinessLogic/
-│   │   └── business_logic_template.mdc
+│   │   └── [business_logic_template.mdc](.cursor/rules/02__AI-DOCS/BusinessLogic/business_logic_template.mdc)
 │   ├── Conventions/
-│   │   ├── coding_conventions_template.mdc
-│   │   └── design_conventions_template.mdc
+│   │   ├── [coding_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc)
+│   │   └── [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)
 │   ├── Deployment/
-│   │   └── deployment_guide_template.mdc
+│   │   └── [deployment_guide_template.mdc](.cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc)
 │   ├── Integrations/
-│   │   └── api_integration_template.mdc
+│   │   └── [api_integration_template.mdc](.cursor/rules/02__AI-DOCS/Integrations/api_integration_template.mdc)
 │   └── TaskManagement/
-│       ├── Roo_Task_Workflow.mdc
-│       └── Tasks_JSON_Structure.mdc
+│       ├── [Roo_Task_Workflow.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)
+│       └── [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
 ├── 03__SPECS/
 │   ├── features/
-│   │   └── feature_spec_template.mdc
+│   │   └── [feature_spec_template.mdc](.cursor/rules/03__SPECS/features/feature_spec_template.mdc)
 │   └── bugfixes/
-│       └── bugfix_spec_template.mdc
+│       └── [bugfix_spec_template.mdc](.cursor/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc)
 ├── tasks/
 │   └── tasks.json
-├── Inspiration.mdc
-├── logic.mdc
-├── workflow.mdc
-├── README.mdc
-└── project_session_state.json
+├── [Inspiration.mdc](.cursor/rules/Inspiration.mdc)
+├── [logic.mdc](.cursor/rules/logic.mdc)
+├── [workflow.mdc](.cursor/rules/workflow.mdc)
+├── [README.mdc](.cursor/rules/README.mdc)
+└── [project_session_state.json](.cursor/rules/project_session_state.json)
 ```
 
 ## Link Format Standards
@@ -80,10 +80,7 @@ This guide helps AI agents systematically identify and fix broken file path link
 `
 - `[t.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)`
 - `[AI_Coding_Agent_Optimization.mdc](.cI-DOCS/Docing_Agent_Optimization.mdc)`
-- `[tasks.json](.cursor/rules/tan Broken L1: Missing Path Prefix
-```markdown
-# BROKEN
-[01_AutoPilot.mdc](01utoPilot.mAutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)
+- `[tasks.json](.cursor/rules/tasks/tasks.json)
 ```
 
 ### Pattern 2: Relative Path
@@ -106,7 +103,7 @@ This guide helps AI agents systematically identify and fix broken file path link
 ### Pattern 4: @ Symbol References
 ```markdown
 # BROKEN
-@`01_AutoPilot.mdc`
+@`[01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)`
 
 # FIXED
 [01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)
@@ -118,9 +115,9 @@ This guide helps AI agents systematically identify and fix broken file path link
 Search for all .mdc files in the project structure that may contain links:
 
 **Primary Files to Check:**
-- All files in `01__AI-RUN/`
-- All files in `02__AI-DOCS/`
-- All files in `03__SPECS/`
+- All files in `.cursor/rules/01__AI-RUN/`
+- All files in `.cursor/rules/02__AI-DOCS/`
+- All files in `.cursor/rules/03__SPECS/`
 - Root level .mdc files
 
 ### Step 2: Scan for Broken Link Patterns
@@ -147,39 +144,39 @@ After fixing links, verify:
 ## Quick Reference Map
 
 ### 01__AI-RUN Files
-- `00_Getting_Started.mdc` → `.cursor/rules/01__AI-RUN/00_Getting_Started.mdc`
-- `01_AutoPilot.mdc` → `.cursor/rules/01__AI-RUN/01_AutoPilot.mdc`
-- `.cursor/rules/01__AI-RUN/01_Idea.mdc` → `.cursor/rules/01__AI-RUN/01_Idea.mdc`
-- `02_Market_Research.mdc` → `.cursor/rules/01__AI-RUN/02_Market_Research.mdc`
-- `core_concept.mdc` → `.cursor/rules/01__AI-RUN/core_concept.mdc`
-- `04_PRD_Generation.mdc` → `.cursor/rules/01__AI-RUN/04_PRD_Generation.mdc`
-- `05_Specs_Docs.mdc` → `.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc`
-- `06_Task_Manager.mdc` → `.cursor/rules/01__AI-RUN/06_Task_Manager.mdc`
-- `07_Start_Building.mdc` → `.cursor/rules/01__AI-RUN/07_Start_Building.mdc`
-- `08_Testing.mdc` → `.cursor/rules/01__AI-RUN/08_Testing.mdc`
-- `09_Deployment.mdc` → `.cursor/rules/01__AI-RUN/09_Deployment.mdc`
+- `[00_Getting_Started.mdc](.cursor/rules/01__AI-RUN/00_Getting_Started.mdc)` → `[00_Getting_Started.mdc](.cursor/rules/01__AI-RUN/00_Getting_Started.mdc)`
+- `[01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)` → `[01_AutoPilot.mdc](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)`
+- `[01_Idea.mdc](.cursor/rules/01__AI-RUN/01_Idea.mdc)` → `[01_Idea.mdc](.cursor/rules/01__AI-RUN/01_Idea.mdc)`
+- `[02_Market_Research.mdc](.cursor/rules/01__AI-RUN/02_Market_Research.mdc)` → `[02_Market_Research.mdc](.cursor/rules/01__AI-RUN/02_Market_Research.mdc)`
+- `[core_concept.mdc](.cursor/rules/projet/03_Core_Concept/core_concept.mdc)` → `[core_concept.mdc](.cursor/rules/projet/03_Core_Concept/core_concept.mdc)`
+- `[04_PRD_Generation.mdc](.cursor/rules/01__AI-RUN/04_PRD_Generation.mdc)` → `[04_PRD_Generation.mdc](.cursor/rules/01__AI-RUN/04_PRD_Generation.mdc)`
+- `[05_Specs_Docs.mdc](.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc)` → `[05_Specs_Docs.mdc](.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc)`
+- `[06_Task_Manager.mdc](.cursor/rules/01__AI-RUN/06_Task_Manager.mdc)` → `[06_Task_Manager.mdc](.cursor/rules/01__AI-RUN/06_Task_Manager.mdc)`
+- `[07_Start_Building.mdc](.cursor/rules/01__AI-RUN/07_Start_Building.mdc)` → `[07_Start_Building.mdc](.cursor/rules/01__AI-RUN/07_Start_Building.mdc)`
+- `[08_Testing.mdc](.cursor/rules/01__AI-RUN/08_Testing.mdc)` → `[08_Testing.mdc](.cursor/rules/01__AI-RUN/08_Testing.mdc)`
+- `[09_Deployment.mdc](.cursor/rules/01__AI-RUN/09_Deployment.mdc)` → `[09_Deployment.mdc](.cursor/rules/01__AI-RUN/09_Deployment.mdc)`
 
 ### 02__AI-DOCS Files
-- `AI_Coding_Agent_Optimization.mdc` → `.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc`
-- `AI_Design_Agent_Optimization.mdc` → `.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`
-- `AI_Task_Management_Optimization.mdc` → `.cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc`
-- `architecture_template.mdc` → `.cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc`
-- `coding_conventions_template.mdc` → `.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc`
-- `design_conventions_template.mdc` → `.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc`
-- `Roo_Task_Workflow.mdc` → `.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`
-- `Tasks_JSON_Structure.mdc` → `.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`
+- `[AI_Coding_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)` → `[AI_Coding_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)`
+- `[AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)` → `[AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)`
+- `[AI_Task_Management_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc)` → `[AI_Task_Management_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc)`
+- `[architecture_template.mdc](.cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc)` → `[architecture_template.mdc](.cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc)`
+- `[coding_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc)` → `[coding_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc)`
+- `[design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)` → `[design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)`
+- `[Roo_Task_Workflow.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)` → `[Roo_Task_Workflow.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)`
+- `[Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)` → `[Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)`
 
 ### 03__SPECS Files
-- `feature_spec_template.mdc` → `.cursor/rules/03__SPECS/features/feature_spec_template.mdc`
-- `bugfix_spec_template.mdc` → `.cursor/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc`
+- `[feature_spec_template.mdc](.cursor/rules/03__SPECS/features/feature_spec_template.mdc)` → `[feature_spec_template.mdc](.cursor/rules/03__SPECS/features/feature_spec_template.mdc)`
+- `[bugfix_spec_template.mdc](.cursor/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc)` → `[bugfix_spec_template.mdc](.cursor/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc)`
 
 ### Root Files
-- `tasks.json` → `.cursor/rules/tasks/tasks.json`
-- `Inspiration.mdc` → `.cursor/rules/Inspiration.mdc`
-- `logic.mdc` → `.cursor/rules/logic.mdc`
-- `workflow.mdc` → `.cursor/rules/workflow.mdc`
-- `README.mdc` → `.cursor/rules/README.mdc`
-- `project_session_state.json` → `.cursor/rules/project_session_state.json`
+- `[tasks.json](.cursor/rules/tasks/tasks.json)` → `[tasks.json](.cursor/rules/tasks/tasks.json)`
+- `[Inspiration.mdc](.cursor/rules/Inspiration.mdc)` → `[Inspiration.mdc](.cursor/rules/Inspiration.mdc)`
+- `[logic.mdc](.cursor/rules/logic.mdc)` → `[logic.mdc](.cursor/rules/logic.mdc)`
+- `[workflow.mdc](.cursor/rules/workflow.mdc)` → `[workflow.mdc](.cursor/rules/workflow.mdc)`
+- `[README.mdc](.cursor/rules/README.mdc)` → `[README.mdc](.cursor/rules/README.mdc)`
+- `[project_session_state.json](.cursor/rules/project_session_state.json)` → `[project_session_state.json](.cursor/rules/project_session_state.json)`
 
 ## Implementation Instructions
 
@@ -221,7 +218,7 @@ This guide is a **living document** that must be continuously updated as the pro
 
 **When new files are suggested or discovered:**
 
-1. **AI Agent Responsibility**: If suggestions are provided for missing files, the AI agent MUST immediately re-update this `cursor_path_fix.mdc` [cursor_path_fix.mdc](.cursor/rules/00__TOOLS/cursor_path_fix.mdc) file to include:
+1. **AI Agent Responsibility**: If suggestions are provided for missing files, the AI agent MUST immediately re-update this `[cursor_path_fix.mdc](.cursor/rules/00__TOOLS/cursor_path_fix.mdc)` [cursor_path_fix.mdc](.cursor/rules/00__TOOLS/cursor_path_fix.mdc) file to include:
    - New file paths in the File Structure Reference
    - Updated Quick Reference Map entries
    - Any new broken link patterns specific to the new files

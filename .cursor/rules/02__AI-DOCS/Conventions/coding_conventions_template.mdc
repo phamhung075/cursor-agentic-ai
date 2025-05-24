@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document outlines the coding conventions and style guidelines for the project. Following these conventions ensures consistency, readability, and maintainability across the codebase. It should be used in conjunction with the [**Design Conventions and Style Guide**](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) which details the UX/UI principles and visual standards.
+This document outlines the coding conventions and style guidelines for the project. Following these conventions ensures consistency, readability, and maintainability across the codebase. It should be used in conjunction with the [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) which details the UX/UI principles and visual standards.
 
 ## General Principles
 
@@ -215,7 +215,7 @@ describe('calculateTotalPrice', () => {
 - Include proper ARIA attributes
 - Ensure keyboard navigation works
 - Maintain sufficient color contrast
-- Refer to the [**Design Conventions and Style Guide**](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) for detailed UX/UI principles.
+- Refer to the [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) for detailed UX/UI principles.
 
 ## Design and User Experience (UX/UI) Principles
 
@@ -288,17 +288,17 @@ In addition to the points in the "Accessibility" section:
 ## Code Review Checklist
 
 - Does the code follow the conventions in this document?
-- **Has the [Design Conventions and Style Guide](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) been completed and is it being followed?**
+- **Has the [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) been completed and is it being followed?**
 - Is the code well-tested?
 - Are there any security concerns?
 - Is the code efficient and performant?
 - **Are the design and UX/UI compliant with the principles defined in both convention documents (modernity, intuitiveness, consistency, aesthetics)?**
-- **Is the Tailwind CSS implementation clean and consistent (see [Design Conventions](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc))?**
-- **Are the components responsive and do they display correctly on different screen sizes (see [Design Conventions](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc))?**
-- **Are interactions and animations smooth and do they add value (see [Design Conventions](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc))?**
+- **Is the Tailwind CSS implementation clean and consistent (see [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc))?**
+- **Are the components responsive and do they display correctly on different screen sizes (see [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc))?**
+- **Are interactions and animations smooth and do they add value (see [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc))?**
 - Is the code accessible? (Vérifier les points spécifiques des sections UX/UI et Accessibilité des deux documents de conventions)
 - Is the documentation sufficient?
  
 ---
  
-*This document, along with the [**Design Conventions and Style Guide**](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc), should be reviewed and updated regularly as the project evolves.*
+*This document, along with the [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc), should be reviewed and updated regularly as the project evolves.*

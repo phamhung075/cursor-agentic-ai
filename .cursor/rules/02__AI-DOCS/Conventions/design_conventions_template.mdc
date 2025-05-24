@@ -4,11 +4,11 @@
 
 This document outlines the design conventions and style guidelines for the project, aiming for a professional-grade User Experience (UX) and User Interface (UI) that aligns with modern best practices, such as those seen in successful Y Combinator startups. Following these conventions ensures consistency, intuitiveness, elegance, and a "pixel-perfect" aesthetic across the application.
 
-This document should be completed based on the project's specific needs and after reviewing the insights from "[`AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)".
+This document should be completed based on the project's specific needs and after reviewing the insights from "[AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc))".
 
 ## I. Core Principles of Excellent UI/UX Design
 
-*(Refer to Section II of [`AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc#ii-core-principles-of-excellent-uiux-design-in-2025) for detailed explanations)*
+*(Refer to Section II of [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)#ii-core-principles-of-excellent-uiux-design-in-2025) for detailed explanations)*
 
 *   **Clarity and Simplicity:**
     *   *Project Specifics:* [TODO: Detail how clarity and simplicity will be achieved in this project. E.g., specific layout patterns, labeling conventions.]
@@ -29,7 +29,7 @@ This document should be completed based on the project's specific needs and afte
 
 ### Information Architecture (IA)
 
-*(Refer to Section II, "Information Architecture (IA) as a Foundation" in [`AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc#information-architecture-ia-as-a-foundation) for detailed explanations)*
+*(Refer to Section II, "Information Architecture (IA) as a Foundation" in [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)#information-architecture-ia-as-a-foundation) for detailed explanations)*
 
 *   **Principle of Objects:**
     *   *Project Specifics:* [TODO: Identify key content "objects" and their expected behaviors.]
@@ -50,7 +50,7 @@ This document should be completed based on the project's specific needs and afte
 
 ## II. Design System & Styling (Leveraging Tailwind CSS)
 
-*(Refer to Section III of [`AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc#iii-mastering-tailwind-css-for-professional-ui-development) for detailed explanations)*
+*(Refer to Section III of [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)#iii-mastering-tailwind-css-for-professional-ui-development) for detailed explanations)*
 
 *   **Tailwind CSS Configuration (`tailwind.config.js`):**
     *   **Colors:**
@@ -81,7 +81,7 @@ This document should be completed based on the project's specific needs and afte
 
 ## III. UI Polish and Refinement
 
-*(Refer to Section V of [`AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc#v-achieving-beautiful-and-pro-techniques-for-ui-polish) for detailed explanations)*
+*(Refer to Section V of [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)#v-achieving-beautiful-and-pro-techniques-for-ui-polish) for detailed explanations)*
 
 *   **Micro-interactions:**
     *   *Project Specifics:* [TODO: Identify key interactions where micro-interactions will enhance UX (e.g., button clicks, form submissions, loading states, notifications). Describe the desired feel (e.g., subtle, playful).]
@@ -106,7 +106,7 @@ This document should be completed based on the project's specific needs and afte
 
 ## V. Accessibility (Deep Dive)
 
-*(Refer to Section II, "Accessibility and Inclusivity" and Section V, "Visual Refinement" (Color Contrast) in [`AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc#accessibility-and-inclusivity) for broader context)*
+*(Refer to Section II, "Accessibility and Inclusivity" and Section V, "Visual Refinement" (Color Contrast) in [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)#accessibility-and-inclusivity) for broader context)*
 
 *   **Keyboard Navigation:**
     *   *Project Specifics:* [TODO: Ensure all interactive elements are focusable and operable via keyboard. Define focus state styling.]
@@ -125,7 +125,7 @@ This document should be completed based on the project's specific needs and afte
 
 *   **Design Tools (if applicable):** [TODO: Specify Figma, Sketch, Adobe XD, etc., and how they integrate with development.]
 *   **AI-Assisted UI Development (Optional but Recommended):**
-    *   *(Refer to Section IV of [`AI_Design_Agent_Optimization.mdc`](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc#iv-ai-assisted-ui-development-the-startup-superpower) for detailed strategies)*
+    *   *(Refer to Section IV of [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)#iv-ai-assisted-ui-development-the-startup-superpower) for detailed strategies)*
     *   *Chosen AI Tools:* [TODO: Specify tools like Vercel v0, Cursor AI, Magic Patterns, etc.]
     *   *Prompting Strategy:* [TODO: Outline guidelines for crafting effective prompts, providing context (e.g., referencing this document, `tailwind.config.js`).]
     *   *Review and Refinement Process:* [TODO: Define how AI-generated code will be reviewed, tested, and refined to meet quality standards.]

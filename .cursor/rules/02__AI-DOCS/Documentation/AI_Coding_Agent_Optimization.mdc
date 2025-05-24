@@ -394,7 +394,7 @@ Cline offers a sophisticated system for defining and managing its behavior throu
   * ## **Example .clinerules Content 38:**     **\#.clinerules for MyProject**     **General Behavior**
 
     * Ask for review after each significant file change.
-    * Do not edit the README.mdc or any files in the /docs folder unless explicitly instructed.
+    * Do not edit the [README.mdc](.cursor/rules/README.mdc) or any files in the /docs folder unless explicitly instructed.
     * Suggest files to edit rather than opening them randomly if unsure.
 
     Python Specifics
@@ -568,7 +568,7 @@ By adopting these practices, developers can more effectively harness the power o
 19. Best Practices for Using AI in Software Development 2025 \- Leanware, accessed May 7, 2025, [https://www.leanware.co/insights/best-practices-ai-software-development](https://www.leanware.co/insights/best-practices-ai-software-development)
 20. Taming the code generation beast — How responsible is your AI adoption in Java \- Digma, accessed May 7, 2025, [https://digma.ai/taming-the-code-generation-beast-how-responsible-is-your-ai-adoption-in-java/](https://digma.ai/taming-the-code-generation-beast-how-responsible-is-your-ai-adoption-in-java/)
 21. Prompt Engineering Guide \- Cline Documentation, accessed May 7, 2025, [https://docs.cline.bot/improving-your-prompting-skills/prompting](https://docs.cline.bot/improving-your-prompting-skills/prompting)
-22. cline/docs/prompting/README.mdc at main \- GitHub, accessed May 7, 2025, [https://github.com/cline/cline/blob/main/docs%2Fprompting%2FREADME.mdc](https://github.com/cline/cline/blob/main/docs%2Fprompting%2FREADME.mdc)
+22. cline/docs/prompting/[README.mdc](.cursor/rules/README.mdc) at main \- GitHub, accessed May 7, 2025, [README.mdc](.cursor/rules/README.mdc)
 23. Cursor – Welcome to Cursor, accessed May 7, 2025, [https://docs.cursor.com/welcome](https://docs.cursor.com/welcome)
 24. Introduction \- Cursor, accessed May 7, 2025, [https://docs.cursor.com/get-started/introduction](https://docs.cursor.com/get-started/introduction)
 25. Rules \- Cursor, accessed May 7, 2025, [https://docs.cursor.com/context/rules](https://docs.cursor.com/context/rules)

@@ -1,6 +1,6 @@
-# tasks.json Structure Definition
+# [tasks.json](.cursor/rules/tasks/tasks.json) Structure Definition
 
-The `tasks/tasks.json` file is the central repository for all project tasks. It follows a specific JSON structure.
+The `[tasks.json](.cursor/rules/tasks/tasks.json)` file is the central repository for all project tasks. It follows a specific JSON structure.
 
 ## Root Object Structure
 
@@ -43,7 +43,7 @@ Each object within the `tasks` array must have the following fields:
 *   `priority` (String): The importance level of the task. Recommended values: "high", "medium", "low".
 *   `details` (String): **CRITICAL FIELD.** In-depth implementation instructions, notes, technical specifications, or context. Can be multi-line. **This field MUST contain direct links to, or embed the necessary content from, all relevant *created* project-specific documents that guide the task's execution.** This includes, but is not limited to:
     *   Specific feature specifications (e.g., `.cursor/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`).
-    *   Relevant sections of `project_prd.mdc`.
+    *   Relevant sections of `[project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc)`.
     *   Architectural diagrams or guidelines from the created `.cursor/rules/02__AI-DOCS/Architecture/architecture.mdc`.
     *   For UI tasks: Links to mockups, wireframes, component designs, and the created `.cursor/rules/02__AI-DOCS/Conventions/design_conventions.mdc`.
     *   For backend tasks: API contracts (from `.cursor/rules/02__AI-DOCS/Integrations/` or `.cursor/rules/03__SPECS/`), data models, and the created `.cursor/rules/02__AI-DOCS/Conventions/coding_conventions.mdc`.

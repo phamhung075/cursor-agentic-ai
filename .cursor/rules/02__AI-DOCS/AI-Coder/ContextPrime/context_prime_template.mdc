@@ -14,11 +14,11 @@ Before starting any development task, please read and process the following proj
 Please read and analyze the following files in order:
 
 1. **Project README**
-   - Location: `.cursor/rules/README.mdc`
+   - Location: `[README.mdc](.cursor/rules/README.mdc)`
    - Purpose: Understand the project overview, setup instructions, and high-level goals.
  
 2. **Project PRD**
-   - Location: `.cursor/rules/project_prd.mdc` (**Generated** PRD)
+   - Location: `[project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc)` (**Generated** PRD)
    - Purpose: Understand the complete product requirements, features, and context. **Primary source of truth.**
  
 3. **Project-Specific Architecture**
@@ -30,11 +30,11 @@ Please read and analyze the following files in order:
    - Purpose: Understand the specific external services and APIs used in **this project**.
  
 5. **Project-Specific Business Logic**
-   - Location: `.cursor/rules/02__AI-DOCS/BusinessLogic/business_logic.mdc` (**Generated** document)
+   - Location: `[logic.mdc](.cursor/rules/logic.mdc)` (**Generated** document)
    - Purpose: Understand the core business rules specific to **this project**.
  
 6. **Project-Specific Coding Conventions**
-   - Location: `.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc` (**Generated** document)
+   - Location: `[coding_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc)` (**Generated** document)
    - Purpose: Understand **this project's** specific coding standards and patterns.
  
 7. **Project-Specific Design Conventions**
@@ -46,11 +46,11 @@ Please read and analyze the following files in order:
    - Purpose: Understand the deployment strategy for **this project**.
  
 9. **Core AI Agent Guidance (Reference)**
-   - Location: `.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc`
+   - Location: `[AI_Coding_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)`
    - Purpose: Reference general best practices for AI agent operation.
  
 10. **Core AI Design Guidance (Reference)**
-    - Location: `.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc`
+    - Location: `[AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)`
     - Purpose: Reference general best practices for achieving high-quality design/UX.
  
 ## Current Task Context
