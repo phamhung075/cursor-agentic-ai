@@ -7,7 +7,7 @@ require('dotenv').config();
  * 🧠 Self-Improvement Agent v2.0 - Main Entry Point
  * 
  * Orchestrates all modules for a clean, organized self-improvement system
- * Now with Pinecone memory and separated file storage
+ * Now with dual memory (agent + project) and git project management
  */
 
 const path = require('path');
@@ -16,6 +16,7 @@ const PatternDetector = require('./core/detector');
 const ContextManager = require('./core/context');
 const MemoryManager = require('./core/memory');
 const FileManager = require('./core/fileManager');
+const GitProjectManager = require('./core/gitProjectManager');
 const CLIInterface = require('./cli/interface');
 const FileDependencyManager = require('./core/FileDependencyManager');
 const readline = require('readline');
@@ -27,12 +28,13 @@ const config = require('./config/default.json');
 class SelfImprovementAgent {
   constructor() {
     this.config = require('./config/default.json');
-    this.analyzer = new FileAnalyzer(this.config);
+    this.detector = new PatternDetector(this.config);
+    this.analyzer = new FileAnalyzer(this.detector);
     this.memoryManager = new MemoryManager(this.config);
     this.fileManager = new FileManager();
+    this.gitProjectManager = new GitProjectManager(this.config, this.memoryManager);
     this.fileDependencyManager = new FileDependencyManager(this.memoryManager);
     this.contextManager = new ContextManager();
-    this.detector = new PatternDetector(this.config);
     this.cli = new CLIInterface(this, this.config);
     this.rl = null;
     this.isInitialized = false;
@@ -54,8 +56,9 @@ class SelfImprovementAgent {
         // Quick system check
         const status = await this.getStatus();
         console.log(`🤖 Agent: ${status.agent.name} v${status.agent.version}`);
-        console.log(`🧠 Memory: ${status.agent.memoryEnabled ? 'Enabled' : 'Disabled'}`);
-        console.log(`📁 File Store: ${status.agent.fileStoreEnabled ? 'Enabled' : 'Disabled'}`);
+        console.log(`🧠 Agent Memory: ${status.memory.agent ? status.memory.agent.localMemories : 0} entries`);
+        console.log(`📁 Project Memory: ${status.memory.project ? status.memory.project.localMemories : 0} entries`);
+        console.log(`🔗 Git Projects: ${status.gitProjects ? status.gitProjects.totalProjects : 0}`);
         
         if (this.fileDependencyManager && this.fileDependencyManager.isInitialized) {
           const stats = this.fileDependencyManager.getStats();
@@ -77,14 +80,15 @@ class SelfImprovementAgent {
       
       // Interactive mode
       console.log('🧠 Interactive Self-Improvement Agent v2.0');
-      console.log('💡 I will analyze files as you work with them.');
+      console.log('💡 I can analyze files and manage git projects with dual memory.');
       console.log('📋 Available Commands:');
       console.log('  analyze            - Analyze specific .mdc file');
       console.log('  improve            - Get improvement suggestions');
       console.log('  context            - Set current work context');
       console.log('  smart-detect       - Analyze based on current context');
-      console.log('  memory             - Memory management commands');
-      console.log('  projects           - Project management commands');
+      console.log('  agent-memory       - Agent memory management commands');
+      console.log('  project-memory     - Project memory management commands');
+      console.log('  git-projects       - Git project management commands');
       console.log('  dependencies       - File dependency tracking commands');
       console.log('  migrate            - Migrate files to agent store');
       console.log('  help               - Show help information');
@@ -111,10 +115,13 @@ class SelfImprovementAgent {
         console.log('📁 FileManager initialized');
       }
 
-      // Initialize memory manager  
+      // Initialize memory manager (dual memory system)
       if (this.config.agent.memoryEnabled) {
         await this.memoryManager.initialize();
       }
+
+      // Initialize git project manager
+      await this.gitProjectManager.initialize();
 
       // Initialize file dependency manager
       if (this.config.agent.memoryEnabled && this.config.agent.dependencyTrackingEnabled !== false) {
@@ -128,7 +135,7 @@ class SelfImprovementAgent {
   }
 
   /**
-   * Set current project for file operations
+   * Set current project for file operations (legacy support)
    */
   setProject(projectName) {
     this.currentProject = this.fileManager.setProject(projectName);
@@ -137,10 +144,17 @@ class SelfImprovementAgent {
   }
 
   /**
-   * Get current project
+   * Get current project (legacy support)
    */
   getCurrentProject() {
     return this.currentProject;
+  }
+
+  /**
+   * Get current git project
+   */
+  getCurrentGitProject() {
+    return this.gitProjectManager.getCurrentProject();
   }
 
   /**
@@ -161,18 +175,34 @@ class SelfImprovementAgent {
       // Analyze the file
       const improvements = await this.analyzer.analyzeFile(filePath);
       
-      // Store analysis in memory for learning
+      // Store analysis in agent memory for learning (global improvement patterns)
       if (this.config.agent.memoryEnabled && improvements.length > 0) {
-        await this.memoryManager.storeMemory('analysis', JSON.stringify({
+        await this.memoryManager.storeAgentMemory('learning', JSON.stringify({
           fileName: filename,
           filePath,
           improvements,
-          context: this.contextManager.getCurrentContext()
+          analysisDate: Date.now()
         }), {
           type: 'file_analysis',
           fileName: filename,
-          context: this.contextManager.getCurrentContext(),
-          projectType: this.currentProject
+          improvementCount: improvements.length
+        });
+      }
+
+      // Store project-specific context if we have a current project
+      const currentGitProject = this.gitProjectManager.getCurrentProject();
+      if (currentGitProject && this.config.agent.memoryEnabled) {
+        await this.memoryManager.storeProjectMemory('context', JSON.stringify({
+          fileName: filename,
+          filePath,
+          analysisResult: {
+            totalIssues: improvements.length,
+            categories: [...new Set(improvements.map(i => i.category))]
+          },
+          context: this.contextManager.getCurrentContext()
+        }), {
+          type: 'file_analysis_context',
+          fileName: filename
         });
       }
       
@@ -205,9 +235,9 @@ class SelfImprovementAgent {
       // Generate detailed improvement suggestions
       let suggestions = this.generateDetailedSuggestions(analysisResult.improvements);
       
-      // Enhance suggestions with memory if available
+      // Enhance suggestions with agent memory if available
       if (this.config.agent.memoryEnabled) {
-        suggestions = await this.enhanceWithMemory(suggestions, filename);
+        suggestions = await this.enhanceWithAgentMemory(suggestions, filename);
       }
       
       return {
@@ -225,36 +255,48 @@ class SelfImprovementAgent {
   }
 
   /**
-   * Enhance suggestions with memory-based learning
+   * Enhance suggestions with agent memory-based learning
    */
-  async enhanceWithMemory(suggestions, filename) {
+  async enhanceWithAgentMemory(suggestions, filename) {
     try {
       for (const suggestion of suggestions) {
-        // Get past feedback for similar improvements
-        const pastFeedback = await this.memoryManager.getPastFeedback(suggestion.category);
-        
-        if (pastFeedback.length > 0) {
-          const approvalRate = this.calculateApprovalRate(pastFeedback);
-          suggestion.memoryInsights = {
-            pastFeedbackCount: pastFeedback.length,
-            approvalRate,
-            confidence: approvalRate > 0.7 ? 'HIGH' : approvalRate > 0.4 ? 'MEDIUM' : 'LOW'
-          };
-        }
-
-        // Get relevant patterns
-        const relevantMemories = await this.memoryManager.getRelevantMemories(
+        // Get agent learning patterns for similar improvements
+        const agentLearning = await this.memoryManager.searchAgentMemories(
           `${suggestion.category} ${suggestion.issue}`,
-          this.currentProject,
+          'learning',
           3
         );
         
-        if (relevantMemories.length > 0) {
-          suggestion.similarCases = relevantMemories.map(memory => ({
-            score: memory.score,
-            context: memory.metadata.context,
-            projectType: memory.metadata.projectType
-          }));
+        if (agentLearning.length > 0) {
+          suggestion.agentInsights = {
+            similarCases: agentLearning.length,
+            confidence: this.calculateConfidenceFromAgentMemory(agentLearning),
+            patterns: agentLearning.map(memory => ({
+              score: memory.score,
+              context: memory.metadata.context
+            }))
+          };
+        }
+
+        // Get project-specific patterns if we have a current project
+        const currentGitProject = this.gitProjectManager.getCurrentProject();
+        if (currentGitProject) {
+          const projectMemories = await this.memoryManager.searchProjectMemories(
+            `${suggestion.category} ${suggestion.issue}`,
+            null,
+            3
+          );
+          
+          if (projectMemories.length > 0) {
+            suggestion.projectInsights = {
+              projectName: currentGitProject.name,
+              similarCases: projectMemories.length,
+              projectPatterns: projectMemories.map(memory => ({
+                score: memory.score,
+                context: memory.metadata.context
+              }))
+            };
+          }
         }
       }
     } catch (error) {
@@ -265,45 +307,48 @@ class SelfImprovementAgent {
   }
 
   /**
-   * Calculate approval rate from past feedback
+   * Calculate confidence from agent memory patterns
    */
-  calculateApprovalRate(pastFeedback) {
-    if (pastFeedback.length === 0) return 0;
+  calculateConfidenceFromAgentMemory(agentLearning) {
+    if (agentLearning.length === 0) return 0;
     
-    const weights = this.config.learning.feedbackWeight;
-    let totalWeight = 0;
-    let weightedScore = 0;
+    const avgScore = agentLearning.reduce((sum, memory) => sum + memory.score, 0) / agentLearning.length;
     
-    for (const feedback of pastFeedback) {
-      try {
-        const data = JSON.parse(feedback.content);
-        const weight = weights[data.userResponse] || 0;
-        totalWeight += Math.abs(weight);
-        weightedScore += weight;
-      } catch {
-        // Skip invalid feedback
-      }
-    }
-    
-    return totalWeight > 0 ? Math.max(0, weightedScore / totalWeight) : 0;
+    // Higher confidence with more similar patterns and higher scores
+    return Math.min(1.0, avgScore * (1 + agentLearning.length * 0.1));
   }
 
   /**
-   * Store user feedback for learning
+   * Store agent learning (global patterns)
    */
-  async storeUserFeedback(improvement, userResponse, context = {}) {
+  async storeAgentLearning(pattern, context = {}) {
     if (!this.config.agent.memoryEnabled) return;
     
     try {
-      await this.memoryManager.storeUserFeedback(improvement, userResponse, {
-        ...context,
-        projectType: this.currentProject,
-        context: this.contextManager.getCurrentContext()
-      });
-      
-      console.log(`🧠 Stored user feedback: ${userResponse} for ${improvement.category}`);
+      await this.memoryManager.storeAgentLearning(pattern, context);
+      console.log(`🧠 Stored agent learning pattern`);
     } catch (error) {
-      console.warn('⚠️ Error storing feedback:', error.message);
+      console.warn('⚠️ Error storing agent learning:', error.message);
+    }
+  }
+
+  /**
+   * Store project decision (project-specific)
+   */
+  async storeProjectDecision(decision, context = {}) {
+    if (!this.config.agent.memoryEnabled) return;
+    
+    const currentGitProject = this.gitProjectManager.getCurrentProject();
+    if (!currentGitProject) {
+      console.warn('⚠️ No current git project for storing decision');
+      return;
+    }
+    
+    try {
+      await this.memoryManager.storeProjectDecision(decision, context);
+      console.log(`📁 Stored project decision for: ${currentGitProject.name}`);
+    } catch (error) {
+      console.warn('⚠️ Error storing project decision:', error.message);
     }
   }
 
@@ -313,14 +358,31 @@ class SelfImprovementAgent {
   setContext(context) {
     this.contextManager.setContext(context);
     
-    // Store context in memory for learning
-    if (this.config.agent.memoryEnabled && this.currentProject) {
-      this.memoryManager.storeProjectContext(this.currentProject, context);
+    // Store context in agent memory for learning (global patterns)
+    if (this.config.agent.memoryEnabled) {
+      this.memoryManager.storeAgentMemory('patterns', JSON.stringify({
+        context,
+        timestamp: Date.now()
+      }), {
+        type: 'context_pattern'
+      });
+    }
+
+    // Store project context if we have a current project
+    const currentGitProject = this.gitProjectManager.getCurrentProject();
+    if (currentGitProject && this.config.agent.memoryEnabled) {
+      this.memoryManager.storeProjectMemory('context', JSON.stringify({
+        context,
+        projectName: currentGitProject.name,
+        timestamp: Date.now()
+      }), {
+        type: 'project_context'
+      });
     }
   }
 
   /**
-   * Smart detection based on current context with memory enhancement
+   * Smart detection based on current context with dual memory enhancement
    */
   async smartDetectIssues(context) {
     try {
@@ -334,10 +396,18 @@ class SelfImprovementAgent {
         };
       }
 
-      // Get memory insights for this context
-      let memoryInsights = [];
+      // Get agent insights for this context
+      let agentInsights = [];
+      let projectInsights = [];
+      
       if (this.config.agent.memoryEnabled) {
-        memoryInsights = await this.memoryManager.getRelevantMemories(context, this.currentProject, 5);
+        agentInsights = await this.memoryManager.searchAgentMemories(context, null, 5);
+        
+        // Get project insights if we have a current project
+        const currentGitProject = this.gitProjectManager.getCurrentProject();
+        if (currentGitProject) {
+          projectInsights = await this.memoryManager.searchProjectMemories(context, null, 5);
+        }
       }
 
       // Analyze relevant files
@@ -362,7 +432,9 @@ class SelfImprovementAgent {
         relevantFiles: analysisResults,
         totalIssues,
         context,
-        memoryInsights: memoryInsights.length > 0 ? memoryInsights : null
+        agentInsights: agentInsights.length > 0 ? agentInsights : null,
+        projectInsights: projectInsights.length > 0 ? projectInsights : null,
+        currentProject: this.gitProjectManager.getCurrentProject()?.name
       };
       
     } catch (error) {
@@ -374,43 +446,80 @@ class SelfImprovementAgent {
   }
 
   /**
-   * File management commands
+   * Handle git project commands
    */
-  async handleFileCommand(subcommand, args = []) {
-    if (!this.config.agent.fileStoreEnabled) {
-      return { success: false, message: 'File store is disabled' };
-    }
-
+  async handleGitProjectCommand(subcommand, args = []) {
     try {
       switch (subcommand) {
-        case 'projects':
-          const projects = await this.fileManager.listProjects();
+        case 'add':
+          const [name, gitUrl] = args;
+          if (!name || !gitUrl) {
+            return { success: false, message: 'Usage: git-projects add <name> <git-url> [--branch <branch>]' };
+          }
+          
+          const options = {};
+          const branchIndex = args.indexOf('--branch');
+          if (branchIndex !== -1 && args[branchIndex + 1]) {
+            options.branch = args[branchIndex + 1];
+          }
+          
+          const project = await this.gitProjectManager.addProject(name, gitUrl, options);
+          return { success: true, project };
+          
+        case 'remove':
+          const projectToRemove = args[0];
+          if (!projectToRemove) {
+            return { success: false, message: 'Usage: git-projects remove <name> [--force] [--clean-memory]' };
+          }
+          
+          const removeOptions = {
+            force: args.includes('--force'),
+            cleanMemory: args.includes('--clean-memory')
+          };
+          
+          const removeResult = await this.gitProjectManager.removeProject(projectToRemove, removeOptions);
+          return { success: true, ...removeResult };
+          
+        case 'switch':
+          const projectToSwitch = args[0];
+          if (!projectToSwitch) {
+            return { success: false, message: 'Usage: git-projects switch <name>' };
+          }
+          
+          const switchedProject = await this.gitProjectManager.switchProject(projectToSwitch);
+          return { success: true, project: switchedProject };
+          
+        case 'list':
+          const projects = this.gitProjectManager.listProjects();
           return { success: true, projects };
           
+        case 'status':
+          const statusProject = args[0];
+          const status = await this.gitProjectManager.getProjectStatus(statusProject);
+          return { success: true, status };
+          
+        case 'sync-memory':
+          const syncProject = args[0];
+          const syncResult = await this.gitProjectManager.syncProjectMemory(syncProject);
+          return { success: true, ...syncResult };
+          
+        case 'clean':
+          const cleanProject = args[0];
+          if (!cleanProject) {
+            return { success: false, message: 'Usage: git-projects clean <name>' };
+          }
+          
+          const cleanResult = await this.gitProjectManager.cleanProjectForSwitch(cleanProject);
+          return { success: true, ...cleanResult };
+          
         case 'stats':
-          const projectName = args[0] || this.currentProject;
-          if (!projectName) {
-            return { success: false, message: 'No project specified' };
-          }
-          const stats = await this.fileManager.getProjectStats(projectName);
+          const stats = await this.gitProjectManager.getProjectsStats();
           return { success: true, stats };
-          
-        case 'migrate':
-          const targetProject = args[0];
-          if (!targetProject) {
-            return { success: false, message: 'Project name required for migration' };
-          }
-          const migrationResult = await this.fileManager.migrateExistingFiles(targetProject);
-          return { success: true, ...migrationResult };
-          
-        case 'overview':
-          const overview = await this.fileManager.getStoreOverview();
-          return { success: true, overview };
           
         default:
           return { 
             success: false, 
-            message: `Unknown file command: ${subcommand}. Use: projects, stats, migrate, overview` 
+            message: `Unknown git project command: ${subcommand}. Use: add, remove, switch, list, status, sync-memory, clean, stats` 
           };
       }
     } catch (error) {
@@ -419,17 +528,17 @@ class SelfImprovementAgent {
   }
 
   /**
-   * Memory management commands
+   * Handle agent memory commands
    */
-  async handleMemoryCommand(subcommand, args = []) {
+  async handleAgentMemoryCommand(subcommand, args = []) {
     if (!this.config.agent.memoryEnabled) {
-      return { success: false, message: 'Memory is disabled' };
+      return { success: false, message: 'Agent memory is disabled' };
     }
 
     try {
       switch (subcommand) {
         case 'stats':
-          const stats = await this.memoryManager.getStats();
+          const stats = await this.memoryManager.getAgentMemoryStats();
           return { success: true, stats };
           
         case 'search':
@@ -437,42 +546,63 @@ class SelfImprovementAgent {
           if (!query) {
             return { success: false, message: 'Search query required' };
           }
-          const results = await this.memoryManager.searchMemories(query);
+          const results = await this.memoryManager.searchAgentMemories(query);
           return { success: true, results };
           
-        case 'cleanup':
-          const days = parseInt(args[0]) || 30;
-          const deletedCount = await this.memoryManager.clearOldMemories(days);
-          return { success: true, deletedCount, days };
-
-        case 'sync-status':
-          const syncStatus = await this.memoryManager.getSyncStatus();
-          return { success: true, syncStatus };
-
-        case 'sync-up':
-          const uploadResult = await this.memoryManager.syncLocalToPinecone();
-          return { success: true, operation: 'upload', ...uploadResult };
-
-        case 'sync-down':
-          const downloadResult = await this.memoryManager.syncPineconeToLocal();
-          return { success: true, operation: 'download', ...downloadResult };
-
-        case 'sync-both':
-          const bidirectionalResult = await this.memoryManager.bidirectionalSync();
-          return { success: true, operation: 'bidirectional', ...bidirectionalResult };
-
-        case 'reset-pinecone':
-          await this.memoryManager.resetPineconeIndex();
-          return { success: true, message: 'Pinecone index reset successfully' };
-
-        case 'fix-embeddings':
-          const fixResult = await this.memoryManager.fixEmbeddingDimensions();
-          return { success: true, operation: 'fix-embeddings', ...fixResult };
+        case 'sync-to-git':
+          const syncResult = await this.memoryManager.syncAgentMemoryToGit();
+          return { success: true, ...syncResult };
           
         default:
           return { 
             success: false, 
-            message: `Unknown memory command: ${subcommand}. Use: stats, search, cleanup, sync-status, sync-up, sync-down, sync-both, reset-pinecone, fix-embeddings` 
+            message: `Unknown agent memory command: ${subcommand}. Use: stats, search, sync-to-git` 
+          };
+      }
+    } catch (error) {
+      return { success: false, message: error.message };
+    }
+  }
+
+  /**
+   * Handle project memory commands
+   */
+  async handleProjectMemoryCommand(subcommand, args = []) {
+    if (!this.config.agent.memoryEnabled) {
+      return { success: false, message: 'Project memory is disabled' };
+    }
+
+    try {
+      switch (subcommand) {
+        case 'stats':
+          const projectName = args[0];
+          const stats = await this.memoryManager.getProjectMemoryStats(projectName);
+          return { success: true, stats };
+          
+        case 'search':
+          const query = args.join(' ');
+          if (!query) {
+            return { success: false, message: 'Search query required' };
+          }
+          const results = await this.memoryManager.searchProjectMemories(query);
+          return { success: true, results };
+          
+        case 'clean':
+          const cleanProjectName = args[0];
+          if (!cleanProjectName) {
+            return { success: false, message: 'Project name required' };
+          }
+          const cleanResult = await this.memoryManager.cleanProjectMemory(cleanProjectName);
+          return { success: true, cleaned: cleanResult, project: cleanProjectName };
+          
+        case 'list-projects':
+          const projectList = await this.memoryManager.listProjectsWithMemory();
+          return { success: true, projects: projectList };
+          
+        default:
+          return { 
+            success: false, 
+            message: `Unknown project memory command: ${subcommand}. Use: stats, search, clean, list-projects` 
           };
       }
     } catch (error) {
@@ -568,9 +698,16 @@ class SelfImprovementAgent {
       }
     };
 
-    // Add memory stats if enabled
+    // Add dual memory stats if enabled
     if (this.config.agent.memoryEnabled) {
       status.memory = await this.memoryManager.getStats();
+    }
+
+    // Add git projects stats
+    try {
+      status.gitProjects = await this.gitProjectManager.getProjectsStats();
+    } catch (error) {
+      status.gitProjects = { error: error.message };
     }
 
     // Add file store stats if enabled

@@ -1,0 +1,3989 @@
+{
+  "timestamp": "2025-05-24T08:54:37.391Z",
+  "totalFiles": 30,
+  "phases": [
+    {
+      "name": "Critical Fixes",
+      "priority": 1,
+      "files": [
+        "00__TOOLS/cursor_files_list.mdc",
+        "00__TOOLS/cursor_path_fix.mdc",
+        "00__TOOLS/file_update_and_link_processing_guide.mdc",
+        "01__AI-RUN/00_Getting_Started.mdc",
+        "01__AI-RUN/01_AutoPilot.mdc",
+        "01__AI-RUN/01_Idea.mdc",
+        "01__AI-RUN/02_Market_Research.mdc",
+        "01__AI-RUN/03_Core_Concept.mdc",
+        "01__AI-RUN/04_PRD_Generation.mdc",
+        "01__AI-RUN/05_Specs_Docs.mdc",
+        "01__AI-RUN/06_Task_Manager.mdc",
+        "01__AI-RUN/07_Start_Building.mdc",
+        "01__AI-RUN/08_Testing.mdc",
+        "01__AI-RUN/09_Deployment.mdc",
+        "01__AI-RUN/Template/PRD_template.mdc",
+        "02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc",
+        "02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "03__SPECS/features/feature_spec_template.mdc",
+        "Inspiration.mdc",
+        "README.mdc",
+        "logic.mdc",
+        "workflow.mdc"
+      ],
+      "estimatedTime": 390,
+      "tasks": [
+        {
+          "file": "00__TOOLS/cursor_files_list.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to cursor_files_list.mdc",
+              "line": 1
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to cursor_path_fix.mdc",
+              "line": 2
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to file_update_and_link_processing_guide.mdc",
+              "line": 3
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 00_Getting_Started.mdc",
+              "line": 4
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 5
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 03_Core_Concept.mdc",
+              "line": 8
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 04_PRD_Generation.mdc",
+              "line": 9
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 05_Specs_Docs.mdc",
+              "line": 10
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 06_Task_Manager.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 07_Start_Building.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 08_Testing.mdc",
+              "line": 13
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 09_Deployment.mdc",
+              "line": 14
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to MCP-Context.mdc",
+              "line": 15
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to PRD_template.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to api_endpoint_template.mdc",
+              "line": 18
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to context_prime_template.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to refactoring_template.mdc",
+              "line": 20
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to test_generator_template.mdc",
+              "line": 21
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to architecture_template.mdc",
+              "line": 22
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to business_logic_template.mdc",
+              "line": 23
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to coding_conventions_template.mdc",
+              "line": 24
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to design_conventions_template.mdc",
+              "line": 25
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to deployment_guide_template.mdc",
+              "line": 26
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Coding_Agent_Optimization.mdc",
+              "line": 27
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 28
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Task_Management_Optimization.mdc",
+              "line": 29
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to api_integration_template.mdc",
+              "line": 30
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Roo_Task_Workflow.mdc",
+              "line": 31
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Tasks_JSON_Structure.mdc",
+              "line": 32
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to bugfix_spec_template.mdc",
+              "line": 33
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to feature_spec_template.mdc",
+              "line": 34
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 39
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 40
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 41
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 42
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/00__TOOLS/cursor_files_list.mdc",
+              "line": 1
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/00__TOOLS/cursor_path_fix.mdc",
+              "line": 2
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/00__TOOLS/file_update_and_link_processing_guide.mdc",
+              "line": 3
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/00_Getting_Started.mdc",
+              "line": 4
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 5
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/03_Core_Concept.mdc",
+              "line": 8
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc",
+              "line": 9
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/05_Specs_Docs.mdc",
+              "line": 10
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/06_Task_Manager.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/07_Start_Building.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/08_Testing.mdc",
+              "line": 13
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/09_Deployment.mdc",
+              "line": 14
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/Template/MCP-Context.mdc",
+              "line": 15
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/Template/PRD_template.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
+              "line": 18
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/AI-Coder/Refactoring/refactoring_template.mdc",
+              "line": 20
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/AI-Coder/TestGenerators/test_generator_template.mdc",
+              "line": 21
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+              "line": 22
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/BusinessLogic/business_logic_template.mdc",
+              "line": 23
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+              "line": 24
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+              "line": 25
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
+              "line": 26
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+              "line": 27
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 28
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+              "line": 29
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Integrations/api_integration_template.mdc",
+              "line": 30
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+              "line": 31
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+              "line": 32
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc",
+              "line": 33
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/03__SPECS/features/feature_spec_template.mdc",
+              "line": 34
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/Inspiration.mdc",
+              "line": 35
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/README.mdc",
+              "line": 36
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/logic.mdc",
+              "line": 37
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 39
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 40
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 41
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 42
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/workflow.mdc",
+              "line": 44
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "00__TOOLS/cursor_path_fix.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 00_Getting_Started.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 21
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 22
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 23
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 04_PRD_Generation.mdc",
+              "line": 24
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 05_Specs_Docs.mdc",
+              "line": 25
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 06_Task_Manager.mdc",
+              "line": 26
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 07_Start_Building.mdc",
+              "line": 27
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 08_Testing.mdc",
+              "line": 28
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 09_Deployment.mdc",
+              "line": 29
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to MCP-Context.mdc",
+              "line": 31
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to PRD_template.mdc",
+              "line": 33
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 37
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Task_Management_Optimization.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to api_endpoint_template.mdc",
+              "line": 41
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to context_prime_template.mdc",
+              "line": 43
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to test_generator_template.mdc",
+              "line": 45
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to refactoring_template.mdc",
+              "line": 47
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to business_logic_template.mdc",
+              "line": 51
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to coding_conventions_template.mdc",
+              "line": 53
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to design_conventions_template.mdc",
+              "line": 54
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to deployment_guide_template.mdc",
+              "line": 56
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to api_integration_template.mdc",
+              "line": 58
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Roo_Task_Workflow.mdc",
+              "line": 60
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Tasks_JSON_Structure.mdc",
+              "line": 61
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to feature_spec_template.mdc",
+              "line": 64
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to bugfix_spec_template.mdc",
+              "line": 66
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to filename.mdc",
+              "line": 79
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to t.mdc",
+              "line": 20
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Coding_Agent_Optimization.mdc",
+              "line": 36
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to architecture_template.mdc",
+              "line": 49
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 20
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to cursor_path_fix.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/00_Getting_Started.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 21
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 22
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 23
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc",
+              "line": 24
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/05_Specs_Docs.mdc",
+              "line": 25
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/06_Task_Manager.mdc",
+              "line": 26
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/07_Start_Building.mdc",
+              "line": 27
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/08_Testing.mdc",
+              "line": 28
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/09_Deployment.mdc",
+              "line": 29
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/Template/MCP-Context.mdc",
+              "line": 31
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/Template/PRD_template.mdc",
+              "line": 33
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 37
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
+              "line": 41
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc",
+              "line": 43
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/AI-Coder/TestGenerators/test_generator_template.mdc",
+              "line": 45
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/AI-Coder/Refactoring/refactoring_template.mdc",
+              "line": 47
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/BusinessLogic/business_logic_template.mdc",
+              "line": 51
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+              "line": 53
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+              "line": 54
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
+              "line": 56
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Integrations/api_integration_template.mdc",
+              "line": 58
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+              "line": 60
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+              "line": 61
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/03__SPECS/features/feature_spec_template.mdc",
+              "line": 64
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc",
+              "line": 66
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/Inspiration.mdc",
+              "line": 69
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/logic.mdc",
+              "line": 70
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/workflow.mdc",
+              "line": 71
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/README.mdc",
+              "line": 72
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 81
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+              "line": 88
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+              "line": 160
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/00__TOOLS/cursor_path_fix.mdc",
+              "line": 221
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "00__TOOLS/file_update_and_link_processing_guide.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to cursor_files_list.mdc",
+              "line": 25
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to cursor_path_fix.mdc",
+              "line": 28
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to filename.mdc",
+              "line": 61
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/00__TOOLS/cursor_files_list.mdc",
+              "line": 25
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/00__TOOLS/cursor_path_fix.mdc",
+              "line": 28
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/00_Getting_Started.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 96
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 96
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 97
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 97
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 98
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 04_PRD_Generation.mdc",
+              "line": 99
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 99
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 05_Specs_Docs.mdc",
+              "line": 100
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Roo_Task_Workflow.mdc",
+              "line": 101
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 07_Start_Building.mdc",
+              "line": 102
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 08_Testing.mdc",
+              "line": 103
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 09_Deployment.mdc",
+              "line": 104
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 194
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 96
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 96
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 97
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 97
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 98
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc",
+              "line": 99
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 99
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/05_Specs_Docs.mdc",
+              "line": 100
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+              "line": 101
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/07_Start_Building.mdc",
+              "line": 102
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/08_Testing.mdc",
+              "line": 103
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/09_Deployment.mdc",
+              "line": 104
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 194
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/01_AutoPilot.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 00_Getting_Started.mdc",
+              "line": 29
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 32
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 07_Start_Building.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 08_Testing.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 09_Deployment.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 76
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 05_Specs_Docs.mdc",
+              "line": 77
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to architecture_template.mdc",
+              "line": 77
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 78
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 78
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Coding_Agent_Optimization.mdc",
+              "line": 80
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 81
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Task_Management_Optimization.mdc",
+              "line": 82
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 04_PRD_Generation.mdc",
+              "line": 143
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to coding_conventions_template.mdc",
+              "line": 155
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to feature_spec_template.mdc",
+              "line": 155
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Roo_Task_Workflow.mdc",
+              "line": 165
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Tasks_JSON_Structure.mdc",
+              "line": 167
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to deployment_guide_template.mdc",
+              "line": 237
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/00_Getting_Started.mdc",
+              "line": 29
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 32
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/07_Start_Building.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/08_Testing.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/09_Deployment.mdc",
+              "line": 38
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 76
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/05_Specs_Docs.mdc",
+              "line": 77
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Architecture/architecture.mdc`](mdc:.cursor/rules/02__AI-DOCS/Architecture/architecture.mdc",
+              "line": 77
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/coding_conventions.mdc`](mdc:.cursor/rules/02__AI-DOCS/Conventions/coding_conventions.mdc",
+              "line": 77
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`](mdc:.cursor/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc",
+              "line": 77
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+              "line": 77
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 78
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 78
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+              "line": 80
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 81
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+              "line": 82
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Architecture/architecture.mdc",
+              "line": 77
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/coding_conventions.mdc",
+              "line": 77
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/design_conventions.mdc",
+              "line": 84
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/03__SPECS/features/feature_spec_ID.mdc",
+              "line": 84
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc",
+              "line": 143
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+              "line": 155
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/03__SPECS/features/feature_spec_template.mdc",
+              "line": 155
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/03__SPECS/documentation_index.mdc`](mdc:.cursor/rules/03__SPECS/documentation_index.mdc",
+              "line": 157
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+              "line": 165
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+              "line": 167
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/README.mdc",
+              "line": 180
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/design_conventions.mdc`](mdc:.cursor/rules/02__AI-DOCS/Conventions/design_conventions.mdc",
+              "line": 209
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
+              "line": 237
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/01_Idea.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 148
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 155
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 155
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 148
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 155
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 155
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/02_Market_Research.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 5
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 5
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 22
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 123
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 123
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 5
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 5
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 22
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 123
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 123
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/03_Core_Concept.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 16
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 16
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 142
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 04_PRD_Generation.mdc",
+              "line": 149
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 149
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to PRD_template.mdc",
+              "line": 151
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 16
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 16
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 142
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc",
+              "line": 149
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 149
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/Template/PRD_template.mdc",
+              "line": 151
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/04_PRD_Generation.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 8
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to PRD_template.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Coding_Agent_Optimization.mdc",
+              "line": 22
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 22
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 29
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 05_Specs_Docs.mdc",
+              "line": 166
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 166
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 8
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/Template/PRD_template.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+              "line": 22
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 22
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 29
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/05_Specs_Docs.mdc",
+              "line": 166
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 166
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/05_Specs_Docs.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 13
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 04_PRD_Generation.mdc",
+              "line": 14
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 14
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to architecture_template.mdc",
+              "line": 97
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to feature_spec_template.mdc",
+              "line": 98
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to api_integration_template.mdc",
+              "line": 105
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to business_logic_template.mdc",
+              "line": 106
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to coding_conventions_template.mdc",
+              "line": 107
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to design_conventions_template.mdc",
+              "line": 108
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to deployment_guide_template.mdc",
+              "line": 109
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to bugfix_spec_template.mdc",
+              "line": 113
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 138
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Coding_Agent_Optimization.mdc",
+              "line": 148
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Task_Management_Optimization.mdc",
+              "line": 153
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Roo_Task_Workflow.mdc",
+              "line": 300
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Tasks_JSON_Structure.mdc",
+              "line": 302
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 13
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc",
+              "line": 14
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 14
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+              "line": 97
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/03__SPECS/features/feature_spec_template.mdc",
+              "line": 98
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Integrations/api_integration_template.mdc",
+              "line": 105
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/BusinessLogic/business_logic_template.mdc",
+              "line": 106
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+              "line": 107
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+              "line": 108
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
+              "line": 109
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc",
+              "line": 113
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/logic.mdc",
+              "line": 120
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 138
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+              "line": 148
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+              "line": 153
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/README.mdc",
+              "line": 217
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+              "line": 300
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+              "line": 302
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/06_Task_Manager.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Roo_Task_Workflow.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Tasks_JSON_Structure.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 06_Task_Manager.mdc",
+              "line": 9
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/06_Task_Manager.mdc",
+              "line": 9
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/07_Start_Building.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 8
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 04_PRD_Generation.mdc",
+              "line": 9
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 9
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 05_Specs_Docs.mdc",
+              "line": 10
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Roo_Task_Workflow.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Tasks_JSON_Structure.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Coding_Agent_Optimization.mdc",
+              "line": 18
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 8
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc",
+              "line": 9
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 9
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/05_Specs_Docs.mdc",
+              "line": 10
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+              "line": 18
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/08_Testing.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 8
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 9
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 07_Start_Building.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 09_Deployment.mdc",
+              "line": 113
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 6
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 8
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 9
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/07_Start_Building.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/09_Deployment.mdc",
+              "line": 113
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/09_Deployment.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 08_Testing.mdc",
+              "line": 23
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 27
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to deployment_guide_template.mdc",
+              "line": 28
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/08_Testing.mdc",
+              "line": 23
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 27
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
+              "line": 28
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/Template/PRD_template.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Roo_Task_Workflow.mdc",
+              "line": 183
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Tasks_JSON_Structure.mdc",
+              "line": 444
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 477
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+              "line": 183
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+              "line": 444
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 477
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 21
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to coding_conventions_template.mdc",
+              "line": 37
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Coding_Agent_Optimization.mdc",
+              "line": 49
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 53
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/README.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 21
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/logic.mdc",
+              "line": 33
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+              "line": 37
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+              "line": 49
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 53
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to design_conventions_template.mdc",
+              "line": 5
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+              "line": 5
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 7
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 7
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/README.mdc",
+              "line": 402
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 10
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 10
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 04_PRD_Generation.mdc",
+              "line": 13
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 13
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 05_Specs_Docs.mdc",
+              "line": 14
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to coding_conventions_template.mdc",
+              "line": 18
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to design_conventions_template.mdc",
+              "line": 18
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Coding_Agent_Optimization.mdc",
+              "line": 20
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Task_Management_Optimization.mdc",
+              "line": 30
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Tasks_JSON_Structure.mdc",
+              "line": 75
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 07_Start_Building.mdc",
+              "line": 261
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 261
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 10
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 10
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 11
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 12
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc",
+              "line": 13
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 13
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/05_Specs_Docs.mdc",
+              "line": 14
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+              "line": 18
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+              "line": 18
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+              "line": 20
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+              "line": 30
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+              "line": 75
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/07_Start_Building.mdc",
+              "line": 261
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 261
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 46
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 46
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "03__SPECS/features/feature_spec_template.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to design_conventions_template.mdc",
+              "line": 30
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+              "line": 30
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "Inspiration.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 3
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 3
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "README.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 00_Getting_Started.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 60
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Coding_Agent_Optimization.mdc",
+              "line": 66
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Roo_Task_Workflow.mdc",
+              "line": 67
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 08_Testing.mdc",
+              "line": 69
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 09_Deployment.mdc",
+              "line": 70
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 102
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Task_Management_Optimization.mdc",
+              "line": 103
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Tasks_JSON_Structure.mdc",
+              "line": 106
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to PRD_template.mdc",
+              "line": 108
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to MCP-Context.mdc",
+              "line": 119
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 145
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 147
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 151
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 156
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 160
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 04_PRD_Generation.mdc",
+              "line": 168
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 05_Specs_Docs.mdc",
+              "line": 176
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 178
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 07_Start_Building.mdc",
+              "line": 191
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to deployment_guide_template.mdc",
+              "line": 216
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/00_Getting_Started.mdc",
+              "line": 17
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 60
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+              "line": 66
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+              "line": 67
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/08_Testing.mdc",
+              "line": 69
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/09_Deployment.mdc",
+              "line": 70
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/logic.mdc",
+              "line": 72
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 102
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+              "line": 103
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+              "line": 106
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/Template/PRD_template.mdc",
+              "line": 108
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/Template/MCP-Context.mdc",
+              "line": 119
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 145
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 147
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 151
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 156
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 160
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc",
+              "line": 168
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/05_Specs_Docs.mdc",
+              "line": 176
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 178
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/07_Start_Building.mdc",
+              "line": 191
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
+              "line": 216
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "logic.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 16
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Task_Management_Optimization.mdc",
+              "line": 21
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 00_Getting_Started.mdc",
+              "line": 60
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_Idea.mdc",
+              "line": 79
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 02_Market_Research.mdc",
+              "line": 99
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 113
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 120
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 04_PRD_Generation.mdc",
+              "line": 144
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to PRD_template.mdc",
+              "line": 148
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 05_Specs_Docs.mdc",
+              "line": 165
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Roo_Task_Workflow.mdc",
+              "line": 173
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to architecture_template.mdc",
+              "line": 173
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Design_Agent_Optimization.mdc",
+              "line": 176
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to AI_Coding_Agent_Optimization.mdc",
+              "line": 177
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 06_Task_Manager.mdc",
+              "line": 188
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to design_conventions_template.mdc",
+              "line": 199
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to Tasks_JSON_Structure.mdc",
+              "line": 200
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 07_Start_Building.mdc",
+              "line": 235
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to coding_conventions_template.mdc",
+              "line": 252
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 08_Testing.mdc",
+              "line": 265
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 09_Deployment.mdc",
+              "line": 294
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 16
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+              "line": 21
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/00_Getting_Started.mdc",
+              "line": 60
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 79
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 99
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 113
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 120
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc",
+              "line": 144
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/Template/PRD_template.mdc",
+              "line": 148
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/05_Specs_Docs.mdc",
+              "line": 165
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+              "line": 173
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+              "line": 173
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+              "line": 176
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+              "line": 177
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/06_Task_Manager.mdc",
+              "line": 188
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+              "line": 199
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+              "line": 200
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/README.mdc",
+              "line": 219
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/07_Start_Building.mdc",
+              "line": 235
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+              "line": 252
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/08_Testing.mdc",
+              "line": 265
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/09_Deployment.mdc",
+              "line": 294
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        },
+        {
+          "file": "workflow.mdc",
+          "issues": [
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to idea_document.mdc",
+              "line": 33
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to market_research.mdc",
+              "line": 36
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to core_concept.mdc",
+              "line": 39
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to project_prd.mdc",
+              "line": 42
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/03__SPECS/documentation_index.mdc",
+              "line": 46
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to 01_AutoPilot.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/00_Getting_Started.mdc`](.cursor/rules/01__AI-RUN/00_Getting_Started.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_Idea.mdc`](.cursor/rules/01__AI-RUN/01_Idea.mdc",
+              "line": 20
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/02_Market_Research.mdc`](.cursor/rules/01__AI-RUN/02_Market_Research.mdc",
+              "line": 21
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/03_Core_Concept.mdc`](.cursor/rules/01__AI-RUN/03_Core_Concept.mdc",
+              "line": 22
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/04_PRD_Generation.mdc`](.cursor/rules/01__AI-RUN/04_PRD_Generation.mdc",
+              "line": 23
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/05_Specs_Docs.mdc`](.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc",
+              "line": 24
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/06_Task_Manager.mdc`](.cursor/rules/01__AI-RUN/06_Task_Manager.mdc",
+              "line": 25
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+              "line": 25
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/07_Start_Building.mdc`](.cursor/rules/01__AI-RUN/07_Start_Building.mdc",
+              "line": 27
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/08_Testing.mdc`](.cursor/rules/01__AI-RUN/08_Testing.mdc",
+              "line": 28
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/09_Deployment.mdc`](.cursor/rules/01__AI-RUN/09_Deployment.mdc",
+              "line": 29
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/01_Idea/idea_document.mdc",
+              "line": 33
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/02_Market_Research/market_research.mdc",
+              "line": 36
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/03_Core_Concept/core_concept.mdc",
+              "line": 39
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/projet/PRD_template/project_prd.mdc",
+              "line": 42
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/01__AI-RUN/01_AutoPilot.mdc",
+              "line": 19
+            },
+            {
+              "type": "broken_link",
+              "severity": "high",
+              "message": "Broken reference to .cursor/rules/logic.mdc",
+              "line": 68
+            }
+          ],
+          "actions": [
+            "Fix broken links",
+            "Verify references",
+            "Update paths"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Content Modernization",
+      "priority": 2,
+      "files": [
+        "01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
+        "02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc"
+      ],
+      "estimatedTime": 60,
+      "tasks": [
+        {
+          "file": "01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
+          "actions": [
+            "Update technology versions",
+            "Modernize syntax",
+            "Verify compatibility"
+          ]
+        },
+        {
+          "file": "02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
+          "actions": [
+            "Update technology versions",
+            "Modernize syntax",
+            "Verify compatibility"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Structure Improvements",
+      "priority": 3,
+      "files": [
+        "01__AI-RUN/00_Getting_Started.mdc",
+        "01__AI-RUN/01_AutoPilot.mdc",
+        "01__AI-RUN/01_Idea.mdc",
+        "01__AI-RUN/02_Market_Research.mdc",
+        "01__AI-RUN/03_Core_Concept.mdc",
+        "01__AI-RUN/04_PRD_Generation.mdc",
+        "01__AI-RUN/05_Specs_Docs.mdc",
+        "01__AI-RUN/06_Task_Manager.mdc",
+        "01__AI-RUN/07_Start_Building.mdc",
+        "01__AI-RUN/08_Testing.mdc",
+        "01__AI-RUN/09_Deployment.mdc",
+        "01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
+        "01__AI-RUN/Template/MCP-Context.mdc",
+        "01__AI-RUN/Template/MCP-Server.json",
+        "01__AI-RUN/Template/PRD_template.mdc"
+      ],
+      "estimatedTime": 300,
+      "tasks": [
+        {
+          "file": "01__AI-RUN/00_Getting_Started.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/01_AutoPilot.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/01_Idea.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/02_Market_Research.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/03_Core_Concept.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/04_PRD_Generation.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/05_Specs_Docs.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/06_Task_Manager.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/07_Start_Building.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/08_Testing.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/09_Deployment.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/Template/MCP-Context.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/Template/MCP-Server.json",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        },
+        {
+          "file": "01__AI-RUN/Template/PRD_template.mdc",
+          "issues": [
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Purpose"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Steps"
+            },
+            {
+              "type": "missing_section",
+              "severity": "medium",
+              "message": "Missing required section: ## Output"
+            }
+          ],
+          "actions": [
+            "Add missing sections",
+            "Improve structure",
+            "Enhance readability"
+          ]
+        }
+      ]
+    }
+  ],
+  "estimatedTime": 750
+}

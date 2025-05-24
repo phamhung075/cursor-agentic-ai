@@ -1,7 +1,8 @@
 /**
- * 🧠 Memory Manager - Pinecone-powered agent memory system
+ * 🧠 Memory Manager - Dual memory system for agent and projects
  * 
- * Stores and retrieves agent learning, context, and user preferences
+ * Agent Memory: Global learning, synced with git, improves agent performance
+ * Project Memory: Per sub-git project, isolated, project-specific context
  */
 
 const { Pinecone } = require('@pinecone-database/pinecone');
@@ -18,7 +19,11 @@ class MemoryManager {
     this.openai = null;
     this.isInitialized = false;
     this.localCache = new Map();
-    this.memoryStore = path.join(__dirname, '../../_store/memory');
+    
+    // Dual memory paths
+    this.agentMemoryStore = path.join(__dirname, '../../_store/agent-memory'); // Version controlled
+    this.projectMemoryStore = path.join(__dirname, '../../_store/project-memory'); // Per project
+    this.currentProject = null;
   }
 
   /**
@@ -26,7 +31,7 @@ class MemoryManager {
    */
   async initialize() {
     try {
-      console.log('🔧 Initializing Memory Manager...');
+      console.log('🔧 Initializing Dual Memory Manager...');
       
       // Initialize Pinecone (if API key provided)
       if (process.env.PINECONE_API_KEY) {
@@ -65,11 +70,11 @@ class MemoryManager {
         console.log('⚠️ OPENAI_API_KEY not found in environment variables');
       }
 
-      // Ensure local memory directories exist
+      // Ensure memory directories exist
       await this.ensureDirectories();
       
       this.isInitialized = true;
-      console.log('🧠 MemoryManager initialized');
+      console.log('🧠 Dual MemoryManager initialized');
       
     } catch (error) {
       console.warn('⚠️ MemoryManager initialization error:', error.message);
@@ -79,12 +84,46 @@ class MemoryManager {
   }
 
   /**
-   * Ensure local memory directories exist
+   * Ensure memory directories exist for both agent and project memory
    */
   async ensureDirectories() {
-    const dirs = ['embeddings', 'contexts', 'learning'];
-    for (const dir of dirs) {
-      await fs.mkdir(path.join(this.memoryStore, dir), { recursive: true });
+    // Agent memory directories (version controlled)
+    const agentDirs = ['learning', 'patterns', 'performance', 'improvements'];
+    for (const dir of agentDirs) {
+      await fs.mkdir(path.join(this.agentMemoryStore, dir), { recursive: true });
+    }
+
+    // Project memory base directory
+    await fs.mkdir(this.projectMemoryStore, { recursive: true });
+  }
+
+  /**
+   * Set current project for project-specific memory
+   */
+  setCurrentProject(projectName) {
+    this.currentProject = projectName;
+    console.log(`📁 Memory context set to project: ${projectName}`);
+  }
+
+  /**
+   * Get current project memory directory
+   */
+  getCurrentProjectMemoryDir() {
+    if (!this.currentProject) {
+      throw new Error('No current project set. Use setCurrentProject() first.');
+    }
+    return path.join(this.projectMemoryStore, this.currentProject);
+  }
+
+  /**
+   * Ensure project memory directories exist
+   */
+  async ensureProjectDirectories(projectName) {
+    const projectDir = path.join(this.projectMemoryStore, projectName);
+    const projectDirs = ['context', 'decisions', 'issues', 'solutions'];
+    
+    for (const dir of projectDirs) {
+      await fs.mkdir(path.join(projectDir, dir), { recursive: true });
     }
   }
 
@@ -113,26 +152,27 @@ class MemoryManager {
   }
 
   /**
-   * Store memory entry
+   * Store agent memory (global, version controlled)
    */
-  async storeMemory(type, content, metadata = {}) {
+  async storeAgentMemory(type, content, metadata = {}) {
     if (!this.isInitialized) {
       await this.initialize();
     }
 
     const memoryEntry = {
       id: crypto.randomUUID(),
-      type,
+      type: `agent_${type}`,
       content,
       metadata: {
         ...metadata,
         timestamp: Date.now(),
-        projectType: metadata.projectType || 'unknown'
+        memoryClass: 'agent',
+        agentVersion: this.config.agent.version
       },
       embedding: await this.generateEmbedding(content)
     };
 
-    // Store in Pinecone if available
+    // Store in Pinecone with agent prefix
     if (this.index) {
       try {
         await this.index.upsert([{
@@ -140,30 +180,82 @@ class MemoryManager {
           values: memoryEntry.embedding,
           metadata: {
             type: memoryEntry.type,
-            content: memoryEntry.content.substring(0, 1000), // Pinecone metadata limit
+            content: memoryEntry.content.substring(0, 1000),
+            memoryClass: 'agent',
             ...memoryEntry.metadata
           }
         }]);
       } catch (error) {
-        console.warn('⚠️ Pinecone storage error:', error.message);
+        console.warn('⚠️ Pinecone agent memory storage error:', error.message);
       }
     }
 
-    // Always store locally as backup
-    await this.storeLocally(memoryEntry);
+    // Always store locally in agent memory store
+    await this.storeAgentMemoryLocally(memoryEntry, type);
     
     // Cache locally
     this.localCache.set(memoryEntry.id, memoryEntry);
     
+    console.log(`🧠 Stored agent memory: ${type}`);
     return memoryEntry.id;
   }
 
   /**
-   * Store memory locally
+   * Store project memory (per sub-git project)
    */
-  async storeLocally(memoryEntry) {
-    // Ensure the type directory exists
-    const typeDir = path.join(this.memoryStore, memoryEntry.type);
+  async storeProjectMemory(type, content, metadata = {}) {
+    if (!this.isInitialized) {
+      await this.initialize();
+    }
+
+    if (!this.currentProject) {
+      throw new Error('No current project set. Use setCurrentProject() first.');
+    }
+
+    const memoryEntry = {
+      id: crypto.randomUUID(),
+      type: `project_${type}`,
+      content,
+      metadata: {
+        ...metadata,
+        timestamp: Date.now(),
+        memoryClass: 'project',
+        projectName: this.currentProject
+      },
+      embedding: await this.generateEmbedding(content)
+    };
+
+    // Store in Pinecone with project prefix (optional, as it's less important)
+    if (this.index && this.config.memory?.syncProjectMemory !== false) {
+      try {
+        await this.index.upsert([{
+          id: memoryEntry.id,
+          values: memoryEntry.embedding,
+          metadata: {
+            type: memoryEntry.type,
+            content: memoryEntry.content.substring(0, 1000),
+            memoryClass: 'project',
+            projectName: this.currentProject,
+            ...memoryEntry.metadata
+          }
+        }]);
+      } catch (error) {
+        console.warn('⚠️ Pinecone project memory storage error:', error.message);
+      }
+    }
+
+    // Always store locally in project memory store
+    await this.storeProjectMemoryLocally(memoryEntry, type);
+    
+    console.log(`📁 Stored project memory: ${this.currentProject}/${type}`);
+    return memoryEntry.id;
+  }
+
+  /**
+   * Store agent memory locally (version controlled)
+   */
+  async storeAgentMemoryLocally(memoryEntry, type) {
+    const typeDir = path.join(this.agentMemoryStore, type);
     await fs.mkdir(typeDir, { recursive: true });
     
     const filePath = path.join(typeDir, `${memoryEntry.id}.json`);
@@ -171,9 +263,22 @@ class MemoryManager {
   }
 
   /**
-   * Search memories by similarity
+   * Store project memory locally (per project)
    */
-  async searchMemories(query, type = null, limit = 5) {
+  async storeProjectMemoryLocally(memoryEntry, type) {
+    await this.ensureProjectDirectories(this.currentProject);
+    
+    const typeDir = path.join(this.getCurrentProjectMemoryDir(), type);
+    await fs.mkdir(typeDir, { recursive: true });
+    
+    const filePath = path.join(typeDir, `${memoryEntry.id}.json`);
+    await fs.writeFile(filePath, JSON.stringify(memoryEntry, null, 2));
+  }
+
+  /**
+   * Search agent memories (global learning)
+   */
+  async searchAgentMemories(query, type = null, limit = 5) {
     if (!this.isInitialized) {
       await this.initialize();
     }
@@ -184,7 +289,11 @@ class MemoryManager {
     // Search in Pinecone if available
     if (this.index) {
       try {
-        const filter = type ? { type: { $eq: type } } : {};
+        const filter = { 
+          memoryClass: { $eq: 'agent' },
+          ...(type ? { type: { $eq: `agent_${type}` } } : {})
+        };
+        
         const searchResults = await this.index.query({
           vector: queryEmbedding,
           topK: limit,
@@ -199,22 +308,72 @@ class MemoryManager {
           metadata: match.metadata
         }));
       } catch (error) {
-        console.warn('⚠️ Pinecone search error:', error.message);
+        console.warn('⚠️ Pinecone agent search error:', error.message);
       }
     }
 
     // Fallback to local search if no Pinecone results
     if (results.length === 0) {
-      results = await this.searchLocally(queryEmbedding, type, limit);
+      results = await this.searchAgentMemoriesLocally(queryEmbedding, type, limit);
     }
 
     return results;
   }
 
   /**
-   * Search memories locally using simple similarity
+   * Search project memories (current project only)
    */
-  async searchLocally(queryEmbedding, type = null, limit = 5) {
+  async searchProjectMemories(query, type = null, limit = 5) {
+    if (!this.isInitialized) {
+      await this.initialize();
+    }
+
+    if (!this.currentProject) {
+      return [];
+    }
+
+    const queryEmbedding = await this.generateEmbedding(query);
+    let results = [];
+
+    // Search in Pinecone if available
+    if (this.index) {
+      try {
+        const filter = { 
+          memoryClass: { $eq: 'project' },
+          projectName: { $eq: this.currentProject },
+          ...(type ? { type: { $eq: `project_${type}` } } : {})
+        };
+        
+        const searchResults = await this.index.query({
+          vector: queryEmbedding,
+          topK: limit,
+          filter,
+          includeMetadata: true
+        });
+        
+        results = searchResults.matches.map(match => ({
+          id: match.id,
+          score: match.score,
+          content: match.metadata.content,
+          metadata: match.metadata
+        }));
+      } catch (error) {
+        console.warn('⚠️ Pinecone project search error:', error.message);
+      }
+    }
+
+    // Fallback to local search if no Pinecone results
+    if (results.length === 0) {
+      results = await this.searchProjectMemoriesLocally(queryEmbedding, type, limit);
+    }
+
+    return results;
+  }
+
+  /**
+   * Search agent memories locally
+   */
+  async searchAgentMemoriesLocally(queryEmbedding, type = null, limit = 5) {
     const results = [];
     
     try {
@@ -222,15 +381,14 @@ class MemoryManager {
       if (type) {
         searchDirs = [type];
       } else {
-        // Get all memory type directories
-        const memoryTypes = await fs.readdir(this.memoryStore);
+        const agentTypes = await fs.readdir(this.agentMemoryStore);
         searchDirs = [];
-        for (const memoryType of memoryTypes) {
-          const typePath = path.join(this.memoryStore, memoryType);
+        for (const agentType of agentTypes) {
+          const typePath = path.join(this.agentMemoryStore, agentType);
           try {
             const stat = await fs.stat(typePath);
             if (stat.isDirectory()) {
-              searchDirs.push(memoryType);
+              searchDirs.push(agentType);
             }
           } catch (error) {
             // Skip if not a directory
@@ -239,7 +397,7 @@ class MemoryManager {
       }
 
       for (const dir of searchDirs) {
-        const dirPath = path.join(this.memoryStore, dir);
+        const dirPath = path.join(this.agentMemoryStore, dir);
         try {
           const files = await fs.readdir(dirPath);
           for (const file of files) {
@@ -260,7 +418,69 @@ class MemoryManager {
         }
       }
     } catch (error) {
-      // Memory store might not exist
+      // Agent memory store might not exist
+    }
+
+    return results
+      .sort((a, b) => b.score - a.score)
+      .slice(0, limit);
+  }
+
+  /**
+   * Search project memories locally
+   */
+  async searchProjectMemoriesLocally(queryEmbedding, type = null, limit = 5) {
+    const results = [];
+    
+    if (!this.currentProject) {
+      return results;
+    }
+
+    try {
+      const projectDir = this.getCurrentProjectMemoryDir();
+      
+      let searchDirs;
+      if (type) {
+        searchDirs = [type];
+      } else {
+        const projectTypes = await fs.readdir(projectDir);
+        searchDirs = [];
+        for (const projectType of projectTypes) {
+          const typePath = path.join(projectDir, projectType);
+          try {
+            const stat = await fs.stat(typePath);
+            if (stat.isDirectory()) {
+              searchDirs.push(projectType);
+            }
+          } catch (error) {
+            // Skip if not a directory
+          }
+        }
+      }
+
+      for (const dir of searchDirs) {
+        const dirPath = path.join(projectDir, dir);
+        try {
+          const files = await fs.readdir(dirPath);
+          for (const file of files) {
+            if (file.endsWith('.json')) {
+              const filePath = path.join(dirPath, file);
+              const memory = JSON.parse(await fs.readFile(filePath, 'utf8'));
+              const similarity = this.cosineSimilarity(queryEmbedding, memory.embedding);
+              results.push({
+                id: memory.id,
+                score: similarity,
+                content: memory.content,
+                metadata: memory.metadata
+              });
+            }
+          }
+        } catch (error) {
+          // Directory might not exist, continue
+        }
+      }
+    } catch (error) {
+      // Project memory store might not exist
     }
 
     return results
@@ -279,434 +499,188 @@ class MemoryManager {
   }
 
   /**
-   * Store user feedback on improvements
+   * Store agent learning pattern (version controlled)
    */
-  async storeUserFeedback(improvement, userResponse, context = {}) {
-    return await this.storeMemory('learning', JSON.stringify({
-      improvement,
-      userResponse, // 'approved', 'rejected', 'modified'
-      context
-    }), {
-      type: 'user_feedback',
-      category: improvement.category,
-      priority: improvement.priority,
-      ...context
-    });
-  }
-
-  /**
-   * Store successful patterns
-   */
-  async storeSuccessPattern(pattern, projectType, context = {}) {
-    return await this.storeMemory('learning', JSON.stringify({
+  async storeAgentLearning(pattern, context = {}) {
+    return await this.storeAgentMemory('learning', JSON.stringify({
       pattern,
-      projectType,
       context,
       success: true
     }), {
-      type: 'success_pattern',
-      projectType,
+      type: 'learning_pattern',
       ...context
     });
   }
 
   /**
-   * Store project context
+   * Store project decision (project-specific)
    */
-  async storeProjectContext(projectName, context, phase = 'unknown') {
-    return await this.storeMemory('contexts', JSON.stringify({
-      projectName,
+  async storeProjectDecision(decision, context = {}) {
+    return await this.storeProjectMemory('decisions', JSON.stringify({
+      decision,
       context,
-      phase
+      timestamp: Date.now()
     }), {
-      type: 'project_context',
-      projectName,
-      phase
+      type: 'project_decision',
+      ...context
     });
   }
 
   /**
-   * Get relevant memories for current context
+   * Get agent memory statistics
    */
-  async getRelevantMemories(context, projectType = null, limit = 3) {
-    const contextQuery = typeof context === 'string' ? context : JSON.stringify(context);
-    return await this.searchMemories(contextQuery, null, limit);
-  }
-
-  /**
-   * Learn from past user feedback
-   */
-  async getPastFeedback(improvementCategory, projectType = null) {
-    const query = `improvement category ${improvementCategory}`;
-    const memories = await this.searchMemories(query, 'learning', 10);
-    
-    return memories.filter(memory => {
-      try {
-        const data = JSON.parse(memory.content);
-        return data.improvement && data.improvement.category === improvementCategory;
-      } catch {
-        return false;
-      }
-    });
-  }
-
-  /**
-   * Get memory statistics
-   */
-  async getStats() {
+  async getAgentMemoryStats() {
     const stats = {
-      pineconeConnected: !!this.index,
-      openaiConnected: !!this.openai,
+      memoryClass: 'agent',
       localMemories: 0,
-      cacheSize: this.localCache.size
+      types: {}
     };
 
-    // Count local memories
     try {
-      const dirs = ['embeddings', 'contexts', 'learning'];
-      for (const dir of dirs) {
-        const dirPath = path.join(this.memoryStore, dir);
-        const files = await fs.readdir(dirPath);
-        stats.localMemories += files.filter(f => f.endsWith('.json')).length;
-      }
-    } catch (error) {
-      // Directories might not exist
-    }
-
-    return stats;
-  }
-
-  /**
-   * Clear old memories (cleanup)
-   */
-  async clearOldMemories(daysOld = 30) {
-    const cutoffTime = Date.now() - (daysOld * 24 * 60 * 60 * 1000);
-    let deletedCount = 0;
-
-    try {
-      const memoryTypes = await fs.readdir(this.memoryStore);
-      for (const type of memoryTypes) {
-        const typePath = path.join(this.memoryStore, type);
+      const agentTypes = await fs.readdir(this.agentMemoryStore);
+      for (const type of agentTypes) {
+        const typePath = path.join(this.agentMemoryStore, type);
         try {
           const stat = await fs.stat(typePath);
           if (stat.isDirectory()) {
             const files = await fs.readdir(typePath);
-            for (const file of files) {
-              if (file.endsWith('.json')) {
-                const filePath = path.join(typePath, file);
-                const memory = JSON.parse(await fs.readFile(filePath, 'utf8'));
-                if (memory.metadata.timestamp < cutoffTime) {
-                  await fs.unlink(filePath);
-                  deletedCount++;
-                }
-              }
-            }
-          }
-        } catch (error) {
-          // Skip if not a directory or can't read
-        }
-      }
-    } catch (error) {
-      // Memory store directory might not exist
-    }
-
-    return deletedCount;
-  }
-
-  /**
-   * Sync local memories to Pinecone
-   */
-  async syncLocalToPinecone() {
-    if (!this.index) {
-      throw new Error('Pinecone not connected. Cannot sync to cloud.');
-    }
-
-    console.log('🔄 Starting local → Pinecone sync...');
-    let uploaded = 0;
-    let skipped = 0;
-    let errors = 0;
-
-    try {
-      const memoryTypes = await fs.readdir(this.memoryStore);
-      for (const type of memoryTypes) {
-        const typePath = path.join(this.memoryStore, type);
-        try {
-          const stat = await fs.stat(typePath);
-          if (stat.isDirectory()) {
-            const files = await fs.readdir(typePath);
-            console.log(`📁 Processing ${files.length} files in ${type}/`);
-
-            for (const file of files) {
-              if (file.endsWith('.json')) {
-                try {
-                  const filePath = path.join(typePath, file);
-                  const memory = JSON.parse(await fs.readFile(filePath, 'utf8'));
-                  
-                  // Check if already exists in Pinecone
-                  const existing = await this.checkPineconeMemory(memory.id);
-                  if (existing) {
-                    skipped++;
-                    continue;
-                  }
-
-                  // Upload to Pinecone
-                  await this.index.upsert([{
-                    id: memory.id,
-                    values: memory.embedding,
-                    metadata: {
-                      type: memory.type,
-                      content: memory.content.substring(0, 1000), // Pinecone metadata limit
-                      ...memory.metadata
-                    }
-                  }]);
-                  
-                  uploaded++;
-                  if (uploaded % 10 === 0) {
-                    console.log(`  ✅ Uploaded ${uploaded} memories...`);
-                  }
-                } catch (error) {
-                  console.warn(`⚠️ Error uploading ${file}:`, error.message);
-                  errors++;
-                }
-              }
-            }
-          }
-        } catch (error) {
-          console.warn(`⚠️ Error reading directory ${type}:`, error.message);
-        }
-      }
-    } catch (error) {
-      console.warn(`⚠️ Error reading memory store:`, error.message);
-    }
-
-    console.log(`🎯 Sync complete: ${uploaded} uploaded, ${skipped} skipped, ${errors} errors`);
-    return { uploaded, skipped, errors };
-  }
-
-  /**
-   * Sync Pinecone memories to local
-   */
-  async syncPineconeToLocal() {
-    if (!this.index) {
-      throw new Error('Pinecone not connected. Cannot sync from cloud.');
-    }
-
-    console.log('🔄 Starting Pinecone → local sync...');
-    let downloaded = 0;
-    let skipped = 0;
-    let errors = 0;
-
-    try {
-      // Query all memories from Pinecone (using empty vector to get all)
-      const emptyVector = new Array(1536).fill(0); // OpenAI embedding dimension
-      const allResults = await this.index.query({
-        vector: emptyVector,
-        topK: 10000, // Large number to get all memories
-        includeMetadata: true
-      });
-
-      console.log(`📥 Found ${allResults.matches.length} memories in Pinecone`);
-
-      for (const match of allResults.matches) {
-        try {
-          const memory = {
-            id: match.id,
-            type: match.metadata.type,
-            content: match.metadata.content,
-            metadata: match.metadata,
-            embedding: match.values || []
-          };
-
-          // Check if already exists locally
-          const localPath = path.join(this.memoryStore, memory.type, `${memory.id}.json`);
-          try {
-            await fs.access(localPath);
-            skipped++;
-            continue;
-          } catch {
-            // File doesn't exist, proceed with download
-          }
-
-          // Save locally
-          await this.storeLocally(memory);
-          downloaded++;
-          
-          if (downloaded % 10 === 0) {
-            console.log(`  ✅ Downloaded ${downloaded} memories...`);
-          }
-        } catch (error) {
-          console.warn(`⚠️ Error downloading memory ${match.id}:`, error.message);
-          errors++;
-        }
-      }
-    } catch (error) {
-      console.error('❌ Error querying Pinecone:', error.message);
-      throw error;
-    }
-
-    console.log(`🎯 Sync complete: ${downloaded} downloaded, ${skipped} skipped, ${errors} errors`);
-    return { downloaded, skipped, errors };
-  }
-
-  /**
-   * Bidirectional sync (local ↔ Pinecone)
-   */
-  async bidirectionalSync() {
-    if (!this.index) {
-      throw new Error('Pinecone not connected. Cannot perform bidirectional sync.');
-    }
-
-    console.log('🔄 Starting bidirectional sync...');
-    
-    // First sync local to Pinecone
-    const uploadResult = await this.syncLocalToPinecone();
-    
-    // Then sync Pinecone to local
-    const downloadResult = await this.syncPineconeToLocal();
-    
-    console.log('🎯 Bidirectional sync complete!');
-    console.log(`📤 Uploaded: ${uploadResult.uploaded}, Skipped: ${uploadResult.skipped}`);
-    console.log(`📥 Downloaded: ${downloadResult.downloaded}, Skipped: ${downloadResult.skipped}`);
-    
-    return {
-      upload: uploadResult,
-      download: downloadResult
-    };
-  }
-
-  /**
-   * Check if memory exists in Pinecone
-   */
-  async checkPineconeMemory(memoryId) {
-    if (!this.index) return false;
-    
-    try {
-      const result = await this.index.fetch([memoryId]);
-      return result.records && result.records[memoryId];
-    } catch (error) {
-      return false;
-    }
-  }
-
-  /**
-   * Get sync status and statistics
-   */
-  async getSyncStatus() {
-    const status = {
-      pineconeConnected: !!this.index,
-      openaiConnected: !!this.openai,
-      localMemories: 0,
-      pineconeMemories: 0,
-      lastSync: null
-    };
-
-    // Count local memories in all subdirectories
-    try {
-      const memoryTypes = await fs.readdir(this.memoryStore);
-      for (const type of memoryTypes) {
-        const typePath = path.join(this.memoryStore, type);
-        try {
-          const stat = await fs.stat(typePath);
-          if (stat.isDirectory()) {
-            const files = await fs.readdir(typePath);
-            status.localMemories += files.filter(f => f.endsWith('.json')).length;
-          }
-        } catch (error) {
-          // Skip if not a directory or can't read
-        }
-      }
-    } catch (error) {
-      // Memory store directory might not exist
-    }
-
-    // Count Pinecone memories
-    if (this.index) {
-      try {
-        const emptyVector = new Array(1536).fill(0);
-        const result = await this.index.query({
-          vector: emptyVector,
-          topK: 10000,
-          includeMetadata: false
-        });
-        status.pineconeMemories = result.matches.length;
-      } catch (error) {
-        console.warn('⚠️ Error counting Pinecone memories:', error.message);
-      }
-    }
-
-    return status;
-  }
-
-  /**
-   * Reset Pinecone index (delete all memories)
-   */
-  async resetPineconeIndex() {
-    if (!this.index) {
-      throw new Error('Pinecone not connected.');
-    }
-
-    console.log('⚠️ Resetting Pinecone index...');
-    
-    try {
-      await this.index.deleteAll();
-      console.log('✅ Pinecone index reset complete');
-    } catch (error) {
-      console.error('❌ Error resetting Pinecone index:', error.message);
-      throw error;
-    }
-  }
-
-  /**
-   * Fix embedding dimensions for memories with incorrect dimensions
-   */
-  async fixEmbeddingDimensions() {
-    console.log('🔧 Fixing embedding dimensions...');
-    let fixed = 0;
-    let errors = 0;
-
-    try {
-      const memoryTypes = await fs.readdir(this.memoryStore);
-      for (const type of memoryTypes) {
-        const typePath = path.join(this.memoryStore, type);
-        try {
-          const stat = await fs.stat(typePath);
-          if (stat.isDirectory()) {
-            const files = await fs.readdir(typePath);
-            
-            for (const file of files) {
-              if (file.endsWith('.json')) {
-                try {
-                  const filePath = path.join(typePath, file);
-                  const memory = JSON.parse(await fs.readFile(filePath, 'utf8'));
-                  
-                  // Check if embedding has wrong dimension
-                  if (memory.embedding && memory.embedding.length !== 1536) {
-                    console.log(`🔧 Fixing ${file} (${memory.embedding.length} → 1536 dimensions)`);
-                    
-                    // Regenerate embedding with correct dimension
-                    memory.embedding = await this.generateEmbedding(memory.content);
-                    
-                    // Save the fixed memory
-                    await fs.writeFile(filePath, JSON.stringify(memory, null, 2));
-                    fixed++;
-                  }
-                } catch (error) {
-                  console.warn(`⚠️ Error fixing ${file}:`, error.message);
-                  errors++;
-                }
-              }
-            }
+            const count = files.filter(f => f.endsWith('.json')).length;
+            stats.types[type] = count;
+            stats.localMemories += count;
           }
         } catch (error) {
           // Skip if not a directory
         }
       }
     } catch (error) {
-      console.warn(`⚠️ Error reading memory store:`, error.message);
+      // Agent memory store might not exist
     }
 
-    console.log(`🎯 Fixed ${fixed} memories, ${errors} errors`);
-    return { fixed, errors };
+    return stats;
+  }
+
+  /**
+   * Get project memory statistics
+   */
+  async getProjectMemoryStats(projectName = null) {
+    const targetProject = projectName || this.currentProject;
+    
+    if (!targetProject) {
+      return { error: 'No project specified' };
+    }
+
+    const stats = {
+      memoryClass: 'project',
+      projectName: targetProject,
+      localMemories: 0,
+      types: {}
+    };
+
+    try {
+      const projectDir = path.join(this.projectMemoryStore, targetProject);
+      const projectTypes = await fs.readdir(projectDir);
+      
+      for (const type of projectTypes) {
+        const typePath = path.join(projectDir, type);
+        try {
+          const stat = await fs.stat(typePath);
+          if (stat.isDirectory()) {
+            const files = await fs.readdir(typePath);
+            const count = files.filter(f => f.endsWith('.json')).length;
+            stats.types[type] = count;
+            stats.localMemories += count;
+          }
+        } catch (error) {
+          // Skip if not a directory
+        }
+      }
+    } catch (error) {
+      // Project memory store might not exist
+    }
+
+    return stats;
+  }
+
+  /**
+   * Clean project memory for specific project
+   */
+  async cleanProjectMemory(projectName) {
+    try {
+      const projectDir = path.join(this.projectMemoryStore, projectName);
+      await fs.rm(projectDir, { recursive: true, force: true });
+      console.log(`🧹 Cleaned project memory for: ${projectName}`);
+      return true;
+    } catch (error) {
+      console.warn(`⚠️ Error cleaning project memory for ${projectName}:`, error.message);
+      return false;
+    }
+  }
+
+  /**
+   * List all projects with memory
+   */
+  async listProjectsWithMemory() {
+    try {
+      const projects = await fs.readdir(this.projectMemoryStore);
+      const projectStats = [];
+      
+      for (const project of projects) {
+        const projectPath = path.join(this.projectMemoryStore, project);
+        try {
+          const stat = await fs.stat(projectPath);
+          if (stat.isDirectory()) {
+            const stats = await this.getProjectMemoryStats(project);
+            projectStats.push({
+              name: project,
+              memoryCount: stats.localMemories,
+              types: Object.keys(stats.types)
+            });
+          }
+        } catch (error) {
+          // Skip invalid directories
+        }
+      }
+      
+      return projectStats;
+    } catch (error) {
+      return [];
+    }
+  }
+
+  /**
+   * Sync agent memory to git (version controlled memory)
+   */
+  async syncAgentMemoryToGit() {
+    // This would be called when pushing to git
+    console.log('📤 Agent memory is stored in version-controlled directory');
+    console.log(`📁 Location: ${this.agentMemoryStore}`);
+    
+    const stats = await this.getAgentMemoryStats();
+    console.log(`🧠 Agent memory contains ${stats.localMemories} entries`);
+    
+    return {
+      success: true,
+      location: this.agentMemoryStore,
+      memoryCount: stats.localMemories,
+      message: 'Agent memory ready for git sync'
+    };
+  }
+
+  /**
+   * Get memory statistics (combined)
+   */
+  async getStats() {
+    const agentStats = await this.getAgentMemoryStats();
+    const projectStats = this.currentProject ? await this.getProjectMemoryStats() : null;
+    
+    return {
+      pineconeConnected: !!this.index,
+      openaiConnected: !!this.openai,
+      agent: agentStats,
+      project: projectStats,
+      cacheSize: this.localCache.size,
+      currentProject: this.currentProject
+    };
   }
 }
 

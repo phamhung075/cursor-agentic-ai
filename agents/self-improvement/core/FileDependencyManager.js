@@ -54,58 +54,131 @@ class FileDependencyManager {
   }
 
   /**
-   * Save dependency graph to memory
+   * Save dependency graph to memory - less frequent saves
    */
   async saveDependencyGraph() {
+    // Only save if we have meaningful dependencies and changes
+    if (this.dependencyGraph.size === 0) {
+      return;
+    }
+    
+    // Track save frequency - only save every 10 changes
+    this.saveCounter = (this.saveCounter || 0) + 1;
+    if (this.saveCounter % 10 !== 0) {
+      return;
+    }
+    
     const data = {
       dependencies: Array.from(this.dependencyGraph.entries()),
       reverseDependencies: Array.from(this.reverseDependencyGraph.entries()),
       fileHashes: Array.from(this.fileHashes.entries()),
-      lastUpdated: Date.now()
+      lastUpdated: Date.now(),
+      saveCount: this.saveCounter
     };
 
-    await this.memoryManager.storeMemory('dependencies', JSON.stringify(data), {
-      type: 'dependency_graph',
-      fileCount: this.dependencyGraph.size
-    });
+    try {
+      // Store as agent memory (global dependency patterns) with reduced frequency
+      await this.memoryManager.storeAgentMemory('dependencies', JSON.stringify(data), {
+        type: 'dependency_graph',
+        fileCount: this.dependencyGraph.size,
+        saveId: Math.floor(this.saveCounter / 10)
+      });
+      
+      console.log(`💾 Saved dependency graph (${this.dependencyGraph.size} files)`);
+    } catch (error) {
+      console.warn('⚠️ Error saving dependency graph:', error.message);
+    }
   }
 
   /**
    * Initialize file watcher for automatic dependency tracking
    */
   async initializeFileWatcher() {
+    // Only watch project-specific files, be very selective
     const watchPatterns = [
-      '**/*.js', '**/*.ts', '**/*.jsx', '**/*.tsx',
-      '**/*.json', '**/*.md', '**/*.mdc',
-      '**/*.css', '**/*.scss', '**/*.sass',
-      '**/*.html', '**/*.vue', '**/*.svelte'
+      '**/*.mdc',           // Project documentation files
+      '**/*.md',            // Markdown files
+      'src/**/*.js',        // Source JS files only
+      'src/**/*.ts',        // Source TS files only
+      'src/**/*.jsx',       // Source React files only
+      'src/**/*.tsx',       // Source React TS files only
+      '.cursor/rules/**/*.mdc', // Cursor rules files
+      'agents/self-improvement/core/**/*.js',     // Only core agent files
+      'agents/self-improvement/cli/**/*.js',      // Only CLI agent files
+      'agents/self-improvement/config/**/*.json', // Only config files
+      'scripts/**/*.js',    // Script files
+      'package.json',       // Package config
+      '*.json'              // Root config files only
     ];
 
     this.watcher = chokidar.watch(watchPatterns, {
       cwd: this.projectRoot,
       ignored: [
-        '**/node_modules/**',
-        '**/.git/**',
-        '**/agents/_store/memory/**',
-        '**/agents/_store/logs/**'
+        '**/node_modules/**',     // Ignore all node_modules
+        '**/.git/**',             // Ignore git files
+        '**/dist/**',             // Ignore build outputs
+        '**/build/**',            // Ignore build outputs
+        '**/.next/**',            // Ignore Next.js cache
+        '**/coverage/**',         // Ignore test coverage
+        'agents/_store/**',       // CRITICAL: Ignore ALL _store files to prevent recursion
+        '**/agents/_store/**',    // CRITICAL: Additional protection against recursion
+        '**/*memory*/**',         // Ignore any memory directories
+        '**/*.log',               // Ignore log files
+        '**/*.tmp',               // Ignore temp files
+        '**/temp/**',             // Ignore temp directories
+        '**/cache/**',            // Ignore cache directories
+        '**/test_*.js'            // Ignore test files in root
       ],
       persistent: true,
-      ignoreInitial: true
+      ignoreInitial: true,
+      depth: 4                    // Limit recursion depth even more
     });
 
     this.watcher.on('change', async (filePath) => {
-      await this.handleFileChange(filePath);
+      // Only process if it's a project file we care about
+      if (this.shouldTrackFile(filePath)) {
+        await this.handleFileChange(filePath);
+      }
     });
 
     this.watcher.on('add', async (filePath) => {
-      await this.analyzeFileDependencies(filePath);
+      // Only process if it's a project file we care about
+      if (this.shouldTrackFile(filePath)) {
+        await this.analyzeFileDependencies(filePath);
+      }
     });
 
     this.watcher.on('unlink', async (filePath) => {
       await this.removeFileFromGraph(filePath);
     });
 
-    console.log('👀 File watcher initialized for dependency tracking');
+    console.log('👀 File watcher initialized for selective dependency tracking (no _store recursion)');
+  }
+
+  /**
+   * Check if we should track this file - CRITICAL recursion prevention
+   */
+  shouldTrackFile(filePath) {
+    // CRITICAL: Never track any _store files to prevent recursion
+    if (filePath.includes('_store') || 
+        filePath.includes('memory') ||
+        filePath.includes('node_modules') || 
+        filePath.includes('.git') ||
+        filePath.includes('dist') ||
+        filePath.includes('build') ||
+        filePath.includes('.next') ||
+        filePath.includes('coverage') ||
+        filePath.includes('.log') ||
+        filePath.includes('.tmp') ||
+        filePath.startsWith('test_')) {
+      return false;
+    }
+    
+    // Only track specific file types that matter for our project
+    const relevantExtensions = ['.mdc', '.md', '.js', '.ts', '.jsx', '.tsx', '.json'];
+    const extension = path.extname(filePath);
+    
+    return relevantExtensions.includes(extension);
   }
 
   /**
@@ -217,60 +290,43 @@ class FileDependencyManager {
   }
 
   /**
-   * Extract dependencies from file content
+   * Extract dependencies from file content - more selective approach
    */
   extractDependencies(content, filePath) {
     const dependencies = new Set();
     const fileDir = path.dirname(filePath);
     
-    // JavaScript/TypeScript imports and requires
+    // Only track relative project imports, not external packages
     const importPatterns = [
-      /import.*from\s+['"`]([^'"`]+)['"`]/g,
-      /require\(['"`]([^'"`]+)['"`]\)/g,
-      /import\(['"`]([^'"`]+)['"`]\)/g
+      /import.*from\s+['"`](\.[^'"`]+)['"`]/g,      // Only relative imports starting with .
+      /require\(['"`](\.[^'"`]+)['"`]\)/g,          // Only relative requires starting with .
+      /import\(['"`](\.[^'"`]+)['"`]\)/g            // Only relative dynamic imports starting with .
     ];
     
     for (const pattern of importPatterns) {
       let match;
       while ((match = pattern.exec(content)) !== null) {
         const importPath = match[1];
-        if (importPath.startsWith('.')) {
-          // Relative import - resolve to project path
+        try {
+          // Only track relative project files
           const resolvedPath = path.normalize(path.join(fileDir, importPath));
-          dependencies.add(resolvedPath);
+          // Only add if it's within our project and not external
+          if (!resolvedPath.includes('node_modules') && !importPath.startsWith('http')) {
+            dependencies.add(resolvedPath);
+          }
+        } catch (error) {
+          // Ignore invalid paths
         }
       }
     }
     
-    // CSS imports
-    const cssImportPattern = /@import\s+['"`]([^'"`]+)['"`]/g;
+    // Only track .mdc file references for our framework
+    const mdcReferencePattern = /\[([^\]]+\.mdc)\]/g;
     let match;
-    while ((match = cssImportPattern.exec(content)) !== null) {
-      const importPath = match[1];
-      if (importPath.startsWith('.')) {
-        const resolvedPath = path.normalize(path.join(fileDir, importPath));
-        dependencies.add(resolvedPath);
-      }
-    }
-    
-    // Component references (for React, Vue, etc.)
-    const componentPattern = /<([A-Z][a-zA-Z0-9]*)/g;
-    while ((match = componentPattern.exec(content)) !== null) {
-      const componentName = match[1];
-      // Store component usage for potential cross-references
-      dependencies.add(`component:${componentName}`);
-    }
-    
-    // Configuration file references
-    const configPatterns = [
-      /['"`]([^'"`]*package\.json)['"`]/g,
-      /['"`]([^'"`]*\.config\.[^'"`]*)['"`]/g,
-      /['"`]([^'"`]*\.env[^'"`]*)['"`]/g
-    ];
-    
-    for (const pattern of configPatterns) {
-      while ((match = pattern.exec(content)) !== null) {
-        dependencies.add(match[1]);
+    while ((match = mdcReferencePattern.exec(content)) !== null) {
+      const mdcFile = match[1];
+      if (!mdcFile.includes('node_modules')) {
+        dependencies.add(mdcFile);
       }
     }
     
@@ -351,8 +407,8 @@ class FileDependencyManager {
       // Re-analyze dependencies
       await this.analyzeFileDependencies(filePath);
       
-      // Trigger memory update for file analysis
-      await this.memoryManager.storeMemory('analysis', JSON.stringify({
+      // Trigger memory update for file analysis as agent memory (global pattern)
+      await this.memoryManager.storeAgentMemory('analysis', JSON.stringify({
         fileName: path.basename(filePath),
         filePath: fullPath,
         reanalyzed: true,
@@ -379,8 +435,8 @@ class FileDependencyManager {
    */
   async invalidateFileMemory(filePath) {
     try {
-      // Store invalidation record
-      await this.memoryManager.storeMemory('analysis', JSON.stringify({
+      // Store invalidation record as agent memory (global pattern)
+      await this.memoryManager.storeAgentMemory('analysis', JSON.stringify({
         fileName: path.basename(filePath),
         filePath,
         invalidated: true,
@@ -429,19 +485,41 @@ class FileDependencyManager {
   }
 
   /**
-   * Store dependency information in memory
+   * Store dependency information in memory - less frequent storage
    */
   async storeDependencyMemory(filePath, dependencies) {
-    await this.memoryManager.storeMemory('dependencies', JSON.stringify({
-      filePath,
-      dependencies: Array.from(dependencies),
-      dependentCount: this.getDependentFiles(filePath).size,
-      timestamp: Date.now()
-    }), {
-      type: 'file_dependencies',
-      fileName: path.basename(filePath),
-      dependencyCount: dependencies.length
-    });
+    // Only store if we have meaningful dependencies
+    if (dependencies.length === 0) {
+      return;
+    }
+    
+    // Only store for project files we care about
+    if (!this.shouldTrackFile(filePath)) {
+      return;
+    }
+    
+    // Batch storage - only store every 5th dependency update to reduce noise
+    this.storageCounter = (this.storageCounter || 0) + 1;
+    if (this.storageCounter % 5 !== 0) {
+      return;
+    }
+    
+    try {
+      // Store as agent memory (global dependency patterns) with reduced frequency
+      await this.memoryManager.storeAgentMemory('dependencies', JSON.stringify({
+        filePath,
+        dependencies: Array.from(dependencies),
+        dependentCount: this.getDependentFiles(filePath).size,
+        timestamp: Date.now(),
+        batchId: Math.floor(this.storageCounter / 5)
+      }), {
+        type: 'file_dependencies',
+        fileName: path.basename(filePath),
+        dependencyCount: dependencies.length
+      });
+    } catch (error) {
+      console.warn(`⚠️ Error storing dependency memory for ${filePath}:`, error.message);
+    }
   }
 
   /**

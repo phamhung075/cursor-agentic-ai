@@ -1,7 +1,7 @@
 /**
  * 🖥️ CLI Interface - Main command line interface
  * 
- * Handles user interaction and command processing
+ * Handles user interaction and command processing for dual memory and git projects
  */
 
 const readline = require('readline');
@@ -35,7 +35,7 @@ class CLIInterface {
    */
   showWelcome() {
     console.log(chalk.cyan('🧠 Interactive Self-Improvement Agent v2.0'));
-    console.log(chalk.green('💡 I will analyze files as you work with them.'));
+    console.log(chalk.green('💡 I can analyze files and manage git projects with dual memory.'));
     this.showCommands();
   }
 
@@ -44,9 +44,25 @@ class CLIInterface {
    */
   showCommands() {
     console.log(chalk.yellow('📋 Available Commands:'));
-    Object.entries(this.config.cli.commands).forEach(([cmd, desc]) => {
-      console.log(chalk.gray(`  ${cmd.padEnd(18)} - ${desc}`));
-    });
+    console.log(chalk.gray('  🔍 Analysis Commands:'));
+    console.log(chalk.gray('    analyze              - Analyze specific .mdc file'));
+    console.log(chalk.gray('    improve              - Get improvement suggestions'));
+    console.log(chalk.gray('    context              - Set current work context'));
+    console.log(chalk.gray('    smart-detect         - Analyze based on current context'));
+    console.log(chalk.gray(''));
+    console.log(chalk.gray('  🧠 Memory Commands:'));
+    console.log(chalk.gray('    agent-memory         - Agent memory management (global learning)'));
+    console.log(chalk.gray('    project-memory       - Project memory management (project-specific)'));
+    console.log(chalk.gray(''));
+    console.log(chalk.gray('  🔗 Project Commands:'));
+    console.log(chalk.gray('    git-projects         - Git project management commands'));
+    console.log(chalk.gray('    dependencies         - File dependency tracking commands'));
+    console.log(chalk.gray(''));
+    console.log(chalk.gray('  ⚙️ System Commands:'));
+    console.log(chalk.gray('    migrate              - Migrate files to agent store'));
+    console.log(chalk.gray('    status               - Show agent status'));
+    console.log(chalk.gray('    help                 - Show help information'));
+    console.log(chalk.gray('    exit                 - Stop the agent'));
   }
 
   /**
@@ -89,19 +105,21 @@ class CLIInterface {
         case 'smart-detect':
           await this.handleSmartDetect();
           break;
-        case 'memory':
-          await this.handleMemory(args);
+        case 'agent-memory':
+          await this.handleAgentMemory(args);
           break;
-        case 'projects':
-        case 'project':
-          await this.handleProjects(args);
+        case 'project-memory':
+          await this.handleProjectMemory(args);
           break;
-        case 'migrate':
-          await this.handleMigrate(args);
+        case 'git-projects':
+          await this.handleGitProjects(args);
           break;
         case 'dependencies':
         case 'deps':
           await this.handleDependencies(args);
+          break;
+        case 'migrate':
+          await this.handleMigrate(args);
           break;
         case 'status':
           await this.handleStatus();
@@ -187,6 +205,81 @@ class CLIInterface {
   }
 
   /**
+   * Handle agent memory commands
+   */
+  async handleAgentMemory(args) {
+    if (args.length === 0) {
+      console.log(chalk.yellow('💡 Usage: agent-memory <subcommand>'));
+      console.log(chalk.gray('  Available subcommands:'));
+      console.log(chalk.gray('    stats              - Show agent memory statistics'));
+      console.log(chalk.gray('    search <query>     - Search agent memories'));
+      console.log(chalk.gray('    sync-to-git        - Sync agent memory to git (version control)'));
+      return;
+    }
+
+    const subcommand = args[0];
+    const subArgs = args.slice(1);
+    
+    console.log(chalk.blue(`🧠 Agent Memory: ${subcommand}`));
+    const result = await this.agent.handleAgentMemoryCommand(subcommand, subArgs);
+    this.displayAgentMemoryResult(result, subcommand);
+  }
+
+  /**
+   * Handle project memory commands
+   */
+  async handleProjectMemory(args) {
+    if (args.length === 0) {
+      console.log(chalk.yellow('💡 Usage: project-memory <subcommand>'));
+      console.log(chalk.gray('  Available subcommands:'));
+      console.log(chalk.gray('    stats [project]    - Show project memory statistics'));
+      console.log(chalk.gray('    search <query>     - Search current project memories'));
+      console.log(chalk.gray('    clean <project>    - Clean project memory'));
+      console.log(chalk.gray('    list-projects      - List projects with memory'));
+      return;
+    }
+
+    const subcommand = args[0];
+    const subArgs = args.slice(1);
+    
+    console.log(chalk.blue(`📁 Project Memory: ${subcommand}`));
+    const result = await this.agent.handleProjectMemoryCommand(subcommand, subArgs);
+    this.displayProjectMemoryResult(result, subcommand);
+  }
+
+  /**
+   * Handle git projects commands
+   */
+  async handleGitProjects(args) {
+    if (args.length === 0) {
+      console.log(chalk.yellow('💡 Usage: git-projects <subcommand>'));
+      console.log(chalk.gray('  Available subcommands:'));
+      console.log(chalk.gray('    add <name> <url>   - Add new sub-git project'));
+      console.log(chalk.gray('    remove <name>      - Remove sub-git project'));
+      console.log(chalk.gray('    switch <name>      - Switch to project'));
+      console.log(chalk.gray('    list               - List all projects'));
+      console.log(chalk.gray('    status [name]      - Show project status'));
+      console.log(chalk.gray('    sync-memory [name] - Sync project memory to git'));
+      console.log(chalk.gray('    clean <name>       - Clean project for switch'));
+      console.log(chalk.gray('    stats              - Show projects statistics'));
+      console.log(chalk.gray(''));
+      console.log(chalk.gray('  Examples:'));
+      console.log(chalk.gray('    git-projects add my-app https://github.com/user/repo.git'));
+      console.log(chalk.gray('    git-projects add my-app https://github.com/user/repo.git --branch dev'));
+      console.log(chalk.gray('    git-projects switch my-app'));
+      console.log(chalk.gray('    git-projects remove my-app --force --clean-memory'));
+      return;
+    }
+
+    const subcommand = args[0];
+    const subArgs = args.slice(1);
+    
+    console.log(chalk.blue(`🔗 Git Projects: ${subcommand}`));
+    const result = await this.agent.handleGitProjectCommand(subcommand, subArgs);
+    this.displayGitProjectResult(result, subcommand);
+  }
+
+  /**
    * Display analysis results
    */
   displayAnalysisResult(result) {
@@ -225,8 +318,28 @@ class CLIInterface {
       return;
     }
 
+    const { suggestions } = result;
+
     console.log(chalk.green('🔧 Improvement suggestions generated!'));
-    // Implementation would depend on the improvement format
+    console.log();
+
+    suggestions.forEach((suggestion, index) => {
+      console.log(chalk.white(`${index + 1}. ${suggestion.category}: ${suggestion.issue}`));
+      console.log(chalk.gray(`   💡 ${suggestion.suggestion}`));
+      console.log(chalk.blue(`   ⏱️ Estimate: ${suggestion.timeEstimate} (${suggestion.difficulty} difficulty)`));
+      
+      // Show agent insights if available
+      if (suggestion.agentInsights) {
+        console.log(chalk.magenta(`   🧠 Agent: ${suggestion.agentInsights.similarCases} similar cases (confidence: ${Math.round(suggestion.agentInsights.confidence * 100)}%)`));
+      }
+      
+      // Show project insights if available
+      if (suggestion.projectInsights) {
+        console.log(chalk.cyan(`   📁 Project: ${suggestion.projectInsights.similarCases} cases in ${suggestion.projectInsights.projectName}`));
+      }
+      
+      console.log();
+    });
   }
 
   /**
@@ -238,141 +351,283 @@ class CLIInterface {
       return;
     }
 
-    const { relevantFiles, totalIssues } = result;
+    const { relevantFiles, totalIssues, agentInsights, projectInsights, currentProject } = result;
     
     console.log(chalk.green(`🎯 Found ${relevantFiles.length} relevant files`));
     console.log(chalk.yellow(`📊 Total issues detected: ${totalIssues}`));
     
+    if (currentProject) {
+      console.log(chalk.cyan(`📁 Current project: ${currentProject}`));
+    }
+    
+    console.log();
+    
     relevantFiles.forEach(file => {
       console.log(chalk.blue(`📄 ${file.path} (${file.issues.length} issues)`));
+    });
+
+    // Show memory insights
+    if (agentInsights && agentInsights.length > 0) {
+      console.log();
+      console.log(chalk.magenta('🧠 Agent Insights:'));
+      agentInsights.forEach((insight, i) => {
+        console.log(chalk.gray(`  ${i + 1}. Score: ${Math.round(insight.score * 100)}%`));
+      });
+    }
+
+    if (projectInsights && projectInsights.length > 0) {
+      console.log();
+      console.log(chalk.cyan('📁 Project Insights:'));
+      projectInsights.forEach((insight, i) => {
+        console.log(chalk.gray(`  ${i + 1}. Score: ${Math.round(insight.score * 100)}%`));
+      });
+    }
+  }
+
+  /**
+   * Display agent memory results
+   */
+  displayAgentMemoryResult(result, subcommand) {
+    if (!result.success) {
+      console.log(chalk.red(`❌ ${result.message}`));
+      return;
+    }
+
+    switch (subcommand) {
+      case 'stats':
+        this.displayAgentMemoryStats(result.stats);
+        break;
+      case 'search':
+        this.displayMemorySearchResults(result.results, 'agent');
+        break;
+      case 'sync-to-git':
+        console.log(chalk.green(`✅ Agent memory ready for git sync`));
+        console.log(chalk.blue(`📁 Location: ${result.location}`));
+        console.log(chalk.blue(`🧠 Memory count: ${result.memoryCount} entries`));
+        break;
+      default:
+        this.displayCommandResult(result, 'Agent Memory');
+    }
+  }
+
+  /**
+   * Display project memory results
+   */
+  displayProjectMemoryResult(result, subcommand) {
+    if (!result.success) {
+      console.log(chalk.red(`❌ ${result.message}`));
+      return;
+    }
+
+    switch (subcommand) {
+      case 'stats':
+        this.displayProjectMemoryStats(result.stats);
+        break;
+      case 'search':
+        this.displayMemorySearchResults(result.results, 'project');
+        break;
+      case 'clean':
+        console.log(chalk.green(`✅ Cleaned project memory: ${result.project}`));
+        break;
+      case 'list-projects':
+        this.displayProjectMemoryList(result.projects);
+        break;
+      default:
+        this.displayCommandResult(result, 'Project Memory');
+    }
+  }
+
+  /**
+   * Display git project results
+   */
+  displayGitProjectResult(result, subcommand) {
+    if (!result.success) {
+      console.log(chalk.red(`❌ ${result.message}`));
+      return;
+    }
+
+    switch (subcommand) {
+      case 'add':
+        console.log(chalk.green(`✅ Added git project: ${result.project.name}`));
+        console.log(chalk.blue(`📁 Local path: ${result.project.localPath}`));
+        console.log(chalk.blue(`🌿 Branch: ${result.project.branch}`));
+        break;
+        
+      case 'remove':
+        console.log(chalk.green(`✅ Removed git project: ${result.name}`));
+        break;
+        
+      case 'switch':
+        console.log(chalk.green(`✅ Switched to project: ${result.project.name}`));
+        console.log(chalk.blue(`📁 Working directory: ${result.project.localPath}`));
+        break;
+        
+      case 'list':
+        this.displayGitProjectsList(result.projects);
+        break;
+        
+      case 'status':
+        this.displayGitProjectStatus(result.status);
+        break;
+        
+      case 'sync-memory':
+        console.log(chalk.green(`✅ Project memory synced: ${result.project}`));
+        console.log(chalk.blue(`🧠 Memory count: ${result.memoryCount} entries`));
+        if (result.summaryFile) {
+          console.log(chalk.gray(`📄 Summary: ${result.summaryFile}`));
+        }
+        break;
+        
+      case 'clean':
+        console.log(chalk.green(`✅ Cleaned project memory: ${result.project}`));
+        if (result.alreadyClean) {
+          console.log(chalk.gray('💡 Project memory was already clean'));
+        }
+        break;
+        
+      case 'stats':
+        this.displayGitProjectsStats(result.stats);
+        break;
+        
+      default:
+        this.displayCommandResult(result, 'Git Projects');
+    }
+  }
+
+  /**
+   * Display agent memory statistics
+   */
+  displayAgentMemoryStats(stats) {
+    console.log(chalk.green('🧠 Agent Memory Statistics (Global Learning):'));
+    console.log(chalk.blue(`  📊 Total Memories: ${stats.localMemories}`));
+    
+    if (Object.keys(stats.types).length > 0) {
+      console.log(chalk.white('  📂 Memory Types:'));
+      Object.entries(stats.types).forEach(([type, count]) => {
+        console.log(chalk.gray(`    ${type}: ${count} entries`));
+      });
+    }
+  }
+
+  /**
+   * Display project memory statistics
+   */
+  displayProjectMemoryStats(stats) {
+    if (stats.error) {
+      console.log(chalk.red(`❌ ${stats.error}`));
+      return;
+    }
+
+    console.log(chalk.green(`📁 Project Memory Statistics: ${stats.projectName}`));
+    console.log(chalk.blue(`  📊 Total Memories: ${stats.localMemories}`));
+    
+    if (Object.keys(stats.types).length > 0) {
+      console.log(chalk.white('  📂 Memory Types:'));
+      Object.entries(stats.types).forEach(([type, count]) => {
+        console.log(chalk.gray(`    ${type}: ${count} entries`));
+      });
+    }
+  }
+
+  /**
+   * Display project memory list
+   */
+  displayProjectMemoryList(projects) {
+    if (projects.length === 0) {
+      console.log(chalk.yellow('📁 No projects with memory found'));
+      return;
+    }
+
+    console.log(chalk.green('📁 Projects with Memory:'));
+    projects.forEach(project => {
+      console.log(chalk.blue(`  📂 ${project.name}`));
+      console.log(chalk.gray(`    Memory entries: ${project.memoryCount}`));
+      console.log(chalk.gray(`    Types: ${project.types.join(', ')}`));
     });
   }
 
   /**
-   * Handle memory commands
+   * Display git projects list
    */
-  async handleMemory(args) {
-    if (args.length === 0) {
-      console.log(chalk.yellow('💡 Usage: memory <subcommand>'));
-      console.log(chalk.gray('  Available subcommands:'));
-      console.log(chalk.gray('    stats              - Show memory statistics'));
-      console.log(chalk.gray('    search <query>     - Search memories'));
-      console.log(chalk.gray('    cleanup [days]     - Clean old memories'));
-      console.log(chalk.gray('    sync-status        - Check sync status'));
-      console.log(chalk.gray('    sync-up           - Upload local → Pinecone'));
-      console.log(chalk.gray('    sync-down         - Download Pinecone → local'));
-      console.log(chalk.gray('    sync-both         - Bidirectional sync'));
-      console.log(chalk.gray('    reset-pinecone    - Reset Pinecone index'));
-      console.log(chalk.gray('    fix-embeddings    - Fix embedding dimensions'));
+  displayGitProjectsList(projects) {
+    if (projects.length === 0) {
+      console.log(chalk.yellow('🔗 No git projects found'));
       return;
     }
 
-    const subcommand = args[0];
-    const subArgs = args.slice(1);
-    
-    console.log(chalk.blue(`🧠 Memory: ${subcommand}`));
-    const result = await this.agent.handleMemoryCommand(subcommand, subArgs);
-    this.displayMemoryResult(result, subcommand);
+    console.log(chalk.green('🔗 Git Projects:'));
+    projects.forEach(project => {
+      const current = project.isCurrent ? chalk.green(' (current)') : '';
+      console.log(chalk.blue(`  📂 ${project.name}${current}`));
+      console.log(chalk.gray(`    URL: ${project.gitUrl}`));
+      console.log(chalk.gray(`    Branch: ${project.branch}`));
+      console.log(chalk.gray(`    Status: ${project.status}`));
+    });
   }
 
   /**
-   * Handle project commands
+   * Display git project status
    */
-  async handleProjects(args) {
-    if (args.length === 0) {
-      console.log(chalk.yellow('💡 Usage: projects <subcommand>'));
-      console.log(chalk.gray('  Available subcommands: list, set <name>, stats [name], overview'));
-      return;
-    }
-
-    const subcommand = args[0];
-    const subArgs = args.slice(1);
-
-    try {
-      switch (subcommand) {
-        case 'list':
-          const result = await this.agent.handleFileCommand('projects');
-          if (result.success) {
-            console.log(chalk.green('📁 Available projects:'));
-            if (result.projects.length === 0) {
-              console.log(chalk.gray('  No projects found'));
-            } else {
-              result.projects.forEach(project => {
-                const current = project === this.agent.getCurrentProject() ? ' (current)' : '';
-                console.log(chalk.blue(`  📂 ${project}${current}`));
-              });
-            }
-          } else {
-            console.log(chalk.red(`❌ ${result.message}`));
-          }
-          break;
-
-        case 'set':
-          if (subArgs.length === 0) {
-            console.log(chalk.yellow('💡 Usage: projects set <project-name>'));
-            return;
-          }
-          const projectName = subArgs[0];
-          this.agent.setProject(projectName);
-          console.log(chalk.green(`📁 Project set to: ${projectName}`));
-          break;
-
-        case 'stats':
-          const statsResult = await this.agent.handleFileCommand('stats', subArgs);
-          this.displayCommandResult(statsResult, 'Project Stats');
-          break;
-
-        case 'overview':
-          const overviewResult = await this.agent.handleFileCommand('overview');
-          this.displayCommandResult(overviewResult, 'Projects Overview');
-          break;
-
-        default:
-          console.log(chalk.red(`❌ Unknown project command: ${subcommand}`));
-          console.log(chalk.gray('  Available: list, set, stats, overview'));
-      }
-    } catch (error) {
-      console.error(chalk.red('❌ Error:'), error.message);
-    }
-  }
-
-  /**
-   * Handle migrate command
-   */
-  async handleMigrate(args) {
-    if (args.length === 0) {
-      console.log(chalk.yellow('💡 Usage: migrate <project-name>'));
-      console.log(chalk.gray('  Migrates existing AutoPilot files to agent store'));
-      return;
-    }
-
-    const projectName = args[0];
-    console.log(chalk.blue(`📦 Migrating files to project: ${projectName}`));
+  displayGitProjectStatus(status) {
+    console.log(chalk.blue(`📂 Project: ${status.name}`));
+    console.log(chalk.gray(`📁 Local path: ${status.localPath}`));
+    console.log(chalk.gray(`🌐 Git URL: ${status.gitUrl}`));
+    console.log(chalk.gray(`🌿 Branch: ${status.branch}`));
+    console.log(chalk.gray(`📊 Status: ${status.status}`));
     
-    const result = await this.agent.handleFileCommand('migrate', [projectName]);
-    
-    if (result.success) {
-      console.log(chalk.green(`✅ Migration completed for project: ${projectName}`));
-      
-      if (result.migrated.length > 0) {
-        console.log(chalk.blue('📁 Migrated files:'));
-        result.migrated.forEach(file => {
-          console.log(chalk.gray(`  ${file.fileName}: ${file.from} → ${file.to}`));
-        });
-      }
-      
-      if (result.errors.length > 0) {
-        console.log(chalk.yellow('⚠️ Migration errors:'));
-        result.errors.forEach(error => {
-          console.log(chalk.red(`  ${error.fileName}: ${error.error}`));
-        });
-      }
-      
-      // Set the project as current
-      this.agent.setProject(projectName);
+    if (status.hasUncommittedChanges) {
+      console.log(chalk.yellow('⚠️ Has uncommitted changes'));
     } else {
-      console.log(chalk.red(`❌ Migration failed: ${result.message}`));
+      console.log(chalk.green('✅ Working directory clean'));
     }
+
+    if (status.memoryStats && !status.memoryStats.error) {
+      console.log(chalk.blue(`🧠 Memory: ${status.memoryStats.localMemories} entries`));
+    }
+
+    if (status.repoInfo && !status.repoInfo.error) {
+      console.log(chalk.gray(`📝 Current branch: ${status.repoInfo.currentBranch}`));
+      console.log(chalk.gray(`📋 Last commit: ${status.repoInfo.lastCommit.substring(0, 50)}...`));
+    }
+  }
+
+  /**
+   * Display git projects statistics
+   */
+  displayGitProjectsStats(stats) {
+    console.log(chalk.green('🔗 Git Projects Statistics:'));
+    console.log(chalk.blue(`📊 Total projects: ${stats.totalProjects}`));
+    console.log(chalk.blue(`✅ Active projects: ${stats.activeProjects}`));
+    console.log(chalk.blue(`🧠 Total memory entries: ${stats.totalMemoryEntries}`));
+    
+    if (stats.currentProject) {
+      console.log(chalk.cyan(`📍 Current project: ${stats.currentProject}`));
+    }
+
+    if (stats.projectDetails.length > 0) {
+      console.log(chalk.white('📂 Project Details:'));
+      stats.projectDetails.forEach(project => {
+        const current = project.isCurrent ? ' (current)' : '';
+        console.log(chalk.gray(`  ${project.name}${current}: ${project.memoryCount || 0} memories`));
+      });
+    }
+  }
+
+  /**
+   * Display memory search results
+   */
+  displayMemorySearchResults(results, type) {
+    if (results.length === 0) {
+      console.log(chalk.yellow(`🔍 No ${type} memories found matching the query`));
+      return;
+    }
+
+    console.log(chalk.blue(`🔍 Found ${results.length} relevant ${type} memories:`));
+    results.forEach((result, index) => {
+      const score = Math.round(result.score * 100);
+      console.log(chalk.white(`${index + 1}. Score: ${score}% - ${result.metadata.type || 'unknown'}`));
+      console.log(chalk.gray(`   ${result.content.substring(0, 100)}...`));
+    });
   }
 
   /**
@@ -512,6 +767,24 @@ class CLIInterface {
   }
 
   /**
+   * Handle migrate command
+   */
+  async handleMigrate(args) {
+    if (args.length === 0) {
+      console.log(chalk.yellow('💡 Usage: migrate <project-name>'));
+      console.log(chalk.gray('  Migrates existing AutoPilot files to agent store'));
+      return;
+    }
+
+    const projectName = args[0];
+    console.log(chalk.blue(`📦 Migrating files to project: ${projectName}`));
+    
+    // This would need to be implemented in the agent
+    console.log(chalk.yellow('⚠️ Migration feature not yet implemented in new system'));
+    console.log(chalk.gray('💡 Use git-projects to manage sub-git projects instead'));
+  }
+
+  /**
    * Handle status command
    */
   async handleStatus() {
@@ -521,23 +794,32 @@ class CLIInterface {
       const status = await this.agent.getStatus();
       
       console.log(chalk.green(`🤖 Agent: ${status.agent.name} v${status.agent.version}`));
-      console.log(chalk.blue(`📁 Current Project: ${status.currentProject || 'None'}`));
-      console.log(chalk.cyan(`📍 Context: ${status.context.currentContext || 'None'}`));
       
-      // Memory stats
-      if (status.memory) {
-        console.log(chalk.magenta('🧠 Memory:'));
-        console.log(chalk.gray(`  Pinecone: ${status.memory.pineconeConnected ? '✅ Connected' : '❌ Not connected'}`));
-        console.log(chalk.gray(`  OpenAI: ${status.memory.openaiConnected ? '✅ Connected' : '❌ Not connected'}`));
-        console.log(chalk.gray(`  Local memories: ${status.memory.localMemories}`));
-        console.log(chalk.gray(`  Cache size: ${status.memory.cacheSize}`));
+      // Current project status
+      const currentGitProject = this.agent.getCurrentGitProject();
+      if (currentGitProject) {
+        console.log(chalk.cyan(`📍 Current Git Project: ${currentGitProject.name}`));
+      } else {
+        console.log(chalk.gray('📍 No current git project'));
       }
       
-      // File store stats
-      if (status.fileStore && !status.fileStore.error) {
-        console.log(chalk.yellow('📁 File Store:'));
-        console.log(chalk.gray(`  Projects: ${status.fileStore.projectCount}`));
-        console.log(chalk.gray(`  Store root: ${status.fileStore.storeRoot}`));
+      console.log(chalk.cyan(`📍 Context: ${status.context.currentContext || 'None'}`));
+      
+      // Dual memory stats
+      if (status.memory) {
+        console.log(chalk.magenta('🧠 Memory System:'));
+        console.log(chalk.gray(`  Agent Memory: ${status.memory.agent ? status.memory.agent.localMemories : 0} entries`));
+        console.log(chalk.gray(`  Project Memory: ${status.memory.project ? status.memory.project.localMemories : 0} entries`));
+        console.log(chalk.gray(`  Pinecone: ${status.memory.pineconeConnected ? '✅ Connected' : '❌ Not connected'}`));
+        console.log(chalk.gray(`  OpenAI: ${status.memory.openaiConnected ? '✅ Connected' : '❌ Not connected'}`));
+      }
+      
+      // Git projects stats
+      if (status.gitProjects && !status.gitProjects.error) {
+        console.log(chalk.blue('🔗 Git Projects:'));
+        console.log(chalk.gray(`  Total projects: ${status.gitProjects.totalProjects}`));
+        console.log(chalk.gray(`  Active projects: ${status.gitProjects.activeProjects}`));
+        console.log(chalk.gray(`  Total memory: ${status.gitProjects.totalMemoryEntries} entries`));
       }
       
       // Patterns
@@ -564,153 +846,9 @@ class CLIInterface {
     
     // Handle different result types
     if (result.stats) {
-      this.displayProjectStats(result.stats);
-    } else if (result.overview) {
-      this.displayStoreOverview(result.overview);
-    } else if (result.results) {
-      this.displayMemorySearchResults(result.results);
-    } else if (result.deletedCount !== undefined) {
-      console.log(chalk.blue(`🗑️ Cleaned up ${result.deletedCount} old memories (older than ${result.days} days)`));
-    }
-  }
-
-  /**
-   * Display project statistics
-   */
-  displayProjectStats(stats) {
-    console.log(chalk.blue(`📊 Project: ${stats.projectName}`));
-    console.log(chalk.gray(`📁 Directory: ${stats.projectDir}`));
-    console.log(chalk.gray(`📄 Files: ${stats.fileCount}`));
-    
-    if (stats.files.length > 0) {
-      console.log(chalk.white('Files:'));
-      stats.files.forEach(file => {
-        const sizeKB = Math.round(file.size / 1024);
-        const modified = new Date(file.modified).toLocaleDateString();
-        console.log(chalk.gray(`  ${file.name} (${sizeKB}KB, ${file.type}, ${modified})`));
-      });
-    }
-  }
-
-  /**
-   * Display store overview
-   */
-  displayStoreOverview(overview) {
-    console.log(chalk.blue(`📊 Agent Store Overview`));
-    console.log(chalk.gray(`📁 Store root: ${overview.storeRoot}`));
-    console.log(chalk.gray(`📂 Projects: ${overview.projectCount}`));
-    
-    if (overview.projects.length > 0) {
-      console.log(chalk.white('Project Details:'));
-      overview.projects.forEach(project => {
-        console.log(chalk.gray(`  📂 ${project.projectName} (${project.fileCount} files)`));
-      });
-    }
-  }
-
-  /**
-   * Display memory search results
-   */
-  displayMemorySearchResults(results) {
-    if (results.length === 0) {
-      console.log(chalk.yellow('No memories found matching the query'));
-      return;
-    }
-
-    console.log(chalk.blue(`🔍 Found ${results.length} relevant memories:`));
-    results.forEach((result, index) => {
-      const score = Math.round(result.score * 100);
-      console.log(chalk.white(`${index + 1}. Score: ${score}% - ${result.metadata.type || 'unknown'}`));
-      console.log(chalk.gray(`   ${result.content.substring(0, 100)}...`));
-    });
-  }
-
-  /**
-   * Display memory command results
-   */
-  displayMemoryResult(result, subcommand) {
-    if (!result.success) {
-      console.log(chalk.red(`❌ ${result.message}`));
-      return;
-    }
-
-    switch (subcommand) {
-      case 'stats':
-        this.displayMemoryStats(result.stats);
-        break;
-        
-      case 'search':
-        this.displayMemorySearchResults(result.results);
-        break;
-        
-      case 'cleanup':
-        console.log(chalk.green(`🧹 Cleaned up ${result.deletedCount} memories older than ${result.days} days`));
-        break;
-        
-      case 'sync-status':
-        this.displaySyncStatus(result.syncStatus);
-        break;
-        
-      case 'sync-up':
-        console.log(chalk.green(`📤 Upload complete: ${result.uploaded} uploaded, ${result.skipped} skipped`));
-        if (result.errors > 0) {
-          console.log(chalk.yellow(`⚠️ ${result.errors} errors occurred`));
-        }
-        break;
-        
-      case 'sync-down':
-        console.log(chalk.green(`📥 Download complete: ${result.downloaded} downloaded, ${result.skipped} skipped`));
-        if (result.errors > 0) {
-          console.log(chalk.yellow(`⚠️ ${result.errors} errors occurred`));
-        }
-        break;
-        
-      case 'sync-both':
-        console.log(chalk.green('🔄 Bidirectional sync complete!'));
-        console.log(chalk.blue(`📤 Upload: ${result.upload.uploaded} uploaded, ${result.upload.skipped} skipped`));
-        console.log(chalk.blue(`📥 Download: ${result.download.downloaded} downloaded, ${result.download.skipped} skipped`));
-        break;
-        
-      case 'reset-pinecone':
-        console.log(chalk.green('✅ Pinecone index reset successfully'));
-        console.log(chalk.yellow('⚠️ All cloud memories have been deleted'));
-        break;
-        
-      case 'fix-embeddings':
-        console.log(chalk.green('✅ Embedding dimensions fixed successfully'));
-        break;
-        
-      default:
-        this.displayCommandResult(result, 'Memory');
-    }
-  }
-
-  /**
-   * Display memory statistics
-   */
-  displayMemoryStats(stats) {
-    console.log(chalk.green('🧠 Memory Statistics:'));
-    console.log(chalk.blue(`  📡 Pinecone Connected: ${stats.pineconeConnected ? '✅' : '❌'}`));
-    console.log(chalk.blue(`  🤖 OpenAI Connected: ${stats.openaiConnected ? '✅' : '❌'}`));
-    console.log(chalk.blue(`  💾 Local Memories: ${stats.localMemories}`));
-    console.log(chalk.blue(`  🗂️ Cache Size: ${stats.cacheSize}`));
-  }
-
-  /**
-   * Display sync status
-   */
-  displaySyncStatus(status) {
-    console.log(chalk.green('🔄 Memory Sync Status:'));
-    console.log(chalk.blue(`  📡 Pinecone Connected: ${status.pineconeConnected ? '✅' : '❌'}`));
-    console.log(chalk.blue(`  🤖 OpenAI Connected: ${status.openaiConnected ? '✅' : '❌'}`));
-    console.log(chalk.blue(`  💾 Local Memories: ${status.localMemories}`));
-    console.log(chalk.blue(`  ☁️ Pinecone Memories: ${status.pineconeMemories}`));
-    
-    if (status.localMemories !== status.pineconeMemories) {
-      console.log(chalk.yellow('⚠️ Local and Pinecone memories are out of sync'));
-      console.log(chalk.gray('💡 Run "memory sync-both" to synchronize'));
-    } else {
-      console.log(chalk.green('✅ Local and Pinecone memories are in sync'));
+      console.log(chalk.blue('📊 Results available'));
+    } else if (result.message) {
+      console.log(chalk.gray(result.message));
     }
   }
 
