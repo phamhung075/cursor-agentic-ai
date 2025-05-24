@@ -1,0 +1,165 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# File Update and Link Processing Guide
+
+## Overview
+
+This guide explains the complete workflow for updating project files and processing links in the cursor-agentic-ai project. Follow these steps whenever you add new files or need to refresh the link processing system.
+
+## 🔄 Complete Workflow
+
+### Step 1: Update File List
+
+When new files are added to the project, update the file mappings:
+
+```bash
+# Run the file update script
+@update_files.sh
+```
+
+**What this does:**
+- Scans all `.mdc` files in the project
+- Updates [../00__TOOLS/cursor_files_list.mdc](00__TOOLS/cursor_files_list.mdc) with new file mappings
+- Creates proper `filename : [filename](path)` format for each file
+
+### Step 2: Update [../00__TOOLS/cursor_path_fix.mdc](00__TOOLS/cursor_path_fix.mdc)
+
+After running `@update_files.sh`, the updated file list will be available in `[../00__TOOLS/cursor_files_list.mdc](00__TOOLS/cursor_files_list.mdc)`. This serves as the source for all link processing operations.
+
+### Step 3: Run Complete Link Processing
+
+If new links need to be processed or existing links need to be fixed, run the complete link processing workflow:
+
+```bash
+# Complete link processing workflow
+python3 scripts/replace_file_links.py && python3 scripts/fix_broken_links.py
+```
+
+**When to run this:**
+- ✅ After adding new `.mdc` files to the project
+- ✅ When you notice broken or malformed links
+- ✅ After updating file paths or renaming files
+- ✅ When file references are in plain text format that need to be converted to clickable links
+
+## 📋 Detailed Process
+
+### 1. File Discovery and Mapping
+
+The `update_files.sh` script:
+- Discovers all `.mdc` files in the project
+- Creates mappings in the format: `filename : [filename](relative/path/to/file)`
+- Updates the master file list at [../00__TOOLS/cursor_files_list.mdc](00__TOOLS/cursor_files_list.mdc)
+
+### 2. Link Replacement Process
+
+The `[replace_file_links.py](scripts/replace_file_links.py)` script:
+- Converts plain text file references to clickable links
+- Handles multiple patterns:  - Space-separated filenames: `` → `(path)`  - Quoted filenames: `""` → `(path)`  - Path references: `.././` → `(path)`  - Backtick paths: `\`.././\`` → `(path)`
+
+### 3. Broken Link Repair
+
+The `[fix_broken_links.py](scripts/fix_broken_links.py)` script:
+- Detects and fixes 12 different types of broken link patterns
+- Handles complex nested brackets and malformed structures
+- Preserves intentional inline code while fixing broken patterns
+
+## 🎯 Common Use Cases
+
+### Adding New Documentation Files
+
+1. Create your new `.mdc` file
+2. Run `@update_files.sh` to update file mappings
+3. Run complete link processing to convert any file references
+
+### Fixing Broken Links
+
+1. Run `[fix_broken_links.py](scripts/fix_broken_links.py)` to detect and fix broken patterns
+2. Review the output to see what was fixed
+
+### Converting Plain Text References
+
+1. Run `[replace_file_links.py](scripts/replace_file_links.py)` to convert plain text file references
+2. Run `[fix_broken_links.py](scripts/fix_broken_links.py)` to clean up any resulting broken patterns
+
+## 🔧 Available Scripts
+
+### Core Scripts
+
+- **[update_files.sh](scripts/update_files.sh)** - Updates the master file list
+- **[replace_file_links.py](scripts/replace_file_links.py)** - Converts plain text to clickable links
+- **[fix_broken_links.py](scripts/fix_broken_links.py)** - Repairs broken link patterns
+
+### Supporting Files
+
+- **[../00__TOOLS/cursor_files_list.mdc](00__TOOLS/cursor_files_list.mdc)** - Master file mapping list
+- **[../00__TOOLS/cursor_path_fix.mdc](00__TOOLS/cursor_path_fix.mdc)** - Processing log and reference
+
+## 📊 Pattern Types Handled
+
+### Plain Text Patterns ([replace_file_links.py](scripts/replace_file_links.py)
+1. Space-delimited filenames
+2. Quoted filenames  3. Full path references
+4. Backtick-wrapped paths
+5. Plus-notation paths (`.cursor/rules + . + `)
+
+### Broken Link Patterns ([fix_broken_links.py](scripts/fix_broken_links.py)
+1. Nested brackets with double paths
+2. Mixed text with embedded links
+3. Complex bracket/backtick combinations
+4. Double square brackets
+5. Backtick-bracket combinations
+6. Missing opening brackets
+7. Complex nested backticks
+8. Missing close brackets
+9. Complex nested backticks with paths
+10. Missing close brackets with text
+11. Nested backtick brackets
+12. Complex nested bracket patterns
+
+## ⚡ Quick Commands
+
+```bash
+# Full update and processing workflow
+@update_files.sh && python3 scripts/replace_file_links.py && python3 scripts/fix_broken_links.py
+
+# Just fix broken links
+python3 scripts/fix_broken_links.py
+
+# Just convert plain text references
+python3 scripts/replace_file_links.py
+
+# Update file list only
+@update_files.sh
+```
+
+## 🚨 Important Notes
+
+- Always run `@update_files.sh` first when adding new files
+- The scripts are designed to be safe and won't modify intentional inline code
+- Review the output to understand what changes were made
+- Backup important files before running bulk operations
+- The scripts process all `.mdc` files in the project directory
+
+## 📝 Troubleshooting
+
+### Script Not Finding Files
+- Ensure you're running from the project root directory
+- Check that your files have the `.mdc` extension
+- Verify file permissions
+
+### Links Not Converting
+- Check that the filename exists in [../00__TOOLS/cursor_files_list.mdc](00__TOOLS/cursor_files_list.mdc)
+- Run `@update_files.sh` to refresh the file mappings
+- Verify the filename matches exactly (case-sensitive)
+
+### Broken Patterns Not Fixed
+- The script might not recognize the specific pattern
+- Check the pattern list in this guide
+- Consider adding a new pattern to the script if needed
+
+---
+
+*This guide covers the complete file update and link processing workflow for the cursor-agentic-ai project. Follow these steps to maintain clean, clickable links throughout your documentation.*

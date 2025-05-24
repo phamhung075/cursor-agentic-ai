@@ -22,19 +22,9 @@
 
 - [Measurable outcome 1]
 - [Measurable outcome 2]
-- [Measurable outcome 3]
- 
-## Design and UX/UI Principles for this Feature
- 
-- **Main Objective:** The design and user experience of this feature must actively contribute to the overall goal of a "Silicon Valley / Y Combinator" quality application. This means meticulous attention to detail, modernity, intuitiveness, and aesthetics.
-- **Reference:** Refer to the general design and UX/UI principles defined in the Design Conventions document ([design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc).
-- **Specifics for this feature:**
-    - `[Describe here how the "YC standard" design objective specifically applies to this feature. What design aspects are particularly critical? Is there a specific "vibe" to achieve?]`
-    - `[The AI should propose UI/UX solutions that embody these principles.]`
- 
-## Functional Requirements
- 
-### Core Functionality
+- [Measurable outcome 3]  ## Design and UX/UI Principles for this Feature  - **Main Objective:** The design and user experience of this feature must actively contribute to the overall goal of a "Silicon Valley / Y Combinator" quality application. This means meticulous attention to detail, modernity, intuitiveness, and aesthetics.
+- **Reference:** Refer to the general design and UX/UI principles defined in the Design Conventions document [.[.[/[02__AI-DOCS/Conventions/design_conventions_template.mdc](02__AI-DOCS/Conventions/design_conventions_template.mdc).
+- **Specifics for this feature:**  - `[Describe here how the "YC standard" design objective specifically applies to this feature. What design aspects are particularly critical? Is there a specific "vibe" to achieve?]`  - `[The AI should propose UI/UX solutions that embody these principles.]`  ## Functional Requirements  ### Core Functionality
 
 1. [Requirement 1]
 2. [Requirement 2]
@@ -69,20 +59,13 @@
 
 **Request:**
 ```json
-{
-  "property1": "value1",
-  "property2": "value2"
+{  "property1": "value1",  "property2": "value2"
 }
 ```
 
 **Response:**
 ```json
-{
-  "status": "success",
-  "data": {
-    "property1": "value1",
-    "property2": "value2"
-  }
+{  "status": "success",  "data": {  "property1": "value1",  "property2": "value2"  }
 }
 ```
 
@@ -115,13 +98,9 @@
 
 #### New Screens/Components
 
-**Screen/Component:** `[Name]`
- 
-**Description:**
-[Description of the screen/component]
- 
-**Wireframe/Mockup (Objectif YC Standard):**
-[Link to wireframe/mockup or detailed description. The AI should propose designs (or variations if requested and justified) that aim for aesthetic and functional excellence. Proposals should be modern, clean, and highly intuitive, drawing inspiration from Silicon Valley startup best practices. Justification for design choices in relation to this objective is expected.]
+**Screen/Component:** `[Name]`  **Description:**
+[Description of the screen/component]  **Wireframe/Mockup (Objectif YC Standard):**
+[Link to wireframe/mockup or detailed description. The AI should propose designs (or variations if requested and justifie](d)that aim for aesthetic and functional excellence. Proposals should be modern, clean, and highly intuitive, drawing inspiration from Silicon Valley startup best practices. Justification for design choices in relation to this objective is expected.]
 
 #### Modified Screens/Components
 
@@ -169,17 +148,7 @@
 ## Acceptance Criteria
 
 ```gherkin
-Feature: [Feature Name]
-
-  Scenario: [Scenario 1]
-    Given [precondition]
-    When [action]
-    Then [expected result]
-
-  Scenario: [Scenario 2]
-    Given [precondition]
-    When [action]
-    Then [expected result]
+Feature: [Feature Name]  Scenario: [Scenario 1]  Given [precondition]  When [action]  Then [expected result]  Scenario: [Scenario 2]  Given [precondition]  When [action]  Then [expected result]
 ```
 
 ## Security Considerations
@@ -192,14 +161,10 @@ Feature: [Feature Name]
 - [Performance consideration 1]
 - [Performance consideration 2]
 
-## Accessibility Requirements (Integral Part of Quality UX)
- 
-- [Accessibility requirement 1 - e.g., Full and intuitive keyboard navigation]
+## Accessibility Requirements (Integral Part of Quality UX)  - [Accessibility requirement 1 - e.g., Full and intuitive keyboard navigation]
 - [Accessibility requirement 2 - e.g., High contrasts and optimal readability]
 - [Accessibility requirement 3 - e.g., Clear and relevant ARIA-labels for screen readers]
-- *Accessibility should not be an afterthought but integrated from the design phase to ensure an inclusive and high-quality user experience for all.*
- 
-## Internationalization/Localization
+- *Accessibility should not be an afterthought but integrated from the design phase to ensure an inclusive and high-quality user experience for all.*  ## Internationalization/Localization
 
 - [I18n/L10n requirement 1]
 - [I18n/L10n requirement 2]

@@ -1,0 +1,161 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 🧠 Quick Self-Improvement Reference v2.0 for AI Agents
+
+*Use the new modular Self-Improvement Agent during AutoPilot workflow execution.*
+
+## 🚀 **Agent Activation**
+
+```bash
+# Start the new modular agent
+npm run AAI:agent
+
+# Legacy fallback (if needed)
+npm run legacy
+```
+
+## 🎯 **Context-Aware Workflow Integration**
+
+### **Phase-Based Context Setting**
+```bash
+# Set context for current workflow phase
+🤖 > context workflow          # During workflow design/execution
+🤖 > context market-research   # During Phase 2
+🤖 > context architecture      # During Phase 5 (technical docs)
+🤖 > context testing          # During Phase 8
+🤖 > context deployment       # During Phase 9
+```
+
+### **Smart Detection Triggers**
+```bash
+# Automatically find and analyze relevant files
+🤖 > smart-detect
+
+# Result example:
+🎯 Found 4 relevant files
+📊 Total issues detected: 6
+📄 01_AutoPilot.mdc (2 issues)
+📄 02_Market_Research.mdc (1 issue)
+```
+
+## 📋 **Integration Points During AutoPilot**
+
+### **Before Using Workflow Files (Phases 1-9)**
+```bash
+🔍 Quick Check Commands:
+🤖 > context workflow
+🤖 > analyze autopilot        # Check AutoPilot for current project type
+🤖 > analyze market_research  # Verify Phase 2 guidance is current
+🤖 > analyze testing         # Ensure Phase 8 matches project needs
+```
+
+### **After Generating Key Documents**
+```bash
+📊 Document Validation:
+🤖 > analyze project_prd      # Check PRD for improvements
+🤖 > analyze architecture     # Validate technical architecture
+🤖 > analyze feature_spec     # Review feature specifications
+```
+
+### **During User Confusion/Issues**
+```bash
+💬 Troubleshooting:
+🤖 > context [current-issue]  # Set context to specific problem area
+🤖 > smart-detect            # Find relevant framework files
+🤖 > improve [problematic-file] # Get detailed suggestions
+```
+
+## ⚡ **Priority-Based Actions**
+
+### **🚨 HIGH Priority (Critical Issues)**
+- **Security vulnerabilities** in framework files
+- **Syntax errors** that break workflows  
+- **Missing critical guidance** causing user blocks
+- **Action:** PAUSE workflow, present improvement, implement if approved
+
+### **⚠️ MEDIUM Priority (Improvement Opportunities)**
+- **Outdated technology references** (React 18, Node.js 20, etc.)
+- **Missing examples** that would help current project type
+- **Template gaps** for specific use cases
+- **Action:** Note for end-of-phase review
+
+### **💡 LOW Priority (Optimizations)**
+- **Better code examples** in templates
+- **Improved wording** for clarity
+- **Additional best practices** 
+- **Action:** Log for post-project optimization
+
+## 🎨 **Improved Communication Format**
+
+When presenting improvements to users:
+
+```
+🧠 **Self-Improvement Agent Detection**: [Context: workflow]
+🔍 **Issue Found**: ⚠️ Outdated reference to React 18 in architecture template
+💡 **Suggested Enhancement**: Update to React 18+ with modern features guide
+⚡ **Workflow Impact**: Ensures users get current best practices for new projects
+❓ **Action Required**: Note for phase review (Medium priority)
+```
+
+## 📊 **Available Commands Reference**
+
+```bash
+🤖 > analyze <filename>      # Analyze specific .mdc file
+🤖 > improve <filename>      # Get detailed improvement suggestions  
+🤖 > context <topic>         # Set current work context
+🤖 > smart-detect            # Context-aware file analysis
+🤖 > help                    # Show all commands
+🤖 > exit                    # Stop agent
+```
+
+## 💡 **Pro Tips for AI Agents**
+
+1. **Set context first** - Always use `context <current-phase>` for better results
+2. **Use smart-detect** - Let the agent find relevant files automatically
+3. **Check critical files** - Analyze key templates before using them
+4. **Track patterns** - The agent learns from user feedback to improve suggestions
+5. **Respect priorities** - Only interrupt workflow for HIGH priority issues
+
+## 🔧 **Technical Notes**
+
+- **Modular Architecture**: New agent has separated concerns for better performance
+- **No Full Scans**: Only analyzes relevant files based on context
+- **Learning Capability**: Adapts suggestions based on user approval patterns
+- **Backward Compatible**: Legacy agent still available with `npm run legacy`
+
+---
+
+*This reference assumes the new Self-Improvement Agent v2.0 is properly installed and configured.*
+
+
+## Purpose
+
+This section defines the purpose and objectives of this workflow step.
+
+### Key Goals:
+- Define clear objectives
+- Establish success criteria
+- Align with overall framework goals
+
+## Steps
+
+This section outlines the step-by-step process for this workflow.
+
+### Process:
+1. **Preparation**: Set up necessary resources and context
+2. **Execution**: Follow the defined workflow process
+3. **Validation**: Verify outputs and quality
+4. **Documentation**: Record results and learnings
+
+## Output
+
+This section describes the expected outputs and deliverables.
+
+### Expected Deliverables:
+- Primary output files
+- Documentation updates
+- Status reports
+- Next steps recommendations
