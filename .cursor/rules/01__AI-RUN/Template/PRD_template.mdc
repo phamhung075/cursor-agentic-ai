@@ -412,7 +412,7 @@ graph TD
 `[User to provide any overrides or specific requests]`
 
 *AI Instruction: Confirm the final stack here after considering user input. You are responsible for selecting appropriate versions and necessary auxiliary libraries compatible with the core stack and project needs.*
-`[AI to Confirm Final Stack (incorporating user input if any) for User Validation]`
+`[AI to Confirm Final Stack (incorporating user input if an](y)for User Validation]`
 
 ### 5.5. Data Requirements (AI to Propose Model based on Features)
 *User Instruction: You can list key data entities if you have them in mind (e.g., 'Users', 'Products', 'Orders'). Otherwise, the AI Agent will analyze the features you've described (Section 3.1) and propose a detailed database schema for the chosen database technology (e.g., Supabase/PostgreSQL). This proposal will be part of its detailed feature specification (Section 9.1.6) and will require your review.*
@@ -427,8 +427,8 @@ graph TD
 
 #### 5.6.1. Known and Desired MCP Catalog
 *User Instruction: List here any MCPs you know exist and might want to use, or types of MCP functionality you desire. The AI will use this as input for its proposals.*
-*   `[Example: stripe_payment_mcp: (Status: Known to User/Desired) For payment processing.]`
-*   `[Example: content_moderation_mcp: (Status: Desired) For moderating user-generated content.]`
+*   `[Example: stripe_payment_mcp: (Status: Known to User/Desire](d)For payment processing.]`
+*   `[Example: content_moderation_mcp: (Status: Desire](d)For moderating user-generated content.]`
 *   **Connected & Available MCPs (AI to verify and utilize first):**
     *   `context7`: (Status: Connected and Available) For library documentation lookup.
     *   `github`: (Status: Connected and Available) For GitHub repository operations.

@@ -21,7 +21,7 @@ This document should be completed based on the project's specific needs and afte
 *   **Visual Hierarchy:**
     *   *Project Specifics:* [TODO: Define how visual hierarchy will be established. E.g., typography scale, color usage for emphasis, spacing rules.]
 *   **Feedback and Error Prevention:**
-    *   *Project Specifics:* [TODO: Specify types of feedback (visual, textual) and error message styling/content.]
+    *   *Project Specifics:* [TODO: Specify types of feedback (visual, textua](l)and error message styling/content.]
 *   **Efficiency:**
     *   *Project Specifics:* [TODO: Identify key user flows to optimize for efficiency.]
 *   **Aesthetic & Functional Balance:**
@@ -38,7 +38,7 @@ This document should be completed based on the project's specific needs and afte
 *   **Principle of Disclosure:**
     *   *Project Specifics:* [TODO: Identify areas where progressive disclosure will be used.]
 *   **Principle of Exemplars:**
-    *   *Project Specifics:* [TODO: Specify where exemplars (icons, images) will be used for clarity.]
+    *   *Project Specifics:* [TODO: Specify where exemplars (icons, image](s)will be used for clarity.]
 *   **Principle of Front Doors:**
     *   *Project Specifics:* [TODO: Ensure key landing pages provide clear orientation.]
 *   **Principle of Multiple Classification:**
@@ -90,9 +90,9 @@ This document should be completed based on the project's specific needs and afte
     *   **Color Application:** [TODO: Detail how the defined color palette will be used to create hierarchy, convey meaning, and reinforce brand.]
     *   **Spacing (White Space):** [TODO: Emphasize rules for consistent padding, margins, and element grouping.]
 *   **Animations and Transitions:**
-    *   *Project Specifics:* [TODO: Define types of animations/transitions to be used (e.g., page transitions, element fade-ins) and their purpose. Specify preferred easing functions and durations.]
+    *   *Project Specifics:* [TODO: Define types of animations/transitions to be used (e.g., page transitions, element fade-in](s)and their purpose. Specify preferred easing functions and durations.]
 *   **Iconography:**
-    *   *Chosen Icon Set:* [TODO: Specify icon library (e.g., Heroicons, Lucide, Feather Icons) and style (e.g., outline, solid).]
+    *   *Chosen Icon Set:* [TODO: Specify icon library (e.g., Heroicons, Lucide, Feather Icon](s)and style (e.g., outline, solid).]
     *   *Usage Guidelines:* [TODO: Define rules for icon size, color, and placement.]
 *   **Imagery and Illustrations:**
     *   *Style Guidelines:* [TODO: Describe the desired style for any images or illustrations.]
