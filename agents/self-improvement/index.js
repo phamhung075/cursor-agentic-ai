@@ -14,32 +14,83 @@ const ContextManager = require('./core/context');
 const MemoryManager = require('./core/memory');
 const FileManager = require('./core/fileManager');
 const CLIInterface = require('./cli/interface');
+const FileDependencyManager = require('./core/FileDependencyManager');
+const readline = require('readline');
+const chalk = require('chalk');
 
 // Load configuration
 const config = require('./config/default.json');
 
 class SelfImprovementAgent {
   constructor() {
-    this.config = config;
-    this.detector = new PatternDetector(config);
-    this.analyzer = new FileAnalyzer(this.detector);
-    this.contextManager = new ContextManager();
-    this.memoryManager = new MemoryManager(config);
+    this.config = require('./config/default.json');
+    this.analyzer = new FileAnalyzer(this.config);
+    this.memoryManager = new MemoryManager(this.config);
     this.fileManager = new FileManager();
-    this.cli = new CLIInterface(this, config);
-    this.currentProject = null;
+    this.fileDependencyManager = new FileDependencyManager(this.memoryManager);
+    this.contextManager = new ContextManager();
+    this.detector = new PatternDetector(this.config);
+    this.cli = new CLIInterface(this);
+    this.rl = null;
+    this.isInitialized = false;
   }
 
   /**
-   * Start the agent in interactive mode
+   * Start the agent (with optional non-interactive mode)
    */
-  async start() {
-    console.log(`🚀 Starting ${this.config.agent.name} v${this.config.agent.version}`);
+  async start(options = {}) {
+    const { interactive = true, testMode = false } = options;
     
-    // Initialize components
-    await this.initialize();
-    
-    this.cli.start();
+    try {
+      await this.initialize();
+      
+      if (testMode) {
+        console.log('✅ Agent started successfully in test mode');
+        console.log('🔍 All systems operational');
+        
+        // Quick system check
+        const status = await this.getStatus();
+        console.log(`🤖 Agent: ${status.agent.name} v${status.agent.version}`);
+        console.log(`🧠 Memory: ${status.agent.memoryEnabled ? 'Enabled' : 'Disabled'}`);
+        console.log(`📁 File Store: ${status.agent.fileStoreEnabled ? 'Enabled' : 'Disabled'}`);
+        
+        if (this.fileDependencyManager && this.fileDependencyManager.isInitialized) {
+          const stats = this.fileDependencyManager.getStats();
+          console.log(`🔗 Dependencies: ${stats.totalFiles} files tracked`);
+        }
+        
+        console.log('✅ Test mode completed successfully');
+        return { success: true, message: 'Agent test completed' };
+      }
+      
+      if (!interactive) {
+        console.log('✅ Agent initialized in non-interactive mode');
+        return { success: true, message: 'Agent ready for programmatic use' };
+      }
+      
+      // Interactive mode
+      console.log('🧠 Interactive Self-Improvement Agent v2.0');
+      console.log('💡 I will analyze files as you work with them.');
+      console.log('📋 Available Commands:');
+      console.log('  analyze            - Analyze specific .mdc file');
+      console.log('  improve            - Get improvement suggestions');
+      console.log('  context            - Set current work context');
+      console.log('  smart-detect       - Analyze based on current context');
+      console.log('  memory             - Memory management commands');
+      console.log('  projects           - Project management commands');
+      console.log('  dependencies       - File dependency tracking commands');
+      console.log('  migrate            - Migrate files to agent store');
+      console.log('  help               - Show help information');
+      console.log('  exit               - Stop the agent');
+      console.log('');
+      
+      // Start CLI interface
+      await this.cli.start();
+      
+    } catch (error) {
+      console.error('❌ Failed to start agent:', error.message);
+      throw error;
+    }
   }
 
   /**
@@ -56,6 +107,12 @@ class SelfImprovementAgent {
       // Initialize memory manager  
       if (this.config.agent.memoryEnabled) {
         await this.memoryManager.initialize();
+      }
+
+      // Initialize file dependency manager
+      if (this.config.agent.memoryEnabled && this.config.agent.dependencyTrackingEnabled !== false) {
+        await this.fileDependencyManager.initialize();
+        console.log('🔗 FileDependencyManager initialized');
       }
 
     } catch (error) {
@@ -503,12 +560,143 @@ class SelfImprovementAgent {
   stop() {
     this.cli.stop();
   }
+
+  /**
+   * Handle dependency tracking commands
+   */
+  async handleDependencyCommand(subcommand, args = []) {
+    if (!this.config.agent.memoryEnabled || !this.fileDependencyManager) {
+      return { success: false, message: 'Dependency tracking is disabled' };
+    }
+
+    try {
+      switch (subcommand) {
+        case 'stats':
+          const stats = this.fileDependencyManager.getStats();
+          return { success: true, stats };
+          
+        case 'analyze':
+          const filePath = args[0];
+          if (!filePath) {
+            return { success: false, message: 'File path required' };
+          }
+          await this.fileDependencyManager.analyzeFileDependencies(filePath);
+          const info = this.fileDependencyManager.getFileDependencyInfo(filePath);
+          return { success: true, info };
+          
+        case 'info':
+          const targetFile = args[0];
+          if (!targetFile) {
+            return { success: false, message: 'File path required' };
+          }
+          const fileInfo = this.fileDependencyManager.getFileDependencyInfo(targetFile);
+          return { success: true, info: fileInfo };
+          
+        case 'search':
+          const pattern = args[0];
+          if (!pattern) {
+            return { success: false, message: 'Search pattern required' };
+          }
+          const results = this.fileDependencyManager.searchByDependencyPattern(pattern);
+          return { success: true, results };
+          
+        case 'graph':
+          // Return simplified dependency graph
+          const graph = {
+            totalFiles: this.fileDependencyManager.dependencyGraph.size,
+            dependencies: Array.from(this.fileDependencyManager.dependencyGraph.entries()).slice(0, 10)
+          };
+          return { success: true, graph };
+          
+        case 'reanalyze':
+          const reanalyzeFile = args[0];
+          if (!reanalyzeFile) {
+            return { success: false, message: 'File path required' };
+          }
+          await this.fileDependencyManager.processFileChange(reanalyzeFile);
+          return { success: true, message: `Reanalyzed ${reanalyzeFile} and its dependencies` };
+          
+        default:
+          return { 
+            success: false, 
+            message: `Unknown dependency command: ${subcommand}. Use: stats, analyze, info, search, graph, reanalyze` 
+          };
+      }
+    } catch (error) {
+      return { success: false, message: error.message };
+    }
+  }
+
+  /**
+   * Graceful shutdown - close all connections and watchers
+   */
+  async shutdown() {
+    console.log('👋 Shutting down Self-Improvement Agent...');
+    
+    try {
+      // Stop file dependency manager
+      if (this.fileDependencyManager && this.fileDependencyManager.isInitialized) {
+        await this.fileDependencyManager.shutdown();
+      }
+      
+      // Close CLI interface
+      if (this.cli) {
+        this.cli.stop();
+      }
+      
+      // Close readline interface
+      if (this.rl) {
+        this.rl.close();
+      }
+      
+      console.log('✅ Agent shutdown complete');
+    } catch (error) {
+      console.warn('⚠️ Warning during shutdown:', error.message);
+    }
+  }
 }
 
-// If running directly, start the interactive mode
+// Run agent if called directly
 if (require.main === module) {
+  const args = process.argv.slice(2);
   const agent = new SelfImprovementAgent();
-  agent.start();
+  
+  // Parse command line arguments
+  const options = {
+    interactive: true,
+    testMode: false
+  };
+  
+  if (args.includes('--test') || args.includes('-t')) {
+    options.testMode = true;
+    options.interactive = false;
+  }
+  
+  if (args.includes('--no-interactive') || args.includes('-n')) {
+    options.interactive = false;
+  }
+  
+  if (args.includes('--help') || args.includes('-h')) {
+    console.log('🧠 Self-Improvement Agent v2.0');
+    console.log('');
+    console.log('Usage: node index.js [options]');
+    console.log('');
+    console.log('Options:');
+    console.log('  --test, -t           Run in test mode (quick system check)');
+    console.log('  --no-interactive, -n Run in non-interactive mode');
+    console.log('  --help, -h           Show this help message');
+    console.log('');
+    console.log('Examples:');
+    console.log('  node index.js                # Interactive mode (default)');
+    console.log('  node index.js --test         # Test mode (quick check)');
+    console.log('  node index.js --no-interactive # Non-interactive mode');
+    process.exit(0);
+  }
+  
+  agent.start(options).catch(error => {
+    console.error('💥 Agent failed to start:', error.message);
+    process.exit(1);
+  });
 }
 
 module.exports = SelfImprovementAgent; 

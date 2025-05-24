@@ -8,15 +8,18 @@
     "AAI:agent": "node agents/self-improvement/index.js",
     "AAI:analyze": "node agents/self-improvement/index.js",
     "AAI:improve": "node agents/self-improvement/index.js",
-    "AAI:legacy": "node scripts/self_improvement_agent.js",
-    "AAI:demo": "node demo_agent.js",
+    "AAI:legacy": "node agents/_store/scripts/self_improvement_agent_legacy.js",
+    "AAI:demo": "node agents/_store/scripts/demo_agent.js",
     "AAI:install-deps": "npm install",
     "AAI:test": "echo \"Tests to be implemented\" && exit 0",
     "AAI:test-agent": "node agents/_store/tests/test_new_agent.js",
     "AAI:test-integration": "node agents/_store/tests/test_autopilot_integration.js",
     "AAI:test-system": "node agents/_store/tests/test_new_system.js",
+    "AAI:test-dependencies": "node agents/_store/tests/test_dependency_tracking.js",
     "AAI:migrate-files": "node agents/utils/migrate_to_store.js",
-    "AAI:setup-env": "node agents/_store/scripts/setup-env.js"
+    "AAI:setup-env": "node agents/_store/scripts/setup-env.js",
+    "AAI:install-to": "node agents/_store/scripts/install-agent-ai.js",
+    "AAI:test-startup": "node agents/self-improvement/index.js --test"
   },
   "dependencies": {
     "chokidar": "^3.5.3",

@@ -99,6 +99,10 @@ class CLIInterface {
         case 'migrate':
           await this.handleMigrate(args);
           break;
+        case 'dependencies':
+        case 'deps':
+          await this.handleDependencies(args);
+          break;
         case 'status':
           await this.handleStatus();
           break;
@@ -359,6 +363,142 @@ class CLIInterface {
       this.agent.setProject(projectName);
     } else {
       console.log(chalk.red(`❌ Migration failed: ${result.message}`));
+    }
+  }
+
+  /**
+   * Handle dependencies command
+   */
+  async handleDependencies(args) {
+    if (args.length === 0) {
+      console.log(chalk.yellow('💡 Usage: dependencies <subcommand>'));
+      console.log(chalk.gray('  Available subcommands:'));
+      console.log(chalk.gray('    stats              - Show dependency tracking statistics'));
+      console.log(chalk.gray('    analyze <file>     - Analyze file dependencies'));
+      console.log(chalk.gray('    info <file>        - Get dependency info for specific file'));
+      console.log(chalk.gray('    search <pattern>   - Search files by dependency pattern'));
+      console.log(chalk.gray('    graph              - Show dependency graph overview'));
+      console.log(chalk.gray('    reanalyze <file>   - Force reanalysis of file and dependents'));
+      return;
+    }
+
+    const subcommand = args[0];
+    const subArgs = args.slice(1);
+    
+    console.log(chalk.blue(`🔗 Dependencies: ${subcommand}`));
+    const result = await this.agent.handleDependencyCommand(subcommand, subArgs);
+    this.displayDependencyResult(result, subcommand);
+  }
+
+  /**
+   * Display dependency command results
+   */
+  displayDependencyResult(result, subcommand) {
+    if (!result.success) {
+      console.log(chalk.red(`❌ ${result.message}`));
+      return;
+    }
+
+    switch (subcommand) {
+      case 'stats':
+        this.displayDependencyStats(result.stats);
+        break;
+      case 'info':
+      case 'analyze':
+        this.displayDependencyInfo(result.info);
+        break;
+      case 'search':
+        this.displayDependencySearchResults(result.results);
+        break;
+      case 'graph':
+        this.displayDependencyGraph(result.graph);
+        break;
+      case 'reanalyze':
+        console.log(chalk.green(`✅ ${result.message}`));
+        break;
+      default:
+        this.displayCommandResult(result, 'Dependencies');
+    }
+  }
+
+  /**
+   * Display dependency tracking statistics
+   */
+  displayDependencyStats(stats) {
+    console.log(chalk.green('📊 Dependency Tracking Statistics:'));
+    console.log(chalk.gray(`  Total Files Tracked: ${stats.totalFiles}`));
+    console.log(chalk.gray(`  Total Dependencies: ${stats.totalDependencies}`));
+    console.log(chalk.gray(`  Files with Dependents: ${stats.filesWithDependents}`));
+    console.log(chalk.gray(`  Average Dependencies per File: ${stats.averageDependencies}`));
+    console.log(chalk.gray(`  Analysis Queue Size: ${stats.queueSize}`));
+    console.log(chalk.gray(`  File Watcher Active: ${stats.isWatching ? 'Yes' : 'No'}`));
+  }
+
+  /**
+   * Display file dependency information
+   */
+  displayDependencyInfo(info) {
+    console.log(chalk.blue(`📄 Dependencies for: ${info.filePath}`));
+    console.log();
+    
+    if (info.dependencies.length > 0) {
+      console.log(chalk.yellow('📥 Dependencies (files this file depends on):'));
+      info.dependencies.forEach(dep => {
+        console.log(chalk.gray(`  • ${dep}`));
+      });
+      console.log();
+    }
+    
+    if (info.dependents.length > 0) {
+      console.log(chalk.yellow('📤 Dependents (files that depend on this file):'));
+      info.dependents.forEach(dep => {
+        console.log(chalk.gray(`  • ${dep}`));
+      });
+      console.log();
+    }
+    
+    console.log(chalk.gray(`Dependencies: ${info.dependencyCount}, Dependents: ${info.dependentCount}`));
+  }
+
+  /**
+   * Display dependency search results
+   */
+  displayDependencySearchResults(results) {
+    if (results.length === 0) {
+      console.log(chalk.yellow('🔍 No files found matching the dependency pattern'));
+      return;
+    }
+    
+    console.log(chalk.green(`🔍 Found ${results.length} files with matching dependencies:`));
+    console.log();
+    
+    results.forEach(result => {
+      console.log(chalk.blue(`📄 ${result.filePath}`));
+      console.log(chalk.yellow('   Matching dependencies:'));
+      result.matchingDependencies.forEach(dep => {
+        console.log(chalk.gray(`     • ${dep}`));
+      });
+      console.log();
+    });
+  }
+
+  /**
+   * Display dependency graph overview
+   */
+  displayDependencyGraph(graph) {
+    console.log(chalk.green('🕸️ Dependency Graph Overview:'));
+    console.log(chalk.gray(`  Total Files: ${graph.totalFiles}`));
+    console.log();
+    
+    if (graph.dependencies.length > 0) {
+      console.log(chalk.yellow('📊 Sample Dependencies (first 10):'));
+      graph.dependencies.forEach(([file, deps]) => {
+        const depArray = Array.from(deps);
+        console.log(chalk.blue(`  ${file}: ${depArray.length} dependencies`));
+        if (depArray.length > 0) {
+          console.log(chalk.gray(`    ${depArray.slice(0, 3).join(', ')}${depArray.length > 3 ? '...' : ''}`));
+        }
+      });
     }
   }
 

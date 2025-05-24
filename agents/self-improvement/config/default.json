@@ -151,6 +151,7 @@
       "smart-detect": "Analyze based on current context",
       "memory": "Memory management commands",
       "projects": "Project management commands",
+      "dependencies": "File dependency tracking commands",
       "migrate": "Migrate files to agent store",
       "help": "Show help information",
       "exit": "Stop the agent"

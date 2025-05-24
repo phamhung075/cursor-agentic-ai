@@ -90,7 +90,46 @@ For a deeper dive into the underlying logic and phase-by-phase execution, please
 
 For detailed step-by-step instructions, see [00_Getting_Started.mdc](.cursor/rules/01__AI-RUN/00_Getting_Started.mdc).
 
-## 📚 Key Documentation
+## 🤖 **Install Agent AI to Your Project**
+
+Want to add just the **Agent AI system** to an existing project (without the full Agentic Coding Framework)? Use our standalone installer:
+
+### **🔧 Universal Compatibility**
+Works with **ALL AI coding assistants:**
+- ✅ **Windsurf** - Full compatibility  
+- ✅ **Cursor** - Full compatibility
+- ✅ **Cline** - Full compatibility
+- ✅ **Any AI Assistant** - Universal support
+
+### **Quick Install**
+```bash
+# Download and run the installer
+curl -O https://github.com/DafnckStudio/Agentic-Coding-Framework
+node install-agent-ai.js /path/to/your/project
+```
+
+**🌐 Universal Installer:** Works for any project with any AI assistant (Windsurf, Cursor, Cline, etc.)
+
+### **What You Get**
+- ✅ **Interactive Agent AI** - Smart code analysis and suggestions
+- ✅ **Memory System** - Learns from your feedback and patterns  
+- ✅ **Context Awareness** - Understands your workflow
+- ✅ **100% Local** - Works without API keys (enhanced features with OpenAI/Pinecone)
+- ✅ **Zero Config** - Ready to use immediately
+- ✅ **AI Assistant Independent** - Works alongside your chosen AI tool
+
+### **After Installation**
+```bash
+cd your-project
+npm run AAI:agent          # Start the Agent AI
+npm run AAI:test-system    # Test installation
+npm run AAI:demo           # Run demo (new organized location)
+```
+
+📚 **Full Installation Guide:** [agents/_store/docs/INSTALLATION_GUIDE.md](agents/_store/docs/INSTALLATION_GUIDE.md)  
+📁 **File Organization:** [agents/_store/docs/FILE_ORGANIZATION.md](agents/_store/docs/FILE_ORGANIZATION.md)
+
+## 🤝 Key Documentation
 
 *   **Core Workflow & Logic:**
     *   [00_Getting_Started.mdc](.cursor/rules/01__AI-RUN/00_Getting_Started.mdc): Detailed guide to the workflow phases.

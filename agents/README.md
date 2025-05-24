@@ -1,192 +1,229 @@
-# 🤖 Agents System - Organized AI Agent Architecture
+# 🧠 Agent AI System
 
-Welcome to the **reorganized** and **modular** agents system for the Agentic Coding Framework!
+**Self-improving AI agent with intelligent memory and file dependency tracking**
 
-## 📁 **New Structure Overview**
+## 🌟 Overview
+
+The Agent AI System is a sophisticated, modular artificial intelligence agent designed to enhance your development workflow. It provides intelligent code analysis, suggestions, and learns from your patterns to become more effective over time.
+
+## 📂 File Organization
+
+**All JavaScript files have been organized into the `_store/` directory for better maintainability:**
 
 ```
 agents/
-├── _store/                   # 🗂️ Agent working files & utilities (organized)
-│   ├── scripts/              # 🔧 Agent utility scripts
-│   │   └── setup-env.js      # Environment setup script
-│   ├── tests/                # 🧪 Agent test files
-│   │   ├── test_new_agent.js # Agent functionality tests
-│   │   ├── test_new_system.js # System integration tests
-│   │   └── test_autopilot_integration.js # AutoPilot integration tests
-│   ├── templates/            # 📄 Template files
-│   │   └── environment-template.env # Environment configuration template
-│   ├── docs/                 # 📚 Agent documentation & completion reports
-│   │   ├── README.md         # Documentation index
-│   │   ├── AGENT_STORE_COMPLETE.md # Implementation reports
-│   │   └── ...               # Other agent documentation
-│   ├── projects/             # 📂 Project-specific working files
-│   │   └── [project-name]/   # Individual project directories
-│   ├── memory/               # 🧠 Pinecone memory storage
-│   │   ├── embeddings/       # Vector embeddings cache
-│   │   ├── contexts/         # Context memory
-│   │   └── learning/         # Learning patterns
-│   └── logs/                 # 📝 Agent operation logs
-├── self-improvement/          # 🧠 Self-Improvement Agent v2.0
-│   ├── core/                 # Core functionality modules
-│   │   ├── analyzer.js       # File analysis engine
-│   │   ├── detector.js       # Pattern detection system
-│   │   ├── context.js        # Context management
-│   │   ├── memory.js         # Memory management system
-│   │   └── fileManager.js    # File organization system
-│   ├── cli/                  # Command line interface
-│   │   └── interface.js      # Interactive CLI
-│   ├── config/               # Configuration files
-│   │   └── default.json      # Default settings & patterns
-│   ├── docs/                 # Documentation
-│   └── index.js              # Main entry point
-├── utils/                    # Shared utilities
-│   └── migrate_to_store.js   # File migration utility
-└── README.md                 # This file
+├── self-improvement/           # 🧠 Main Agent System
+│   ├── index.js               # Main agent entry point
+│   ├── cli/interface.js       # Command line interface
+│   ├── core/                  # Core agent modules
+│   │   ├── FileDependencyManager.js # File dependency tracking
+│   │   ├── analyzer.js        # File analysis engine
+│   │   ├── context.js         # Context management
+│   │   ├── detector.js        # Pattern detection
+│   │   ├── fileManager.js     # File operations
+│   │   └── memory.js          # Memory management
+│   └── config/default.json    # Configuration
+│
+├── _store/                    # 📦 Organized Supporting Files
+│   ├── scripts/               # 🛠️ Utility Scripts
+│   │   ├── demo_agent.js      # Demo script (moved from root)
+│   │   ├── setup-env.js       # Environment setup
+│   │   ├── install-agent-ai.js # Universal installer
+│   │   └── self_improvement_agent_legacy.js # Legacy compatibility
+│   ├── tests/                 # 🧪 Test Suite
+│   ├── docs/                  # 📚 Documentation
+│   ├── templates/             # 📄 Configuration templates
+│   ├── memory/                # 🧠 Memory storage
+│   └── projects/              # 📁 Project data
+│
+└── utils/                     # 🔧 Migration utilities
 ```
 
-## 🚀 **Quick Start**
+## 🚀 Quick Start
 
-### Start the Self-Improvement Agent
+### **Start the Agent**
 ```bash
-# New modular version (recommended)
-npm run AAI:agent
-
-# Or directly
-node agents/self-improvement/index.js
-
-# Legacy version (still available)
-npm run legacy
+npm run AAI:agent          # Interactive agent
+npm run AAI:demo           # Quick demo
+npm run AAI:setup-env      # Environment setup
 ```
 
-### Available Commands
+### **Test Installation**
 ```bash
-🤖 > analyze <filename>        # Analyze specific .mdc file
-🤖 > improve <filename>        # Get improvement suggestions  
-🤖 > context <topic>           # Set current work context
-🤖 > smart-detect              # Analyze based on context
-🤖 > memory                    # Memory management commands
-🤖 > projects                  # Project management commands
-🤖 > migrate                   # Migrate files to agent store
-🤖 > help                      # Show help
-🤖 > exit                      # Stop agent
+npm run AAI:test-system         # System tests
+npm run AAI:test-dependencies   # Dependency tracking tests
+npm run AAI:test-agent          # Agent functionality tests
 ```
 
-### Testing & Setup Commands
+## ✨ Key Features
+
+### **🔍 Intelligent Analysis**
+- Automatically detects code patterns and issues
+- Provides context-aware suggestions
+- Learns from your feedback to improve
+
+### **🧠 Advanced Memory System**
+- **Pinecone Integration**: Vector-based memory for similarity search
+- **Local Fallback**: Works without external APIs
+- **Learning Patterns**: Remembers successful patterns and solutions
+- **Context Preservation**: Maintains project context across sessions
+
+### **🔗 File Dependency Tracking**
+- **Real-time Monitoring**: Watches file changes automatically
+- **Dependency Mapping**: Tracks relationships between files
+- **Cascade Updates**: Updates memory when dependencies change
+- **Impact Analysis**: Shows which files are affected by changes
+
+### **📁 Project Management**
+- **Multi-project Support**: Organize work across different projects
+- **File Migration**: Easy migration from legacy structures
+- **Store Organization**: Clean, organized file storage system
+
+## 🛠️ Available Commands
+
+### **Analysis Commands**
 ```bash
-npm run AAI:setup-env          # Setup environment variables
-npm run AAI:test-agent         # Test agent functionality
-npm run AAI:test-system        # Test system integration
-npm run AAI:test-integration   # Test AutoPilot integration
+analyze <filename>         # Analyze specific file
+improve <filename>         # Get improvement suggestions
+context <topic>           # Set current work context
+smart-detect              # Context-based analysis
 ```
 
-## ✨ **What's New in v2.0**
+### **Memory Commands**
+```bash
+memory stats              # Memory system statistics
+memory search <query>     # Search stored memories
+memory cleanup [days]     # Clean old memories
+```
 
-### 🏗️ **Modular Architecture**
-- **Separated concerns** - each module has a single responsibility
-- **Easy to maintain** - clear structure and organization
-- **Extensible** - add new modules easily
-- **Testable** - isolated components for better testing
+### **Dependency Commands**
+```bash
+dependencies stats        # Dependency tracking stats
+dependencies analyze <file> # Analyze file dependencies
+dependencies info <file>  # Get dependency information
+dependencies search <pattern> # Search by dependency pattern
+dependencies graph        # Show dependency overview
+dependencies reanalyze <file> # Force reanalysis
+```
 
-### 🎯 **Enhanced Features**
-- **Context-aware analysis** - understands your current work focus
-- **Smart file detection** - automatically finds relevant files
-- **Priority-based improvements** - focuses on high-impact issues
-- **Detailed suggestions** - actionable steps with time estimates
-- **Beautiful CLI** - colored output with clear formatting
+### **Project Commands**
+```bash
+projects list             # List available projects
+projects set <name>       # Set current project
+projects stats [name]     # Project statistics
+projects overview         # All projects overview
+```
 
-### ⚡ **Performance Improvements**
-- **No more full project scans** - only analyzes what you need
-- **Efficient file searching** - smart pattern matching
-- **Configurable patterns** - easily customizable detection rules
-- **Context caching** - remembers your work patterns
+## 🔧 Configuration
 
-## 🔧 **Configuration**
-
-The agent is configured via `agents/self-improvement/config/default.json`:
+The system uses `agents/self-improvement/config/default.json` for configuration:
 
 ```json
 {
   "agent": {
-    "name": "Self-Improvement Agent",
-    "version": "2.0.0"
+    "memoryEnabled": true,
+    "fileStoreEnabled": true,
+    "dependencyTrackingEnabled": true
   },
-  "patterns": {
-    "security": [...],      // Security issue patterns
-    "obsolete": {...},      // Outdated technology detection
-    "bestPractices": [...]  // Best practice violations
-  },
-  "detectionRules": {
-    "maxIssuesPerAnalysis": 5,
-    "contextSensitive": true
+  "memory": {
+    "enablePinecone": true,
+    "enableOpenAI": true,
+    "maxLocalMemories": 1000
   }
 }
 ```
 
-## 📊 **Usage Examples**
+## 🌐 Environment Setup
 
-### Analyze a Specific File
+Create a `.env` file with your API keys:
+
 ```bash
-🤖 > analyze getting_started
-🔍 Analyzing: getting_started
-📊 Found 2 improvement opportunities:
-1. ⚠️ Technology: Outdated reference to React 16
-   💡 Consider upgrading to React 18+ for better performance
+# Run the interactive setup
+npm run AAI:setup-env
+
+# Or manually create .env with:
+PINECONE_API_KEY=your_key_here
+OPENAI_API_KEY=your_key_here
+PROJECT_NAME=my-project
 ```
 
-### Context-Aware Analysis
+**Note**: The agent works 100% locally without API keys, but enhanced features require Pinecone and OpenAI.
+
+## 📚 Documentation
+
+### **Core Documentation**
+- **[File Organization](/_store/docs/FILE_ORGANIZATION.md)** - New file structure guide
+- **[File Dependency Tracking](/_store/docs/FILE_DEPENDENCY_TRACKING.md)** - Dependency system documentation
+- **[Installation Guide](/_store/docs/INSTALLATION_GUIDE.md)** - Installation instructions
+
+### **Technical Docs**
+- **Core Modules**: Located in `self-improvement/core/`
+- **CLI Interface**: `self-improvement/cli/interface.js`
+- **Configuration**: `self-improvement/config/default.json`
+
+## 🧪 Testing
+
+Comprehensive test suite to verify functionality:
+
 ```bash
-🤖 > context workflow
-📍 Context set to: workflow
-
-🤖 > smart-detect
-🎯 Smart detection for context: workflow
-🎯 Found 3 relevant files
-📊 Total issues detected: 5
+npm run AAI:test-dependencies  # Test dependency tracking
+npm run AAI:test-system        # Test core system
+npm run AAI:test-agent         # Test agent functionality
 ```
 
-## 🔄 **Migration from Legacy**
+## 🔄 Migration from Legacy
 
-The old monolithic agent (`scripts/self_improvement_agent.js`) is still available but deprecated. 
+If upgrading from older versions:
 
-**Benefits of migrating:**
-- ✅ Faster performance (no full project scans)
-- ✅ Better user experience (cleaner CLI)
-- ✅ More maintainable code
-- ✅ Enhanced features and capabilities
+```bash
+# Old paths (deprecated)
+node demo_agent.js
+node scripts/self_improvement_agent.js
 
-## 🛠️ **Development**
-
-### Adding New Detection Patterns
-Edit `agents/self-improvement/config/default.json`:
-
-```json
-{
-  "patterns": {
-    "obsolete": {
-      "technology": {
-        "Your Pattern": "Your suggestion message"
-      }
-    }
-  }
-}
+# New paths (current)
+npm run AAI:demo
+npm run AAI:legacy
 ```
 
-### Extending Functionality
-1. Create new modules in `agents/self-improvement/core/`
-2. Import and integrate in `agents/self-improvement/index.js`
-3. Add CLI commands in `agents/self-improvement/cli/interface.js`
+## 🎯 Benefits of New Organization
 
-## 📚 **Documentation**
+### **✅ Clean Structure**
+- No JavaScript files cluttering the root directory
+- Clear separation of concerns
+- Modular, maintainable architecture
 
-- **Main Documentation**: `agents/self-improvement/docs/`
-- **Configuration Guide**: `agents/self-improvement/config/default.json`
-- **Legacy Documentation**: Original files in `.cursor/rules/`
+### **✅ Enhanced Features**
+- File dependency tracking with real-time updates
+- Advanced memory system with vector search
+- Comprehensive testing and documentation
 
-## 🎉 **Next Steps**
+### **✅ Developer Experience**
+- Easy to find and modify components
+- Clear upgrade path from legacy versions
+- Comprehensive error handling and logging
 
-1. **Try the new agent**: `npm run AAI:agent`
-2. **Set your context**: `context <your-current-work>`
-3. **Analyze files**: `analyze <filename>`
-4. **Get smart suggestions**: `smart-detect`
+### **✅ Production Ready**
+- Universal installer for easy deployment
+- Works with all AI coding assistants
+- Scalable architecture for future enhancements
 
-This reorganized structure makes the self-improvement agent much more manageable, extensible, and powerful! 🚀 
+## 🤝 Contributing
+
+To contribute to the Agent AI system:
+
+1. **Core Agent**: Modify files in `self-improvement/`
+2. **Utilities**: Add scripts to `_store/scripts/`
+3. **Tests**: Add tests to `_store/tests/`
+4. **Documentation**: Update docs in `_store/docs/`
+
+## 🔮 Future Enhancements
+
+The organized structure supports:
+- **Plugin System**: Easy addition of new modules
+- **Multiple Agent Types**: Support for specialized agents
+- **Advanced Analytics**: Enhanced usage patterns and insights
+- **Cloud Integration**: Seamless deployment to cloud platforms
+
+---
+
+**🎉 The Agent AI System is now organized, professional, and ready to enhance your development workflow with intelligent assistance and continuous learning!** 

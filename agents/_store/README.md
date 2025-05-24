@@ -106,6 +106,40 @@ agents/_store/docs/your-documentation.md
 - **Configuration Guide**: `../self-improvement/config/default.json`
 - **Main Agent Code**: `../self-improvement/`
 
+## 🚀 **Install Agent AI to Other Projects**
+
+Want to add this Agent AI system to another project? Use our installer:
+
+### **🤖 Universal Compatibility**
+The installer works with **ALL AI coding assistants:**
+- ✅ **Windsurf** - Full compatibility
+- ✅ **Cursor** - Full compatibility  
+- ✅ **Cline** - Full compatibility
+- ✅ **Any AI Assistant** - Universal support
+
+### **Quick Install**
+```bash
+# Download and run installer
+curl -O https://github.com/DafnckStudio/Agentic-Coding-Framework
+node install-agent-ai.js /path/to/your/project
+```
+
+**🌐 Universal URL:** Works for any project with any AI assistant (Windsurf, Cursor, Cline, etc.)
+
+### **From This Repository**
+```bash
+# Using npm script
+npm run AAI:install-to
+
+# Or directly
+node agents/_store/scripts/install-agent-ai.js /path/to/target/project
+
+# Show help
+node agents/_store/scripts/install-agent-ai.js --help
+```
+
+See [Installation Guide](docs/INSTALLATION_GUIDE.md) for complete instructions.
+
 ---
 
 **🎉 This organized structure keeps your Agent AI files clean, secure, and maintainable!** 
