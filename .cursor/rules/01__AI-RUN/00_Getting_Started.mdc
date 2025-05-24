@@ -28,7 +28,7 @@ flowchart TD
     E[Task Manager Initialization] -->|AI instructs Roo Orchestrator with PRD features| F
     F[Task Refinement] -->|Roo Orchestrator (with Roo Code) decomposes complex features into sub-tasks| G
     G[Builder] -->|AI executes tasks, codes via MCPs, Human reviews/validates code & features| H
-    H[08_Testing.mdc](.cursor/rules/01__AI-RUN/08_Testing.mdc))] -->|AI tests features, sets up preview, Human validates| I
+    H[08_Testing.mdc](.cursor/rules/01__AI-RUN/08_Testing.mdc)] -->|AI tests features, sets up preview, Human validates| I
     I[Deployment ([09_Deployment.mdc](.cursor/rules/01__AI-RUN/09_Deployment.mdc))] -->|AI executes deployment plan, Human verifies| J
     J[Iteration] -->|Collects feedback, Human decides next cycle| A
 ```
@@ -44,7 +44,7 @@ The workflow uses consistent file naming for inputs and outputs. Note that promp
 | Core Concept | [core_concept.mdc](.cursor/rules/projet/03_Core_Concept/core_concept.mdc) | [core_concept.mdc](.cursor/rules/projet/03_Core_Concept/core_concept.mdc) | Creation |
 | PRD Generation | [04_PRD_Generation.mdc](.cursor/rules/01__AI-RUN/04_PRD_Generation.mdc) | [project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc) | Creation |
 | Specs & Docs | [05_Specs_Docs.mdc](.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc) | `.cursor/rules/02__AI-DOCS/` & `.cursor/rules/03__SPECS/` | **Creation** of project-specific files from templates (templates remain untouched) & Reference/Annotation of Best Practices |
-| Task Manager | (See [Roo_Task_Workflow.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc))) | [tasks.json](.cursor/rules/tasks/tasks.json) (Structure: [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc))) | Creation |
+| Task Manager | (See [Roo_Task_Workflow.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc) | [tasks.json](.cursor/rules/tasks/tasks.json) (Structure: [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc) | Creation |
 | Start Building | [08_Testing.mdc](.cursor/rules/01__AI-RUN/08_Testing.mdc) | Tested features, Preview Environment | Validation |
 | Deployment | [09_Deployment.mdc](.cursor/rules/01__AI-RUN/09_Deployment.mdc) | Deployed Application | Execution |
  
@@ -65,9 +65,9 @@ The workflow uses consistent file naming for inputs and outputs. Note that promp
     *   Project-specific technical documents **created** in `.cursor/rules/02__AI-DOCS/` (e.g., `.cursor/rules/02__AI-DOCS/Architecture/architecture.mdc`, `.cursor/rules/02__AI-DOCS/Conventions/coding_conventions.mdc`, `.cursor/rules/02__AI-DOCS/Conventions/design_conventions.mdc`).
     *   Project-specific specification documents **created** in `.cursor/rules/03__SPECS/` (e.g., `.cursor/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`).
     *   Documentation index: [`.cursor/rules/03__SPECS/documentation_index.mdc`](.cursor/rules/03__SPECS/documentation_index.mdc).
-    *   Task management guidelines: [Roo_Task_Workflow.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)) and [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)).
-    *   AI Agent Optimization Guides: [AI_Coding_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)), [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)).
-    *   Overall AI Task Management Vision: [AI_Task_Management_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc)).
+    *   Task management guidelines: [Roo_Task_Workflow.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc) and [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
+    *   AI Agent Optimization Guides: [AI_Coding_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc), [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
+    *   Overall AI Task Management Vision: [AI_Task_Management_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc).
 4.  **Prioritize Generated Documents & Adhere to Specs:** When performing subsequent tasks (especially Task Management and Building), you MUST prioritize referencing these **generated, project-specific documents** over the original templates. The templates serve only as a starting structure.
 5.  **Spec-Driven Execution:** For any development task (frontend, backend, database, design, etc.), you MUST actively locate, read, and strictly adhere to the relevant detailed specification documents (feature specs, design mockups/guidelines, API contracts, coding conventions, etc.) found within `.cursor/rules/02__AI-DOCS/` and `.cursor/rules/03__SPECS/`, or linked within the task `details` in [tasks.json](.cursor/rules/tasks/tasks.json).
  
@@ -149,10 +149,10 @@ If at any point the AI agent seems confused or lacks context:
 - **AI Role**: **Creating** project-specific files in `.cursor/rules/02__AI-DOCS/` and `.cursor/rules/03__SPECS/` by copying and populating templates based on the PRD and gathered technical information.
 - **Output**: **Created** project-specific technical documentation and specifications within `.cursor/rules/02__AI-DOCS/` and `.cursor/rules/03__SPECS/`.
  
-### 6. Task Manager Initialization (Workflow: [Roo_Task_Workflow.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)))
-- **Human Role**: Review of task structure (as defined in [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)))
-- **AI Role**: Instructing Roo Orchestrator with PRD features, as per [Roo_Task_Workflow.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc))
-- **Output**: Initial task hierarchy ([tasks.json](.cursor/rules/tasks/tasks.json) adhering to [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)))
+### 6. Task Manager Initialization (Workflow: [Roo_Task_Workflow.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)
+- **Human Role**: Review of task structure (as defined in [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+- **AI Role**: Instructing Roo Orchestrator with PRD features, as per [Roo_Task_Workflow.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)
+- **Output**: Initial task hierarchy ([tasks.json](.cursor/rules/tasks/tasks.json) adhering to [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
 
 ### 7. Builder (using `[07_Start_Building.mdc](.cursor/rules/01__AI-RUN/07_Start_Building.mdc)` logic)
 - **Human Role**: Reviewing and validating code and features

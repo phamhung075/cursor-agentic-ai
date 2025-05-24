@@ -191,6 +191,42 @@ def detect_broken_patterns_in_line(line, line_number):
             'details': f"Complex nested bracket pattern: {match.group(0)}"
         })
     
+    # Pattern 13: Extra closing parenthesis: [filename](path))
+    pattern13 = r'\[([^\]]+)\]\(([^)]+)\)\)'
+    for match in re.finditer(pattern13, line):
+        broken_patterns.append({
+            'type': 'extra_closing_parenthesis',
+            'line_number': line_number,
+            'match': match.group(0),
+            'start': match.start(),
+            'end': match.end(),
+            'details': f"Extra closing parenthesis: {match.group(0)}"
+        })
+    
+    # Pattern 14: Links with mdc: prefix: [filename](mdc:path)
+    pattern14 = r'\[([^\]]+)\]\(mdc:([^)]+)\)'
+    for match in re.finditer(pattern14, line):
+        broken_patterns.append({
+            'type': 'mdc_prefix_in_path',
+            'line_number': line_number,
+            'match': match.group(0),
+            'start': match.start(),
+            'end': match.end(),
+            'details': f"MDC prefix in path: {match.group(0)}"
+        })
+    
+    # Pattern 15: Links with mdc: prefix and extra closing parenthesis: [filename](mdc:path))
+    pattern15 = r'\[([^\]]+)\]\(mdc:([^)]+)\)\)'
+    for match in re.finditer(pattern15, line):
+        broken_patterns.append({
+            'type': 'mdc_prefix_with_extra_parenthesis',
+            'line_number': line_number,
+            'match': match.group(0),
+            'start': match.start(),
+            'end': match.end(),
+            'details': f"MDC prefix with extra parenthesis: {match.group(0)}"
+        })
+    
     return broken_patterns
 
 def load_file_mappings():
@@ -436,6 +472,57 @@ def fix_broken_patterns_in_line(line, broken_patterns, file_mappings):
                     updated_line = updated_line[:start_pos] + replacement + updated_line[end_pos:]
                     fixes_made += 1
                     print(f"  → Fixed complex nested bracket pattern for {filename}")
+        
+        elif pattern['type'] == 'extra_closing_parenthesis':
+            # Pattern: [filename](path)) - just remove the extra closing parenthesis
+            match_text = pattern['match']
+            bracket_start = match_text.find('[')
+            bracket_end = match_text.find(']', bracket_start)
+            if bracket_start != -1 and bracket_end != -1:
+                filename = match_text[bracket_start+1:bracket_end]
+                if filename in file_mappings:
+                    correct_path = file_mappings[filename]
+                    replacement = f"[{filename}]({correct_path})"
+                    
+                    start_pos = pattern['start']
+                    end_pos = pattern['end']
+                    updated_line = updated_line[:start_pos] + replacement + updated_line[end_pos:]
+                    fixes_made += 1
+                    print(f"  → Fixed extra closing parenthesis for {filename}")
+        
+        elif pattern['type'] == 'mdc_prefix_in_path':
+            # Pattern: [filename](mdc:path) - remove mdc: prefix
+            match_text = pattern['match']
+            bracket_start = match_text.find('[')
+            bracket_end = match_text.find(']', bracket_start)
+            if bracket_start != -1 and bracket_end != -1:
+                filename = match_text[bracket_start+1:bracket_end]
+                if filename in file_mappings:
+                    correct_path = file_mappings[filename]
+                    replacement = f"[{filename}]({correct_path})"
+                    
+                    start_pos = pattern['start']
+                    end_pos = pattern['end']
+                    updated_line = updated_line[:start_pos] + replacement + updated_line[end_pos:]
+                    fixes_made += 1
+                    print(f"  → Fixed mdc: prefix in path for {filename}")
+        
+        elif pattern['type'] == 'mdc_prefix_with_extra_parenthesis':
+            # Pattern: [filename](mdc:path)) - remove mdc: prefix and extra parenthesis
+            match_text = pattern['match']
+            bracket_start = match_text.find('[')
+            bracket_end = match_text.find(']', bracket_start)
+            if bracket_start != -1 and bracket_end != -1:
+                filename = match_text[bracket_start+1:bracket_end]
+                if filename in file_mappings:
+                    correct_path = file_mappings[filename]
+                    replacement = f"[{filename}]({correct_path})"
+                    
+                    start_pos = pattern['start']
+                    end_pos = pattern['end']
+                    updated_line = updated_line[:start_pos] + replacement + updated_line[end_pos:]
+                    fixes_made += 1
+                    print(f"  → Fixed mdc: prefix with extra parenthesis for {filename}")
     
     return updated_line, fixes_made
 

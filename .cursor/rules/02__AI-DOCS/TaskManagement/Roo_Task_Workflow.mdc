@@ -15,7 +15,7 @@ Roo, as your integrated AI assistant, handles task management directly. No separ
 
 **Expected Inputs:**
 - A comprehensive `[project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc)`.
-- **Created** project-specific technical specifications and documentation within `.cursor/rules/02__AI-DOCS/` (including the created [coding_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc) and [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)) and `.cursor/rules/03__SPECS/`.
+- **Created** project-specific technical specifications and documentation within `.cursor/rules/02__AI-DOCS/` (including the created [coding_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc) and [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) and `.cursor/rules/03__SPECS/`.
 - Foundational design principles outlined in [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
 - Coding best practices from [AI_Coding_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc).
 
@@ -72,7 +72,7 @@ Please perform the following operations in sequence:
 - Break down each feature into tasks that represent no more than 4 hours of development work
 - Ensure each task has a single, clear responsibility
 - Include specific technical requirements in task descriptions.
-- **Crucially, ensure the `details` field of each task (as defined in [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) contains direct links to, or embeds content from, the specific, relevant *created* specification documents. This includes:**
+- **Crucially, ensure the `details` field of each task (as defined in [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc) contains direct links to, or embeds content from, the specific, relevant *created* specification documents. This includes:**
    - Relevant sections of `[project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc)`.
    - Specific feature specifications (e.g., `.cursor/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`).
    - Architectural diagrams or guidelines from the created `.cursor/rules/02__AI-DOCS/Architecture/architecture.mdc`.
@@ -189,7 +189,7 @@ The strategy of breaking down project requirements into a deep hierarchy of task
 
 *   **Reduced Cognitive Load for AI:** AI agents, much like human developers, perform better when dealing with focused, less complex tasks. By breaking down large problems into manageable sub-units, the cognitive load on the AI is significantly reduced, allowing it to process information more effectively and generate higher-quality code with fewer errors.
 
-*   **Effective Dependency Management:** The clear definition of `dependencies` between these granular tasks (as outlined in [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc))) ensures a correct and logical sequence of development. Prerequisites are explicitly stated, preventing out-of-order work and ensuring that foundational components are in place before dependent tasks are attempted.
+*   **Effective Dependency Management:** The clear definition of `dependencies` between these granular tasks (as outlined in [Tasks_JSON_Structure.mdc](.cursor/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc) ensures a correct and logical sequence of development. Prerequisites are explicitly stated, preventing out-of-order work and ensuring that foundational components are in place before dependent tasks are attempted.
 
 Roo Orchestrator plays a key role in guiding this detailed decomposition process, ensuring that features from the PRD are meticulously broken down. Subsequently, Roo Code mode benefits immensely from these well-defined, granular tasks, as they provide the precise instructions needed to generate accurate, testable, and high-quality code. This hierarchical and detailed approach to task management is a cornerstone of effective AI-driven (agentic) software development.
 ### Step 3: Task Refinement
@@ -268,7 +268,7 @@ To proceed with implementing the project:
 Please help me implement my project according to the PRD and task breakdown. You can find:
 - The complete PRD at: `project_prd.mdc`
 - The task breakdown at: [tasks.json](.cursor/rules/tasks/tasks.json)
-- Technical documentation in the `.cursor/rules/02__AI-DOCS/` (notably [coding_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc) and [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)) and `.cursor/rules/03__SPECS/` directories, as well as the guiding principles from [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
+- Technical documentation in the `.cursor/rules/02__AI-DOCS/` (notably [coding_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc) and [design_conventions_template.mdc](.cursor/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) and `.cursor/rules/03__SPECS/` directories, as well as the guiding principles from [AI_Design_Agent_Optimization.mdc](.cursor/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
 
 I'm ready to start building, beginning with the first task in the hierarchy.
 ```

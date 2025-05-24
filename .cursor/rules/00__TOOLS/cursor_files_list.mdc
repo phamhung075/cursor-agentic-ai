@@ -42,6 +42,7 @@ core_concept.mdc : [core_concept.mdc](.cursor/rules/projet/03_Core_Concept/core_
 project_prd.mdc : [project_prd.mdc](.cursor/rules/projet/PRD_template/project_prd.mdc)
 tasks.json : [tasks.json](.cursor/rules/tasks/tasks.json)
 workflow.mdc : [workflow.mdc](.cursor/rules/workflow.mdc)
+README.md : [README.md](README.md)
 fix_broken_links.py : [fix_broken_links.py](scripts/fix_broken_links.py)
 replace_file_links.py : [replace_file_links.py](scripts/replace_file_links.py)
 update_file_list.py : [update_file_list.py](scripts/update_file_list.py)

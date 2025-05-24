@@ -305,7 +305,7 @@ Windsurf provides "Memories & Rules" as a system for sharing and persisting cont
   * This mechanism allows Cascade to build a dynamic, short-term understanding of the current task context without requiring manual rule creation for every transient detail, which is efficient for highly contextual, temporary information.
 * **Rules (.windsurfrules and global\_rules.mdc):**
   * Users can explicitly define their own rules for Cascade to follow.29
-  * **global\_rules.mdc:** Contains rules applied across all workspaces (e.g., general coding style preferences).
+  * **global\_rules.** Contains rules applied across all workspaces (e.g., general coding style preferences).
   * **.windsurfrules:** Contains rules for the local workspace where the file resides (e.g., project-specific technologies or patterns). It's recommended to add .windsurfrules to the project's .gitignore to keep them local.29
   * Cascade is aware of these rules at all times, even if changed mid-conversation.29
   * **Character Limits:** global\_rules.mdc and .windsurfrules are each limited to 6000 characters. The combined limit is 12,000 characters; global rules take priority if the total exceeds this, and excess content is truncated.29 This necessitates concise and carefully formulated rules.
@@ -399,7 +399,7 @@ Cline offers a sophisticated system for defining and managing its behavior throu
   * ## **Example .clinerules Content 38:**     **\#.clinerules for MyProject**     **General Behavior**
 
     * Ask for review after each significant file change.
-    * Do not edit the [README.mdc](mdc:.cursor/rules/README.mdc) or any files in the /docs folder unless explicitly instructed.
+    * Do not edit the [README.mdc](.cursor/rules/README.mdc) or any files in the /docs folder unless explicitly instructed.
     * Suggest files to edit rather than opening them randomly if unsure.
 
     Python Specifics
@@ -575,7 +575,7 @@ By adopting these practices, developers can more effectively harness the power o
 19. Best Practices for Using AI in Software Development 2025 \- Leanware, accessed May 7, 2025, [https://www.leanware.co/insights/best-practices-ai-software-development](https://www.leanware.co/insights/best-practices-ai-software-development)
 20. Taming the code generation beast — How responsible is your AI adoption in Java \- Digma, accessed May 7, 2025, [https://digma.ai/taming-the-code-generation-beast-how-responsible-is-your-ai-adoption-in-java/](https://digma.ai/taming-the-code-generation-beast-how-responsible-is-your-ai-adoption-in-java/)
 21. Prompt Engineering Guide \- Cline Documentation, accessed May 7, 2025, [https://docs.cline.bot/improving-your-prompting-skills/prompting](https://docs.cline.bot/improving-your-prompting-skills/prompting)
-22. cline/docs/prompting/README.md at main \- GitHub, accessed May 7, 2025, [https://github.com/cline/cline/blob/main/docs%2Fprompting%2FREADME.md](https://github.com/cline/cline/blob/main/docs%2Fprompting%2FREADME.md)
+22. cline/docs/prompting/README.md at main \- GitHub, accessed May 7, 2025, [https://github.com/cline/cline/blob/main/docs%2Fprompting%2FREADME.md](https://github.com/cline/cline/blob/main/docs%2Fprompting%2F[README.md]([README.md](README.md)))
 23. Cursor – Welcome to Cursor, accessed May 7, 2025, [https://docs.cursor.com/welcome](https://docs.cursor.com/welcome)
 24. Introduction \- Cursor, accessed May 7, 2025, [https://docs.cursor.com/get-started/introduction](https://docs.cursor.com/get-started/introduction)
 25. Rules \- Cursor, accessed May 7, 2025, [https://docs.cursor.com/context/rules](https://docs.cursor.com/context/rules)

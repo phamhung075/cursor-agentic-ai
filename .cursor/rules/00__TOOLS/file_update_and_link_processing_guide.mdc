@@ -22,8 +22,8 @@ When new files are added to the project, update the file mappings:
 
 **What this does:**
 - Scans all `.mdc` files in the project
-- Updates [cursor_files_list.mdc](mdc:.cursor/rules/00__TOOLS/cursor_files_list.mdc) with new file mappings
-- Creates proper `filename : [filename](mdc:path)` format for each file
+- Updates [cursor_files_list.mdc](.cursor/rules/00__TOOLS/cursor_files_list.mdc) with new file mappings
+- Creates proper `filename : [filename](path)` format for each file
 
 ### Step 2: Update [cursor_path_fix.mdc](.cursor/rules/00__TOOLS/cursor_path_fix.mdc)
 
@@ -50,18 +50,18 @@ python3 scripts/replace_file_links.py && python3 scripts/fix_broken_links.py
 
 The `update_files.sh` script:
 - Discovers all `.mdc` files in the project
-- Creates mappings in the format: `filename : [filename](mdc:relative/path/to/file)`
-- Updates the master file list at [cursor_files_list.mdc](mdc:.cursor/rules/00__TOOLS/cursor_files_list.mdc)
+- Creates mappings in the format: `filename : [filename](relative/path/to/file)`
+- Updates the master file list at [cursor_files_list.mdc](.cursor/rules/00__TOOLS/cursor_files_list.mdc)
 
 ### 2. Link Replacement Process
 
 The `[replace_file_links.py](scripts/replace_file_links.py)` script:
 - Converts plain text file references to clickable links
 - Handles multiple patterns:
-  - Space-separated filenames: `filename.mdc` → `[filename.mdc](mdc:path)`
-  - Quoted filenames: `"filename.mdc"` → `[filename.mdc](mdc:path)`
-  - Path references: `.cursor/rules/.../filename.mdc` → `[filename.mdc](mdc:path)`
-  - Backtick paths: `\`.cursor/rules/.../filename.mdc\`` → `[filename.mdc](mdc:path)`
+  - Space-separated filenames: `filename.mdc` → `[filename.mdc](path)`
+  - Quoted filenames: `"filename.mdc"` → `[filename.mdc](path)`
+  - Path references: `.cursor/rules/.../filename.mdc` → `[filename.mdc](path)`
+  - Backtick paths: `\`.cursor/rules/.../filename.mdc\`` → `[filename.mdc](path)`
 
 ### 3. Broken Link Repair
 
@@ -92,25 +92,25 @@ The `[fix_broken_links.py](scripts/fix_broken_links.py)` script:
 
 ### Core Scripts
 
-- **[update_files.sh](mdc:scripts/update_files.sh)** - Updates the master file list
-- **[replace_file_links.py](mdc:scripts/replace_file_links.py)** - Converts plain text to clickable links
-- **[fix_broken_links.py](mdc:scripts/fix_broken_links.py)** - Repairs broken link patterns
+- **[update_files.sh](scripts/update_files.sh)** - Updates the master file list
+- **[replace_file_links.py](scripts/replace_file_links.py)** - Converts plain text to clickable links
+- **[fix_broken_links.py](scripts/fix_broken_links.py)** - Repairs broken link patterns
 
 ### Supporting Files
 
-- **[cursor_files_list.mdc](mdc:.cursor/rules/00__TOOLS/cursor_files_list.mdc)** - Master file mapping list
-- **[cursor_path_fix.mdc](mdc:.cursor/rules/00__TOOLS/cursor_path_fix.mdc)** - Processing log and reference
+- **[cursor_files_list.mdc](.cursor/rules/00__TOOLS/cursor_files_list.mdc)** - Master file mapping list
+- **[cursor_path_fix.mdc](.cursor/rules/00__TOOLS/cursor_path_fix.mdc)** - Processing log and reference
 
 ## 📊 Pattern Types Handled
 
-### Plain Text Patterns ([replace_file_links.py](scripts/replace_file_links.py))
+### Plain Text Patterns ([replace_file_links.py](scripts/replace_file_links.py)
 1. Space-delimited filenames
 2. Quoted filenames  
 3. Full path references
 4. Backtick-wrapped paths
 5. Plus-notation paths (`.cursor/rules + ... + filename.mdc`)
 
-### Broken Link Patterns ([fix_broken_links.py](scripts/fix_broken_links.py))
+### Broken Link Patterns ([fix_broken_links.py](scripts/fix_broken_links.py)
 1. Nested brackets with double paths
 2. Mixed text with embedded links
 3. Complex bracket/backtick combinations
@@ -156,7 +156,7 @@ python3 scripts/replace_file_links.py
 - Verify file permissions
 
 ### Links Not Converting
-- Check that the filename exists in [cursor_files_list.mdc](mdc:.cursor/rules/00__TOOLS/cursor_files_list.mdc)
+- Check that the filename exists in [cursor_files_list.mdc](.cursor/rules/00__TOOLS/cursor_files_list.mdc)
 - Run `@update_files.sh` to refresh the file mappings
 - Verify the filename matches exactly (case-sensitive)
 
