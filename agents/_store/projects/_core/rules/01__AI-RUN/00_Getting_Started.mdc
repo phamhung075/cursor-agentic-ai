@@ -116,12 +116,12 @@ npm run AAI:core-health        # Comprehensive health check
 
 **Core Documentation Location:** `agents/_store/docs/`
 
-- **[Main README](mdc:../../../docs/README.md)** - Complete system overview
-- **[Installation Guide](mdc:../../../docs/INSTALLATION_GUIDE.md)** - Setup instructions
-- **[AI Assistant Compatibility](mdc:../../../docs/AI_ASSISTANT_COMPATIBILITY.md)** - Integration guide
-- **[File Organization](mdc:../../../docs/FILE_ORGANIZATION.md)** - Structure guidelines
-- **[File Dependency Tracking](mdc:../../../docs/FILE_DEPENDENCY_TRACKING.md)** - Dependency system
-- **[Organizational Rules](mdc:../../../docs/ORGANIZATIONAL_RULES.md)** - Framework rules
+- **[Main README](agents/_store/projects/_core/docs/README.mdc)** - Complete system overview
+- **Installation Guide** - Setup instructions *(referenced but not found)*
+- **AI Assistant Compatibility** - Integration guide *(referenced but not found)*
+- **File Organization** - Structure guidelines *(referenced but not found)*
+- **File Dependency Tracking** - Dependency system *(referenced but not found)*
+- **Organizational Rules** - Framework rules *(referenced but not found)*
 
 ## 🌊 Complete Workflow Overview
 
@@ -158,15 +158,15 @@ The framework uses **consistent file naming** and **structured output locations*
 
 | Phase | Prompt File | Primary Output Location | Output Type |
 |-------|-------------|------------------------|-------------|
-| **Idea** | `01_Idea.mdc` | `../projet/01_Idea/idea_document.mdc` | Project concept |
-| **Market Research** | `02_Market_Research.mdc` | `../projet/02_Market_Research/market_research.mdc` | Market analysis |
-| **Core Concept** | `03_Core_Concept.mdc` | `../projet/03_Core_Concept/core_concept.mdc` | Refined concept |
-| **PRD Generation** | `04_PRD_Generation.mdc` | `../projet/PRD_template/project_prd.mdc` | Requirements document |
-| **Specs & Docs** | `05_Specs_Docs.mdc` | `../02__AI-DOCS/` & `../03__SPECS/` | Technical documentation |
-| **Task Management** | `06_Task_Manager.mdc` | `../tasks/tasks.json` | Task breakdown |
-| **Implementation** | `07_Start_Building.mdc` | Project codebase | Functional code |
-| **Testing** | `08_Testing.mdc` | Test reports & preview | Validated features |
-| **Deployment** | `09_Deployment.mdc` | Production environment | Live application |
+| **Idea** | [01_Idea.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc) | `../projet/01_Idea/idea_document.mdc` | Project concept |
+| **Market Research** | [02_Market_Research.mdc](agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc) | `../projet/02_Market_Research/market_research.mdc` | Market analysis |
+| **Core Concept** | [03_Core_Concept.mdc](agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc) | `../projet/03_Core_Concept/core_concept.mdc` | Refined concept |
+| **PRD Generation** | [04_PRD_Generation.mdc](agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc) | `../projet/PRD_template/project_prd.mdc` | Requirements document |
+| **Specs & Docs** | [05_Specs_Docs.mdc](agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc) | `../02__AI-DOCS/` & `../03__SPECS/` | Technical documentation |
+| **Task Management** | [06_Task_Manager.mdc](agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc) | `../tasks/tasks.json` | Task breakdown |
+| **Implementation** | [07_Start_Building.mdc](agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc) | Project codebase | Functional code |
+| **Testing** | [08_Testing.mdc](agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc) | Test reports & preview | Validated features |
+| **Deployment** | [09_Deployment.mdc](agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc) | Production environment | Live application |
 
 ### 📋 Key Reference Documents
 
@@ -176,13 +176,13 @@ The framework uses **consistent file naming** and **structured output locations*
 - **Coding Conventions**: `../02__AI-DOCS/Conventions/coding_conventions.mdc`
 - **Design Guidelines**: `../02__AI-DOCS/Conventions/design_conventions.mdc`
 - **Feature Specifications**: `../03__SPECS/features/feature_spec_*.mdc`
-- **Task Structure**: `../tasks/tasks.json` (follows `../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`)
+- **Task Structure**: `../tasks/tasks.json` (follows [Tasks_JSON_Structure.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc))
 
 **Framework templates and guides:**
-- **Task Workflow**: `../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`
-- **Task Structure Guide**: `../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`
-- **Documentation Index**: `../03__SPECS/documentation_index.mdc`
-- **AI Optimization Guides**: `../02__AI-DOCS/Documentation/AI_*_Optimization.mdc`
+- **Task Workflow**: [Roo_Task_Workflow.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)
+- **Task Structure Guide**: [Tasks_JSON_Structure.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+- **Documentation Index**: [documentation_index.mdc](agents/_store/projects/_core/rules/03__SPECS/documentation_index.mdc)
+- **AI Optimization Guides**: [AI_*_Optimization.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/Documentation)
 
 ## 🤖 AI Agent Pre-Flight Checklist
 
@@ -203,7 +203,7 @@ Before starting any workflow (AutoPilot or manual), the AI agent **MUST** perfor
 - **Read and analyze** core framework files:
   - `../logic.mdc` - Core system logic and rules
   - `../workflow.mdc` - Workflow coordination system
-  - `../AI_AGENT_RULES.mdc` - Fundamental AI agent rules
+  - [AI_AGENT_RULES.mdc](agents/_store/projects/_core/AI_AGENT_RULES.mdc) - Fundamental AI agent rules
   - Templates in `../02__AI-DOCS/` and `../03__SPECS/`
 - **Build mental model** of project state, logic, and component interactions
 - **Understand** file relationships and dependencies
@@ -216,7 +216,7 @@ Before starting any workflow (AutoPilot or manual), the AI agent **MUST** perfor
 
 ### 4. 📋 **Spec-Driven Development**
 - **Read and adhere** to relevant specification documents in `../03__SPECS/`
-- **Reference** task details in `tasks.json` following `../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`
+- **Reference** task details in `tasks.json` following [Tasks_JSON_Structure.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
 - **Apply** coding conventions and design guidelines strictly
 - **Validate** against feature specifications before implementation
 
@@ -236,14 +236,14 @@ Before starting any workflow (AutoPilot or manual), the AI agent **MUST** perfor
 ### ⚙️ **Step 2: Choose Your Development Approach**
 
 #### **Option A: Fully Automated Workflow (Recommended)**
-1. **Open** `01_AutoPilot.mdc` and share with your AI assistant
+1. **Open** [01_AutoPilot.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc) and share with your AI assistant
 2. **Provide** initial project idea (1-3 sentences)
 3. **Answer** clarifying questions (5-7 targeted questions)
 4. **Monitor** automated progression through all phases
 5. **Validate** key outputs when prompted
 
 #### **Option B: Manual Step-by-Step Workflow**
-1. **Start** with `01_Idea.mdc` for project concept definition
+1. **Start** with [01_Idea.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc) for project concept definition
 2. **Complete** each phase sequentially (01-09)
 3. **Save outputs** in designated locations with correct naming
 4. **Reference** previous outputs when moving to next phases
@@ -351,63 +351,63 @@ npm run AAI:agent
 ### 🎯 **Development Phases Overview**
 
 #### **Phase 1: 💡 Idea Definition**
-- **File:** `01_Idea.mdc`
+- **File:** [01_Idea.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)
 - **Human Role:** Concept formulation and initial vision
 - **AI Role:** Brainstorming assistance and concept refinement
 - **Output:** `../projet/01_Idea/idea_document.mdc`
 - **Duration:** 15-30 minutes
 
 #### **Phase 2: 📊 Market Research**
-- **File:** `02_Market_Research.mdc`
+- **File:** [02_Market_Research.mdc](agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)
 - **Human Role:** Analysis and evaluation of research findings
 - **AI Role:** Rapid research execution and data compilation
 - **Output:** `../projet/02_Market_Research/market_research.mdc`
 - **Duration:** 30-60 minutes
 
 #### **Phase 3: 🎯 Core Concept**
-- **File:** `03_Core_Concept.mdc`
+- **File:** [03_Core_Concept.mdc](agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)
 - **Human Role:** Final concept validation and decision
 - **AI Role:** UVP proposal and persona refinement
 - **Output:** `../projet/03_Core_Concept/core_concept.mdc`
 - **Duration:** 20-40 minutes
 
 #### **Phase 4: 📋 PRD Generation**
-- **File:** `04_PRD_Generation.mdc`
+- **File:** [04_PRD_Generation.mdc](agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)
 - **Human Role:** Iterative validation and approval
 - **AI Role:** Complete PRD generation using templates
 - **Output:** `../projet/PRD_template/project_prd.mdc`
 - **Duration:** 45-90 minutes
 
 #### **Phase 5: 📄 Specifications & Documentation**
-- **File:** `05_Specs_Docs.mdc`
+- **File:** [05_Specs_Docs.mdc](agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)
 - **Human Role:** Review and approval of technical documentation
 - **AI Role:** Create project-specific docs from templates in `../02__AI-DOCS/` and `../03__SPECS/`
 - **Output:** Technical documentation and specifications
 - **Duration:** 30-60 minutes
 
 #### **Phase 6: ⚙️ Task Management**
-- **File:** `06_Task_Manager.mdc`
+- **File:** [06_Task_Manager.mdc](agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc)
 - **Human Role:** Review and validation of task structure
-- **AI Role:** Generate `tasks.json` following `../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`
+- **AI Role:** Generate `tasks.json` following [Tasks_JSON_Structure.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
 - **Output:** `../tasks/tasks.json`
 - **Duration:** 20-45 minutes
 
 #### **Phase 7: 🔨 Implementation**
-- **File:** `07_Start_Building.mdc`
+- **File:** [07_Start_Building.mdc](agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)
 - **Human Role:** Code review and feature validation
 - **AI Role:** Execute tasks, write code, implement features
 - **Output:** Functional application codebase
 - **Duration:** 2-8+ hours (varies by complexity)
 
 #### **Phase 8: 🧪 Testing**
-- **File:** `08_Testing.mdc`
+- **File:** [08_Testing.mdc](agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc)
 - **Human Role:** Final validation and acceptance testing
 - **AI Role:** Automated testing, preview setup, issue resolution
 - **Output:** Tested application with preview environment
 - **Duration:** 30-120 minutes
 
 #### **Phase 9: 🚀 Deployment**
-- **File:** `09_Deployment.mdc`
+- **File:** [09_Deployment.mdc](agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc)
 - **Human Role:** Go/no-go decision and final approval
 - **AI Role:** Execute deployment plan and post-deployment validation
 - **Output:** Live, deployed application

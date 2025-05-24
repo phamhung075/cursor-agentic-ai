@@ -1,232 +1,132 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
-# 🧠 Agent AI System Reference - Advanced Development Assistant
+# 🧠 Quick Self-Improvement Reference v2.0 for AI Agents
 
-*Comprehensive AI agent with intelligent memory, file dependency tracking, and multi-project support*
+*Use the new modular Self-Improvement Agent during AutoPilot workflow execution.*
 
-## 🚀 **System Activation**
+## 🚀 **Agent Activation**
 
 ```bash
-# 🎯 Main Agent Commands
-npm run AAI:agent          # Start interactive agent
-npm run AAI:demo           # Quick demo of capabilities
-npm run AAI:setup-env      # Interactive environment setup
+# Start the new modular agent
+npm run AAI:agent
 
-# 🧪 Testing & Validation
-npm run AAI:test-system         # Core system tests
-npm run AAI:test-dependencies   # Dependency tracking tests
-npm run AAI:test-agent          # Agent functionality tests
-
-# 🔧 Legacy Support
-npm run AAI:legacy         # Legacy compatibility mode
+# Legacy fallback (if needed)
+npm run legacy
 ```
 
-## 🎯 **Advanced Features Overview**
+## 🎯 **Context-Aware Workflow Integration**
 
-### **🔍 Intelligent Analysis Engine**
-- **Context-Aware Detection**: Understands your current workflow phase
-- **Pattern Recognition**: Learns from your coding patterns and preferences
-- **Real-Time Suggestions**: Provides contextual improvements as you work
-- **Multi-Language Support**: Works across different programming languages
-
-### **🧠 Advanced Memory System**
-- **Vector-Based Storage**: Pinecone integration for similarity search
-- **Local Fallback**: 100% functional without external APIs
-- **Learning Patterns**: Remembers successful solutions and approaches
-- **Cross-Session Context**: Maintains project understanding across sessions
-
-### **🔗 File Dependency Tracking**
-- **Real-Time Monitoring**: Watches file changes automatically
-- **Dependency Mapping**: Tracks complex relationships between files
-- **Cascade Analysis**: Shows impact of changes across the codebase
-- **Update Propagation**: Automatically updates memory when dependencies change
-
-### **📁 Multi-Project Management**
-- **Project Organization**: Clean separation of different projects
-- **Context Switching**: Easy switching between project contexts
-- **Shared Learning**: Applies patterns learned across projects
-- **Organized Storage**: Structured file organization in `agents/_store/`
-
-## 📋 **Command Reference**
-
-### **🔍 Analysis Commands**
+### **Phase-Based Context Setting**
 ```bash
-🤖 > analyze <filename>         # Deep analysis of specific file
-🤖 > improve <filename>         # Get targeted improvement suggestions
-🤖 > context <topic>           # Set current work context
-🤖 > smart-detect              # Context-based automatic analysis
+# Set context for current workflow phase
+🤖 > context workflow  # During workflow design/execution
+🤖 > context market-research  # During Phase 2
+🤖 > context architecture  # During Phase 5 (technical docs)
+🤖 > context testing  # During Phase 8
+🤖 > context deployment  # During Phase 9
 ```
 
-### **🧠 Memory Management**
-```bash
-🤖 > memory stats              # Memory system statistics
-🤖 > memory search <query>     # Search stored knowledge
-🤖 > memory cleanup [days]     # Clean old memories
-```
-
-### **🔗 Dependency Tracking**
-```bash
-🤖 > dependencies stats        # Dependency system overview
-🤖 > dependencies analyze <file> # Analyze file relationships
-🤖 > dependencies info <file>  # Get dependency information
-🤖 > dependencies search <pattern> # Search by pattern
-🤖 > dependencies graph        # Visual dependency overview
-🤖 > dependencies reanalyze <file> # Force dependency reanalysis
-```
-
-### **📁 Project Management**
-```bash
-🤖 > projects list             # List available projects
-🤖 > projects set <name>       # Set current active project
-🤖 > projects stats [name]     # Project-specific statistics
-🤖 > projects overview         # All projects overview
-```
-
-### **🔧 System Management**
-```bash
-🤖 > help                      # Show all available commands
-🤖 > config                    # Show current configuration
-🤖 > status                    # System health status
-🤖 > exit                      # Stop agent gracefully
-```
-
-## ⚡ **Workflow Integration**
-
-### **🎯 Context-Aware Workflow Support**
-```bash
-# Set context for specific workflow phases
-🤖 > context workflow          # General workflow design
-🤖 > context market-research   # Phase 2: Market Research
-🤖 > context architecture      # Phase 5: Technical Documentation
-🤖 > context implementation    # Phase 7: Building
-🤖 > context testing          # Phase 8: Testing
-🤖 > context deployment       # Phase 9: Deployment
-```
-
-### **📊 Smart Detection During Phases**
+### **Smart Detection Triggers**
 ```bash
 # Automatically find and analyze relevant files
 🤖 > smart-detect
 
-# Example output:
-🎯 Context: Architecture Phase
-📊 Found 8 relevant files for analysis
-🔍 Dependency relationships: 12 identified
-📄 architecture_template.mdc (3 improvement opportunities)
-📄 coding_conventions_template.mdc (1 critical update needed)
-📄 api_integration_template.mdc (2 enhancement suggestions)
+# Result example:
+🎯 Found 4 relevant files
+📊 Total issues detected: 6
+📄 [0[1[_[AutoPilot.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc) (2 issues)
+📄 [0[2[_[Market_Research.mdc](agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc) (1 issue)
 ```
 
-## 🎨 **Enhanced Communication Format**
+## 📋 **Integration Points During AutoPilot**
 
-The Agent AI provides structured feedback with priority levels:
-
-```
-🧠 **Agent AI Analysis**: [Context: Implementation Phase]
-🔍 **Pattern Detected**: Outdated React patterns in component architecture
-💡 **Smart Suggestion**: Migrate to modern React 18+ hooks and Suspense
-📈 **Impact Assessment**:
-   ├── Performance: +15% faster renders
-   ├── Maintainability: Significantly improved
-   └── Future-proofing: Aligned with React roadmap
-⚡ **Priority**: HIGH (affects core architecture)
-🔧 **Implementation**: Auto-generate migration guide?
-```
-
-## 📊 **Priority System**
-
-### **🚨 CRITICAL (Immediate Action)**
-- **Security vulnerabilities** in dependencies or code patterns
-- **Breaking changes** that affect system functionality
-- **Data loss risks** in file operations or migrations
-- **Action**: Immediate notification with detailed remediation steps
-
-### **⚠️ HIGH Priority (Phase-Critical)**
-- **Framework compatibility** issues (React, Node.js versions)
-- **Architecture decisions** that impact scalability
-- **Performance bottlenecks** in critical paths
-- **Action**: Present options with impact analysis
-
-### **💡 MEDIUM Priority (Quality Improvements)**
-- **Code optimization** opportunities
-- **Documentation gaps** that help team understanding
-- **Best practice alignment** for maintainability
-- **Action**: Queue for next convenient moment
-
-### **✨ LOW Priority (Enhancement)**
-- **Style improvements** and code consistency
-- **Additional examples** and documentation
-- **Future-proofing** suggestions
-- **Action**: Log for post-project review
-
-## 🔧 **Advanced Configuration**
-
-### **🌐 Environment Setup**
+### **Before Using Workflow Files (Phases 1-9)**
 ```bash
-# Interactive environment configuration
-npm run AAI:setup-env
-
-# Manual configuration in .env:
-PINECONE_API_KEY=your_key_here        # For advanced memory features
-OPENAI_API_KEY=your_key_here          # For enhanced AI capabilities
-PROJECT_NAME=your_project_name        # For project organization
+🔍 Quick Check Commands:
+🤖 > context workflow
+🤖 > analyze autopilot  # Check AutoPilot for current project type
+🤖 > analyze market_research  # Verify Phase 2 guidance is current
+🤖 > analyze testing  # Ensure Phase 8 matches project needs
 ```
 
-### **⚙️ System Configuration**
-Located in `agents/self-improvement/config/default.json`:
-```json
-{
-  "agent": {
-    "memoryEnabled": true,
-    "fileStoreEnabled": true,
-    "dependencyTrackingEnabled": true
-  },
-  "memory": {
-    "enablePinecone": true,
-    "enableOpenAI": true,
-    "maxLocalMemories": 1000
-  },
-  "projects": {
-    "autoSwitchContext": true,
-    "trackCrossDependencies": true
-  }
-}
+### **After Generating Key Documents**
+```bash
+📊 Document Validation:
+🤖 > analyze project_prd  # Check PRD for improvements
+🤖 > analyze architecture  # Validate technical architecture
+🤖 > analyze feature_spec  # Review feature specifications
 ```
 
-## 💡 **Pro Tips for Maximum Efficiency**
+### **During User Confusion/Issues**
+```bash
+💬 Troubleshooting:
+🤖 > context [current-issue]  # Set context to specific problem area
+🤖 > smart-detect  # Find relevant framework files
+🤖 > improve [problematic-file] # Get detailed suggestions
+```
 
-1. **🎯 Set Context First**: Always use `context <current-phase>` for optimal suggestions
-2. **🔍 Use Smart Detection**: Let the agent automatically find relevant files
-3. **📊 Check Dependencies**: Use `dependencies analyze` before major changes
-4. **🧠 Leverage Memory**: The system learns from your feedback patterns
-5. **📁 Organize Projects**: Use project management for better context separation
-6. **🔧 Monitor System Health**: Regular `status` checks ensure optimal performance
+## ⚡ **Priority-Based Actions**
 
-## 🏗️ **Architecture Benefits**
+### **🚨 HIGH Priority (Critical Issues)**
+- **Security vulnerabilities** in framework files
+- **Syntax errors** that break workflows  - **Missing critical guidance** causing user blocks
+- **Action:** PAUSE workflow, present improvement, implement if approved
 
-### **✅ Modular Design**
-- **Core Modules**: Separated concerns in `agents/self-improvement/core/`
-- **Plugin Architecture**: Easy addition of new capabilities
-- **Clean Interfaces**: Well-defined APIs between components
+### **⚠️ MEDIUM Priority (Improvement Opportunities)**
+- **Outdated technology references** (React 18, Node.js 20, etc.)
+- **Missing examples** that would help current project type
+- **Template gaps** for specific use cases
+- **Action:** Note for end-of-phase review
 
-### **✅ Scalable Storage**
-- **Organized Structure**: Everything in `agents/_store/` for maintainability
-- **Version Control Friendly**: Clean separation of code and data
-- **Multi-Project Support**: Isolated contexts for different projects
+### **💡 LOW Priority (Optimizations)**
+- **Better code examples** in templates
+- **Improved wording** for clarity
+- **Additional best practices** 
+- **Action:** Log for post-project optimization
 
-### **✅ Universal Compatibility**
-- **AI Assistant Agnostic**: Works with Cursor, Windsurf, Cline, and others
-- **Local-First**: Core functionality without external dependencies
-- **Enhanced Features**: Optional cloud integration for advanced capabilities
+## 🎨 **Improved Communication Format**
+
+When presenting improvements to users:
+
+```
+🧠 **Self-Improvement Agent Detection**: [Context: workflow]
+🔍 **Issue Found**: ⚠️ Outdated reference to React 18 in architecture template
+💡 **Suggested Enhancement**: Update to React 18+ with modern features guide
+⚡ **Workflow Impact**: Ensures users get current best practices for new projects
+❓ **Action Required**: Note for phase review (Medium priority)
+```
+
+## 📊 **Available Commands Reference**
+
+```bash
+🤖 > analyze <filename>  # Analyze specific .mdc file
+🤖 > improve <filename>  # Get detailed improvement suggestions  🤖 > context <topic>  # Set current work context
+🤖 > smart-detect  # Context-aware file analysis
+🤖 > help  # Show all commands
+🤖 > exit  # Stop agent
+```
+
+## 💡 **Pro Tips for AI Agents**
+
+1. **Set context first** - Always use `context <current-phase>` for better results
+2. **Use smart-detect** - Let the agent find relevant files automatically
+3. **Check critical files** - Analyze key templates before using them
+4. **Track patterns** - The agent learns from user feedback to improve suggestions
+5. **Respect priorities** - Only interrupt workflow for HIGH priority issues
+
+## 🔧 **Technical Notes**
+
+- **Modular Architecture**: New agent has separated concerns for better performance
+- **No Full Scans**: Only analyzes relevant files based on context
+- **Learning Capability**: Adapts suggestions based on user approval patterns
+- **Backward Compatible**: Legacy agent still available with `npm run legacy`
 
 ---
 
-*🎯 This Agent AI System represents a sophisticated evolution from simple self-improvement scripts to a comprehensive development assistant with memory, dependency tracking, and intelligent project management.*
-
-## Purpose
+*This reference assumes the new Self-Improvement Agent v2.0 is properly installed and configured.*  ## Purpose
 
 This section defines the purpose and objectives of this workflow step.
 
