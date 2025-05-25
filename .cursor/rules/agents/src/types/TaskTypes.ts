@@ -230,7 +230,9 @@ export interface UpdateTaskInput {
   actualHours?: number;
   tags?: string[];
   parent?: string | null;
+  dependencies?: string[];
   metadata?: Partial<TaskMetadata>;
+  aiAnalysis?: TaskAIAnalysis;
 }
 
 /**
@@ -348,4 +350,237 @@ export interface TaskRecommendation {
   confidence: number; // 0-1
   impact: 'low' | 'medium' | 'high';
   effort: 'low' | 'medium' | 'high';
+}
+
+/**
+ * Learning Data Structures for Adaptive Learning Engine
+ */
+
+/**
+ * Historical task completion data for learning
+ */
+export interface TaskCompletionData {
+  taskId: string;
+  estimatedHours: number;
+  actualHours: number;
+  estimatedComplexity: TaskComplexity;
+  actualComplexity: TaskComplexity;
+  completionDate: string;
+  assignee: string | null;
+  domain: string;
+  taskType: TaskType;
+  decompositionSuccess?: boolean;
+  userSatisfaction?: number; // 1-5 rating
+  metadata: Record<string, any>;
+}
+
+/**
+ * Learning data point for model training
+ */
+export interface LearningDataPoint {
+  id: string;
+  timestamp: string;
+  features: Record<string, any>;
+  target: any;
+  weight: number; // Importance weight
+  source: 'completion' | 'feedback' | 'adjustment';
+}
+
+/**
+ * Base interface for learning models
+ */
+export interface LearningModel {
+  id: string;
+  name: string;
+  version: string;
+  accuracy: number; // 0-1
+  confidence: number; // 0-1
+  dataPoints: number;
+  lastTrained: string;
+  isActive: boolean;
+}
+
+/**
+ * Estimation learning model data
+ */
+export interface EstimationLearningModel extends LearningModel {
+  type: 'estimation';
+  meanAbsoluteError: number;
+  meanAbsolutePercentageError: number;
+  estimationBias: number; // Tendency to over/under estimate
+  factorWeights: {
+    complexity: number;
+    taskType: number;
+    assignee: number;
+    domain: number;
+    historical: number;
+  };
+}
+
+/**
+ * Complexity learning model data
+ */
+export interface ComplexityLearningModel extends LearningModel {
+  type: 'complexity';
+  classificationAccuracy: number;
+  confusionMatrix: Record<TaskComplexity, Record<TaskComplexity, number>>;
+  featureImportance: {
+    descriptionLength: number;
+    keywords: number;
+    taskType: number;
+    domain: number;
+    dependencies: number;
+  };
+}
+
+/**
+ * Decomposition learning model data
+ */
+export interface DecompositionLearningModel extends LearningModel {
+  type: 'decomposition';
+  successRate: number;
+  averageSubtasks: number;
+  optimalDepth: number;
+  patternLibrary: DecompositionPattern[];
+  strategyEffectiveness: Record<string, number>;
+}
+
+/**
+ * Decomposition pattern for learning
+ */
+export interface DecompositionPattern {
+  id: string;
+  taskType: TaskType;
+  complexity: TaskComplexity;
+  keywords: string[];
+  subtaskPattern: {
+    count: number;
+    types: TaskType[];
+    complexities: TaskComplexity[];
+  };
+  successRate: number;
+  usageCount: number;
+  lastUsed: string;
+}
+
+/**
+ * Learning prediction result
+ */
+export interface LearningPrediction {
+  type: 'estimation' | 'complexity' | 'decomposition' | 'priority';
+  prediction: any;
+  confidence: number; // 0-1
+  reasoning: string[];
+  modelUsed: string;
+  features: Record<string, any>;
+  alternatives?: Array<{
+    prediction: any;
+    confidence: number;
+    reasoning: string;
+  }>;
+}
+
+/**
+ * Learning feedback data
+ */
+export interface LearningFeedback {
+  id: string;
+  timestamp: string;
+  predictionId: string;
+  actualOutcome: any;
+  userRating?: number; // 1-5
+  userComments?: string;
+  correctionSuggested?: any;
+  feedbackType: 'completion' | 'user_correction' | 'system_observation';
+}
+
+/**
+ * Learning performance metrics
+ */
+export interface LearningMetrics {
+  modelId: string;
+  period: {
+    start: string;
+    end: string;
+  };
+  accuracy: number;
+  precision: number;
+  recall: number;
+  f1Score: number;
+  meanAbsoluteError?: number;
+  rootMeanSquareError?: number;
+  predictionCount: number;
+  feedbackCount: number;
+  improvementRate: number; // Rate of accuracy improvement
+}
+
+/**
+ * Learning configuration
+ */
+export interface LearningConfig {
+  enabled: boolean;
+  models: {
+    estimation: {
+      enabled: boolean;
+      learningRate: number;
+      minDataPoints: number;
+      maxDataPoints: number;
+      retrainThreshold: number;
+    };
+    complexity: {
+      enabled: boolean;
+      learningRate: number;
+      minDataPoints: number;
+      featureWeights: Record<string, number>;
+    };
+    decomposition: {
+      enabled: boolean;
+      patternMatchThreshold: number;
+      maxPatterns: number;
+      successThreshold: number;
+    };
+  };
+  dataRetention: {
+    maxAge: number; // days
+    maxDataPoints: number;
+    compressionEnabled: boolean;
+  };
+  adaptation: {
+    adaptationRate: number;
+    confidenceThreshold: number;
+    feedbackWeight: number;
+  };
+}
+
+/**
+ * Learning insight and recommendation
+ */
+export interface LearningInsight {
+  type: 'trend' | 'pattern' | 'anomaly' | 'improvement' | 'recommendation';
+  title: string;
+  description: string;
+  confidence: number;
+  impact: 'low' | 'medium' | 'high';
+  actionable: boolean;
+  recommendations?: string[];
+  data: Record<string, any>;
+  timestamp: string;
+}
+
+/**
+ * Adaptive learning result
+ */
+export interface AdaptiveLearningResult {
+  success: boolean;
+  modelUpdated: boolean;
+  accuracyImprovement: number;
+  newDataPoints: number;
+  insights: LearningInsight[];
+  recommendations: LearningPrediction[];
+  error?: string;
+  metadata: {
+    processingTime: number;
+    modelsAffected: string[];
+    confidenceChange: number;
+  };
 } 

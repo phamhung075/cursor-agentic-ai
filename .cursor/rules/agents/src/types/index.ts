@@ -370,4 +370,19 @@ export type EventHandler<T = any> = (data: T) => void | Promise<void>;
 
 export type AsyncFunction<T = any, R = any> = (data: T) => Promise<R>;
 
-export type SyncFunction<T = any, R = any> = (data: T) => R; 
+export type SyncFunction<T = any, R = any> = (data: T) => R;
+
+// Export task management types
+export * from './TaskTypes';
+
+// Export automation engine types
+export * from './AutomationTypes';
+
+// Export API types
+export * from './APITypes';
+
+// Export real-time types
+export * from './RealTimeTypes';
+
+// Export testing types
+export * from './TestingTypes'; 

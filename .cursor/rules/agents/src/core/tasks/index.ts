@@ -6,6 +6,10 @@
 
 export { TaskHierarchyEngine } from './TaskHierarchyEngine';
 export { TaskManager } from './TaskManager';
+export { AITaskDecomposer } from './AITaskDecomposer';
+export { AITaskService } from './AITaskService';
+export { DynamicPriorityManager } from './DynamicPriorityManager';
+export { PriorityService } from './PriorityService';
 
 // Re-export types for convenience
 export * from '../../types/TaskTypes'; 

@@ -201,6 +201,9 @@ export class TaskManager extends EventEmitter {
 
     return {
       ...stats,
+      statusDistribution: stats.statusDistribution as Record<TaskStatus, number>,
+      priorityDistribution: stats.priorityDistribution as Record<TaskPriority, number>,
+      complexityDistribution: stats.complexityDistribution as Record<TaskComplexity, number>,
       averageProgress: tasks.length > 0 ? totalProgress / tasks.length : 0,
       completionRate: tasks.length > 0 ? (completedTasks / tasks.length) * 100 : 0,
       aiGeneratedPercentage: tasks.length > 0 ? (aiGeneratedTasks / tasks.length) * 100 : 0
