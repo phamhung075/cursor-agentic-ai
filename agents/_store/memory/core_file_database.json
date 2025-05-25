@@ -1963,9 +1963,9 @@
       "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
       "description": "Welcome to the **Agentic Coding Framework** - a sophisticated AI-assisted development workflow that takes your project from initial concept to full deployment through a structured, intelligent process",
       "status": "valid",
-      "size": 21966,
-      "last_modified": "2025-05-24T17:26:30.086Z",
-      "last_accessed": "2025-05-25T03:24:15.021Z",
+      "size": 21964,
+      "last_modified": "2025-05-25T03:40:58.349Z",
+      "last_accessed": "2025-05-25T03:40:58.664Z",
       "links_out": [
         {
           "text": "Main README",
@@ -2341,7 +2341,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "6e24e5ae"
+      "content_hash": "-76248344"
     },
     "rules_01__ai_run_01_autopilot_mdc": {
       "id": "rules_01__ai_run_01_autopilot_mdc",
@@ -2350,9 +2350,9 @@
       "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
       "description": "The AutoPilot system enables fully automated development workflows where the AI agent autonomously guides itself through all phases of project development, from initial concept to production deploymen",
       "status": "valid",
-      "size": 26970,
-      "last_modified": "2025-05-24T17:17:23.919Z",
-      "last_accessed": "2025-05-25T03:24:15.023Z",
+      "size": 26968,
+      "last_modified": "2025-05-25T03:40:58.347Z",
+      "last_accessed": "2025-05-25T03:40:58.561Z",
       "links_out": [
         {
           "text": "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
@@ -2735,7 +2735,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "68faab14"
+      "content_hash": "670cfd22"
     },
     "rules_01__ai_run_01_idea_mdc": {
       "id": "rules_01__ai_run_01_idea_mdc",
@@ -2744,9 +2744,9 @@
       "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
       "description": "This document guides you through the systematic process of defining and refining your project idea. It integrates with the enhanced AAI system to provide intelligent assistance in concept development,",
       "status": "valid",
-      "size": 14854,
-      "last_modified": "2025-05-25T02:40:55.335Z",
-      "last_accessed": "2025-05-25T03:24:15.024Z",
+      "size": 14852,
+      "last_modified": "2025-05-25T03:40:58.349Z",
+      "last_accessed": "2025-05-25T03:40:58.780Z",
       "links_out": [
         {
           "text": "02_Market_Research.mdc",
@@ -2786,7 +2786,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "-7c535154"
+      "content_hash": "158bc3ba"
     },
     "rules_01__ai_run_02_market_research_mdc": {
       "id": "rules_01__ai_run_02_market_research_mdc",
@@ -4573,9 +4573,9 @@
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
       "description": "Roo, as your integrated AI assistant, handles task management directly. No separate installation or external tools are required. This document outlines how to guide Roo Orchestrator through the projec",
       "status": "valid",
-      "size": 22224,
-      "last_modified": "2025-05-24T17:49:38.161Z",
-      "last_accessed": "2025-05-25T03:24:15.061Z",
+      "size": 22227,
+      "last_modified": "2025-05-25T03:40:58.373Z",
+      "last_accessed": "2025-05-25T03:40:58.885Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -4888,7 +4888,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "4b9685d7"
+      "content_hash": "-7585b55d"
     },
     "rules_02__ai_docs_taskmanagement_tasks_json_structure_mdc": {
       "id": "rules_02__ai_docs_taskmanagement_tasks_json_structure_mdc",
@@ -13295,9 +13295,33 @@
       "file": "rules/01__AI-RUN/08_Testing.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:40:58.561Z",
+      "file": "rules/01__AI-RUN/01_AutoPilot.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:40:58.664Z",
+      "file": "rules/01__AI-RUN/00_Getting_Started.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:40:58.781Z",
+      "file": "rules/01__AI-RUN/01_Idea.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:40:58.885Z",
+      "file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T03:40:22.010Z",
+  "last_updated": "2025-05-25T03:40:58.986Z",
   "scan_history": [
     {
       "id": "scan_1748139854554",
