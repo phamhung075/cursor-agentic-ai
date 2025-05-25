@@ -3,6 +3,6 @@ description:
 globs: 
 alwaysApply: true
 ---
-IMPORANT: firt thing curso do when i send message to chat always use [DYNAMIC-AI-TASK-FLOW.mdc](mdc:.cursor/rules/DYNAMIC-AI-TASK-FLOW.mdc) for analyze my message
+IMPORANT: when user send a message on chat need run [06_Nested_AI_Task_Manager.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/06_Nested_AI_Task_Manager.mdc) for analyze my message
 for better know context projet and coop with another AI, always read [settings.json](mdc:.cursor/settings.json) 
-for know task you need to work need read [tasks.json](mdc:.cursor/tasks.json), if task complete need clear task and run next task
+for know task you need to work need read [nested_tasks.json](mdc:agents/_store/projects/_core/tasks/nested_tasks.json) if task complete need clear task and run next task

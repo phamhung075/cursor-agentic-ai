@@ -7,14 +7,12 @@
   },
   "project": {
     "activeFiles": [
-      "package.json",
       "src/README.md",
       "agents/README.md",
       ".cursor/settings.json",
       "src/scripts/project_manager.js",
       "src/config/projects.json",
       "agents/self-improvement/index.js",
-      "agents/self-improvement/docs/10_Self_Improvement_Agent.mdc",
       "agents/self-improvement/docs/ENVIRONMENT_SETUP.md",
       "agents/self-improvement/core/FileDependencyManager.js",
       "agents/self-improvement/core/analyzer.js",
@@ -45,7 +43,6 @@
       "agents/_store/scripts/demo-aai-cursor-integration.js",
       "agents/_store/scripts/fix_single_mdc.py",
       "agents/_store/scripts/install-agent-ai.js",
-      "agents/_store/scripts/launch-aai-complete.js",
       "agents/_store/scripts/memory-cleanup.js",
       "agents/_store/scripts/performance-optimizer.js",
       "agents/_store/scripts/replace_file_links.sh",
@@ -71,19 +68,13 @@
       "agents/_store/projects/comprehensive_backup_and_fix.js",
       "agents/_store/projects/core_path_analyzer.js",
       "agents/_store/projects/core_path_fixer.js",
-      "agents/_store/projects/cursor_rules_export.json",
       "agents/_store/projects/cursor_rules_manager_cli.js",
-      "agents/_store/projects/cursor_rules_state_manager.js",
       "agents/_store/projects/integrate_agents_architecture.js",
       "agents/_store/projects/default-project/project_session_state.json",
-      "agents/_store/projects/default-project/tasks.json",
       "agents/_store/projects/_core/AI_AGENT_RULES.mdc",
       "agents/_store/projects/_core/BACKUP_SAFETY_REPORT.mdc",
       "agents/_store/projects/_core/INTEGRATION_MANIFEST.json",
-      "agents/_store/projects/_core/MIGRATION_REPORT.mdc",
       "agents/_store/projects/_core/ORGANIZATION_COMPLETE.mdc",
-      "agents/_store/projects/_core/README.mdc",
-      "agents/_store/projects/_core/tasks/tasks.json",
       "agents/_store/projects/_core/rules/Inspiration.mdc",
       "agents/_store/projects/_core/rules/README.mdc",
       "agents/_store/projects/_core/rules/logic.mdc",
@@ -146,29 +137,20 @@
       "agents/_store/projects/_core/docs/path-fixing/AI_Path_Fix_Guide.mdc",
       "agents/_store/projects/_core/docs/path-fixing/QUICK_PATH_FIX.mdc",
       "agents/_store/project-memory/automated_fix_report.json",
-      "agents/_store/project-memory/cursor_rules_state.json",
       "agents/_store/project-memory/update_plan.json",
       "agents/_store/project-memory/pre-improved-fix-backup/Inspiration.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/README.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/logic.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/project_session_state.json",
-      "agents/_store/project-memory/pre-improved-fix-backup/workflow.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/tasks/tasks.json",
       "agents/_store/project-memory/pre-improved-fix-backup/projet/PRD_template/project_prd.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/projet/03_Core_Concept/core_concept.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/projet/02_Market_Research/market_research.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/projet/01_Idea/idea_document.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/03__SPECS/.DS_Store",
-      "agents/_store/project-memory/pre-improved-fix-backup/03__SPECS/documentation_index.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/03__SPECS/features/feature_spec_template.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/03__SPECS/bugfixes/bugfix_spec_template.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/.DS_Store",
-      "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/Integrations/api_integration_template.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/Conventions/design_conventions_template.mdc",
@@ -179,25 +161,14 @@
       "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/AI-Coder/TestGenerators/test_generator_template.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/AI-Coder/Refactoring/refactoring_template.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/00_Getting_Started.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/01_AutoPilot.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/01_Idea.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/02_Market_Research.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/03_Core_Concept.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/04_PRD_Generation.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/05_Specs_Docs.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/06_Task_Manager.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/07_Start_Building.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/08_Testing.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/09_Deployment.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
       "agents/_store/intelligence/context/live-context.json",
       "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/Template/MCP-Context.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/Template/MCP-Server.json",
-      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/Template/PRD_template.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/00__TOOLS/cursor_files_list.mdc",
-      "agents/_store/project-memory/pre-improved-fix-backup/00__TOOLS/cursor_path_fix.mdc",
       "agents/_store/project-memory/pre-improved-fix-backup/00__TOOLS/file_update_and_link_processing_guide.mdc",
       "agents/_store/project-memory/enhanced-backups/00_Getting_Started_enhanced_2025-05-24T09-05-00-917Z.mdc",
       "agents/_store/project-memory/enhanced-backups/00_Getting_Started_enhanced_2025-05-24T09-06-59-197Z.mdc",
@@ -330,26 +301,18 @@
       "agents/_store/project-memory/enhanced-backups/workflow_enhanced_2025-05-24T09-06-59-286Z.mdc",
       "agents/_store/project-memory/enhanced-backups/workflow_enhanced_2025-05-24T09-10-42-827Z.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/Inspiration.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/README.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/logic.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/project_session_state.json",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/workflow.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/tasks/tasks.json",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/projet/PRD_template/project_prd.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/projet/03_Core_Concept/core_concept.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/projet/02_Market_Research/market_research.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/projet/01_Idea/idea_document.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/03__SPECS/.DS_Store",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/03__SPECS/documentation_index.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/03__SPECS/features/feature_spec_template.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/03__SPECS/bugfixes/bugfix_spec_template.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/.DS_Store",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/Integrations/api_integration_template.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/Conventions/design_conventions_template.mdc",
@@ -360,46 +323,27 @@
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/AI-Coder/TestGenerators/test_generator_template.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/AI-Coder/Refactoring/refactoring_template.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/00_Getting_Started.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/01_AutoPilot.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/01_Idea.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/02_Market_Research.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/03_Core_Concept.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/04_PRD_Generation.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/05_Specs_Docs.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/06_Task_Manager.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/07_Start_Building.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/08_Testing.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/09_Deployment.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/Template/MCP-Context.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/Template/MCP-Server.json",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/Template/PRD_template.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/00__TOOLS/cursor_files_list.mdc",
-      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/00__TOOLS/cursor_path_fix.mdc",
       "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/00__TOOLS/file_update_and_link_processing_guide.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/Inspiration.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/README.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/logic.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/project_session_state.json",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/workflow.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/tasks/tasks.json",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/projet/PRD_template/project_prd.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/projet/03_Core_Concept/core_concept.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/projet/02_Market_Research/market_research.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/projet/01_Idea/idea_document.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/03__SPECS/.DS_Store",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/03__SPECS/documentation_index.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/03__SPECS/features/feature_spec_template.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/03__SPECS/bugfixes/bugfix_spec_template.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/.DS_Store",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/Integrations/api_integration_template.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/Conventions/design_conventions_template.mdc",
@@ -410,24 +354,13 @@
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/AI-Coder/TestGenerators/test_generator_template.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/AI-Coder/Refactoring/refactoring_template.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/00_Getting_Started.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/01_AutoPilot.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/01_Idea.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/02_Market_Research.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/03_Core_Concept.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/04_PRD_Generation.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/05_Specs_Docs.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/06_Task_Manager.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/07_Start_Building.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/08_Testing.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/09_Deployment.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/Template/MCP-Context.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/Template/MCP-Server.json",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/Template/PRD_template.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/00__TOOLS/cursor_files_list.mdc",
-      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/00__TOOLS/cursor_path_fix.mdc",
       "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/00__TOOLS/file_update_and_link_processing_guide.mdc",
       "agents/_store/project-memory/backups/00_Getting_Started_2025-05-24T09-03-08-006Z.mdc",
       "agents/_store/project-memory/backups/00_Getting_Started_2025-05-24T09-03-08-100Z.mdc",
@@ -503,8 +436,6 @@
       "agents/_store/logs/core_file_access.log",
       "agents/_store/logs/core_final_fix_report.json",
       "agents/_store/logs/core_link_restoration_report.json",
-      "agents/_store/logs/core_path_analysis.json",
-      "agents/_store/logs/core_path_analysis_report.md",
       "agents/_store/logs/core_path_clean_report.json",
       "agents/_store/logs/core_path_fix_corrected_report.json",
       "agents/_store/logs/core_path_fix_final_corrected_report.json",
@@ -533,14 +464,8 @@
       "agents/_store/docs/project-docs/COMPLETE_BACKUP_SUMMARY.mdc",
       "agents/_store/docs/project-docs/CORRUPTION_RECOVERY_COMPLETE.mdc",
       "agents/_store/docs/project-docs/LINK_REPAIR_COMPLETE.mdc",
-      "agents/_store/docs/project-docs/README.mdc",
       "agents/_store/docs/project-docs/SYSTEM_RESTORATION_COMPLETE.mdc",
-      "agents/_store/cursor-summaries/script-catalog.json",
-      "agents/_store/cursor-summaries/script-improvements.json",
-      "agents/_store/cursor-summaries/script-inventory.json",
       "agents/_store/cursor-summaries/script-summary.json",
-      "agents/_store/cursor-summaries/script-usage-patterns.json",
-      "agents/_store/cursor-summaries/script-workspace-symbols.json",
       "agents/_store/cursor-summaries/sync-status.json",
       "agents/_store/agent-memory/technical_note/62188c0d-bada-43a4-b3ca-596461716f76.json",
       "agents/_store/agent-memory/success_pattern/d1487bf3-fbff-458c-ab01-23a1d6d61ba7.json",
@@ -548,7 +473,6 @@
       "agents/_store/agent-memory/preserved-code/preserved-comprehensive_backup_and_fix.js-1748137079758.json",
       "agents/_store/agent-memory/preserved-code/preserved-core_path_analyzer.js-1748137080054.json",
       "agents/_store/agent-memory/preserved-code/preserved-core_path_fixer.js-1748137080480.json",
-      "agents/_store/agent-memory/preserved-code/preserved-cursor_rules_state_manager.js-1748137080777.json",
       "agents/_store/agent-memory/preserved-code/preserved-install-agent-ai.js-1748137073215.json",
       "agents/_store/agent-memory/preserved-code/preserved-integrate_agents_architecture.js-1748137081140.json",
       "agents/_store/agent-memory/preserved-code/preserved-script_manager.js-1748137076582.json",
@@ -1547,7 +1471,6 @@
       "agents/_store/agent-memory/dependency_graph/deca2705-ae89-4124-b3e6-9dc733bef501.json",
       "agents/_store/agent-memory/dependency_graph/ee6181e8-8ca4-4e80-8929-05bb9f148aac.json",
       "agents/_store/agent-memory/dependency_graph/f08e94a1-04d5-4d1f-a4d2-7baaf856368b.json",
-      "agents/_store/agent-memory/dependencies/2b5fa1a9-a591-4063-b522-1857ff2744d7.json",
       "agents/_store/agent-memory/dependencies/2d95155f-364c-44d5-b0e4-1e0b49de5f33.json",
       "agents/_store/agent-memory/dependencies/32613a30-107f-485f-aa88-d1aac0c40a6e.json",
       "agents/_store/agent-memory/dependencies/341fe7cf-f5de-4b55-97a7-3ebd0def328f.json",
@@ -1618,7 +1541,6 @@
       "agents/_store/logs/agent-2025-05-25T06-45-12-iko7m5.log",
       "agents/_store/agent-memory/patterns/d811f99e-ab48-4848-b688-ca1cc23a2fb1.json",
       "agents/_store/agent-memory/context_pattern/d811f99e-ab48-4848-b688-ca1cc23a2fb1.json",
-      "agents/_store/agent-memory/file_dependencies/2b5fa1a9-a591-4063-b522-1857ff2744d7.json",
       "agents/_store/agent-memory/file_dependencies/ba1d07c7-8ab8-4001-8534-5c14aaf4b092.json",
       "agents/_store/agent-memory/file_dependencies/19b4d515-f130-46a5-8c95-4763fbe2bbe6.json",
       "agents/_store/agent-memory/file_dependencies/478f5001-9487-4708-816d-dbce27b94d40.json",
@@ -1646,8 +1568,6 @@
       "agents/_store/logs/agent-2025-05-25T06-52-33-ft4efw.log",
       "agents/_store/logs/agent-2025-05-25T06-52-34-xwxsnk.log",
       "agents/_store/agent-memory/patterns/559f2a44-1e69-476d-83cb-3b40cfff6842.json",
-      "agents/_store/scripts/enhanced-cursor-setup.js",
-      ".cursor/rules/context.mdc",
       "agents/_store/scripts/update-cursor-settings.js",
       "agents/_store/docs/ENHANCED-CURSOR-INTEGRATION.md",
       "agents/_store/logs/agent-2025-05-25T07-01-53-5pt36y.log",
@@ -1707,7 +1627,6 @@
       "agents/_store/logs/agent-2025-05-25T07-21-57-yx458o.log",
       ".cursor/snippets/aai.json",
       "agents/cursor-integration/file-watcher.js",
-      ".cursor/tasks.json",
       "agents/_store/cursor-summaries/workspace-context.json",
       "agents/_store/cursor-summaries/latest-insights.json",
       "agents/_store/scripts/protect-enhanced-cursor-settings.js",
@@ -1727,9 +1646,7 @@
       "agents/_store/logs/agent-2025-05-25T08-01-57-wv98em.log",
       "agents/_store/logs/agent-2025-05-25T08-01-59-1maiwl.log",
       "agents/_store/agent-memory/patterns/e2594005-25ec-43e8-937a-ffeb2890425f.json",
-      "agents/_store/docs/AAI-TASK-MANAGEMENT.md",
       "agents/_store/cursor-summaries/cursor-aai-status.json",
-      "agents/_store/intelligence/request-analysis.json",
       "agents/_store/cursor-summaries/latest-request-results.json",
       "agents/_store/cursor-summaries/request-results-1748160243939.json",
       "agents/_store/cursor-summaries/request-results-1748160285942.json",
@@ -1741,14 +1658,9 @@
       "agents/_store/logs/agent-2025-05-25T08-11-02-87oc68.log",
       "agents/_store/logs/agent-2025-05-25T08-11-02-ekz14d.log",
       "agents/_store/agent-memory/patterns/b83a7291-ec8e-4100-b609-3c526f61edae.json",
-      "agents/_store/docs/LAUNCH-TASK-MANAGEMENT-INTEGRATION.md",
-      "agents/_store/scripts/enhanced-task-converter.js",
       "agents/_store/logs/agent-2025-05-25T08-29-23-qhoah4.log",
       "agents/_store/logs/agent-2025-05-25T08-29-23-6mgm0w.log",
       "agents/_store/agent-memory/patterns/cd72b790-6a66-499d-baad-7185579c854c.json",
-      "agents/_store/docs/CHAT-COMMAND-PROCESSING.md",
-      "agents/_store/docs/IMPLEMENTATION-COMPLETE.md",
-      "agents/_store/docs/SETTINGS-OVERWRITE-FIX.md",
       "agents/_store/logs/agent-2025-05-25T08-39-28-pvwgie.log",
       "agents/_store/agent-memory/patterns/563ad056-a5e4-4c34-85c8-814a2fb874d0.json",
       "agents/_store/agent-memory/context_pattern/cd72b790-6a66-499d-baad-7185579c854c.json",
@@ -1782,7 +1694,6 @@
       "agents/_store/agent-memory/file_dependencies/84154621-8ffb-407e-964f-f4fba9949015.json",
       "agents/_store/agent-memory/context_pattern/563ad056-a5e4-4c34-85c8-814a2fb874d0.json",
       "agents/_store/agent-memory/file_dependencies/e7ae3c6d-e7aa-4210-a068-55bd70aaf05a.json",
-      "agents/_store/docs/AUTO-TASK-CREATION-GUIDE.md",
       "agents/_store/logs/agent-2025-05-25T08-49-28-8l6inq.log",
       "agents/_store/logs/agent-2025-05-25T08-59-28-mvig5q.log",
       "agents/_store/logs/agent-2025-05-25T08-59-29-rj0uya.log",
@@ -1818,24 +1729,18 @@
       "agents/_store/agent-memory/file_dependencies/70148661-947a-48fa-83f2-3ed828f11754.json",
       "agents/_store/agent-memory/file_dependencies/91d9ff55-025b-4d83-bb0e-bb4cc10c73df.json",
       "agents/_store/agent-memory/file_dependencies/a155dd00-ed7e-4351-90c5-85569adea07e.json",
-      "agents/_store/docs/SIMPLE-CURSOR-SETUP-DELETION.md",
       "agents/_store/logs/agent-2025-05-25T09-21-45-gjj8r3.log",
       "agents/_store/agent-memory/patterns/8ee34aa9-4fba-4656-963e-0a2a5901e9f7.json",
       "agents/_store/agent-memory/context_pattern/8ee34aa9-4fba-4656-963e-0a2a5901e9f7.json",
-      "agents/_store/scripts/enhanced-dependency-analyzer.js",
       "agents/_store/logs/agent-2025-05-25T09-31-45-fdp9nx.log",
       "agents/_store/projects/_core/rules/enhanced-aai-dependency-rules.mdc",
       "agents/_store/docs/ENHANCED-AAI-DEPENDENCY-ANALYSIS-IMPLEMENTATION.md",
       "agents/_store/logs/agent-2025-05-25T09-38-46-d8f4lv.log",
       "agents/_store/agent-memory/patterns/febb2f7e-9424-43dd-95b4-04bd5c082519.json",
       "agents/_store/logs/agent-2025-05-25T09-41-45-25e79z.log",
-      "agents/_store/docs/NPM-TASK-TERMINATION-FIX.md",
       "agents/_store/agent-memory/context_pattern/febb2f7e-9424-43dd-95b4-04bd5c082519.json",
       "agents/_store/logs/agent-2025-05-25T09-51-45-fn7706.log",
-      "agents/_store/docs/ECHO-TASK-ELIMINATION-FIX.md",
       "agents/_store/agent-memory/patterns/09320e34-f02a-4e4e-9dd4-2ffe4db0031d.json",
-      "agents/_store/docs/CURSOR-TASK-DETECTION-PREVENTION.md",
-      "agents/_store/scripts/silent-output.js",
       "agents/_store/logs/agent-2025-05-25T10-01-45-a5xwjt.log",
       "agents/_store/agent-memory/context_pattern/09320e34-f02a-4e4e-9dd4-2ffe4db0031d.json",
       "agents/_store/agent-memory/dependencies/25678573-ee75-4565-914b-5efbf9065b04.json",
@@ -1854,9 +1759,6 @@
       "agents/_store/agent-memory/patterns/049dcce1-94f0-4615-b685-ac963feda53e.json",
       "agents/_store/scripts/mdc-dependency-tracker.js",
       "agents/_store/logs/agent-2025-05-25T11-56-41-yu1cf7.log",
-      "agents/_store/scripts/cursor-mdc-integration.js",
-      "agents/_store/docs/MDC-DEPENDENCY-SYSTEM.md",
-      ".cursor/mdc-dependencies.json",
       "agents/_store/scripts/cursor-mdc-watcher.js",
       "agents/_store/agent-memory/patterns/15b220d5-0f9f-4d28-901a-eda762084ea5.json",
       "agents/_store/agent-memory/context_pattern/d0b1dae5-53c8-4b6a-8a1d-154f474f7ff5.json",
@@ -1924,265 +1826,378 @@
       "agents/_store/logs/agent-2025-05-25T13-16-41-vv2lcq.log",
       "agents/_store/logs/agent-2025-05-25T13-18-00-8fobmr.log",
       "agents/_store/agent-memory/patterns/903bd07e-e904-4e1d-a900-9bcbccb715d2.json",
-      ".cursor/rules/DYNAMIC-AI-TASK-FLOW.mdc",
-      "agents/_store/agent-memory/dependencies/018f5e1d-7904-45f0-901b-7b2b4a34d741.json",
-      "agents/_store/agent-memory/dependency_graph/018f5e1d-7904-45f0-901b-7b2b4a34d741.json",
       "agents/_store/agent-memory/context_pattern/903bd07e-e904-4e1d-a900-9bcbccb715d2.json",
       "agents/_store/logs/agent-2025-05-25T13-26-41-vhtb12.log",
       "agents/_store/logs/agent-2025-05-25T13-30-59-3vsx57.log",
       "agents/_store/logs/agent-2025-05-25T13-30-59-1bo572.log",
-      "agents/_store/agent-memory/patterns/c2e47f6a-a79c-48a6-a247-d2b97b5b8d8e.json"
+      "agents/_store/agent-memory/patterns/c2e47f6a-a79c-48a6-a247-d2b97b5b8d8e.json",
+      "package.json",
+      "agents/_store/cursor-summaries/script-catalog.json",
+      "agents/_store/cursor-summaries/script-improvements.json",
+      "agents/_store/cursor-summaries/script-workspace-symbols.json",
+      "agents/_store/cursor-summaries/script-usage-patterns.json",
+      "agents/_store/cursor-summaries/script-inventory.json",
+      ".cursor/tasks.json",
+      ".cursor/mdc-dependencies.json",
+      ".cursor/rules/context.mdc",
+      "agents/_store/agent-memory/dependencies/018f5e1d-7904-45f0-901b-7b2b4a34d741.json",
+      "agents/_store/agent-memory/dependencies/2b5fa1a9-a591-4063-b522-1857ff2744d7.json",
+      "agents/_store/agent-memory/dependency_graph/018f5e1d-7904-45f0-901b-7b2b4a34d741.json",
+      "agents/_store/agent-memory/file_dependencies/2b5fa1a9-a591-4063-b522-1857ff2744d7.json",
+      "agents/_store/agent-memory/preserved-code/preserved-cursor_rules_state_manager.js-1748137080777.json",
+      "agents/_store/projects/_core/tasks/tasks.json",
+      "agents/_store/docs/AAI-TASK-MANAGEMENT.md",
+      "agents/_store/docs/AUTO-TASK-CREATION-GUIDE.md",
+      "agents/_store/docs/CHAT-COMMAND-PROCESSING.md",
+      "agents/_store/docs/CURSOR-TASK-DETECTION-PREVENTION.md",
+      "agents/_store/docs/ECHO-TASK-ELIMINATION-FIX.md",
+      "agents/_store/docs/IMPLEMENTATION-COMPLETE.md",
+      "agents/_store/docs/LAUNCH-TASK-MANAGEMENT-INTEGRATION.md",
+      "agents/_store/docs/MDC-DEPENDENCY-SYSTEM.md",
+      "agents/_store/docs/NPM-TASK-TERMINATION-FIX.md",
+      "agents/_store/docs/SETTINGS-OVERWRITE-FIX.md",
+      "agents/_store/docs/SIMPLE-CURSOR-SETUP-DELETION.md",
+      "agents/_store/docs/project-docs/README.mdc",
+      "agents/_store/intelligence/request-analysis.json",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/00__TOOLS/cursor_files_list.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/00__TOOLS/cursor_path_fix.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/00_Getting_Started.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/01_AutoPilot.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/05_Specs_Docs.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/06_Task_Manager.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/08_Testing.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/07_Start_Building.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/09_Deployment.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/01__AI-RUN/Template/PRD_template.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/03__SPECS/documentation_index.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/README.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/logic.mdc",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/tasks/tasks.json",
+      "agents/_store/project-memory/comprehensive-backup/backup-2025-05-24T09-35-20-604Z/workflow.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/00__TOOLS/cursor_files_list.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/00__TOOLS/cursor_path_fix.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/00_Getting_Started.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/01_AutoPilot.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/05_Specs_Docs.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/06_Task_Manager.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/07_Start_Building.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/08_Testing.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/09_Deployment.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/Template/PRD_template.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/03__SPECS/documentation_index.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/README.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/logic.mdc",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/tasks/tasks.json",
+      "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/workflow.mdc",
+      "agents/_store/project-memory/cursor_rules_state.json",
+      "agents/_store/project-memory/pre-improved-fix-backup/00__TOOLS/cursor_files_list.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/00__TOOLS/cursor_path_fix.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/00_Getting_Started.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/01_AutoPilot.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/05_Specs_Docs.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/06_Task_Manager.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/07_Start_Building.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/08_Testing.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/09_Deployment.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/01__AI-RUN/Template/PRD_template.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/03__SPECS/documentation_index.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/README.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/logic.mdc",
+      "agents/_store/project-memory/pre-improved-fix-backup/tasks/tasks.json",
+      "agents/_store/project-memory/pre-improved-fix-backup/workflow.mdc",
+      "agents/_store/projects/_core/MIGRATION_REPORT.mdc",
+      "agents/_store/projects/_core/README.mdc",
+      "agents/_store/projects/cursor_rules_export.json",
+      "agents/_store/projects/cursor_rules_state_manager.js",
+      "agents/_store/projects/default-project/tasks.json",
+      "agents/_store/scripts/cursor-mdc-integration.js",
+      "agents/_store/scripts/enhanced-cursor-setup.js",
+      "agents/_store/scripts/enhanced-dependency-analyzer.js",
+      "agents/_store/scripts/launch-aai-complete.js",
+      "agents/_store/scripts/silent-output.js",
+      "agents/self-improvement/docs/10_Self_Improvement_Agent.mdc",
+      "agents/_store/logs/agent-2025-05-25T13-41-03-m8cw8h.log",
+      "agents/_store/logs/agent-2025-05-25T13-51-03-8ydhsv.log",
+      "agents/_store/scripts/enhanced-task-converter.js",
+      "agents/_store/projects/_core/rules/01__AI-RUN/06_Nested_AI_Task_Manager.mdc",
+      "agents/_store/projects/_core/rules/02__AI-DOCS/NestedTaskManagement/AI_Nested_Task_Workflow.mdc",
+      "agents/_store/projects/_core/rules/02__AI-DOCS/NestedTaskManagement/Nested_Tasks_JSON_Structure.mdc",
+      "agents/_store/agent-memory/context_pattern/c2e47f6a-a79c-48a6-a247-d2b97b5b8d8e.json",
+      "agents/_store/agent-memory/context_pattern/4a95853b-37e5-44b6-a314-338810954000.json",
+      "agents/_store/agent-memory/dependency_graph/f22f98e6-e1b7-4286-b316-abf29ad378a4.json",
+      "agents/_store/agent-memory/file_dependencies/65d6d123-5efb-419d-91ed-5ad6a738b7b8.json",
+      "agents/_store/agent-memory/file_dependencies/9de8edae-a944-4c97-8771-603d8493b7fa.json",
+      "agents/_store/agent-memory/file_dependencies/c70f6f0a-83c9-4ccc-805b-65023d095b1e.json",
+      "agents/_store/agent-memory/file_dependencies/43e7a622-a1ac-40f3-af72-6949053ecf51.json",
+      "agents/_store/agent-memory/file_dependencies/266d1221-2374-4cce-b9e8-6ded30e7c6c6.json",
+      "agents/_store/agent-memory/file_dependencies/bc1c0bdb-3bb2-48ca-b4ce-e88b4329af0a.json",
+      "agents/_store/agent-memory/file_dependencies/90d63b5f-910a-4a61-9fe9-04713ae60303.json",
+      "agents/_store/projects/_core/tasks/nested_tasks.json",
+      "agents/_store/agent-memory/dependencies/b58dba52-f38b-4998-9f7b-e704c3ac9074.json",
+      "agents/_store/logs/agent-2025-05-25T14-01-04-jvtjzb.log"
     ],
     "recentChanges": [
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:01.992Z"
+        "timestamp": "2025-05-25T14:01:01.015Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:02.094Z"
+        "timestamp": "2025-05-25T14:01:01.117Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:02.194Z"
+        "timestamp": "2025-05-25T14:01:01.217Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:02.295Z"
+        "timestamp": "2025-05-25T14:01:01.318Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:02.399Z"
+        "timestamp": "2025-05-25T14:01:01.417Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:02.496Z"
+        "timestamp": "2025-05-25T14:01:01.519Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:02.597Z"
+        "timestamp": "2025-05-25T14:01:01.620Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:02.697Z"
+        "timestamp": "2025-05-25T14:01:01.720Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:02.798Z"
+        "timestamp": "2025-05-25T14:01:01.822Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:02.899Z"
-      },
-      {
-        "path": "agents/_store/logs/agent-2025-05-25T13-30-59-1bo572.log",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:02.901Z"
+        "timestamp": "2025-05-25T14:01:01.922Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:02.998Z"
-      },
-      {
-        "path": "agents/_store/logs/agent-2025-05-25T13-30-59-3vsx57.log",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.000Z"
+        "timestamp": "2025-05-25T14:01:02.024Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.100Z"
-      },
-      {
-        "path": "agents/_store/logs/agent-2025-05-25T13-30-59-3vsx57.log",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.102Z"
+        "timestamp": "2025-05-25T14:01:02.124Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.201Z"
+        "timestamp": "2025-05-25T14:01:02.225Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.301Z"
-      },
-      {
-        "path": "agents/_store/logs/agent-2025-05-25T13-30-59-1bo572.log",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.302Z"
+        "timestamp": "2025-05-25T14:01:02.327Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.402Z"
+        "timestamp": "2025-05-25T14:01:02.427Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.502Z"
+        "timestamp": "2025-05-25T14:01:02.527Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.604Z"
+        "timestamp": "2025-05-25T14:01:02.628Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.704Z"
+        "timestamp": "2025-05-25T14:01:02.729Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.805Z"
+        "timestamp": "2025-05-25T14:01:02.830Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:03.907Z"
+        "timestamp": "2025-05-25T14:01:02.930Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:04.007Z"
+        "timestamp": "2025-05-25T14:01:03.031Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:04.108Z"
+        "timestamp": "2025-05-25T14:01:03.131Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:04.209Z"
+        "timestamp": "2025-05-25T14:01:03.232Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:04.310Z"
+        "timestamp": "2025-05-25T14:01:03.333Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:04.410Z"
+        "timestamp": "2025-05-25T14:01:03.437Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:04.510Z"
+        "timestamp": "2025-05-25T14:01:03.532Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:04.611Z"
+        "timestamp": "2025-05-25T14:01:03.632Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:04.711Z"
+        "timestamp": "2025-05-25T14:01:03.732Z"
       },
       {
-        "path": "agents/_store/agent-memory/patterns/c2e47f6a-a79c-48a6-a247-d2b97b5b8d8e.json",
+        "path": "agents/_store/intelligence/patterns/code-patterns.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.733Z"
+      },
+      {
+        "path": "agents/_store/intelligence/learning/learning-config.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.735Z"
+      },
+      {
+        "path": "agents/_store/intelligence/context/context-state.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.737Z"
+      },
+      {
+        "path": "agents/_store/intelligence/adaptive/behavior-rules.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.738Z"
+      },
+      {
+        "path": "agents/_store/intelligence/context/live-context.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.835Z"
+      },
+      {
+        "path": "agents/_store/cursor-summaries/script-catalog.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.838Z"
+      },
+      {
+        "path": "agents/_store/cursor-summaries/script-improvements.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.839Z"
+      },
+      {
+        "path": "agents/_store/cursor-summaries/script-workspace-symbols.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.840Z"
+      },
+      {
+        "path": "agents/_store/cursor-summaries/script-usage-patterns.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.842Z"
+      },
+      {
+        "path": "agents/_store/cursor-summaries/script-inventory.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.843Z"
+      },
+      {
+        "path": "agents/_store/cursor-summaries/script-summary.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.846Z"
+      },
+      {
+        "path": "agents/_store/intelligence/performance/optimizations.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.848Z"
+      },
+      {
+        "path": "agents/_store/intelligence/performance/metrics.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.850Z"
+      },
+      {
+        "path": "agents/_store/intelligence/context/live-context.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:03.933Z"
+      },
+      {
+        "path": "agents/_store/intelligence/context/live-context.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:04.034Z"
+      },
+      {
+        "path": "agents/_store/intelligence/context/live-context.json",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:04.134Z"
+      },
+      {
+        "path": "agents/_store/logs/agent-2025-05-25T14-01-04-jvtjzb.log",
         "action": "created",
-        "timestamp": "2025-05-25T13:31:04.712Z"
+        "timestamp": "2025-05-25T14:01:04.136Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:04.811Z"
+        "timestamp": "2025-05-25T14:01:04.235Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:04.911Z"
+        "timestamp": "2025-05-25T14:01:04.335Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:05.011Z"
+        "timestamp": "2025-05-25T14:01:04.435Z"
+      },
+      {
+        "path": "agents/_store/logs/agent-2025-05-25T14-01-04-jvtjzb.log",
+        "action": "modified",
+        "timestamp": "2025-05-25T14:01:04.436Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T13:31:05.112Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:05.212Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:05.313Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:05.413Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:05.513Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:05.613Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:05.714Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:05.815Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:05.916Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:06.016Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:06.117Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:06.217Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:06.318Z"
-      },
-      {
-        "path": "agents/_store/intelligence/context/live-context.json",
-        "action": "modified",
-        "timestamp": "2025-05-25T13:31:06.516Z"
+        "timestamp": "2025-05-25T14:01:04.535Z"
       }
     ],
     "workingDirectory": "/Users/admin/Documents/Hung/AI/cursor-agentic-ai",

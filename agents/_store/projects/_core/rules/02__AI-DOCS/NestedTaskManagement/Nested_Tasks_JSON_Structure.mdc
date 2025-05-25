@@ -1,0 +1,589 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Nested Tasks JSON Structure
+
+## Overview
+
+This document defines the JSON schema and structure for AI-driven nested task management. The structure supports multi-level task hierarchies with intelligent relationships and adaptive properties.
+
+## Core Schema
+
+### Root Structure
+```json
+{
+  "metadata": {
+    "version": "1.0.0",
+    "generatedBy": "AI_Task_Generator",
+    "timestamp": "2025-01-25T12:00:00.000Z",
+    "projectId": "project_001",
+    "contextHash": "abc123def456",
+    "totalTasks": 45,
+    "maxDepth": 3,
+    "aiConfidence": 0.92
+  },
+  "epics": [],
+  "tasks": [],
+  "subtasks": [],
+  "dependencies": {},
+  "timeline": {},
+  "aiInsights": {}
+}
+```
+
+## Task Entity Structure
+
+### Epic Task (Level 1)
+```json
+{
+  "id": "epic_001",
+  "type": "epic",
+  "level": 1,
+  "title": "Implement User Authentication System",
+  "description": "Complete authentication system with security features and user management",
+  "status": "pending",
+  "priority": "high",
+  "complexity": "high",
+  "estimatedHours": 40,
+  "actualHours": null,
+  "progress": 0,
+  "aiGenerated": true,
+  "aiConfidence": 0.95,
+  "parent": null,
+  "children": ["task_001", "task_002", "task_003"],
+  "dependencies": [],
+  "blockedBy": [],
+  "enables": ["epic_002"],
+  "tags": ["authentication", "security", "user-management"],
+  "assignee": null,
+  "dueDate": "2025-02-15T00:00:00.000Z",
+  "createdAt": "2025-01-25T12:00:00.000Z",
+  "updatedAt": "2025-01-25T12:00:00.000Z",
+  "completedAt": null,
+  "metadata": {
+    "businessValue": "high",
+    "technicalRisk": "medium",
+    "userImpact": "high",
+    "domain": "backend",
+    "framework": "node.js",
+    "aiRecommendations": [
+      "Consider OAuth 2.0 implementation",
+      "Implement rate limiting for security",
+      "Add comprehensive logging"
+    ]
+  },
+  "aiAnalysis": {
+    "complexityFactors": [
+      "Security requirements",
+      "Multiple authentication methods",
+      "Integration with existing systems"
+    ],
+    "riskFactors": [
+      "Security vulnerabilities",
+      "Performance impact",
+      "User experience complexity"
+    ],
+    "recommendations": [
+      "Start with basic authentication",
+      "Implement security best practices",
+      "Plan for scalability"
+    ]
+  }
+}
+```
+
+### Feature Task (Level 2)
+```json
+{
+  "id": "task_001",
+  "type": "feature",
+  "level": 2,
+  "title": "Create Login Component",
+  "description": "Build React login component with form validation and error handling",
+  "status": "pending",
+  "priority": "high",
+  "complexity": "medium",
+  "estimatedHours": 12,
+  "actualHours": null,
+  "progress": 0,
+  "aiGenerated": true,
+  "aiConfidence": 0.88,
+  "parent": "epic_001",
+  "children": ["subtask_001", "subtask_002", "subtask_003"],
+  "dependencies": [],
+  "blockedBy": [],
+  "enables": ["task_002"],
+  "tags": ["frontend", "react", "forms", "validation"],
+  "assignee": null,
+  "dueDate": "2025-02-01T00:00:00.000Z",
+  "createdAt": "2025-01-25T12:00:00.000Z",
+  "updatedAt": "2025-01-25T12:00:00.000Z",
+  "completedAt": null,
+  "metadata": {
+    "businessValue": "medium",
+    "technicalRisk": "low",
+    "userImpact": "high",
+    "domain": "frontend",
+    "framework": "react",
+    "testingRequired": true,
+    "documentationRequired": true
+  },
+  "aiAnalysis": {
+    "complexityFactors": [
+      "Form validation logic",
+      "Error handling",
+      "Responsive design"
+    ],
+    "suggestedApproach": "Component-driven development with hooks",
+    "testingStrategy": "Unit tests for validation, integration tests for flow"
+  }
+}
+```
+
+### Implementation Task (Level 3)
+```json
+{
+  "id": "subtask_001",
+  "type": "implementation",
+  "level": 3,
+  "title": "Design Login Form UI",
+  "description": "Create responsive login form with proper styling and accessibility",
+  "status": "pending",
+  "priority": "medium",
+  "complexity": "low",
+  "estimatedHours": 3,
+  "actualHours": null,
+  "progress": 0,
+  "aiGenerated": true,
+  "aiConfidence": 0.82,
+  "parent": "task_001",
+  "children": [],
+  "dependencies": [],
+  "blockedBy": [],
+  "enables": ["subtask_002"],
+  "tags": ["ui", "css", "accessibility", "responsive"],
+  "assignee": null,
+  "dueDate": "2025-01-28T00:00:00.000Z",
+  "createdAt": "2025-01-25T12:00:00.000Z",
+  "updatedAt": "2025-01-25T12:00:00.000Z",
+  "completedAt": null,
+  "metadata": {
+    "businessValue": "low",
+    "technicalRisk": "low",
+    "userImpact": "medium",
+    "domain": "frontend",
+    "skillsRequired": ["css", "html", "accessibility"],
+    "deliverables": ["login-form.css", "login-form.html"]
+  },
+  "aiAnalysis": {
+    "designConsiderations": [
+      "Mobile-first approach",
+      "WCAG accessibility standards",
+      "Brand consistency"
+    ],
+    "suggestedTools": ["Figma", "CSS Grid", "Flexbox"]
+  }
+}
+```
+
+## Status Definitions
+
+### Task Status Values
+```json
+{
+  "pending": "Task created but not started",
+  "in_progress": "Task currently being worked on",
+  "blocked": "Task cannot proceed due to dependencies",
+  "review": "Task completed and awaiting review",
+  "testing": "Task in testing phase",
+  "completed": "Task successfully completed",
+  "cancelled": "Task cancelled or no longer needed",
+  "on_hold": "Task temporarily paused"
+}
+```
+
+### Priority Levels
+```json
+{
+  "critical": {
+    "value": 5,
+    "description": "Blocking other tasks or core functionality",
+    "color": "#ff0000"
+  },
+  "high": {
+    "value": 4,
+    "description": "Important features with high business value",
+    "color": "#ff8800"
+  },
+  "medium": {
+    "value": 3,
+    "description": "Standard features and improvements",
+    "color": "#ffaa00"
+  },
+  "low": {
+    "value": 2,
+    "description": "Nice-to-have features and optimizations",
+    "color": "#00aa00"
+  },
+  "optional": {
+    "value": 1,
+    "description": "Future considerations",
+    "color": "#888888"
+  }
+}
+```
+
+### Complexity Levels
+```json
+{
+  "very_high": {
+    "value": 5,
+    "description": "Extremely complex, requires expert knowledge",
+    "estimateMultiplier": 2.5,
+    "maxHours": 80
+  },
+  "high": {
+    "value": 4,
+    "description": "Complex task requiring significant effort",
+    "estimateMultiplier": 2.0,
+    "maxHours": 40
+  },
+  "medium": {
+    "value": 3,
+    "description": "Moderate complexity with some challenges",
+    "estimateMultiplier": 1.5,
+    "maxHours": 20
+  },
+  "low": {
+    "value": 2,
+    "description": "Simple task with clear implementation",
+    "estimateMultiplier": 1.0,
+    "maxHours": 8
+  },
+  "very_low": {
+    "value": 1,
+    "description": "Trivial task requiring minimal effort",
+    "estimateMultiplier": 0.5,
+    "maxHours": 2
+  }
+}
+```
+
+## Dependency Structure
+
+### Dependency Graph
+```json
+{
+  "dependencies": {
+    "task_001": {
+      "requires": [],
+      "enables": ["task_002", "task_003"],
+      "blocks": [],
+      "blockedBy": [],
+      "type": "sequential",
+      "strength": "hard"
+    },
+    "task_002": {
+      "requires": ["task_001"],
+      "enables": ["task_004"],
+      "blocks": [],
+      "blockedBy": ["task_001"],
+      "type": "sequential",
+      "strength": "hard"
+    }
+  }
+}
+```
+
+### Dependency Types
+```json
+{
+  "dependencyTypes": {
+    "sequential": "Task must complete before dependent tasks can start",
+    "parallel": "Tasks can run simultaneously",
+    "conditional": "Dependency based on specific conditions",
+    "resource": "Dependency on shared resources",
+    "knowledge": "Dependency on knowledge or expertise"
+  }
+}
+```
+
+### Dependency Strength
+```json
+{
+  "dependencyStrength": {
+    "hard": "Absolute dependency, cannot proceed without completion",
+    "soft": "Preferred dependency, can proceed with reduced efficiency",
+    "optional": "Nice-to-have dependency, minimal impact if not met"
+  }
+}
+```
+
+## Timeline Structure
+
+### Timeline Definition
+```json
+{
+  "timeline": {
+    "startDate": "2025-01-25T00:00:00.000Z",
+    "endDate": "2025-03-15T00:00:00.000Z",
+    "milestones": [
+      {
+        "id": "milestone_001",
+        "title": "Authentication MVP",
+        "date": "2025-02-15T00:00:00.000Z",
+        "tasks": ["epic_001"],
+        "description": "Basic authentication system functional"
+      }
+    ],
+    "phases": [
+      {
+        "id": "phase_001",
+        "title": "Foundation Phase",
+        "startDate": "2025-01-25T00:00:00.000Z",
+        "endDate": "2025-02-08T00:00:00.000Z",
+        "tasks": ["task_001", "task_002"],
+        "description": "Core authentication components"
+      }
+    ],
+    "schedule": {
+      "task_001": {
+        "plannedStart": "2025-01-26T09:00:00.000Z",
+        "plannedEnd": "2025-01-30T17:00:00.000Z",
+        "actualStart": null,
+        "actualEnd": null,
+        "buffer": "1d",
+        "resources": ["developer_001"]
+      }
+    }
+  }
+}
+```
+
+## AI Insights Structure
+
+### AI Analysis Data
+```json
+{
+  "aiInsights": {
+    "generationMetadata": {
+      "model": "AI_Task_Generator_v2.0",
+      "confidence": 0.92,
+      "analysisTime": "2.3s",
+      "contextTokens": 15420,
+      "patterns": ["authentication_pattern", "react_component_pattern"]
+    },
+    "projectAnalysis": {
+      "codebaseComplexity": "medium",
+      "teamExperience": "high",
+      "technicalDebt": "low",
+      "riskFactors": [
+        "Security requirements",
+        "Integration complexity"
+      ],
+      "opportunities": [
+        "Reusable component library",
+        "Security framework implementation"
+      ]
+    },
+    "recommendations": {
+      "taskOrdering": [
+        "Start with UI components",
+        "Implement backend authentication",
+        "Add security features",
+        "Integrate and test"
+      ],
+      "riskMitigation": [
+        "Implement security reviews",
+        "Add comprehensive testing",
+        "Plan for scalability"
+      ],
+      "optimizations": [
+        "Parallel development of UI and backend",
+        "Reuse existing security libraries",
+        "Implement caching strategies"
+      ]
+    },
+    "learningData": {
+      "similarProjects": ["project_auth_2024", "project_security_2023"],
+      "patternMatches": [
+        {
+          "pattern": "authentication_implementation",
+          "confidence": 0.89,
+          "adjustments": ["Add OAuth support", "Implement 2FA"]
+        }
+      ],
+      "historicalAccuracy": {
+        "estimationAccuracy": 0.85,
+        "complexityAccuracy": 0.78,
+        "dependencyAccuracy": 0.92
+      }
+    }
+  }
+}
+```
+
+## Validation Schema
+
+### JSON Schema Definition
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Nested AI Task Structure",
+  "type": "object",
+  "required": ["metadata", "epics", "tasks", "subtasks"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["version", "generatedBy", "timestamp"],
+      "properties": {
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "generatedBy": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "projectId": { "type": "string" },
+        "contextHash": { "type": "string" },
+        "totalTasks": { "type": "integer", "minimum": 0 },
+        "maxDepth": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "aiConfidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "epics": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/task" }
+    },
+    "tasks": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/task" }
+    },
+    "subtasks": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/task" }
+    }
+  },
+  "definitions": {
+    "task": {
+      "type": "object",
+      "required": ["id", "type", "level", "title", "status", "priority", "complexity"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-zA-Z0-9_]+$" },
+        "type": { "enum": ["epic", "feature", "implementation", "bug", "research"] },
+        "level": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "title": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "status": { "enum": ["pending", "in_progress", "blocked", "review", "testing", "completed", "cancelled", "on_hold"] },
+        "priority": { "enum": ["critical", "high", "medium", "low", "optional"] },
+        "complexity": { "enum": ["very_high", "high", "medium", "low", "very_low"] },
+        "estimatedHours": { "type": "number", "minimum": 0 },
+        "actualHours": { "type": ["number", "null"], "minimum": 0 },
+        "progress": { "type": "number", "minimum": 0, "maximum": 100 },
+        "aiGenerated": { "type": "boolean" },
+        "aiConfidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "parent": { "type": ["string", "null"] },
+        "children": { "type": "array", "items": { "type": "string" } },
+        "dependencies": { "type": "array", "items": { "type": "string" } },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "assignee": { "type": ["string", "null"] },
+        "dueDate": { "type": ["string", "null"], "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "completedAt": { "type": ["string", "null"], "format": "date-time" }
+      }
+    }
+  }
+}
+```
+
+## Usage Examples
+
+### Creating a New Epic
+```javascript
+function createEpic(title, description, requirements) {
+  return {
+    id: generateId('epic'),
+    type: 'epic',
+    level: 1,
+    title: title,
+    description: description,
+    status: 'pending',
+    priority: calculatePriority(requirements),
+    complexity: assessComplexity(requirements),
+    estimatedHours: estimateEffort(requirements),
+    aiGenerated: true,
+    aiConfidence: calculateConfidence(requirements),
+    parent: null,
+    children: [],
+    dependencies: [],
+    tags: extractTags(requirements),
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    metadata: {
+      businessValue: assessBusinessValue(requirements),
+      technicalRisk: assessTechnicalRisk(requirements),
+      userImpact: assessUserImpact(requirements)
+    }
+  };
+}
+```
+
+### Adding Child Tasks
+```javascript
+function addChildTask(parentTask, childTask) {
+  // Set parent-child relationship
+  childTask.parent = parentTask.id;
+  childTask.level = parentTask.level + 1;
+  
+  // Add to parent's children array
+  if (!parentTask.children.includes(childTask.id)) {
+    parentTask.children.push(childTask.id);
+  }
+  
+  // Update timestamps
+  parentTask.updatedAt = new Date().toISOString();
+  childTask.updatedAt = new Date().toISOString();
+  
+  return { parentTask, childTask };
+}
+```
+
+### Querying Task Hierarchy
+```javascript
+function getTaskHierarchy(taskId, allTasks) {
+  const task = allTasks.find(t => t.id === taskId);
+  if (!task) return null;
+  
+  const children = task.children.map(childId => 
+    getTaskHierarchy(childId, allTasks)
+  ).filter(Boolean);
+  
+  return {
+    ...task,
+    children: children
+  };
+}
+```
+
+## Best Practices
+
+### Task Creation
+1. **Unique IDs**: Use consistent ID patterns (epic_, task_, subtask_)
+2. **Appropriate Nesting**: Limit depth to 3-4 levels for manageability
+3. **Clear Titles**: Use descriptive, action-oriented titles
+4. **Proper Dependencies**: Define all blocking relationships
+
+### AI Integration
+1. **Confidence Tracking**: Always include AI confidence scores
+2. **Pattern Recognition**: Tag tasks for pattern learning
+3. **Feedback Loops**: Update AI models based on actual outcomes
+4. **Context Preservation**: Maintain rich metadata for future analysis
+
+### Performance Optimization
+1. **Lazy Loading**: Load task details on demand
+2. **Indexing**: Create indexes on frequently queried fields
+3. **Caching**: Cache computed values like progress and estimates
+4. **Batch Operations**: Process multiple tasks together when possible
+
+---
+
+*This structure provides a comprehensive foundation for AI-driven nested task management with rich metadata and intelligent relationships.*
