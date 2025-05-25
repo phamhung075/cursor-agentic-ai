@@ -130,7 +130,6 @@
       "agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
       "agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
       "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
-      "agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
       "agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc",
       "agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc",
       "agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc",
@@ -559,258 +558,259 @@
       "agents/agents/_store/reports/mdc_path_validation_report.json",
       "agents/_store/scripts/fix_single_mdc.py",
       "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
-      "agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc"
+      "agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
+      "agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc"
     ],
     "recentChanges": [
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:16.152Z"
+        "timestamp": "2025-05-25T03:28:01.341Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:16.252Z"
+        "timestamp": "2025-05-25T03:28:01.441Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:16.353Z"
+        "timestamp": "2025-05-25T03:28:01.542Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:16.454Z"
+        "timestamp": "2025-05-25T03:28:01.643Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:16.555Z"
+        "timestamp": "2025-05-25T03:28:01.743Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:16.656Z"
+        "timestamp": "2025-05-25T03:28:01.844Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:16.756Z"
+        "timestamp": "2025-05-25T03:28:01.946Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:16.857Z"
+        "timestamp": "2025-05-25T03:28:02.046Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:16.957Z"
+        "timestamp": "2025-05-25T03:28:02.147Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:17.057Z"
+        "timestamp": "2025-05-25T03:28:02.248Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:17.158Z"
+        "timestamp": "2025-05-25T03:28:02.348Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:17.259Z"
+        "timestamp": "2025-05-25T03:28:02.449Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:17.359Z"
+        "timestamp": "2025-05-25T03:28:02.549Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:17.459Z"
+        "timestamp": "2025-05-25T03:28:02.650Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:17.560Z"
+        "timestamp": "2025-05-25T03:28:02.751Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:17.661Z"
+        "timestamp": "2025-05-25T03:28:02.852Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:17.761Z"
+        "timestamp": "2025-05-25T03:28:02.953Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:17.862Z"
+        "timestamp": "2025-05-25T03:28:03.054Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:17.962Z"
+        "timestamp": "2025-05-25T03:28:03.155Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:18.063Z"
+        "timestamp": "2025-05-25T03:28:03.255Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:18.164Z"
+        "timestamp": "2025-05-25T03:28:03.355Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:18.265Z"
+        "timestamp": "2025-05-25T03:28:03.455Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:18.365Z"
+        "timestamp": "2025-05-25T03:28:03.556Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:18.467Z"
+        "timestamp": "2025-05-25T03:28:03.658Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:18.568Z"
+        "timestamp": "2025-05-25T03:28:03.759Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:18.669Z"
+        "timestamp": "2025-05-25T03:28:03.860Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:18.770Z"
+        "timestamp": "2025-05-25T03:28:03.960Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:18.870Z"
+        "timestamp": "2025-05-25T03:28:04.062Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:18.971Z"
+        "timestamp": "2025-05-25T03:28:04.161Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:19.072Z"
+        "timestamp": "2025-05-25T03:28:04.261Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:19.172Z"
+        "timestamp": "2025-05-25T03:28:04.362Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:19.272Z"
+        "timestamp": "2025-05-25T03:28:04.463Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:19.372Z"
+        "timestamp": "2025-05-25T03:28:04.564Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:19.473Z"
+        "timestamp": "2025-05-25T03:28:04.664Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:19.574Z"
+        "timestamp": "2025-05-25T03:28:04.765Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:19.674Z"
+        "timestamp": "2025-05-25T03:28:04.867Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:19.774Z"
+        "timestamp": "2025-05-25T03:28:04.968Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:19.876Z"
+        "timestamp": "2025-05-25T03:28:05.069Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:19.976Z"
+        "timestamp": "2025-05-25T03:28:05.169Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:20.076Z"
+        "timestamp": "2025-05-25T03:28:05.269Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:20.177Z"
+        "timestamp": "2025-05-25T03:28:05.371Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:20.277Z"
+        "timestamp": "2025-05-25T03:28:05.471Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:20.377Z"
+        "timestamp": "2025-05-25T03:28:05.572Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:20.477Z"
+        "timestamp": "2025-05-25T03:28:05.674Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:20.579Z"
+        "timestamp": "2025-05-25T03:28:05.774Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:20.680Z"
+        "timestamp": "2025-05-25T03:28:05.875Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:20.781Z"
+        "timestamp": "2025-05-25T03:28:05.976Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:20.880Z"
+        "timestamp": "2025-05-25T03:28:06.077Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:20.981Z"
+        "timestamp": "2025-05-25T03:28:06.177Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T03:24:21.082Z"
+        "timestamp": "2025-05-25T03:28:06.353Z"
       }
     ],
     "workingDirectory": "/Users/admin/Documents/Hung/AI/cursor-agentic-ai",

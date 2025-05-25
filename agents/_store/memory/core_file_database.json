@@ -2964,46 +2964,25 @@
     },
     "rules_01__ai_run_05_specs_docs_mdc": {
       "id": "rules_01__ai_run_05_specs_docs_mdc",
-      "title": "Technical Specifications & Documentation Gathering Prompt",
+      "title": "05_Specs_Docs.mdc",
       "path": "rules/01__AI-RUN/05_Specs_Docs.mdc",
       "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
-      "description": "- Idea Document [01_Idea.mdc](agents/_store/projects/_core/rules/01__AI-RUN/[01_Idea.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/01_Idea.mdc)) and saved as `",
+      "description": "This document guides you through creating comprehensive technical specifications and documentation that transforms your PRD into detailed implementation blueprints. It integrates with the enhanced AAI",
       "status": "valid",
-      "size": 27940,
-      "last_modified": "2025-05-24T17:36:33.820Z",
-      "last_accessed": "2025-05-25T03:24:15.029Z",
+      "size": 23569,
+      "last_modified": "2025-05-25T03:27:53.047Z",
+      "last_accessed": "2025-05-25T03:27:53.157Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/[01_Idea.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/01_Idea.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../projet/01_Idea/idea_document.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+          "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
           "status": "unchecked"
         },
         {
           "text": "02_Market_Research.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/[02_Market_Research.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/02_Market_Research.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../projet/02_Market_Research/market_research.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "03_Core_Concept.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
+          "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
           "status": "unchecked"
@@ -3017,603 +2996,29 @@
         },
         {
           "text": "04_PRD_Generation.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/[04_PRD_Generation.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/04_PRD_Generation.mdc",
+          "path": "agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
           "status": "unchecked"
         },
         {
-          "text": "../projet/PRD_template/project_prd.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "text": "07_Start_Building.mdc",
+          "path": "agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
           "status": "unchecked"
         },
         {
-          "text": "../projet/PRD_template/project_prd.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "architecture.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "coding_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/coding_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "design_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "0[0[1.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/001.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "d[o[cumentation_index.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/[documentation_index.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/03__SPECS/documentation_index.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "_[t[e[mplate.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/Architecture/architecture_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "a[r[chitecture.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "_[s[p[ec_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/_spec_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[03__SPECS/features/feature_spec_template.mdc",
-          "path": "agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "0[0[1.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/001.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "d[a[ta_model.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/data_model.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/Architecture/architecture_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/Integrations/api_integration_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Integrations/api_integration_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/BusinessLogic/business_logic_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/BusinessLogic/business_logic_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/Conventions/design_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[03__SPECS/features/feature_spec_template.mdc",
-          "path": "agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[03__SPECS/bugfixes/bugfix_spec_template.mdc",
-          "path": "agents/_store/projects/_core/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "a[r[chitecture.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "a[p[i_integration.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/api_integration.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[logic.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/logic.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "c[o[ding_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/coding_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "d[e[sign_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "d[e[ployment_guide.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/deployment_guide.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "0[0[1.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/001.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "0[0[2.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/002.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "0[0[1.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/001.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "d[a[ta_model.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/data_model.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "architecture.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "001.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/001.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Architecture/architecture_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Architecture/architecture_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "design_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Integrations/api_integration_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Integrations/api_integration_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "documentation_index.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/[documentation_index.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/03__SPECS/documentation_index.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "architecture.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "coding_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/coding_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "design_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "design_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../projet/PRD_template/project_prd.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "architecture.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "design_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "documentation_index.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/documentation_index.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[README.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/README.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "d[o[cumentation_index.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/documentation_index.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../projet/PRD_template/project_prd.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "tasks.json",
-          "path": "tasks/tasks.json",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../projet/PRD_template/project_prd.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "tasks.json",
-          "path": "tasks/tasks.json",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Architecture/architecture_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Architecture/architecture_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "architecture.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "XXX.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/XXX.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Architecture/architecture_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Architecture/architecture_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "architecture.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Integrations/api_integration_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Integrations/api_integration_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "api_integration.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/api_integration.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/BusinessLogic/business_logic_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/BusinessLogic/business_logic_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../logic.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/[logic.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/logic.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "coding_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/coding_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Conventions/design_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "design_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "deployment_guide.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/deployment_guide.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../03__SPECS/features/feature_spec_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/03__SPECS/features/feature_spec_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../03__SPECS/bugfixes/bugfix_spec_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/03__SPECS/bugfixes/bugfix_spec_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": ".[.[/[02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-          "type": "markdown",
+          "text": "05_Specs_Docs.mdc",
+          "path": "05_Specs_Docs.mdc",
+          "type": "file_reference",
           "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
           "status": "unchecked"
         }
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "-5457719d"
+      "content_hash": "-3093ff3a"
     },
     "rules_01__ai_run_06_task_manager_mdc": {
       "id": "rules_01__ai_run_06_task_manager_mdc",
@@ -10289,35 +9694,14 @@
     "rules_01__ai_run_05_specs_docs_mdc": [
       {
         "text": "01_Idea.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/[01_Idea.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/01_Idea.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../projet/01_Idea/idea_document.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+        "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
         "status": "unchecked"
       },
       {
         "text": "02_Market_Research.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/[02_Market_Research.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/02_Market_Research.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../projet/02_Market_Research/market_research.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "03_Core_Concept.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
+        "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
         "status": "unchecked"
@@ -10331,596 +9715,22 @@
       },
       {
         "text": "04_PRD_Generation.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/[04_PRD_Generation.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/04_PRD_Generation.mdc",
+        "path": "agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
         "status": "unchecked"
       },
       {
-        "text": "../projet/PRD_template/project_prd.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "text": "07_Start_Building.mdc",
+        "path": "agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
         "status": "unchecked"
       },
       {
-        "text": "../projet/PRD_template/project_prd.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "architecture.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "coding_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/coding_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "design_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "0[0[1.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/001.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "d[o[cumentation_index.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/[documentation_index.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/03__SPECS/documentation_index.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "_[t[e[mplate.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/Architecture/architecture_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "a[r[chitecture.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "_[s[p[ec_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/_spec_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[03__SPECS/features/feature_spec_template.mdc",
-        "path": "agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "0[0[1.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/001.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "d[a[ta_model.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/data_model.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/Architecture/architecture_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/Integrations/api_integration_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Integrations/api_integration_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/BusinessLogic/business_logic_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/BusinessLogic/business_logic_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/Conventions/design_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[03__SPECS/features/feature_spec_template.mdc",
-        "path": "agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[03__SPECS/bugfixes/bugfix_spec_template.mdc",
-        "path": "agents/_store/projects/_core/rules/03__SPECS/bugfixes/bugfix_spec_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "a[r[chitecture.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "a[p[i_integration.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/api_integration.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[logic.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/logic.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "c[o[ding_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/coding_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "d[e[sign_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "d[e[ployment_guide.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/deployment_guide.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "0[0[1.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/001.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "0[0[2.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/002.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "0[0[1.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/001.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "d[a[ta_model.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/data_model.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "architecture.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "001.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/001.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Architecture/architecture_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Architecture/architecture_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "design_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Integrations/api_integration_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Integrations/api_integration_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "documentation_index.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/[documentation_index.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/03__SPECS/documentation_index.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "architecture.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "coding_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/coding_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "design_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "design_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../projet/PRD_template/project_prd.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "architecture.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "design_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "documentation_index.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/documentation_index.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[README.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/README.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "d[o[cumentation_index.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/documentation_index.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../projet/PRD_template/project_prd.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "tasks.json",
-        "path": "tasks/tasks.json",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../projet/PRD_template/project_prd.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "tasks.json",
-        "path": "tasks/tasks.json",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Architecture/architecture_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Architecture/architecture_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "architecture.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "XXX.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/XXX.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Architecture/architecture_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Architecture/architecture_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "architecture.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Integrations/api_integration_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Integrations/api_integration_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "api_integration.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/api_integration.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/BusinessLogic/business_logic_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/BusinessLogic/business_logic_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../logic.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/[logic.mdc](agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/logic.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "coding_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/coding_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Conventions/design_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "design_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "deployment_guide.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/deployment_guide.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../03__SPECS/features/feature_spec_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/03__SPECS/features/feature_spec_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../03__SPECS/bugfixes/bugfix_spec_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/03__SPECS/bugfixes/bugfix_spec_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": ".[.[/[02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-        "type": "markdown",
+        "text": "05_Specs_Docs.mdc",
+        "path": "05_Specs_Docs.mdc",
+        "type": "file_reference",
         "source_file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
         "status": "unchecked"
       }
@@ -14629,9 +13439,45 @@
       "file": "rules/01__AI-RUN/04_PRD_Generation.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:25:24.415Z",
+      "file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:26:59.238Z",
+      "file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:27:10.204Z",
+      "file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:27:10.306Z",
+      "file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:27:16.837Z",
+      "file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:27:53.157Z",
+      "file": "rules/01__AI-RUN/05_Specs_Docs.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T03:24:15.097Z",
+  "last_updated": "2025-05-25T03:27:53.259Z",
   "scan_history": [
     {
       "id": "scan_1748139854554",
