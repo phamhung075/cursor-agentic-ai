@@ -1,27 +1,79 @@
 {
-  "version": "2.0.0",
-  "tasks": [
+  "id": "session-1748161797571-1cehbfl97",
+  "userCommand": "Create a simple UserProfile component with props validation",
+  "aaiTasks": [
     {
-      "label": "🗣️ User Command: Create a simple UserProfile component with props validation",
-      "type": "shell",
-      "command": "echo",
-      "args": [
-        "\"Processing: Create a simple UserProfile component with props validation\""
+      "id": "task-1748161797570-ygr8pbejo",
+      "title": "Create simple UserProfile component - Creation",
+      "description": "Task generated from: \"Create a simple UserProfile component with props validation\"\nType: file_operation\nCategory: creation",
+      "type": "file_operation",
+      "category": "creation",
+      "status": "pending",
+      "priority": "normal",
+      "estimatedTime": 5,
+      "dependencies": [],
+      "validation": [
+        "file_exists",
+        "content_valid"
       ],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "new"
-      },
-      "detail": "Generated from user command: \"Create a simple UserProfile component with props validation\"",
+      "created": "2025-05-25T08:29:57.571Z",
+      "updated": "2025-05-25T08:29:57.571Z",
       "metadata": {
-        "isCommandHeader": true,
-        "userCommand": "Create a simple UserProfile component with props validation",
-        "timestamp": "2025-05-25T08:29:57.574Z"
+        "sessionId": "session-1748161797562-nxn7oaw55",
+        "originalRequest": "Create a simple UserProfile component with props validation",
+        "intent": "create"
       }
     },
+    {
+      "id": "task-1748161797571-7vp6uypkv",
+      "title": "Create simple UserProfile component - Implementation",
+      "description": "Task generated from: \"Create a simple UserProfile component with props validation\"\nType: development\nCategory: implementation",
+      "type": "development",
+      "category": "implementation",
+      "status": "pending",
+      "priority": "normal",
+      "estimatedTime": 15,
+      "dependencies": [
+        "file_creation"
+      ],
+      "validation": [
+        "syntax_valid",
+        "logic_correct"
+      ],
+      "created": "2025-05-25T08:29:57.571Z",
+      "updated": "2025-05-25T08:29:57.571Z",
+      "metadata": {
+        "sessionId": "session-1748161797562-nxn7oaw55",
+        "originalRequest": "Create a simple UserProfile component with props validation",
+        "intent": "create"
+      }
+    },
+    {
+      "id": "task-1748161797571-w68a90pts",
+      "title": "Create simple UserProfile component - Validation",
+      "description": "Task generated from: \"Create a simple UserProfile component with props validation\"\nType: quality_assurance\nCategory: validation",
+      "type": "quality_assurance",
+      "category": "validation",
+      "status": "pending",
+      "priority": "normal",
+      "estimatedTime": 15,
+      "dependencies": [
+        "code_writing"
+      ],
+      "validation": [
+        "tests_pass",
+        "coverage_adequate"
+      ],
+      "created": "2025-05-25T08:29:57.571Z",
+      "updated": "2025-05-25T08:29:57.571Z",
+      "metadata": {
+        "sessionId": "session-1748161797562-nxn7oaw55",
+        "originalRequest": "Create a simple UserProfile component with props validation",
+        "intent": "create"
+      }
+    }
+  ],
+  "cursorTasks": [
     {
       "label": "📋 1. Planning & Analysis",
       "type": "shell",
@@ -166,87 +218,46 @@
         "isCompletion": true,
         "userCommand": "Create a simple UserProfile component with props validation"
       }
-    },
-    {
-      "label": "AAI: Start Agent",
-      "type": "shell",
-      "command": "npm",
-      "args": [
-        "run",
-        "AAI:start"
-      ],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "AAI: Analyze Code",
-      "type": "shell",
-      "command": "npm",
-      "args": [
-        "run",
-        "AAI:analyze"
-      ],
-      "group": "test",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      }
-    },
-    {
-      "label": "AAI: Update Cursor Summaries",
-      "type": "shell",
-      "command": "npm",
-      "args": [
-        "run",
-        "cursor:update-summaries"
-      ],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "silent",
-        "focus": false,
-        "panel": "shared"
-      }
-    },
-    {
-      "label": "AAI: Start File Watcher",
-      "type": "shell",
-      "command": "node",
-      "args": [
-        "agents/cursor-integration/file-watcher.js"
-      ],
-      "group": "build",
-      "isBackground": true,
-      "presentation": {
-        "echo": true,
-        "reveal": "silent",
-        "focus": false,
-        "panel": "shared"
-      }
-    },
-    {
-      "label": "AAI: Memory Stats",
-      "type": "shell",
-      "command": "npm",
-      "args": [
-        "run",
-        "AAI:memory-stats"
-      ],
-      "group": "test",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      }
     }
-  ]
+  ],
+  "executionPlan": {
+    "sessionId": "session-1748161797571-1cehbfl97",
+    "totalTasks": 5,
+    "executionOrder": [
+      {
+        "order": 1,
+        "label": "📋 1. Planning & Analysis"
+      },
+      {
+        "order": 2,
+        "label": "📁 2. Create simple UserProfile component - Creation",
+        "aaiTaskId": "task-1748161797570-ygr8pbejo",
+        "estimatedTime": 5
+      },
+      {
+        "order": 3,
+        "label": "💻 3. Create simple UserProfile component - Implementation",
+        "aaiTaskId": "task-1748161797571-7vp6uypkv",
+        "estimatedTime": 15
+      },
+      {
+        "order": 4,
+        "label": "✅ 4. Create simple UserProfile component - Validation",
+        "aaiTaskId": "task-1748161797571-w68a90pts",
+        "estimatedTime": 15
+      },
+      {
+        "order": 5,
+        "label": "🎉 5. Task Completion"
+      }
+    ],
+    "instructions": [
+      "1. Open Command Palette (Ctrl/Cmd+Shift+P)",
+      "2. Type 'Tasks: Run Task'",
+      "3. Select the first task to start execution",
+      "4. Follow tasks in order for best results"
+    ]
+  },
+  "status": "ready",
+  "created": "2025-05-25T08:29:57.575Z"
 }

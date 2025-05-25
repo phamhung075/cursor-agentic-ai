@@ -27,7 +27,8 @@ class AAICompleteOrchestrator extends EventEmitter {
       contextTracking: false,
       performanceOptimized: false,
       taskManagement: false,  // 🎯 NEW: Task Management status
-      cursorAAIIntegration: false  // 🎯 NEW: Cursor-AAI Integration status
+      cursorAAIIntegration: false,  // 🎯 NEW: Cursor-AAI Integration status
+      chatProcessor: false  // 🎯 NEW: Chat Processor status
     };
     this.config = {
       autoRestart: true,
@@ -43,6 +44,7 @@ class AAICompleteOrchestrator extends EventEmitter {
     };
     this.startTime = new Date();
     this.improvementCycle = 0;
+    this.lastChatCommandTime = null;
   }
 
   /**
@@ -127,18 +129,77 @@ class AAICompleteOrchestrator extends EventEmitter {
       await this.runCommand('cursor:aai-init', 'Initializing Cursor-AAI Integration');
       this.status.cursorAAIIntegration = true;
 
-      // 3. Run initial task auto-management
+      // 🎯 NEW: 3. Initialize Chat Command Processor
+      console.log('🗣️ Initializing chat command processor...');
+      await this.initializeChatProcessor();
+      this.status.chatProcessor = true;
+
+      // 4. Run initial task auto-management
       console.log('🔄 Running initial task auto-management...');
       await this.runCommand('aai:task-auto-manage', 'Auto-managing tasks');
 
       console.log('✅ Task Management System initialized');
       console.log('🎯 Ready to handle user requests automatically!');
+      console.log('🗣️ Chat commands will update .cursor/tasks.json automatically!');
       console.log('');
 
     } catch (error) {
       console.warn('⚠️ Task Management initialization had issues:', error.message);
       console.log('📝 Continuing without task management...\n');
     }
+  }
+
+  /**
+   * 🎯 NEW: Initialize Chat Command Processor
+   */
+  async initializeChatProcessor() {
+    const CursorChatProcessor = require('./cursor-chat-processor');
+    this.chatProcessor = new CursorChatProcessor();
+    
+    try {
+      await this.chatProcessor.initialize();
+      
+      // Start monitoring for chat commands in background
+      this.startChatMonitoring();
+      
+      console.log('✅ Chat command processor ready');
+    } catch (error) {
+      console.warn('⚠️ Chat processor initialization failed:', error.message);
+      this.status.chatProcessor = false;
+    }
+  }
+
+  /**
+   * 🎯 NEW: Start chat monitoring
+   */
+  startChatMonitoring() {
+    // Monitor for direct command processing
+    setInterval(async () => {
+      try {
+        // Check for new commands and process them
+        const commandApiPath = '.cursor/chat-logs/process-command.json';
+        if (fs.existsSync(commandApiPath)) {
+          const stats = fs.statSync(commandApiPath);
+          const lastModified = stats.mtime.getTime();
+          
+          if (!this.lastChatCommandTime || lastModified > this.lastChatCommandTime) {
+            this.lastChatCommandTime = lastModified;
+            
+            try {
+              const commandData = JSON.parse(fs.readFileSync(commandApiPath, 'utf8'));
+              if (commandData.command && commandData.autoProcess) {
+                console.log('🗣️ Processing chat command automatically...');
+                await this.chatProcessor.processCommand(commandData.command, commandData.context || {});
+              }
+            } catch (error) {
+              // Ignore parsing errors for incomplete files
+            }
+          }
+        }
+      } catch (error) {
+        // Silently handle monitoring errors
+      }
+    }, 5000); // Check every 5 seconds
   }
 
   /**
@@ -485,7 +546,8 @@ class AAICompleteOrchestrator extends EventEmitter {
       memorySync: this.status.memorySync,
       monitoring: this.processes.has('core-monitoring') && !this.processes.get('core-monitoring').killed, // Check if process is running
       taskManagement: this.status.taskManagement, // 🎯 NEW: Task Management status
-      cursorAAIIntegration: this.status.cursorAAIIntegration // 🎯 NEW: Cursor-AAI Integration status
+      cursorAAIIntegration: this.status.cursorAAIIntegration, // 🎯 NEW: Cursor-AAI Integration status
+      chatProcessor: this.status.chatProcessor  // 🎯 NEW: Chat Processor status
     };
 
     // AAI Agent runs in service mode, check if it's still alive
@@ -502,7 +564,8 @@ class AAICompleteOrchestrator extends EventEmitter {
 
     // Core systems that must be working (including monitoring and task management)
     const coreHealthy = processHealth.autoSync && processHealth.memorySync && 
-                       processHealth.monitoring && processHealth.taskManagement;
+                       processHealth.monitoring && processHealth.taskManagement &&
+                       processHealth.chatProcessor;
     
     // Count healthy processes
     const healthyProcesses = Object.values(processHealth).filter(Boolean).length;
@@ -538,6 +601,14 @@ class AAICompleteOrchestrator extends EventEmitter {
               this.status.cursorAAIIntegration = true;
             } catch (error) {
               console.warn('⚠️ Cursor-AAI integration reinitialization failed:', error.message);
+            }
+          }
+          else if (name === 'chatProcessor') {
+            console.log('🔄 Reinitializing chat command processor...');
+            try {
+              await this.initializeChatProcessor();
+            } catch (error) {
+              console.warn('⚠️ Chat processor reinitialization failed:', error.message);
             }
           }
         }
@@ -808,7 +879,8 @@ class AAICompleteOrchestrator extends EventEmitter {
       'Memory Sync': this.status.memorySync,
       'Core Monitoring': this.processes.has('core-monitoring') && !this.processes.get('core-monitoring').killed,
       '🎯 Task Management': this.status.taskManagement,
-      '🔗 Cursor-AAI Integration': this.status.cursorAAIIntegration
+      '🔗 Cursor-AAI Integration': this.status.cursorAAIIntegration,
+      '🗣️ Chat Processor': this.status.chatProcessor
     };
     
     Object.entries(coreComponents).forEach(([component, status]) => {
@@ -875,6 +947,7 @@ class AAICompleteOrchestrator extends EventEmitter {
     console.log('   🔄 Improvement Cycles - Active enhancement');
     console.log('   🎯 Task Manager - Automatic task creation & execution (NEW!)');
     console.log('   🔗 Cursor-AAI Integration - Request processing (NEW!)');
+    console.log('   🗣️ Chat Processor - Automatic command processing (NEW!)');
     console.log('');
     console.log('🚀 ACTIVE INTELLIGENCE FEATURES:');
     console.log('   • Pattern Learning - Learns from your code patterns');
@@ -979,6 +1052,7 @@ if (require.main === module) {
   console.log('• 🔄 Continuous Improvement');
   console.log('• 🎯 Task Management System (NEW!)');
   console.log('• 🔗 Cursor-AAI Integration (NEW!)');
+  console.log('• 🗣️ Chat Processor (NEW!)');
   console.log('━'.repeat(60));
   console.log('');
 

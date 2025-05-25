@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-05-25T08:11:03.230Z",
+  "timestamp": "2025-05-25T08:32:28.038Z",
   "mostUsedCategories": [
     {
       "category": "uncategorized",
-      "count": 23
+      "count": 26
     },
     {
       "category": "cleanup",
@@ -254,6 +254,46 @@
     {
       "npmCommand": "cursor:aai-status",
       "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js status",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "chat:init",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js init",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "chat:process",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "chat:status",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js status",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "chat:monitor",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js monitor",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "cursor:chat-process",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "cursor:tasks-update",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "process-chat",
+      "scriptPath": "node agents/_store/scripts/process-chat-command.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "process-chat-api",
+      "scriptPath": "node agents/_store/scripts/process-chat-command.js --api",
       "category": "utility"
     }
   ],

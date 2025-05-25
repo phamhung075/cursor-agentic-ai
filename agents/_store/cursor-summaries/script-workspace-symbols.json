@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T08:11:03.230Z",
+  "timestamp": "2025-05-25T08:32:28.038Z",
   "scriptSymbols": [
     {
       "name": "comprehensive-cleanup.js",
@@ -42,6 +42,14 @@
       "containerName": "AAI Scripts/uncategorized"
     },
     {
+      "name": "cursor-chat-processor.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/cursor-chat-processor.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
       "name": "demo-aai-cursor-integration.js",
       "kind": "Function",
       "location": "agents/_store/scripts/demo-aai-cursor-integration.js",
@@ -61,6 +69,14 @@
       "name": "enhanced-mdc-path-fixer.js",
       "kind": "Function",
       "location": "agents/_store/scripts/enhanced-mdc-path-fixer.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "enhanced-task-converter.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/enhanced-task-converter.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -93,6 +109,14 @@
       "name": "performance-optimizer.js",
       "kind": "Function",
       "location": "agents/_store/scripts/performance-optimizer.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "process-chat-command.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/process-chat-command.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -212,7 +236,7 @@
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "23 scripts in uncategorized category",
+      "detail": "26 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
@@ -557,6 +581,62 @@
       "name": "cursor:aai-status",
       "kind": "Function",
       "detail": "node agents/_store/scripts/cursor-aai-integration.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "chat:init",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-chat-processor.js init",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "chat:process",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "chat:status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-chat-processor.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "chat:monitor",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-chat-processor.js monitor",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:chat-process",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:tasks-update",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "process-chat",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/process-chat-command.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "process-chat-api",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/process-chat-command.js --api",
       "location": "package.json",
       "containerName": "NPM Scripts"
     }

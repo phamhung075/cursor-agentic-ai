@@ -34,6 +34,11 @@
         "description": "No description available"
       },
       {
+        "name": "cursor-chat-processor.js",
+        "path": "agents/_store/scripts/cursor-chat-processor.js",
+        "description": "No description available"
+      },
+      {
         "name": "demo-aai-cursor-integration.js",
         "path": "agents/_store/scripts/demo-aai-cursor-integration.js",
         "description": "No description available"
@@ -46,6 +51,11 @@
       {
         "name": "enhanced-mdc-path-fixer.js",
         "path": "agents/_store/scripts/enhanced-mdc-path-fixer.js",
+        "description": "No description available"
+      },
+      {
+        "name": "enhanced-task-converter.js",
+        "path": "agents/_store/scripts/enhanced-task-converter.js",
         "description": "No description available"
       },
       {
@@ -66,6 +76,11 @@
       {
         "name": "performance-optimizer.js",
         "path": "agents/_store/scripts/performance-optimizer.js",
+        "description": "No description available"
+      },
+      {
+        "name": "process-chat-command.js",
+        "path": "agents/_store/scripts/process-chat-command.js",
         "description": "No description available"
       },
       {
@@ -354,9 +369,41 @@
     {
       "name": "cursor:aai-status",
       "command": "node agents/_store/scripts/cursor-aai-integration.js status"
+    },
+    {
+      "name": "chat:init",
+      "command": "node agents/_store/scripts/cursor-chat-processor.js init"
+    },
+    {
+      "name": "chat:process",
+      "command": "node agents/_store/scripts/cursor-chat-processor.js process"
+    },
+    {
+      "name": "chat:status",
+      "command": "node agents/_store/scripts/cursor-chat-processor.js status"
+    },
+    {
+      "name": "chat:monitor",
+      "command": "node agents/_store/scripts/cursor-chat-processor.js monitor"
+    },
+    {
+      "name": "cursor:chat-process",
+      "command": "node agents/_store/scripts/cursor-chat-processor.js process"
+    },
+    {
+      "name": "cursor:tasks-update",
+      "command": "node agents/_store/scripts/cursor-chat-processor.js process"
+    },
+    {
+      "name": "process-chat",
+      "command": "node agents/_store/scripts/process-chat-command.js"
+    },
+    {
+      "name": "process-chat-api",
+      "command": "node agents/_store/scripts/process-chat-command.js --api"
     }
   ],
-  "totalFiles": 28,
+  "totalFiles": 31,
   "categories": {
     "scripts": {
       "core": "Core framework management",
@@ -373,5 +420,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T08:11:03.178Z"
+  "lastUpdated": "2025-05-25T08:32:28.011Z"
 }

@@ -75,7 +75,15 @@
     "cursor:aai-quick": "node agents/_store/scripts/cursor-aai-integration.js quick",
     "cursor:aai-auto-manage": "node agents/_store/scripts/cursor-aai-integration.js auto-manage",
     "cursor:aai-status": "node agents/_store/scripts/cursor-aai-integration.js status",
-    "AAI:task-workflow": "npm run cursor:aai-init && npm run aai:task-auto-manage"
+    "AAI:task-workflow": "npm run cursor:aai-init && npm run aai:task-auto-manage",
+    "chat:init": "node agents/_store/scripts/cursor-chat-processor.js init",
+    "chat:process": "node agents/_store/scripts/cursor-chat-processor.js process",
+    "chat:status": "node agents/_store/scripts/cursor-chat-processor.js status",
+    "chat:monitor": "node agents/_store/scripts/cursor-chat-processor.js monitor",
+    "cursor:chat-process": "node agents/_store/scripts/cursor-chat-processor.js process",
+    "cursor:tasks-update": "node agents/_store/scripts/cursor-chat-processor.js process",
+    "process-chat": "node agents/_store/scripts/process-chat-command.js",
+    "process-chat-api": "node agents/_store/scripts/process-chat-command.js --api"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^2.0.1",
