@@ -3,4 +3,5 @@ description:
 globs: 
 alwaysApply: true
 ---
-for better know context projet and coop with another AI, always read [settings.json](mdc:.cursor/settings.json)
+for better know context projet and coop with another AI, always read [settings.json](mdc:.cursor/settings.json) 
+for know task you need to work need read [tasks.json](mdc:.cursor/tasks.json)

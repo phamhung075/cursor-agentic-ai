@@ -9,7 +9,7 @@
       "status": "valid",
       "size": 6127,
       "last_modified": "2025-05-25T05:19:05.017Z",
-      "last_accessed": "2025-05-25T08:01:53.607Z",
+      "last_accessed": "2025-05-25T08:06:50.204Z",
       "links_out": [
         {
           "text": "filename.mdc",
@@ -81,7 +81,7 @@
       "status": "valid",
       "size": 2604,
       "last_modified": "2025-05-25T05:17:38.536Z",
-      "last_accessed": "2025-05-25T08:01:53.608Z",
+      "last_accessed": "2025-05-25T08:06:50.208Z",
       "links_out": [
         {
           "text": "00_Getting_Started.mdc",
@@ -104,7 +104,7 @@
       "status": "valid",
       "size": 932,
       "last_modified": "2025-05-25T04:53:20.089Z",
-      "last_accessed": "2025-05-25T08:01:53.610Z",
+      "last_accessed": "2025-05-25T08:06:50.212Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -119,7 +119,7 @@
       "status": "valid",
       "size": 3649,
       "last_modified": "2025-05-25T05:17:38.536Z",
-      "last_accessed": "2025-05-25T08:01:53.611Z",
+      "last_accessed": "2025-05-25T08:06:50.214Z",
       "links_out": [
         {
           "text": "AI_AGENT_RULES.mdc",
@@ -156,7 +156,7 @@
       "status": "valid",
       "size": 2352,
       "last_modified": "2025-05-25T05:17:38.537Z",
-      "last_accessed": "2025-05-25T08:01:53.612Z",
+      "last_accessed": "2025-05-25T08:06:50.222Z",
       "links_out": [
         {
           "text": ".cursor/docs/README.md",
@@ -207,7 +207,7 @@
       "status": "valid",
       "size": 9453,
       "last_modified": "2025-05-25T05:17:38.537Z",
-      "last_accessed": "2025-05-25T08:01:53.612Z",
+      "last_accessed": "2025-05-25T08:06:50.236Z",
       "links_out": [
         {
           "text": "AI_AGENT_RULES.mdc",
@@ -433,7 +433,7 @@
       "status": "valid",
       "size": 1543,
       "last_modified": "2025-05-25T05:17:38.538Z",
-      "last_accessed": "2025-05-25T08:01:53.613Z",
+      "last_accessed": "2025-05-25T08:06:50.255Z",
       "links_out": [
         {
           "text": "AI_Path_Fix_Guide.mdc",
@@ -477,7 +477,7 @@
       "status": "valid",
       "size": 2194,
       "last_modified": "2025-05-25T05:17:38.538Z",
-      "last_accessed": "2025-05-25T08:01:53.616Z",
+      "last_accessed": "2025-05-25T08:06:50.266Z",
       "links_out": [
         {
           "text": "AI_Path_Fix_Guide.md",
@@ -528,7 +528,7 @@
       "status": "valid",
       "size": 5806,
       "last_modified": "2025-05-25T05:17:38.539Z",
-      "last_accessed": "2025-05-25T08:01:53.618Z",
+      "last_accessed": "2025-05-25T08:06:50.270Z",
       "links_out": [
         {
           "text": "\\1",
@@ -593,7 +593,7 @@
       "status": "valid",
       "size": 968,
       "last_modified": "2025-05-25T05:17:38.540Z",
-      "last_accessed": "2025-05-25T08:01:53.619Z",
+      "last_accessed": "2025-05-25T08:06:50.272Z",
       "links_out": [
         {
           "text": "your_file.mdc",
@@ -623,7 +623,7 @@
       "status": "valid",
       "size": 253,
       "last_modified": "2025-05-25T05:17:38.540Z",
-      "last_accessed": "2025-05-25T08:01:53.622Z",
+      "last_accessed": "2025-05-25T08:06:50.274Z",
       "links_out": [
         {
           "text": "AI_Coding_Agent_Optimization.mdc",
@@ -653,7 +653,7 @@
       "status": "valid",
       "size": 14936,
       "last_modified": "2025-05-25T07:17:08.855Z",
-      "last_accessed": "2025-05-25T08:01:53.624Z",
+      "last_accessed": "2025-05-25T08:06:50.276Z",
       "links_out": [
         {
           "text": "Display Text",
@@ -795,7 +795,7 @@
       "status": "valid",
       "size": 4819,
       "last_modified": "2025-05-25T05:17:38.542Z",
-      "last_accessed": "2025-05-25T08:01:53.626Z",
+      "last_accessed": "2025-05-25T08:06:50.277Z",
       "links_out": [
         {
           "text": "logic.mdc",
@@ -832,7 +832,7 @@
       "status": "valid",
       "size": 4293,
       "last_modified": "2025-05-25T05:17:38.543Z",
-      "last_accessed": "2025-05-25T08:01:53.628Z",
+      "last_accessed": "2025-05-25T08:06:50.279Z",
       "links_out": [
         {
           "text": "cursor_path_fix.mdc",
@@ -1170,7 +1170,7 @@
       "status": "valid",
       "size": 9420,
       "last_modified": "2025-05-25T05:20:23.797Z",
-      "last_accessed": "2025-05-25T08:01:53.630Z",
+      "last_accessed": "2025-05-25T08:06:50.280Z",
       "links_out": [
         {
           "text": "00_Getting_Started.mdc",
@@ -1858,7 +1858,7 @@
       "status": "valid",
       "size": 5901,
       "last_modified": "2025-05-25T05:17:38.545Z",
-      "last_accessed": "2025-05-25T08:01:53.632Z",
+      "last_accessed": "2025-05-25T08:06:50.281Z",
       "links_out": [
         {
           "text": "cursor_files_list.mdc",
@@ -2014,7 +2014,7 @@
       "status": "valid",
       "size": 21964,
       "last_modified": "2025-05-25T05:17:38.545Z",
-      "last_accessed": "2025-05-25T08:01:53.635Z",
+      "last_accessed": "2025-05-25T08:06:50.282Z",
       "links_out": [
         {
           "text": "Main README",
@@ -2401,7 +2401,7 @@
       "status": "valid",
       "size": 26820,
       "last_modified": "2025-05-25T05:22:14.671Z",
-      "last_accessed": "2025-05-25T08:01:53.639Z",
+      "last_accessed": "2025-05-25T08:06:50.284Z",
       "links_out": [
         {
           "text": "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
@@ -2795,7 +2795,7 @@
       "status": "valid",
       "size": 14836,
       "last_modified": "2025-05-25T05:22:14.673Z",
-      "last_accessed": "2025-05-25T08:01:53.641Z",
+      "last_accessed": "2025-05-25T08:06:50.285Z",
       "links_out": [
         {
           "text": "02_Market_Research.mdc",
@@ -2846,7 +2846,7 @@
       "status": "valid",
       "size": 20557,
       "last_modified": "2025-05-25T05:17:38.548Z",
-      "last_accessed": "2025-05-25T08:01:53.644Z",
+      "last_accessed": "2025-05-25T08:06:50.288Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -2904,7 +2904,7 @@
       "status": "valid",
       "size": 19835,
       "last_modified": "2025-05-25T05:22:14.677Z",
-      "last_accessed": "2025-05-25T08:01:53.647Z",
+      "last_accessed": "2025-05-25T08:06:50.290Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -2962,7 +2962,7 @@
       "status": "valid",
       "size": 20533,
       "last_modified": "2025-05-25T05:17:38.549Z",
-      "last_accessed": "2025-05-25T08:01:53.654Z",
+      "last_accessed": "2025-05-25T08:06:50.291Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -3020,7 +3020,7 @@
       "status": "valid",
       "size": 23569,
       "last_modified": "2025-05-25T05:17:38.549Z",
-      "last_accessed": "2025-05-25T08:01:53.656Z",
+      "last_accessed": "2025-05-25T08:06:50.292Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -3078,7 +3078,7 @@
       "status": "valid",
       "size": 3703,
       "last_modified": "2025-05-25T05:17:38.550Z",
-      "last_accessed": "2025-05-25T08:01:53.657Z",
+      "last_accessed": "2025-05-25T08:06:50.293Z",
       "links_out": [
         {
           "text": "tasks.json",
@@ -3192,7 +3192,7 @@
       "status": "valid",
       "size": 24115,
       "last_modified": "2025-05-25T05:22:14.685Z",
-      "last_accessed": "2025-05-25T08:01:53.658Z",
+      "last_accessed": "2025-05-25T08:06:50.295Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -3264,7 +3264,7 @@
       "status": "valid",
       "size": 24791,
       "last_modified": "2025-05-25T05:22:14.687Z",
-      "last_accessed": "2025-05-25T08:01:53.660Z",
+      "last_accessed": "2025-05-25T08:06:50.296Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -3336,7 +3336,7 @@
       "status": "valid",
       "size": 8021,
       "last_modified": "2025-05-25T05:25:00.987Z",
-      "last_accessed": "2025-05-25T08:01:53.661Z",
+      "last_accessed": "2025-05-25T08:06:50.297Z",
       "links_out": [
         {
           "text": "08_Testing.mdc",
@@ -3380,7 +3380,7 @@
       "status": "valid",
       "size": 26523,
       "last_modified": "2025-05-25T06:14:55.556Z",
-      "last_accessed": "2025-05-25T08:01:53.664Z",
+      "last_accessed": "2025-05-25T08:06:50.298Z",
       "links_out": [
         {
           "text": "09_Deployment.mdc",
@@ -3417,7 +3417,7 @@
       "status": "valid",
       "size": 7925,
       "last_modified": "2025-05-25T04:55:05.968Z",
-      "last_accessed": "2025-05-25T08:01:53.665Z",
+      "last_accessed": "2025-05-25T08:06:50.299Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -3432,7 +3432,7 @@
       "status": "valid",
       "size": 3519,
       "last_modified": "2025-05-25T04:53:20.108Z",
-      "last_accessed": "2025-05-25T08:01:53.670Z",
+      "last_accessed": "2025-05-25T08:06:50.301Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -3447,7 +3447,7 @@
       "status": "valid",
       "size": 75171,
       "last_modified": "2025-05-25T05:17:38.554Z",
-      "last_accessed": "2025-05-25T08:01:53.674Z",
+      "last_accessed": "2025-05-25T08:06:50.304Z",
       "links_out": [
         {
           "text": "User Name/ID",
@@ -4149,7 +4149,7 @@
       "status": "valid",
       "size": 22257,
       "last_modified": "2025-05-25T05:25:01.009Z",
-      "last_accessed": "2025-05-25T08:01:53.676Z",
+      "last_accessed": "2025-05-25T08:06:50.306Z",
       "links_out": [
         {
           "text": "res.json",
@@ -4172,7 +4172,7 @@
       "status": "valid",
       "size": 1841,
       "last_modified": "2025-05-25T04:55:05.970Z",
-      "last_accessed": "2025-05-25T08:01:53.679Z",
+      "last_accessed": "2025-05-25T08:06:50.307Z",
       "links_out": [
         {
           "text": "AI_Design_Agent_Optimization.mdc",
@@ -4195,7 +4195,7 @@
       "status": "valid",
       "size": 4291,
       "last_modified": "2025-05-25T04:55:05.971Z",
-      "last_accessed": "2025-05-25T08:01:53.681Z",
+      "last_accessed": "2025-05-25T08:06:50.309Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4210,7 +4210,7 @@
       "status": "valid",
       "size": 20528,
       "last_modified": "2025-05-25T06:20:14.357Z",
-      "last_accessed": "2025-05-25T08:01:53.683Z",
+      "last_accessed": "2025-05-25T08:06:50.311Z",
       "links_out": [
         {
           "text": "package.json",
@@ -4240,7 +4240,7 @@
       "status": "valid",
       "size": 3967,
       "last_modified": "2025-05-25T04:55:05.973Z",
-      "last_accessed": "2025-05-25T08:01:53.684Z",
+      "last_accessed": "2025-05-25T08:06:50.312Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4255,7 +4255,7 @@
       "status": "valid",
       "size": 265,
       "last_modified": "2025-05-25T05:17:38.556Z",
-      "last_accessed": "2025-05-25T08:01:53.686Z",
+      "last_accessed": "2025-05-25T08:06:50.312Z",
       "links_out": [
         {
           "text": "architecture.mdc",
@@ -4285,7 +4285,7 @@
       "status": "valid",
       "size": 3106,
       "last_modified": "2025-05-25T06:33:39.748Z",
-      "last_accessed": "2025-05-25T08:01:53.688Z",
+      "last_accessed": "2025-05-25T08:06:50.313Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4300,7 +4300,7 @@
       "status": "valid",
       "size": 3049,
       "last_modified": "2025-05-25T04:55:05.974Z",
-      "last_accessed": "2025-05-25T08:01:53.689Z",
+      "last_accessed": "2025-05-25T08:06:50.313Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4315,7 +4315,7 @@
       "status": "valid",
       "size": 270,
       "last_modified": "2025-05-25T05:17:38.557Z",
-      "last_accessed": "2025-05-25T08:01:53.692Z",
+      "last_accessed": "2025-05-25T08:06:50.314Z",
       "links_out": [
         {
           "text": "coding_conventions.mdc",
@@ -4345,7 +4345,7 @@
       "status": "valid",
       "size": 23261,
       "last_modified": "2025-05-25T06:43:18.954Z",
-      "last_accessed": "2025-05-25T08:01:53.694Z",
+      "last_accessed": "2025-05-25T08:06:50.315Z",
       "links_out": [
         {
           "text": "**Design Conventions and Style Guide**",
@@ -4396,7 +4396,7 @@
       "status": "valid",
       "size": 270,
       "last_modified": "2025-05-25T05:17:38.559Z",
-      "last_accessed": "2025-05-25T08:01:53.695Z",
+      "last_accessed": "2025-05-25T08:06:50.315Z",
       "links_out": [
         {
           "text": "design_conventions.mdc",
@@ -4426,7 +4426,7 @@
       "status": "valid",
       "size": 30810,
       "last_modified": "2025-05-25T06:42:58.358Z",
-      "last_accessed": "2025-05-25T08:01:53.696Z",
+      "last_accessed": "2025-05-25T08:06:50.316Z",
       "links_out": [
         {
           "text": "**Coding Conventions and Style Guide**",
@@ -4456,7 +4456,7 @@
       "status": "valid",
       "size": 4979,
       "last_modified": "2025-05-25T04:55:05.977Z",
-      "last_accessed": "2025-05-25T08:01:53.697Z",
+      "last_accessed": "2025-05-25T08:06:50.317Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4471,7 +4471,7 @@
       "status": "valid",
       "size": 79102,
       "last_modified": "2025-05-25T07:06:04.311Z",
-      "last_accessed": "2025-05-25T08:01:53.701Z",
+      "last_accessed": "2025-05-25T08:06:50.320Z",
       "links_out": [
         {
           "text": "ui-library-prop-types.md",
@@ -4557,7 +4557,7 @@
       "status": "valid",
       "size": 53679,
       "last_modified": "2025-05-25T07:45:23.066Z",
-      "last_accessed": "2025-05-25T08:01:53.705Z",
+      "last_accessed": "2025-05-25T08:06:50.322Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4572,7 +4572,7 @@
       "status": "valid",
       "size": 29013,
       "last_modified": "2025-05-25T07:05:08.155Z",
-      "last_accessed": "2025-05-25T08:01:53.706Z",
+      "last_accessed": "2025-05-25T08:06:50.323Z",
       "links_out": [
         {
           "text": "`.vibetaskconfig`",
@@ -4623,7 +4623,7 @@
       "status": "valid",
       "size": 2828,
       "last_modified": "2025-05-25T04:55:05.981Z",
-      "last_accessed": "2025-05-25T08:01:53.708Z",
+      "last_accessed": "2025-05-25T08:06:50.324Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4638,7 +4638,7 @@
       "status": "valid",
       "size": 35857,
       "last_modified": "2025-05-25T07:22:14.674Z",
-      "last_accessed": "2025-05-25T08:01:53.710Z",
+      "last_accessed": "2025-05-25T08:06:50.325Z",
       "links_out": [
         {
           "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
@@ -5067,7 +5067,7 @@
       "status": "valid",
       "size": 17028,
       "last_modified": "2025-05-25T07:23:49.064Z",
-      "last_accessed": "2025-05-25T08:01:53.712Z",
+      "last_accessed": "2025-05-25T08:06:50.327Z",
       "links_out": [
         {
           "text": "mdc:agents/_store/projects/_core/tasks/tasks.json",
@@ -5174,7 +5174,7 @@
       "status": "valid",
       "size": 245,
       "last_modified": "2025-05-25T04:42:13.046Z",
-      "last_accessed": "2025-05-25T08:01:53.714Z",
+      "last_accessed": "2025-05-25T08:06:50.330Z",
       "links_out": [
         {
           "text": "Specs_Docs.mdc",
@@ -5204,7 +5204,7 @@
       "status": "valid",
       "size": 247,
       "last_modified": "2025-05-25T04:42:13.046Z",
-      "last_accessed": "2025-05-25T08:01:53.715Z",
+      "last_accessed": "2025-05-25T08:06:50.331Z",
       "links_out": [
         {
           "text": "Task_Manager.mdc",
@@ -5234,7 +5234,7 @@
       "status": "valid",
       "size": 249,
       "last_modified": "2025-05-25T04:42:13.047Z",
-      "last_accessed": "2025-05-25T08:01:53.716Z",
+      "last_accessed": "2025-05-25T08:06:50.331Z",
       "links_out": [
         {
           "text": "Start_Building.mdc",
@@ -5264,7 +5264,7 @@
       "status": "valid",
       "size": 251,
       "last_modified": "2025-05-25T05:17:38.566Z",
-      "last_accessed": "2025-05-25T08:01:53.717Z",
+      "last_accessed": "2025-05-25T08:06:50.332Z",
       "links_out": [
         {
           "text": "gfix_spec_template.mdc",
@@ -5294,7 +5294,7 @@
       "status": "valid",
       "size": 2510,
       "last_modified": "2025-05-25T04:55:05.984Z",
-      "last_accessed": "2025-05-25T08:01:53.718Z",
+      "last_accessed": "2025-05-25T08:06:50.332Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -5309,7 +5309,7 @@
       "status": "valid",
       "size": 2463,
       "last_modified": "2025-05-25T05:17:38.567Z",
-      "last_accessed": "2025-05-25T08:01:53.723Z",
+      "last_accessed": "2025-05-25T08:06:50.333Z",
       "links_out": [
         {
           "text": "f[e[ature_spec_template.mdc",
@@ -5395,7 +5395,7 @@
       "status": "valid",
       "size": 252,
       "last_modified": "2025-05-25T05:17:38.567Z",
-      "last_accessed": "2025-05-25T08:01:53.724Z",
+      "last_accessed": "2025-05-25T08:06:50.333Z",
       "links_out": [
         {
           "text": "ature_spec_template.mdc",
@@ -5425,7 +5425,7 @@
       "status": "valid",
       "size": 268,
       "last_modified": "2025-05-25T05:17:38.568Z",
-      "last_accessed": "2025-05-25T08:01:53.725Z",
+      "last_accessed": "2025-05-25T08:06:50.334Z",
       "links_out": [
         {
           "text": "feature_spec_FEAT-XXX.mdc",
@@ -5455,7 +5455,7 @@
       "status": "valid",
       "size": 240,
       "last_modified": "2025-05-25T05:17:38.569Z",
-      "last_accessed": "2025-05-25T08:01:53.727Z",
+      "last_accessed": "2025-05-25T08:06:50.334Z",
       "links_out": [
         {
           "text": "feature_spec_ID.mdc",
@@ -5485,7 +5485,7 @@
       "status": "valid",
       "size": 4908,
       "last_modified": "2025-05-25T05:17:38.570Z",
-      "last_accessed": "2025-05-25T08:01:53.728Z",
+      "last_accessed": "2025-05-25T08:06:50.335Z",
       "links_out": [
         {
           "text": "Link to wireframe/mockup or detailed description. The AI should propose designs (or variations if requested and justifie",
@@ -5515,7 +5515,7 @@
       "status": "valid",
       "size": 248,
       "last_modified": "2025-05-25T05:17:38.571Z",
-      "last_accessed": "2025-05-25T08:01:53.729Z",
+      "last_accessed": "2025-05-25T08:06:50.335Z",
       "links_out": [
         {
           "text": "gin_timeout_fix.mdc",
@@ -5545,7 +5545,7 @@
       "status": "valid",
       "size": 250,
       "last_modified": "2025-05-25T05:17:38.571Z",
-      "last_accessed": "2025-05-25T08:01:53.729Z",
+      "last_accessed": "2025-05-25T08:06:50.336Z",
       "links_out": [
         {
           "text": "er_authentication.mdc",
@@ -5575,7 +5575,7 @@
       "status": "valid",
       "size": 225813,
       "last_modified": "2025-05-25T05:17:38.574Z",
-      "last_accessed": "2025-05-25T08:01:53.736Z",
+      "last_accessed": "2025-05-25T08:06:50.341Z",
       "links_out": [
         {
           "text": "01_AutoPilot.mdc",
@@ -5598,7 +5598,7 @@
       "status": "valid",
       "size": 20253,
       "last_modified": "2025-05-25T05:17:38.575Z",
-      "last_accessed": "2025-05-25T08:01:53.739Z",
+      "last_accessed": "2025-05-25T08:06:50.342Z",
       "links_out": [
         {
           "text": "00_Getting_Started.mdc",
@@ -6132,7 +6132,7 @@
       "status": "valid",
       "size": 28764,
       "last_modified": "2025-05-25T05:17:38.575Z",
-      "last_accessed": "2025-05-25T08:01:53.741Z",
+      "last_accessed": "2025-05-25T08:06:50.344Z",
       "links_out": [
         {
           "text": "01_AutoPilot.mdc",
@@ -6869,7 +6869,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.154Z",
-      "last_accessed": "2025-05-25T08:01:53.742Z",
+      "last_accessed": "2025-05-25T08:06:50.345Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6884,7 +6884,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.155Z",
-      "last_accessed": "2025-05-25T08:01:53.744Z",
+      "last_accessed": "2025-05-25T08:06:50.345Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6899,7 +6899,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.159Z",
-      "last_accessed": "2025-05-25T08:01:53.744Z",
+      "last_accessed": "2025-05-25T08:06:50.346Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6914,7 +6914,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.157Z",
-      "last_accessed": "2025-05-25T08:01:53.745Z",
+      "last_accessed": "2025-05-25T08:06:50.347Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6929,7 +6929,7 @@
       "status": "valid",
       "size": 4975,
       "last_modified": "2025-05-25T05:17:38.578Z",
-      "last_accessed": "2025-05-25T08:01:53.747Z",
+      "last_accessed": "2025-05-25T08:06:50.347Z",
       "links_out": [
         {
           "text": "Phase 0: Startup & Initialization ([`01__AI-RUN/00_Getting_Started.mdc`",
@@ -7127,1826 +7127,11 @@
       "status": "valid",
       "size": 0,
       "last_modified": "2025-05-25T04:42:13.051Z",
-      "last_accessed": "2025-05-25T08:01:53.747Z",
+      "last_accessed": "2025-05-25T08:06:50.348Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
       "content_hash": "0"
-    },
-    "rules_00__tools_mdc____01__ai_run_00_getting_started_mdc": {
-      "id": "rules_00__tools_mdc____01__ai_run_00_getting_started_mdc",
-      "title": "../01__AI-RUN/00_Getting_Started.mdc",
-      "path": "rules/00__TOOLS/mdc:../01__AI-RUN/00_Getting_Started.mdc",
-      "full_path": "agents/_store/projects/_core/rules/00__TOOLS/mdc:../01__AI-RUN/00_Getting_Started.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 263,
-      "last_modified": "2025-05-25T04:24:09.300Z",
-      "last_accessed": "2025-05-25T04:26:01.228Z",
-      "links_out": [
-        {
-          "text": "00_Getting_Started.mdc",
-          "path": "00_Getting_Started.mdc",
-          "type": "file_reference",
-          "source_file": "rules/00__TOOLS/mdc:../01__AI-RUN/00_Getting_Started.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "MDC_Path_Update_Guide.mdc",
-          "path": "MDC_Path_Update_Guide.mdc",
-          "type": "file_reference",
-          "source_file": "rules/00__TOOLS/mdc:../01__AI-RUN/00_Getting_Started.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-4416698",
-      "deleted_at": "2025-05-25T04:28:46.411Z"
-    },
-    "rules_00__tools_mdc____02__ai_docs_taskmanagement_tasks_json_structure_mdc": {
-      "id": "rules_00__tools_mdc____02__ai_docs_taskmanagement_tasks_json_structure_mdc",
-      "title": "../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-      "path": "rules/00__TOOLS/mdc:../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-      "full_path": "agents/_store/projects/_core/rules/00__TOOLS/mdc:../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 281,
-      "last_modified": "2025-05-25T04:24:09.302Z",
-      "last_accessed": "2025-05-25T04:26:01.232Z",
-      "links_out": [
-        {
-          "text": "Tasks_JSON_Structure.mdc",
-          "path": "Tasks_JSON_Structure.mdc",
-          "type": "file_reference",
-          "source_file": "rules/00__TOOLS/mdc:../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "MDC_Path_Update_Guide.mdc",
-          "path": "MDC_Path_Update_Guide.mdc",
-          "type": "file_reference",
-          "source_file": "rules/00__TOOLS/mdc:../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "58858f34",
-      "deleted_at": "2025-05-25T04:28:41.498Z"
-    },
-    "rules_00__tools_mdc____01__ai_run_02_market_research_mdc": {
-      "id": "rules_00__tools_mdc____01__ai_run_02_market_research_mdc",
-      "title": "../01__AI-RUN/02_Market_Research.mdc",
-      "path": "rules/00__TOOLS/mdc:../01__AI-RUN/02_Market_Research.mdc",
-      "full_path": "agents/_store/projects/_core/rules/00__TOOLS/mdc:../01__AI-RUN/02_Market_Research.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 263,
-      "last_modified": "2025-05-25T04:24:09.303Z",
-      "last_accessed": "2025-05-25T04:26:01.230Z",
-      "links_out": [
-        {
-          "text": "02_Market_Research.mdc",
-          "path": "02_Market_Research.mdc",
-          "type": "file_reference",
-          "source_file": "rules/00__TOOLS/mdc:../01__AI-RUN/02_Market_Research.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "MDC_Path_Update_Guide.mdc",
-          "path": "MDC_Path_Update_Guide.mdc",
-          "type": "file_reference",
-          "source_file": "rules/00__TOOLS/mdc:../01__AI-RUN/02_Market_Research.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "188c1dae",
-      "deleted_at": "2025-05-25T04:28:41.809Z"
-    },
-    "rules_00__tools_mdc____03__specs_feature_spec_template_mdc": {
-      "id": "rules_00__tools_mdc____03__specs_feature_spec_template_mdc",
-      "title": "../03__SPECS/feature_spec_template.mdc",
-      "path": "rules/00__TOOLS/mdc:../03__SPECS/feature_spec_template.mdc",
-      "full_path": "agents/_store/projects/_core/rules/00__TOOLS/mdc:../03__SPECS/feature_spec_template.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 265,
-      "last_modified": "2025-05-25T04:24:09.304Z",
-      "last_accessed": "2025-05-25T04:26:01.233Z",
-      "links_out": [
-        {
-          "text": "feature_spec_template.mdc",
-          "path": "feature_spec_template.mdc",
-          "type": "file_reference",
-          "source_file": "rules/00__TOOLS/mdc:../03__SPECS/feature_spec_template.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "MDC_Path_Update_Guide.mdc",
-          "path": "MDC_Path_Update_Guide.mdc",
-          "type": "file_reference",
-          "source_file": "rules/00__TOOLS/mdc:../03__SPECS/feature_spec_template.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "717d0c3c",
-      "deleted_at": "2025-05-25T04:28:41.708Z"
-    },
-    "rules_01__ai_run_mdc____01__ai_run_01_idea_mdc": {
-      "id": "rules_01__ai_run_mdc____01__ai_run_01_idea_mdc",
-      "title": "../01__AI-RUN/01_Idea.mdc",
-      "path": "rules/01__AI-RUN/mdc:../01__AI-RUN/01_Idea.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN/01_Idea.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 244,
-      "last_modified": "2025-05-25T04:24:09.354Z",
-      "last_accessed": "2025-05-25T04:26:01.280Z",
-      "links_out": [
-        {
-          "text": "01_Idea.mdc",
-          "path": "01_Idea.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/01_Idea.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/01_Idea.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "5f4afd80",
-      "deleted_at": "2025-05-25T04:28:42.314Z"
-    },
-    "rules_01__ai_run_mdc____01__ai_run_02_market_research_mdc": {
-      "id": "rules_01__ai_run_mdc____01__ai_run_02_market_research_mdc",
-      "title": "../01__AI-RUN/02_Market_Research.mdc",
-      "path": "rules/01__AI-RUN/mdc:../01__AI-RUN/02_Market_Research.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN/02_Market_Research.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 255,
-      "last_modified": "2025-05-25T04:24:09.355Z",
-      "last_accessed": "2025-05-25T04:26:01.281Z",
-      "links_out": [
-        {
-          "text": "02_Market_Research.mdc",
-          "path": "02_Market_Research.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/02_Market_Research.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/02_Market_Research.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-96e2398",
-      "deleted_at": "2025-05-25T04:28:42.213Z"
-    },
-    "rules_01__ai_run_mdc____01__ai_run_03_core_concept_mdc": {
-      "id": "rules_01__ai_run_mdc____01__ai_run_03_core_concept_mdc",
-      "title": "../01__AI-RUN/03_Core_Concept.mdc",
-      "path": "rules/01__AI-RUN/mdc:../01__AI-RUN/03_Core_Concept.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN/03_Core_Concept.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 252,
-      "last_modified": "2025-05-25T04:24:09.357Z",
-      "last_accessed": "2025-05-25T04:26:01.282Z",
-      "links_out": [
-        {
-          "text": "03_Core_Concept.mdc",
-          "path": "03_Core_Concept.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "66a339f1",
-      "deleted_at": "2025-05-25T04:28:42.416Z"
-    },
-    "rules_01__ai_run_mdc____01__ai_run_04_prd_generation_mdc": {
-      "id": "rules_01__ai_run_mdc____01__ai_run_04_prd_generation_mdc",
-      "title": "../01__AI-RUN/04_PRD_Generation.mdc",
-      "path": "rules/01__AI-RUN/mdc:../01__AI-RUN/04_PRD_Generation.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN/04_PRD_Generation.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 254,
-      "last_modified": "2025-05-25T04:24:09.360Z",
-      "last_accessed": "2025-05-25T04:26:01.282Z",
-      "links_out": [
-        {
-          "text": "04_PRD_Generation.mdc",
-          "path": "04_PRD_Generation.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/04_PRD_Generation.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/04_PRD_Generation.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "323bf3c5",
-      "deleted_at": "2025-05-25T04:28:42.517Z"
-    },
-    "rules_01__ai_run_mdc____01__ai_run_05_specs_docs_mdc": {
-      "id": "rules_01__ai_run_mdc____01__ai_run_05_specs_docs_mdc",
-      "title": "../01__AI-RUN/05_Specs_Docs.mdc",
-      "path": "rules/01__AI-RUN/mdc:../01__AI-RUN/05_Specs_Docs.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN/05_Specs_Docs.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 250,
-      "last_modified": "2025-05-25T04:24:09.361Z",
-      "last_accessed": "2025-05-25T04:26:01.283Z",
-      "links_out": [
-        {
-          "text": "05_Specs_Docs.mdc",
-          "path": "05_Specs_Docs.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-785fdbc7",
-      "deleted_at": "2025-05-25T04:28:42.629Z"
-    },
-    "rules_01__ai_run_mdc____01__ai_run_06_task_manager_mdc": {
-      "id": "rules_01__ai_run_mdc____01__ai_run_06_task_manager_mdc",
-      "title": "../01__AI-RUN/06_Task_Manager.mdc",
-      "path": "rules/01__AI-RUN/mdc:../01__AI-RUN/06_Task_Manager.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN/06_Task_Manager.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 252,
-      "last_modified": "2025-05-25T04:24:09.365Z",
-      "last_accessed": "2025-05-25T04:26:01.284Z",
-      "links_out": [
-        {
-          "text": "06_Task_Manager.mdc",
-          "path": "06_Task_Manager.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/06_Task_Manager.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/06_Task_Manager.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-402e9b17",
-      "deleted_at": "2025-05-25T04:28:42.741Z"
-    },
-    "rules_01__ai_run_mdc____02__ai_docs_taskmanagement_tasks_json_structure_mdc": {
-      "id": "rules_01__ai_run_mdc____02__ai_docs_taskmanagement_tasks_json_structure_mdc",
-      "title": "../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-      "path": "rules/01__AI-RUN/mdc:../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 273,
-      "last_modified": "2025-05-25T04:24:09.365Z",
-      "last_accessed": "2025-05-25T04:26:01.290Z",
-      "links_out": [
-        {
-          "text": "Tasks_JSON_Structure.mdc",
-          "path": "Tasks_JSON_Structure.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-58ffcc12",
-      "deleted_at": "2025-05-25T04:28:43.669Z"
-    },
-    "rules_01__ai_run_mdc____01__ai_run_00_getting_started_mdc": {
-      "id": "rules_01__ai_run_mdc____01__ai_run_00_getting_started_mdc",
-      "title": "../01__AI-RUN/00_Getting_Started.mdc",
-      "path": "rules/01__AI-RUN/mdc:../01__AI-RUN/00_Getting_Started.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN/00_Getting_Started.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 255,
-      "last_modified": "2025-05-25T04:24:09.366Z",
-      "last_accessed": "2025-05-25T04:26:01.279Z",
-      "links_out": [
-        {
-          "text": "00_Getting_Started.mdc",
-          "path": "00_Getting_Started.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/00_Getting_Started.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/00_Getting_Started.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "2db0b222",
-      "deleted_at": "2025-05-25T04:28:42.112Z"
-    },
-    "rules_01__ai_run_mdc____01__ai_run_07_start_building_mdc": {
-      "id": "rules_01__ai_run_mdc____01__ai_run_07_start_building_mdc",
-      "title": "../01__AI-RUN/07_Start_Building.mdc",
-      "path": "rules/01__AI-RUN/mdc:../01__AI-RUN/07_Start_Building.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN/07_Start_Building.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 254,
-      "last_modified": "2025-05-25T04:24:09.367Z",
-      "last_accessed": "2025-05-25T04:26:01.284Z",
-      "links_out": [
-        {
-          "text": "07_Start_Building.mdc",
-          "path": "07_Start_Building.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/07_Start_Building.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/07_Start_Building.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "1c8199ac",
-      "deleted_at": "2025-05-25T04:28:42.844Z"
-    },
-    "rules_01__ai_run_mdc____01__ai_run_08_testing_mdc": {
-      "id": "rules_01__ai_run_mdc____01__ai_run_08_testing_mdc",
-      "title": "../01__AI-RUN/08_Testing.mdc",
-      "path": "rules/01__AI-RUN/mdc:../01__AI-RUN/08_Testing.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN/08_Testing.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 247,
-      "last_modified": "2025-05-25T04:24:09.368Z",
-      "last_accessed": "2025-05-25T04:26:01.285Z",
-      "links_out": [
-        {
-          "text": "08_Testing.mdc",
-          "path": "08_Testing.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/08_Testing.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/08_Testing.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-610bb750",
-      "deleted_at": "2025-05-25T04:28:42.961Z"
-    },
-    "rules_01__ai_run_mdc____01__ai_run_09_deployment_mdc": {
-      "id": "rules_01__ai_run_mdc____01__ai_run_09_deployment_mdc",
-      "title": "../01__AI-RUN/09_Deployment.mdc",
-      "path": "rules/01__AI-RUN/mdc:../01__AI-RUN/09_Deployment.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN/09_Deployment.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 250,
-      "last_modified": "2025-05-25T04:24:09.370Z",
-      "last_accessed": "2025-05-25T04:26:01.286Z",
-      "links_out": [
-        {
-          "text": "09_Deployment.mdc",
-          "path": "09_Deployment.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/09_Deployment.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../01__AI-RUN/09_Deployment.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-6541d86",
-      "deleted_at": "2025-05-25T04:28:43.063Z"
-    },
-    "rules_00__tools_mdc_agents__store_projects__core_path_to_file_mdc": {
-      "id": "rules_00__tools_mdc_agents__store_projects__core_path_to_file_mdc",
-      "title": "Display Text",
-      "path": "rules/00__TOOLS/mdc:agents/_store/projects/_core/path/to/file.mdc",
-      "full_path": "agents/_store/projects/_core/rules/00__TOOLS/mdc:agents/_store/projects/_core/path/to/file.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 239,
-      "last_modified": "2025-05-25T04:24:09.296Z",
-      "last_accessed": "2025-05-25T04:26:01.235Z",
-      "links_out": [
-        {
-          "text": "MDC_Path_Update_Guide.mdc",
-          "path": "MDC_Path_Update_Guide.mdc",
-          "type": "file_reference",
-          "source_file": "rules/00__TOOLS/mdc:agents/_store/projects/_core/path/to/file.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "9dc659b",
-      "deleted_at": "2025-05-25T04:28:41.608Z"
-    },
-    "rules_01__ai_run_agents__store_projects__core_docs_readme_mdc": {
-      "id": "rules_01__ai_run_agents__store_projects__core_docs_readme_mdc",
-      "title": "Main README",
-      "path": "rules/01__AI-RUN/agents/_store/projects/_core/docs/README.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/docs/README.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 236,
-      "last_modified": "2025-05-25T04:24:09.328Z",
-      "last_accessed": "2025-05-25T04:26:01.278Z",
-      "links_out": [
-        {
-          "text": "00_Getting_Started.mdc",
-          "path": "00_Getting_Started.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/agents/_store/projects/_core/docs/README.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-6ed65f3f",
-      "deleted_at": "2025-05-25T04:28:42.011Z"
-    },
-    "rules_01__ai_run_agents__store_projects__core_ai_agent_rules_mdc": {
-      "id": "rules_01__ai_run_agents__store_projects__core_ai_agent_rules_mdc",
-      "title": "AI_AGENT_RULES.mdc",
-      "path": "rules/01__AI-RUN/agents/_store/projects/_core/AI_AGENT_RULES.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/AI_AGENT_RULES.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 243,
-      "last_modified": "2025-05-25T04:24:09.329Z",
-      "last_accessed": "2025-05-25T04:26:01.276Z",
-      "links_out": [
-        {
-          "text": "AI_AGENT_RULES.mdc",
-          "path": "AI_AGENT_RULES.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/agents/_store/projects/_core/AI_AGENT_RULES.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "00_Getting_Started.mdc",
-          "path": "00_Getting_Started.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/agents/_store/projects/_core/AI_AGENT_RULES.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "6cde34b8",
-      "deleted_at": "2025-05-25T04:28:41.910Z"
-    },
-    "rules_01__ai_run_mdc____03__specs_feature_spec_template_mdc": {
-      "id": "rules_01__ai_run_mdc____03__specs_feature_spec_template_mdc",
-      "title": "../03__SPECS/feature_spec_template.mdc",
-      "path": "rules/01__AI-RUN/mdc:../03__SPECS/feature_spec_template.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../03__SPECS/feature_spec_template.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 257,
-      "last_modified": "2025-05-25T04:24:09.348Z",
-      "last_accessed": "2025-05-25T04:26:01.291Z",
-      "links_out": [
-        {
-          "text": "feature_spec_template.mdc",
-          "path": "feature_spec_template.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../03__SPECS/feature_spec_template.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../03__SPECS/feature_spec_template.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-7f56c70a",
-      "deleted_at": "2025-05-25T04:28:43.770Z"
-    },
-    "rules_01__ai_run_mdc____02__ai_docs_documentation_ai_coding_agent_optimization_mdc": {
-      "id": "rules_01__ai_run_mdc____02__ai_docs_documentation_ai_coding_agent_optimization_mdc",
-      "title": "../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-      "path": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 280,
-      "last_modified": "2025-05-25T04:24:09.350Z",
-      "last_accessed": "2025-05-25T04:26:01.287Z",
-      "links_out": [
-        {
-          "text": "AI_Coding_Agent_Optimization.mdc",
-          "path": "AI_Coding_Agent_Optimization.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "17e5dce2",
-      "deleted_at": "2025-05-25T04:28:43.266Z"
-    },
-    "rules_01__ai_run_mdc____02__ai_docs_documentation_ai_design_agent_optimization_mdc": {
-      "id": "rules_01__ai_run_mdc____02__ai_docs_documentation_ai_design_agent_optimization_mdc",
-      "title": "../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-      "path": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 280,
-      "last_modified": "2025-05-25T04:24:09.351Z",
-      "last_accessed": "2025-05-25T04:26:01.288Z",
-      "links_out": [
-        {
-          "text": "AI_Design_Agent_Optimization.mdc",
-          "path": "AI_Design_Agent_Optimization.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "5e714336",
-      "deleted_at": "2025-05-25T04:28:43.367Z"
-    },
-    "rules_01__ai_run_mdc____02__ai_docs_documentation_ai_task_management_optimization_mdc": {
-      "id": "rules_01__ai_run_mdc____02__ai_docs_documentation_ai_task_management_optimization_mdc",
-      "title": "../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-      "path": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 283,
-      "last_modified": "2025-05-25T04:24:09.352Z",
-      "last_accessed": "2025-05-25T04:26:01.289Z",
-      "links_out": [
-        {
-          "text": "AI_Task_Management_Optimization.mdc",
-          "path": "AI_Task_Management_Optimization.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "1a204451",
-      "deleted_at": "2025-05-25T04:28:43.468Z"
-    },
-    "rules_01__ai_run_mdc____03__specs_documentation_index_mdc": {
-      "id": "rules_01__ai_run_mdc____03__specs_documentation_index_mdc",
-      "title": "../03__SPECS/documentation_index.mdc",
-      "path": "rules/01__AI-RUN/mdc:../03__SPECS/documentation_index.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../03__SPECS/documentation_index.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 255,
-      "last_modified": "2025-05-25T04:24:09.363Z",
-      "last_accessed": "2025-05-25T04:26:01.291Z",
-      "links_out": [
-        {
-          "text": "documentation_index.mdc",
-          "path": "documentation_index.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../03__SPECS/documentation_index.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../03__SPECS/documentation_index.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "5d9376de",
-      "deleted_at": "2025-05-25T04:28:43.871Z"
-    },
-    "rules_01__ai_run_mdc____02__ai_docs_taskmanagement_roo_task_workflow_mdc": {
-      "id": "rules_01__ai_run_mdc____02__ai_docs_taskmanagement_roo_task_workflow_mdc",
-      "title": "../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-      "path": "rules/01__AI-RUN/mdc:../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 270,
-      "last_modified": "2025-05-25T04:24:09.363Z",
-      "last_accessed": "2025-05-25T04:26:01.290Z",
-      "links_out": [
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "1f62e797",
-      "deleted_at": "2025-05-25T04:28:43.569Z"
-    },
-    "rules_01__ai_run_mdc_02_market_research_mdc": {
-      "id": "rules_01__ai_run_mdc_02_market_research_mdc",
-      "title": "02_Market_Research.mdc",
-      "path": "rules/01__AI-RUN/mdc:02_Market_Research.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:02_Market_Research.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 236,
-      "last_modified": "2025-05-25T04:24:09.374Z",
-      "last_accessed": "2025-05-25T04:26:01.292Z",
-      "links_out": [
-        {
-          "text": "02_Market_Research.mdc",
-          "path": "02_Market_Research.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:02_Market_Research.mdc",
-          "status": "valid"
-        },
-        {
-          "text": "01_Idea.mdc",
-          "path": "01_Idea.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:02_Market_Research.mdc",
-          "status": "valid"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-70f5ef7f",
-      "deleted_at": "2025-05-25T04:28:44.073Z"
-    },
-    "rules_01__ai_run_mdc_03_core_concept_mdc": {
-      "id": "rules_01__ai_run_mdc_03_core_concept_mdc",
-      "title": "03_Core_Concept.mdc",
-      "path": "rules/01__AI-RUN/mdc:03_Core_Concept.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:03_Core_Concept.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 233,
-      "last_modified": "2025-05-25T04:24:09.375Z",
-      "last_accessed": "2025-05-25T04:26:01.292Z",
-      "links_out": [
-        {
-          "text": "03_Core_Concept.mdc",
-          "path": "03_Core_Concept.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:03_Core_Concept.mdc",
-          "status": "valid"
-        },
-        {
-          "text": "01_Idea.mdc",
-          "path": "01_Idea.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:03_Core_Concept.mdc",
-          "status": "valid"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "60fa74ea",
-      "deleted_at": "2025-05-25T04:28:43.972Z"
-    },
-    "rules_01__ai_run_mdc_04_prd_generation_mdc": {
-      "id": "rules_01__ai_run_mdc_04_prd_generation_mdc",
-      "title": "04_PRD_Generation.mdc",
-      "path": "rules/01__AI-RUN/mdc:04_PRD_Generation.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:04_PRD_Generation.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 235,
-      "last_modified": "2025-05-25T04:24:09.375Z",
-      "last_accessed": "2025-05-25T04:26:01.293Z",
-      "links_out": [
-        {
-          "text": "04_PRD_Generation.mdc",
-          "path": "04_PRD_Generation.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:04_PRD_Generation.mdc",
-          "status": "valid"
-        },
-        {
-          "text": "01_Idea.mdc",
-          "path": "01_Idea.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:04_PRD_Generation.mdc",
-          "status": "valid"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-7406d3aa",
-      "deleted_at": "2025-05-25T04:28:44.174Z"
-    },
-    "rules_01__ai_run_mdc_07_start_building_mdc": {
-      "id": "rules_01__ai_run_mdc_07_start_building_mdc",
-      "title": "07_Start_Building.mdc",
-      "path": "rules/01__AI-RUN/mdc:07_Start_Building.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:07_Start_Building.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 235,
-      "last_modified": "2025-05-25T04:24:09.376Z",
-      "last_accessed": "2025-05-25T04:26:01.293Z",
-      "links_out": [
-        {
-          "text": "07_Start_Building.mdc",
-          "path": "07_Start_Building.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:07_Start_Building.mdc",
-          "status": "valid"
-        },
-        {
-          "text": "01_Idea.mdc",
-          "path": "01_Idea.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:07_Start_Building.mdc",
-          "status": "valid"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "555f320f",
-      "deleted_at": "2025-05-25T04:28:44.276Z"
-    },
-    "rules_01__ai_run_mdc____02__ai_docs_deployment_deployment_guide_template_mdc": {
-      "id": "rules_01__ai_run_mdc____02__ai_docs_deployment_deployment_guide_template_mdc",
-      "title": "deployment_guide_template.mdc",
-      "path": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-      "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 249,
-      "last_modified": "2025-05-25T04:24:09.417Z",
-      "last_accessed": "2025-05-25T04:26:01.287Z",
-      "links_out": [
-        {
-          "text": "deployment_guide_template.mdc",
-          "path": "deployment_guide_template.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "09_Deployment.mdc",
-          "path": "09_Deployment.mdc",
-          "type": "file_reference",
-          "source_file": "rules/01__AI-RUN/mdc:../02__AI-DOCS/Deployment/deployment_guide_template.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "72630c3",
-      "deleted_at": "2025-05-25T04:28:43.164Z"
-    },
-    "rules_02__ai_docs_taskmanagement_02__ai_docs_documentation_ai_coding_agent_optimization_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_02__ai_docs_documentation_ai_coding_agent_optimization_mdc",
-      "title": "AI_Coding_Agent_Optimization.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 272,
-      "last_modified": "2025-05-25T04:24:09.465Z",
-      "last_accessed": "2025-05-25T04:26:01.327Z",
-      "links_out": [
-        {
-          "text": "AI_Coding_Agent_Optimization.mdc",
-          "path": "AI_Coding_Agent_Optimization.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-76e2b1d2",
-      "deleted_at": "2025-05-25T04:28:45.293Z"
-    },
-    "rules_02__ai_docs_taskmanagement_mdc_agents__store_projects__core_projet_prd_template_project_prd_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_mdc_agents__store_projects__core_projet_prd_template_project_prd_mdc",
-      "title": "project_prd.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 255,
-      "last_modified": "2025-05-25T04:24:09.472Z",
-      "last_accessed": "2025-05-25T04:26:01.339Z",
-      "links_out": [
-        {
-          "text": "project_prd.mdc",
-          "path": "project_prd.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "2c52dfeb",
-      "deleted_at": "2025-05-25T04:28:46.106Z"
-    },
-    "rules_02__ai_docs_taskmanagement_02__ai_docs_conventions_coding_conventions_template_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_02__ai_docs_conventions_coding_conventions_template_mdc",
-      "title": "coding_conventions_template.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 271,
-      "last_modified": "2025-05-25T04:24:09.472Z",
-      "last_accessed": "2025-05-25T04:26:01.324Z",
-      "links_out": [
-        {
-          "text": "coding_conventions_template.mdc",
-          "path": "coding_conventions_template.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-31dddbe5",
-      "deleted_at": "2025-05-25T04:28:44.479Z"
-    },
-    "rules_02__ai_docs_taskmanagement_02__ai_docs_conventions_design_conventions_template_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_02__ai_docs_conventions_design_conventions_template_mdc",
-      "title": "design_conventions_template.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 271,
-      "last_modified": "2025-05-25T04:24:09.473Z",
-      "last_accessed": "2025-05-25T04:26:01.326Z",
-      "links_out": [
-        {
-          "text": "design_conventions_template.mdc",
-          "path": "design_conventions_template.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-555920b9",
-      "deleted_at": "2025-05-25T04:28:44.682Z"
-    },
-    "rules_02__ai_docs_taskmanagement_02__ai_docs_documentation_ai_design_agent_optimization_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_02__ai_docs_documentation_ai_design_agent_optimization_mdc",
-      "title": "AI_Design_Agent_Optimization.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 272,
-      "last_modified": "2025-05-25T04:24:09.474Z",
-      "last_accessed": "2025-05-25T04:26:01.327Z",
-      "links_out": [
-        {
-          "text": "AI_Design_Agent_Optimization.mdc",
-          "path": "AI_Design_Agent_Optimization.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-3c511ba6",
-      "deleted_at": "2025-05-25T04:28:45.395Z"
-    },
-    "rules_02__ai_docs_taskmanagement_02__ai_docs_taskmanagement_tasks_json_structure_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_02__ai_docs_taskmanagement_tasks_json_structure_mdc",
-      "title": "Tasks_JSON_Structure.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 264,
-      "last_modified": "2025-05-25T04:24:09.474Z",
-      "last_accessed": "2025-05-25T04:26:01.329Z",
-      "links_out": [
-        {
-          "text": "Tasks_JSON_Structure.mdc",
-          "path": "Tasks_JSON_Structure.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-528b914a",
-      "deleted_at": "2025-05-25T04:28:45.597Z"
-    },
-    "rules_02__ai_docs_taskmanagement_01__ai_run_01_autopilot_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_01__ai_run_01_autopilot_mdc",
-      "title": "01_AutoPilot.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/01_AutoPilot.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/01__AI-RUN/01_AutoPilot.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 256,
-      "last_modified": "2025-05-25T04:24:09.471Z",
-      "last_accessed": "2025-05-25T04:26:01.320Z",
-      "links_out": [
-        {
-          "text": "01_AutoPilot.mdc",
-          "path": "01_AutoPilot.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/01_AutoPilot.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/01_AutoPilot.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-4558420c",
-      "deleted_at": "2025-05-25T04:28:44.377Z"
-    },
-    "rules_02__ai_docs_taskmanagement_01__ai_run_01_idea_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_01__ai_run_01_idea_mdc",
-      "title": "01_Idea.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/01_Idea.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/01__AI-RUN/01_Idea.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 251,
-      "last_modified": "2025-05-25T04:24:09.449Z",
-      "last_accessed": "2025-05-25T04:26:01.320Z",
-      "links_out": [
-        {
-          "text": "01_Idea.mdc",
-          "path": "01_Idea.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/01_Idea.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/01_Idea.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-6763b0bc",
-      "deleted_at": "2025-05-25T04:28:44.581Z"
-    },
-    "rules_02__ai_docs_taskmanagement_01__ai_run_02_market_research_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_01__ai_run_02_market_research_mdc",
-      "title": "02_Market_Research.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/02_Market_Research.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/01__AI-RUN/02_Market_Research.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 262,
-      "last_modified": "2025-05-25T04:24:09.452Z",
-      "last_accessed": "2025-05-25T04:26:01.321Z",
-      "links_out": [
-        {
-          "text": "02_Market_Research.mdc",
-          "path": "02_Market_Research.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/02_Market_Research.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/02_Market_Research.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-15398b6",
-      "deleted_at": "2025-05-25T04:28:44.784Z"
-    },
-    "rules_02__ai_docs_taskmanagement_01__ai_run_03_core_concept_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_01__ai_run_03_core_concept_mdc",
-      "title": "03_Core_Concept.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/03_Core_Concept.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/01__AI-RUN/03_Core_Concept.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 259,
-      "last_modified": "2025-05-25T04:24:09.453Z",
-      "last_accessed": "2025-05-25T04:26:01.321Z",
-      "links_out": [
-        {
-          "text": "03_Core_Concept.mdc",
-          "path": "03_Core_Concept.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "7167aa73",
-      "deleted_at": "2025-05-25T04:28:44.885Z"
-    },
-    "rules_02__ai_docs_taskmanagement_01__ai_run_04_prd_generation_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_01__ai_run_04_prd_generation_mdc",
-      "title": "04_PRD_Generation.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/04_PRD_Generation.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/01__AI-RUN/04_PRD_Generation.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 261,
-      "last_modified": "2025-05-25T04:24:09.454Z",
-      "last_accessed": "2025-05-25T04:26:01.322Z",
-      "links_out": [
-        {
-          "text": "04_PRD_Generation.mdc",
-          "path": "04_PRD_Generation.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/04_PRD_Generation.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/04_PRD_Generation.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-23ed4d21",
-      "deleted_at": "2025-05-25T04:28:44.987Z"
-    },
-    "rules_02__ai_docs_taskmanagement_01__ai_run_05_specs_docs_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_01__ai_run_05_specs_docs_mdc",
-      "title": "05_Specs_Docs.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/05_Specs_Docs.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/01__AI-RUN/05_Specs_Docs.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 257,
-      "last_modified": "2025-05-25T04:24:09.456Z",
-      "last_accessed": "2025-05-25T04:26:01.323Z",
-      "links_out": [
-        {
-          "text": "05_Specs_Docs.mdc",
-          "path": "05_Specs_Docs.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/05_Specs_Docs.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-60f48895",
-      "deleted_at": "2025-05-25T04:28:45.089Z"
-    },
-    "rules_02__ai_docs_taskmanagement_01__ai_run_07_start_building_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_01__ai_run_07_start_building_mdc",
-      "title": "07_Start_Building.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/07_Start_Building.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/01__AI-RUN/07_Start_Building.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 261,
-      "last_modified": "2025-05-25T04:24:09.470Z",
-      "last_accessed": "2025-05-25T04:26:01.323Z",
-      "links_out": [
-        {
-          "text": "07_Start_Building.mdc",
-          "path": "07_Start_Building.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/07_Start_Building.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/01__AI-RUN/07_Start_Building.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "12e19358",
-      "deleted_at": "2025-05-25T04:28:45.191Z"
-    },
-    "rules_02__ai_docs_taskmanagement_02__ai_docs_documentation_ai_task_management_optimization_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_02__ai_docs_documentation_ai_task_management_optimization_mdc",
-      "title": "AI_Task_Management_Optimization.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 275,
-      "last_modified": "2025-05-25T04:24:09.460Z",
-      "last_accessed": "2025-05-25T04:26:01.328Z",
-      "links_out": [
-        {
-          "text": "AI_Task_Management_Optimization.mdc",
-          "path": "AI_Task_Management_Optimization.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "ace9975",
-      "deleted_at": "2025-05-25T04:28:45.496Z"
-    },
-    "rules_02__ai_docs_taskmanagement_agents__store_projects__core_projet_prd_template_project_prd_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_agents__store_projects__core_projet_prd_template_project_prd_mdc",
-      "title": "project_prd.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 258,
-      "last_modified": "2025-05-25T04:24:09.481Z",
-      "last_accessed": "2025-05-25T04:26:01.334Z",
-      "links_out": [
-        {
-          "text": "project_prd.mdc",
-          "path": "project_prd.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Tasks_JSON_Structure.mdc",
-          "path": "Tasks_JSON_Structure.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-4bd70090",
-      "deleted_at": "2025-05-25T04:28:45.698Z"
-    },
-    "rules_02__ai_docs_taskmanagement_mdc_agents__store_projects__core_projet_01_idea_idea_document_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_mdc_agents__store_projects__core_projet_01_idea_idea_document_mdc",
-      "title": "idea_document.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 257,
-      "last_modified": "2025-05-25T04:24:09.451Z",
-      "last_accessed": "2025-05-25T04:26:01.337Z",
-      "links_out": [
-        {
-          "text": "idea_document.mdc",
-          "path": "idea_document.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-2a61e3ae",
-      "deleted_at": "2025-05-25T04:28:45.800Z"
-    },
-    "rules_02__ai_docs_taskmanagement_mdc_agents__store_projects__core_projet_02_market_research_market_research_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_mdc_agents__store_projects__core_projet_02_market_research_market_research_mdc",
-      "title": "market_research.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 259,
-      "last_modified": "2025-05-25T04:24:09.452Z",
-      "last_accessed": "2025-05-25T04:26:01.338Z",
-      "links_out": [
-        {
-          "text": "market_research.mdc",
-          "path": "market_research.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "ff94bad",
-      "deleted_at": "2025-05-25T04:28:45.902Z"
-    },
-    "rules_02__ai_docs_taskmanagement_mdc_agents__store_projects__core_projet_03_core_concept_core_concept_mdc": {
-      "id": "rules_02__ai_docs_taskmanagement_mdc_agents__store_projects__core_projet_03_core_concept_core_concept_mdc",
-      "title": "core_concept.mdc",
-      "path": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 256,
-      "last_modified": "2025-05-25T04:24:09.453Z",
-      "last_accessed": "2025-05-25T04:26:01.338Z",
-      "links_out": [
-        {
-          "text": "core_concept.mdc",
-          "path": "core_concept.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Roo_Task_Workflow.mdc",
-          "path": "Roo_Task_Workflow.mdc",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-48624aef",
-      "deleted_at": "2025-05-25T04:28:46.004Z"
-    },
-    "rules_03__specs_ai_coding_agent_optimization_mdc": {
-      "id": "rules_03__specs_ai_coding_agent_optimization_mdc",
-      "title": "5[_[Specs_Docs.mdc",
-      "path": "rules/03__SPECS/AI_Coding_Agent_Optimization.mdc",
-      "full_path": "agents/_store/projects/_core/rules/03__SPECS/AI_Coding_Agent_Optimization.mdc",
-      "description": "- **Phase 6:** Task Manager (0[6[_[Task_Manager.mdc",
-      "status": "deleted",
-      "size": 541,
-      "last_modified": "2025-05-25T04:24:09.485Z",
-      "last_accessed": "2025-05-25T04:26:01.339Z",
-      "links_out": [
-        {
-          "text": "Specs_Docs.mdc",
-          "path": "Specs_Docs.mdc",
-          "type": "file_reference",
-          "source_file": "rules/03__SPECS/AI_Coding_Agent_Optimization.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Task_Manager.mdc",
-          "path": "Task_Manager.mdc",
-          "type": "file_reference",
-          "source_file": "rules/03__SPECS/AI_Coding_Agent_Optimization.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "Start_Building.mdc",
-          "path": "Start_Building.mdc",
-          "type": "file_reference",
-          "source_file": "rules/03__SPECS/AI_Coding_Agent_Optimization.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "_Coding_Agent_Optimization.mdc",
-          "path": "_Coding_Agent_Optimization.mdc",
-          "type": "file_reference",
-          "source_file": "rules/03__SPECS/AI_Coding_Agent_Optimization.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "documentation_index.mdc",
-          "path": "documentation_index.mdc",
-          "type": "file_reference",
-          "source_file": "rules/03__SPECS/AI_Coding_Agent_Optimization.mdc",
-          "status": "valid"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-693e60eb",
-      "deleted_at": "2025-05-25T04:28:46.208Z"
-    },
-    "rules_project_prd_mdc": {
-      "id": "rules_project_prd_mdc",
-      "title": "project_prd.mdc",
-      "path": "rules/project_prd.mdc",
-      "full_path": "agents/_store/projects/_core/rules/project_prd.mdc",
-      "description": "*This file was automatically created as a placeholder.*",
-      "status": "deleted",
-      "size": 216,
-      "last_modified": "2025-05-25T04:24:09.504Z",
-      "last_accessed": "2025-05-25T04:26:01.359Z",
-      "links_out": [
-        {
-          "text": "project_prd.mdc",
-          "path": "project_prd.mdc",
-          "type": "file_reference",
-          "source_file": "rules/project_prd.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "logic.mdc",
-          "path": "logic.mdc",
-          "type": "file_reference",
-          "source_file": "rules/project_prd.mdc",
-          "status": "valid"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-6b370ed5",
-      "deleted_at": "2025-05-25T04:28:46.309Z"
-    },
-    "rules_02__ai_docs_architecture_architecture_template_md": {
-      "id": "rules_02__ai_docs_architecture_architecture_template_md",
-      "title": "System Architecture Overview",
-      "path": "rules/02__AI-DOCS/Architecture/architecture_template.md",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture_template.md",
-      "description": "- **Project Name:** [Project Name]",
-      "status": "deleted",
-      "size": 3057,
-      "last_modified": "2025-05-25T06:24:59.595Z",
-      "last_accessed": "2025-05-25T06:24:59.802Z",
-      "links_out": [],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "1ec00495",
-      "deleted_at": "2025-05-25T06:25:11.619Z"
-    },
-    "rules_02__ai_docs_conventions_coding_conventions_template_md": {
-      "id": "rules_02__ai_docs_conventions_coding_conventions_template_md",
-      "title": "Coding Conventions and Style Guide",
-      "path": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
-      "description": "This document outlines the coding conventions and style guidelines for the project. Following these conventions ensures consistency, readability, and maintainability across the codebase. It should be ",
-      "status": "deleted",
-      "size": 23153,
-      "last_modified": "2025-05-25T06:32:22.341Z",
-      "last_accessed": "2025-05-25T06:32:55.189Z",
-      "links_out": [
-        {
-          "text": "**Design Conventions and Style Guide**",
-          "path": "mdc:design_conventions_template.md:1",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
-          "status": "broken"
-        },
-        {
-          "text": "Design Conventions and Style Guide",
-          "path": "mdc:design_conventions_template.md:1",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
-          "status": "broken"
-        },
-        {
-          "text": "**Design Conventions and Style Guide**",
-          "path": "mdc:design_conventions_template.md:1",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
-          "status": "broken"
-        },
-        {
-          "text": "response.json",
-          "path": "response.json",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
-          "status": "broken"
-        },
-        {
-          "text": "Package.json",
-          "path": "Package.json",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-4418f7aa",
-      "deleted_at": "2025-05-25T06:33:36.740Z"
-    },
-    "rules_02__ai_docs_conventions_design_conventions_template_md": {
-      "id": "rules_02__ai_docs_conventions_design_conventions_template_md",
-      "title": "Design Conventions and Style Guide",
-      "path": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.md",
-      "description": "This document outlines the design conventions and style guidelines for the project, aiming for a professional-grade User Experience (UX) and User Interface (UI) that aligns with modern best practices,",
-      "status": "deleted",
-      "size": 11831,
-      "last_modified": "2025-05-25T06:26:15.351Z",
-      "last_accessed": "2025-05-25T06:26:15.973Z",
-      "links_out": [
-        {
-          "text": "`AI_Design_Agent_Optimization.md`",
-          "path": "../Documentation/AI_Design_Agent_Optimization.md:1",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
-          "status": "broken"
-        },
-        {
-          "text": "`AI_Design_Agent_Optimization.md`",
-          "path": "../Documentation/AI_Design_Agent_Optimization.md#ii-core-principles-of-excellent-uiux-design-in-2025",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
-          "status": "broken"
-        },
-        {
-          "text": "`AI_Design_Agent_Optimization.md`",
-          "path": "../Documentation/AI_Design_Agent_Optimization.md#information-architecture-ia-as-a-foundation",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
-          "status": "broken"
-        },
-        {
-          "text": "`AI_Design_Agent_Optimization.md`",
-          "path": "../Documentation/AI_Design_Agent_Optimization.md#iii-mastering-tailwind-css-for-professional-ui-development",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
-          "status": "broken"
-        },
-        {
-          "text": "`AI_Design_Agent_Optimization.md`",
-          "path": "../Documentation/AI_Design_Agent_Optimization.md#v-achieving-beautiful-and-pro-techniques-for-ui-polish",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
-          "status": "broken"
-        },
-        {
-          "text": "`AI_Design_Agent_Optimization.md`",
-          "path": "../Documentation/AI_Design_Agent_Optimization.md#accessibility-and-inclusivity",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
-          "status": "broken"
-        },
-        {
-          "text": "`AI_Design_Agent_Optimization.md`",
-          "path": "../Documentation/AI_Design_Agent_Optimization.md#iv-ai-assisted-ui-development-the-startup-superpower",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-1e7f701a",
-      "deleted_at": "2025-05-25T06:26:24.870Z"
-    },
-    "rules_02__ai_docs_documentation_ai_design_agent_optimization_md": {
-      "id": "rules_02__ai_docs_documentation_ai_design_agent_optimization_md",
-      "title": "**Achieving Professional-Grade UX/UI for Modern Y Combinator Startups with Tailwind CSS, Global CSS, and AI Coding Agents**",
-      "path": "rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.md",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.md",
-      "description": "The aspiration for a \"Real Senior design app design\" reflects a growing understanding within the startup ecosystem: user experience (UX) and user interface (UI) are no longer secondary considerations ",
-      "status": "deleted",
-      "size": 53693,
-      "last_modified": "2025-05-25T07:05:08.107Z",
-      "last_accessed": "2025-05-25T07:05:08.264Z",
-      "links_out": [],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-3b792acb",
-      "deleted_at": "2025-05-25T07:05:18.066Z"
-    },
-    "rules_02__ai_docs_documentation_ai_task_management_optimization_md": {
-      "id": "rules_02__ai_docs_documentation_ai_task_management_optimization_md",
-      "title": "Product Requirements Document: Vibe-Task (MCP Tool)",
-      "path": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
-      "description": "Vibe-Task is an AI-driven task management system designed to streamline software development workflows, particularly when working with Large Language Models (LLMs) and within AI-assisted coding enviro",
-      "status": "deleted",
-      "size": 29013,
-      "last_modified": "2025-05-25T07:05:08.155Z",
-      "last_accessed": "2025-05-25T07:05:08.366Z",
-      "links_out": [
-        {
-          "text": "`.vibetaskconfig`",
-          "path": "claude-task-master/.taskmasterconfig",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "`.env.example`",
-          "path": "claude-task-master/assets/env.example",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "`.vibetaskconfig`",
-          "path": "claude-task-master/.taskmasterconfig",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "tasks.json",
-          "path": "tasks.json",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "task-complexity-report.json",
-          "path": "task-complexity-report.json",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "1861b31e",
-      "deleted_at": "2025-05-25T07:05:22.626Z"
-    },
-    "rules_02__ai_docs_documentation_ai_coding_agent_optimization_md": {
-      "id": "rules_02__ai_docs_documentation_ai_coding_agent_optimization_md",
-      "title": "**Guiding Agentic Logic: A Comprehensive Resource for Enhancing AI Coding Agent Performance**",
-      "path": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-      "description": "The advent of sophisticated AI coding agents such as Cursor, Windsurf, and Cline AI heralds a paradigm shift in software development. These tools promise to augment developer productivity by automatin",
-      "status": "deleted",
-      "size": 79102,
-      "last_modified": "2025-05-25T07:06:04.311Z",
-      "last_accessed": "2025-05-25T07:06:04.323Z",
-      "links_out": [
-        {
-          "text": "ui-library-prop-types.md",
-          "path": "ui-library-prop-types.md",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "_rules.md",
-          "path": "_rules.md",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "_config.json",
-          "path": "_config.json",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "debug-logging.md",
-          "path": "debug-logging.md",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "test-generation-jest.md",
-          "path": "test-generation-jest.md",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "refactor-dry-principles.md",
-          "path": "refactor-dry-principles.md",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "commit-conventional-format.md",
-          "path": "commit-conventional-format.md",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "README.md",
-          "path": "README.md",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "user-dashboard-summary.md",
-          "path": "user-dashboard-summary.md",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-          "status": "broken"
-        },
-        {
-          "text": "2FREADME.md",
-          "path": "2FREADME.md",
-          "type": "file_reference",
-          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
-          "status": "broken"
-        }
-      ],
-      "links_in": [],
-      "fix_history": [],
-      "content_hash": "-57dcedf6",
-      "deleted_at": "2025-05-25T07:06:25.664Z"
     }
   },
   "links": {
@@ -13516,4 +11701,1591 @@
         "source_file": "rules/03__SPECS/documentation_index.mdc",
         "status": "unchecked"
       },
-    
+      {
+        "text": "l[o[gin_timeout_fix.mdc",
+        "path": "login_timeout_fix.mdc",
+        "type": "markdown",
+        "source_file": "rules/03__SPECS/documentation_index.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "5[_[Specs_Docs.mdc\n- **Phase 6:** Task Manager (0[6[_[Task_Manager.mdc\n- **Phase 7:** Implementation (0[7[_[Start_Building.mdc\n\n## Related Documentation\n\n- **Architecture:** ./02__AI-DOCS/Architecture/\n- **Business Logic:** ./02__AI-DOCS/BusinessLogic/\n- **AI Coding Guidelines:** [A[I[_Coding_Agent_Optimization.mdc",
+        "path": "AI_Coding_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/03__SPECS/documentation_index.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Specs_Docs.mdc",
+        "path": "Specs_Docs.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/documentation_index.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Task_Manager.mdc",
+        "path": "Task_Manager.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/documentation_index.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Start_Building.mdc",
+        "path": "Start_Building.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/documentation_index.mdc",
+        "status": "unchecked"
+      }
+    ],
+    "rules_03__specs_feature_spec_template_mdc": [
+      {
+        "text": "ature_spec_template.mdc",
+        "path": "ature_spec_template.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/feature_spec_template.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "documentation_index.mdc",
+        "path": "documentation_index.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/feature_spec_template.mdc",
+        "status": "unchecked"
+      }
+    ],
+    "rules_03__specs_features_feature_spec_feat_xxx_mdc": [
+      {
+        "text": "feature_spec_FEAT-XXX.mdc",
+        "path": "feature_spec_FEAT-XXX.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01_AutoPilot.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc",
+        "status": "unchecked"
+      }
+    ],
+    "rules_03__specs_features_feature_spec_id_mdc": [
+      {
+        "text": "feature_spec_ID.mdc",
+        "path": "feature_spec_ID.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/features/feature_spec_ID.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01_AutoPilot.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/features/feature_spec_ID.mdc",
+        "status": "unchecked"
+      }
+    ],
+    "rules_03__specs_features_feature_spec_template_mdc": [
+      {
+        "text": "Link to wireframe/mockup or detailed description. The AI should propose designs (or variations if requested and justifie",
+        "path": "d",
+        "type": "markdown",
+        "source_file": "rules/03__SPECS/features/feature_spec_template.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "design_conventions_template.mdc",
+        "path": "design_conventions_template.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/features/feature_spec_template.mdc",
+        "status": "unchecked"
+      }
+    ],
+    "rules_03__specs_login_timeout_fix_mdc": [
+      {
+        "text": "gin_timeout_fix.mdc",
+        "path": "gin_timeout_fix.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/login_timeout_fix.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "documentation_index.mdc",
+        "path": "documentation_index.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/login_timeout_fix.mdc",
+        "status": "unchecked"
+      }
+    ],
+    "rules_03__specs_user_authentication_mdc": [
+      {
+        "text": "er_authentication.mdc",
+        "path": "er_authentication.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/user_authentication.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "documentation_index.mdc",
+        "path": "documentation_index.mdc",
+        "type": "file_reference",
+        "source_file": "rules/03__SPECS/user_authentication.mdc",
+        "status": "unchecked"
+      }
+    ],
+    "rules_inspiration_mdc": [
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/Inspiration.mdc",
+        "status": "unchecked"
+      }
+    ],
+    "rules_readme_mdc": [
+      {
+        "text": "00_Getting_Started.mdc",
+        "path": "01__AI-RUN/00_Getting_Started.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "00_Getting_Started.mdc",
+        "path": "01__AI-RUN/00_Getting_Started.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Coding_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Roo_Task_Workflow.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "08_Testing.mdc",
+        "path": "01__AI-RUN/08_Testing.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "09_Deployment.mdc",
+        "path": "01__AI-RUN/09_Deployment.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "logic.mdc",
+        "path": "logic.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "MCP-Server.json",
+        "path": "01__AI-RUN/Template/MCP-Server.json",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "MCP-Server.json",
+        "path": "01__AI-RUN/Template/MCP-Server.json",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Coding_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "00_Getting_Started.mdc",
+        "path": "01__AI-RUN/00_Getting_Started.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "00_Getting_Started.mdc",
+        "path": "01__AI-RUN/00_Getting_Started.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "logic.mdc",
+        "path": "logic.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Roadmap: From 0 to 1",
+        "path": "#roadmap-from-0-to-1-with-full-agentic-ai-coding-assistance",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Coding_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Design_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Task_Management_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Roo_Task_Workflow.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Tasks_JSON_Structure.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "PRD_template.mdc",
+        "path": "01__AI-RUN/Template/PRD_template.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "MCP-Context.mdc",
+        "path": "01__AI-RUN/Template/MCP-Context.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_Idea.mdc",
+        "path": "01__AI-RUN/01_Idea.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_Idea.mdc",
+        "path": "01__AI-RUN/01_Idea.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "idea_document.mdc",
+        "path": "projet/01_Idea/idea_document.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "idea_document.mdc",
+        "path": "projet/01_Idea/idea_document.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "02_Market_Research.mdc",
+        "path": "01__AI-RUN/02_Market_Research.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "02_Market_Research.mdc",
+        "path": "01__AI-RUN/02_Market_Research.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "idea_document.mdc",
+        "path": "projet/01_Idea/idea_document.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "market_research.mdc",
+        "path": "projet/02_Market_Research/market_research.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "core_concept.mdc",
+        "path": "projet/03_Core_Concept/core_concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "core_concept.mdc",
+        "path": "projet/03_Core_Concept/core_concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "idea_document.mdc",
+        "path": "projet/01_Idea/idea_document.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "market_research.mdc",
+        "path": "projet/02_Market_Research/market_research.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "04_PRD_Generation.mdc",
+        "path": "01__AI-RUN/04_PRD_Generation.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "04_PRD_Generation.mdc",
+        "path": "01__AI-RUN/04_PRD_Generation.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "core_concept.mdc",
+        "path": "projet/03_Core_Concept/core_concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "PRD_template.mdc",
+        "path": "01__AI-RUN/Template/PRD_template.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "05_Specs_Docs.mdc",
+        "path": "01__AI-RUN/05_Specs_Docs.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "05_Specs_Docs.mdc",
+        "path": "01__AI-RUN/05_Specs_Docs.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Coding_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Roo_Task_Workflow.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Tasks_JSON_Structure.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Roo_Task_Workflow.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Roo_Task_Workflow.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Tasks_JSON_Structure.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "07_Start_Building.mdc",
+        "path": "01__AI-RUN/07_Start_Building.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "07_Start_Building.mdc",
+        "path": "01__AI-RUN/07_Start_Building.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Coding_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "08_Testing.mdc",
+        "path": "01__AI-RUN/08_Testing.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "08_Testing.mdc",
+        "path": "01__AI-RUN/08_Testing.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "09_Deployment.mdc",
+        "path": "01__AI-RUN/09_Deployment.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "09_Deployment.mdc",
+        "path": "01__AI-RUN/09_Deployment.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "deployment_guide_template.mdc",
+        "path": "02__AI-DOCS/Deployment/deployment_guide_template.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "idea_document.mdc",
+        "path": "projet/01_Idea/idea_document.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "core_concept.mdc",
+        "path": "projet/03_Core_Concept/core_concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mcp_config.json",
+        "path": "mcp_config.json",
+        "type": "file_reference",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "documentation_index.mdc",
+        "path": "documentation_index.mdc",
+        "type": "file_reference",
+        "source_file": "rules/README.mdc",
+        "status": "unchecked"
+      }
+    ],
+    "rules_logic_mdc": [
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "idea_document.mdc",
+        "path": "projet/01_Idea/idea_document.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Task_Management_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "00_Getting_Started.mdc",
+        "path": "01__AI-RUN/00_Getting_Started.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "00_Getting_Started.mdc",
+        "path": "01__AI-RUN/00_Getting_Started.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_Idea.mdc",
+        "path": "01__AI-RUN/01_Idea.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_Idea.mdc",
+        "path": "01__AI-RUN/01_Idea.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "idea_document.mdc",
+        "path": "projet/01_Idea/idea_document.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "02_Market_Research.mdc",
+        "path": "01__AI-RUN/02_Market_Research.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "idea_document.mdc",
+        "path": "projet/01_Idea/idea_document.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "02_Market_Research.mdc",
+        "path": "01__AI-RUN/02_Market_Research.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "market_research.mdc",
+        "path": "projet/02_Market_Research/market_research.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "core_concept.mdc",
+        "path": "projet/03_Core_Concept/core_concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "idea_document.mdc",
+        "path": "projet/01_Idea/idea_document.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "market_research.mdc",
+        "path": "projet/02_Market_Research/market_research.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "core_concept.mdc",
+        "path": "projet/03_Core_Concept/core_concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "core_concept.mdc",
+        "path": "projet/03_Core_Concept/core_concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "04_PRD_Generation.mdc",
+        "path": "01__AI-RUN/04_PRD_Generation.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "core_concept.mdc",
+        "path": "projet/03_Core_Concept/core_concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "PRD_template.mdc",
+        "path": "01__AI-RUN/Template/PRD_template.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "core_concept.mdc",
+        "path": "projet/03_Core_Concept/core_concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "05_Specs_Docs.mdc",
+        "path": "01__AI-RUN/05_Specs_Docs.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Roo_Task_Workflow.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "architecture_template.mdc",
+        "path": "02__AI-DOCS/Architecture/architecture_template.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Design_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Coding_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Coding_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Design_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "06_Task_Manager.mdc",
+        "path": "01__AI-RUN/06_Task_Manager.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Roo_Task_Workflow.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Design_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Roo_Task_Workflow.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "design_conventions_template.mdc",
+        "path": "02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Design_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Tasks_JSON_Structure.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "design_conventions_template.mdc",
+        "path": "02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Tasks_JSON_Structure.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "README.mdc",
+        "path": "README.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "README.mdc",
+        "path": "README.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "README.mdc",
+        "path": "README.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "07_Start_Building.mdc",
+        "path": "01__AI-RUN/07_Start_Building.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Design_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Roo_Task_Workflow.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Tasks_JSON_Structure.mdc",
+        "path": "02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "coding_conventions_template.mdc",
+        "path": "02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "design_conventions_template.mdc",
+        "path": "02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "AI_Design_Agent_Optimization.mdc",
+        "path": "02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "08_Testing.mdc",
+        "path": "01__AI-RUN/08_Testing.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "09_Deployment.mdc",
+        "path": "01__AI-RUN/09_Deployment.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "03_Core_Concept.md",
+        "path": "03_Core_Concept.md",
+        "type": "file_reference",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "documentation_index.md",
+        "path": "documentation_index.md",
+        "type": "file_reference",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "design_conventions.mdc",
+        "path": "design_conventions.mdc",
+        "type": "file_reference",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "architecture.mdc",
+        "path": "architecture.mdc",
+        "type": "file_reference",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "feature_spec_FEAT-001.mdc",
+        "path": "feature_spec_FEAT-001.mdc",
+        "type": "file_reference",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "documentation_index.mdc",
+        "path": "documentation_index.mdc",
+        "type": "file_reference",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "feature_spec_FEAT-XXX.mdc",
+        "path": "feature_spec_FEAT-XXX.mdc",
+        "type": "file_reference",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "coding_conventions.mdc",
+        "path": "coding_conventions.mdc",
+        "type": "file_reference",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "deployment_guide.mdc",
+        "path": "deployment_guide.mdc",
+        "type": "file_reference",
+        "source_file": "rules/logic.mdc",
+        "status": "unchecked"
+      }
+    ],
+    "rules_projet_01_idea_idea_document_mdc": [],
+    "rules_projet_02_market_research_market_research_mdc": [],
+    "rules_projet_03_core_concept_core_concept_mdc": [],
+    "rules_projet_prd_template_project_prd_mdc": [],
+    "rules_workflow_mdc": [
+      {
+        "text": "Phase 0: Startup & Initialization ([`01__AI-RUN/00_Getting_Started.mdc`",
+        "path": "01__AI-RUN/00_Getting_Started.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "`01__AI-RUN/01_AutoPilot.mdc`",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Phase 1: Idea ([`01__AI-RUN/01_Idea.mdc`",
+        "path": "01__AI-RUN/01_Idea.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Phase 2: Market Research ([`01__AI-RUN/02_Market_Research.mdc`",
+        "path": "01__AI-RUN/02_Market_Research.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Phase 3: Core Concept ([`01__AI-RUN/03_Core_Concept.mdc`",
+        "path": "01__AI-RUN/03_Core_Concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Phase 4: PRD Generation ([`01__AI-RUN/04_PRD_Generation.mdc`",
+        "path": "01__AI-RUN/04_PRD_Generation.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Phase 5: Specifications & Technical Docs ([`01__AI-RUN/05_Specs_Docs.mdc`",
+        "path": "01__AI-RUN/05_Specs_Docs.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Phase 6: Task Manager ([`01__AI-RUN/06_Task_Manager.mdc`",
+        "path": "01__AI-RUN/06_Task_Manager.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "`02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc`",
+        "path": "02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Phase 6.5: README Generation (in [`01__AI-RUN/01_AutoPilot.mdc`",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Phase 7: Implementation ([`01__AI-RUN/07_Start_Building.mdc`",
+        "path": "01__AI-RUN/07_Start_Building.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Phase 8: Testing ([`01__AI-RUN/08_Testing.mdc`",
+        "path": "01__AI-RUN/08_Testing.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Phase 9: Deployment ([`01__AI-RUN/09_Deployment.mdc`",
+        "path": "01__AI-RUN/09_Deployment.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "idea_document.mdc",
+        "path": "projet/01_Idea/idea_document.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "market_research.mdc",
+        "path": "projet/02_Market_Research/market_research.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "core_concept.mdc",
+        "path": "projet/03_Core_Concept/core_concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_session_state.json",
+        "path": "project_session_state.json",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "idea_document.mdc",
+        "path": "projet/01_Idea/idea_document.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "project_prd.mdc",
+        "path": "projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_AutoPilot.mdc",
+        "path": "01__AI-RUN/01_AutoPilot.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "logic.mdc",
+        "path": "logic.mdc",
+        "type": "markdown",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "documentation_index.mdc",
+        "path": "documentation_index.mdc",
+        "type": "file_reference",
+        "source_file": "rules/workflow.mdc",
+        "status": "unchecked"
+      }
+    ],
+    "tasks_tasks_json": []
+  },
+  "access_log": [],
+  "last_updated": "2025-05-25T08:11:07.078Z",
+  "scan_history": [
+    {
+      "id": "scan_1748160410188",
+      "timestamp": "2025-05-25T08:06:50.188Z",
+      "completed": "2025-05-25T08:06:50.348Z",
+      "files_found": 71,
+      "corrupt_files": 0,
+      "fixes_applied": 0
+    }
+  ],
+  "fix_history": []
+}

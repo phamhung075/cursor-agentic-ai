@@ -1,7 +1,7 @@
 {
   "active": true,
   "version": "1.0.0",
-  "initialized": "2025-05-25T08:03:20.448Z",
+  "initialized": "2025-05-25T08:11:01.621Z",
   "features": {
     "autoTaskCreation": true,
     "taskExecution": true,
