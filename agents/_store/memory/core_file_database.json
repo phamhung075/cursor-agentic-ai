@@ -4248,21 +4248,13 @@
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture_template.mdc",
       "description": "- **Project Name:** [Project Name]",
       "status": "valid",
-      "size": 3055,
-      "last_modified": "2025-05-25T05:17:38.557Z",
-      "last_accessed": "2025-05-25T06:15:06.733Z",
-      "links_out": [
-        {
-          "text": "Provide a high-level description of the system architecture. Include a brief explanation of the architectural style (e.g., microservices, monolithic, serverles",
-          "path": "s",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Architecture/architecture_template.mdc",
-          "status": "unchecked"
-        }
-      ],
+      "size": 3106,
+      "last_modified": "2025-05-25T06:33:39.748Z",
+      "last_accessed": "2025-05-25T06:33:39.807Z",
+      "links_out": [],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "4421a4a"
+      "content_hash": "-ab847a6"
     },
     "rules_02__ai_docs_businesslogic_business_logic_template_mdc": {
       "id": "rules_02__ai_docs_businesslogic_business_logic_template_mdc",
@@ -4316,28 +4308,49 @@
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
       "description": "This document outlines the coding conventions and style guidelines for the project. Following these conventions ensures consistency, readability, and maintainability across the codebase. It should be ",
       "status": "valid",
-      "size": 8842,
-      "last_modified": "2025-05-25T05:17:38.558Z",
-      "last_accessed": "2025-05-25T06:15:06.735Z",
+      "size": 23153,
+      "last_modified": "2025-05-25T06:32:22.341Z",
+      "last_accessed": "2025-05-25T06:33:36.843Z",
       "links_out": [
         {
-          "text": "design_conventions_template.mdc",
-          "path": "../../02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "text": "**Design Conventions and Style Guide**",
+          "path": "mdc:design_conventions_template.md:1",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
           "status": "unchecked"
         },
         {
-          "text": "`tailwind.config.js`",
-          "path": "tailwind.config.js",
+          "text": "Design Conventions and Style Guide",
+          "path": "mdc:design_conventions_template.md:1",
           "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "**Design Conventions and Style Guide**",
+          "path": "mdc:design_conventions_template.md:1",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "response.json",
+          "path": "response.json",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "Package.json",
+          "path": "Package.json",
+          "type": "file_reference",
           "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
           "status": "unchecked"
         }
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "298a649b"
+      "content_hash": "-4418f7aa"
     },
     "rules_02__ai_docs_conventions_design_conventions_mdc": {
       "id": "rules_02__ai_docs_conventions_design_conventions_mdc",
@@ -4374,44 +4387,30 @@
       "title": "Design Conventions and Style Guide",
       "path": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-      "description": "This document outlines the design conventions and style guidelines for the project, aiming for a professional-grade User Experience (UX) and User Interface (UI) that aligns with modern best practices,",
+      "description": "This document outlines the design conventions and style guidelines for creating world-class User Experience (UX) and User Interface (UI) that rivals the best modern applications. Our goal is to achiev",
       "status": "valid",
-      "size": 9400,
-      "last_modified": "2025-05-25T05:17:38.560Z",
-      "last_accessed": "2025-05-25T06:15:06.736Z",
+      "size": 30810,
+      "last_modified": "2025-05-25T06:42:58.358Z",
+      "last_accessed": "2025-05-25T06:42:58.480Z",
       "links_out": [
         {
-          "text": "AI_Design_Agent_Optimization.mdc",
-          "path": "../../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+          "text": "**Coding Conventions and Style Guide**",
+          "path": "mdc:coding_conventions_template.md:1",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
           "status": "unchecked"
         },
         {
-          "text": "TODO: Specify types of feedback (visual, textua",
-          "path": "l",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "TODO: Define types of animations/transitions to be used (e.g., page transitions, element fade-in",
-          "path": "s",
-          "type": "markdown",
-          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "TODO: Specify icon library (e.g., Heroicons, Lucide, Feather Icon",
-          "path": "s",
-          "type": "markdown",
+          "text": "design-tokens.json",
+          "path": "design-tokens.json",
+          "type": "file_reference",
           "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
           "status": "unchecked"
         }
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "16e8025c"
+      "content_hash": "-7d1faed4"
     },
     "rules_02__ai_docs_deployment_deployment_guide_template_mdc": {
       "id": "rules_02__ai_docs_deployment_deployment_guide_template_mdc",
@@ -8456,6 +8455,140 @@
       "fix_history": [],
       "content_hash": "-6b370ed5",
       "deleted_at": "2025-05-25T04:28:46.309Z"
+    },
+    "rules_02__ai_docs_architecture_architecture_template_md": {
+      "id": "rules_02__ai_docs_architecture_architecture_template_md",
+      "title": "System Architecture Overview",
+      "path": "rules/02__AI-DOCS/Architecture/architecture_template.md",
+      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture_template.md",
+      "description": "- **Project Name:** [Project Name]",
+      "status": "deleted",
+      "size": 3057,
+      "last_modified": "2025-05-25T06:24:59.595Z",
+      "last_accessed": "2025-05-25T06:24:59.802Z",
+      "links_out": [],
+      "links_in": [],
+      "fix_history": [],
+      "content_hash": "1ec00495",
+      "deleted_at": "2025-05-25T06:25:11.619Z"
+    },
+    "rules_02__ai_docs_conventions_coding_conventions_template_md": {
+      "id": "rules_02__ai_docs_conventions_coding_conventions_template_md",
+      "title": "Coding Conventions and Style Guide",
+      "path": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+      "description": "This document outlines the coding conventions and style guidelines for the project. Following these conventions ensures consistency, readability, and maintainability across the codebase. It should be ",
+      "status": "deleted",
+      "size": 23153,
+      "last_modified": "2025-05-25T06:32:22.341Z",
+      "last_accessed": "2025-05-25T06:32:55.189Z",
+      "links_out": [
+        {
+          "text": "**Design Conventions and Style Guide**",
+          "path": "mdc:design_conventions_template.md:1",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "Design Conventions and Style Guide",
+          "path": "mdc:design_conventions_template.md:1",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "**Design Conventions and Style Guide**",
+          "path": "mdc:design_conventions_template.md:1",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "response.json",
+          "path": "response.json",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "Package.json",
+          "path": "Package.json",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+          "status": "unchecked"
+        }
+      ],
+      "links_in": [],
+      "fix_history": [],
+      "content_hash": "-4418f7aa",
+      "deleted_at": "2025-05-25T06:33:36.740Z"
+    },
+    "rules_02__ai_docs_conventions_design_conventions_template_md": {
+      "id": "rules_02__ai_docs_conventions_design_conventions_template_md",
+      "title": "Design Conventions and Style Guide",
+      "path": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+      "description": "This document outlines the design conventions and style guidelines for the project, aiming for a professional-grade User Experience (UX) and User Interface (UI) that aligns with modern best practices,",
+      "status": "deleted",
+      "size": 11831,
+      "last_modified": "2025-05-25T06:26:15.351Z",
+      "last_accessed": "2025-05-25T06:26:15.973Z",
+      "links_out": [
+        {
+          "text": "`AI_Design_Agent_Optimization.md`",
+          "path": "../Documentation/AI_Design_Agent_Optimization.md:1",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "`AI_Design_Agent_Optimization.md`",
+          "path": "../Documentation/AI_Design_Agent_Optimization.md#ii-core-principles-of-excellent-uiux-design-in-2025",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "`AI_Design_Agent_Optimization.md`",
+          "path": "../Documentation/AI_Design_Agent_Optimization.md#information-architecture-ia-as-a-foundation",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "`AI_Design_Agent_Optimization.md`",
+          "path": "../Documentation/AI_Design_Agent_Optimization.md#iii-mastering-tailwind-css-for-professional-ui-development",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "`AI_Design_Agent_Optimization.md`",
+          "path": "../Documentation/AI_Design_Agent_Optimization.md#v-achieving-beautiful-and-pro-techniques-for-ui-polish",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "`AI_Design_Agent_Optimization.md`",
+          "path": "../Documentation/AI_Design_Agent_Optimization.md#accessibility-and-inclusivity",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "`AI_Design_Agent_Optimization.md`",
+          "path": "../Documentation/AI_Design_Agent_Optimization.md#iv-ai-assisted-ui-development-the-startup-superpower",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+          "status": "unchecked"
+        }
+      ],
+      "links_in": [],
+      "fix_history": [],
+      "content_hash": "-1e7f701a",
+      "deleted_at": "2025-05-25T06:26:24.870Z"
     }
   },
   "links": {
@@ -12182,15 +12315,7 @@
         "status": "unchecked"
       }
     ],
-    "rules_02__ai_docs_architecture_architecture_template_mdc": [
-      {
-        "text": "Provide a high-level description of the system architecture. Include a brief explanation of the architectural style (e.g., microservices, monolithic, serverles",
-        "path": "s",
-        "type": "markdown",
-        "source_file": "rules/02__AI-DOCS/Architecture/architecture_template.mdc",
-        "status": "unchecked"
-      }
-    ],
+    "rules_02__ai_docs_architecture_architecture_template_mdc": [],
     "rules_02__ai_docs_businesslogic_business_logic_template_mdc": [],
     "rules_02__ai_docs_conventions_coding_conventions_mdc": [
       {
@@ -12210,16 +12335,37 @@
     ],
     "rules_02__ai_docs_conventions_coding_conventions_template_mdc": [
       {
-        "text": "design_conventions_template.mdc",
-        "path": "../../02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "text": "**Design Conventions and Style Guide**",
+        "path": "mdc:design_conventions_template.md:1",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
         "status": "unchecked"
       },
       {
-        "text": "`tailwind.config.js`",
-        "path": "tailwind.config.js",
+        "text": "Design Conventions and Style Guide",
+        "path": "mdc:design_conventions_template.md:1",
         "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "**Design Conventions and Style Guide**",
+        "path": "mdc:design_conventions_template.md:1",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "response.json",
+        "path": "response.json",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Package.json",
+        "path": "Package.json",
+        "type": "file_reference",
         "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
         "status": "unchecked"
       }
@@ -12242,30 +12388,16 @@
     ],
     "rules_02__ai_docs_conventions_design_conventions_template_mdc": [
       {
-        "text": "AI_Design_Agent_Optimization.mdc",
-        "path": "../../02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "text": "**Coding Conventions and Style Guide**",
+        "path": "mdc:coding_conventions_template.md:1",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
         "status": "unchecked"
       },
       {
-        "text": "TODO: Specify types of feedback (visual, textua",
-        "path": "l",
-        "type": "markdown",
-        "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "TODO: Define types of animations/transitions to be used (e.g., page transitions, element fade-in",
-        "path": "s",
-        "type": "markdown",
-        "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "TODO: Specify icon library (e.g., Heroicons, Lucide, Feather Icon",
-        "path": "s",
-        "type": "markdown",
+        "text": "design-tokens.json",
+        "path": "design-tokens.json",
+        "type": "file_reference",
         "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
         "status": "unchecked"
       }
@@ -15185,6 +15317,95 @@
         "type": "file_reference",
         "source_file": "rules/project_prd.mdc",
         "status": "valid"
+      }
+    ],
+    "rules_02__ai_docs_architecture_architecture_template_md": [],
+    "rules_02__ai_docs_conventions_coding_conventions_template_md": [
+      {
+        "text": "**Design Conventions and Style Guide**",
+        "path": "mdc:design_conventions_template.md:1",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "Design Conventions and Style Guide",
+        "path": "mdc:design_conventions_template.md:1",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "**Design Conventions and Style Guide**",
+        "path": "mdc:design_conventions_template.md:1",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "response.json",
+        "path": "response.json",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "Package.json",
+        "path": "Package.json",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+        "status": "unchecked"
+      }
+    ],
+    "rules_02__ai_docs_conventions_design_conventions_template_md": [
+      {
+        "text": "`AI_Design_Agent_Optimization.md`",
+        "path": "../Documentation/AI_Design_Agent_Optimization.md:1",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "`AI_Design_Agent_Optimization.md`",
+        "path": "../Documentation/AI_Design_Agent_Optimization.md#ii-core-principles-of-excellent-uiux-design-in-2025",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "`AI_Design_Agent_Optimization.md`",
+        "path": "../Documentation/AI_Design_Agent_Optimization.md#information-architecture-ia-as-a-foundation",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "`AI_Design_Agent_Optimization.md`",
+        "path": "../Documentation/AI_Design_Agent_Optimization.md#iii-mastering-tailwind-css-for-professional-ui-development",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "`AI_Design_Agent_Optimization.md`",
+        "path": "../Documentation/AI_Design_Agent_Optimization.md#v-achieving-beautiful-and-pro-techniques-for-ui-polish",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "`AI_Design_Agent_Optimization.md`",
+        "path": "../Documentation/AI_Design_Agent_Optimization.md#accessibility-and-inclusivity",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "`AI_Design_Agent_Optimization.md`",
+        "path": "../Documentation/AI_Design_Agent_Optimization.md#iv-ai-assisted-ui-development-the-startup-superpower",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+        "status": "unchecked"
       }
     ]
   },
@@ -19352,9 +19573,207 @@
       "file": "rules/02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:22:46.693Z",
+      "file": "rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:23:40.968Z",
+      "file": "rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:23:53.538Z",
+      "file": "rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:23:58.263Z",
+      "file": "rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:23:58.364Z",
+      "file": "rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:24:52.649Z",
+      "file": "rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:24:59.803Z",
+      "file": "rules/02__AI-DOCS/Architecture/architecture_template.md",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:25:11.620Z",
+      "file": "rules/02__AI-DOCS/Architecture/architecture_template.md",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:25:11.721Z",
+      "file": "rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:25:56.170Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:25:56.271Z",
+      "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:26:15.871Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:26:15.973Z",
+      "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:26:20.651Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:26:20.753Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:26:24.870Z",
+      "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:26:24.972Z",
+      "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:27:08.202Z",
+      "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:27:10.561Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:27:10.676Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:30:29.918Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:32:22.531Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:32:55.085Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:32:55.189Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:33:36.740Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.md",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:33:36.843Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:33:39.807Z",
+      "file": "rules/02__AI-DOCS/Architecture/architecture_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:36:42.121Z",
+      "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:39:16.917Z",
+      "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:39:23.368Z",
+      "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:39:23.481Z",
+      "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:41:51.337Z",
+      "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:42:58.480Z",
+      "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T06:20:14.570Z",
+  "last_updated": "2025-05-25T06:42:58.581Z",
   "scan_history": [
     {
       "id": "scan_1748143455002",

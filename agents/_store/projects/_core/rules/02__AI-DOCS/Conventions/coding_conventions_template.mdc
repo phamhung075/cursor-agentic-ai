@@ -1,8 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Coding Conventions and Style Guide
 
 ## Overview
 
-This document outlines the coding conventions and style guidelines for the project. Following these conventions ensures consistency, readability, and maintainability across the codebase. It should be used in conjunction with the [design_conventions_template.mdc](../../02__AI-DOCS/Conventions/design_conventions_template.mdc) which details the UX/UI principles and visual standards.
+This document outlines the coding conventions and style guidelines for the project. Following these conventions ensures consistency, readability, and maintainability across the codebase. It should be used in conjunction with the [**Design Conventions and Style Guide**](agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) which details the UX/UI principles and visual standards.
 
 ## General Principles
 
@@ -10,25 +15,73 @@ This document outlines the coding conventions and style guidelines for the proje
 - **Consistency:** Follow established patterns throughout the codebase
 - **Simplicity:** Prefer simple, straightforward solutions over complex ones
 - **Documentation:** Document code where necessary, especially non-obvious behavior
+- **Type Safety:** Leverage TypeScript for better code quality and developer experience
+- **Performance:** Write efficient code that scales well
+- **Maintainability:** Structure code for easy modification and extension
+
+## Language-Specific Guidelines
+
+### TypeScript/JavaScript
+
+#### Type Definitions
+- Always use TypeScript when possible
+- Define interfaces for complex objects
+- Use union types for restricted values
+- Avoid `any` type; use `unknown` when type is truly unknown
+
+```typescript
+// Good
+interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  role: 'admin' | 'user' | 'moderator';
+  createdAt: Date;
+}
+
+// Bad
+const userProfile: any = {
+  id: '123',
+  name: 'John',
+  // Missing type safety
+};
+```
+
+#### Modern JavaScript Features
+- Use ES6+ features (arrow functions, destructuring, template literals)
+- Prefer `const` and `let` over `var`
+- Use async/await over Promises when possible
+- Leverage optional chaining and nullish coalescing
+
+```typescript
+// Good
+const { name, email } = user;
+const displayName = user?.profile?.displayName ?? user.name;
+
+// Bad
+var userName = user.name;
+const displayName = user.profile && user.profile.displayName ? user.profile.displayName : user.name;
+```
 
 ## Naming Conventions
 
-### Variables
+### Variables and Functions
 
 - Use **camelCase** for variables and function names
 - Use descriptive names that indicate purpose
 - Avoid abbreviations unless widely understood
-- Boolean variables should start with `is`, `has`, `should`, etc.
+- Boolean variables should start with `is`, `has`, `should`, `can`, etc.
 
-```javascript
-/ Good
-const userProfile = {};
-const isActive = true;
-const hasPermission = checkPermissions();
+```typescript
+// Good
+const userProfile: UserProfile = {};
+const isAuthenticated = true;
+const hasPermission = checkUserPermissions();
+const canEdit = user.role === 'admin';
 
-/ Bad
+// Bad
 const up = {};
-const active = true;
+const auth = true;
 const perm = checkPermissions();
 ```
 
@@ -37,230 +90,769 @@ const perm = checkPermissions();
 - Use **camelCase** for function names
 - Use verbs for function names to indicate actions
 - Be specific about what the function does
+- Use async/await for asynchronous operations
 
-```javascript
-function getUserProfile() { /* ... */ }
-function validateInput() { /* ... */ }
-function calculateTotal() { /* ... */ }
+```typescript
+// Good
+async function getUserProfile(userId: string): Promise<UserProfile> { /* ... */ }
+function validateEmailFormat(email: string): boolean { /* ... */ }
+function calculateTotalWithTax(price: number, taxRate: number): number { /* ... */ }
+
+// Bad
+function user() { /* ... */ }
+function validate() { /* ... */ }
+function calc() { /* ... */ }
 ```
 
-### Classes
+### Classes and Interfaces
 
-- Use **PascalCase** for class names
+- Use **PascalCase** for class names and interfaces
 - Use nouns for class names
+- Prefix interfaces with `I` only when necessary for disambiguation
 
-```javascript
-class UserProfile { /* ... */ }
+```typescript
+// Good
+interface UserProfile { /* ... */ }
 class PaymentProcessor { /* ... */ }
 class AuthenticationService { /* ... */ }
+
+// Acceptable when needed
+interface IUserRepository { /* ... */ }
+class UserRepository implements IUserRepository { /* ... */ }
 ```
 
-### Constants
+### Constants and Enums
 
 - Use **UPPER_SNAKE_CASE** for constants
+- Use **PascalCase** for enums
 
-```javascript
-const API_BASE_URL = 'https:/api.example.com';
+```typescript
+// Constants
+const API_BASE_URL = 'https://api.example.com';
 const MAX_RETRY_ATTEMPTS = 3;
+const DEFAULT_TIMEOUT_MS = 5000;
+
+// Enums
+enum UserRole {
+  ADMIN = 'admin',
+  USER = 'user',
+  MODERATOR = 'moderator'
+}
+
+enum HttpStatus {
+  OK = 200,
+  NOT_FOUND = 404,
+  INTERNAL_SERVER_ERROR = 500
+}
 ```
 
 ### Files and Directories
 
 - Use **kebab-case** for file and directory names
+- Use descriptive names that indicate the file's purpose
 - Group related files in directories
+- Use consistent file extensions (.ts, .tsx, .js, .jsx)
 
 ```
-components/
-  user-profile/
-    user-profile.component.js
-    user-profile.styles.js
-    user-profile.test.js
+src/
+  components/
+    user-profile/
+      user-profile.component.tsx
+      user-profile.types.ts
+      user-profile.styles.ts
+      user-profile.test.tsx
+      index.ts
+  services/
+    api/
+      user-api.service.ts
+      auth-api.service.ts
+    utils/
+      validation.utils.ts
+      date.utils.ts
 ```
 
 ## Code Formatting
 
-- Use 2 spaces for indentation
-- Maximum line length: 80 characters
+### General Formatting
+- Use **2 spaces** for indentation
+- Maximum line length: **100 characters** (updated from 80 for modern screens)
 - Use semicolons at the end of statements
-- Use single quotes for strings
+- Use **single quotes** for strings (unless interpolation is needed)
 - Always use curly braces for control structures, even for single-line blocks
+- Use trailing commas in multi-line objects and arrays
 
-```javascript
-/ Good
+```typescript
+// Good
+const config = {
+  apiUrl: 'https://api.example.com',
+  timeout: 5000,
+  retries: 3, // trailing comma
+};
+
 if (condition) {
   doSomething();
 }
 
-/ Bad
+// Bad
+const config = {
+  apiUrl: "https://api.example.com",
+  timeout: 5000,
+  retries: 3
+}
+
 if (condition) doSomething();
 ```
 
-## Comments
+### Prettier Configuration
+Use Prettier with these settings:
 
-- Use JSDoc comments for functions and classes
-- Add comments for complex logic or non-obvious behavior
-- Keep comments up-to-date with code changes
-
-```javascript
-/**
- * Calculates the total price including tax
- * @param {number} price - The base price
- * @param {number} taxRate - The tax rate as a decimal
- * @returns {number} The total price including tax
- */
-function calculateTotalPrice(price, taxRate) {
-  / Handle edge cases
-  if (price < 0) {
-    throw new Error('Price cannot be negative');
-  }
-
-  return price * (1 + taxRate);
+```json
+{
+  "semi": true,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false
 }
 ```
 
-## Component Structure (e.g., React/Next.js or chosen frontend framework)
+## Comments and Documentation
 
-- One component per file
-- Follow this order for component methods:
-  1. Constructor
-  2. Lifecycle methods
-  3. Event handlers
-  4. Render helpers
-  5. Render method
+### JSDoc Comments
+- Use JSDoc comments for all public functions, classes, and interfaces
+- Include parameter types, return types, and descriptions
+- Add examples for complex functions
 
-```jsx
-class UserProfile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { /* ... */ };
+```typescript
+/**
+ * Calculates the total price including tax and applies any applicable discounts
+ * @param price - The base price before tax
+ * @param taxRate - The tax rate as a decimal (e.g., 0.1 for 10%)
+ * @param discountCode - Optional discount code to apply
+ * @returns The final price including tax and discounts
+ * @throws {Error} When price is negative or tax rate is invalid
+ * 
+ * @example
+ * ```typescript
+ * const total = calculateTotalPrice(100, 0.1, 'SAVE10');
+ * console.log(total); // 99 (100 + 10% tax - 10% discount)
+ * ```
+ */
+async function calculateTotalPrice(
+  price: number,
+  taxRate: number,
+  discountCode?: string
+): Promise<number> {
+  if (price < 0) {
+    throw new Error('Price cannot be negative');
   }
-
-  componentDidMount() {
-    / ...
+  
+  if (taxRate < 0 || taxRate > 1) {
+    throw new Error('Tax rate must be between 0 and 1');
   }
-
-  handleSubmit = () => {
-    / ...
+  
+  let total = price * (1 + taxRate);
+  
+  if (discountCode) {
+    const discount = await getDiscountAmount(discountCode);
+    total -= discount;
   }
+  
+  return Math.max(0, total); // Ensure non-negative result
+}
+```
 
-  renderForm() {
-    / ...
-  }
+### Inline Comments
+- Add comments for complex logic or non-obvious behavior
+- Explain the "why" not the "what"
+- Keep comments up-to-date with code changes
 
-  render() {
-    return (
-      / ...
-    );
-  }
+```typescript
+// Calculate compound interest using the formula: A = P(1 + r/n)^(nt)
+// where P = principal, r = annual rate, n = compounds per year, t = time in years
+const compoundInterest = principal * Math.pow(1 + (rate / compoundsPerYear), compoundsPerYear * years);
+
+// TODO: Optimize this algorithm for large datasets
+// FIXME: Handle edge case when user has no permissions
+// NOTE: This implementation follows the OAuth 2.0 specification
+```
+
+## Component Structure (React/Next.js)
+
+### Functional Components with Hooks
+- Prefer functional components over class components
+- Use TypeScript interfaces for props
+- Follow the order: imports, types, component, export
+
+```tsx
+import React, { useState, useEffect, useCallback } from 'react';
+import { User } from '../types/user.types';
+import { userService } from '../services/user.service';
+
+interface UserProfileProps {
+  userId: string;
+  onUserUpdate?: (user: User) => void;
+  className?: string;
+}
+
+export const UserProfile: React.FC<UserProfileProps> = ({
+  userId,
+  onUserUpdate,
+  className = '',
+}) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchUser = useCallback(async () => {
+    try {
+      setLoading(true);
+      const userData = await userService.getUser(userId);
+      setUser(userData);
+      onUserUpdate?.(userData);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch user');
+    } finally {
+      setLoading(false);
+    }
+  }, [userId, onUserUpdate]);
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
+  const handleSubmit = useCallback(async (formData: Partial<User>) => {
+    try {
+      const updatedUser = await userService.updateUser(userId, formData);
+      setUser(updatedUser);
+      onUserUpdate?.(updatedUser);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to update user');
+    }
+  }, [userId, onUserUpdate]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!user) return <div>User not found</div>;
+
+  return (
+    <div className={`user-profile ${className}`}>
+      {/* Component JSX */}
+    </div>
+  );
+};
+
+export default UserProfile;
+```
+
+### Custom Hooks
+- Extract reusable logic into custom hooks
+- Follow the `use` prefix convention
+- Return objects for multiple values
+
+```typescript
+interface UseApiResult<T> {
+  data: T | null;
+  loading: boolean;
+  error: string | null;
+  refetch: () => Promise<void>;
+}
+
+function useApi<T>(url: string): UseApiResult<T> {
+  const [data, setData] = useState<T | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const result = await response.json();
+      setData(result);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred');
+    } finally {
+      setLoading(false);
+    }
+  }, [url]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return { data, loading, error, refetch: fetchData };
 }
 ```
 
 ## State Management
 
+### Local State
 - Keep state as local as possible
-- Use context or state management libraries for shared state
+- Use `useState` for simple state
+- Use `useReducer` for complex state logic
+
+### Global State
+- Use Context API for app-wide state
+- Consider state management libraries (Redux Toolkit, Zustand) for complex applications
 - Document the shape of state objects
+
+```typescript
+// Context example
+interface AppState {
+  user: User | null;
+  theme: 'light' | 'dark';
+  notifications: Notification[];
+}
+
+const AppContext = createContext<{
+  state: AppState;
+  dispatch: React.Dispatch<AppAction>;
+} | null>(null);
+
+// Custom hook for using context
+function useAppContext() {
+  const context = useContext(AppContext);
+  if (!context) {
+    throw new Error('useAppContext must be used within AppProvider');
+  }
+  return context;
+}
+```
 
 ## Error Handling
 
+### Comprehensive Error Handling
 - Use try/catch blocks for error-prone operations
+- Create custom error classes for different error types
 - Provide meaningful error messages
 - Log errors with appropriate context
+- Implement error boundaries in React
 
-```javascript
-try {
-  const data = await fetchUserData(userId);
-  processUserData(data);
-} catch (error) {
-  logger.error(`Failed to fetch user data for ${userId}`, error);
-  showErrorNotification('Could not load user data. Please try again.');
+```typescript
+// Custom error classes
+class ValidationError extends Error {
+  constructor(field: string, message: string) {
+    super(`Validation failed for ${field}: ${message}`);
+    this.name = 'ValidationError';
+  }
+}
+
+class ApiError extends Error {
+  constructor(
+    public status: number,
+    message: string,
+    public endpoint: string
+  ) {
+    super(`API Error ${status}: ${message}`);
+    this.name = 'ApiError';
+  }
+}
+
+// Error handling with logging
+async function fetchUserData(userId: string): Promise<User> {
+  try {
+    const response = await userService.getUser(userId);
+    return response;
+  } catch (error) {
+    // Log error with context
+    logger.error('Failed to fetch user data', {
+      userId,
+      error: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      timestamp: new Date().toISOString(),
+    });
+
+    // Re-throw with user-friendly message
+    if (error instanceof ApiError && error.status === 404) {
+      throw new Error('User not found');
+    }
+    
+    throw new Error('Failed to load user data. Please try again.');
+  }
+}
+
+// React Error Boundary
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean; error?: Error }
+> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    logger.error('React Error Boundary caught an error', {
+      error: error.message,
+      stack: error.stack,
+      componentStack: errorInfo.componentStack,
+    });
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <ErrorFallback error={this.state.error} />;
+    }
+
+    return this.props.children;
+  }
 }
 ```
 
 ## Testing
 
-- Write tests for all new features
+### Testing Strategy
+- Write tests for all new features and bug fixes
+- Follow the Testing Pyramid: Unit > Integration > E2E
+- Use Test-Driven Development (TDD) when appropriate
+- Maintain high test coverage (aim for 80%+)
+
+### Unit Testing
+- Use Jest and React Testing Library for React components
 - Follow the AAA pattern (Arrange, Act, Assert)
 - Test both success and failure cases
+- Mock external dependencies
 
-```javascript
-describe('calculateTotalPrice', () => {
-  it('should calculate the correct total with tax', () => {
-    / Arrange
-    const price = 100;
-    const taxRate = 0.1;
+```typescript
+// Unit test example
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { UserProfile } from './user-profile.component';
+import { userService } from '../services/user.service';
 
-    / Act
-    const result = calculateTotalPrice(price, taxRate);
+// Mock the service
+jest.mock('../services/user.service');
+const mockUserService = userService as jest.Mocked<typeof userService>;
 
-    /02__AI-DOCS/Conventions/design_conventions_template.mdc) for detailed UX/UI principles.
+describe('UserProfile', () => {
+  const mockUser: User = {
+    id: '1',
+    name: 'John Doe',
+    email: 'john@example.com',
+    role: 'user',
+  };
 
-## Design and User Experience (UX/UI) Principles
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-The goal is to create user interfaces (UI) and user experiences (UX) that rival the best startups (e.g., Y Combinator standard), focusing on modernity, elegance, intuitiveness, and a "pixel-perfect" aesthetic.
+  it('should display user information when loaded successfully', async () => {
+    // Arrange
+    mockUserService.getUser.mockResolvedValue(mockUser);
 
-### Design Philosophy
-- **Modernity and Elegance:** Aim for clean, contemporary, and visually appealing designs.
-- **Intuitive Simplicity:** Interfaces should be easy to understand and use, even for new users.
-- **Consistency:** Maintain visual and functional consistency throughout the application.
-- **User Feedback:** Provide clear and immediate feedback to user actions.
-- **Perceived Performance:** Optimize so the application feels fast and responsive.
+    // Act
+    render(<UserProfile userId="1" />);
 
-### Design System
-- **Use of Tailwind CSS:**
-    - Follow a centralized Tailwind CSS configuration ([`tailwind.config.js`](tailwind.config.js) to be created/modified if needed) to define the color palette, typography, breakpoints, etc.
-    - Favor composing Tailwind utility classes to create reusable components.
-    - Avoid excessive custom CSS styles; rely as much as possible on Tailwind's capabilities.
-- **UI Component Library (Optional but recommended):**
-    - Consider using a headless component library (e.g., Headless UI, Radix UI) or a styled component library (e.g., Shadcn/UI, Material UI, Ant Design) to speed up development and ensure consistency.
-    - If a library is chosen, define conventions for its customization and extension.
-- **Color Palette:** Define and consistently use:
-    - Primary and secondary colors.
-    - Neutral colors (grays, whites, blacks).
-    - Accent colors.
-    - Semantic colors for states (success, error, warning, information).
-- **Typography:**
-    - Define a clear typographic hierarchy (fonts, sizes, weights, line heights) for titles, subtitles, body text, labels, etc.
-    - Ensure optimal readability on all devices.
-- **Spacing and Grid (Layout):**
-    - Adopt a consistent spacing system (e.g., based on a 4px or 8px scale).
-    - Use grids (CSS Grid, Flexbox) to structure layouts and ensure alignment.
-- **Iconography:**
-    - Choose a consistent icon style (e.g., Heroicons, Feather Icons).
-    - Use SVGs for sharpness and scalability.
-- **Micro-interactions and Animations:**
-    - Use subtle animations and transitions to improve UX (e.g., click feedback, smooth state transitions).
-    - Avoid excessive or distracting animations. They should serve a purpose.
-- **Responsive Design:**
-    - Consistently adopt a "Mobile-first" or "Desktop-first" approach.
-    - Test on a variety of screen sizes and devices.
-- **State Management:**
-    - Design clear states for interactive elements (hover, focus, active, disabled).
-    - Plan for states for data loading, empty lists, and errors.
+    // Assert
+    await waitFor(() => {
+      expect(screen.getByText('John Doe')).toBeInTheDocument();
+      expect(screen.getByText('john@example.com')).toBeInTheDocument();
+    });
+  });
 
-### Accessibility (In-depth)
-In addition to the points in the "Accessibility" section:
-- **Full keyboard navigation:** All interactive elements must be accessible and usable via the keyboard.
-- **High contrast by default:** Aim for contrasts higher than WCAG AA minimums where possible, for increased visual comfort.
-- **Alternative texts for images:** Descriptive and relevant.
-- **Rigorous semantic structure:** Use appropriate HTML tags for their meaning.
+  it('should display error message when user fetch fails', async () => {
+    // Arrange
+    mockUserService.getUser.mockRejectedValue(new Error('Network error'));
 
-### Tools and Processes
-- **Mockups (if available):** If Figma mockups (or other) are provided, strive to adhere to them faithfully.
-- **Iteration:** Design is an iterative process. Be open to feedback and continuous improvement.
+    // Act
+    render(<UserProfile userId="1" />);
+
+    // Assert
+    await waitFor(() => {
+      expect(screen.getByText(/error/i)).toBeInTheDocument();
+    });
+  });
+
+  it('should call onUserUpdate when user is updated', async () => {
+    // Arrange
+    const onUserUpdate = jest.fn();
+    mockUserService.getUser.mockResolvedValue(mockUser);
+    mockUserService.updateUser.mockResolvedValue({ ...mockUser, name: 'Jane Doe' });
+
+    // Act
+    render(<UserProfile userId="1" onUserUpdate={onUserUpdate} />);
+    
+    await waitFor(() => screen.getByText('John Doe'));
+    
+    const editButton = screen.getByRole('button', { name: /edit/i });
+    fireEvent.click(editButton);
+    
+    const nameInput = screen.getByLabelText(/name/i);
+    fireEvent.change(nameInput, { target: { value: 'Jane Doe' } });
+    
+    const saveButton = screen.getByRole('button', { name: /save/i });
+    fireEvent.click(saveButton);
+
+    // Assert
+    await waitFor(() => {
+      expect(onUserUpdate).toHaveBeenCalledWith({ ...mockUser, name: 'Jane Doe' });
+    });
+  });
+});
+```
+
+### Integration Testing
+- Test component interactions
+- Test API integrations
+- Use MSW (Mock Service Worker) for API mocking
+
+### E2E Testing
+- Use Playwright or Cypress for end-to-end tests
+- Test critical user journeys
+- Run E2E tests in CI/CD pipeline
+
+## Performance Considerations
+
+### React Performance
+- Use `React.memo` for expensive components
+- Implement `useMemo` and `useCallback` for expensive calculations
+- Use code splitting with `React.lazy` and `Suspense`
+- Optimize bundle size with tree shaking
+
+```typescript
+// Memoized component
+const ExpensiveComponent = React.memo<{ data: ComplexData }>(({ data }) => {
+  const processedData = useMemo(() => {
+    return expensiveDataProcessing(data);
+  }, [data]);
+
+  return <div>{/* Render processed data */}</div>;
+});
+
+// Code splitting
+const LazyComponent = React.lazy(() => import('./lazy-component'));
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LazyComponent />
+    </Suspense>
+  );
+}
+```
+
+### General Performance
+- Use pagination for large data sets
+- Implement virtual scrolling for long lists
+- Optimize images and assets
+- Use CDN for static assets
+- Implement proper caching strategies
+
+## Accessibility
+
+### Comprehensive Accessibility
+- Use semantic HTML elements
+- Include proper ARIA attributes
+- Ensure keyboard navigation works
+- Maintain sufficient color contrast (WCAG AA minimum)
+- Test with screen readers
+- Provide alternative text for images
+- Implement focus management
+
+```tsx
+// Accessible component example
+const AccessibleButton: React.FC<{
+  onClick: () => void;
+  disabled?: boolean;
+  ariaLabel?: string;
+  children: React.ReactNode;
+}> = ({ onClick, disabled = false, ariaLabel, children }) => {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={ariaLabel}
+      className={`
+        px-4 py-2 rounded-md font-medium
+        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+        disabled:opacity-50 disabled:cursor-not-allowed
+        ${disabled ? 'bg-gray-300' : 'bg-blue-600 hover:bg-blue-700 text-white'}
+      `}
+    >
+      {children}
+    </button>
+  );
+};
+```
 
 ## Security Best Practices
 
-- Sanitize user inputs
+### Input Validation and Sanitization
+- Validate all user inputs on both client and server
 - Use parameterized queries for database operations
-- Implement proper authentication and authorization checks
+- Sanitize data before rendering
+- Implement proper authentication and authorization
+
+```typescript
+// Input validation example
+import { z } from 'zod';
+
+const UserSchema = z.object({
+  name: z.string().min(1).max(100),
+  email: z.string().email(),
+  age: z.number().min(0).max(150),
+});
+
+function validateUser(data: unknown): User {
+  try {
+    return UserSchema.parse(data);
+  } catch (error) {
+    throw new ValidationError('Invalid user data', error);
+  }
+}
+
+// SQL injection prevention
+const getUserById = async (id: string): Promise<User> => {
+  // Use parameterized query
+  const query = 'SELECT * FROM users WHERE id = $1';
+  const result = await db.query(query, [id]);
+  return result.rows[0];
+};
+```
+
+### Authentication and Authorization
+- Implement proper session management
+- Use HTTPS for all communications
 - Follow the principle of least privilege
+- Implement rate limiting
+- Use secure headers
+
+## AI-Assisted Development
+
+### Working with AI Tools
+- Write clear, descriptive prompts for AI assistants
+- Review and test AI-generated code thoroughly
+- Use AI for code reviews and suggestions
+- Leverage AI for documentation generation
+- Maintain human oversight for critical decisions
+
+### Code Generation Guidelines
+- Provide context and requirements clearly
+- Specify coding standards and conventions
+- Request tests along with implementation
+- Ask for explanations of complex logic
+- Validate AI suggestions against project requirements
 
 ## Git Workflow
 
-- Use descriptive branch names (feature/user-authentication, bugfix/02__AI-DOCS/Conventions/design_conventions_template.mdc) been completed and is it being followed?**
-- Is the code well-tested?
-- Are there any security concerns?
-- Is the code efficient and performant?
-- **Are the design and UX/02__AI-DOCS/Conventions/02__AI-DOCS/Conventions/02__AI-DOCS/Conventions/design_conventions_template.mdc)?**
-- Is the code accessible? (Vérifier les points spécifiques des sections UX/02__AI-DOCS/Conventions/design_conventions_template.mdc), should be reviewed and updated regularly as the project evolves.*
+### Branch Naming
+- Use descriptive branch names with prefixes:
+  - `feature/user-authentication`
+  - `bugfix/login-error`
+  - `hotfix/security-patch`
+  - `refactor/api-service`
+
+### Commit Messages
+- Use conventional commit format:
+  - `feat: add user authentication`
+  - `fix: resolve login error`
+  - `docs: update API documentation`
+  - `test: add unit tests for user service`
+  - `refactor: improve error handling`
+
+### Pull Request Guidelines
+- Keep PRs focused and small
+- Write descriptive PR descriptions
+- Include screenshots for UI changes
+- Request appropriate reviewers
+- Ensure CI/CD checks pass
+
+## Code Review Checklist
+
+### Functionality
+- [ ] Does the code solve the intended problem?
+- [ ] Are edge cases handled appropriately?
+- [ ] Is error handling comprehensive?
+- [ ] Are there any potential security vulnerabilities?
+
+### Code Quality
+- [ ] Does the code follow the conventions in this document?
+- [ ] Is the code well-structured and readable?
+- [ ] Are functions and classes appropriately sized?
+- [ ] Is the code properly typed (TypeScript)?
+- [ ] Are there any code smells or anti-patterns?
+
+### Testing
+- [ ] Are there adequate unit tests?
+- [ ] Do tests cover both success and failure cases?
+- [ ] Are integration tests included where appropriate?
+- [ ] Is test coverage maintained or improved?
+
+### Performance
+- [ ] Is the code efficient and performant?
+- [ ] Are there any unnecessary re-renders (React)?
+- [ ] Is data fetching optimized?
+- [ ] Are large datasets handled appropriately?
+
+### Design and UX/UI
+- [ ] **Has the [Design Conventions and Style Guide](mdc:design_conventions_template.md:1) been completed and is it being followed?**
+- [ ] **Are the design and UX/UI compliant with the principles defined in both convention documents (modernity, intuitiveness, consistency, aesthetics)?**
+- [ ] **Is the Tailwind CSS implementation clean and consistent?**
+- [ ] **Are the components responsive and do they display correctly on different screen sizes?**
+- [ ] **Are interactions and animations smooth and do they add value?**
+
+### Accessibility
+- [ ] Is the code accessible to users with disabilities?
+- [ ] Are ARIA attributes used appropriately?
+- [ ] Is keyboard navigation functional?
+- [ ] Is color contrast sufficient?
+
+### Documentation
+- [ ] Is the code self-documenting?
+- [ ] Are complex algorithms explained?
+- [ ] Is API documentation updated?
+- [ ] Are README files current?
+
+## Tools and Configuration
+
+### Recommended Tools
+- **TypeScript**: For type safety
+- **ESLint**: For code linting
+- **Prettier**: For code formatting
+- **Husky**: For Git hooks
+- **Jest**: For unit testing
+- **React Testing Library**: For component testing
+- **Playwright**: For E2E testing
+
+### Configuration Files
+
+#### ESLint Configuration
+```json
+{
+  "extends": [
+    "@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/explicit-function-return-type": "warn",
+    "react/prop-types": "off"
+  }
+}
+```
+
+#### Package.json Scripts
+```json
+{
+  "scripts": {
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write src/**/*.{ts,tsx}",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  }
+}
+```
+
+---
+
+*This document, along with the [**Design Conventions and Style Guide**](agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc), should be reviewed and updated regularly as the project evolves and new best practices emerge.*

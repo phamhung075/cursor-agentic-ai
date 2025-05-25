@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # System Architecture Overview
 
 ## Project Information
@@ -6,7 +11,9 @@
 - **Version:** [Version Number]
 - **Last Updated:** [Date]
 
-## Architecture Overview [Provide a high-level description of the system architecture. Include a brief explanation of the architectural style (e.g., microservices, monolithic, serverles](s)and the main components.]
+## Architecture Overview
+
+[Provide a high-level description of the system architecture. Include a brief explanation of the architectural style (e.g., microservices, monolithic, serverless) and the main components.]
 
 ## System Components
 
@@ -53,7 +60,9 @@ flowchart TD
 - **Rationale:** [Why this option was chosen]
 - **Consequences:** [Implications of this decision]
 
-### Decision 2: [Decision Title] [Follow same format as above]
+### Decision 2: [Decision Title]
+
+[Follow same format as above]
 
 ## Communication Patterns
 
@@ -82,7 +91,9 @@ flowchart TD
 - **Alerting:** [Alerting strategy]
 - **Tracing:** [Distributed tracing approach]
 
-## Future Considerations [Describe planned architectural changes or areas that may need to evolve as the system grows]
+## Future Considerations
+
+[Describe planned architectural changes or areas that may need to evolve as the system grows]
 
 ---
 
