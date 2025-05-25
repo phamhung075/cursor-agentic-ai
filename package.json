@@ -90,7 +90,17 @@
     "cursor:aai-quick": "node agents/_store/scripts/cursor-aai-integration.js quick",
     "cursor:aai-auto-manage": "node agents/_store/scripts/cursor-aai-integration.js auto-manage",
     "cursor:aai-status": "node agents/_store/scripts/cursor-aai-integration.js status",
-    "AAI:task-workflow": "npm run cursor:aai-init && npm run aai:task-auto-manage"
+    "AAI:task-workflow": "npm run cursor:aai-init && npm run aai:task-auto-manage",
+    "task:monitor-start": "node agents/_store/projects/_core/scripts/nested-task-monitor.js start",
+    "task:monitor-stop": "node agents/_store/projects/_core/scripts/nested-task-monitor.js stop",
+    "task:monitor-status": "node agents/_store/projects/_core/scripts/nested-task-monitor.js status",
+    "task:monitor-analytics": "node agents/_store/projects/_core/scripts/nested-task-monitor.js analytics",
+    "task:add": "node agents/_store/projects/_core/scripts/task-logger-helper.js add",
+    "task:complete": "node agents/_store/projects/_core/scripts/task-logger-helper.js complete",
+    "task:start": "node agents/_store/projects/_core/scripts/task-logger-helper.js start",
+    "task:progress": "node agents/_store/projects/_core/scripts/task-logger-helper.js progress",
+    "task:list": "node agents/_store/projects/_core/scripts/task-logger-helper.js list",
+    "task:demo": "node agents/_store/projects/_core/scripts/start-task-monitoring.js"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^2.0.1",

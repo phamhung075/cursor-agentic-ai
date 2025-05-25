@@ -5,7 +5,7 @@
  * 
  * Master script that launches all AAI functions, coordinates them,
  * and maintains continuous improvement workflow with enhanced intelligence
- * 🎯 NOW INCLUDES: Automatic AAI Task Management Integration
+ * 🎯 NOW INCLUDES: Nested Task Monitoring Integration
  */
 
 const { spawn, exec } = require('child_process');
@@ -26,9 +26,7 @@ class AAICompleteOrchestrator extends EventEmitter {
       intelligence: false,
       contextTracking: false,
       performanceOptimized: false,
-      taskManagement: false,  // 🎯 NEW: Task Management status
-      cursorAAIIntegration: false,  // 🎯 NEW: Cursor-AAI Integration status
-      chatProcessor: false  // 🎯 NEW: Chat Processor status
+      taskMonitoring: false  // 🎯 NEW: Task Monitoring status (nested system only)
     };
     this.config = {
       autoRestart: true,
@@ -40,21 +38,20 @@ class AAICompleteOrchestrator extends EventEmitter {
       performanceInterval: 600000, // 10 minutes (more frequent)
       aaiCommandInterval: 120000, // 2 minutes - AAI agent commands
       memorySync: 600000, // 10 minutes - memory sync
-      taskManagementInterval: 300000 // 🎯 NEW: 5 minutes - task auto-management
+      taskMonitoringInterval: 600000  // 🎯 NEW: 10 minutes - task monitoring interval
     };
     this.startTime = new Date();
     this.improvementCycle = 0;
-    this.lastChatCommandTime = null;
   }
 
   /**
    * Main orchestration function
    */
   async launch() {
-    console.log('🚀 LAUNCHING COMPLETE AAI SYSTEM WITH ENHANCED INTELLIGENCE & TASK MANAGEMENT');
+    console.log('🚀 LAUNCHING COMPLETE AAI SYSTEM WITH ENHANCED INTELLIGENCE & TASK MONITORING');
     console.log('━'.repeat(80));
     console.log(`⏰ Started at: ${this.startTime.toLocaleString()}`);
-    console.log('🎯 Features: Intelligence + Task Management + Cursor Integration');
+    console.log('🎯 Features: Intelligence + Nested Task Monitoring + Cursor Integration');
     console.log('');
 
     try {
@@ -64,8 +61,8 @@ class AAICompleteOrchestrator extends EventEmitter {
       // 2. Initialize intelligence systems
       await this.initializeIntelligence();
 
-      // 🎯 NEW: 3. Initialize Task Management System
-      await this.initializeTaskManagement();
+      // 🎯 NEW: 3. Initialize Nested Task Monitoring System
+      await this.initializeTaskMonitoring();
 
       // 4. Launch core components in sequence
       await this.launchCoreComponents();
@@ -76,7 +73,7 @@ class AAICompleteOrchestrator extends EventEmitter {
       // 6. Setup process management
       this.setupProcessManagement();
 
-      console.log('✅ AAI SYSTEM FULLY OPERATIONAL WITH TASK MANAGEMENT');
+      console.log('✅ AAI SYSTEM FULLY OPERATIONAL WITH NESTED TASK MONITORING');
       console.log('━'.repeat(80));
       this.showSystemStatus();
       this.showAvailableCommands();
@@ -113,96 +110,6 @@ class AAICompleteOrchestrator extends EventEmitter {
   }
 
   /**
-   * 🎯 NEW: Initialize Task Management System
-   */
-  async initializeTaskManagement() {
-    console.log('🎯 Initializing AAI Task Management System...');
-
-    try {
-      // 1. Initialize AAI Task Manager
-      console.log('📋 Initializing task manager...');
-      await this.runCommand('aai:task-init', 'Initializing AAI Task Manager');
-      this.status.taskManagement = true;
-
-      // 2. Initialize Cursor-AAI Integration
-      console.log('🔗 Initializing Cursor-AAI integration...');
-      await this.runCommand('cursor:aai-init', 'Initializing Cursor-AAI Integration');
-      this.status.cursorAAIIntegration = true;
-
-      // 🎯 NEW: 3. Initialize Chat Command Processor
-      console.log('🗣️ Initializing chat command processor...');
-      await this.initializeChatProcessor();
-      this.status.chatProcessor = true;
-
-      // 4. Run initial task auto-management
-      console.log('🔄 Running initial task auto-management...');
-      await this.runCommand('aai:task-auto-manage', 'Auto-managing tasks');
-
-      console.log('✅ Task Management System initialized');
-      console.log('🎯 Ready to handle user requests automatically!');
-      console.log('🗣️ Chat commands will update .cursor/tasks.json automatically!');
-      console.log('');
-
-    } catch (error) {
-      console.warn('⚠️ Task Management initialization had issues:', error.message);
-      console.log('📝 Continuing without task management...\n');
-    }
-  }
-
-  /**
-   * 🎯 NEW: Initialize Chat Command Processor
-   */
-  async initializeChatProcessor() {
-    const CursorChatProcessor = require('./cursor-chat-processor');
-    this.chatProcessor = new CursorChatProcessor();
-    
-    try {
-      await this.chatProcessor.initialize();
-      
-      // Start monitoring for chat commands in background
-      this.startChatMonitoring();
-      
-      console.log('✅ Chat command processor ready');
-    } catch (error) {
-      console.warn('⚠️ Chat processor initialization failed:', error.message);
-      this.status.chatProcessor = false;
-    }
-  }
-
-  /**
-   * 🎯 NEW: Start chat monitoring
-   */
-  startChatMonitoring() {
-    // Monitor for direct command processing
-    setInterval(async () => {
-      try {
-        // Check for new commands and process them
-        const commandApiPath = '.cursor/chat-logs/process-command.json';
-        if (fs.existsSync(commandApiPath)) {
-          const stats = fs.statSync(commandApiPath);
-          const lastModified = stats.mtime.getTime();
-          
-          if (!this.lastChatCommandTime || lastModified > this.lastChatCommandTime) {
-            this.lastChatCommandTime = lastModified;
-            
-            try {
-              const commandData = JSON.parse(fs.readFileSync(commandApiPath, 'utf8'));
-              if (commandData.command && commandData.autoProcess) {
-                console.log('🗣️ Processing chat command automatically...');
-                await this.chatProcessor.processCommand(commandData.command, commandData.context || {});
-              }
-            } catch (error) {
-              // Ignore parsing errors for incomplete files
-            }
-          }
-        }
-      } catch (error) {
-        // Silently handle monitoring errors
-      }
-    }, 5000); // Check every 5 seconds
-  }
-
-  /**
    * Initialize intelligence systems
    */
   async initializeIntelligence() {
@@ -229,6 +136,77 @@ class AAICompleteOrchestrator extends EventEmitter {
       console.warn('⚠️ Intelligence initialization had issues:', error.message);
       console.log('📝 Continuing with basic functionality...\n');
     }
+  }
+
+  /**
+   * 🎯 NEW: Initialize Nested Task Monitoring System
+   */
+  async initializeTaskMonitoring() {
+    console.log('📊 Initializing Nested Task Monitoring System...');
+
+    try {
+      // Import the task monitoring system
+      const TaskLoggerHelper = require('../projects/_core/scripts/task-logger-helper');
+      
+      // Initialize the task monitor
+      console.log('🔍 Starting task monitor...');
+      this.taskMonitor = new TaskLoggerHelper();
+      
+      // The monitor auto-starts when instantiated
+      const status = this.taskMonitor.getMonitoringStatus();
+      if (status.isMonitoring) {
+        this.status.taskMonitoring = true;
+        console.log('✅ Task monitoring active');
+        console.log(`📁 Logs: ${status.logsDir}`);
+        console.log(`📊 Session: ${status.sessionId}`);
+      } else {
+        throw new Error('Task monitor failed to start');
+      }
+
+      // Start periodic monitoring health checks
+      this.startTaskMonitoringHealthChecks();
+
+      console.log('✅ Nested Task Monitoring System initialized');
+      console.log('📊 Real-time task logging and analytics active!');
+      console.log('');
+
+    } catch (error) {
+      console.warn('⚠️ Task Monitoring initialization had issues:', error.message);
+      console.log('📝 Continuing without task monitoring...\n');
+      this.status.taskMonitoring = false;
+    }
+  }
+
+  /**
+   * 🎯 NEW: Start task monitoring health checks
+   */
+  startTaskMonitoringHealthChecks() {
+    setInterval(async () => {
+      try {
+        if (this.taskMonitor) {
+          const status = this.taskMonitor.getMonitoringStatus();
+          
+          // Check if monitoring is still active
+          if (!status.isMonitoring) {
+            console.log('⚠️ Task monitoring stopped, attempting restart...');
+            this.taskMonitor.startMonitoring();
+          }
+          
+          // Log periodic analytics (every 10 minutes)
+          if (Date.now() % (10 * 60 * 1000) < this.config.taskMonitoringInterval) {
+            const analytics = this.taskMonitor.getAnalytics();
+            if (analytics && analytics.events) {
+              const totalEvents = Object.values(analytics.events).reduce((sum, count) => sum + count, 0);
+              if (totalEvents > 0) {
+                console.log(`📊 Task Activity: ${totalEvents} events logged`);
+              }
+            }
+          }
+        }
+      } catch (error) {
+        // Silently handle monitoring errors
+      }
+    }, this.config.taskMonitoringInterval);
   }
 
   /**
@@ -488,17 +466,12 @@ class AAICompleteOrchestrator extends EventEmitter {
       this.performPerformanceOptimization();
     }, this.config.performanceInterval);
 
-    // 🎯 NEW: Task Management auto-management every 5 minutes
-    setInterval(() => {
-      this.performTaskManagement();
-    }, this.config.taskManagementInterval);
-
     // System monitoring every 30 seconds
     setInterval(() => {
       this.performSystemMonitoring();
     }, this.config.monitoringInterval);
 
-    console.log('✅ Continuous operations started (including task management)\n');
+    console.log('✅ Continuous operations started (including nested task monitoring)\n');
   }
 
   /**
@@ -545,9 +518,7 @@ class AAICompleteOrchestrator extends EventEmitter {
       contextTracking: this.processes.has('context-tracking') && !this.processes.get('context-tracking').killed,
       memorySync: this.status.memorySync,
       monitoring: this.processes.has('core-monitoring') && !this.processes.get('core-monitoring').killed, // Check if process is running
-      taskManagement: this.status.taskManagement, // 🎯 NEW: Task Management status
-      cursorAAIIntegration: this.status.cursorAAIIntegration, // 🎯 NEW: Cursor-AAI Integration status
-      chatProcessor: this.status.chatProcessor  // 🎯 NEW: Chat Processor status
+      taskMonitoring: this.status.taskMonitoring  // 🎯 NEW: Task Monitoring status
     };
 
     // AAI Agent runs in service mode, check if it's still alive
@@ -562,19 +533,18 @@ class AAICompleteOrchestrator extends EventEmitter {
       performanceOptimized: this.status.performanceOptimized
     };
 
-    // Core systems that must be working (including monitoring and task management)
+    // Core systems that must be working (including monitoring and nested task monitoring)
     const coreHealthy = processHealth.autoSync && processHealth.memorySync && 
-                       processHealth.monitoring && processHealth.taskManagement &&
-                       processHealth.chatProcessor;
+                       processHealth.monitoring;
     
     // Count healthy processes
     const healthyProcesses = Object.values(processHealth).filter(Boolean).length;
     const totalProcesses = Object.keys(processHealth).length;
 
     if (coreHealthy && healthyProcesses >= totalProcesses - 1) { // Allow one process to be down
-      console.log(`🔄 [${timestamp}] Health check... ${healthyProcesses}/${totalProcesses} systems operational (Task Management: ✅)`);
+      console.log(`🔄 [${timestamp}] Health check... ${healthyProcesses}/${totalProcesses} systems operational (Task Monitoring: ${processHealth.taskMonitoring ? '✅' : '❌'})`);
     } else {
-      console.warn(`⚠️ [${timestamp}] Health check... ${healthyProcesses}/${totalProcesses} systems operational (Task Management: ${processHealth.taskManagement ? '✅' : '❌'})`);
+      console.warn(`⚠️ [${timestamp}] Health check... ${healthyProcesses}/${totalProcesses} systems operational (Task Monitoring: ${processHealth.taskMonitoring ? '✅' : '❌'})`);
       
       // Restart failed critical processes
       for (const [name, healthy] of Object.entries(processHealth)) {
@@ -584,31 +554,13 @@ class AAICompleteOrchestrator extends EventEmitter {
             console.log(`🔄 Restarting ${name}...`);
             await this.restartProcess(name === 'monitoring' ? 'core-monitoring' : name);
           }
-          // For task management, try to reinitialize
-          else if (name === 'taskManagement') {
-            console.log('🔄 Reinitializing task management...');
+          // For task monitoring, try to reinitialize
+          else if (name === 'taskMonitoring') {
+            console.log('🔄 Reinitializing nested task monitoring...');
             try {
-              await this.runCommand('aai:task-init', 'Reinitializing task manager');
-              this.status.taskManagement = true;
+              await this.initializeTaskMonitoring();
             } catch (error) {
-              console.warn('⚠️ Task management reinitialization failed:', error.message);
-            }
-          }
-          else if (name === 'cursorAAIIntegration') {
-            console.log('🔄 Reinitializing Cursor-AAI integration...');
-            try {
-              await this.runCommand('cursor:aai-init', 'Reinitializing Cursor-AAI integration');
-              this.status.cursorAAIIntegration = true;
-            } catch (error) {
-              console.warn('⚠️ Cursor-AAI integration reinitialization failed:', error.message);
-            }
-          }
-          else if (name === 'chatProcessor') {
-            console.log('🔄 Reinitializing chat command processor...');
-            try {
-              await this.initializeChatProcessor();
-            } catch (error) {
-              console.warn('⚠️ Chat processor reinitialization failed:', error.message);
+              console.warn('⚠️ Nested task monitoring reinitialization failed:', error.message);
             }
           }
         }
@@ -878,9 +830,7 @@ class AAICompleteOrchestrator extends EventEmitter {
       'Auto-Sync': this.status.autoSync,
       'Memory Sync': this.status.memorySync,
       'Core Monitoring': this.processes.has('core-monitoring') && !this.processes.get('core-monitoring').killed,
-      '🎯 Task Management': this.status.taskManagement,
-      '🔗 Cursor-AAI Integration': this.status.cursorAAIIntegration,
-      '🗣️ Chat Processor': this.status.chatProcessor
+      '📊 Task Monitoring': this.status.taskMonitoring
     };
     
     Object.entries(coreComponents).forEach(([component, status]) => {
@@ -934,8 +884,7 @@ class AAICompleteOrchestrator extends EventEmitter {
     console.log('   ✅ Performance Optimization - Every 10 minutes');
     console.log('   ✅ Context Analysis - Every 15 minutes');
     console.log('   ✅ Auto-Restart - If any component fails');
-    console.log('   🎯 ✅ Task Management - Every 5 minutes (NEW!)');
-    console.log('   🔗 ✅ Request Processing - Automatic (NEW!)');
+    console.log('   📊 ✅ Nested Task Monitoring - Real-time (NEW!)');
     console.log('');
     console.log('📋 WHAT\'S RUNNING AUTOMATICALLY:');
     console.log('   🤖 AAI Agent - Continuous improvement mode');
@@ -945,9 +894,7 @@ class AAICompleteOrchestrator extends EventEmitter {
     console.log('   🎯 Context Tracker - Smart context awareness');
     console.log('   ⚡ Performance Optimizer - Continuous optimization');
     console.log('   🔄 Improvement Cycles - Active enhancement');
-    console.log('   🎯 Task Manager - Automatic task creation & execution (NEW!)');
-    console.log('   🔗 Cursor-AAI Integration - Request processing (NEW!)');
-    console.log('   🗣️ Chat Processor - Automatic command processing (NEW!)');
+    console.log('   📊 Task Monitor - Real-time task tracking & analytics (NEW!)');
     console.log('');
     console.log('🚀 ACTIVE INTELLIGENCE FEATURES:');
     console.log('   • Pattern Learning - Learns from your code patterns');
@@ -957,20 +904,30 @@ class AAICompleteOrchestrator extends EventEmitter {
     console.log('   • Proactive Suggestions - Anticipates your needs');
     console.log('   • Automatic Issue Detection - Finds problems early');
     console.log('   • Memory-Based Learning - Remembers successful patterns');
-    console.log('   🎯 • Intelligent Task Management - Auto creates & executes tasks (NEW!)');
-    console.log('   🔗 • Request Analysis - Understands user intent automatically (NEW!)');
+    console.log('   📊 • Intelligent Task Monitoring - Real-time task analytics (NEW!)');
     console.log('');
-    console.log('🎯 TASK MANAGEMENT FEATURES (NEW!):');
-    console.log('   • 📋 Auto Task Creation - From natural language requests');
-    console.log('   • 🔄 Smart Execution - Tasks run in dependency order');
-    console.log('   • ✅ Auto Validation - Ensures task completion');
-    console.log('   • 🧠 Context Awareness - Uses Cursor workspace data');
-    console.log('   • 📊 Results Compilation - Structured deliverables');
-    console.log('   • 🔧 Auto Management - Adds/removes tasks as needed');
+    console.log('📊 NESTED TASK MONITORING FEATURES (NEW!):');
+    console.log('   • 🔍 Real-time Monitoring - Tracks all task events');
+    console.log('   • 📈 Analytics & Metrics - Performance and efficiency tracking');
+    console.log('   • 📝 Comprehensive Logging - Session, daily, and error logs');
+    console.log('   • ⚡ Efficiency Calculation - Estimated vs actual time tracking');
+    console.log('   • 🔗 Dependency Tracking - Monitors task relationships');
+    console.log('   • 🎯 Automatic Detection - File change monitoring');
+    console.log('   • 📊 Health Checks - Continuous monitoring system health');
+    console.log('');
+    console.log('🛠️ TASK MONITORING COMMANDS:');
+    console.log('   • npm run task:monitor-status - Check monitoring status');
+    console.log('   • npm run task:monitor-analytics - View analytics');
+    console.log('   • npm run task:add "Title" [type] [priority] - Add new task');
+    console.log('   • npm run task:complete <taskId> [hours] - Complete task');
+    console.log('   • npm run task:start <taskId> - Start task');
+    console.log('   • npm run task:progress <taskId> <percentage> - Update progress');
+    console.log('   • npm run task:list [status] - List tasks');
+    console.log('   • npm run task:demo - Run monitoring demonstration');
     console.log('');
     console.log('💡 RECOMMENDATION:');
     console.log('   Use ONLY "npm run launch" - everything else is automatic!');
-    console.log('   🎯 Just ask for what you need - tasks will be created and executed!');
+    console.log('   📊 Task monitoring runs automatically - check logs for insights!');
     console.log('   The AI will continuously improve your workflow in the background.');
     console.log('');
   }
@@ -996,6 +953,16 @@ class AAICompleteOrchestrator extends EventEmitter {
     if (this.improvementTimer) clearInterval(this.improvementTimer);
     if (this.monitoringTimer) clearInterval(this.monitoringTimer);
 
+    // Stop task monitoring
+    if (this.taskMonitor) {
+      console.log('📊 Stopping task monitoring...');
+      try {
+        this.taskMonitor.stopMonitoring();
+      } catch (error) {
+        console.warn('⚠️ Error stopping task monitor:', error.message);
+      }
+    }
+
     // Kill all processes
     for (const [name, process] of this.processes) {
       console.log(`🔄 Stopping ${name}...`);
@@ -1018,24 +985,6 @@ class AAICompleteOrchestrator extends EventEmitter {
     console.log('🧹 Cleaning up...');
     await this.gracefulShutdown();
   }
-
-  /**
-   * 🎯 NEW: Perform task management cycle
-   */
-  async performTaskManagement() {
-    if (!this.status.taskManagement) return;
-
-    try {
-      console.log('🎯 Running task management cycle...');
-      
-      // Auto-manage tasks based on current context
-      await this.runCommand('cursor:aai-auto-manage', 'Auto-managing tasks', false);
-      
-      console.log('✅ Task management cycle completed');
-    } catch (error) {
-      console.warn('⚠️ Task management cycle failed:', error.message);
-    }
-  }
 }
 
 // CLI execution
@@ -1050,9 +999,7 @@ if (require.main === module) {
   console.log('• 🧠 Memory Synchronization');
   console.log('• 📊 Core System Monitoring');
   console.log('• 🔄 Continuous Improvement');
-  console.log('• 🎯 Task Management System (NEW!)');
-  console.log('• 🔗 Cursor-AAI Integration (NEW!)');
-  console.log('• 🗣️ Chat Processor (NEW!)');
+  console.log('• 📊 Nested Task Monitoring & Analytics (NEW!)');
   console.log('━'.repeat(60));
   console.log('');
 

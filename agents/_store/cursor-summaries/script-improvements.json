@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T14:01:03.737Z",
+  "timestamp": "2025-05-25T14:26:52.181Z",
   "source": "Script Analysis → Cursor Improvements",
   "categories": {
     "documentation": [
@@ -26,6 +26,13 @@
       },
       {
         "script": "agent-intelligence-enhancer.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
+        "script": "check-running-processes.js",
         "issue": "Missing or inadequate description",
         "suggestion": "Add comprehensive JSDoc comments and description",
         "priority": "medium",

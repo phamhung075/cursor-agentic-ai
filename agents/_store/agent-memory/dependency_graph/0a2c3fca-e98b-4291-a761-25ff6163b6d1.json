@@ -1,0 +1,15 @@
+{
+  "id": "0a2c3fca-e98b-4291-a761-25ff6163b6d1",
+  "type": "dependency_graph",
+  "content": "{\"dependencies\":[[\"package.json\",{}],[\".cursor/rules/context.mdc\",{}],[\"TASK_MANAGEMENT_CLEANUP_COMPLETE.md\",{}],[\"agents/self-improvement/docs/10_Self_Improvement_Agent.mdc\",{}]],\"reverseDependencies\":[[\"06_Nested_AI_Task_Manager.mdc\",{}]],\"fileHashes\":[[\"package.json\",\"2809fa2c03535a659ca94dc54f86181c\"],[\".cursor/rules/context.mdc\",\"84926d2db539f35c7d56056890fc6778\"],[\"TASK_MANAGEMENT_CLEANUP_COMPLETE.md\",\"cdd9e33ae979fc5bee66a48f1ace2268\"],[\"agents/self-improvement/docs/10_Self_Improvement_Agent.mdc\",\"93952580490e8636894e77e03ea4efd5\"]],\"lastUpdated\":1748182411089,\"saveCount\":30}",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "content": "{\"dependencies\":[[\"package.json\",{}],[\".cursor/rules/context.mdc\",{}],[\"TASK_MANAGEMENT_CLEANUP_COMPLETE.md\",{}],[\"agents/self-improvement/docs/10_Self_Improvement_Agent.mdc\",{}]],\"reverseDependencies\":[[\"06_Nested_AI_Task_Manager.mdc\",{}]],\"fileHashes\":[[\"package.json\",\"2809fa2c03535a659ca94dc54f86181c\"],[\".cursor/rules/context.mdc\",\"84926d2db539f35c7d56056890fc6778\"],[\"TASK_MANAGEMENT_CLEANUP_COMPLETE.md\",\"cdd9e33ae979fc5bee66a48f1ace2268\"],[\"agents/self-improvement/docs/10_Self_Improvement_Agent.mdc\",\"93952580490e8636894e77e03ea4efd5\"]],\"lastUpdated\":1748182411089,\"saveCount\":30}",
+    "fileCount": 4,
+    "memoryClass": "agent",
+    "saveId": 3,
+    "timestamp": 1748182411091,
+    "type": "dependency_graph"
+  },
+  "embedding": []
+}

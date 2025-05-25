@@ -2,10 +2,10 @@
   "metadata": {
     "version": "1.0.0",
     "generatedBy": "AI_Task_Generator_v2.0",
-    "timestamp": "2025-01-25T12:00:00.000Z",
+    "timestamp": "2025-05-25T14:20:38.483Z",
     "projectId": "cursor_agentic_ai",
     "contextHash": "abc123def456789",
-    "totalTasks": 12,
+    "totalTasks": 14,
     "maxDepth": 3,
     "aiConfidence": 0.92
   },
@@ -25,11 +25,23 @@
       "aiGenerated": true,
       "aiConfidence": 0.95,
       "parent": null,
-      "children": ["task_001", "task_002", "task_003", "task_004"],
+      "children": [
+        "task_001",
+        "task_002",
+        "task_003",
+        "task_004"
+      ],
       "dependencies": [],
       "blockedBy": [],
-      "enables": ["epic_002"],
-      "tags": ["ai", "task-management", "nested", "automation"],
+      "enables": [
+        "epic_002"
+      ],
+      "tags": [
+        "ai",
+        "task-management",
+        "nested",
+        "automation"
+      ],
       "assignee": null,
       "dueDate": "2025-03-15T00:00:00.000Z",
       "createdAt": "2025-01-25T12:00:00.000Z",
@@ -82,11 +94,21 @@
       "aiGenerated": true,
       "aiConfidence": 0.88,
       "parent": "epic_001",
-      "children": ["subtask_001", "subtask_002"],
+      "children": [
+        "subtask_001",
+        "subtask_002"
+      ],
       "dependencies": [],
       "blockedBy": [],
-      "enables": ["task_002"],
-      "tags": ["core", "hierarchy", "engine", "data-structure"],
+      "enables": [
+        "task_002"
+      ],
+      "tags": [
+        "core",
+        "hierarchy",
+        "engine",
+        "data-structure"
+      ],
       "assignee": null,
       "dueDate": "2025-02-05T00:00:00.000Z",
       "createdAt": "2025-01-25T12:00:00.000Z",
@@ -126,11 +148,25 @@
       "aiGenerated": true,
       "aiConfidence": 0.85,
       "parent": "epic_001",
-      "children": ["subtask_003", "subtask_004"],
-      "dependencies": ["task_001"],
-      "blockedBy": ["task_001"],
-      "enables": ["task_003"],
-      "tags": ["ai", "algorithm", "decomposition", "machine-learning"],
+      "children": [
+        "subtask_003",
+        "subtask_004"
+      ],
+      "dependencies": [
+        "task_001"
+      ],
+      "blockedBy": [
+        "task_001"
+      ],
+      "enables": [
+        "task_003"
+      ],
+      "tags": [
+        "ai",
+        "algorithm",
+        "decomposition",
+        "machine-learning"
+      ],
       "assignee": null,
       "dueDate": "2025-02-20T00:00:00.000Z",
       "createdAt": "2025-01-25T12:00:00.000Z",
@@ -170,11 +206,25 @@
       "aiGenerated": true,
       "aiConfidence": 0.82,
       "parent": "epic_001",
-      "children": ["subtask_005", "subtask_006"],
-      "dependencies": ["task_002"],
-      "blockedBy": ["task_002"],
-      "enables": ["task_004"],
-      "tags": ["priority", "dynamic", "scheduling", "optimization"],
+      "children": [
+        "subtask_005",
+        "subtask_006"
+      ],
+      "dependencies": [
+        "task_002"
+      ],
+      "blockedBy": [
+        "task_002"
+      ],
+      "enables": [
+        "task_004"
+      ],
+      "tags": [
+        "priority",
+        "dynamic",
+        "scheduling",
+        "optimization"
+      ],
       "assignee": null,
       "dueDate": "2025-03-01T00:00:00.000Z",
       "createdAt": "2025-01-25T12:00:00.000Z",
@@ -214,11 +264,23 @@
       "aiGenerated": true,
       "aiConfidence": 0.78,
       "parent": "epic_001",
-      "children": ["subtask_007", "subtask_008"],
-      "dependencies": ["task_003"],
-      "blockedBy": ["task_003"],
+      "children": [
+        "subtask_007",
+        "subtask_008"
+      ],
+      "dependencies": [
+        "task_003"
+      ],
+      "blockedBy": [
+        "task_003"
+      ],
       "enables": [],
-      "tags": ["learning", "adaptive", "machine-learning", "optimization"],
+      "tags": [
+        "learning",
+        "adaptive",
+        "machine-learning",
+        "optimization"
+      ],
       "assignee": null,
       "dueDate": "2025-03-10T00:00:00.000Z",
       "createdAt": "2025-01-25T12:00:00.000Z",
@@ -242,6 +304,78 @@
         "suggestedApproach": "Incremental learning with pattern recognition",
         "testingStrategy": "Learning accuracy validation with historical data"
       }
+    },
+    {
+      "id": "feature_1748182390970_t04z",
+      "type": "feature",
+      "level": 2,
+      "title": "Monitor System Integration Test",
+      "description": "Test the monitoring system integration with nested tasks",
+      "status": "completed",
+      "priority": "high",
+      "complexity": "medium",
+      "estimatedHours": 4,
+      "actualHours": 3.5,
+      "progress": 100,
+      "aiGenerated": false,
+      "aiConfidence": 0.8,
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "blockedBy": [],
+      "enables": [],
+      "tags": [
+        "monitoring",
+        "test",
+        "integration"
+      ],
+      "assignee": null,
+      "dueDate": null,
+      "createdAt": "2025-05-25T14:13:10.970Z",
+      "updatedAt": "2025-05-25T14:13:16.981Z",
+      "completedAt": "2025-05-25T14:13:16.981Z",
+      "metadata": {
+        "businessValue": "high",
+        "technicalRisk": "low",
+        "userImpact": "medium",
+        "domain": "monitoring"
+      }
+    },
+    {
+      "id": "feature_1748182838483_sybm",
+      "type": "feature",
+      "level": 2,
+      "title": "Monitor System Integration Test",
+      "description": "Test the monitoring system integration with nested tasks",
+      "status": "completed",
+      "priority": "high",
+      "complexity": "medium",
+      "estimatedHours": 4,
+      "actualHours": 3.5,
+      "progress": 100,
+      "aiGenerated": false,
+      "aiConfidence": 0.8,
+      "parent": null,
+      "children": [],
+      "dependencies": [],
+      "blockedBy": [],
+      "enables": [],
+      "tags": [
+        "monitoring",
+        "test",
+        "integration"
+      ],
+      "assignee": null,
+      "dueDate": null,
+      "createdAt": "2025-05-25T14:20:38.483Z",
+      "updatedAt": "2025-05-25T14:20:44.497Z",
+      "completedAt": "2025-05-25T14:20:44.497Z",
+      "metadata": {
+        "businessValue": "high",
+        "technicalRisk": "low",
+        "userImpact": "medium",
+        "domain": "monitoring"
+      }
     }
   ],
   "subtasks": [
@@ -258,13 +392,19 @@
       "actualHours": null,
       "progress": 0,
       "aiGenerated": true,
-      "aiConfidence": 0.90,
+      "aiConfidence": 0.9,
       "parent": "task_001",
       "children": [],
       "dependencies": [],
       "blockedBy": [],
-      "enables": ["subtask_002"],
-      "tags": ["data-structure", "schema", "design"],
+      "enables": [
+        "subtask_002"
+      ],
+      "tags": [
+        "data-structure",
+        "schema",
+        "design"
+      ],
       "assignee": null,
       "dueDate": "2025-01-28T00:00:00.000Z",
       "createdAt": "2025-01-25T12:00:00.000Z",
@@ -275,8 +415,14 @@
         "technicalRisk": "low",
         "userImpact": "low",
         "domain": "data-modeling",
-        "skillsRequired": ["javascript", "json-schema"],
-        "deliverables": ["task-entity.js", "task-schema.json"]
+        "skillsRequired": [
+          "javascript",
+          "json-schema"
+        ],
+        "deliverables": [
+          "task-entity.js",
+          "task-schema.json"
+        ]
       },
       "aiAnalysis": {
         "designConsiderations": [
@@ -284,7 +430,10 @@
           "Performance optimization",
           "Data validation requirements"
         ],
-        "suggestedTools": ["JSON Schema", "TypeScript interfaces"]
+        "suggestedTools": [
+          "JSON Schema",
+          "TypeScript interfaces"
+        ]
       }
     },
     {
@@ -303,10 +452,19 @@
       "aiConfidence": 0.85,
       "parent": "task_001",
       "children": [],
-      "dependencies": ["subtask_001"],
-      "blockedBy": ["subtask_001"],
+      "dependencies": [
+        "subtask_001"
+      ],
+      "blockedBy": [
+        "subtask_001"
+      ],
       "enables": [],
-      "tags": ["hierarchy", "operations", "crud", "algorithms"],
+      "tags": [
+        "hierarchy",
+        "operations",
+        "crud",
+        "algorithms"
+      ],
       "assignee": null,
       "dueDate": "2025-02-03T00:00:00.000Z",
       "createdAt": "2025-01-25T12:00:00.000Z",
@@ -317,8 +475,15 @@
         "technicalRisk": "medium",
         "userImpact": "medium",
         "domain": "algorithms",
-        "skillsRequired": ["javascript", "algorithms", "data-structures"],
-        "deliverables": ["hierarchy-operations.js", "hierarchy-tests.js"]
+        "skillsRequired": [
+          "javascript",
+          "algorithms",
+          "data-structures"
+        ],
+        "deliverables": [
+          "hierarchy-operations.js",
+          "hierarchy-tests.js"
+        ]
       },
       "aiAnalysis": {
         "implementationConsiderations": [
@@ -333,49 +498,73 @@
   "dependencies": {
     "task_001": {
       "requires": [],
-      "enables": ["task_002"],
+      "enables": [
+        "task_002"
+      ],
       "blocks": [],
       "blockedBy": [],
       "type": "sequential",
       "strength": "hard"
     },
     "task_002": {
-      "requires": ["task_001"],
-      "enables": ["task_003"],
+      "requires": [
+        "task_001"
+      ],
+      "enables": [
+        "task_003"
+      ],
       "blocks": [],
-      "blockedBy": ["task_001"],
+      "blockedBy": [
+        "task_001"
+      ],
       "type": "sequential",
       "strength": "hard"
     },
     "task_003": {
-      "requires": ["task_002"],
-      "enables": ["task_004"],
+      "requires": [
+        "task_002"
+      ],
+      "enables": [
+        "task_004"
+      ],
       "blocks": [],
-      "blockedBy": ["task_002"],
+      "blockedBy": [
+        "task_002"
+      ],
       "type": "sequential",
       "strength": "soft"
     },
     "task_004": {
-      "requires": ["task_003"],
+      "requires": [
+        "task_003"
+      ],
       "enables": [],
       "blocks": [],
-      "blockedBy": ["task_003"],
+      "blockedBy": [
+        "task_003"
+      ],
       "type": "sequential",
       "strength": "soft"
     },
     "subtask_001": {
       "requires": [],
-      "enables": ["subtask_002"],
+      "enables": [
+        "subtask_002"
+      ],
       "blocks": [],
       "blockedBy": [],
       "type": "sequential",
       "strength": "hard"
     },
     "subtask_002": {
-      "requires": ["subtask_001"],
+      "requires": [
+        "subtask_001"
+      ],
       "enables": [],
       "blocks": [],
-      "blockedBy": ["subtask_001"],
+      "blockedBy": [
+        "subtask_001"
+      ],
       "type": "sequential",
       "strength": "hard"
     }
@@ -388,21 +577,27 @@
         "id": "milestone_001",
         "title": "Core Engine Complete",
         "date": "2025-02-05T00:00:00.000Z",
-        "tasks": ["task_001"],
+        "tasks": [
+          "task_001"
+        ],
         "description": "Basic task hierarchy engine functional"
       },
       {
         "id": "milestone_002",
         "title": "AI Decomposition Ready",
         "date": "2025-02-20T00:00:00.000Z",
-        "tasks": ["task_002"],
+        "tasks": [
+          "task_002"
+        ],
         "description": "AI task decomposition algorithm implemented"
       },
       {
         "id": "milestone_003",
         "title": "System MVP Complete",
         "date": "2025-03-15T00:00:00.000Z",
-        "tasks": ["epic_001"],
+        "tasks": [
+          "epic_001"
+        ],
         "description": "Full nested AI task management system operational"
       }
     ],
@@ -412,7 +607,9 @@
         "title": "Foundation Phase",
         "startDate": "2025-01-25T00:00:00.000Z",
         "endDate": "2025-02-05T00:00:00.000Z",
-        "tasks": ["task_001"],
+        "tasks": [
+          "task_001"
+        ],
         "description": "Core infrastructure and data structures"
       },
       {
@@ -420,7 +617,10 @@
         "title": "AI Implementation Phase",
         "startDate": "2025-02-06T00:00:00.000Z",
         "endDate": "2025-02-28T00:00:00.000Z",
-        "tasks": ["task_002", "task_003"],
+        "tasks": [
+          "task_002",
+          "task_003"
+        ],
         "description": "AI algorithms and intelligent features"
       },
       {
@@ -428,7 +628,9 @@
         "title": "Learning & Optimization Phase",
         "startDate": "2025-03-01T00:00:00.000Z",
         "endDate": "2025-03-15T00:00:00.000Z",
-        "tasks": ["task_004"],
+        "tasks": [
+          "task_004"
+        ],
         "description": "Adaptive learning and system optimization"
       }
     ],
@@ -439,7 +641,9 @@
         "actualStart": null,
         "actualEnd": null,
         "buffer": "2d",
-        "resources": ["ai_developer"]
+        "resources": [
+          "ai_developer"
+        ]
       },
       "task_002": {
         "plannedStart": "2025-02-06T09:00:00.000Z",
@@ -447,7 +651,10 @@
         "actualStart": null,
         "actualEnd": null,
         "buffer": "3d",
-        "resources": ["ai_specialist", "ml_engineer"]
+        "resources": [
+          "ai_specialist",
+          "ml_engineer"
+        ]
       }
     }
   },
@@ -457,7 +664,11 @@
       "confidence": 0.92,
       "analysisTime": "3.7s",
       "contextTokens": 18750,
-      "patterns": ["nested_task_pattern", "ai_system_pattern", "learning_system_pattern"]
+      "patterns": [
+        "nested_task_pattern",
+        "ai_system_pattern",
+        "learning_system_pattern"
+      ]
     },
     "projectAnalysis": {
       "codebaseComplexity": "high",
@@ -493,17 +704,26 @@
       ]
     },
     "learningData": {
-      "similarProjects": ["ai_task_system_2024", "nested_hierarchy_2023"],
+      "similarProjects": [
+        "ai_task_system_2024",
+        "nested_hierarchy_2023"
+      ],
       "patternMatches": [
         {
           "pattern": "ai_task_decomposition",
           "confidence": 0.87,
-          "adjustments": ["Add complexity assessment", "Implement recursive breakdown"]
+          "adjustments": [
+            "Add complexity assessment",
+            "Implement recursive breakdown"
+          ]
         },
         {
           "pattern": "adaptive_learning_system",
           "confidence": 0.82,
-          "adjustments": ["Include feedback loops", "Add pattern recognition"]
+          "adjustments": [
+            "Include feedback loops",
+            "Add pattern recognition"
+          ]
         }
       ],
       "historicalAccuracy": {
@@ -513,4 +733,4 @@
       }
     }
   }
-} 
+}

@@ -30,6 +30,11 @@
         "description": "No description available"
       },
       {
+        "name": "check-running-processes.js",
+        "path": "agents/_store/scripts/check-running-processes.js",
+        "description": "No description available"
+      },
+      {
         "name": "cursor-mdc-integration.js",
         "path": "agents/_store/scripts/cursor-mdc-integration.js",
         "description": "No description available"
@@ -424,7 +429,7 @@
       "command": "node agents/_store/scripts/cursor-aai-integration.js status"
     }
   ],
-  "totalFiles": 31,
+  "totalFiles": 32,
   "categories": {
     "scripts": {
       "core": "Core framework management",
@@ -441,5 +446,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T14:01:03.711Z"
+  "lastUpdated": "2025-05-25T14:26:52.157Z"
 }

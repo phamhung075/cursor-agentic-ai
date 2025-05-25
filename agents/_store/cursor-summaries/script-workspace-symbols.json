@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T14:01:03.738Z",
+  "timestamp": "2025-05-25T14:26:52.182Z",
   "scriptSymbols": [
     {
       "name": "enhanced-dependency-analyzer.js",
@@ -29,6 +29,14 @@
       "name": "agent-intelligence-enhancer.js",
       "kind": "Function",
       "location": "agents/_store/scripts/agent-intelligence-enhancer.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "check-running-processes.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/check-running-processes.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -242,7 +250,7 @@
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "25 scripts in uncategorized category",
+      "detail": "26 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
