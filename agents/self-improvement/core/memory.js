@@ -709,6 +709,99 @@ class MemoryManager {
     return memories.map(memory => JSON.parse(memory.content));
   }
 
+  /**
+   * Handle project memory commands (CLI interface)
+   */
+  async handleProjectMemoryCommand(subcommand, args = []) {
+    try {
+      switch (subcommand) {
+        case 'stats':
+          const projectName = args[0];
+          const stats = await this.getProjectMemoryStats(projectName);
+          return {
+            success: true,
+            stats,
+            message: `Project memory statistics for: ${stats.projectName || 'current project'}`
+          };
+
+        case 'search':
+          if (args.length === 0) {
+            return {
+              success: false,
+              message: 'Usage: project-memory search <query>'
+            };
+          }
+          const query = args.join(' ');
+          const results = await this.searchProjectMemories(query);
+          return {
+            success: true,
+            results,
+            message: `Found ${results.length} project memory entries`
+          };
+
+        case 'clean':
+          const projectToClean = args[0];
+          if (!projectToClean) {
+            return {
+              success: false,
+              message: 'Usage: project-memory clean <project-name>'
+            };
+          }
+          const cleanResult = await this.cleanProjectMemory(projectToClean);
+          return {
+            success: cleanResult,
+            project: projectToClean,
+            message: cleanResult ? 
+              `Successfully cleaned project memory for: ${projectToClean}` :
+              `Failed to clean project memory for: ${projectToClean}`
+          };
+
+        case 'list-projects':
+          const projects = await this.listProjectsWithMemory();
+          return {
+            success: true,
+            projects,
+            message: `Found ${projects.length} projects with memory`
+          };
+
+        case 'set-project':
+          const newProject = args[0];
+          if (!newProject) {
+            return {
+              success: false,
+              message: 'Usage: project-memory set-project <project-name>'
+            };
+          }
+          this.setCurrentProject(newProject);
+          return {
+            success: true,
+            project: newProject,
+            message: `Set current project to: ${newProject}`
+          };
+
+        case 'current':
+          return {
+            success: true,
+            project: this.currentProject,
+            message: this.currentProject ? 
+              `Current project: ${this.currentProject}` :
+              'No current project set'
+          };
+
+        default:
+          return {
+            success: false,
+            message: `Unknown project memory subcommand: ${subcommand}. Available: stats, search, clean, list-projects, set-project, current`
+          };
+      }
+    } catch (error) {
+      return {
+        success: false,
+        message: `Project memory command failed: ${error.message}`
+      };
+    }
+  }
+
 }
 
 module.exports = MemoryManager;

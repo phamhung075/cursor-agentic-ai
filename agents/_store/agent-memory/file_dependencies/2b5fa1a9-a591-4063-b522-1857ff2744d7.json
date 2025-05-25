@@ -1,0 +1,15 @@
+{
+  "id": "2b5fa1a9-a591-4063-b522-1857ff2744d7",
+  "type": "file_dependencies",
+  "content": "{\"filePath\":\".cursor/rules/01__AI-RUN/00_Getting_Started.mdc\",\"dependencies\":[\"08_Testing.mdc\",\"01_Idea.mdc\",\"05_Specs_Docs.mdc\",\"01_AutoPilot.mdc\",\"idea_document.mdc\",\"02_Market_Research.mdc\",\"market_research.mdc\",\"03_Core_Concept.mdc\",\"04_PRD_Generation.mdc\",\"project_prd.mdc\",\"Roo_Task_Workflow.mdc\",\"Tasks_JSON_Structure.mdc\",\"09_Deployment.mdc\",\"logic.mdc\",\"AI_Coding_Agent_Optimization.mdc\",\"AI_Design_Agent_Optimization.mdc\",\"AI_Task_Management_Optimization.mdc\"],\"dependentCount\":0,\"timestamp\":1748098191376,\"batchId\":1}",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "content": "{\"filePath\":\".cursor/rules/01__AI-RUN/00_Getting_Started.mdc\",\"dependencies\":[\"08_Testing.mdc\",\"01_Idea.mdc\",\"05_Specs_Docs.mdc\",\"01_AutoPilot.mdc\",\"idea_document.mdc\",\"02_Market_Research.mdc\",\"market_research.mdc\",\"03_Core_Concept.mdc\",\"04_PRD_Generation.mdc\",\"project_prd.mdc\",\"Roo_Task_Workflow.mdc\",\"Tasks_JSON_Structure.mdc\",\"09_Deployment.mdc\",\"logic.mdc\",\"AI_Coding_Agent_Optimization.mdc\",\"AI_Design_Agent_Optimization.mdc\",\"AI_Task_Management_Optimization.mdc\"],\"dependentCount\":0,\"timestamp\":1748098191376,\"batchId\":1}",
+    "dependencyCount": 17,
+    "fileName": "00_Getting_Started.mdc",
+    "memoryClass": "agent",
+    "timestamp": 1748098191376,
+    "type": "file_dependencies"
+  },
+  "embedding": []
+}
