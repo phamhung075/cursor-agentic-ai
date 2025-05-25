@@ -4631,305 +4631,410 @@
     },
     "rules_02__ai_docs_taskmanagement_roo_task_workflow_mdc": {
       "id": "rules_02__ai_docs_taskmanagement_roo_task_workflow_mdc",
-      "title": "Roo Task Workflow: A Comprehensive Guide",
+      "title": "AAI Task Workflow: A Comprehensive Guide",
       "path": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
-      "description": "Roo, as your integrated AI assistant, handles task management directly. No separate installation or external tools are required. This document outlines how to guide Roo Orchestrator through the projec",
+      "description": "AAI (Agentic AI), as your integrated AI assistant, handles task management directly through its advanced agentic capabilities. No separate installation or external tools are required. This document ou",
       "status": "valid",
-      "size": 22059,
-      "last_modified": "2025-05-25T05:22:14.724Z",
-      "last_accessed": "2025-05-25T07:01:53.441Z",
+      "size": 35857,
+      "last_modified": "2025-05-25T07:22:14.674Z",
+      "last_accessed": "2025-05-25T07:22:14.817Z",
       "links_out": [
         {
-          "text": "01_Idea.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "idea_document.mdc",
-          "path": "agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+          "text": "mdc:agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+          "path": "mdc:agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "02_Market_Research.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "market_research.mdc",
-          "path": "agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
+          "text": "mdc:agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
+          "path": "mdc:agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "03_Core_Concept.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "core_concept.mdc",
-          "path": "agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
+          "text": "mdc:agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
+          "path": "mdc:agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "04_PRD_Generation.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "project_prd.mdc",
-          "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "text": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "05_Specs_Docs.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "project_prd.mdc",
-          "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "text": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "coding_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "design_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "AI_Design_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "AI_Coding_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "AI_Task_Management_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "Tasks_JSON_Structure.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "project_prd.mdc",
-          "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "text": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "design_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "AI_Design_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "coding_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "AI_Coding_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "design_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "AI_Design_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "Tasks_JSON_Structure.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "design_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "coding_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "Tasks_JSON_Structure.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "tasks.json",
-          "path": "agents/_store/projects/_core/tasks/tasks.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "Tasks_JSON_Structure.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "07_Start_Building.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "01_AutoPilot.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "project_prd.mdc",
-          "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "tasks.json",
-          "path": "agents/_store/projects/_core/tasks/tasks.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "project_prd.mdc",
-          "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "tasks.json",
-          "path": "agents/_store/projects/_core/tasks/tasks.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "02__AI-DOCS",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "coding_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "design_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "03__SPECS",
-          "path": "agents/_store/projects/_core/rules/03__SPECS",
+          "path": "mdc:agents/_store/projects/_core/rules/03__SPECS",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "AI_Design_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
           "text": "tasks.json",
-          "path": "agents/_store/projects/_core/tasks/tasks.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
         },
         {
-          "text": "Tasks_JSON_Structure.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "02__AI-DOCS",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "03__SPECS",
+          "path": "mdc:agents/_store/projects/_core/rules/03__SPECS",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/tasks/learning-log.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/learning-log.json",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
           "status": "unchecked"
@@ -4951,64 +5056,78 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "3e5e6f1b"
+      "content_hash": "12acb897"
     },
     "rules_02__ai_docs_taskmanagement_tasks_json_structure_mdc": {
       "id": "rules_02__ai_docs_taskmanagement_tasks_json_structure_mdc",
-      "title": "Tasks JSON Structure",
+      "title": "AAI-Enhanced Tasks JSON Structure",
       "path": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-      "description": "The [tasks.json](agents/_store/projects/_core/tasks/tasks.json) file is the central repository for all project tasks. It follows a specific JSON structure.",
+      "description": "The [mdc:agents/_store/projects/_core/tasks/tasks.json](mdc:agents/_store/projects/_core/tasks/tasks.json) file is the central repository for all project tasks with AAI (Agentic AI) enhancements. It f",
       "status": "valid",
-      "size": 7725,
-      "last_modified": "2025-05-25T05:17:38.565Z",
-      "last_accessed": "2025-05-25T07:01:53.441Z",
+      "size": 17028,
+      "last_modified": "2025-05-25T07:23:49.064Z",
+      "last_accessed": "2025-05-25T07:23:49.235Z",
       "links_out": [
         {
-          "text": "tasks.json",
-          "path": "agents/_store/projects/_core/tasks/tasks.json",
+          "text": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+          "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "status": "unchecked"
         },
         {
-          "text": "project_prd.mdc",
-          "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "text": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "status": "unchecked"
         },
         {
-          "text": "architecture.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "status": "unchecked"
         },
         {
-          "text": "design_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "status": "unchecked"
         },
         {
-          "text": "AI_Design_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "status": "unchecked"
         },
         {
-          "text": "coding_conventions_template.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "status": "unchecked"
         },
         {
-          "text": "AI_Coding_Agent_Optimization.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "status": "unchecked"
@@ -5019,11 +5138,32 @@
           "type": "file_reference",
           "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "status": "unchecked"
+        },
+        {
+          "text": "aai-insights.json",
+          "path": "aai-insights.json",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "quality-metrics.json",
+          "path": "quality-metrics.json",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "learning-log.json",
+          "path": "learning-log.json",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "status": "unchecked"
         }
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "-38c05051"
+      "content_hash": "53bccaf4"
     },
     "rules_03__specs_agents__store_project_memory_corrupted_backup_2025_05_24t09_13_58_352z_01__ai_run_05_specs_docs_1_mdc": {
       "id": "rules_03__specs_agents__store_project_memory_corrupted_backup_2025_05_24t09_13_58_352z_01__ai_run_05_specs_docs_1_mdc",
@@ -12769,295 +12909,400 @@
     "rules_02__ai_docs_integrations_api_integration_template_mdc": [],
     "rules_02__ai_docs_taskmanagement_roo_task_workflow_mdc": [
       {
-        "text": "01_Idea.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "idea_document.mdc",
-        "path": "agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+        "text": "mdc:agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+        "path": "mdc:agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "02_Market_Research.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "market_research.mdc",
-        "path": "agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
+        "text": "mdc:agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
+        "path": "mdc:agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "03_Core_Concept.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "core_concept.mdc",
-        "path": "agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
+        "text": "mdc:agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
+        "path": "mdc:agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "04_PRD_Generation.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "project_prd.mdc",
-        "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "text": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "05_Specs_Docs.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "project_prd.mdc",
-        "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "text": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "coding_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "design_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "AI_Design_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "AI_Coding_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "AI_Task_Management_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "Tasks_JSON_Structure.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "project_prd.mdc",
-        "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "text": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "design_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "AI_Design_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "coding_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "AI_Coding_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "design_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "AI_Design_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "Tasks_JSON_Structure.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "design_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "coding_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "Tasks_JSON_Structure.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "tasks.json",
-        "path": "agents/_store/projects/_core/tasks/tasks.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "Tasks_JSON_Structure.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "07_Start_Building.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "01_AutoPilot.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "project_prd.mdc",
-        "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "tasks.json",
-        "path": "agents/_store/projects/_core/tasks/tasks.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "project_prd.mdc",
-        "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "tasks.json",
-        "path": "agents/_store/projects/_core/tasks/tasks.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "02__AI-DOCS",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "coding_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "design_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "03__SPECS",
-        "path": "agents/_store/projects/_core/rules/03__SPECS",
+        "path": "mdc:agents/_store/projects/_core/rules/03__SPECS",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "AI_Design_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
         "text": "tasks.json",
-        "path": "agents/_store/projects/_core/tasks/tasks.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
       },
       {
-        "text": "Tasks_JSON_Structure.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "02__AI-DOCS",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "03__SPECS",
+        "path": "mdc:agents/_store/projects/_core/rules/03__SPECS",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/aai-insights.json",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/quality-metrics.json",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/tasks/learning-log.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/learning-log.json",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
         "status": "unchecked"
@@ -13079,50 +13324,64 @@
     ],
     "rules_02__ai_docs_taskmanagement_tasks_json_structure_mdc": [
       {
-        "text": "tasks.json",
-        "path": "agents/_store/projects/_core/tasks/tasks.json",
+        "text": "mdc:agents/_store/projects/_core/tasks/tasks.json",
+        "path": "mdc:agents/_store/projects/_core/tasks/tasks.json",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "status": "unchecked"
       },
       {
-        "text": "project_prd.mdc",
-        "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "text": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "path": "mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "status": "unchecked"
       },
       {
-        "text": "architecture.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "status": "unchecked"
       },
       {
-        "text": "design_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "status": "unchecked"
       },
       {
-        "text": "AI_Design_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "status": "unchecked"
       },
       {
-        "text": "coding_conventions_template.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "status": "unchecked"
       },
       {
-        "text": "AI_Coding_Agent_Optimization.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "status": "unchecked"
@@ -13130,6 +13389,27 @@
       {
         "text": "feature_spec_FEAT-XXX.mdc",
         "path": "feature_spec_FEAT-XXX.mdc",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "aai-insights.json",
+        "path": "aai-insights.json",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "quality-metrics.json",
+        "path": "quality-metrics.json",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "learning-log.json",
+        "path": "learning-log.json",
         "type": "file_reference",
         "source_file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "status": "unchecked"
@@ -20276,9 +20556,33 @@
       "file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:20:50.009Z",
+      "file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:21:46.225Z",
+      "file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:22:14.817Z",
+      "file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:23:49.235Z",
+      "file": "rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T07:17:09.070Z",
+  "last_updated": "2025-05-25T07:23:49.336Z",
   "scan_history": [
     {
       "id": "scan_1748147161162",

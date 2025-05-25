@@ -1,0 +1,29 @@
+{
+  "timestamp": "2025-05-25T07:27:08.730Z",
+  "source": "Enhanced Cursor Setup",
+  "version": "2.0.0",
+  "workspace": "/Users/admin/Documents/Hung/AI/cursor-agentic-ai",
+  "aaiIntegration": {
+    "status": "active",
+    "features": [
+      "Enhanced file associations",
+      "Intelligent search configuration",
+      "Real-time file watching",
+      "AAI-specific snippets",
+      "Cursor AI context files",
+      "Enhanced JSON schemas"
+    ]
+  },
+  "quickAccess": {
+    "memory": "agents/_store/memory/",
+    "analysis": "agents/_store/analysis/",
+    "core": "agents/_core/",
+    "summaries": "agents/_store/cursor-summaries/"
+  },
+  "recommendations": [
+    "Use Ctrl/Cmd+P to quickly find AAI files",
+    "Check cursor-summaries/ for latest context",
+    "Use AAI snippets for consistent formatting",
+    "Enable file watcher for real-time updates"
+  ]
+}

@@ -59,6 +59,11 @@
         "description": "No description available"
       },
       {
+        "name": "protect-enhanced-cursor-settings.js",
+        "path": "agents/_store/scripts/protect-enhanced-cursor-settings.js",
+        "description": "No description available"
+      },
+      {
         "name": "replace_file_links.sh",
         "path": "agents/_store/scripts/replace_file_links.sh",
         "description": "No description available"
@@ -245,6 +250,10 @@
       "command": "node agents/_store/scripts/simple-cursor-setup.js"
     },
     {
+      "name": "cursor:setup-simple",
+      "command": "node agents/_store/scripts/simple-cursor-setup.js"
+    },
+    {
       "name": "cursor:setup-enhanced",
       "command": "node agents/_store/scripts/enhanced-cursor-setup.js"
     },
@@ -261,6 +270,22 @@
       "command": "node agents/_store/scripts/update-cursor-settings.js restore"
     },
     {
+      "name": "cursor:protect",
+      "command": "node agents/_store/scripts/protect-enhanced-cursor-settings.js"
+    },
+    {
+      "name": "cursor:protect-enable",
+      "command": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --enable"
+    },
+    {
+      "name": "cursor:protect-monitor",
+      "command": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --monitor"
+    },
+    {
+      "name": "cursor:protect-restore",
+      "command": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --restore"
+    },
+    {
       "name": "mdc:status",
       "command": "node agents/_store/scripts/enhanced-mdc-path-fixer.js status"
     },
@@ -275,9 +300,13 @@
     {
       "name": "mdc:fix-file",
       "command": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix"
+    },
+    {
+      "name": "cursor:status",
+      "command": "node agents/_store/scripts/enhanced-cursor-setup.js status"
     }
   ],
-  "totalFiles": 25,
+  "totalFiles": 26,
   "categories": {
     "scripts": {
       "core": "Core framework management",
@@ -294,5 +323,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T07:16:58.161Z"
+  "lastUpdated": "2025-05-25T07:28:59.899Z"
 }

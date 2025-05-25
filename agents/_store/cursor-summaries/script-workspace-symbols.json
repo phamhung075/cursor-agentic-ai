@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T07:16:58.177Z",
+  "timestamp": "2025-05-25T07:28:59.919Z",
   "scriptSymbols": [
     {
       "name": "comprehensive-cleanup.js",
@@ -77,6 +77,14 @@
       "name": "performance-optimizer.js",
       "kind": "Function",
       "location": "agents/_store/scripts/performance-optimizer.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "protect-enhanced-cursor-settings.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/protect-enhanced-cursor-settings.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -188,7 +196,7 @@
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "20 scripts in uncategorized category",
+      "detail": "21 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
@@ -369,6 +377,13 @@
       "containerName": "NPM Scripts"
     },
     {
+      "name": "cursor:setup-simple",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/simple-cursor-setup.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
       "name": "cursor:setup-enhanced",
       "kind": "Function",
       "detail": "node agents/_store/scripts/enhanced-cursor-setup.js",
@@ -397,6 +412,34 @@
       "containerName": "NPM Scripts"
     },
     {
+      "name": "cursor:protect",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/protect-enhanced-cursor-settings.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:protect-enable",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --enable",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:protect-monitor",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --monitor",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:protect-restore",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --restore",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
       "name": "mdc:status",
       "kind": "Function",
       "detail": "node agents/_store/scripts/enhanced-mdc-path-fixer.js status",
@@ -421,6 +464,13 @@
       "name": "mdc:fix-file",
       "kind": "Function",
       "detail": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/enhanced-cursor-setup.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     }

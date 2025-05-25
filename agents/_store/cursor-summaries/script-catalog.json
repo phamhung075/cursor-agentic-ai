@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-05-25T07:16:58.177Z",
+  "timestamp": "2025-05-25T07:28:59.918Z",
   "source": "AAI Script Manager → Cursor Integration",
   "summary": {
-    "totalScripts": 25,
+    "totalScripts": 26,
     "categories": 6,
-    "npmIntegrated": 33
+    "npmIntegrated": 39
   },
   "scripts": {
     "cleanup": [
@@ -376,6 +376,44 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/performance-optimizer.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "protect-enhanced-cursor-settings.js",
+        "path": "agents/_store/scripts/protect-enhanced-cursor-settings.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/protect-enhanced-cursor-settings.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/protect-enhanced-cursor-settings.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/protect-enhanced-cursor-settings.js",
               "Add description"
             ]
           }
