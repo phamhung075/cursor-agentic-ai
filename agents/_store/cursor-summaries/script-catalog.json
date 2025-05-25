@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-05-25T12:29:59.188Z",
+  "timestamp": "2025-05-25T13:31:00.113Z",
   "source": "AAI Script Manager → Cursor Integration",
   "summary": {
-    "totalScripts": 37,
+    "totalScripts": 31,
     "categories": 6,
-    "npmIntegrated": 72
+    "npmIntegrated": 62
   },
   "scripts": {
     "analysis": [
@@ -127,44 +127,6 @@
     ],
     "uncategorized": [
       {
-        "name": "aai-task-manager.js",
-        "path": "agents/_store/scripts/aai-task-manager.js",
-        "description": "No description available",
-        "cursorActions": [
-          {
-            "title": "Open Script",
-            "command": "cursor.open",
-            "arguments": [
-              "agents/_store/scripts/aai-task-manager.js"
-            ]
-          },
-          {
-            "title": "Run Script",
-            "command": "terminal.run",
-            "arguments": [
-              "node agents/_store/scripts/aai-task-manager.js"
-            ]
-          },
-          {
-            "title": "Edit Description",
-            "command": "cursor.edit",
-            "arguments": [
-              "agents/_store/scripts/aai-task-manager.js",
-              "Add description"
-            ]
-          }
-        ],
-        "improvementOpportunities": [
-          {
-            "category": "documentation",
-            "issue": "Missing or inadequate description",
-            "suggestion": "Add comprehensive JSDoc comments and description",
-            "priority": "medium",
-            "estimatedTime": "10-15 minutes"
-          }
-        ]
-      },
-      {
         "name": "agent-intelligence-enhancer.js",
         "path": "agents/_store/scripts/agent-intelligence-enhancer.js",
         "description": "No description available",
@@ -188,158 +150,6 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/agent-intelligence-enhancer.js",
-              "Add description"
-            ]
-          }
-        ],
-        "improvementOpportunities": [
-          {
-            "category": "documentation",
-            "issue": "Missing or inadequate description",
-            "suggestion": "Add comprehensive JSDoc comments and description",
-            "priority": "medium",
-            "estimatedTime": "10-15 minutes"
-          }
-        ]
-      },
-      {
-        "name": "cursor-aai-integration.js",
-        "path": "agents/_store/scripts/cursor-aai-integration.js",
-        "description": "No description available",
-        "cursorActions": [
-          {
-            "title": "Open Script",
-            "command": "cursor.open",
-            "arguments": [
-              "agents/_store/scripts/cursor-aai-integration.js"
-            ]
-          },
-          {
-            "title": "Run Script",
-            "command": "terminal.run",
-            "arguments": [
-              "node agents/_store/scripts/cursor-aai-integration.js"
-            ]
-          },
-          {
-            "title": "Edit Description",
-            "command": "cursor.edit",
-            "arguments": [
-              "agents/_store/scripts/cursor-aai-integration.js",
-              "Add description"
-            ]
-          }
-        ],
-        "improvementOpportunities": [
-          {
-            "category": "documentation",
-            "issue": "Missing or inadequate description",
-            "suggestion": "Add comprehensive JSDoc comments and description",
-            "priority": "medium",
-            "estimatedTime": "10-15 minutes"
-          }
-        ]
-      },
-      {
-        "name": "cursor-chat-integration.js",
-        "path": "agents/_store/scripts/cursor-chat-integration.js",
-        "description": "No description available",
-        "cursorActions": [
-          {
-            "title": "Open Script",
-            "command": "cursor.open",
-            "arguments": [
-              "agents/_store/scripts/cursor-chat-integration.js"
-            ]
-          },
-          {
-            "title": "Run Script",
-            "command": "terminal.run",
-            "arguments": [
-              "node agents/_store/scripts/cursor-chat-integration.js"
-            ]
-          },
-          {
-            "title": "Edit Description",
-            "command": "cursor.edit",
-            "arguments": [
-              "agents/_store/scripts/cursor-chat-integration.js",
-              "Add description"
-            ]
-          }
-        ],
-        "improvementOpportunities": [
-          {
-            "category": "documentation",
-            "issue": "Missing or inadequate description",
-            "suggestion": "Add comprehensive JSDoc comments and description",
-            "priority": "medium",
-            "estimatedTime": "10-15 minutes"
-          }
-        ]
-      },
-      {
-        "name": "cursor-chat-monitor.js",
-        "path": "agents/_store/scripts/cursor-chat-monitor.js",
-        "description": "No description available",
-        "cursorActions": [
-          {
-            "title": "Open Script",
-            "command": "cursor.open",
-            "arguments": [
-              "agents/_store/scripts/cursor-chat-monitor.js"
-            ]
-          },
-          {
-            "title": "Run Script",
-            "command": "terminal.run",
-            "arguments": [
-              "node agents/_store/scripts/cursor-chat-monitor.js"
-            ]
-          },
-          {
-            "title": "Edit Description",
-            "command": "cursor.edit",
-            "arguments": [
-              "agents/_store/scripts/cursor-chat-monitor.js",
-              "Add description"
-            ]
-          }
-        ],
-        "improvementOpportunities": [
-          {
-            "category": "documentation",
-            "issue": "Missing or inadequate description",
-            "suggestion": "Add comprehensive JSDoc comments and description",
-            "priority": "medium",
-            "estimatedTime": "10-15 minutes"
-          }
-        ]
-      },
-      {
-        "name": "cursor-chat-processor.js",
-        "path": "agents/_store/scripts/cursor-chat-processor.js",
-        "description": "No description available",
-        "cursorActions": [
-          {
-            "title": "Open Script",
-            "command": "cursor.open",
-            "arguments": [
-              "agents/_store/scripts/cursor-chat-processor.js"
-            ]
-          },
-          {
-            "title": "Run Script",
-            "command": "terminal.run",
-            "arguments": [
-              "node agents/_store/scripts/cursor-chat-processor.js"
-            ]
-          },
-          {
-            "title": "Edit Description",
-            "command": "cursor.edit",
-            "arguments": [
-              "agents/_store/scripts/cursor-chat-processor.js",
               "Add description"
             ]
           }
@@ -758,44 +568,6 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/performance-optimizer.js",
-              "Add description"
-            ]
-          }
-        ],
-        "improvementOpportunities": [
-          {
-            "category": "documentation",
-            "issue": "Missing or inadequate description",
-            "suggestion": "Add comprehensive JSDoc comments and description",
-            "priority": "medium",
-            "estimatedTime": "10-15 minutes"
-          }
-        ]
-      },
-      {
-        "name": "process-chat-command.js",
-        "path": "agents/_store/scripts/process-chat-command.js",
-        "description": "No description available",
-        "cursorActions": [
-          {
-            "title": "Open Script",
-            "command": "cursor.open",
-            "arguments": [
-              "agents/_store/scripts/process-chat-command.js"
-            ]
-          },
-          {
-            "title": "Run Script",
-            "command": "terminal.run",
-            "arguments": [
-              "node agents/_store/scripts/process-chat-command.js"
-            ]
-          },
-          {
-            "title": "Edit Description",
-            "command": "cursor.edit",
-            "arguments": [
-              "agents/_store/scripts/process-chat-command.js",
               "Add description"
             ]
           }

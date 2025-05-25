@@ -1,2 +1,0 @@
-# User commands will be processed here
-# Format: COMMAND: your request here

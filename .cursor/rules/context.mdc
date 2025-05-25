@@ -3,6 +3,6 @@ description:
 globs: 
 alwaysApply: true
 ---
-IMPORANT: firt thing curso do when i send message to chat always use commande `npm run task` for analyze my message
+IMPORANT: firt thing curso do when i send message to chat always use [DYNAMIC-AI-TASK-FLOW.mdc](mdc:.cursor/rules/DYNAMIC-AI-TASK-FLOW.mdc) for analyze my message
 for better know context projet and coop with another AI, always read [settings.json](mdc:.cursor/settings.json) 
 for know task you need to work need read [tasks.json](mdc:.cursor/tasks.json), if task complete need clear task and run next task

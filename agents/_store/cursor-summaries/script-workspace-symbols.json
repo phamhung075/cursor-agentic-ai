@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T12:29:59.189Z",
+  "timestamp": "2025-05-25T13:31:00.114Z",
   "scriptSymbols": [
     {
       "name": "enhanced-dependency-analyzer.js",
@@ -26,49 +26,9 @@
       "containerName": "AAI Scripts/cleanup"
     },
     {
-      "name": "aai-task-manager.js",
-      "kind": "Function",
-      "location": "agents/_store/scripts/aai-task-manager.js",
-      "detail": "No description available",
-      "category": "uncategorized",
-      "containerName": "AAI Scripts/uncategorized"
-    },
-    {
       "name": "agent-intelligence-enhancer.js",
       "kind": "Function",
       "location": "agents/_store/scripts/agent-intelligence-enhancer.js",
-      "detail": "No description available",
-      "category": "uncategorized",
-      "containerName": "AAI Scripts/uncategorized"
-    },
-    {
-      "name": "cursor-aai-integration.js",
-      "kind": "Function",
-      "location": "agents/_store/scripts/cursor-aai-integration.js",
-      "detail": "No description available",
-      "category": "uncategorized",
-      "containerName": "AAI Scripts/uncategorized"
-    },
-    {
-      "name": "cursor-chat-integration.js",
-      "kind": "Function",
-      "location": "agents/_store/scripts/cursor-chat-integration.js",
-      "detail": "No description available",
-      "category": "uncategorized",
-      "containerName": "AAI Scripts/uncategorized"
-    },
-    {
-      "name": "cursor-chat-monitor.js",
-      "kind": "Function",
-      "location": "agents/_store/scripts/cursor-chat-monitor.js",
-      "detail": "No description available",
-      "category": "uncategorized",
-      "containerName": "AAI Scripts/uncategorized"
-    },
-    {
-      "name": "cursor-chat-processor.js",
-      "kind": "Function",
-      "location": "agents/_store/scripts/cursor-chat-processor.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -157,14 +117,6 @@
       "name": "performance-optimizer.js",
       "kind": "Function",
       "location": "agents/_store/scripts/performance-optimizer.js",
-      "detail": "No description available",
-      "category": "uncategorized",
-      "containerName": "AAI Scripts/uncategorized"
-    },
-    {
-      "name": "process-chat-command.js",
-      "kind": "Function",
-      "location": "agents/_store/scripts/process-chat-command.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -290,7 +242,7 @@
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "31 scripts in uncategorized category",
+      "detail": "25 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
@@ -562,146 +514,6 @@
       "containerName": "NPM Scripts"
     },
     {
-      "name": "aai:task-init",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/aai-task-manager.js init",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "aai:task-analyze",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/aai-task-manager.js analyze",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "aai:task-execute",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/aai-task-manager.js execute",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "aai:task-status",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/aai-task-manager.js status",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "aai:task-auto-manage",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/aai-task-manager.js auto-manage",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "cursor:aai-init",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-aai-integration.js init",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "cursor:aai-request",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-aai-integration.js request",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "cursor:aai-quick",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-aai-integration.js quick",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "cursor:aai-auto-manage",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-aai-integration.js auto-manage",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "cursor:aai-status",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-aai-integration.js status",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "chat:init",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-processor.js init",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "chat:process",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-processor.js",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "chat:status",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-processor.js status",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "chat:monitor",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-monitor.js start",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "chat:monitor-status",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-monitor.js status",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "chat:integration",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-integration.js start",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "chat:integration-status",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-integration.js status",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "chat:add",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-integration.js add",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "process-chat",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/process-chat-command.js",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "process-chat-api",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/process-chat-command.js --api",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
       "name": "aai:analyze-deps",
       "kind": "Function",
       "detail": "node agents/_store/scripts/enhanced-dependency-analyzer.js",
@@ -796,6 +608,76 @@
       "name": "mdc:cursor-watch",
       "kind": "Function",
       "detail": "node agents/_store/scripts/cursor-mdc-watcher.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:task-init",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/aai-task-manager.js init",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:task-analyze",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/aai-task-manager.js analyze",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:task-execute",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/aai-task-manager.js execute",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:task-status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/aai-task-manager.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:task-auto-manage",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/aai-task-manager.js auto-manage",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:aai-init",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-aai-integration.js init",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:aai-request",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-aai-integration.js request",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:aai-quick",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-aai-integration.js quick",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:aai-auto-manage",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-aai-integration.js auto-manage",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:aai-status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-aai-integration.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     }

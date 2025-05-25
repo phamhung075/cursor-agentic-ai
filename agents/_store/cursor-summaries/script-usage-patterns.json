@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-05-25T12:29:59.189Z",
+  "timestamp": "2025-05-25T13:31:00.114Z",
   "mostUsedCategories": [
     {
       "category": "uncategorized",
-      "count": 31
+      "count": 25
     },
     {
       "category": "cleanup",
@@ -206,106 +206,6 @@
       "category": "utility"
     },
     {
-      "npmCommand": "aai:task-init",
-      "scriptPath": "node agents/_store/scripts/aai-task-manager.js init",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "aai:task-analyze",
-      "scriptPath": "node agents/_store/scripts/aai-task-manager.js analyze",
-      "category": "analysis"
-    },
-    {
-      "npmCommand": "aai:task-execute",
-      "scriptPath": "node agents/_store/scripts/aai-task-manager.js execute",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "aai:task-status",
-      "scriptPath": "node agents/_store/scripts/aai-task-manager.js status",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "aai:task-auto-manage",
-      "scriptPath": "node agents/_store/scripts/aai-task-manager.js auto-manage",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "cursor:aai-init",
-      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js init",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "cursor:aai-request",
-      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js request",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "cursor:aai-quick",
-      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js quick",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "cursor:aai-auto-manage",
-      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js auto-manage",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "cursor:aai-status",
-      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js status",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "chat:init",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js init",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "chat:process",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "chat:status",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js status",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "chat:monitor",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-monitor.js start",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "chat:monitor-status",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-monitor.js status",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "chat:integration",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-integration.js start",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "chat:integration-status",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-integration.js status",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "chat:add",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-integration.js add",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "process-chat",
-      "scriptPath": "node agents/_store/scripts/process-chat-command.js",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "process-chat-api",
-      "scriptPath": "node agents/_store/scripts/process-chat-command.js --api",
-      "category": "utility"
-    },
-    {
       "npmCommand": "aai:analyze-deps",
       "scriptPath": "node agents/_store/scripts/enhanced-dependency-analyzer.js",
       "category": "analysis"
@@ -373,6 +273,56 @@
     {
       "npmCommand": "mdc:cursor-watch",
       "scriptPath": "node agents/_store/scripts/cursor-mdc-watcher.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "aai:task-init",
+      "scriptPath": "node agents/_store/scripts/aai-task-manager.js init",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "aai:task-analyze",
+      "scriptPath": "node agents/_store/scripts/aai-task-manager.js analyze",
+      "category": "analysis"
+    },
+    {
+      "npmCommand": "aai:task-execute",
+      "scriptPath": "node agents/_store/scripts/aai-task-manager.js execute",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "aai:task-status",
+      "scriptPath": "node agents/_store/scripts/aai-task-manager.js status",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "aai:task-auto-manage",
+      "scriptPath": "node agents/_store/scripts/aai-task-manager.js auto-manage",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "cursor:aai-init",
+      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js init",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "cursor:aai-request",
+      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js request",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "cursor:aai-quick",
+      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js quick",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "cursor:aai-auto-manage",
+      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js auto-manage",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "cursor:aai-status",
+      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js status",
       "category": "utility"
     }
   ],

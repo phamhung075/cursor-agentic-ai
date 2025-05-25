@@ -25,33 +25,8 @@
     "utility": [],
     "uncategorized": [
       {
-        "name": "aai-task-manager.js",
-        "path": "agents/_store/scripts/aai-task-manager.js",
-        "description": "No description available"
-      },
-      {
         "name": "agent-intelligence-enhancer.js",
         "path": "agents/_store/scripts/agent-intelligence-enhancer.js",
-        "description": "No description available"
-      },
-      {
-        "name": "cursor-aai-integration.js",
-        "path": "agents/_store/scripts/cursor-aai-integration.js",
-        "description": "No description available"
-      },
-      {
-        "name": "cursor-chat-integration.js",
-        "path": "agents/_store/scripts/cursor-chat-integration.js",
-        "description": "No description available"
-      },
-      {
-        "name": "cursor-chat-monitor.js",
-        "path": "agents/_store/scripts/cursor-chat-monitor.js",
-        "description": "No description available"
-      },
-      {
-        "name": "cursor-chat-processor.js",
-        "path": "agents/_store/scripts/cursor-chat-processor.js",
         "description": "No description available"
       },
       {
@@ -107,11 +82,6 @@
       {
         "name": "performance-optimizer.js",
         "path": "agents/_store/scripts/performance-optimizer.js",
-        "description": "No description available"
-      },
-      {
-        "name": "process-chat-command.js",
-        "path": "agents/_store/scripts/process-chat-command.js",
         "description": "No description available"
       },
       {
@@ -358,86 +328,6 @@
       "command": "node agents/_store/scripts/enhanced-cursor-setup.js status"
     },
     {
-      "name": "aai:task-init",
-      "command": "node agents/_store/scripts/aai-task-manager.js init"
-    },
-    {
-      "name": "aai:task-analyze",
-      "command": "node agents/_store/scripts/aai-task-manager.js analyze"
-    },
-    {
-      "name": "aai:task-execute",
-      "command": "node agents/_store/scripts/aai-task-manager.js execute"
-    },
-    {
-      "name": "aai:task-status",
-      "command": "node agents/_store/scripts/aai-task-manager.js status"
-    },
-    {
-      "name": "aai:task-auto-manage",
-      "command": "node agents/_store/scripts/aai-task-manager.js auto-manage"
-    },
-    {
-      "name": "cursor:aai-init",
-      "command": "node agents/_store/scripts/cursor-aai-integration.js init"
-    },
-    {
-      "name": "cursor:aai-request",
-      "command": "node agents/_store/scripts/cursor-aai-integration.js request"
-    },
-    {
-      "name": "cursor:aai-quick",
-      "command": "node agents/_store/scripts/cursor-aai-integration.js quick"
-    },
-    {
-      "name": "cursor:aai-auto-manage",
-      "command": "node agents/_store/scripts/cursor-aai-integration.js auto-manage"
-    },
-    {
-      "name": "cursor:aai-status",
-      "command": "node agents/_store/scripts/cursor-aai-integration.js status"
-    },
-    {
-      "name": "chat:init",
-      "command": "node agents/_store/scripts/cursor-chat-processor.js init"
-    },
-    {
-      "name": "chat:process",
-      "command": "node agents/_store/scripts/cursor-chat-processor.js"
-    },
-    {
-      "name": "chat:status",
-      "command": "node agents/_store/scripts/cursor-chat-processor.js status"
-    },
-    {
-      "name": "chat:monitor",
-      "command": "node agents/_store/scripts/cursor-chat-monitor.js start"
-    },
-    {
-      "name": "chat:monitor-status",
-      "command": "node agents/_store/scripts/cursor-chat-monitor.js status"
-    },
-    {
-      "name": "chat:integration",
-      "command": "node agents/_store/scripts/cursor-chat-integration.js start"
-    },
-    {
-      "name": "chat:integration-status",
-      "command": "node agents/_store/scripts/cursor-chat-integration.js status"
-    },
-    {
-      "name": "chat:add",
-      "command": "node agents/_store/scripts/cursor-chat-integration.js add"
-    },
-    {
-      "name": "process-chat",
-      "command": "node agents/_store/scripts/process-chat-command.js"
-    },
-    {
-      "name": "process-chat-api",
-      "command": "node agents/_store/scripts/process-chat-command.js --api"
-    },
-    {
       "name": "aai:analyze-deps",
       "command": "node agents/_store/scripts/enhanced-dependency-analyzer.js"
     },
@@ -492,9 +382,49 @@
     {
       "name": "mdc:cursor-watch",
       "command": "node agents/_store/scripts/cursor-mdc-watcher.js"
+    },
+    {
+      "name": "aai:task-init",
+      "command": "node agents/_store/scripts/aai-task-manager.js init"
+    },
+    {
+      "name": "aai:task-analyze",
+      "command": "node agents/_store/scripts/aai-task-manager.js analyze"
+    },
+    {
+      "name": "aai:task-execute",
+      "command": "node agents/_store/scripts/aai-task-manager.js execute"
+    },
+    {
+      "name": "aai:task-status",
+      "command": "node agents/_store/scripts/aai-task-manager.js status"
+    },
+    {
+      "name": "aai:task-auto-manage",
+      "command": "node agents/_store/scripts/aai-task-manager.js auto-manage"
+    },
+    {
+      "name": "cursor:aai-init",
+      "command": "node agents/_store/scripts/cursor-aai-integration.js init"
+    },
+    {
+      "name": "cursor:aai-request",
+      "command": "node agents/_store/scripts/cursor-aai-integration.js request"
+    },
+    {
+      "name": "cursor:aai-quick",
+      "command": "node agents/_store/scripts/cursor-aai-integration.js quick"
+    },
+    {
+      "name": "cursor:aai-auto-manage",
+      "command": "node agents/_store/scripts/cursor-aai-integration.js auto-manage"
+    },
+    {
+      "name": "cursor:aai-status",
+      "command": "node agents/_store/scripts/cursor-aai-integration.js status"
     }
   ],
-  "totalFiles": 37,
+  "totalFiles": 31,
   "categories": {
     "scripts": {
       "core": "Core framework management",
@@ -511,5 +441,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T12:29:59.155Z"
+  "lastUpdated": "2025-05-25T13:31:00.093Z"
 }
