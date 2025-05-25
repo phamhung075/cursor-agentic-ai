@@ -4168,14 +4168,14 @@
     },
     "rules_02__ai_docs_ai_coder_selfimprovement_agent_core_mdc": {
       "id": "rules_02__ai_docs_ai_coder_selfimprovement_agent_core_mdc",
-      "title": "🤖 Agent AI System - Core Architecture & Implementation",
+      "title": "🤖 Agent AI System - Continuous Improvement Architecture v5.0",
       "path": "rules/02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
-      "description": "*Advanced AI development assistant with memory, dependency tracking, and intelligent project management*",
+      "description": "*Advanced autonomous AI development assistant with continuous improvement, comprehensive logging, and intelligent project management*",
       "status": "valid",
-      "size": 12629,
-      "last_modified": "2025-05-25T04:55:05.972Z",
-      "last_accessed": "2025-05-25T06:15:06.731Z",
+      "size": 20528,
+      "last_modified": "2025-05-25T06:20:14.357Z",
+      "last_accessed": "2025-05-25T06:20:14.469Z",
       "links_out": [
         {
           "text": "package.json",
@@ -4185,8 +4185,8 @@
           "status": "unchecked"
         },
         {
-          "text": "default.json",
-          "path": "default.json",
+          "text": "continuous-improvement.json",
+          "path": "continuous-improvement.json",
           "type": "file_reference",
           "source_file": "rules/02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
           "status": "unchecked"
@@ -4194,7 +4194,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "2b65702a"
+      "content_hash": "6ea59532"
     },
     "rules_02__ai_docs_ai_coder_testgenerators_test_generator_template_mdc": {
       "id": "rules_02__ai_docs_ai_coder_testgenerators_test_generator_template_mdc",
@@ -12158,8 +12158,8 @@
         "status": "unchecked"
       },
       {
-        "text": "default.json",
-        "path": "default.json",
+        "text": "continuous-improvement.json",
+        "path": "continuous-improvement.json",
         "type": "file_reference",
         "source_file": "rules/02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
         "status": "unchecked"
@@ -19340,9 +19340,21 @@
       "file": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:19:45.807Z",
+      "file": "rules/02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:20:14.469Z",
+      "file": "rules/02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T06:15:06.773Z",
+  "last_updated": "2025-05-25T06:20:14.570Z",
   "scan_history": [
     {
       "id": "scan_1748143455002",
