@@ -30,10 +30,12 @@ class AAICompleteOrchestrator extends EventEmitter {
       autoRestart: true,
       continuousImprovement: true,
       monitoringInterval: 30000, // 30 seconds
-      improvementInterval: 300000, // 5 minutes
+      improvementInterval: 180000, // 3 minutes (more frequent)
       healthCheckInterval: 60000, // 1 minute
-      intelligenceInterval: 600000, // 10 minutes
-      performanceInterval: 900000 // 15 minutes
+      intelligenceInterval: 300000, // 5 minutes (more frequent)
+      performanceInterval: 600000, // 10 minutes (more frequent)
+      aaiCommandInterval: 120000, // 2 minutes - AAI agent commands
+      memorySync: 600000 // 10 minutes - memory sync
     };
     this.startTime = new Date();
     this.improvementCycle = 0;
@@ -185,43 +187,79 @@ class AAICompleteOrchestrator extends EventEmitter {
   }
 
   /**
-   * Launch AAI Agent
+   * Launch AAI Agent in continuous improvement mode
    */
   launchAAIAgent() {
-    console.log('🤖 Starting AAI Agent...');
+    console.log('🤖 Starting AAI Agent in Continuous Improvement Mode...');
     
-    // Start AAI agent in non-interactive mode for better integration
+    // Start AAI agent in continuous improvement mode with enhanced settings
     const aaiProcess = spawn('node', ['agents/self-improvement/index.js'], {
       stdio: ['pipe', 'pipe', 'pipe'],
       detached: false,
-      env: { ...process.env, AAI_NON_INTERACTIVE: 'true' }
+      env: { 
+        ...process.env, 
+        AAI_CONTINUOUS_MODE: 'true',
+        AAI_AUTO_IMPROVE: 'true',
+        AAI_BACKGROUND_MODE: 'true',
+        AAI_LOG_LEVEL: 'INFO'
+      }
     });
+
+    // Send continuous improvement commands to the agent
+    aaiProcess.stdin.write('logs level INFO\n');
+    aaiProcess.stdin.write('context autopilot\n');
+    
+    // Set up periodic improvement commands
+    setInterval(() => {
+      if (!aaiProcess.killed) {
+        // Rotate through different improvement activities
+        const commands = [
+          'smart-detect\n',
+          'monitor-quality\n', 
+          'detect-patterns\n',
+          'agent-memory stats\n',
+          'project-memory stats\n',
+          'dependencies stats\n'
+        ];
+        
+        const randomCommand = commands[Math.floor(Math.random() * commands.length)];
+        aaiProcess.stdin.write(randomCommand);
+      }
+    }, 120000); // Every 2 minutes
 
     aaiProcess.stdout.on('data', (data) => {
       const output = data.toString();
-      if (output.includes('Agent initialized') || output.includes('Self-Improvement Agent')) {
-        console.log('✅ AAI Agent ready');
+      if (output.includes('Agent initialized') || output.includes('Self-Improvement Agent') || output.includes('✅ All systems operational')) {
+        console.log('✅ AAI Agent ready (Continuous Improvement Mode)');
         this.status.aaiAgent = true;
         this.emit('aai-ready');
       }
-      // Log important AAI output
-      if (output.includes('analysis') || output.includes('improvement') || output.includes('✅')) {
+      // Log important AAI output with better filtering
+      if (output.includes('analysis') || output.includes('improvement') || output.includes('✅') || 
+          output.includes('🔍') || output.includes('📊') || output.includes('🧠') ||
+          output.includes('pattern') || output.includes('suggestion')) {
         console.log(`🤖 AAI: ${output.trim()}`);
       }
     });
 
     aaiProcess.stderr.on('data', (data) => {
       const stderr = data.toString().trim();
-      if (stderr && !stderr.includes('ExperimentalWarning')) {
+      if (stderr && !stderr.includes('ExperimentalWarning') && !stderr.includes('DeprecationWarning')) {
         console.warn(`⚠️ AAI Error: ${stderr}`);
       }
     });
 
-    // Handle process exit
+    // Handle process exit and auto-restart
     aaiProcess.on('close', (code) => {
       if (code !== 0) {
         console.warn(`⚠️ AAI Agent exited with code ${code}`);
         this.status.aaiAgent = false;
+        
+        // Auto-restart AAI agent if enabled
+        if (this.config.autoRestart) {
+          console.log('🔄 Restarting AAI Agent in 5 seconds...');
+          setTimeout(() => this.launchAAIAgent(), 5000);
+        }
       }
     });
 
@@ -335,17 +373,17 @@ class AAICompleteOrchestrator extends EventEmitter {
       this.performHealthCheck();
     }, this.config.healthCheckInterval);
 
-    // Improvement cycles every 5 minutes
+    // Improvement cycles every 3 minutes
     setInterval(() => {
       this.performImprovementCycle();
     }, this.config.improvementInterval);
 
-    // Intelligence enhancement every 10 minutes
+    // Intelligence enhancement every 5 minutes
     setInterval(() => {
       this.performIntelligenceEnhancement();
     }, this.config.intelligenceInterval);
 
-    // Performance optimization every 15 minutes
+    // Performance optimization every 10 minutes
     setInterval(() => {
       this.performPerformanceOptimization();
     }, this.config.performanceInterval);
@@ -442,13 +480,13 @@ class AAICompleteOrchestrator extends EventEmitter {
   }
 
   /**
-   * Enhanced improvement cycle
+   * Enhanced improvement cycle with active AAI agent interaction
    */
   async performImprovementCycle() {
     this.improvementCycle++;
     const timestamp = new Date().toLocaleTimeString();
     
-    console.log(`🔄 [${timestamp}] Improvement cycle #${this.improvementCycle}`);
+    console.log(`🔄 [${timestamp}] Active Improvement Cycle #${this.improvementCycle}`);
 
     try {
       // 1. Update script awareness
@@ -457,7 +495,31 @@ class AAICompleteOrchestrator extends EventEmitter {
       // 2. Check memory sync status
       await this.runCommand('AAI:sync-preserved-status', 'Checking memory sync', false);
 
-      // 3. Regenerate any missing files
+      // 3. Send improvement commands to AAI agent if it's running
+      const aaiProcess = this.processes.get('aai-agent');
+      if (aaiProcess && !aaiProcess.killed) {
+        // Rotate through different improvement activities based on cycle number
+        const cycleCommands = [
+          'smart-detect\n',
+          'analyze-context autopilot\n',
+          'detect-issues --priority=high\n',
+          'improve-critical\n',
+          'monitor-quality\n',
+          'predict-issues\n',
+          'agent-memory search "improvement patterns"\n',
+          'project-memory stats\n',
+          'dependencies graph\n',
+          'logs summary\n'
+        ];
+        
+        const commandIndex = this.improvementCycle % cycleCommands.length;
+        const command = cycleCommands[commandIndex];
+        
+        console.log(`🤖 Sending improvement command: ${command.trim()}`);
+        aaiProcess.stdin.write(command);
+      }
+
+      // 4. Regenerate any missing files
       const criticalFiles = [
         'agents/_store/cursor-summaries/script-summary.json',
         'agents/_store/cursor-summaries/script-improvements.json'
@@ -470,7 +532,23 @@ class AAICompleteOrchestrator extends EventEmitter {
         }
       }
 
-      console.log(`✅ Improvement cycle #${this.improvementCycle} completed`);
+      // 5. Perform context-aware improvements every 5 cycles
+      if (this.improvementCycle % 5 === 0) {
+        console.log('🎯 Performing context-aware improvement analysis...');
+        if (aaiProcess && !aaiProcess.killed) {
+          aaiProcess.stdin.write('context autopilot\n');
+          aaiProcess.stdin.write('analyze-phase-readiness\n');
+          aaiProcess.stdin.write('validate-prerequisites\n');
+        }
+      }
+
+      // 6. Memory sync every 10 cycles
+      if (this.improvementCycle % 10 === 0) {
+        console.log('🧠 Performing memory synchronization...');
+        await this.runCommand('AAI:sync-both', 'Syncing memories', false);
+      }
+
+      console.log(`✅ Active Improvement Cycle #${this.improvementCycle} completed`);
 
     } catch (error) {
       console.warn(`⚠️ Improvement cycle #${this.improvementCycle} failed:`, error.message);
@@ -645,17 +723,21 @@ class AAICompleteOrchestrator extends EventEmitter {
   }
 
   /**
-   * Show system status
+   * Show system status with continuous improvement details
    */
   showSystemStatus() {
-    console.log('📊 SYSTEM STATUS:');
-    console.log('━'.repeat(50));
+    const uptime = Math.floor((new Date() - this.startTime) / 1000 / 60); // minutes
+    
+    console.log('📊 CONTINUOUS IMPROVEMENT SYSTEM STATUS:');
+    console.log('━'.repeat(60));
+    console.log(`⏰ Uptime: ${uptime} minutes | Improvement Cycles: ${this.improvementCycle}`);
+    console.log('');
     
     // Core Components
     console.log('🔧 Core Components:');
     const coreComponents = {
       'Cursor Integration': this.status.cursorIntegration,
-      'AAI Agent': this.status.aaiAgent,
+      'AAI Agent (Continuous Mode)': this.status.aaiAgent,
       'Auto-Sync': this.status.autoSync,
       'Memory Sync': this.status.memorySync,
       'Core Monitoring': this.processes.has('core-monitoring') && !this.processes.get('core-monitoring').killed
@@ -667,11 +749,13 @@ class AAICompleteOrchestrator extends EventEmitter {
     });
     
     // Intelligence Systems
-    console.log('\n🧠 Intelligence Systems:');
+    console.log('\n🧠 Intelligence & Improvement Systems:');
     const intelligenceSystems = {
       'Agent Intelligence': this.status.intelligence,
       'Context Tracking': this.processes.has('context-tracking') && !this.processes.get('context-tracking').killed,
-      'Performance Optimized': this.status.performanceOptimized
+      'Performance Optimized': this.status.performanceOptimized,
+      'Continuous Improvement': this.config.continuousImprovement,
+      'Auto-Restart': this.config.autoRestart
     };
     
     Object.entries(intelligenceSystems).forEach(([component, status]) => {
@@ -679,35 +763,58 @@ class AAICompleteOrchestrator extends EventEmitter {
       console.log(`   ${icon} ${component}`);
     });
     
+    // Active Processes
+    console.log('\n🔄 Active Processes:');
+    console.log(`   📊 Running Processes: ${this.processes.size}`);
+    for (const [name, process] of this.processes) {
+      const status = process.killed ? '❌' : '✅';
+      console.log(`   ${status} ${name}`);
+    }
+    
     console.log('');
   }
 
   /**
-   * Show available commands
+   * Show available commands and continuous improvement features
    */
   showAvailableCommands() {
-    console.log('🎯 ENHANCED AAI SYSTEM FEATURES:');
-    console.log('━'.repeat(50));
+    console.log('🎯 CONTINUOUS IMPROVEMENT SYSTEM ACTIVE:');
+    console.log('━'.repeat(60));
+    console.log('   • Everything runs automatically - no manual intervention needed!');
     console.log('   • Press Ctrl+C to shutdown gracefully');
-    console.log('   • Check logs above for real-time status');
+    console.log('   • Check logs above for real-time improvement activity');
     console.log('   • Open Cursor and press Ctrl/Cmd+P → type script names');
-    console.log('   • All AAI functions are running automatically');
     console.log('');
-    console.log('📋 WHAT\'S RUNNING:');
-    console.log('   🤖 AAI Agent - Interactive AI assistance');
+    console.log('🤖 CONTINUOUS AI IMPROVEMENT FEATURES:');
+    console.log('   ✅ Smart Detection - Every 2 minutes');
+    console.log('   ✅ Quality Monitoring - Continuous');
+    console.log('   ✅ Pattern Recognition - Every 3 minutes');
+    console.log('   ✅ Memory Sync - Every 10 minutes');
+    console.log('   ✅ Performance Optimization - Every 10 minutes');
+    console.log('   ✅ Context Analysis - Every 15 minutes');
+    console.log('   ✅ Auto-Restart - If any component fails');
+    console.log('');
+    console.log('📋 WHAT\'S RUNNING AUTOMATICALLY:');
+    console.log('   🤖 AAI Agent - Continuous improvement mode');
     console.log('   🔄 Auto-Sync - Keeps Cursor updated');
     console.log('   🧠 Memory Sync - Synchronizes AI memory');
     console.log('   📊 Core Monitor - Monitors system health');
     console.log('   🎯 Context Tracker - Smart context awareness');
     console.log('   ⚡ Performance Optimizer - Continuous optimization');
-    console.log('   🔄 Continuous Improvement - Auto-enhancement');
+    console.log('   🔄 Improvement Cycles - Active enhancement');
     console.log('');
-    console.log('🚀 INTELLIGENCE FEATURES:');
+    console.log('🚀 ACTIVE INTELLIGENCE FEATURES:');
     console.log('   • Pattern Learning - Learns from your code patterns');
     console.log('   • Context Awareness - Understands your workflow');
     console.log('   • Adaptive Behavior - Improves over time');
     console.log('   • Performance Monitoring - Real-time optimization');
     console.log('   • Proactive Suggestions - Anticipates your needs');
+    console.log('   • Automatic Issue Detection - Finds problems early');
+    console.log('   • Memory-Based Learning - Remembers successful patterns');
+    console.log('');
+    console.log('💡 RECOMMENDATION:');
+    console.log('   Use ONLY "npm run launch" - everything else is automatic!');
+    console.log('   The AI will continuously improve your workflow in the background.');
     console.log('');
   }
 
