@@ -2,11 +2,11 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "🗣️ User Command: Create a simple UserProfile component with props validation",
+      "label": "🗣️ User Command: Test the enhanced dependency analysis system with a sample delete operation",
       "type": "shell",
       "command": "echo",
       "args": [
-        "\"Processing: Create a simple UserProfile component with props validation\""
+        "\"Processing: Test the enhanced dependency analysis system with a sample delete operation\""
       ],
       "group": "build",
       "presentation": {
@@ -15,11 +15,11 @@
         "focus": true,
         "panel": "new"
       },
-      "detail": "Generated from user command: \"Create a simple UserProfile component with props validation\"",
+      "detail": "Generated from user command: \"Test the enhanced dependency analysis system with a sample delete operation\"",
       "metadata": {
         "isCommandHeader": true,
-        "userCommand": "Create a simple UserProfile component with props validation",
-        "timestamp": "2025-05-25T08:29:57.574Z"
+        "userCommand": "Test the enhanced dependency analysis system with a sample delete operation",
+        "timestamp": "2025-05-25T09:33:53.756Z"
       }
     },
     {
@@ -27,7 +27,7 @@
       "type": "shell",
       "command": "echo",
       "args": [
-        "\"🎯 PLANNING: Create a simple UserProfile component with props validation\\n📊 Total Tasks: 3\\n⏱️  Estimated Time: 35 minutes\\n🔍 Analysis complete - ready to proceed\""
+        "\"🎯 PLANNING: Test the enhanced dependency analysis system with a sample delete operation\\n📊 Total Tasks: 2\\n⏱️  Estimated Time: 35 minutes\\n🔍 Analysis complete - ready to proceed\""
       ],
       "group": "build",
       "presentation": {
@@ -37,88 +37,18 @@
         "panel": "new",
         "clear": true
       },
-      "detail": "Planning phase for: Create a simple UserProfile component with props validation",
+      "detail": "Planning phase for: Test the enhanced dependency analysis system with a sample delete operation",
       "metadata": {
         "isPlanning": true,
-        "userCommand": "Create a simple UserProfile component with props validation"
+        "userCommand": "Test the enhanced dependency analysis system with a sample delete operation"
       }
     },
     {
-      "label": "📁 2. Create simple UserProfile component - Creation",
-      "type": "shell",
-      "command": "node",
-      "args": [
-        "-e",
-        "\n        const fs = require('fs');\n        const path = require('path');\n        \n        console.log('📁 Creating file: component');\n        \n        // Determine file type and create appropriate content\n        const fileContent = `// component\n// Generated from: Create a simple UserProfile component with props validation\n// Task: Create simple UserProfile component - Creation\n\n// TODO: Implement Create simple UserProfile component - Creation\nconsole.log('component created successfully');\n`;\n        \n        // Ensure directory exists\n        const dir = path.dirname('component');\n        if (dir !== '.' && !fs.existsSync(dir)) {\n          fs.mkdirSync(dir, { recursive: true });\n          console.log('📁 Created directory: ' + dir);\n        }\n        \n        // Create file\n        fs.writeFileSync('component', fileContent);\n        console.log('✅ File created: component');\n      "
-      ],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared",
-        "showReuseMessage": false,
-        "clear": false
-      },
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "problemMatcher": [],
-      "detail": "Task generated from: \"Create a simple UserProfile component with props validation\"\nType: file_operation\nCategory: creation\n\nEstimated time: 5 minutes\nPriority: normal",
-      "dependsOn": [
-        "📋 1. Planning & Analysis"
-      ],
-      "metadata": {
-        "aaiTaskId": "task-1748161797570-ygr8pbejo",
-        "aaiTaskType": "file_operation",
-        "aaiCategory": "creation",
-        "userCommand": "Create a simple UserProfile component with props validation",
-        "estimatedTime": 5,
-        "priority": "normal",
-        "taskNumber": 2
-      }
-    },
-    {
-      "label": "💻 3. Create simple UserProfile component - Implementation",
-      "type": "shell",
-      "command": "node",
-      "args": [
-        "-e",
-        "\n        const fs = require('fs');\n        const path = require('path');\n        \n        console.log('⚛️ Creating React component: With');\n        \n        const componentContent = `import React from 'react';\n\n/**\n * With Component\n * Generated from: Create a simple UserProfile component with props validation\n * Task: Create simple UserProfile component - Implementation\n */\nconst With = () => {\n  return (\n    <div className=\"with\">\n      <h2>With</h2>\n      <p>Component created for: Create a simple UserProfile component with props validation</p>\n      {/* TODO: Implement Create simple UserProfile component - Implementation */}\n    </div>\n  );\n};\n\nexport default With;\n`;\n        \n        // Ensure directory exists\n        const dir = path.dirname('src/components/With.jsx');\n        if (!fs.existsSync(dir)) {\n          fs.mkdirSync(dir, { recursive: true });\n          console.log('📁 Created directory: ' + dir);\n        }\n        \n        // Create component file\n        fs.writeFileSync('src/components/With.jsx', componentContent);\n        console.log('✅ Component created: src/components/With.jsx');\n      "
-      ],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared",
-        "showReuseMessage": false,
-        "clear": false
-      },
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "problemMatcher": [],
-      "detail": "Task generated from: \"Create a simple UserProfile component with props validation\"\nType: development\nCategory: implementation\n\nEstimated time: 15 minutes\nPriority: normal",
-      "dependsOn": [
-        "💻 2. Previous Task"
-      ],
-      "metadata": {
-        "aaiTaskId": "task-1748161797571-7vp6uypkv",
-        "aaiTaskType": "development",
-        "aaiCategory": "implementation",
-        "userCommand": "Create a simple UserProfile component with props validation",
-        "estimatedTime": 15,
-        "priority": "normal",
-        "taskNumber": 3
-      }
-    },
-    {
-      "label": "✅ 4. Create simple UserProfile component - Validation",
+      "label": "✅ 2. Modify - Validation",
       "type": "shell",
       "command": "echo",
       "args": [
-        "\"🧪 Testing: Create simple UserProfile component - Validation\\n📝 Testing for: Create a simple UserProfile component with props validation\\n✅ Ready to test\""
+        "\"🧪 Testing: Modify - Validation\\n📝 Testing for: Test the enhanced dependency analysis system with a sample delete operation\\n✅ Ready to test\""
       ],
       "group": "test",
       "presentation": {
@@ -133,26 +63,60 @@
         "cwd": "${workspaceFolder}"
       },
       "problemMatcher": [],
-      "detail": "Task generated from: \"Create a simple UserProfile component with props validation\"\nType: quality_assurance\nCategory: validation\n\nEstimated time: 15 minutes\nPriority: normal",
+      "detail": "Task generated from: \"Test the enhanced dependency analysis system with a sample delete operation\"\nType: quality_assurance\nCategory: validation\n\nEstimated time: 15 minutes\nPriority: normal",
       "dependsOn": [
-        "✅ 3. Previous Task"
+        "📋 1. Planning & Analysis"
       ],
       "metadata": {
-        "aaiTaskId": "task-1748161797571-w68a90pts",
+        "aaiTaskId": "task-1748165633753-3e3qdgwxt",
         "aaiTaskType": "quality_assurance",
         "aaiCategory": "validation",
-        "userCommand": "Create a simple UserProfile component with props validation",
+        "userCommand": "Test the enhanced dependency analysis system with a sample delete operation",
         "estimatedTime": 15,
         "priority": "normal",
-        "taskNumber": 4
+        "taskNumber": 2
       }
     },
     {
-      "label": "🎉 5. Task Completion",
+      "label": "⚡ 3. Modify - Optimization",
       "type": "shell",
       "command": "echo",
       "args": [
-        "\"✅ COMPLETED: Create a simple UserProfile component with props validation\\n📊 All 3 tasks executed\\n🎯 User request fulfilled successfully\""
+        "\"⚡ Modify - Optimization\\n📝 Task generated from: \"Test the enhanced dependency analysis system with a sample delete operation\"\nType: improvement\nCategory: optimization\\n✅ Task ready for execution\""
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": false
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "detail": "Task generated from: \"Test the enhanced dependency analysis system with a sample delete operation\"\nType: improvement\nCategory: optimization\n\nEstimated time: 20 minutes\nPriority: normal",
+      "dependsOn": [
+        "⚡ 2. Previous Task"
+      ],
+      "metadata": {
+        "aaiTaskId": "task-1748165633753-f1m4id6gf",
+        "aaiTaskType": "improvement",
+        "aaiCategory": "optimization",
+        "userCommand": "Test the enhanced dependency analysis system with a sample delete operation",
+        "estimatedTime": 20,
+        "priority": "normal",
+        "taskNumber": 3
+      }
+    },
+    {
+      "label": "🎉 4. Task Completion",
+      "type": "shell",
+      "command": "echo",
+      "args": [
+        "\"✅ COMPLETED: Test the enhanced dependency analysis system with a sample delete operation\\n📊 All 2 tasks executed\\n🎯 User request fulfilled successfully\""
       ],
       "group": "build",
       "presentation": {
@@ -161,19 +125,59 @@
         "focus": true,
         "panel": "shared"
       },
-      "detail": "Completion confirmation for: Create a simple UserProfile component with props validation",
+      "detail": "Completion confirmation for: Test the enhanced dependency analysis system with a sample delete operation",
       "metadata": {
         "isCompletion": true,
-        "userCommand": "Create a simple UserProfile component with props validation"
+        "userCommand": "Test the enhanced dependency analysis system with a sample delete operation"
       }
     },
     {
-      "label": "AAI: Start Agent",
+      "label": "🔍 2. Analyze Current Settings Status",
       "type": "shell",
-      "command": "npm",
+      "command": "echo",
       "args": [
-        "run",
-        "AAI:start"
+        "\"🔍 ANALYZING SETTINGS.JSON STATUS\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\nChecking current settings.json file...\\nAnalyzing for AAI features and enhanced configuration...\""
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": [
+        "📋 1. Planning & Analysis"
+      ],
+      "detail": "Analyze current settings.json status and detect if it's the simple or enhanced version"
+    },
+    {
+      "label": "🔍 3. Find Script Causing Overwrite",
+      "type": "shell",
+      "command": "grep",
+      "args": [
+        "-r",
+        "settings\\.json",
+        "agents/_store/scripts/",
+        "package.json"
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": [
+        "🔍 2. Analyze Current Settings Status"
+      ],
+      "detail": "Search for scripts that modify settings.json and identify the root cause"
+    },
+    {
+      "label": "🔧 4. Fix Package.json Command",
+      "type": "shell",
+      "command": "echo",
+      "args": [
+        "\"🔧 FIXING PACKAGE.JSON CURSOR:SETUP COMMAND\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\nUpdating cursor:setup to point to enhanced-cursor-setup.js...\""
       ],
       "group": "build",
       "presentation": {
@@ -182,70 +186,124 @@
         "focus": false,
         "panel": "shared"
       },
-      "problemMatcher": []
+      "dependsOn": [
+        "🔍 3. Find Script Causing Overwrite"
+      ],
+      "detail": "Fix package.json to point cursor:setup to enhanced version instead of simple version"
     },
     {
-      "label": "AAI: Analyze Code",
+      "label": "🔄 5. Restore Enhanced Settings",
       "type": "shell",
-      "command": "npm",
+      "command": "cp",
       "args": [
-        "run",
-        "AAI:analyze"
+        ".cursor/settings.enhanced.backup.json",
+        ".cursor/settings.json"
       ],
-      "group": "test",
+      "group": "build",
       "presentation": {
         "echo": true,
         "reveal": "always",
         "focus": false,
         "panel": "shared"
-      }
+      },
+      "dependsOn": [
+        "🔧 4. Fix Package.json Command"
+      ],
+      "detail": "Restore enhanced settings from backup"
     },
     {
-      "label": "AAI: Update Cursor Summaries",
+      "label": "🛡️ 6. Enable Protection",
       "type": "shell",
       "command": "npm",
       "args": [
         "run",
-        "cursor:update-summaries"
+        "cursor:protect-enable"
       ],
       "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "silent",
-        "focus": false,
-        "panel": "shared"
-      }
-    },
-    {
-      "label": "AAI: Start File Watcher",
-      "type": "shell",
-      "command": "node",
-      "args": [
-        "agents/cursor-integration/file-watcher.js"
-      ],
-      "group": "build",
-      "isBackground": true,
-      "presentation": {
-        "echo": true,
-        "reveal": "silent",
-        "focus": false,
-        "panel": "shared"
-      }
-    },
-    {
-      "label": "AAI: Memory Stats",
-      "type": "shell",
-      "command": "npm",
-      "args": [
-        "run",
-        "AAI:memory-stats"
-      ],
-      "group": "test",
       "presentation": {
         "echo": true,
         "reveal": "always",
         "focus": false,
         "panel": "shared"
+      },
+      "dependsOn": [
+        "🔄 5. Restore Enhanced Settings"
+      ],
+      "detail": "Enable protection to prevent future overwrites of enhanced settings"
+    },
+    {
+      "label": "✅ 7. Verify Fix & Status",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "cursor:protect",
+        "--status"
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "dependsOn": [
+        "🛡️ 6. Enable Protection"
+      ],
+      "detail": "Final verification that the settings.json overwrite issue is completely fixed"
+    },
+    {
+      "label": "🗣️ User Command: delete test-file.js with dependency analysis",
+      "type": "shell",
+      "command": "echo \"Processing: delete agents/_store/scripts/test-file.js with comprehensive dependency analysis\"",
+      "group": "AAI-Enhanced-Analysis",
+      "detail": "Generated from enhanced dependency analysis for delete operation",
+      "metadata": {
+        "userCommand": "delete agents/_store/scripts/test-file.js",
+        "analysisType": "enhanced-dependency",
+        "timestamp": "2025-05-25T09:34:13.911Z"
+      }
+    },
+    {
+      "label": "🎯 Planning: delete test-file.js",
+      "type": "shell",
+      "command": "echo \"Comprehensive analysis and planning for delete operation\"",
+      "group": "AAI-Enhanced-Analysis",
+      "detail": "Comprehensive analysis and planning for delete operation\n\nType: planning\nPriority: high\nEstimated time: 10 minutes\n\nActions:\n• Review analysis results\n• Confirm operation scope\n• Validate affected files list",
+      "metadata": {
+        "taskId": "analysis-planning",
+        "taskType": "planning",
+        "priority": "high",
+        "estimatedTime": "10 minutes",
+        "files": [],
+        "actions": [
+          "Review analysis results",
+          "Confirm operation scope",
+          "Validate affected files list"
+        ]
+      }
+    },
+    {
+      "label": "✅ Final Cleanup and Verification",
+      "type": "shell",
+      "command": "echo \"Perform final cleanup and comprehensive verification\"",
+      "group": "AAI-Enhanced-Analysis",
+      "detail": "Perform final cleanup and comprehensive verification\n\nType: cleanup\nPriority: high\nEstimated time: 10 minutes\n\nActions:\n• Remove any remaining references\n• Clean up temporary files\n• Verify system functionality\n• Update documentation if needed",
+      "dependsOn": [
+        "analysis-planning"
+      ],
+      "metadata": {
+        "taskId": "final-cleanup",
+        "taskType": "cleanup",
+        "priority": "high",
+        "estimatedTime": "10 minutes",
+        "files": [],
+        "actions": [
+          "Remove any remaining references",
+          "Clean up temporary files",
+          "Verify system functionality",
+          "Update documentation if needed"
+        ]
       }
     }
   ]

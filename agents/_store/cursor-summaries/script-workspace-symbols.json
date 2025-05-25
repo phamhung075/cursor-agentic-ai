@@ -1,6 +1,14 @@
 {
-  "timestamp": "2025-05-25T08:32:28.038Z",
+  "timestamp": "2025-05-25T09:36:45.402Z",
   "scriptSymbols": [
+    {
+      "name": "enhanced-dependency-analyzer.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/enhanced-dependency-analyzer.js",
+      "detail": "No description available",
+      "category": "analysis",
+      "containerName": "AAI Scripts/analysis"
+    },
     {
       "name": "comprehensive-cleanup.js",
       "kind": "Function",
@@ -37,6 +45,22 @@
       "name": "cursor-aai-integration.js",
       "kind": "Function",
       "location": "agents/_store/scripts/cursor-aai-integration.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "cursor-chat-integration.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/cursor-chat-integration.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "cursor-chat-monitor.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/cursor-chat-monitor.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -162,14 +186,6 @@
       "containerName": "AAI Scripts/uncategorized"
     },
     {
-      "name": "simple-cursor-setup.js",
-      "kind": "Function",
-      "location": "agents/_store/scripts/simple-cursor-setup.js",
-      "detail": "No description available",
-      "category": "uncategorized",
-      "containerName": "AAI Scripts/uncategorized"
-    },
-    {
       "name": "smart-context-tracker.js",
       "kind": "Function",
       "location": "agents/_store/scripts/smart-context-tracker.js",
@@ -228,6 +244,12 @@
   ],
   "categorySymbols": [
     {
+      "name": "analysis Scripts",
+      "kind": "Module",
+      "detail": "1 scripts in analysis category",
+      "location": "agents/_store/scripts/analysis/"
+    },
+    {
       "name": "cleanup Scripts",
       "kind": "Module",
       "detail": "2 scripts in cleanup category",
@@ -236,7 +258,7 @@
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "26 scripts in uncategorized category",
+      "detail": "27 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
@@ -412,14 +434,7 @@
     {
       "name": "cursor:setup",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/simple-cursor-setup.js",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "cursor:setup-simple",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/simple-cursor-setup.js",
+      "detail": "node agents/_store/scripts/enhanced-cursor-setup.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
@@ -594,7 +609,7 @@
     {
       "name": "chat:process",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "detail": "node agents/_store/scripts/cursor-chat-processor.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
@@ -608,21 +623,35 @@
     {
       "name": "chat:monitor",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-processor.js monitor",
+      "detail": "node agents/_store/scripts/cursor-chat-monitor.js start",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
-      "name": "cursor:chat-process",
+      "name": "chat:monitor-status",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "detail": "node agents/_store/scripts/cursor-chat-monitor.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
-      "name": "cursor:tasks-update",
+      "name": "chat:integration",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "detail": "node agents/_store/scripts/cursor-chat-integration.js start",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "chat:integration-status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-chat-integration.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "chat:add",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-chat-integration.js add",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
@@ -637,6 +666,34 @@
       "name": "process-chat-api",
       "kind": "Function",
       "detail": "node agents/_store/scripts/process-chat-command.js --api",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:analyze-deps",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/enhanced-dependency-analyzer.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:analyze-delete",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/enhanced-dependency-analyzer.js delete",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:analyze-edit",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/enhanced-dependency-analyzer.js edit",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:analyze-move",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/enhanced-dependency-analyzer.js move",
       "location": "package.json",
       "containerName": "NPM Scripts"
     }

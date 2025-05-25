@@ -2,7 +2,13 @@
   "scripts": {
     "core": [],
     "backup": [],
-    "analysis": [],
+    "analysis": [
+      {
+        "name": "enhanced-dependency-analyzer.js",
+        "path": "agents/_store/scripts/enhanced-dependency-analyzer.js",
+        "description": "No description available"
+      }
+    ],
     "cleanup": [
       {
         "name": "comprehensive-cleanup.js",
@@ -31,6 +37,16 @@
       {
         "name": "cursor-aai-integration.js",
         "path": "agents/_store/scripts/cursor-aai-integration.js",
+        "description": "No description available"
+      },
+      {
+        "name": "cursor-chat-integration.js",
+        "path": "agents/_store/scripts/cursor-chat-integration.js",
+        "description": "No description available"
+      },
+      {
+        "name": "cursor-chat-monitor.js",
+        "path": "agents/_store/scripts/cursor-chat-monitor.js",
         "description": "No description available"
       },
       {
@@ -106,11 +122,6 @@
       {
         "name": "setup-env.js",
         "path": "agents/_store/scripts/setup-env.js",
-        "description": "No description available"
-      },
-      {
-        "name": "simple-cursor-setup.js",
-        "path": "agents/_store/scripts/simple-cursor-setup.js",
         "description": "No description available"
       },
       {
@@ -272,11 +283,7 @@
     },
     {
       "name": "cursor:setup",
-      "command": "node agents/_store/scripts/simple-cursor-setup.js"
-    },
-    {
-      "name": "cursor:setup-simple",
-      "command": "node agents/_store/scripts/simple-cursor-setup.js"
+      "command": "node agents/_store/scripts/enhanced-cursor-setup.js"
     },
     {
       "name": "cursor:setup-enhanced",
@@ -376,7 +383,7 @@
     },
     {
       "name": "chat:process",
-      "command": "node agents/_store/scripts/cursor-chat-processor.js process"
+      "command": "node agents/_store/scripts/cursor-chat-processor.js"
     },
     {
       "name": "chat:status",
@@ -384,15 +391,23 @@
     },
     {
       "name": "chat:monitor",
-      "command": "node agents/_store/scripts/cursor-chat-processor.js monitor"
+      "command": "node agents/_store/scripts/cursor-chat-monitor.js start"
     },
     {
-      "name": "cursor:chat-process",
-      "command": "node agents/_store/scripts/cursor-chat-processor.js process"
+      "name": "chat:monitor-status",
+      "command": "node agents/_store/scripts/cursor-chat-monitor.js status"
     },
     {
-      "name": "cursor:tasks-update",
-      "command": "node agents/_store/scripts/cursor-chat-processor.js process"
+      "name": "chat:integration",
+      "command": "node agents/_store/scripts/cursor-chat-integration.js start"
+    },
+    {
+      "name": "chat:integration-status",
+      "command": "node agents/_store/scripts/cursor-chat-integration.js status"
+    },
+    {
+      "name": "chat:add",
+      "command": "node agents/_store/scripts/cursor-chat-integration.js add"
     },
     {
       "name": "process-chat",
@@ -401,9 +416,25 @@
     {
       "name": "process-chat-api",
       "command": "node agents/_store/scripts/process-chat-command.js --api"
+    },
+    {
+      "name": "aai:analyze-deps",
+      "command": "node agents/_store/scripts/enhanced-dependency-analyzer.js"
+    },
+    {
+      "name": "aai:analyze-delete",
+      "command": "node agents/_store/scripts/enhanced-dependency-analyzer.js delete"
+    },
+    {
+      "name": "aai:analyze-edit",
+      "command": "node agents/_store/scripts/enhanced-dependency-analyzer.js edit"
+    },
+    {
+      "name": "aai:analyze-move",
+      "command": "node agents/_store/scripts/enhanced-dependency-analyzer.js move"
     }
   ],
-  "totalFiles": 31,
+  "totalFiles": 33,
   "categories": {
     "scripts": {
       "core": "Core framework management",
@@ -420,5 +451,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T08:32:28.011Z"
+  "lastUpdated": "2025-05-25T09:36:45.371Z"
 }

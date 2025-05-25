@@ -16,18 +16,37 @@ const chokidar = require('chokidar');
 const AAITaskManager = require('./aai-task-manager');
 const CursorAAIIntegration = require('./cursor-aai-integration');
 const EnhancedTaskConverter = require('./enhanced-task-converter');
+const EnhancedDependencyAnalyzer = require('./enhanced-dependency-analyzer');
 
 class CursorChatProcessor {
   constructor() {
     this.taskManager = new AAITaskManager();
     this.aaiIntegration = new CursorAAIIntegration();
     this.taskConverter = new EnhancedTaskConverter();
+    this.dependencyAnalyzer = new EnhancedDependencyAnalyzer();
     this.chatLogPath = '.cursor/chat-logs';
     this.tasksPath = '.cursor/tasks.json';
     this.version = '1.0.0';
     this.isActive = false;
     this.lastProcessedCommand = null;
     this.currentSession = null;
+    
+    // Enhanced dependency analysis triggers
+    this.dependencyTriggers = [
+      /^(delete|remove|rm)\s+(.+)$/i,
+      /^(edit|modify|refactor)\s+(.+)$/i,
+      /^(move|rename|relocate)\s+(.+)$/i,
+      /^.*delete.*\.(js|ts|json|md|mdc)$/i,
+      /^.*remove.*agents\/_store\/scripts\/.*$/i
+    ];
+    
+    this.systemFiles = [
+      /^agents\/_store\/scripts\//,
+      /^agents\/_store\/projects\//,
+      /^package\.json$/,
+      /^\.cursor\//,
+      /^agents\/_store\/intelligence\//
+    ];
   }
 
   /**
@@ -145,6 +164,12 @@ class CursorChatProcessor {
     console.log(`Command: "${userCommand}"`);
 
     try {
+      // Check if command triggers enhanced dependency analysis
+      if (this.isDependencyAnalysisTrigger(userCommand)) {
+        console.log('🔍 Dependency analysis trigger detected');
+        return await this.processWithDependencyAnalysis(userCommand, context);
+      }
+
       // Step 1: Analyze command and create AAI tasks
       console.log('🔍 Analyzing command and creating tasks...');
       const taskAnalysis = await this.taskManager.analyzeAndCreateTasks(userCommand, context);
@@ -183,6 +208,79 @@ class CursorChatProcessor {
     } catch (error) {
       console.error('❌ Error processing command:', error.message);
       return null;
+    }
+  }
+
+  /**
+   * Check if command triggers dependency analysis
+   */
+  isDependencyAnalysisTrigger(command) {
+    return this.dependencyTriggers.some(trigger => trigger.test(command));
+  }
+
+  /**
+   * Extract operation and target file from command
+   */
+  parseCommand(command) {
+    for (const trigger of this.dependencyTriggers) {
+      const match = command.match(trigger);
+      if (match) {
+        const operation = match[1] ? match[1].toLowerCase() : 'delete';
+        const targetFile = match[2] || match[0];
+        return { operation, targetFile: targetFile.trim() };
+      }
+    }
+    return { operation: 'unknown', targetFile: command };
+  }
+
+  /**
+   * Process command with enhanced dependency analysis
+   */
+  async processWithDependencyAnalysis(userCommand, context = {}) {
+    console.log('🔍 Running enhanced dependency analysis...');
+    
+    try {
+      // Extract operation details
+      const { operation, targetFile } = this.parseCommand(userCommand);
+      console.log(`Operation: ${operation}, Target: ${targetFile}`);
+      
+      // Run enhanced dependency analysis
+      const analysisResults = await this.dependencyAnalyzer.analyzeOperation(targetFile, operation);
+      
+      // The analyzer automatically creates Cursor tasks, so we just need to track the session
+      this.currentSession = {
+        id: `session-${Date.now()}-enhanced-deps`,
+        userCommand: userCommand,
+        analysisType: 'enhanced-dependency',
+        operation: operation,
+        targetFile: targetFile,
+        analysisResults: analysisResults,
+        status: 'ready',
+        created: new Date().toISOString()
+      };
+      
+      await this.saveSession(this.currentSession);
+      
+      console.log('✅ Enhanced dependency analysis complete!');
+      console.log(`📋 Created ${analysisResults.requiredTasks.length} dependency analysis tasks`);
+      console.log('🎯 Tasks available in Cursor Command Palette');
+      
+      return {
+        type: 'enhanced-dependency-analysis',
+        operation,
+        targetFile,
+        tasksCreated: true,
+        taskCount: analysisResults.requiredTasks.length,
+        message: `Enhanced dependency analysis complete. ${analysisResults.requiredTasks.length} tasks created.`,
+        session: this.currentSession
+      };
+      
+    } catch (error) {
+      console.error('❌ Enhanced dependency analysis failed:', error.message);
+      
+      // Fallback to normal processing
+      console.log('🔄 Falling back to normal task processing...');
+      return await this.processUserCommand(userCommand, context);
     }
   }
 

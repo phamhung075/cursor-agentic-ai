@@ -1,12 +1,52 @@
 {
-  "timestamp": "2025-05-25T08:32:28.037Z",
+  "timestamp": "2025-05-25T09:36:45.401Z",
   "source": "AAI Script Manager → Cursor Integration",
   "summary": {
-    "totalScripts": 31,
+    "totalScripts": 33,
     "categories": 6,
-    "npmIntegrated": 57
+    "npmIntegrated": 62
   },
   "scripts": {
+    "analysis": [
+      {
+        "name": "enhanced-dependency-analyzer.js",
+        "path": "agents/_store/scripts/enhanced-dependency-analyzer.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/enhanced-dependency-analyzer.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/enhanced-dependency-analyzer.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/enhanced-dependency-analyzer.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      }
+    ],
     "cleanup": [
       {
         "name": "comprehensive-cleanup.js",
@@ -186,6 +226,82 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/cursor-aai-integration.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "cursor-chat-integration.js",
+        "path": "agents/_store/scripts/cursor-chat-integration.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/cursor-chat-integration.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/cursor-chat-integration.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/cursor-chat-integration.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "cursor-chat-monitor.js",
+        "path": "agents/_store/scripts/cursor-chat-monitor.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/cursor-chat-monitor.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/cursor-chat-monitor.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/cursor-chat-monitor.js",
               "Add description"
             ]
           }
@@ -771,44 +887,6 @@
         ]
       },
       {
-        "name": "simple-cursor-setup.js",
-        "path": "agents/_store/scripts/simple-cursor-setup.js",
-        "description": "No description available",
-        "cursorActions": [
-          {
-            "title": "Open Script",
-            "command": "cursor.open",
-            "arguments": [
-              "agents/_store/scripts/simple-cursor-setup.js"
-            ]
-          },
-          {
-            "title": "Run Script",
-            "command": "terminal.run",
-            "arguments": [
-              "node agents/_store/scripts/simple-cursor-setup.js"
-            ]
-          },
-          {
-            "title": "Edit Description",
-            "command": "cursor.edit",
-            "arguments": [
-              "agents/_store/scripts/simple-cursor-setup.js",
-              "Add description"
-            ]
-          }
-        ],
-        "improvementOpportunities": [
-          {
-            "category": "documentation",
-            "issue": "Missing or inadequate description",
-            "suggestion": "Add comprehensive JSDoc comments and description",
-            "priority": "medium",
-            "estimatedTime": "10-15 minutes"
-          }
-        ]
-      },
-      {
         "name": "smart-context-tracker.js",
         "path": "agents/_store/scripts/smart-context-tracker.js",
         "description": "No description available",
@@ -1076,6 +1154,13 @@
       }
     ]
   },
-  "quickAccess": [],
+  "quickAccess": [
+    {
+      "name": "enhanced-dependency-analyzer.js",
+      "category": "analysis",
+      "path": "agents/_store/scripts/enhanced-dependency-analyzer.js",
+      "quickCommand": "node agents/_store/scripts/enhanced-dependency-analyzer.js"
+    }
+  ],
   "recommendations": []
 }

@@ -67,5 +67,116 @@
     "dependencies": [],
     "estimatedTime": 20,
     "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T08:37:44.015Z",
+    "originalRequest": "Fix settings.json overwrite issue - analyze what script overwrites it and fix the problem",
+    "context": {},
+    "intent": "analyze",
+    "complexity": "medium",
+    "requiredActions": [
+      "configuration",
+      "analysis"
+    ],
+    "dependencies": [],
+    "estimatedTime": 25,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T08:38:41.359Z",
+    "originalRequest": "Fix settings.json overwrite issue - analyze what script overwrites it and fix the problem",
+    "context": {},
+    "intent": "analyze",
+    "complexity": "medium",
+    "requiredActions": [
+      "configuration",
+      "analysis"
+    ],
+    "dependencies": [],
+    "estimatedTime": 25,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T08:45:12.261Z",
+    "originalRequest": "Create a simple React component for displaying user avatars with hover effects",
+    "context": {},
+    "intent": "create",
+    "complexity": "simple",
+    "requiredActions": [
+      "file_creation",
+      "code_writing"
+    ],
+    "dependencies": [],
+    "estimatedTime": 15,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T08:47:09.820Z",
+    "originalRequest": "Create a simple button component with loading state and click animation",
+    "context": {},
+    "intent": "create",
+    "complexity": "simple",
+    "requiredActions": [
+      "file_creation",
+      "code_writing"
+    ],
+    "dependencies": [],
+    "estimatedTime": 15,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T09:16:19.245Z",
+    "originalRequest": "Delete the simple-cursor-setup.js file that was causing settings.json overwrite issues",
+    "context": {},
+    "intent": "general",
+    "complexity": "simple",
+    "requiredActions": [
+      "configuration"
+    ],
+    "dependencies": [],
+    "estimatedTime": 10,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T09:19:32.510Z",
+    "originalRequest": "Analyze and fix all references to simple-cursor-setup.js after deletion - find files that reference it and update them properly",
+    "context": {},
+    "intent": "modify",
+    "complexity": "simple",
+    "requiredActions": [
+      "configuration",
+      "analysis"
+    ],
+    "dependencies": [],
+    "estimatedTime": 15,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T09:29:01.095Z",
+    "originalRequest": "Create enhanced AAI rules for automatic dependency analysis when deleting or editing agents - analyze affected files and create comprehensive modification tasks",
+    "context": {},
+    "intent": "create",
+    "complexity": "complex",
+    "requiredActions": [
+      "analysis",
+      "optimization"
+    ],
+    "dependencies": [],
+    "estimatedTime": 40,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T09:33:53.751Z",
+    "originalRequest": "Test the enhanced dependency analysis system with a sample delete operation",
+    "context": {},
+    "intent": "modify",
+    "complexity": "medium",
+    "requiredActions": [
+      "testing",
+      "optimization"
+    ],
+    "dependencies": [],
+    "estimatedTime": 25,
+    "priority": "normal"
   }
 ]

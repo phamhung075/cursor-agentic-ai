@@ -1,13 +1,17 @@
 {
-  "timestamp": "2025-05-25T08:32:28.038Z",
+  "timestamp": "2025-05-25T09:36:45.402Z",
   "mostUsedCategories": [
     {
       "category": "uncategorized",
-      "count": 26
+      "count": 27
     },
     {
       "category": "cleanup",
       "count": 2
+    },
+    {
+      "category": "analysis",
+      "count": 1
     }
   ],
   "integrationPatterns": [
@@ -133,12 +137,7 @@
     },
     {
       "npmCommand": "cursor:setup",
-      "scriptPath": "node agents/_store/scripts/simple-cursor-setup.js",
-      "category": "utility"
-    },
-    {
-      "npmCommand": "cursor:setup-simple",
-      "scriptPath": "node agents/_store/scripts/simple-cursor-setup.js",
+      "scriptPath": "node agents/_store/scripts/enhanced-cursor-setup.js",
       "category": "utility"
     },
     {
@@ -263,7 +262,7 @@
     },
     {
       "npmCommand": "chat:process",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js",
       "category": "utility"
     },
     {
@@ -273,17 +272,27 @@
     },
     {
       "npmCommand": "chat:monitor",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js monitor",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-monitor.js start",
       "category": "utility"
     },
     {
-      "npmCommand": "cursor:chat-process",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "npmCommand": "chat:monitor-status",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-monitor.js status",
       "category": "utility"
     },
     {
-      "npmCommand": "cursor:tasks-update",
-      "scriptPath": "node agents/_store/scripts/cursor-chat-processor.js process",
+      "npmCommand": "chat:integration",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-integration.js start",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "chat:integration-status",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-integration.js status",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "chat:add",
+      "scriptPath": "node agents/_store/scripts/cursor-chat-integration.js add",
       "category": "utility"
     },
     {
@@ -295,6 +304,26 @@
       "npmCommand": "process-chat-api",
       "scriptPath": "node agents/_store/scripts/process-chat-command.js --api",
       "category": "utility"
+    },
+    {
+      "npmCommand": "aai:analyze-deps",
+      "scriptPath": "node agents/_store/scripts/enhanced-dependency-analyzer.js",
+      "category": "analysis"
+    },
+    {
+      "npmCommand": "aai:analyze-delete",
+      "scriptPath": "node agents/_store/scripts/enhanced-dependency-analyzer.js delete",
+      "category": "analysis"
+    },
+    {
+      "npmCommand": "aai:analyze-edit",
+      "scriptPath": "node agents/_store/scripts/enhanced-dependency-analyzer.js edit",
+      "category": "analysis"
+    },
+    {
+      "npmCommand": "aai:analyze-move",
+      "scriptPath": "node agents/_store/scripts/enhanced-dependency-analyzer.js move",
+      "category": "analysis"
     }
   ],
   "recommendations": [],

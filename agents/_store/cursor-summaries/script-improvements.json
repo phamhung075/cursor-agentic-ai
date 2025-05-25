@@ -1,8 +1,15 @@
 {
-  "timestamp": "2025-05-25T08:32:28.038Z",
+  "timestamp": "2025-05-25T09:36:45.401Z",
   "source": "Script Analysis → Cursor Improvements",
   "categories": {
     "documentation": [
+      {
+        "script": "enhanced-dependency-analyzer.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
       {
         "script": "comprehensive-cleanup.js",
         "issue": "Missing or inadequate description",
@@ -33,6 +40,20 @@
       },
       {
         "script": "cursor-aai-integration.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
+        "script": "cursor-chat-integration.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
+        "script": "cursor-chat-monitor.js",
         "issue": "Missing or inadequate description",
         "suggestion": "Add comprehensive JSDoc comments and description",
         "priority": "medium",
@@ -138,13 +159,6 @@
       },
       {
         "script": "setup-env.js",
-        "issue": "Missing or inadequate description",
-        "suggestion": "Add comprehensive JSDoc comments and description",
-        "priority": "medium",
-        "estimatedTime": "10-15 minutes"
-      },
-      {
-        "script": "simple-cursor-setup.js",
         "issue": "Missing or inadequate description",
         "suggestion": "Add comprehensive JSDoc comments and description",
         "priority": "medium",

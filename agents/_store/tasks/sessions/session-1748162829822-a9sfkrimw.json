@@ -1,0 +1,62 @@
+{
+  "id": "session-1748162829822-a9sfkrimw",
+  "userRequest": "Create a simple button component with loading state and click animation",
+  "tasks": [
+    {
+      "id": "task-1748162829821-opbf27jpa",
+      "title": "Create simple button component - Creation",
+      "description": "Task generated from: \"Create a simple button component with loading state and click animation\"\nType: file_operation\nCategory: creation",
+      "type": "file_operation",
+      "category": "creation",
+      "status": "pending",
+      "priority": "normal",
+      "estimatedTime": 5,
+      "dependencies": [],
+      "validation": [
+        "file_exists",
+        "content_valid"
+      ],
+      "created": "2025-05-25T08:47:09.822Z",
+      "updated": "2025-05-25T08:47:09.822Z",
+      "metadata": {
+        "sessionId": "session-1748162829813-fnzu4cymq",
+        "originalRequest": "Create a simple button component with loading state and click animation",
+        "intent": "create"
+      }
+    },
+    {
+      "id": "task-1748162829822-vg56irj0r",
+      "title": "Create simple button component - Implementation",
+      "description": "Task generated from: \"Create a simple button component with loading state and click animation\"\nType: development\nCategory: implementation",
+      "type": "development",
+      "category": "implementation",
+      "status": "pending",
+      "priority": "normal",
+      "estimatedTime": 15,
+      "dependencies": [
+        "file_creation"
+      ],
+      "validation": [
+        "syntax_valid",
+        "logic_correct"
+      ],
+      "created": "2025-05-25T08:47:09.822Z",
+      "updated": "2025-05-25T08:47:09.822Z",
+      "metadata": {
+        "sessionId": "session-1748162829813-fnzu4cymq",
+        "originalRequest": "Create a simple button component with loading state and click animation",
+        "intent": "create"
+      }
+    }
+  ],
+  "status": "active",
+  "created": "2025-05-25T08:47:09.822Z",
+  "updated": "2025-05-25T08:47:09.822Z",
+  "progress": {
+    "total": 2,
+    "completed": 0,
+    "pending": 2,
+    "failed": 0
+  },
+  "results": []
+}

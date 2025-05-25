@@ -9,7 +9,7 @@
       "status": "valid",
       "size": 6127,
       "last_modified": "2025-05-25T05:19:05.017Z",
-      "last_accessed": "2025-05-25T08:29:23.377Z",
+      "last_accessed": "2025-05-25T09:32:07.667Z",
       "links_out": [
         {
           "text": "filename.mdc",
@@ -81,7 +81,7 @@
       "status": "valid",
       "size": 2604,
       "last_modified": "2025-05-25T05:17:38.536Z",
-      "last_accessed": "2025-05-25T08:29:23.380Z",
+      "last_accessed": "2025-05-25T09:32:07.669Z",
       "links_out": [
         {
           "text": "00_Getting_Started.mdc",
@@ -104,7 +104,7 @@
       "status": "valid",
       "size": 932,
       "last_modified": "2025-05-25T04:53:20.089Z",
-      "last_accessed": "2025-05-25T08:29:23.380Z",
+      "last_accessed": "2025-05-25T09:32:07.670Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -119,7 +119,7 @@
       "status": "valid",
       "size": 3649,
       "last_modified": "2025-05-25T05:17:38.536Z",
-      "last_accessed": "2025-05-25T08:29:23.381Z",
+      "last_accessed": "2025-05-25T09:32:07.673Z",
       "links_out": [
         {
           "text": "AI_AGENT_RULES.mdc",
@@ -156,7 +156,7 @@
       "status": "valid",
       "size": 2352,
       "last_modified": "2025-05-25T05:17:38.537Z",
-      "last_accessed": "2025-05-25T08:29:23.382Z",
+      "last_accessed": "2025-05-25T09:32:07.676Z",
       "links_out": [
         {
           "text": ".cursor/docs/README.md",
@@ -207,7 +207,7 @@
       "status": "valid",
       "size": 9453,
       "last_modified": "2025-05-25T05:17:38.537Z",
-      "last_accessed": "2025-05-25T08:29:23.383Z",
+      "last_accessed": "2025-05-25T09:32:07.677Z",
       "links_out": [
         {
           "text": "AI_AGENT_RULES.mdc",
@@ -433,7 +433,7 @@
       "status": "valid",
       "size": 1543,
       "last_modified": "2025-05-25T05:17:38.538Z",
-      "last_accessed": "2025-05-25T08:29:23.384Z",
+      "last_accessed": "2025-05-25T09:32:07.678Z",
       "links_out": [
         {
           "text": "AI_Path_Fix_Guide.mdc",
@@ -477,7 +477,7 @@
       "status": "valid",
       "size": 2194,
       "last_modified": "2025-05-25T05:17:38.538Z",
-      "last_accessed": "2025-05-25T08:29:23.385Z",
+      "last_accessed": "2025-05-25T09:32:07.680Z",
       "links_out": [
         {
           "text": "AI_Path_Fix_Guide.md",
@@ -528,7 +528,7 @@
       "status": "valid",
       "size": 5806,
       "last_modified": "2025-05-25T05:17:38.539Z",
-      "last_accessed": "2025-05-25T08:29:23.386Z",
+      "last_accessed": "2025-05-25T09:32:07.680Z",
       "links_out": [
         {
           "text": "\\1",
@@ -593,7 +593,7 @@
       "status": "valid",
       "size": 968,
       "last_modified": "2025-05-25T05:17:38.540Z",
-      "last_accessed": "2025-05-25T08:29:23.388Z",
+      "last_accessed": "2025-05-25T09:32:07.681Z",
       "links_out": [
         {
           "text": "your_file.mdc",
@@ -623,7 +623,7 @@
       "status": "valid",
       "size": 253,
       "last_modified": "2025-05-25T05:17:38.540Z",
-      "last_accessed": "2025-05-25T08:29:23.391Z",
+      "last_accessed": "2025-05-25T09:32:07.682Z",
       "links_out": [
         {
           "text": "AI_Coding_Agent_Optimization.mdc",
@@ -653,7 +653,7 @@
       "status": "valid",
       "size": 14936,
       "last_modified": "2025-05-25T07:17:08.855Z",
-      "last_accessed": "2025-05-25T08:29:23.393Z",
+      "last_accessed": "2025-05-25T09:32:07.684Z",
       "links_out": [
         {
           "text": "Display Text",
@@ -795,7 +795,7 @@
       "status": "valid",
       "size": 4819,
       "last_modified": "2025-05-25T05:17:38.542Z",
-      "last_accessed": "2025-05-25T08:29:23.393Z",
+      "last_accessed": "2025-05-25T09:32:07.684Z",
       "links_out": [
         {
           "text": "logic.mdc",
@@ -832,7 +832,7 @@
       "status": "valid",
       "size": 4293,
       "last_modified": "2025-05-25T05:17:38.543Z",
-      "last_accessed": "2025-05-25T08:29:23.395Z",
+      "last_accessed": "2025-05-25T09:32:07.686Z",
       "links_out": [
         {
           "text": "cursor_path_fix.mdc",
@@ -1170,7 +1170,7 @@
       "status": "valid",
       "size": 9420,
       "last_modified": "2025-05-25T05:20:23.797Z",
-      "last_accessed": "2025-05-25T08:29:23.396Z",
+      "last_accessed": "2025-05-25T09:32:07.688Z",
       "links_out": [
         {
           "text": "00_Getting_Started.mdc",
@@ -1858,7 +1858,7 @@
       "status": "valid",
       "size": 5901,
       "last_modified": "2025-05-25T05:17:38.545Z",
-      "last_accessed": "2025-05-25T08:29:23.397Z",
+      "last_accessed": "2025-05-25T09:32:07.689Z",
       "links_out": [
         {
           "text": "cursor_files_list.mdc",
@@ -2014,7 +2014,7 @@
       "status": "valid",
       "size": 21964,
       "last_modified": "2025-05-25T05:17:38.545Z",
-      "last_accessed": "2025-05-25T08:29:23.398Z",
+      "last_accessed": "2025-05-25T09:32:07.691Z",
       "links_out": [
         {
           "text": "Main README",
@@ -2401,7 +2401,7 @@
       "status": "valid",
       "size": 26820,
       "last_modified": "2025-05-25T05:22:14.671Z",
-      "last_accessed": "2025-05-25T08:29:23.400Z",
+      "last_accessed": "2025-05-25T09:32:07.693Z",
       "links_out": [
         {
           "text": "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
@@ -2795,7 +2795,7 @@
       "status": "valid",
       "size": 14836,
       "last_modified": "2025-05-25T05:22:14.673Z",
-      "last_accessed": "2025-05-25T08:29:23.401Z",
+      "last_accessed": "2025-05-25T09:32:07.695Z",
       "links_out": [
         {
           "text": "02_Market_Research.mdc",
@@ -2846,7 +2846,7 @@
       "status": "valid",
       "size": 20557,
       "last_modified": "2025-05-25T05:17:38.548Z",
-      "last_accessed": "2025-05-25T08:29:23.402Z",
+      "last_accessed": "2025-05-25T09:32:07.697Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -2904,7 +2904,7 @@
       "status": "valid",
       "size": 19835,
       "last_modified": "2025-05-25T05:22:14.677Z",
-      "last_accessed": "2025-05-25T08:29:23.403Z",
+      "last_accessed": "2025-05-25T09:32:07.698Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -2962,7 +2962,7 @@
       "status": "valid",
       "size": 20533,
       "last_modified": "2025-05-25T05:17:38.549Z",
-      "last_accessed": "2025-05-25T08:29:23.405Z",
+      "last_accessed": "2025-05-25T09:32:07.699Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -3020,7 +3020,7 @@
       "status": "valid",
       "size": 23569,
       "last_modified": "2025-05-25T05:17:38.549Z",
-      "last_accessed": "2025-05-25T08:29:23.407Z",
+      "last_accessed": "2025-05-25T09:32:07.701Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -3078,7 +3078,7 @@
       "status": "valid",
       "size": 3703,
       "last_modified": "2025-05-25T05:17:38.550Z",
-      "last_accessed": "2025-05-25T08:29:23.408Z",
+      "last_accessed": "2025-05-25T09:32:07.702Z",
       "links_out": [
         {
           "text": "tasks.json",
@@ -3192,7 +3192,7 @@
       "status": "valid",
       "size": 24115,
       "last_modified": "2025-05-25T05:22:14.685Z",
-      "last_accessed": "2025-05-25T08:29:23.410Z",
+      "last_accessed": "2025-05-25T09:32:07.704Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -3264,7 +3264,7 @@
       "status": "valid",
       "size": 24791,
       "last_modified": "2025-05-25T05:22:14.687Z",
-      "last_accessed": "2025-05-25T08:29:23.412Z",
+      "last_accessed": "2025-05-25T09:32:07.705Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -3336,7 +3336,7 @@
       "status": "valid",
       "size": 8021,
       "last_modified": "2025-05-25T05:25:00.987Z",
-      "last_accessed": "2025-05-25T08:29:23.413Z",
+      "last_accessed": "2025-05-25T09:32:07.706Z",
       "links_out": [
         {
           "text": "08_Testing.mdc",
@@ -3380,7 +3380,7 @@
       "status": "valid",
       "size": 26523,
       "last_modified": "2025-05-25T06:14:55.556Z",
-      "last_accessed": "2025-05-25T08:29:23.414Z",
+      "last_accessed": "2025-05-25T09:32:07.708Z",
       "links_out": [
         {
           "text": "09_Deployment.mdc",
@@ -3417,7 +3417,7 @@
       "status": "valid",
       "size": 7925,
       "last_modified": "2025-05-25T04:55:05.968Z",
-      "last_accessed": "2025-05-25T08:29:23.415Z",
+      "last_accessed": "2025-05-25T09:32:07.709Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -3432,7 +3432,7 @@
       "status": "valid",
       "size": 3519,
       "last_modified": "2025-05-25T04:53:20.108Z",
-      "last_accessed": "2025-05-25T08:29:23.416Z",
+      "last_accessed": "2025-05-25T09:32:07.710Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -3447,7 +3447,7 @@
       "status": "valid",
       "size": 75171,
       "last_modified": "2025-05-25T05:17:38.554Z",
-      "last_accessed": "2025-05-25T08:29:23.419Z",
+      "last_accessed": "2025-05-25T09:32:07.713Z",
       "links_out": [
         {
           "text": "User Name/ID",
@@ -4149,7 +4149,7 @@
       "status": "valid",
       "size": 22257,
       "last_modified": "2025-05-25T05:25:01.009Z",
-      "last_accessed": "2025-05-25T08:29:23.422Z",
+      "last_accessed": "2025-05-25T09:32:07.715Z",
       "links_out": [
         {
           "text": "res.json",
@@ -4172,7 +4172,7 @@
       "status": "valid",
       "size": 1841,
       "last_modified": "2025-05-25T04:55:05.970Z",
-      "last_accessed": "2025-05-25T08:29:23.424Z",
+      "last_accessed": "2025-05-25T09:32:07.717Z",
       "links_out": [
         {
           "text": "AI_Design_Agent_Optimization.mdc",
@@ -4195,7 +4195,7 @@
       "status": "valid",
       "size": 4291,
       "last_modified": "2025-05-25T04:55:05.971Z",
-      "last_accessed": "2025-05-25T08:29:23.426Z",
+      "last_accessed": "2025-05-25T09:32:07.718Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4210,7 +4210,7 @@
       "status": "valid",
       "size": 20528,
       "last_modified": "2025-05-25T06:20:14.357Z",
-      "last_accessed": "2025-05-25T08:29:23.427Z",
+      "last_accessed": "2025-05-25T09:32:07.719Z",
       "links_out": [
         {
           "text": "package.json",
@@ -4240,7 +4240,7 @@
       "status": "valid",
       "size": 3967,
       "last_modified": "2025-05-25T04:55:05.973Z",
-      "last_accessed": "2025-05-25T08:29:23.428Z",
+      "last_accessed": "2025-05-25T09:32:07.719Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4255,7 +4255,7 @@
       "status": "valid",
       "size": 265,
       "last_modified": "2025-05-25T05:17:38.556Z",
-      "last_accessed": "2025-05-25T08:29:23.429Z",
+      "last_accessed": "2025-05-25T09:32:07.720Z",
       "links_out": [
         {
           "text": "architecture.mdc",
@@ -4285,7 +4285,7 @@
       "status": "valid",
       "size": 3106,
       "last_modified": "2025-05-25T06:33:39.748Z",
-      "last_accessed": "2025-05-25T08:29:23.429Z",
+      "last_accessed": "2025-05-25T09:32:07.721Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4300,7 +4300,7 @@
       "status": "valid",
       "size": 3049,
       "last_modified": "2025-05-25T04:55:05.974Z",
-      "last_accessed": "2025-05-25T08:29:23.430Z",
+      "last_accessed": "2025-05-25T09:32:07.722Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4315,7 +4315,7 @@
       "status": "valid",
       "size": 270,
       "last_modified": "2025-05-25T05:17:38.557Z",
-      "last_accessed": "2025-05-25T08:29:23.431Z",
+      "last_accessed": "2025-05-25T09:32:07.723Z",
       "links_out": [
         {
           "text": "coding_conventions.mdc",
@@ -4345,7 +4345,7 @@
       "status": "valid",
       "size": 23261,
       "last_modified": "2025-05-25T06:43:18.954Z",
-      "last_accessed": "2025-05-25T08:29:23.433Z",
+      "last_accessed": "2025-05-25T09:32:07.724Z",
       "links_out": [
         {
           "text": "**Design Conventions and Style Guide**",
@@ -4396,7 +4396,7 @@
       "status": "valid",
       "size": 270,
       "last_modified": "2025-05-25T05:17:38.559Z",
-      "last_accessed": "2025-05-25T08:29:23.433Z",
+      "last_accessed": "2025-05-25T09:32:07.725Z",
       "links_out": [
         {
           "text": "design_conventions.mdc",
@@ -4426,7 +4426,7 @@
       "status": "valid",
       "size": 30810,
       "last_modified": "2025-05-25T06:42:58.358Z",
-      "last_accessed": "2025-05-25T08:29:23.435Z",
+      "last_accessed": "2025-05-25T09:32:07.727Z",
       "links_out": [
         {
           "text": "**Coding Conventions and Style Guide**",
@@ -4456,7 +4456,7 @@
       "status": "valid",
       "size": 4979,
       "last_modified": "2025-05-25T04:55:05.977Z",
-      "last_accessed": "2025-05-25T08:29:23.437Z",
+      "last_accessed": "2025-05-25T09:32:07.728Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4471,7 +4471,7 @@
       "status": "valid",
       "size": 79102,
       "last_modified": "2025-05-25T07:06:04.311Z",
-      "last_accessed": "2025-05-25T08:29:23.440Z",
+      "last_accessed": "2025-05-25T09:32:07.731Z",
       "links_out": [
         {
           "text": "ui-library-prop-types.md",
@@ -4557,7 +4557,7 @@
       "status": "valid",
       "size": 53679,
       "last_modified": "2025-05-25T07:45:23.066Z",
-      "last_accessed": "2025-05-25T08:29:23.442Z",
+      "last_accessed": "2025-05-25T09:32:07.734Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4572,7 +4572,7 @@
       "status": "valid",
       "size": 29013,
       "last_modified": "2025-05-25T07:05:08.155Z",
-      "last_accessed": "2025-05-25T08:29:23.444Z",
+      "last_accessed": "2025-05-25T09:32:07.737Z",
       "links_out": [
         {
           "text": "`.vibetaskconfig`",
@@ -4623,7 +4623,7 @@
       "status": "valid",
       "size": 2828,
       "last_modified": "2025-05-25T04:55:05.981Z",
-      "last_accessed": "2025-05-25T08:29:23.445Z",
+      "last_accessed": "2025-05-25T09:32:07.738Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4638,7 +4638,7 @@
       "status": "valid",
       "size": 35857,
       "last_modified": "2025-05-25T07:22:14.674Z",
-      "last_accessed": "2025-05-25T08:29:23.447Z",
+      "last_accessed": "2025-05-25T09:32:07.741Z",
       "links_out": [
         {
           "text": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
@@ -5067,7 +5067,7 @@
       "status": "valid",
       "size": 17028,
       "last_modified": "2025-05-25T07:23:49.064Z",
-      "last_accessed": "2025-05-25T08:29:23.449Z",
+      "last_accessed": "2025-05-25T09:32:07.742Z",
       "links_out": [
         {
           "text": "mdc:agents/_store/projects/_core/tasks/tasks.json",
@@ -5174,7 +5174,7 @@
       "status": "valid",
       "size": 245,
       "last_modified": "2025-05-25T04:42:13.046Z",
-      "last_accessed": "2025-05-25T08:29:23.451Z",
+      "last_accessed": "2025-05-25T09:32:07.744Z",
       "links_out": [
         {
           "text": "Specs_Docs.mdc",
@@ -5204,7 +5204,7 @@
       "status": "valid",
       "size": 247,
       "last_modified": "2025-05-25T04:42:13.046Z",
-      "last_accessed": "2025-05-25T08:29:23.452Z",
+      "last_accessed": "2025-05-25T09:32:07.745Z",
       "links_out": [
         {
           "text": "Task_Manager.mdc",
@@ -5234,7 +5234,7 @@
       "status": "valid",
       "size": 249,
       "last_modified": "2025-05-25T04:42:13.047Z",
-      "last_accessed": "2025-05-25T08:29:23.453Z",
+      "last_accessed": "2025-05-25T09:32:07.746Z",
       "links_out": [
         {
           "text": "Start_Building.mdc",
@@ -5264,7 +5264,7 @@
       "status": "valid",
       "size": 251,
       "last_modified": "2025-05-25T05:17:38.566Z",
-      "last_accessed": "2025-05-25T08:29:23.453Z",
+      "last_accessed": "2025-05-25T09:32:07.746Z",
       "links_out": [
         {
           "text": "gfix_spec_template.mdc",
@@ -5294,7 +5294,7 @@
       "status": "valid",
       "size": 2510,
       "last_modified": "2025-05-25T04:55:05.984Z",
-      "last_accessed": "2025-05-25T08:29:23.454Z",
+      "last_accessed": "2025-05-25T09:32:07.748Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -5309,7 +5309,7 @@
       "status": "valid",
       "size": 2463,
       "last_modified": "2025-05-25T05:17:38.567Z",
-      "last_accessed": "2025-05-25T08:29:23.455Z",
+      "last_accessed": "2025-05-25T09:32:07.749Z",
       "links_out": [
         {
           "text": "f[e[ature_spec_template.mdc",
@@ -5395,7 +5395,7 @@
       "status": "valid",
       "size": 252,
       "last_modified": "2025-05-25T05:17:38.567Z",
-      "last_accessed": "2025-05-25T08:29:23.456Z",
+      "last_accessed": "2025-05-25T09:32:07.750Z",
       "links_out": [
         {
           "text": "ature_spec_template.mdc",
@@ -5425,7 +5425,7 @@
       "status": "valid",
       "size": 268,
       "last_modified": "2025-05-25T05:17:38.568Z",
-      "last_accessed": "2025-05-25T08:29:23.457Z",
+      "last_accessed": "2025-05-25T09:32:07.750Z",
       "links_out": [
         {
           "text": "feature_spec_FEAT-XXX.mdc",
@@ -5455,7 +5455,7 @@
       "status": "valid",
       "size": 240,
       "last_modified": "2025-05-25T05:17:38.569Z",
-      "last_accessed": "2025-05-25T08:29:23.457Z",
+      "last_accessed": "2025-05-25T09:32:07.751Z",
       "links_out": [
         {
           "text": "feature_spec_ID.mdc",
@@ -5485,7 +5485,7 @@
       "status": "valid",
       "size": 4908,
       "last_modified": "2025-05-25T05:17:38.570Z",
-      "last_accessed": "2025-05-25T08:29:23.458Z",
+      "last_accessed": "2025-05-25T09:32:07.752Z",
       "links_out": [
         {
           "text": "Link to wireframe/mockup or detailed description. The AI should propose designs (or variations if requested and justifie",
@@ -5515,7 +5515,7 @@
       "status": "valid",
       "size": 248,
       "last_modified": "2025-05-25T05:17:38.571Z",
-      "last_accessed": "2025-05-25T08:29:23.459Z",
+      "last_accessed": "2025-05-25T09:32:07.753Z",
       "links_out": [
         {
           "text": "gin_timeout_fix.mdc",
@@ -5545,7 +5545,7 @@
       "status": "valid",
       "size": 250,
       "last_modified": "2025-05-25T05:17:38.571Z",
-      "last_accessed": "2025-05-25T08:29:23.459Z",
+      "last_accessed": "2025-05-25T09:32:07.753Z",
       "links_out": [
         {
           "text": "er_authentication.mdc",
@@ -5575,7 +5575,7 @@
       "status": "valid",
       "size": 225813,
       "last_modified": "2025-05-25T05:17:38.574Z",
-      "last_accessed": "2025-05-25T08:29:23.478Z",
+      "last_accessed": "2025-05-25T09:32:07.760Z",
       "links_out": [
         {
           "text": "01_AutoPilot.mdc",
@@ -5598,7 +5598,7 @@
       "status": "valid",
       "size": 20253,
       "last_modified": "2025-05-25T05:17:38.575Z",
-      "last_accessed": "2025-05-25T08:29:23.561Z",
+      "last_accessed": "2025-05-25T09:32:07.762Z",
       "links_out": [
         {
           "text": "00_Getting_Started.mdc",
@@ -6132,7 +6132,7 @@
       "status": "valid",
       "size": 28764,
       "last_modified": "2025-05-25T05:17:38.575Z",
-      "last_accessed": "2025-05-25T08:29:23.572Z",
+      "last_accessed": "2025-05-25T09:32:07.764Z",
       "links_out": [
         {
           "text": "01_AutoPilot.mdc",
@@ -6869,7 +6869,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.154Z",
-      "last_accessed": "2025-05-25T08:29:23.574Z",
+      "last_accessed": "2025-05-25T09:32:07.765Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6884,7 +6884,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.155Z",
-      "last_accessed": "2025-05-25T08:29:23.576Z",
+      "last_accessed": "2025-05-25T09:32:07.766Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6899,7 +6899,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.159Z",
-      "last_accessed": "2025-05-25T08:29:23.577Z",
+      "last_accessed": "2025-05-25T09:32:07.767Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6914,7 +6914,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.157Z",
-      "last_accessed": "2025-05-25T08:29:23.579Z",
+      "last_accessed": "2025-05-25T09:32:07.767Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6929,7 +6929,7 @@
       "status": "valid",
       "size": 4975,
       "last_modified": "2025-05-25T05:17:38.578Z",
-      "last_accessed": "2025-05-25T08:29:23.580Z",
+      "last_accessed": "2025-05-25T09:32:07.776Z",
       "links_out": [
         {
           "text": "Phase 0: Startup & Initialization ([`01__AI-RUN/00_Getting_Started.mdc`",
@@ -7127,11 +7127,62 @@
       "status": "valid",
       "size": 0,
       "last_modified": "2025-05-25T04:42:13.051Z",
-      "last_accessed": "2025-05-25T08:29:23.583Z",
+      "last_accessed": "2025-05-25T09:32:07.777Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
       "content_hash": "0"
+    },
+    "rules_enhanced_aai_dependency_rules_mdc": {
+      "id": "rules_enhanced_aai_dependency_rules_mdc",
+      "title": "Enhanced AAI Dependency Analysis Rules",
+      "path": "rules/enhanced-aai-dependency-rules.mdc",
+      "full_path": "agents/_store/projects/_core/rules/enhanced-aai-dependency-rules.mdc",
+      "description": "This document defines enhanced rules for the Agentic AI (AAI) system to automatically analyze dependencies and affected files when performing operations on agents, scripts, or system components. These",
+      "status": "valid",
+      "size": 10877,
+      "last_modified": "2025-05-25T09:32:23.457Z",
+      "last_accessed": "2025-05-25T09:32:23.581Z",
+      "links_out": [
+        {
+          "text": "package.json",
+          "path": "package.json",
+          "type": "file_reference",
+          "source_file": "rules/enhanced-aai-dependency-rules.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "Package.json",
+          "path": "Package.json",
+          "type": "file_reference",
+          "source_file": "rules/enhanced-aai-dependency-rules.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "settings.json",
+          "path": "settings.json",
+          "type": "file_reference",
+          "source_file": "rules/enhanced-aai-dependency-rules.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "tasks.json",
+          "path": "tasks.json",
+          "type": "file_reference",
+          "source_file": "rules/enhanced-aai-dependency-rules.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "file2.json",
+          "path": "file2.json",
+          "type": "file_reference",
+          "source_file": "rules/enhanced-aai-dependency-rules.mdc",
+          "status": "unchecked"
+        }
+      ],
+      "links_in": [],
+      "fix_history": [],
+      "content_hash": "74e059ea"
     }
   },
   "links": {
@@ -13273,10 +13324,78 @@
         "status": "unchecked"
       }
     ],
-    "tasks_tasks_json": []
+    "tasks_tasks_json": [],
+    "rules_enhanced_aai_dependency_rules_mdc": [
+      {
+        "text": "package.json",
+        "path": "package.json",
+        "type": "file_reference",
+        "source_file": "rules/enhanced-aai-dependency-rules.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Package.json",
+        "path": "Package.json",
+        "type": "file_reference",
+        "source_file": "rules/enhanced-aai-dependency-rules.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "settings.json",
+        "path": "settings.json",
+        "type": "file_reference",
+        "source_file": "rules/enhanced-aai-dependency-rules.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks.json",
+        "type": "file_reference",
+        "source_file": "rules/enhanced-aai-dependency-rules.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "file2.json",
+        "path": "file2.json",
+        "type": "file_reference",
+        "source_file": "rules/enhanced-aai-dependency-rules.mdc",
+        "status": "unchecked"
+      }
+    ]
   },
-  "access_log": [],
-  "last_updated": "2025-05-25T08:29:23.583Z",
+  "access_log": [
+    {
+      "timestamp": "2025-05-25T09:32:07.667Z",
+      "file": "rules/enhanced-aai-dependency-rules.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T09:32:12.274Z",
+      "file": "rules/enhanced-aai-dependency-rules.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T09:32:12.385Z",
+      "file": "rules/enhanced-aai-dependency-rules.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T09:32:23.469Z",
+      "file": "rules/enhanced-aai-dependency-rules.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T09:32:23.581Z",
+      "file": "rules/enhanced-aai-dependency-rules.mdc",
+      "operation": "change",
+      "success": true
+    }
+  ],
+  "last_updated": "2025-05-25T09:32:23.682Z",
   "scan_history": [
     {
       "id": "scan_1748160410188",
@@ -13291,6 +13410,14 @@
       "timestamp": "2025-05-25T08:29:23.371Z",
       "completed": "2025-05-25T08:29:23.583Z",
       "files_found": 71,
+      "corrupt_files": 0,
+      "fixes_applied": 0
+    },
+    {
+      "id": "scan_1748165527659",
+      "timestamp": "2025-05-25T09:32:07.659Z",
+      "completed": "2025-05-25T09:32:07.777Z",
+      "files_found": 144,
       "corrupt_files": 0,
       "fixes_applied": 0
     }

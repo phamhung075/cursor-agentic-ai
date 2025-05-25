@@ -1,0 +1,364 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Enhanced AAI Dependency Analysis Rules
+
+## Overview
+
+This document defines enhanced rules for the Agentic AI (AAI) system to automatically analyze dependencies and affected files when performing operations on agents, scripts, or system components. These rules ensure comprehensive impact analysis and proper cleanup when modifying the system.
+
+## Core Principles
+
+### 1. **Automatic Dependency Detection**
+- Every delete/edit/move operation triggers comprehensive dependency analysis
+- Analysis covers direct references, configuration files, documentation, and tests
+- System integrations are automatically identified and validated
+
+### 2. **Comprehensive Impact Assessment**
+- Analyze all file types: scripts, configs, docs, tests
+- Identify affected systems: package.json, Cursor integration, AAI intelligence
+- Generate detailed modification tasks with proper sequencing
+
+### 3. **Intelligent Task Generation**
+- Create step-by-step Cursor tasks for comprehensive cleanup
+- Include dependency tracking and proper execution order
+- Provide detailed instructions and file lists for each task
+
+## Rule Triggers
+
+### When to Activate Enhanced Analysis
+
+The enhanced dependency analysis system should be triggered when:
+
+1. **File Deletion Operations**
+   - `delete <file>` commands
+   - `remove <file>` commands
+   - `rm <file>` commands
+
+2. **File Editing Operations**
+   - `edit <file>` commands when the file is a system component
+   - `modify <file>` commands for critical system files
+   - `refactor <file>` commands
+
+3. **File Movement Operations**
+   - `move <file>` commands
+   - `rename <file>` commands
+   - `relocate <file>` commands
+
+4. **System Component Operations**
+   - Operations on files in `agents/_store/scripts/`
+   - Operations on files in `agents/_store/projects/`
+   - Operations on configuration files (`package.json`, `.cursor/*`)
+
+## Analysis Categories
+
+### 1. **Direct References Analysis**
+- JavaScript/TypeScript imports and requires
+- File path references in code
+- Script execution patterns in package.json
+- Command-line tool references
+
+**Search Patterns:**
+```regex
+require\(['"`].*{filename}.*['"`]\)
+import.*from\s+['"`].*{filename}.*['"`]
+import\s+['"`].*{filename}.*['"`]
+node\s+.*{filepath}
+npm\s+run\s+.*{basename}
+```
+
+### 2. **Configuration References Analysis**
+- Package.json script definitions
+- Cursor settings and tasks
+- AAI intelligence system configurations
+- Environment and setup files
+
+**Target Files:**
+- `package.json`
+- `.cursor/settings.json`
+- `.cursor/tasks.json`
+- `agents/_store/cursor-summaries/*.json`
+- `agents/_store/intelligence/**/*.json`
+
+### 3. **Documentation References Analysis**
+- Markdown documentation files
+- MDC (Markdown with Code) files
+- README files and guides
+- API documentation
+
+**File Patterns:**
+- `**/*.md`
+- `**/*.mdc`
+- `**/*.txt`
+- `**/README*`
+
+### 4. **Test References Analysis**
+- Unit test files
+- Integration test files
+- Test configuration files
+- Test data files
+
+**File Patterns:**
+- `**/*test*`
+- `**/*spec*`
+- `**/test/**`
+- `**/tests/**`
+
+### 5. **System Integration Analysis**
+- Package.json scripts system
+- Cursor integration system
+- AAI intelligence system
+- Launch and startup systems
+
+## Task Generation Rules
+
+### Task Sequencing
+
+1. **Planning Phase** (Priority: High)
+   - Analysis review and validation
+   - Operation scope confirmation
+   - Risk assessment
+
+2. **Configuration Updates** (Priority: High, Depends: Planning)
+   - Update package.json scripts
+   - Modify Cursor configurations
+   - Update AAI intelligence configs
+
+3. **Code Updates** (Priority: High, Depends: Planning)
+   - Update import/require statements
+   - Modify file path references
+   - Update script execution calls
+
+4. **Documentation Updates** (Priority: Medium, Depends: Config+Code)
+   - Update markdown references
+   - Modify API documentation
+   - Update README files
+
+5. **Test Updates** (Priority: Medium, Depends: Code)
+   - Update test imports
+   - Modify test configurations
+   - Remove obsolete tests
+
+6. **System Verification** (Priority: High, Depends: Config+Code)
+   - Test package.json scripts
+   - Verify Cursor integration
+   - Validate AAI functionality
+
+7. **Final Cleanup** (Priority: High, Depends: All)
+   - Remove temporary files
+   - Verify system functionality
+   - Update documentation
+
+### Task Metadata
+
+Each generated task should include:
+
+```json
+{
+  "taskId": "unique-identifier",
+  "title": "Human-readable title with emoji",
+  "description": "Detailed description",
+  "type": "planning|configuration|code|documentation|testing|verification|cleanup",
+  "priority": "high|medium|low",
+  "estimatedTime": "X minutes",
+  "dependencies": ["task-id-1", "task-id-2"],
+  "files": ["file1.js", "file2.json"],
+  "actions": ["Action 1", "Action 2"],
+  "systems": ["System 1", "System 2"],
+  "metadata": {
+    "operation": "delete|edit|move",
+    "targetFile": "path/to/file",
+    "analysisType": "enhanced-dependency",
+    "timestamp": "ISO-8601-timestamp"
+  }
+}
+```
+
+## Integration with AAI Chat System
+
+### Command Recognition
+
+The AAI chat processor should recognize these patterns and trigger enhanced analysis:
+
+```javascript
+// Pattern matching for dependency analysis triggers
+const dependencyTriggers = [
+  /^(delete|remove|rm)\s+(.+)$/i,
+  /^(edit|modify|refactor)\s+(.+)$/i,
+  /^(move|rename|relocate)\s+(.+)$/i,
+  /^.*delete.*\.(js|ts|json|md|mdc)$/i,
+  /^.*remove.*agents\/_store\/scripts\/.*$/i
+];
+
+// Enhanced analysis for system files
+const systemFiles = [
+  /^agents\/_store\/scripts\//,
+  /^agents\/_store\/projects\//,
+  /^package\.json$/,
+  /^\.cursor\//,
+  /^agents\/_store\/intelligence\//
+];
+```
+
+### Automatic Task Creation
+
+When a dependency analysis trigger is detected:
+
+1. **Extract Operation Details**
+   ```javascript
+   const operation = extractOperation(userCommand); // 'delete', 'edit', 'move'
+   const targetFile = extractTargetFile(userCommand);
+   ```
+
+2. **Trigger Enhanced Analysis**
+   ```javascript
+   const analyzer = new EnhancedDependencyAnalyzer();
+   const results = await analyzer.analyzeOperation(targetFile, operation);
+   ```
+
+3. **Generate Cursor Tasks**
+   ```javascript
+   await analyzer.createCursorTasks();
+   // Tasks automatically saved to .cursor/tasks.json
+   ```
+
+4. **Provide User Feedback**
+   ```javascript
+   console.log(`✅ Created ${results.requiredTasks.length} tasks for ${operation} operation`);
+   console.log(`📁 Tasks available in Cursor Command Palette`);
+   ```
+
+## Enhanced Chat Processor Integration
+
+### Modified Chat Processor Logic
+
+```javascript
+// In cursor-chat-processor.js
+async function processUserCommand(command) {
+  // Check if command triggers dependency analysis
+  if (isDependencyAnalysisTrigger(command)) {
+    console.log('🔍 Dependency analysis trigger detected');
+    
+    // Extract operation details
+    const { operation, targetFile } = parseCommand(command);
+    
+    // Run enhanced analysis
+    const analyzer = new EnhancedDependencyAnalyzer();
+    await analyzer.analyzeOperation(targetFile, operation);
+    
+    // Tasks are automatically created
+    return {
+      type: 'enhanced-dependency-analysis',
+      operation,
+      targetFile,
+      tasksCreated: true,
+      message: `Enhanced dependency analysis complete. ${analyzer.analysisResults.requiredTasks.length} tasks created.`
+    };
+  }
+  
+  // Continue with normal processing
+  return await normalTaskCreation(command);
+}
+```
+
+## Package.json Integration
+
+Add the enhanced dependency analyzer to package.json scripts:
+
+```json
+{
+  "scripts": {
+    "aai:analyze-deps": "node agents/_store/scripts/enhanced-dependency-analyzer.js",
+    "aai:analyze-delete": "node agents/_store/scripts/enhanced-dependency-analyzer.js delete",
+    "aai:analyze-edit": "node agents/_store/scripts/enhanced-dependency-analyzer.js edit",
+    "aai:analyze-move": "node agents/_store/scripts/enhanced-dependency-analyzer.js move"
+  }
+}
+```
+
+## Usage Examples
+
+### Example 1: Deleting a Script
+
+**User Command:** `delete agents/_store/scripts/old-script.js`
+
+**AAI Response:**
+1. Triggers enhanced dependency analysis
+2. Finds 3 package.json references, 2 documentation mentions, 1 test file
+3. Creates 7 sequential tasks in .cursor/tasks.json
+4. User can execute tasks via Cursor Command Palette
+
+### Example 2: Editing a System Component
+
+**User Command:** `edit package.json scripts section`
+
+**AAI Response:**
+1. Recognizes system file modification
+2. Analyzes impact on launch system, Cursor integration
+3. Creates verification tasks to ensure system stability
+4. Provides rollback instructions
+
+### Example 3: Moving a Configuration File
+
+**User Command:** `move .cursor/settings.json to .cursor/backup/`
+
+**AAI Response:**
+1. Analyzes Cursor integration dependencies
+2. Identifies affected AAI intelligence systems
+3. Creates migration tasks with proper sequencing
+4. Includes verification steps for Cursor functionality
+
+## Error Handling and Recovery
+
+### Analysis Failures
+
+If dependency analysis fails:
+1. Log detailed error information
+2. Create basic cleanup tasks as fallback
+3. Notify user of analysis limitations
+4. Provide manual verification checklist
+
+### Task Execution Failures
+
+If generated tasks fail:
+1. Provide rollback instructions
+2. Create recovery tasks
+3. Update AAI intelligence with failure patterns
+4. Improve analysis rules based on failures
+
+## Continuous Improvement
+
+### Learning from Operations
+
+The system should learn from each operation:
+1. Track task execution success rates
+2. Identify commonly missed dependencies
+3. Update analysis patterns based on findings
+4. Improve task generation accuracy
+
+### Rule Updates
+
+Rules should be updated based on:
+1. New file types and patterns
+2. System architecture changes
+3. User feedback and error reports
+4. Performance optimization opportunities
+
+## Implementation Checklist
+
+- [ ] Create enhanced-dependency-analyzer.js script
+- [ ] Update cursor-chat-processor.js with trigger detection
+- [ ] Add package.json scripts for manual analysis
+- [ ] Create test cases for common scenarios
+- [ ] Update AAI documentation with new rules
+- [ ] Train system on existing codebase patterns
+- [ ] Implement error handling and recovery
+- [ ] Add performance monitoring and optimization
+
+## Conclusion
+
+These enhanced AAI dependency analysis rules provide comprehensive automation for system modifications. By automatically analyzing dependencies and creating detailed task sequences, the system ensures reliable and thorough handling of delete, edit, and move operations while maintaining system integrity and preventing broken references.
+
+The integration with Cursor's task system provides a seamless user experience where complex dependency management is handled automatically, allowing developers to focus on their core work while the AAI system manages the intricate details of system maintenance.
