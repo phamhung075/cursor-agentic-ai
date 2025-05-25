@@ -55,6 +55,16 @@
         "description": "No description available"
       },
       {
+        "name": "cursor-mdc-integration.js",
+        "path": "agents/_store/scripts/cursor-mdc-integration.js",
+        "description": "No description available"
+      },
+      {
+        "name": "cursor-mdc-watcher.js",
+        "path": "agents/_store/scripts/cursor-mdc-watcher.js",
+        "description": "No description available"
+      },
+      {
         "name": "demo-aai-cursor-integration.js",
         "path": "agents/_store/scripts/demo-aai-cursor-integration.js",
         "description": "No description available"
@@ -87,6 +97,11 @@
       {
         "name": "launch-aai-complete.js",
         "path": "agents/_store/scripts/launch-aai-complete.js",
+        "description": "No description available"
+      },
+      {
+        "name": "mdc-dependency-tracker.js",
+        "path": "agents/_store/scripts/mdc-dependency-tracker.js",
         "description": "No description available"
       },
       {
@@ -324,7 +339,7 @@
     },
     {
       "name": "mdc:status",
-      "command": "node agents/_store/scripts/enhanced-mdc-path-fixer.js status"
+      "command": "node agents/_store/scripts/mdc-dependency-tracker.js status"
     },
     {
       "name": "mdc:fix",
@@ -453,9 +468,33 @@
     {
       "name": "out",
       "command": "node agents/_store/scripts/silent-output.js"
+    },
+    {
+      "name": "mdc:init",
+      "command": "node agents/_store/scripts/mdc-dependency-tracker.js init"
+    },
+    {
+      "name": "mdc:watch",
+      "command": "node agents/_store/scripts/mdc-dependency-tracker.js watch"
+    },
+    {
+      "name": "mdc:scan",
+      "command": "node agents/_store/scripts/mdc-dependency-tracker.js scan"
+    },
+    {
+      "name": "mdc:cursor-setup",
+      "command": "node agents/_store/scripts/cursor-mdc-integration.js setup"
+    },
+    {
+      "name": "mdc:cursor-status",
+      "command": "node agents/_store/scripts/cursor-mdc-integration.js status"
+    },
+    {
+      "name": "mdc:cursor-watch",
+      "command": "node agents/_store/scripts/cursor-mdc-watcher.js"
     }
   ],
-  "totalFiles": 34,
+  "totalFiles": 37,
   "categories": {
     "scripts": {
       "core": "Core framework management",
@@ -472,5 +511,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T11:51:36.654Z"
+  "lastUpdated": "2025-05-25T12:29:59.155Z"
 }

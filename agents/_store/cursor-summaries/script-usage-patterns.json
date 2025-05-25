@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-05-25T11:51:36.672Z",
+  "timestamp": "2025-05-25T12:29:59.189Z",
   "mostUsedCategories": [
     {
       "category": "uncategorized",
-      "count": 28
+      "count": 31
     },
     {
       "category": "cleanup",
@@ -182,7 +182,7 @@
     },
     {
       "npmCommand": "mdc:status",
-      "scriptPath": "node agents/_store/scripts/enhanced-mdc-path-fixer.js status",
+      "scriptPath": "node agents/_store/scripts/mdc-dependency-tracker.js status",
       "category": "utility"
     },
     {
@@ -343,6 +343,36 @@
     {
       "npmCommand": "out",
       "scriptPath": "node agents/_store/scripts/silent-output.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "mdc:init",
+      "scriptPath": "node agents/_store/scripts/mdc-dependency-tracker.js init",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "mdc:watch",
+      "scriptPath": "node agents/_store/scripts/mdc-dependency-tracker.js watch",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "mdc:scan",
+      "scriptPath": "node agents/_store/scripts/mdc-dependency-tracker.js scan",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "mdc:cursor-setup",
+      "scriptPath": "node agents/_store/scripts/cursor-mdc-integration.js setup",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "mdc:cursor-status",
+      "scriptPath": "node agents/_store/scripts/cursor-mdc-integration.js status",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "mdc:cursor-watch",
+      "scriptPath": "node agents/_store/scripts/cursor-mdc-watcher.js",
       "category": "utility"
     }
   ],

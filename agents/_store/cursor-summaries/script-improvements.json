@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T11:51:36.672Z",
+  "timestamp": "2025-05-25T12:29:59.189Z",
   "source": "Script Analysis → Cursor Improvements",
   "categories": {
     "documentation": [
@@ -67,6 +67,20 @@
         "estimatedTime": "10-15 minutes"
       },
       {
+        "script": "cursor-mdc-integration.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
+        "script": "cursor-mdc-watcher.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
         "script": "demo-aai-cursor-integration.js",
         "issue": "Missing or inadequate description",
         "suggestion": "Add comprehensive JSDoc comments and description",
@@ -110,6 +124,13 @@
       },
       {
         "script": "launch-aai-complete.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
+        "script": "mdc-dependency-tracker.js",
         "issue": "Missing or inadequate description",
         "suggestion": "Add comprehensive JSDoc comments and description",
         "priority": "medium",

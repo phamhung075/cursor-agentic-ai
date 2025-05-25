@@ -94,7 +94,16 @@
     "safe-echo": "node agents/_store/scripts/safe-echo.js",
     "msg": "node agents/_store/scripts/safe-echo.js",
     "silent": "node agents/_store/scripts/silent-output.js",
-    "out": "node agents/_store/scripts/silent-output.js"
+    "out": "node agents/_store/scripts/silent-output.js",
+    "mdc:init": "node agents/_store/scripts/mdc-dependency-tracker.js init",
+    "mdc:watch": "node agents/_store/scripts/mdc-dependency-tracker.js watch",
+    "mdc:scan": "node agents/_store/scripts/mdc-dependency-tracker.js scan",
+    "mdc:status": "node agents/_store/scripts/mdc-dependency-tracker.js status",
+    "mdc:cursor-setup": "node agents/_store/scripts/cursor-mdc-integration.js setup",
+    "mdc:cursor-status": "node agents/_store/scripts/cursor-mdc-integration.js status",
+    "mdc:cursor-watch": "node agents/_store/scripts/cursor-mdc-watcher.js",
+    "mdc:update-rules": "printf \"Updating MDC rules...\\n\" && npm run mdc:scan",
+    "mdc:update-docs": "printf \"Updating MDC documentation...\\n\" && npm run mdc:scan"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^2.0.1",

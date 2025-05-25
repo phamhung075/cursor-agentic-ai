@@ -1,0 +1,15 @@
+{
+  "id": "25678573-ee75-4565-914b-5efbf9065b04",
+  "type": "dependency_graph",
+  "content": "{\"dependencies\":[[\"package.json\",{}],[\".cursor/rules/context.mdc\",{}]],\"reverseDependencies\":[],\"fileHashes\":[[\"package.json\",\"59683e442a2e479da883a7cbbf685818\"],[\".cursor/rules/context.mdc\",\"abaa88283350814dfd23f1ee9c75f7dc\"]],\"lastUpdated\":1748167530569,\"saveCount\":10}",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "content": "{\"dependencies\":[[\"package.json\",{}],[\".cursor/rules/context.mdc\",{}]],\"reverseDependencies\":[],\"fileHashes\":[[\"package.json\",\"59683e442a2e479da883a7cbbf685818\"],[\".cursor/rules/context.mdc\",\"abaa88283350814dfd23f1ee9c75f7dc\"]],\"lastUpdated\":1748167530569,\"saveCount\":10}",
+    "fileCount": 2,
+    "memoryClass": "agent",
+    "saveId": 1,
+    "timestamp": 1748167530570,
+    "type": "dependency_graph"
+  },
+  "embedding": []
+}

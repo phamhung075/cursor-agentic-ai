@@ -22,7 +22,8 @@
     "agents/_store/**/*.json": "json",
     "agents/_store/**/*.mdc": "markdown",
     "agents/_core/**/*.mdc": "markdown",
-    "agents/_core/**/*.json": "json"
+    "agents/_core/**/*.json": "json",
+    "**/*.mdc": "markdown"
   },
   "files.watcherExclude": {
     "**/agents/_store/memory/**": false,
@@ -42,7 +43,9 @@
     "**/node_modules/**": true,
     "**/.git/**": true,
     "**/dist/**": true,
-    "**/build/**": true
+    "**/build/**": true,
+    "**/.cursor/mdc-dependencies.json": false,
+    "**/agents/_store/cursor-summaries/mdc-dependency-updates.json": false
   },
   "search.include": {
     "agents/_store/memory": true,
@@ -55,7 +58,8 @@
     "agents/workflows": true,
     "agents/prompts": true,
     "agents/tools": true,
-    "agents/config": true
+    "agents/config": true,
+    "**/*.mdc": true
   },
   "search.exclude": {
     "**/agents/_store/cache/**": true,
@@ -377,7 +381,10 @@
     "README.md",
     "package.json",
     "tsconfig.json",
-    "tailwind.config.js"
+    "tailwind.config.js",
+    "**/*.mdc",
+    ".cursor/mdc-dependencies.json",
+    "agents/_store/cursor-summaries/mdc-dependency-updates.json"
   ],
   "cursor.ai.priorityFiles": [
     "agents/_core/rules/**/*.mdc",
@@ -543,5 +550,17 @@
     "**/agents/_store/backups/**",
     "**/agents/_store/memory/backup/**",
     "**/agents/_store/analysis/backup/**"
-  ]
+  ],
+  "mdc.dependencyTracking": {
+    "enabled": true,
+    "autoUpdate": true,
+    "watchPatterns": [
+      "**/*.mdc"
+    ],
+    "updateScripts": {
+      "rules": "npm run mdc:update-rules",
+      "config": "npm run cursor:update-settings",
+      "docs": "npm run mdc:update-docs"
+    }
+  }
 }

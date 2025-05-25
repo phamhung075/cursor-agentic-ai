@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T11:51:36.672Z",
+  "timestamp": "2025-05-25T12:29:59.189Z",
   "scriptSymbols": [
     {
       "name": "enhanced-dependency-analyzer.js",
@@ -74,6 +74,22 @@
       "containerName": "AAI Scripts/uncategorized"
     },
     {
+      "name": "cursor-mdc-integration.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/cursor-mdc-integration.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "cursor-mdc-watcher.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/cursor-mdc-watcher.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
       "name": "demo-aai-cursor-integration.js",
       "kind": "Function",
       "location": "agents/_store/scripts/demo-aai-cursor-integration.js",
@@ -125,6 +141,14 @@
       "name": "launch-aai-complete.js",
       "kind": "Function",
       "location": "agents/_store/scripts/launch-aai-complete.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "mdc-dependency-tracker.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/mdc-dependency-tracker.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -266,7 +290,7 @@
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "28 scripts in uncategorized category",
+      "detail": "31 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
@@ -505,7 +529,7 @@
     {
       "name": "mdc:status",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/enhanced-mdc-path-fixer.js status",
+      "detail": "node agents/_store/scripts/mdc-dependency-tracker.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
@@ -730,6 +754,48 @@
       "name": "out",
       "kind": "Function",
       "detail": "node agents/_store/scripts/silent-output.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "mdc:init",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/mdc-dependency-tracker.js init",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "mdc:watch",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/mdc-dependency-tracker.js watch",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "mdc:scan",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/mdc-dependency-tracker.js scan",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "mdc:cursor-setup",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-mdc-integration.js setup",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "mdc:cursor-status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-mdc-integration.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "mdc:cursor-watch",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-mdc-watcher.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     }

@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-05-25T11:51:36.671Z",
+  "timestamp": "2025-05-25T12:29:59.188Z",
   "source": "AAI Script Manager → Cursor Integration",
   "summary": {
-    "totalScripts": 34,
+    "totalScripts": 37,
     "categories": 6,
-    "npmIntegrated": 66
+    "npmIntegrated": 72
   },
   "scripts": {
     "analysis": [
@@ -355,6 +355,82 @@
         ]
       },
       {
+        "name": "cursor-mdc-integration.js",
+        "path": "agents/_store/scripts/cursor-mdc-integration.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/cursor-mdc-integration.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/cursor-mdc-integration.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/cursor-mdc-integration.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "cursor-mdc-watcher.js",
+        "path": "agents/_store/scripts/cursor-mdc-watcher.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/cursor-mdc-watcher.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/cursor-mdc-watcher.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/cursor-mdc-watcher.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
         "name": "demo-aai-cursor-integration.js",
         "path": "agents/_store/scripts/demo-aai-cursor-integration.js",
         "description": "No description available",
@@ -606,6 +682,44 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/launch-aai-complete.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "mdc-dependency-tracker.js",
+        "path": "agents/_store/scripts/mdc-dependency-tracker.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/mdc-dependency-tracker.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/mdc-dependency-tracker.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/mdc-dependency-tracker.js",
               "Add description"
             ]
           }

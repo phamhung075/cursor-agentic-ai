@@ -81,6 +81,88 @@
         "focus": false,
         "panel": "shared"
       }
+    },
+    {
+      "label": "MDC: Initialize Dependency Tracking",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "agents/_store/scripts/mdc-dependency-tracker.js",
+        "init"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "MDC: Start Dependency Watcher",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "agents/_store/scripts/mdc-dependency-tracker.js",
+        "watch"
+      ],
+      "group": "build",
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "MDC: Scan Dependencies",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "agents/_store/scripts/mdc-dependency-tracker.js",
+        "scan"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "MDC: Show Dependency Status",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "agents/_store/scripts/mdc-dependency-tracker.js",
+        "status"
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "MDC: Update Rules",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "mdc:update-rules"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
     }
   ]
 }

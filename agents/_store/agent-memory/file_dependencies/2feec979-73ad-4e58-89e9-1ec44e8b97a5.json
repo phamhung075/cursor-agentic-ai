@@ -1,0 +1,14 @@
+{
+  "id": "2feec979-73ad-4e58-89e9-1ec44e8b97a5",
+  "type": "file_dependencies",
+  "content": "{\"filePath\":\"test-deps/utils.js\",\"dependencies\":[],\"dependentCount\":2,\"timestamp\":1748069927362}",
+  "metadata": {
+    "content": "{\"filePath\":\"test-deps/utils.js\",\"dependencies\":[],\"dependentCount\":2,\"timestamp\":1748069927362}",
+    "dependencyCount": 0,
+    "fileName": "utils.js",
+    "projectType": "unknown",
+    "timestamp": 1748069927362,
+    "type": "file_dependencies"
+  },
+  "embedding": []
+}
