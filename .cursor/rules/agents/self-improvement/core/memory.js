@@ -670,13 +670,13 @@ class MemoryManager {
    * Get memory statistics (combined)
    */
   async getStats() {
-    const .cursor/rules/agentstats = await this.getAgentMemoryStats();
+    const agentStats = await this.getAgentMemoryStats();
     const projectStats = this.currentProject ? await this.getProjectMemoryStats() : null;
     
     return {
       pineconeConnected: !!this.index,
       openaiConnected: !!this.openai,
-      agent: .cursor/rules/agentstats,
+      agent: agentStats,
       project: projectStats,
       cacheSize: this.localCache.size,
       currentProject: this.currentProject

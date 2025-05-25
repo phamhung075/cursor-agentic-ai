@@ -950,7 +950,7 @@ class SelfImprovementAgent {
    */
   async getMemorySyncStatus() {
     try {
-      const .cursor/rules/agentstats = await this.memoryManager.getAgentMemoryStats();
+      const agentStats = await this.memoryManager.getAgentMemoryStats();
       const projectStats = await this.memoryManager.getProjectMemoryStats();
       
       // Check Pinecone connection
@@ -971,7 +971,7 @@ class SelfImprovementAgent {
       const openaiConnected = !!this.memoryManager.openai;
       
       // Handle project stats safely
-      const agentMemories = .cursor/rules/agentstats.localMemories || 0;
+      const agentMemories = agentStats.localMemories || 0;
       const projectMemories = (projectStats && !projectStats.error) ? (projectStats.localMemories || 0) : 0;
       
       return {
