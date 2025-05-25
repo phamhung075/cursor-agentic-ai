@@ -38,8 +38,11 @@ class CursorSettingsProtector {
       const hasFileAssociations = Object.keys(settings['files.associations'] || {}).length > 10;
       const hasSearchPaths = Object.keys(settings['search.include'] || {}).length > 5;
       const hasJSONSchemas = (settings['json.schemas'] || []).length > 0;
+      const hasCursorChatExclusions = (settings['cursor.chat.excludeFiles'] || []).length > 0;
+      const hasCursorAIExclusions = (settings['cursor.ai.excludeFromContext'] || []).length > 0;
       
-      return lines > this.minEnhancedLines && hasAAIFeatures && hasFileAssociations && hasSearchPaths && hasJSONSchemas;
+      return lines > this.minEnhancedLines && hasAAIFeatures && hasFileAssociations && 
+             hasSearchPaths && hasJSONSchemas && (hasCursorChatExclusions || hasCursorAIExclusions);
     } catch (error) {
       console.warn('⚠️ Error checking settings version:', error.message);
       return false;

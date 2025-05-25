@@ -168,7 +168,22 @@ class EnhancedCursorSetup {
         "**/dist/**": true,
         "**/build/**": true,
         "**/*.min.js": true,
-        "**/*.min.css": true
+        "**/*.min.css": true,
+        "**/*.backup": true,
+        "**/*.backup.*": true,
+        "**/*.bak": true,
+        "**/*.old": true,
+        "**/*.orig": true,
+        "**/*.tmp": true,
+        "**/*.temp": true,
+        "**/backup/**": true,
+        "**/backups/**": true,
+        "**/.cursor/settings.backup.json": true,
+        "**/.cursor/settings.enhanced.backup.json": true,
+        "**/.cursor/*.backup.*": true,
+        "**/agents/_store/backups/**": true,
+        "**/agents/_store/memory/backup/**": true,
+        "**/agents/_store/analysis/backup/**": true
       },
 
       // === ENHANCED EDITOR INTELLIGENCE ===
@@ -244,7 +259,22 @@ class EnhancedCursorSetup {
       "files.trimFinalNewlines": true,
       "files.exclude": {
         "**/agents/_store/cache/**": true,
-        "**/agents/_store/temp/**": true
+        "**/agents/_store/temp/**": true,
+        "**/*.backup": true,
+        "**/*.backup.*": true,
+        "**/*.bak": true,
+        "**/*.old": true,
+        "**/*.orig": true,
+        "**/*.tmp": true,
+        "**/*.temp": true,
+        "**/backup/**": true,
+        "**/backups/**": true,
+        "**/.cursor/settings.backup.json": true,
+        "**/.cursor/settings.enhanced.backup.json": true,
+        "**/.cursor/*.backup.*": true,
+        "**/agents/_store/backups/**": true,
+        "**/agents/_store/memory/backup/**": true,
+        "**/agents/_store/analysis/backup/**": true
       },
 
       // === WORKSPACE ENHANCEMENTS ===
@@ -413,7 +443,52 @@ class EnhancedCursorSetup {
       "aai.memoryTracking.enabled": true,
       "aai.intelligenceMode": "enhanced",
       "aai.autoSync.enabled": true,
-      "aai.contextAwareness.level": "high"
+      "aai.contextAwareness.level": "high",
+
+      // === CURSOR CHAT EXCLUSIONS ===
+      "cursor.chat.excludeFiles": [
+        "**/*.backup",
+        "**/*.backup.*",
+        "**/*.bak",
+        "**/*.old",
+        "**/*.orig",
+        "**/*.tmp",
+        "**/*.temp",
+        "**/backup/**",
+        "**/backups/**",
+        "**/.cursor/settings.backup.json",
+        "**/.cursor/settings.enhanced.backup.json",
+        "**/.cursor/*.backup.*",
+        "**/agents/_store/backups/**",
+        "**/agents/_store/memory/backup/**",
+        "**/agents/_store/analysis/backup/**",
+        "**/agents/_store/cache/**",
+        "**/agents/_store/temp/**",
+        "**/agents/_store/cursor-cache/**",
+        "**/node_modules/**",
+        "**/.git/**",
+        "**/dist/**",
+        "**/build/**",
+        "**/*.min.js",
+        "**/*.min.css"
+      ],
+      "cursor.ai.excludeFromContext": [
+        "**/*.backup",
+        "**/*.backup.*",
+        "**/*.bak",
+        "**/*.old",
+        "**/*.orig",
+        "**/*.tmp",
+        "**/*.temp",
+        "**/backup/**",
+        "**/backups/**",
+        "**/.cursor/settings.backup.json",
+        "**/.cursor/settings.enhanced.backup.json",
+        "**/.cursor/*.backup.*",
+        "**/agents/_store/backups/**",
+        "**/agents/_store/memory/backup/**",
+        "**/agents/_store/analysis/backup/**"
+      ]
     };
 
     fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2));
