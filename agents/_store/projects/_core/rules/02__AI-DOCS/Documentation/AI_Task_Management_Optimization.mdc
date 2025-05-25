@@ -39,7 +39,9 @@ The core purpose of Vibe-Task is to bridge the gap between high-level project re
     *   Corresponds to the `show_task` MCP tool (enhanced).
 *   **As an AI Assistant, I want to identify the next actionable task for the developer using advanced prioritization, so they can proceed with development efficiently.**
     *   Corresponds to the `next_task` MCP tool (enhanced).
-*   **As an AI Assistant, I want to set or update the status of tasks/tasks/tasks.json)`, so the developer can view or edit them easily.**
+*   **As an AI Assistant, I want to set or update the status of tasks/subtasks using a more granular set of statuses (e.g., "todo", "in-progress", "blocked", "review", "qa_testing", "done"), so the project accurately reflects progress.**
+    *   Corresponds to the `set_task_status` MCP tool (enhanced).
+*   **As an AI Assistant, I want to generate individual task files from the main `tasks.json`, so the developer can view or edit them easily.**
     *   Corresponds to the `generate_task_files` MCP tool.
 *   **As an AI Assistant, I want to add a new task, providing code context, effort estimation, assignee, labels, and due date, either via AI prompt or manual input.**
     *   Corresponds to the `add_task` MCP tool (enhanced).
@@ -89,8 +91,20 @@ The Vibe-Task MCP server exposes tools that mirror its CLI capabilities, allowin
 *   **`assist_prd_authoring` (New)**:
     *   **Description:** Assists the developer in creating or refining a PRD using AI. Guides through sections, suggests content, and structures the output.
     *   **Parameters:** `projectRoot` (string, required, absolute path), `existingPrdPath` (string, optional, path to an existing PRD to refine), `outputPrdPath` (string, required, path to save the new/refined PRD), `prompt` (string, required, initial high-level idea or refinement request).
-    *   **Output:** JSON object with `success` (boolean) and `message` (string). If successful, `data` contains the path to the authored/tasks/tasks/tasks/tasks.json)"), `statusFilter` (string, optional, filter subtasks by status).
-    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the detailed task/tasks/tasks.json)").
+    *   **Output:** JSON object with `success` (boolean) and `message` (string). If successful, `data` contains the path to the authored/refined PRD.
+
+### 5.2. Task Listing & Viewing
+*   **`list_tasks` (Enhanced)**:
+    *   **Description:** Lists tasks from `tasks.json` with advanced filtering.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `status` (string, optional, filter by status), `priority` (string, optional), `assignee` (string, optional), `labels` (string, optional, comma-separated), `dueDateStart` (string, optional, YYYY-MM-DD), `dueDateEnd` (string, optional, YYYY-MM-DD), `withSubtasks` (boolean, optional, default: false).
+    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains an array of task objects.
+*   **`show_task` (Enhanced)**:
+    *   **Description:** Displays detailed information for a specific task or subtask, including all rich properties.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `id` (string, required, task ID or "parentID.subtaskID"), `tasksPath` (string, optional, default: "tasks/tasks.json"), `statusFilter` (string, optional, filter subtasks by status).
+    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the detailed task/subtask object.
+*   **`next_task` (Enhanced)**:
+    *   **Description:** Identifies and displays the next actionable task using advanced prioritization (considering status, dependencies, priority, due dates).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json").
     *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the next task object or a message if no task is available.
 *   **`complexity_report`**:
     *   **Description:** Displays the previously generated complexity analysis report.
@@ -99,35 +113,104 @@ The Vibe-Task MCP server exposes tools that mirror its CLI capabilities, allowin
 
 ### 5.3. Task Status & File Management
 *   **`set_task_status` (Enhanced)**:
-    *   **Description:** Sets the status of one or more tasks/tasks/tasks/tasks/tasks.json)"), `outputDir` (string, optional, default: "tasks").
+    *   **Description:** Sets the status of one or more tasks/subtasks using a more granular status set.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `ids` (string, required, comma-separated task ID(s) or "parentID.subtaskID"), `status` (string, required, e.g., "todo", "in-progress", "blocked", "review", "qa_testing", "done", "deferred"), `tasksPath` (string, optional, default: "tasks/tasks.json").
+    *   **Output:** JSON object with `success` (boolean) and `message` (string).
+*   **`generate_task_files`**:
+    *   **Description:** Generates individual task files from the main `tasks.json`.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `outputDir` (string, optional, default: "tasks").
     *   **Output:** JSON object with `success` (boolean) and `message` (string).
 
 ### 5.4. Task Creation & Modification
 *   **`parse_prd` (Enhanced)**:
     *   **Description:** Parses a PRD to generate tasks, with improved AI for dependency inference and code context awareness if available.
-    *   **Parameters:** `projectRoot` (string, required, absolute path), `input` (string, optional, default: "scripts/tasks/tasks.json)"), `force` (boolean, optional, default: false), `append` (boolean, optional, default: false), `codeContextPaths` (array of strings, optional, paths to relevant code files/tasks/tasks/tasks.json)"), `parentId` (string, required), `existingTaskId` (string, optional), `title` (string, optional), `description` (string, optional), `details` (string, optional), `dependencies` (string, optional), `status` (string, optional), `estimatedEffort` (string, optional), `assignee` (string, optional), `labels` (string, optional), `dueDate` (string, optional).
-    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the added/tasks/tasks/tasks/tasks/tasks.json)"), `reportPath` (string, optional, default: "scripts/tasks/tasks/tasks/tasks/tasks/tasks.json)"), `chartType` (string, optional, default: "status_distribution", e.g., "status_distribution", "burndown_data").
-    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the report data/tasks/tasks.json)` file within the `tasks` directory. Each task object will be enhanced to include richer properties:
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `input` (string, optional, default: "scripts/prd.txt"), `numTasks` (string, optional, default: "10"), `output` (string, optional, default: "tasks/tasks.json"), `force` (boolean, optional, default: false), `append` (boolean, optional, default: false), `codeContextPaths` (array of strings, optional, paths to relevant code files/dirs).
+    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the list of generated tasks.
+*   **`add_task` (Enhanced)**:
+    *   **Description:** Adds a new task, with options for richer properties and code context.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `prompt` (string, optional), `title` (string, optional), `description` (string, optional), `details` (string, optional), `testStrategy` (string, optional), `dependencies` (string, optional), `priority` (string, optional), `research` (boolean, optional), `estimatedEffort` (string, optional), `assignee` (string, optional), `labels` (string, optional, comma-separated), `dueDate` (string, optional, YYYY-MM-DD), `codeContextPaths` (array of strings, optional).
+    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the newly added task object.
+*   **`add_subtask` (Enhanced)**:
+    *   **Description:** Adds a new subtask or converts an existing task, including richer properties.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `parentId` (string, required), `existingTaskId` (string, optional), `title` (string, optional), `description` (string, optional), `details` (string, optional), `dependencies` (string, optional), `status` (string, optional), `estimatedEffort` (string, optional), `assignee` (string, optional), `labels` (string, optional), `dueDate` (string, optional).
+    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the added/modified subtask object.
+*   **`update_tasks` (Enhanced)**:
+    *   **Description:** Updates multiple tasks (ID >= `fromId`) based on a new prompt, considering code context.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `fromId` (string, required), `prompt` (string, required), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Output:** JSON object with `success` (boolean) and `message` (string).
+*   **`update_task` (Enhanced)**:
+    *   **Description:** Updates a single task by ID, considering code context and richer properties.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `id` (string, required), `prompt` (string, optional, for AI update), `title` (string, optional), `description` (string, optional), `details` (string, optional), `testStrategy` (string, optional), `status` (string, optional), `priority` (string, optional), `dependencies` (string, optional), `estimatedEffort` (string, optional), `assignee` (string, optional), `labels` (string, optional), `dueDate` (string, optional), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the updated task object.
+*   **`update_subtask` (Enhanced)**:
+    *   **Description:** Updates a specific subtask, considering code context and richer properties.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `id` (string, required, "parentID.subtaskID"), `prompt` (string, optional), `title` (string, optional), etc. (similar to `update_task`), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the updated subtask object.
+*   **`remove_task`**: (Parameters and Output remain similar)
+*   **`remove_subtask`**: (Parameters and Output remain similar)
+*   **`clear_subtasks`**: (Parameters and Output remain similar)
+
+### 5.5. Task Analysis & Expansion
+*   **`analyze_project_complexity` (Enhanced)**:
+    *   **Description:** Analyzes task complexity, potentially using code context for more accurate assessment.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `reportPath` (string, optional, default: "scripts/task-complexity-report.json"), `modelOverride` (string, optional), `thresholdScore` (number, optional, default: 5), `research` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Output:** JSON object with `success` (boolean) and `message` (string).
+*   **`expand_task` (Enhanced)**:
+    *   **Description:** Expands a task into subtasks, using AI and code context.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `id` (string, required), `numSubtasks` (number, optional), `research` (boolean, optional), `prompt` (string, optional), `force` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the parent task with new subtasks.
+*   **`expand_all_tasks` (Enhanced)**:
+    *   **Description:** Expands all pending tasks based on complexity, potentially using code context.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `numSubtasks` (number, optional), `research` (boolean, optional), `prompt` (string, optional), `force` (boolean, optional), `codeContextPaths` (array of strings, optional).
+    *   **Output:** JSON object with `success` (boolean) and `data` (object) with counts.
+
+### 5.6. Dependency Management
+*   **`add_dependency` (Potentially Enhanced)**:
+    *   **Description:** Adds a dependency. AI could suggest dependencies based on task content.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `id` (string, required), `dependsOn` (string, required), `aiSuggestion` (boolean, optional, default: false).
+    *   **Output:** JSON object with `success` (boolean) and `message` (string).
+*   **`remove_dependency`**: (Parameters and Output remain similar)
+*   **`validate_dependencies`**: (Parameters and Output remain similar)
+*   **`fix_dependencies`**: (Parameters and Output remain similar)
+
+### 5.7. Visualization & Reporting (New)
+*   **`generate_dependency_graph`**:
+    *   **Description:** Generates a visual representation (e.g., DOT language string or image path if server can create images) of task dependencies.
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `format` (string, optional, default: "dot", e.g., "dot", "svg", "png").
+    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the graph data or path to the image.
+*   **`generate_progress_overview`**:
+    *   **Description:** Generates a summary or chart of project progress (e.g., task status distribution).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `tasksPath` (string, optional, default: "tasks/tasks.json"), `chartType` (string, optional, default: "status_distribution", e.g., "status_distribution", "burndown_data").
+    *   **Output:** JSON object with `success` (boolean). If successful, `data` contains the report data/chart.
+
+### 5.8. Version Control Integration (Advanced - Future)
+*   **`link_task_to_vcs`**:
+    *   **Description:** Links a task to a VCS item (e.g., Git branch, commit).
+    *   **Parameters:** `projectRoot` (string, required, absolute path), `taskId` (string, required), `vcsType` (string, required, e.g., "git"), `itemType` (string, required, e.g., "branch", "commit"), `itemReference` (string, required, e.g., branch name, commit SHA).
+    *   **Output:** JSON object with `success` (boolean) and `message` (string).
+## 6. Data Model (Task Structure)
+
+Tasks are primarily stored in a `tasks.json` file within the `tasks` directory. Each task object will be enhanced to include richer properties:
 
 ```json
 {
-  "id": 1, / Unique integer identifier
+  "id": 1, // Unique integer identifier
   "title": "Implement User Authentication API",
   "description": "Develop API endpoints for user registration, login, and logout.",
-  "status": "in-progress", / e.g., "todo", "in-progress", "blocked", "review", "qa_testing", "done", "deferred"
-  "dependencies": [], / Array of integer IDs of tasks that must be completed first
-  "priority": "high", / e.g., "critical", "high", "medium", "low"
+  "status": "in-progress", // e.g., "todo", "in-progress", "blocked", "review", "qa_testing", "done", "deferred"
+  "dependencies": [], // Array of integer IDs of tasks that must be completed first
+  "priority": "high", // e.g., "critical", "high", "medium", "low"
   "details": "1. Define User schema (email, password_hash, name).\n2. Implement /register endpoint (POST).\n3. Implement /login endpoint (POST) with JWT generation.\n4. Implement /logout endpoint (POST) with token invalidation (if applicable).",
   "testStrategy": "Unit tests for each endpoint. Integration test for full auth flow. Check password hashing and JWT validation.",
-  "estimatedEffort": "8h", / String (e.g., "4h", "2d", "5sp")
-  "actualEffort": "6h", / String, updated upon completion
-  "assignee": "developer_alice", / String, user ID or name
-  "labels": ["backend", "auth", "api"], / Array of strings
-  "dueDate": "2025-12-15", / Optional, YYYY-MM-DD
-  "codeContextPaths": ["src/models/user.js", "src/controllers/authController.js"], / Optional, array of relevant file/dir paths
+  "estimatedEffort": "8h", // String (e.g., "4h", "2d", "5sp")
+  "actualEffort": "6h", // String, updated upon completion
+  "assignee": "developer_alice", // String, user ID or name
+  "labels": ["backend", "auth", "api"], // Array of strings
+  "dueDate": "2025-12-15", // Optional, YYYY-MM-DD
+  "codeContextPaths": ["src/models/user.js", "src/controllers/authController.js"], // Optional, array of relevant file/dir paths
   "subtasks": [
     {
-      "id": 1, / Subtask ID, unique within the parent task
+      "id": 1, // Subtask ID, unique within the parent task
       "title": "Define User Schema",
       "description": "Create the database schema or model for the User entity.",
       "status": "done",
@@ -141,17 +224,45 @@ The Vibe-Task MCP server exposes tools that mirror its CLI capabilities, allowin
       "labels": ["database", "schema"],
       "dueDate": "2025-12-01"
     }
-    / ... more subtasks
+    // ... more subtasks
   ],
-  "complexityScore": 8, / Optional, added by complexity analysis
-  "recommendedSubtasks": 4 /tasks/tasks.json)` to prevent data corruption, possibly using temporary files and rename on success.
-*   **Usability (for AI Assistant developers/tasks/tasks.json)` parsing and writing should be optimized. Consider alternative storage (e.g., SQLite) if JSON becomes a bottleneck for very large projects.
+  "complexityScore": 8, // Optional, added by complexity analysis
+  "recommendedSubtasks": 4 // Optional, added by complexity analysis
+}
+```
+
+Individual task files (e.g., `task_001.txt`) will also reflect these richer properties for human readability and AI context.
+
+## 7. Non-Functional Requirements
+
+*   **Performance:**
+    *   MCP tool responses for read operations should be near-instantaneous (<500ms).
+    *   AI-intensive operations should ideally complete within 30-60 seconds, with clear progress indication for longer operations. MCP server timeout (e.g., 2-5 minutes) should be configurable.
+*   **Reliability:**
+    *   The MCP server must be stable and handle concurrent operations gracefully if the underlying MCP transport (stdio) allows or if a different transport is used in the future.
+    *   Robust error handling with clear, actionable error messages for the MCP client.
+    *   Atomic operations on `tasks.json` to prevent data corruption, possibly using temporary files and rename on success.
+*   **Usability (for AI Assistant developers/integrators & End Users via AI):**
+    *   MCP tool schemas (Zod) must be precise and well-documented.
+    *   Tool descriptions must be unambiguous.
+    *   AI prompts generated by Vibe-Task (e.g., for expansion) should be high quality and lead to useful results.
+    *   End-user experience via AI assistant should feel intuitive and efficient.
+*   **Security:**
+    *   API keys managed securely via environment variables.
+    *   No sensitive data written to logs unless in explicit debug mode.
+    *   File operations restricted to the project directory.
+*   **Scalability:**
+    *   Efficiently handle projects with up to 1000 tasks.
+    *   Performance of `tasks.json` parsing and writing should be optimized. Consider alternative storage (e.g., SQLite) if JSON becomes a bottleneck for very large projects.
 *   **Configurability:**
     *   Key behaviors (default number of subtasks, AI model parameters, status options) should be configurable via [`.vibetaskconfig`](claude-task-master/.taskmasterconfig).
 *   **Extensibility:**
     *   Core logic should be modular to facilitate future additions like a plugin system.
 
-## 8. Future Considerations /tasks/tasks.json)` to a shared backend (e.g., cloud database, dedicated server application) to enable real-time updates and collaboration for teams.
+## 8. Future Considerations / Potential Enhancements (Vibe-Task vNext)
+
+*   **Real-time Collaboration & Multi-User Support:**
+    *   Transition from local `tasks.json` to a shared backend (e.g., cloud database, dedicated server application) to enable real-time updates and collaboration for teams.
     *   Implement user authentication and authorization for shared projects.
 *   **Advanced Reporting & Analytics Dashboard:**
     *   Develop a web-based UI or integrate with existing platforms to display burndown charts, velocity, task distribution, and other project metrics.

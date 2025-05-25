@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T07:01:53.936Z",
+  "timestamp": "2025-05-25T07:13:58.190Z",
   "scriptSymbols": [
     {
       "name": "comprehensive-cleanup.js",
@@ -37,6 +37,14 @@
       "name": "enhanced-cursor-setup.js",
       "kind": "Function",
       "location": "agents/_store/scripts/enhanced-cursor-setup.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "enhanced-mdc-path-fixer.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/enhanced-mdc-path-fixer.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -180,7 +188,7 @@
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "19 scripts in uncategorized category",
+      "detail": "20 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
@@ -385,6 +393,34 @@
       "name": "cursor:settings-restore",
       "kind": "Function",
       "detail": "node agents/_store/scripts/update-cursor-settings.js restore",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "mdc:status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/enhanced-mdc-path-fixer.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "mdc:fix",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "mdc:fix-apply",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix --apply",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "mdc:fix-file",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
       "location": "package.json",
       "containerName": "NPM Scripts"
     }

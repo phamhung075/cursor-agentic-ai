@@ -49,7 +49,11 @@
     "cursor:auto-sync": "node agents/cursor-integration/auto-sync.js start",
     "cursor:auto-sync-status": "node agents/cursor-integration/auto-sync.js status",
     "cursor:test": "echo \"Testing...\" && ls -la agents/_store/ 2>/dev/null || echo \"agents/_store not found yet\"",
-    "cursor:test-enhanced": "echo \"Testing enhanced integration...\" && ls -la agents/_store/cursor-summaries/ && echo \"✅ Enhanced Cursor integration active\""
+    "cursor:test-enhanced": "echo \"Testing enhanced integration...\" && ls -la agents/_store/cursor-summaries/ && echo \"✅ Enhanced Cursor integration active\"",
+    "mdc:status": "node agents/_store/scripts/enhanced-mdc-path-fixer.js status",
+    "mdc:fix": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
+    "mdc:fix-apply": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix --apply",
+    "mdc:fix-file": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^2.0.1",

@@ -1,8 +1,3 @@
----
-description:
-globs:
-alwaysApply: false
----
 # **Guiding Agentic Logic: A Comprehensive Resource for Enhancing AI Coding Agent Performance**
 
 ## **1\. Introduction: The Imperative for Agentic Coding Logic in AI Agents**
@@ -214,7 +209,7 @@ Cursor's "Rules" system provides a persistent way to encode context, preferences
   \# Custom UI Component Standards
   \- Always use the \`useTheme\` hook for theming.
   \- Props should be destructured at the beginning of the component.
-  \- Refer to @ui-library-prop-types.mdc for detailed prop definitions.
+  \- Refer to @ui-library-prop-types.md for detailed prop definitions.
   Invoked with @custom-ui-standards.
 * **Automating Project-Specific Workflows (Agent Requested):**
   Code snippet
@@ -303,12 +298,12 @@ Windsurf provides "Memories & Rules" as a system for sharing and persisting cont
   * Users can also explicitly ask Cascade to "create a memory of …" specific information.29
   * Auto-generated memories do not consume credits and are workspace-specific.29
   * This mechanism allows Cascade to build a dynamic, short-term understanding of the current task context without requiring manual rule creation for every transient detail, which is efficient for highly contextual, temporary information.
-* **Rules (.windsurfrules and global\_rules.mdc):**
+* **Rules (.windsurfrules and global\_rules.md):**
   * Users can explicitly define their own rules for Cascade to follow.29
-  * **global\_rules.** Contains rules applied across all workspaces (e.g., general coding style preferences).
+  * **global\_rules.md:** Contains rules applied across all workspaces (e.g., general coding style preferences).
   * **.windsurfrules:** Contains rules for the local workspace where the file resides (e.g., project-specific technologies or patterns). It's recommended to add .windsurfrules to the project's .gitignore to keep them local.29
   * Cascade is aware of these rules at all times, even if changed mid-conversation.29
-  * **Character Limits:** global\_rules.mdc and .windsurfrules are each limited to 6000 characters. The combined limit is 12,000 characters; global rules take priority if the total exceeds this, and excess content is truncated.29 This necessitates concise and carefully formulated rules.
+  * **Character Limits:** global\_rules.md and .windsurfrules are each limited to 6000 characters. The combined limit is 12,000 characters; global rules take priority if the total exceeds this, and excess content is truncated.29 This necessitates concise and carefully formulated rules.
   * **Best Practices for Writing Rules 29:**
     * Keep rules simple, concise, and specific. Long or vague rules can confuse Cascade.
     * Avoid generic rules (e.g., "write good code") as these are often part of the base model's training.
@@ -384,11 +379,22 @@ Cline offers a sophisticated system for defining and managing its behavior throu
   * Tips for writing: Be clear, concise, focus on desired outcomes, and iterate.22
 * **.clinerules (Toggleable Rule Files):**
   * This system allows for granular and dynamic control over Cline's behavior.37
-  * Rule files are simple Markdown (.mdc) files.
+  * Rule files are simple Markdown (.md) files.
   * **Scopes:**
     * **Global Rules:** Stored in \~/Documents/Cline/Rules/. Apply across all projects unless a workspace rule overrides.
     * **Workspace Rules:** Stored in a .clinerules/ directory within the project's root. Specific to that project.
-  * **Management:** The .clinerules popover (below chat input) allows users to see active rules, add new rule files (Cline creates folders if needed), and toggle rules on/README.mdc) or any files in the /docs folder unless explicitly instructed.
+  * **Management:** The .clinerules popover (below chat input) allows users to see active rules, add new rule files (Cline creates folders if needed), and toggle rules on/off.37
+  * **Use Cases 21:**
+    * Maintaining project standards (e.g., "Always use TypeScript strict mode").
+    * Enforcing development practices (e.g., "Require unit tests for all new public functions").
+    * Managing documentation requirements (e.g., "Generate JSDoc comments for all exported functions").
+    * Defining task-specific configurations (e.g., debug-logging.md, test-generation-jest.md, refactor-dry-principles.md, commit-conventional-format.md).
+    * Switching operational contexts fluidly: e.g., activate debug-logging.md for bug fixing, then toggle it off and activate test-generation-jest.md for writing tests, all within the same conversation.37
+
+  * ## **Example .clinerules Content 38:**     **\#.clinerules for MyProject**     **General Behavior**
+
+    * Ask for review after each significant file change.
+    * Do not edit the README.md or any files in the /docs folder unless explicitly instructed.
     * Suggest files to edit rather than opening them randomly if unsure.
 
     Python Specifics
@@ -426,7 +432,7 @@ Cline's collaborative nature 35—explaining its reasoning, asking for input, br
   * **Validate and Refine:** Review Cline's suggestions and provide feedback.
 * **Context Management Prompts 21:**
   * Starting a new task: "Cline, let's start a new task. Create user-authentication.js. We need to implement user login with JWT tokens. Here are the requirements:..."
-  * Summarizing previous work: "Cline, summarize what we did in the last user dashboard task. Capture the main features and outstanding issues. Save this to cline\_docs/user-dashboard-summary.mdc."
+  * Summarizing previous work: "Cline, summarize what we did in the last user dashboard task. Capture the main features and outstanding issues. Save this to cline\_docs/user-dashboard-summary.md."
 * **Advanced Techniques (often user-defined protocols within prompts) 21:**
   * **Constraint Stuffing:** To mitigate code truncation or ensure completeness, add phrases like "ensure the code is complete" or "always provide the full function definition."
   * **Confidence Checks:** Ask Cline to rate its confidence, e.g., "On a scale of 1-10, how confident are you in this solution before proceeding?" This encourages self-assessment by the AI.
@@ -465,7 +471,7 @@ The three AI coding agents, while sharing the goal of enhancing developer produc
 |  | Manual Context Provision | @files, @folders for specific paths 24 | @mentions in Cascade for functions, classes, files, directories 8 | @ references for files/folders 21 | All offer ways to point AI to specifics, syntax varies. |
 |  | External Web Context | @web for external documentation/pages 24 | Via MCP servers (e.g., a server for web search or specific doc sites) 31 | Via MCP servers or browser automation capabilities 34 | MCP offers more structured external access than a generic web search. |
 |  | Version Control Context | @git for version control context 24 | Potentially via MCP server for Git operations. | Can run terminal commands (e.g., git log, git diff) 34 | Cline's direct command execution is very flexible for Git context. |
-| **Rule System \- Definition** | File Format & Location | .mdc files in .cursor/rules (project-specific); User Rules (global) in settings 25 | global\_rules.mdc (global); .windsurfrules (Markdown, in workspace root) 29 | Markdown files: Global (\~/Documents/Cline/Rules/), Workspace (.clinerules/ in project root) 37 | All use text-based rules. Cline and Windsurf emphasize Markdown. Cursor uses MDC. |
+| **Rule System \- Definition** | File Format & Location | .mdc files in .cursor/rules (project-specific); User Rules (global) in settings 25 | global\_rules.md (global); .windsurfrules (Markdown, in workspace root) 29 | Markdown files: Global (\~/Documents/Cline/Rules/), Workspace (.clinerules/ in project root) 37 | All use text-based rules. Cline and Windsurf emphasize Markdown. Cursor uses MDC. |
 | **Rule System \- Types/Triggers** | How Rules are Applied | Always, Auto Attached (glob-based), Agent Requested (AI decides), Manual (@ruleName) 25 | Global rules always active; Workspace rules active for that project. Automatic "Memories" generated by Cascade.29 | Toggleable Global and Workspace rules (user activates/deactivates). Self-improving rules (AI suggests edits to rules).37 | Cline's toggleable and self-improving rules offer the most dynamism. Windsurf's "Memories" are a unique automatic context layer. Cursor has diverse trigger conditions. |
 | **Rule System \- Scope** | Where Rules Apply | Project-level (.cursor/rules), User-level (global settings) 25 | Global, Workspace-specific 29 | Global, Workspace-specific 37 | Similar scoping, but Cline's toggling allows finer-grained activation within scopes. |
 | **External Context/Tool Int.** | Mechanism | @web (general); MCP for external providers can be configured 24 | Model Context Protocol (MCP) for custom tools and services (databases, APIs, etc.) 31 | MCP; direct terminal command execution; browser automation 34 | Windsurf and Cline have strong, native MCP support. Cline adds command execution and browser automation for broader tool use. |
@@ -541,45 +547,43 @@ By adopting these practices, developers can more effectively harness the power o
 
 #### **Works cited**
 
-#### **Works cited**
-
-1. Agentic | Powerful software, thoughtfully designed., accessed May 7, 2025, [http:/www.agenticsoftware.com/](http:/www.agenticsoftware.com/)
-2. scispace.com, accessed May 7, 2025, [https:/scispace.com/pdf/defeasible-logic-programming-an-argumentative-approach-4dhoye3g1q.pdf](https:/scispace.com/pdf/defeasible-logic-programming-an-argumentative-approach-4dhoye3g1q.pdf)
-3. Defeasible Logic Programming: \- SEDICI, accessed May 7, 2025, [http:/sedici.unlp.edu.ar/bitstream/handle/10915/9427/Documento\_completo.pdf?sequence=1\&isAllowed=y](http:/sedici.unlp.edu.ar/bitstream/handle/10915/9427/Documento_completo.pdf?sequence=1&isAllowed=y)
-4. Strong and Default Negation in Defeasible Logic Programming \- CiteSeerX, accessed May 7, 2025, [https:/citeseerx.ist.psu.edu/document?repid=rep1\&type=pdf\&doi=207151aa5612dc453a522419b764c3789ff682e4](https:/citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=207151aa5612dc453a522419b764c3789ff682e4)
-5. Agentic code generation: The future of software development, accessed May 7, 2025, [https:/www.aiacceleratorinstitute.com/agentic-code-generation-the-future-of-software-development/](https:/www.aiacceleratorinstitute.com/agentic-code-generation-the-future-of-software-development/)
-6. Agentic Programming Course Outline | ONLC, accessed May 7, 2025, [https:/www.onlc.com/outline.asp?ccode=ldlapr](https:/www.onlc.com/outline.asp?ccode=ldlapr)
-7. Cursor \- The AI Code Editor, accessed May 7, 2025, [https:/www.cursor.com/](https:/www.cursor.com/)
-8. Windsurf Editor | Windsurf (formerly Codeium), accessed May 7, 2025, [https:/windsurf.com/editor](https:/windsurf.com/editor)
-9. Report: Windsurf Business Breakdown & Founding Story | Contrary Research, accessed May 7, 2025, [https:/research.contrary.com/company/windsurf](https:/research.contrary.com/company/windsurf)
-10. \[2502.03788\] Frontend Diffusion: Empowering Self-Representation of Junior Researchers and Designers Through Agentic Workflows \- ar5iv, accessed May 7, 2025, [https:/ar5iv.labs.arxiv.org/html/2502.03788](https:/ar5iv.labs.arxiv.org/html/2502.03788)
-11. 16 Basic Principles of Coding Every Programmer Must Know \- Hapy Co, accessed May 7, 2025, [https:/hapy.co/journal/principles-of-coding/](https:/hapy.co/journal/principles-of-coding/)
-12. Writing Docs for AI: Making Your Product Seamless for Cursor ..., accessed May 7, 2025, [https:/rivet.gg/blog/2025-03-15-writing-docs-for-ai](https:/rivet.gg/blog/2025-03-15-writing-docs-for-ai)
-13. Markdown Documentation Tool for AI Projects \- Restack, accessed May 7, 2025, [https:/www.restack.io/p/documenting-open-source-ai-projects-answer-markdown-cat-ai](https:/www.restack.io/p/documenting-open-source-ai-projects-answer-markdown-cat-ai)
-14. How to write good prompts for generating code from LLMs · potpie-ai ..., accessed May 7, 2025, [https:/github.com/potpie-ai/potpie/wiki/How-to-write-good-prompts-for-generating-code-from-LLMs](https:/github.com/potpie-ai/potpie/wiki/How-to-write-good-prompts-for-generating-code-from-LLMs)
-15. Using LLMs for Code Generation: A Guide to Improving Accuracy and Addressing Common Issues \- PromptHub, accessed May 7, 2025, [https:/www.prompthub.us/blog/using-llms-for-code-generation-a-guide-to-improving-accuracy-and-addressing-common-issues](https:/www.prompthub.us/blog/using-llms-for-code-generation-a-guide-to-improving-accuracy-and-addressing-common-issues)
-16. What are AI Hallucinations? Examples, Causes & Prevention Techniques, accessed May 7, 2025, [https:/blog.servermania.com/ai-hallucination](https:/blog.servermania.com/ai-hallucination)
-17. How to Use AI in Coding \- 12 Best Practices in 2025 \- Zencoder, accessed May 7, 2025, [https:/zencoder.ai/blog/how-to-use-ai-in-coding](https:/zencoder.ai/blog/how-to-use-ai-in-coding)
-18. Reducing hallucinations when extracting data from PDF using LLMs \- DEV Community, accessed May 7, 2025, [https:/dev.to/parthex/reducing-hallucinations-when-extracting-data-from-pdf-using-llms-4nl5](https:/dev.to/parthex/reducing-hallucinations-when-extracting-data-from-pdf-using-llms-4nl5)
-19. Best Practices for Using AI in Software Development 2025 \- Leanware, accessed May 7, 2025, [https:/www.leanware.co/insights/best-practices-ai-software-development](https:/www.leanware.co/insights/best-practices-ai-software-development)
-20. Taming the code generation beast — How responsible is your AI adoption in Java \- Digma, accessed May 7, 2025, [https:/digma.ai/taming-the-code-generation-beast-how-responsible-is-your-ai-adoption-in-java/](https:/digma.ai/taming-the-code-generation-beast-how-responsible-is-your-ai-adoption-in-java/)
-21. Prompt Engineering Guide \- Cline Documentation, accessed May 7, 2025, [https:/docs.cline.bot/improving-your-prompting-skills/prompting](https:/docs.cline.bot/improving-your-prompting-skills/prompting)
-22. cline/docs/prompting/README.md at main \- GitHub, accessed May 7, 2025, [https:/github.com/cline/cline/blob/main/docs%2Fprompting%2FREADME.md](https:/github.com/cline/cline/blob/main/docs%2Fprompting%2F[README.md]([README.md](README.md)))
-23. Cursor – Welcome to Cursor, accessed May 7, 2025, [https:/docs.cursor.com/welcome](https:/docs.cursor.com/welcome)
-24. Introduction \- Cursor, accessed May 7, 2025, [https:/docs.cursor.com/get-started/introduction](https:/docs.cursor.com/get-started/introduction)
-25. Rules \- Cursor, accessed May 7, 2025, [https:/docs.cursor.com/context/rules](https:/docs.cursor.com/context/rules)
-26. Cursor for complex projects \- Page 2 \- Discussion, accessed May 7, 2025, [https:/forum.cursor.com/t/cursor-for-complex-projects/38911?page=2](https:/forum.cursor.com/t/cursor-for-complex-projects/38911?page=2)
-27. Windsurf Docs, accessed May 7, 2025, [https:/docs.windsurf.com/windsurf/getting-started](https:/docs.windsurf.com/windsurf/getting-started)
-28. Cursor vs Windsurf: An In-Depth Comparison of AI-Powered Code Editors for Beginners, accessed May 7, 2025, [https:/www.appypieautomate.ai/blog/cursor-vs-windsurf-ai-code-editor](https:/www.appypieautomate.ai/blog/cursor-vs-windsurf-ai-code-editor)
-29. Cascade Memories \- Windsurf Docs, accessed May 7, 2025, [https:/docs.windsurf.com/windsurf/memories](https:/docs.windsurf.com/windsurf/memories)
-30. Do I just give up? : r/Codeium \- Reddit, accessed May 7, 2025, [https:/www.reddit.com/r/Codeium/comments/1jg7kdc/do\_i\_just\_give\_up/](https:/www.reddit.com/r/Codeium/comments/1jg7kdc/do_i_just_give_up/)
-31. Cascade MCP Integration \- Windsurf Docs, accessed May 7, 2025, [https:/docs.windsurf.com/windsurf/mcp](https:/docs.windsurf.com/windsurf/mcp)
-32. A beginners Guide on Model Context Protocol (MCP) \- OpenCV, accessed May 7, 2025, [https:/opencv.org/blog/model-context-protocol/](https:/opencv.org/blog/model-context-protocol/)
-33. Windsurf (formerly Codeium) \- The most powerful AI Code Editor, accessed May 7, 2025, [https:/windsurf.com/](https:/windsurf.com/)
-34. Roo Code (prev. Roo Cline) gives you a whole dev team of AI agents in your code editor. \- GitHub, accessed May 7, 2025, [https:/github.com/RooVetGit/Roo-Code](https:/github.com/RooVetGit/Roo-Code)
-35. Cline \- AI Autonomous Coding Agent for VS Code, accessed May 7, 2025, [https:/cline.bot/](https:/cline.bot/)
-36. Cline Documentation | Cline, accessed May 7, 2025, [https:/docs.cline.bot/](https:/docs.cline.bot/)
-37. Double-clicking on toggleable .clinerules (+ self-improving Cline) \- Cline Blog, accessed May 7, 2025, [https:/cline.bot/blog/double-clicking-on-toggleable-clinerules-self-improving-cline](https:/cline.bot/blog/double-clicking-on-toggleable-clinerules-self-improving-cline)
-38. What is Cline and How to Use Cline for Beginners \- Apidog, accessed May 7, 2025, [https:/apidog.com/blog/how-to-use-cline/](https:/apidog.com/blog/how-to-use-cline/)
-39. My workflow for "Self-Improving Cline" \- Reddit, accessed May 7, 2025, [https:/www.reddit.com/r/CLine/comments/1k4v65d/my\_workflow\_for\_selfimproving\_cline/](https:/www.reddit.com/r/CLine/comments/1k4v65d/my_workflow_for_selfimproving_cline/)
-40. Bhartendu-Kumar/rules\_template: If using CLINE/RooCode/Cursor/Windsurf Setup these rules. Usable for newbies riding AI wave and experienced folks both . Combines: (1) Memory,(2) Reasoning into subtasks (3) Prompts for best practices. \- GitHub, accessed May 7, 2025, [https:/github.com/Bhartendu-Kumar/rules\_template](https:/github.com/Bhartendu-Kumar/rules_template)
+1. Agentic | Powerful software, thoughtfully designed., accessed May 7, 2025, [http://www.agenticsoftware.com/](http://www.agenticsoftware.com/)
+2. scispace.com, accessed May 7, 2025, [https://scispace.com/pdf/defeasible-logic-programming-an-argumentative-approach-4dhoye3g1q.pdf](https://scispace.com/pdf/defeasible-logic-programming-an-argumentative-approach-4dhoye3g1q.pdf)
+3. Defeasible Logic Programming: \- SEDICI, accessed May 7, 2025, [http://sedici.unlp.edu.ar/bitstream/handle/10915/9427/Documento\_completo.pdf?sequence=1\&isAllowed=y](http://sedici.unlp.edu.ar/bitstream/handle/10915/9427/Documento_completo.pdf?sequence=1&isAllowed=y)
+4. Strong and Default Negation in Defeasible Logic Programming \- CiteSeerX, accessed May 7, 2025, [https://citeseerx.ist.psu.edu/document?repid=rep1\&type=pdf\&doi=207151aa5612dc453a522419b764c3789ff682e4](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=207151aa5612dc453a522419b764c3789ff682e4)
+5. Agentic code generation: The future of software development, accessed May 7, 2025, [https://www.aiacceleratorinstitute.com/agentic-code-generation-the-future-of-software-development/](https://www.aiacceleratorinstitute.com/agentic-code-generation-the-future-of-software-development/)
+6. Agentic Programming Course Outline | ONLC, accessed May 7, 2025, [https://www.onlc.com/outline.asp?ccode=ldlapr](https://www.onlc.com/outline.asp?ccode=ldlapr)
+7. Cursor \- The AI Code Editor, accessed May 7, 2025, [https://www.cursor.com/](https://www.cursor.com/)
+8. Windsurf Editor | Windsurf (formerly Codeium), accessed May 7, 2025, [https://windsurf.com/editor](https://windsurf.com/editor)
+9. Report: Windsurf Business Breakdown & Founding Story | Contrary Research, accessed May 7, 2025, [https://research.contrary.com/company/windsurf](https://research.contrary.com/company/windsurf)
+10. \[2502.03788\] Frontend Diffusion: Empowering Self-Representation of Junior Researchers and Designers Through Agentic Workflows \- ar5iv, accessed May 7, 2025, [https://ar5iv.labs.arxiv.org/html/2502.03788](https://ar5iv.labs.arxiv.org/html/2502.03788)
+11. 16 Basic Principles of Coding Every Programmer Must Know \- Hapy Co, accessed May 7, 2025, [https://hapy.co/journal/principles-of-coding/](https://hapy.co/journal/principles-of-coding/)
+12. Writing Docs for AI: Making Your Product Seamless for Cursor ..., accessed May 7, 2025, [https://rivet.gg/blog/2025-03-15-writing-docs-for-ai](https://rivet.gg/blog/2025-03-15-writing-docs-for-ai)
+13. Markdown Documentation Tool for AI Projects \- Restack, accessed May 7, 2025, [https://www.restack.io/p/documenting-open-source-ai-projects-answer-markdown-cat-ai](https://www.restack.io/p/documenting-open-source-ai-projects-answer-markdown-cat-ai)
+14. How to write good prompts for generating code from LLMs · potpie-ai ..., accessed May 7, 2025, [https://github.com/potpie-ai/potpie/wiki/How-to-write-good-prompts-for-generating-code-from-LLMs](https://github.com/potpie-ai/potpie/wiki/How-to-write-good-prompts-for-generating-code-from-LLMs)
+15. Using LLMs for Code Generation: A Guide to Improving Accuracy and Addressing Common Issues \- PromptHub, accessed May 7, 2025, [https://www.prompthub.us/blog/using-llms-for-code-generation-a-guide-to-improving-accuracy-and-addressing-common-issues](https://www.prompthub.us/blog/using-llms-for-code-generation-a-guide-to-improving-accuracy-and-addressing-common-issues)
+16. What are AI Hallucinations? Examples, Causes & Prevention Techniques, accessed May 7, 2025, [https://blog.servermania.com/ai-hallucination](https://blog.servermania.com/ai-hallucination)
+17. How to Use AI in Coding \- 12 Best Practices in 2025 \- Zencoder, accessed May 7, 2025, [https://zencoder.ai/blog/how-to-use-ai-in-coding](https://zencoder.ai/blog/how-to-use-ai-in-coding)
+18. Reducing hallucinations when extracting data from PDF using LLMs \- DEV Community, accessed May 7, 2025, [https://dev.to/parthex/reducing-hallucinations-when-extracting-data-from-pdf-using-llms-4nl5](https://dev.to/parthex/reducing-hallucinations-when-extracting-data-from-pdf-using-llms-4nl5)
+19. Best Practices for Using AI in Software Development 2025 \- Leanware, accessed May 7, 2025, [https://www.leanware.co/insights/best-practices-ai-software-development](https://www.leanware.co/insights/best-practices-ai-software-development)
+20. Taming the code generation beast — How responsible is your AI adoption in Java \- Digma, accessed May 7, 2025, [https://digma.ai/taming-the-code-generation-beast-how-responsible-is-your-ai-adoption-in-java/](https://digma.ai/taming-the-code-generation-beast-how-responsible-is-your-ai-adoption-in-java/)
+21. Prompt Engineering Guide \- Cline Documentation, accessed May 7, 2025, [https://docs.cline.bot/improving-your-prompting-skills/prompting](https://docs.cline.bot/improving-your-prompting-skills/prompting)
+22. cline/docs/prompting/README.md at main \- GitHub, accessed May 7, 2025, [https://github.com/cline/cline/blob/main/docs%2Fprompting%2FREADME.md](https://github.com/cline/cline/blob/main/docs%2Fprompting%2FREADME.md)
+23. Cursor – Welcome to Cursor, accessed May 7, 2025, [https://docs.cursor.com/welcome](https://docs.cursor.com/welcome)
+24. Introduction \- Cursor, accessed May 7, 2025, [https://docs.cursor.com/get-started/introduction](https://docs.cursor.com/get-started/introduction)
+25. Rules \- Cursor, accessed May 7, 2025, [https://docs.cursor.com/context/rules](https://docs.cursor.com/context/rules)
+26. Cursor for complex projects \- Page 2 \- Discussion, accessed May 7, 2025, [https://forum.cursor.com/t/cursor-for-complex-projects/38911?page=2](https://forum.cursor.com/t/cursor-for-complex-projects/38911?page=2)
+27. Windsurf Docs, accessed May 7, 2025, [https://docs.windsurf.com/windsurf/getting-started](https://docs.windsurf.com/windsurf/getting-started)
+28. Cursor vs Windsurf: An In-Depth Comparison of AI-Powered Code Editors for Beginners, accessed May 7, 2025, [https://www.appypieautomate.ai/blog/cursor-vs-windsurf-ai-code-editor](https://www.appypieautomate.ai/blog/cursor-vs-windsurf-ai-code-editor)
+29. Cascade Memories \- Windsurf Docs, accessed May 7, 2025, [https://docs.windsurf.com/windsurf/memories](https://docs.windsurf.com/windsurf/memories)
+30. Do I just give up? : r/Codeium \- Reddit, accessed May 7, 2025, [https://www.reddit.com/r/Codeium/comments/1jg7kdc/do\_i\_just\_give\_up/](https://www.reddit.com/r/Codeium/comments/1jg7kdc/do_i_just_give_up/)
+31. Cascade MCP Integration \- Windsurf Docs, accessed May 7, 2025, [https://docs.windsurf.com/windsurf/mcp](https://docs.windsurf.com/windsurf/mcp)
+32. A beginners Guide on Model Context Protocol (MCP) \- OpenCV, accessed May 7, 2025, [https://opencv.org/blog/model-context-protocol/](https://opencv.org/blog/model-context-protocol/)
+33. Windsurf (formerly Codeium) \- The most powerful AI Code Editor, accessed May 7, 2025, [https://windsurf.com/](https://windsurf.com/)
+34. Roo Code (prev. Roo Cline) gives you a whole dev team of AI agents in your code editor. \- GitHub, accessed May 7, 2025, [https://github.com/RooVetGit/Roo-Code](https://github.com/RooVetGit/Roo-Code)
+35. Cline \- AI Autonomous Coding Agent for VS Code, accessed May 7, 2025, [https://cline.bot/](https://cline.bot/)
+36. Cline Documentation | Cline, accessed May 7, 2025, [https://docs.cline.bot/](https://docs.cline.bot/)
+37. Double-clicking on toggleable .clinerules (+ self-improving Cline) \- Cline Blog, accessed May 7, 2025, [https://cline.bot/blog/double-clicking-on-toggleable-clinerules-self-improving-cline](https://cline.bot/blog/double-clicking-on-toggleable-clinerules-self-improving-cline)
+38. What is Cline and How to Use Cline for Beginners \- Apidog, accessed May 7, 2025, [https://apidog.com/blog/how-to-use-cline/](https://apidog.com/blog/how-to-use-cline/)
+39. My workflow for "Self-Improving Cline" \- Reddit, accessed May 7, 2025, [https://www.reddit.com/r/CLine/comments/1k4v65d/my\_workflow\_for\_selfimproving\_cline/](https://www.reddit.com/r/CLine/comments/1k4v65d/my_workflow_for_selfimproving_cline/)
+40. Bhartendu-Kumar/rules\_template: If using CLINE/RooCode/Cursor/Windsurf Setup these rules. Usable for newbies riding AI wave and experienced folks both . Combines: (1) Memory,(2) Reasoning into subtasks (3) Prompts for best practices. \- GitHub, accessed May 7, 2025, [https://github.com/Bhartendu-Kumar/rules\_template](https://github.com/Bhartendu-Kumar/rules_template)

@@ -4434,20 +4434,20 @@
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
       "description": "The advent of sophisticated AI coding agents such as Cursor, Windsurf, and Cline AI heralds a paradigm shift in software development. These tools promise to augment developer productivity by automatin",
       "status": "valid",
-      "size": 78268,
-      "last_modified": "2025-05-25T05:17:38.561Z",
-      "last_accessed": "2025-05-25T07:01:53.433Z",
+      "size": 79102,
+      "last_modified": "2025-05-25T07:06:04.311Z",
+      "last_accessed": "2025-05-25T07:06:25.768Z",
       "links_out": [
         {
-          "text": "ui-library-prop-types.mdc",
-          "path": "ui-library-prop-types.mdc",
+          "text": "ui-library-prop-types.md",
+          "path": "ui-library-prop-types.md",
           "type": "file_reference",
           "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
           "status": "unchecked"
         },
         {
-          "text": "_rules.mdc",
-          "path": "_rules.mdc",
+          "text": "_rules.md",
+          "path": "_rules.md",
           "type": "file_reference",
           "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
           "status": "unchecked"
@@ -4460,15 +4460,43 @@
           "status": "unchecked"
         },
         {
-          "text": "README.mdc",
-          "path": "README.mdc",
+          "text": "debug-logging.md",
+          "path": "debug-logging.md",
           "type": "file_reference",
           "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
           "status": "unchecked"
         },
         {
-          "text": "user-dashboard-summary.mdc",
-          "path": "user-dashboard-summary.mdc",
+          "text": "test-generation-jest.md",
+          "path": "test-generation-jest.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "refactor-dry-principles.md",
+          "path": "refactor-dry-principles.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "commit-conventional-format.md",
+          "path": "commit-conventional-format.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "README.md",
+          "path": "README.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "user-dashboard-summary.md",
+          "path": "user-dashboard-summary.md",
           "type": "file_reference",
           "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
           "status": "unchecked"
@@ -4483,7 +4511,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "1d457ff8"
+      "content_hash": "-57dcedf6"
     },
     "rules_02__ai_docs_documentation_ai_design_agent_optimization_mdc": {
       "id": "rules_02__ai_docs_documentation_ai_design_agent_optimization_mdc",
@@ -4492,13 +4520,13 @@
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
       "description": "The aspiration for a \"Real Senior design app design\" reflects a growing understanding within the startup ecosystem: user experience (UX) and user interface (UI) are no longer secondary considerations ",
       "status": "valid",
-      "size": 53497,
-      "last_modified": "2025-05-25T04:55:05.980Z",
-      "last_accessed": "2025-05-25T07:01:53.436Z",
+      "size": 53693,
+      "last_modified": "2025-05-25T07:05:08.107Z",
+      "last_accessed": "2025-05-25T07:05:18.170Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "-39d20d4b"
+      "content_hash": "-3b792acb"
     },
     "rules_02__ai_docs_documentation_ai_task_management_optimization_mdc": {
       "id": "rules_02__ai_docs_documentation_ai_task_management_optimization_mdc",
@@ -4507,9 +4535,9 @@
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
       "description": "Vibe-Task is an AI-driven task management system designed to streamline software development workflows, particularly when working with Large Language Models (LLMs) and within AI-assisted coding enviro",
       "status": "valid",
-      "size": 17803,
-      "last_modified": "2025-05-25T05:17:38.563Z",
-      "last_accessed": "2025-05-25T07:01:53.437Z",
+      "size": 29013,
+      "last_modified": "2025-05-25T07:05:08.155Z",
+      "last_accessed": "2025-05-25T07:05:22.525Z",
       "links_out": [
         {
           "text": "`.vibetaskconfig`",
@@ -4549,7 +4577,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "583af07"
+      "content_hash": "1861b31e"
     },
     "rules_02__ai_docs_integrations_api_integration_template_mdc": {
       "id": "rules_02__ai_docs_integrations_api_integration_template_mdc",
@@ -8589,6 +8617,161 @@
       "fix_history": [],
       "content_hash": "-1e7f701a",
       "deleted_at": "2025-05-25T06:26:24.870Z"
+    },
+    "rules_02__ai_docs_documentation_ai_design_agent_optimization_md": {
+      "id": "rules_02__ai_docs_documentation_ai_design_agent_optimization_md",
+      "title": "**Achieving Professional-Grade UX/UI for Modern Y Combinator Startups with Tailwind CSS, Global CSS, and AI Coding Agents**",
+      "path": "rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.md",
+      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.md",
+      "description": "The aspiration for a \"Real Senior design app design\" reflects a growing understanding within the startup ecosystem: user experience (UX) and user interface (UI) are no longer secondary considerations ",
+      "status": "deleted",
+      "size": 53693,
+      "last_modified": "2025-05-25T07:05:08.107Z",
+      "last_accessed": "2025-05-25T07:05:08.264Z",
+      "links_out": [],
+      "links_in": [],
+      "fix_history": [],
+      "content_hash": "-3b792acb",
+      "deleted_at": "2025-05-25T07:05:18.066Z"
+    },
+    "rules_02__ai_docs_documentation_ai_task_management_optimization_md": {
+      "id": "rules_02__ai_docs_documentation_ai_task_management_optimization_md",
+      "title": "Product Requirements Document: Vibe-Task (MCP Tool)",
+      "path": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+      "description": "Vibe-Task is an AI-driven task management system designed to streamline software development workflows, particularly when working with Large Language Models (LLMs) and within AI-assisted coding enviro",
+      "status": "deleted",
+      "size": 29013,
+      "last_modified": "2025-05-25T07:05:08.155Z",
+      "last_accessed": "2025-05-25T07:05:08.366Z",
+      "links_out": [
+        {
+          "text": "`.vibetaskconfig`",
+          "path": "claude-task-master/.taskmasterconfig",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "`.env.example`",
+          "path": "claude-task-master/assets/env.example",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "`.vibetaskconfig`",
+          "path": "claude-task-master/.taskmasterconfig",
+          "type": "markdown",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "tasks.json",
+          "path": "tasks.json",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "task-complexity-report.json",
+          "path": "task-complexity-report.json",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+          "status": "unchecked"
+        }
+      ],
+      "links_in": [],
+      "fix_history": [],
+      "content_hash": "1861b31e",
+      "deleted_at": "2025-05-25T07:05:22.626Z"
+    },
+    "rules_02__ai_docs_documentation_ai_coding_agent_optimization_md": {
+      "id": "rules_02__ai_docs_documentation_ai_coding_agent_optimization_md",
+      "title": "**Guiding Agentic Logic: A Comprehensive Resource for Enhancing AI Coding Agent Performance**",
+      "path": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+      "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+      "description": "The advent of sophisticated AI coding agents such as Cursor, Windsurf, and Cline AI heralds a paradigm shift in software development. These tools promise to augment developer productivity by automatin",
+      "status": "deleted",
+      "size": 79102,
+      "last_modified": "2025-05-25T07:06:04.311Z",
+      "last_accessed": "2025-05-25T07:06:04.323Z",
+      "links_out": [
+        {
+          "text": "ui-library-prop-types.md",
+          "path": "ui-library-prop-types.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "_rules.md",
+          "path": "_rules.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "_config.json",
+          "path": "_config.json",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "debug-logging.md",
+          "path": "debug-logging.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "test-generation-jest.md",
+          "path": "test-generation-jest.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "refactor-dry-principles.md",
+          "path": "refactor-dry-principles.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "commit-conventional-format.md",
+          "path": "commit-conventional-format.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "README.md",
+          "path": "README.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "user-dashboard-summary.md",
+          "path": "user-dashboard-summary.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+          "status": "unchecked"
+        },
+        {
+          "text": "2FREADME.md",
+          "path": "2FREADME.md",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+          "status": "unchecked"
+        }
+      ],
+      "links_in": [],
+      "fix_history": [],
+      "content_hash": "-57dcedf6",
+      "deleted_at": "2025-05-25T07:06:25.664Z"
     }
   },
   "links": {
@@ -12405,15 +12588,15 @@
     "rules_02__ai_docs_deployment_deployment_guide_template_mdc": [],
     "rules_02__ai_docs_documentation_ai_coding_agent_optimization_mdc": [
       {
-        "text": "ui-library-prop-types.mdc",
-        "path": "ui-library-prop-types.mdc",
+        "text": "ui-library-prop-types.md",
+        "path": "ui-library-prop-types.md",
         "type": "file_reference",
         "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
         "status": "unchecked"
       },
       {
-        "text": "_rules.mdc",
-        "path": "_rules.mdc",
+        "text": "_rules.md",
+        "path": "_rules.md",
         "type": "file_reference",
         "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
         "status": "unchecked"
@@ -12426,15 +12609,43 @@
         "status": "unchecked"
       },
       {
-        "text": "README.mdc",
-        "path": "README.mdc",
+        "text": "debug-logging.md",
+        "path": "debug-logging.md",
         "type": "file_reference",
         "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
         "status": "unchecked"
       },
       {
-        "text": "user-dashboard-summary.mdc",
-        "path": "user-dashboard-summary.mdc",
+        "text": "test-generation-jest.md",
+        "path": "test-generation-jest.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "refactor-dry-principles.md",
+        "path": "refactor-dry-principles.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "commit-conventional-format.md",
+        "path": "commit-conventional-format.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "README.md",
+        "path": "README.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "user-dashboard-summary.md",
+        "path": "user-dashboard-summary.md",
         "type": "file_reference",
         "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
         "status": "unchecked"
@@ -15406,6 +15617,116 @@
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/Conventions/design_conventions_template.md",
         "status": "broken"
+      }
+    ],
+    "rules_02__ai_docs_documentation_ai_design_agent_optimization_md": [],
+    "rules_02__ai_docs_documentation_ai_task_management_optimization_md": [
+      {
+        "text": "`.vibetaskconfig`",
+        "path": "claude-task-master/.taskmasterconfig",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "`.env.example`",
+        "path": "claude-task-master/assets/env.example",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "`.vibetaskconfig`",
+        "path": "claude-task-master/.taskmasterconfig",
+        "type": "markdown",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "tasks.json",
+        "path": "tasks.json",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "task-complexity-report.json",
+        "path": "task-complexity-report.json",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+        "status": "unchecked"
+      }
+    ],
+    "rules_02__ai_docs_documentation_ai_coding_agent_optimization_md": [
+      {
+        "text": "ui-library-prop-types.md",
+        "path": "ui-library-prop-types.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "_rules.md",
+        "path": "_rules.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "_config.json",
+        "path": "_config.json",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "debug-logging.md",
+        "path": "debug-logging.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "test-generation-jest.md",
+        "path": "test-generation-jest.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "refactor-dry-principles.md",
+        "path": "refactor-dry-principles.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "commit-conventional-format.md",
+        "path": "commit-conventional-format.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "README.md",
+        "path": "README.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "user-dashboard-summary.md",
+        "path": "user-dashboard-summary.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+        "status": "unchecked"
+      },
+      {
+        "text": "2FREADME.md",
+        "path": "2FREADME.md",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+        "status": "unchecked"
       }
     ]
   },
@@ -19777,9 +20098,81 @@
       "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:04:50.097Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:04:50.349Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:05:08.264Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.md",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:05:08.366Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:05:18.066Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.md",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:05:18.170Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:05:22.525Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:05:22.626Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.md",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:05:56.682Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:06:04.323Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:06:25.664Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.md",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:06:25.768Z",
+      "file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
+      "operation": "add",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T07:01:53.475Z",
+  "last_updated": "2025-05-25T07:06:25.869Z",
   "scan_history": [
     {
       "id": "scan_1748147161162",

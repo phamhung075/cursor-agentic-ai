@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-05-25T07:01:53.936Z",
+  "timestamp": "2025-05-25T07:13:58.189Z",
   "source": "AAI Script Manager → Cursor Integration",
   "summary": {
-    "totalScripts": 24,
+    "totalScripts": 25,
     "categories": 6,
-    "npmIntegrated": 29
+    "npmIntegrated": 33
   },
   "scripts": {
     "cleanup": [
@@ -186,6 +186,44 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/enhanced-cursor-setup.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "enhanced-mdc-path-fixer.js",
+        "path": "agents/_store/scripts/enhanced-mdc-path-fixer.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/enhanced-mdc-path-fixer.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/enhanced-mdc-path-fixer.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/enhanced-mdc-path-fixer.js",
               "Add description"
             ]
           }
