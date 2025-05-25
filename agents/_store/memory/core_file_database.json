@@ -2848,110 +2848,61 @@
     },
     "rules_01__ai_run_03_core_concept_mdc": {
       "id": "rules_01__ai_run_03_core_concept_mdc",
-      "title": "Core Concept Development Prompt",
+      "title": "03_Core_Concept.mdc",
       "path": "rules/01__AI-RUN/03_Core_Concept.mdc",
       "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
-      "description": "Before initiating this phase, ensure the following prerequisites have been completed:",
+      "description": "This document guides you through transforming your initial project idea and market research insights into a refined, market-validated core concept. It integrates with the enhanced AAI system to provid",
       "status": "valid",
-      "size": 8448,
-      "last_modified": "2025-05-24T17:36:33.818Z",
-      "last_accessed": "2025-05-25T02:24:14.648Z",
+      "size": 19855,
+      "last_modified": "2025-05-25T03:17:39.398Z",
+      "last_accessed": "2025-05-25T03:17:39.518Z",
       "links_out": [
         {
-          "text": "0[1[_Idea.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
+          "text": "01_Idea.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
+          "status": "unchecked"
         },
         {
-          "text": ".[.[/[projet/01_Idea/idea_document.mdc",
-          "path": "agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+          "text": "02_Market_Research.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
+          "status": "unchecked"
         },
         {
-          "text": "0[2[_Market_Research.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
+          "text": "04_PRD_Generation.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
+          "status": "unchecked"
         },
         {
-          "text": ".[.[/[projet/02_Market_Research/market_research.mdc",
-          "path": "agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
+          "text": "05_Specs_Docs.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
+          "status": "unchecked"
         },
         {
-          "text": ".[.[/[projet/01_Idea/idea_document.mdc",
-          "path": "agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+          "text": "07_Start_Building.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
+          "status": "unchecked"
         },
         {
-          "text": ".[.[/[projet/02_Market_Research/market_research.mdc",
-          "path": "agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
-          "type": "markdown",
+          "text": "03_Core_Concept.mdc",
+          "path": "03_Core_Concept.mdc",
+          "type": "file_reference",
           "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "0[3[_Core_Concept.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "0[4[_PRD_Generation.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "0[1[_AutoPilot.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "0[3[_Core_Concept.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "T[e[m[plate/PRD_template.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/Template/PRD_template.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
-        },
-        {
-          "text": "`[0[3[_[Core_Concept.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
-        },
-        {
-          "text": ".[.[/[projet/03_Core_Concept/core_concept.mdc",
-          "path": "agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-          "status": "broken"
+          "status": "unchecked"
         }
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "60a55958"
+      "content_hash": "74ab3228"
     },
     "rules_01__ai_run_04_prd_generation_mdc": {
       "id": "rules_01__ai_run_04_prd_generation_mdc",
@@ -10410,95 +10361,46 @@
     ],
     "rules_01__ai_run_03_core_concept_mdc": [
       {
-        "text": "0[1[_Idea.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
+        "text": "01_Idea.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
+        "status": "unchecked"
       },
       {
-        "text": ".[.[/[projet/01_Idea/idea_document.mdc",
-        "path": "agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+        "text": "02_Market_Research.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
+        "status": "unchecked"
       },
       {
-        "text": "0[2[_Market_Research.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
+        "text": "04_PRD_Generation.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
+        "status": "unchecked"
       },
       {
-        "text": ".[.[/[projet/02_Market_Research/market_research.mdc",
-        "path": "agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
+        "text": "05_Specs_Docs.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
+        "status": "unchecked"
       },
       {
-        "text": ".[.[/[projet/01_Idea/idea_document.mdc",
-        "path": "agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+        "text": "07_Start_Building.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
+        "status": "unchecked"
       },
       {
-        "text": ".[.[/[projet/02_Market_Research/market_research.mdc",
-        "path": "agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
-        "type": "markdown",
+        "text": "03_Core_Concept.mdc",
+        "path": "03_Core_Concept.mdc",
+        "type": "file_reference",
         "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
-      },
-      {
-        "text": "0[3[_Core_Concept.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
-      },
-      {
-        "text": "0[4[_PRD_Generation.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
-      },
-      {
-        "text": "0[1[_AutoPilot.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
-      },
-      {
-        "text": "0[3[_Core_Concept.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
-      },
-      {
-        "text": "T[e[m[plate/PRD_template.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/Template/PRD_template.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
-      },
-      {
-        "text": "`[0[3[_[Core_Concept.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
-      },
-      {
-        "text": ".[.[/[projet/03_Core_Concept/core_concept.mdc",
-        "path": "agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/03_Core_Concept.mdc",
-        "status": "broken"
+        "status": "unchecked"
       }
     ],
     "rules_01__ai_run_04_prd_generation_mdc": [
@@ -14989,9 +14891,27 @@
       "file": "rules/01__AI-RUN/02_Market_Research.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:11:21.436Z",
+      "file": "rules/01__AI-RUN/03_Core_Concept.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:12:46.152Z",
+      "file": "rules/01__AI-RUN/03_Core_Concept.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:17:39.518Z",
+      "file": "rules/01__AI-RUN/03_Core_Concept.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T03:08:19.005Z",
+  "last_updated": "2025-05-25T03:17:39.619Z",
   "scan_history": [
     {
       "id": "scan_1748139854554",
