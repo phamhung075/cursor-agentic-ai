@@ -1,0 +1,19 @@
+{
+  "files.associations": {
+    "agents/**/*.json": "json",
+    "agents/**/*.mdc": "markdown"
+  },
+  "files.watcherExclude": {
+    "**/agents/_store/memory/**": false,
+    "**/agents/_store/analysis/**": false
+  },
+  "search.include": {
+    "agents/_store/memory": true,
+    "agents/_store/analysis": true
+  },
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  }
+}

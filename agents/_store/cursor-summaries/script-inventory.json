@@ -1,0 +1,224 @@
+{
+  "scripts": {
+    "core": [],
+    "backup": [],
+    "analysis": [],
+    "cleanup": [
+      {
+        "name": "comprehensive-cleanup.js",
+        "path": "agents/_store/scripts/comprehensive-cleanup.js",
+        "description": "No description available"
+      }
+    ],
+    "migration": [],
+    "utility": [],
+    "uncategorized": [
+      {
+        "name": "install-agent-ai.js",
+        "path": "agents/_store/scripts/install-agent-ai.js",
+        "description": "No description available"
+      },
+      {
+        "name": "replace_file_links.sh",
+        "path": "agents/_store/scripts/replace_file_links.sh",
+        "description": "No description available"
+      },
+      {
+        "name": "script_manager.js",
+        "path": "agents/_store/scripts/script_manager.js",
+        "description": "No description available"
+      },
+      {
+        "name": "setup-env.js",
+        "path": "agents/_store/scripts/setup-env.js",
+        "description": "No description available"
+      },
+      {
+        "name": "sync-memory.js",
+        "path": "agents/_store/scripts/sync-memory.js",
+        "description": "No description available"
+      },
+      {
+        "name": "sync-preserved-to-memory.js",
+        "path": "agents/_store/scripts/sync-preserved-to-memory.js",
+        "description": "No description available"
+      },
+      {
+        "name": "update_files.sh",
+        "path": "agents/_store/scripts/update_files.sh",
+        "description": "No description available"
+      }
+    ]
+  },
+  "tests": {
+    "integration": [],
+    "unit": [],
+    "system": [],
+    "performance": [],
+    "uncategorized": [
+      {
+        "name": "test_cursor_rules_state_manager.js",
+        "path": "agents/_store/tests/test_cursor_rules_state_manager.js",
+        "description": "No description available"
+      },
+      {
+        "name": "test_dependency_tracking.js",
+        "path": "agents/_store/tests/test_dependency_tracking.js",
+        "description": "No description available"
+      },
+      {
+        "name": "test_new_agent.js",
+        "path": "agents/_store/tests/test_new_agent.js",
+        "description": "No description available"
+      }
+    ]
+  },
+  "npmScripts": [
+    {
+      "name": "AAI:cleanup",
+      "command": "node agents/_store/scripts/comprehensive-cleanup.js"
+    },
+    {
+      "name": "AAI:sync-preserved",
+      "command": "node agents/_store/scripts/sync-preserved-to-memory.js"
+    },
+    {
+      "name": "AAI:sync-preserved-status",
+      "command": "node agents/_store/scripts/sync-preserved-to-memory.js status"
+    },
+    {
+      "name": "AAI:test-agent",
+      "command": "node agents/_store/tests/test_new_agent.js"
+    },
+    {
+      "name": "AAI:test-integration",
+      "command": "node agents/_store/tests/test_autopilot_integration.js"
+    },
+    {
+      "name": "AAI:test-system",
+      "command": "node agents/_store/tests/test_new_system.js"
+    },
+    {
+      "name": "AAI:test-dependencies",
+      "command": "node agents/_store/tests/test_dependency_tracking.js"
+    },
+    {
+      "name": "AAI:setup-env",
+      "command": "node agents/_store/scripts/setup-env.js"
+    },
+    {
+      "name": "AAI:install-to",
+      "command": "node agents/_store/scripts/install-agent-ai.js"
+    },
+    {
+      "name": "AAI:sync-memory",
+      "command": "node agents/_store/scripts/sync-memory.js"
+    },
+    {
+      "name": "AAI:sync-status",
+      "command": "node agents/_store/scripts/sync-memory.js status"
+    },
+    {
+      "name": "AAI:sync-up",
+      "command": "node agents/_store/scripts/sync-memory.js up"
+    },
+    {
+      "name": "AAI:sync-down",
+      "command": "node agents/_store/scripts/sync-memory.js down"
+    },
+    {
+      "name": "AAI:sync-both",
+      "command": "node agents/_store/scripts/sync-memory.js both"
+    },
+    {
+      "name": "AAI:fix-embeddings",
+      "command": "node agents/_store/scripts/sync-memory.js fix-embeddings"
+    },
+    {
+      "name": "AAI:backup-core",
+      "command": "bash agents/_store/scripts/backup_core_structure.sh"
+    },
+    {
+      "name": "AAI:update-file-list",
+      "command": "python3 agents/_store/scripts/update_core_files_list.py"
+    },
+    {
+      "name": "AAI:clean-scripts",
+      "command": "node agents/_store/scripts/cleanup_obsolete_scripts.js"
+    },
+    {
+      "name": "AAI:scripts-help",
+      "command": "node agents/_store/scripts/script_manager.js help"
+    },
+    {
+      "name": "AAI:scripts-migrate",
+      "command": "node agents/_store/scripts/migrate_scripts_to_store.js"
+    },
+    {
+      "name": "AAI:scripts-list",
+      "command": "node agents/_store/scripts/script_manager.js list"
+    },
+    {
+      "name": "AAI:scripts-organize",
+      "command": "node agents/_store/scripts/script_manager.js organize"
+    },
+    {
+      "name": "AAI:scripts-analyze",
+      "command": "node agents/_store/scripts/script_manager.js analyze"
+    },
+    {
+      "name": "AAI:scripts-categories",
+      "command": "node agents/_store/scripts/script_manager.js categories"
+    },
+    {
+      "name": "AAI:core-scan",
+      "command": "node agents/_store/scripts/core/core_file_manager.js scan"
+    },
+    {
+      "name": "AAI:core-report",
+      "command": "node agents/_store/scripts/core/core_file_manager.js report"
+    },
+    {
+      "name": "AAI:core-search",
+      "command": "node agents/_store/scripts/core/core_file_manager.js search"
+    },
+    {
+      "name": "AAI:core-monitor",
+      "command": "node agents/_store/scripts/core/core_file_monitor.js start"
+    },
+    {
+      "name": "AAI:core-monitor-status",
+      "command": "node agents/_store/scripts/core/core_file_monitor.js status"
+    },
+    {
+      "name": "AAI:core-api",
+      "command": "node agents/_store/scripts/core/core_file_api.js"
+    },
+    {
+      "name": "AAI:core-api-status",
+      "command": "node agents/_store/scripts/core/core_file_api.js status"
+    },
+    {
+      "name": "AAI:core-validate",
+      "command": "node agents/_store/scripts/core/core_file_monitor.js validate"
+    }
+  ],
+  "totalFiles": 11,
+  "categories": {
+    "scripts": {
+      "core": "Core framework management",
+      "backup": "Backup and recovery utilities",
+      "analysis": "Analysis and reporting tools",
+      "cleanup": "Cleanup and maintenance",
+      "migration": "Migration and conversion tools",
+      "utility": "General purpose utilities"
+    },
+    "tests": {
+      "integration": "Integration tests",
+      "unit": "Unit tests",
+      "system": "System tests",
+      "performance": "Performance tests"
+    }
+  },
+  "lastUpdated": "2025-05-25T01:41:49.223Z"
+}

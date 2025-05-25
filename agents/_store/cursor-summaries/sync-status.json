@@ -1,0 +1,12 @@
+{
+  "lastSync": "2025-05-25T01:41:49.255Z",
+  "isRunning": true,
+  "watchedPaths": [
+    "agents/_store/scripts",
+    "agents/_store/tests",
+    "package.json"
+  ],
+  "outputPath": "agents/_store/cursor-summaries",
+  "totalSyncs": 0,
+  "version": "1.0.0"
+}

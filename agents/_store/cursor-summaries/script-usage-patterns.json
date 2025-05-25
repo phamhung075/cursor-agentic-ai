@@ -1,0 +1,196 @@
+{
+  "timestamp": "2025-05-25T01:41:49.239Z",
+  "mostUsedCategories": [
+    {
+      "category": "uncategorized",
+      "count": 7
+    },
+    {
+      "category": "cleanup",
+      "count": 1
+    }
+  ],
+  "integrationPatterns": [
+    {
+      "npmCommand": "AAI:cleanup",
+      "scriptPath": "node agents/_store/scripts/comprehensive-cleanup.js",
+      "category": "cleanup"
+    },
+    {
+      "npmCommand": "AAI:sync-preserved",
+      "scriptPath": "node agents/_store/scripts/sync-preserved-to-memory.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:sync-preserved-status",
+      "scriptPath": "node agents/_store/scripts/sync-preserved-to-memory.js status",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:test-agent",
+      "scriptPath": "node agents/_store/tests/test_new_agent.js",
+      "category": "testing"
+    },
+    {
+      "npmCommand": "AAI:test-integration",
+      "scriptPath": "node agents/_store/tests/test_autopilot_integration.js",
+      "category": "testing"
+    },
+    {
+      "npmCommand": "AAI:test-system",
+      "scriptPath": "node agents/_store/tests/test_new_system.js",
+      "category": "testing"
+    },
+    {
+      "npmCommand": "AAI:test-dependencies",
+      "scriptPath": "node agents/_store/tests/test_dependency_tracking.js",
+      "category": "testing"
+    },
+    {
+      "npmCommand": "AAI:setup-env",
+      "scriptPath": "node agents/_store/scripts/setup-env.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:install-to",
+      "scriptPath": "node agents/_store/scripts/install-agent-ai.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:sync-memory",
+      "scriptPath": "node agents/_store/scripts/sync-memory.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:sync-status",
+      "scriptPath": "node agents/_store/scripts/sync-memory.js status",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:sync-up",
+      "scriptPath": "node agents/_store/scripts/sync-memory.js up",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:sync-down",
+      "scriptPath": "node agents/_store/scripts/sync-memory.js down",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:sync-both",
+      "scriptPath": "node agents/_store/scripts/sync-memory.js both",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:fix-embeddings",
+      "scriptPath": "node agents/_store/scripts/sync-memory.js fix-embeddings",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:backup-core",
+      "scriptPath": "bash agents/_store/scripts/backup_core_structure.sh",
+      "category": "core"
+    },
+    {
+      "npmCommand": "AAI:update-file-list",
+      "scriptPath": "python3 agents/_store/scripts/update_core_files_list.py",
+      "category": "core"
+    },
+    {
+      "npmCommand": "AAI:clean-scripts",
+      "scriptPath": "node agents/_store/scripts/cleanup_obsolete_scripts.js",
+      "category": "cleanup"
+    },
+    {
+      "npmCommand": "AAI:scripts-help",
+      "scriptPath": "node agents/_store/scripts/script_manager.js help",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:scripts-migrate",
+      "scriptPath": "node agents/_store/scripts/migrate_scripts_to_store.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:scripts-list",
+      "scriptPath": "node agents/_store/scripts/script_manager.js list",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:scripts-organize",
+      "scriptPath": "node agents/_store/scripts/script_manager.js organize",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:scripts-analyze",
+      "scriptPath": "node agents/_store/scripts/script_manager.js analyze",
+      "category": "analysis"
+    },
+    {
+      "npmCommand": "AAI:scripts-categories",
+      "scriptPath": "node agents/_store/scripts/script_manager.js categories",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:core-scan",
+      "scriptPath": "node agents/_store/scripts/core/core_file_manager.js scan",
+      "category": "core"
+    },
+    {
+      "npmCommand": "AAI:core-report",
+      "scriptPath": "node agents/_store/scripts/core/core_file_manager.js report",
+      "category": "core"
+    },
+    {
+      "npmCommand": "AAI:core-search",
+      "scriptPath": "node agents/_store/scripts/core/core_file_manager.js search",
+      "category": "core"
+    },
+    {
+      "npmCommand": "AAI:core-monitor",
+      "scriptPath": "node agents/_store/scripts/core/core_file_monitor.js start",
+      "category": "core"
+    },
+    {
+      "npmCommand": "AAI:core-monitor-status",
+      "scriptPath": "node agents/_store/scripts/core/core_file_monitor.js status",
+      "category": "core"
+    },
+    {
+      "npmCommand": "AAI:core-api",
+      "scriptPath": "node agents/_store/scripts/core/core_file_api.js",
+      "category": "core"
+    },
+    {
+      "npmCommand": "AAI:core-api-status",
+      "scriptPath": "node agents/_store/scripts/core/core_file_api.js status",
+      "category": "core"
+    },
+    {
+      "npmCommand": "AAI:core-validate",
+      "scriptPath": "node agents/_store/scripts/core/core_file_monitor.js validate",
+      "category": "core"
+    }
+  ],
+  "recommendations": [],
+  "workflowSuggestions": [
+    {
+      "workflow": "Script Development",
+      "steps": [
+        "Use npm run AAI:scripts-list to see all scripts",
+        "Check script categories with npm run AAI:scripts-categories",
+        "Analyze usage with npm run AAI:scripts-analyze",
+        "Organize with npm run AAI:scripts-organize"
+      ]
+    },
+    {
+      "workflow": "Cursor Integration",
+      "steps": [
+        "Open script files directly in Cursor",
+        "Use Ctrl/Cmd+P to search for script names",
+        "Check improvement suggestions in cursor-summaries/",
+        "Use workspace symbols for quick navigation"
+      ]
+    }
+  ]
+}

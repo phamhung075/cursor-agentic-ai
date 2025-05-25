@@ -1,0 +1,31 @@
+{
+  "aaiRecommendations": [
+    {
+      "name": "React Performance Optimization",
+      "kind": "Function",
+      "location": "src/components/UserProfile.jsx:15",
+      "detail": "Add React.memo wrapper",
+      "priority": "medium"
+    },
+    {
+      "name": "Accessibility Enhancement",
+      "kind": "Interface",
+      "location": "src/components/Dashboard.jsx:23",
+      "detail": "Missing aria-labels",
+      "priority": "high"
+    }
+  ],
+  "aaiInsights": [
+    {
+      "pattern": "React re-render optimization",
+      "confidence": 0.85,
+      "frequency": 12,
+      "recommendation": "Implement memoization strategies"
+    }
+  ],
+  "projectContext": {
+    "activeAnalysis": true,
+    "lastUpdate": "2025-05-25T01:08:19.606Z",
+    "focusArea": "Performance optimization"
+  }
+}

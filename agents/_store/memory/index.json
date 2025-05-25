@@ -1,0 +1,156 @@
+{
+  "createdAt": "2025-05-25T01:35:35.674Z",
+  "totalEntries": 9,
+  "entries": [
+    {
+      "filename": "install-agent-ai.js",
+      "description": "No description available",
+      "functions": [
+        "AgentAIInstaller"
+      ],
+      "keyFeatures": [
+        "Object-Oriented",
+        "Async/Await",
+        "File System",
+        "Path Manipulation",
+        "Process Management",
+        "Logging",
+        "JSON Processing"
+      ],
+      "size": 14149
+    },
+    {
+      "filename": "script_manager.js",
+      "description": "No description available",
+      "functions": [
+        "ScriptManager"
+      ],
+      "keyFeatures": [
+        "Object-Oriented",
+        "Async/Await",
+        "File System",
+        "Path Manipulation",
+        "Process Management",
+        "Logging",
+        "JSON Processing"
+      ],
+      "size": 14136
+    },
+    {
+      "filename": "setup-env.js",
+      "description": "No description available",
+      "functions": [
+        "EnvSetup"
+      ],
+      "keyFeatures": [
+        "Object-Oriented",
+        "Async/Await",
+        "File System",
+        "Logging"
+      ],
+      "size": 4596
+    },
+    {
+      "filename": "sync-memory.js",
+      "description": "No description available",
+      "functions": [
+        "main",
+        "showStatus",
+        "syncUp",
+        "syncDown",
+        "syncBoth",
+        "resetPinecone",
+        "showHelp"
+      ],
+      "keyFeatures": [
+        "Async/Await",
+        "Logging"
+      ],
+      "size": 6309
+    },
+    {
+      "filename": "comprehensive_backup_and_fix.js",
+      "description": "No description available",
+      "functions": [
+        "ComprehensiveBackupAndFix"
+      ],
+      "keyFeatures": [
+        "Object-Oriented",
+        "Async/Await",
+        "File System",
+        "Path Manipulation",
+        "Logging",
+        "JSON Processing"
+      ],
+      "size": 9279
+    },
+    {
+      "filename": "core_path_analyzer.js",
+      "description": "No description available",
+      "functions": [
+        "CorePathAnalyzer"
+      ],
+      "keyFeatures": [
+        "Object-Oriented",
+        "Async/Await",
+        "File System",
+        "Path Manipulation",
+        "Process Management",
+        "Logging",
+        "JSON Processing",
+        "Regular Expressions"
+      ],
+      "size": 13816
+    },
+    {
+      "filename": "core_path_fixer.js",
+      "description": "No description available",
+      "functions": [
+        "CorePathFixer"
+      ],
+      "keyFeatures": [
+        "Object-Oriented",
+        "Async/Await",
+        "File System",
+        "Path Manipulation",
+        "Process Management",
+        "Logging",
+        "JSON Processing",
+        "Regular Expressions"
+      ],
+      "size": 15597
+    },
+    {
+      "filename": "cursor_rules_state_manager.js",
+      "description": "No description available",
+      "functions": [
+        "CursorRulesStateManager"
+      ],
+      "keyFeatures": [
+        "Object-Oriented",
+        "Async/Await",
+        "File System",
+        "Path Manipulation",
+        "Logging",
+        "JSON Processing"
+      ],
+      "size": 15443
+    },
+    {
+      "filename": "integrate_agents_architecture.js",
+      "description": "No description available",
+      "functions": [
+        "AgentsArchitectureIntegrator"
+      ],
+      "keyFeatures": [
+        "Object-Oriented",
+        "Async/Await",
+        "File System",
+        "Path Manipulation",
+        "Logging",
+        "JSON Processing"
+      ],
+      "size": 12399
+    }
+  ]
+}

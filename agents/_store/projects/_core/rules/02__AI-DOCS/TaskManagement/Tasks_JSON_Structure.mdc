@@ -5,7 +5,7 @@ alwaysApply: false
 ---
 # Tasks JSON Structure
 
-The [tasks.json](mdc:agents/_store/projects/_core/tasks/tasks.json) file is the central repository for all project tasks. It follows a specific JSON structure.
+The [tasks.json](agents/_store/projects/_core/tasks/tasks.json) file is the central repository for all project tasks. It follows a specific JSON structure.
 
 ## Root Object Structure
 
@@ -47,11 +47,11 @@ Each object within the `tasks` array must have the following fields:
 *   `dependencies` (Array of Numbers/Strings): An array of task IDs that must be completed before this task can start.
 *   `priority` (String): The urgency or importance of the task. Recommended values: "low", "medium", "high", "critical".
 *   `details` (String): **This is the most critical field.** A comprehensive description containing all the information an AI agent needs to complete the task. This field **MUST** include direct links to or embed content from all relevant project-specific documents, including:
-    *   Relevant sections from the [project_prd.mdc](mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc).
+    *   Relevant sections from the [project_prd.mdc](agents/_store/projects/_core/projet/PRD_template/project_prd.mdc).
     *   Specific feature specifications (e.g., from `agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`).
-    *   Architectural guidelines from [architecture.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc).
-    *   For UI tasks: Links to mockups, wireframes, component designs, and the [design_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc). Adherence to [AI_Design_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc) principles.
-    *   For backend tasks: API contracts (from `agents/_store/projects/_core/rules/02__AI-DOCS/Integrations/` or `agents/_store/projects/_core/rules/03__SPECS/`), data models, and the [coding_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc). Adherence to [AI_Coding_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) principles.
+    *   Architectural guidelines from [architecture.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc).
+    *   For UI tasks: Links to mockups, wireframes, component designs, and the [design_conventions_template.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc). Adherence to [AI_Design_Agent_Optimization.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc) principles.
+    *   For backend tasks: API contracts (from `agents/_store/projects/_core/rules/02__AI-DOCS/Integrations/` or `agents/_store/projects/_core/rules/03__SPECS/`), data models, and the [coding_conventions_template.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc). Adherence to [AI_Coding_Agent_Optimization.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) principles.
     *   For database tasks: Schema details, migration plans, etc.
     The AI agent relies on this field to find and use the precise specifications needed for any development work (frontend, backend, database, design).
 *   `testStrategy` (String): The approach for verifying that the task is completed correctly (e.g., "Unit tests for all new functions", "Manual QA on staging environment"), which should align with the specifications linked in `details`.

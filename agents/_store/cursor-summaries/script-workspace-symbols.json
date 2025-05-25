@@ -1,0 +1,309 @@
+{
+  "timestamp": "2025-05-25T01:41:49.239Z",
+  "scriptSymbols": [
+    {
+      "name": "comprehensive-cleanup.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/comprehensive-cleanup.js",
+      "detail": "No description available",
+      "category": "cleanup",
+      "containerName": "AAI Scripts/cleanup"
+    },
+    {
+      "name": "install-agent-ai.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/install-agent-ai.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "replace_file_links.sh",
+      "kind": "Function",
+      "location": "agents/_store/scripts/replace_file_links.sh",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "script_manager.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/script_manager.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "setup-env.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/setup-env.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "sync-memory.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/sync-memory.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "sync-preserved-to-memory.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/sync-preserved-to-memory.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "update_files.sh",
+      "kind": "Function",
+      "location": "agents/_store/scripts/update_files.sh",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    }
+  ],
+  "categorySymbols": [
+    {
+      "name": "cleanup Scripts",
+      "kind": "Module",
+      "detail": "1 scripts in cleanup category",
+      "location": "agents/_store/scripts/cleanup/"
+    },
+    {
+      "name": "uncategorized Scripts",
+      "kind": "Module",
+      "detail": "7 scripts in uncategorized category",
+      "location": "agents/_store/scripts/uncategorized/"
+    }
+  ],
+  "npmSymbols": [
+    {
+      "name": "AAI:cleanup",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/comprehensive-cleanup.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:sync-preserved",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/sync-preserved-to-memory.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:sync-preserved-status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/sync-preserved-to-memory.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:test-agent",
+      "kind": "Function",
+      "detail": "node agents/_store/tests/test_new_agent.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:test-integration",
+      "kind": "Function",
+      "detail": "node agents/_store/tests/test_autopilot_integration.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:test-system",
+      "kind": "Function",
+      "detail": "node agents/_store/tests/test_new_system.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:test-dependencies",
+      "kind": "Function",
+      "detail": "node agents/_store/tests/test_dependency_tracking.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:setup-env",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/setup-env.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:install-to",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/install-agent-ai.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:sync-memory",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/sync-memory.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:sync-status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/sync-memory.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:sync-up",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/sync-memory.js up",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:sync-down",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/sync-memory.js down",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:sync-both",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/sync-memory.js both",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:fix-embeddings",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/sync-memory.js fix-embeddings",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:backup-core",
+      "kind": "Function",
+      "detail": "bash agents/_store/scripts/backup_core_structure.sh",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:update-file-list",
+      "kind": "Function",
+      "detail": "python3 agents/_store/scripts/update_core_files_list.py",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:clean-scripts",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cleanup_obsolete_scripts.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:scripts-help",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/script_manager.js help",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:scripts-migrate",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/migrate_scripts_to_store.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:scripts-list",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/script_manager.js list",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:scripts-organize",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/script_manager.js organize",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:scripts-analyze",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/script_manager.js analyze",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:scripts-categories",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/script_manager.js categories",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:core-scan",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/core/core_file_manager.js scan",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:core-report",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/core/core_file_manager.js report",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:core-search",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/core/core_file_manager.js search",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:core-monitor",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/core/core_file_monitor.js start",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:core-monitor-status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/core/core_file_monitor.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:core-api",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/core/core_file_api.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:core-api-status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/core/core_file_api.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:core-validate",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/core/core_file_monitor.js validate",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    }
+  ]
+}
