@@ -2739,47 +2739,54 @@
     },
     "rules_01__ai_run_01_idea_mdc": {
       "id": "rules_01__ai_run_01_idea_mdc",
-      "title": "Project Idea Pre-Writing Template",
+      "title": "01_Idea.mdc",
       "path": "rules/01__AI-RUN/01_Idea.mdc",
       "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
-      "description": "*For initializing the PRD \"Streamlined Agentic AI Workflow\" with the Agentic Agent*",
+      "description": "This document guides you through the systematic process of defining and refining your project idea. It integrates with the enhanced AAI system to provide intelligent assistance in concept development,",
       "status": "valid",
-      "size": 6691,
-      "last_modified": "2025-05-24T15:46:42.300Z",
-      "last_accessed": "2025-05-25T02:24:14.640Z",
+      "size": 14854,
+      "last_modified": "2025-05-25T02:40:55.335Z",
+      "last_accessed": "2025-05-25T02:40:55.460Z",
       "links_out": [
         {
-          "text": "idea_document.mdc",
-          "path": "../projet/01_Idea/idea_document.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/01_Idea.mdc",
-          "status": "unchecked"
-        },
-        {
           "text": "02_Market_Research.mdc",
-          "path": "../01__AI-RUN/02_Market_Research.mdc",
+          "path": "mdc:02_Market_Research.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/01_Idea.mdc",
           "status": "unchecked"
         },
         {
-          "text": "01_AutoPilot.mdc",
-          "path": "../01__AI-RUN/01_AutoPilot.mdc",
+          "text": "03_Core_Concept.mdc",
+          "path": "mdc:03_Core_Concept.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/01_Idea.mdc",
           "status": "unchecked"
         },
         {
-          "text": "idea_document.mdc",
-          "path": "../projet/01_Idea/idea_document.mdc",
+          "text": "04_PRD_Generation.mdc",
+          "path": "mdc:04_PRD_Generation.mdc",
           "type": "markdown",
+          "source_file": "rules/01__AI-RUN/01_Idea.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "07_Start_Building.mdc",
+          "path": "mdc:07_Start_Building.mdc",
+          "type": "markdown",
+          "source_file": "rules/01__AI-RUN/01_Idea.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "01_Idea.mdc",
+          "path": "01_Idea.mdc",
+          "type": "file_reference",
           "source_file": "rules/01__AI-RUN/01_Idea.mdc",
           "status": "unchecked"
         }
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "737e394f"
+      "content_hash": "-7c535154"
     },
     "rules_01__ai_run_02_market_research_mdc": {
       "id": "rules_01__ai_run_02_market_research_mdc",
@@ -4060,18 +4067,68 @@
     },
     "rules_01__ai_run_07_start_building_mdc": {
       "id": "rules_01__ai_run_07_start_building_mdc",
-      "title": "07_Start_Building",
+      "title": "07_Start_Building.mdc",
       "path": "rules/01__AI-RUN/07_Start_Building.mdc",
       "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
-      "description": "No description available",
+      "description": "This document guides the systematic implementation of your project from PRD to working product. It integrates with the enhanced AAI system to provide intelligent, context-aware development assistance ",
       "status": "valid",
-      "size": 47,
-      "last_modified": "2025-05-25T02:34:51.641Z",
-      "last_accessed": "2025-05-25T02:34:51.838Z",
-      "links_out": [],
+      "size": 14647,
+      "last_modified": "2025-05-25T02:36:13.109Z",
+      "last_accessed": "2025-05-25T02:36:13.323Z",
+      "links_out": [
+        {
+          "text": "01_Idea.mdc",
+          "path": "01_Idea.mdc",
+          "type": "markdown",
+          "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "02_Market_Research.mdc",
+          "path": "02_Market_Research.mdc",
+          "type": "markdown",
+          "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "03_Core_Concept.mdc",
+          "path": "03_Core_Concept.mdc",
+          "type": "markdown",
+          "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "04_PRD_Generation.mdc",
+          "path": "04_PRD_Generation.mdc",
+          "type": "markdown",
+          "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "05_Specs_Docs.mdc",
+          "path": "05_Specs_Docs.mdc",
+          "type": "markdown",
+          "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "path": "../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+          "type": "markdown",
+          "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "07_Start_Building.mdc",
+          "path": "07_Start_Building.mdc",
+          "type": "file_reference",
+          "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+          "status": "unchecked"
+        }
+      ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "-2d2dc833"
+      "content_hash": "6c785a5e"
     },
     "rules_01__ai_run_08_testing_mdc": {
       "id": "rules_01__ai_run_08_testing_mdc",
@@ -10398,30 +10455,37 @@
     ],
     "rules_01__ai_run_01_idea_mdc": [
       {
-        "text": "idea_document.mdc",
-        "path": "../projet/01_Idea/idea_document.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/01_Idea.mdc",
-        "status": "unchecked"
-      },
-      {
         "text": "02_Market_Research.mdc",
-        "path": "../01__AI-RUN/02_Market_Research.mdc",
+        "path": "mdc:02_Market_Research.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/01_Idea.mdc",
         "status": "unchecked"
       },
       {
-        "text": "01_AutoPilot.mdc",
-        "path": "../01__AI-RUN/01_AutoPilot.mdc",
+        "text": "03_Core_Concept.mdc",
+        "path": "mdc:03_Core_Concept.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/01_Idea.mdc",
         "status": "unchecked"
       },
       {
-        "text": "idea_document.mdc",
-        "path": "../projet/01_Idea/idea_document.mdc",
+        "text": "04_PRD_Generation.mdc",
+        "path": "mdc:04_PRD_Generation.mdc",
         "type": "markdown",
+        "source_file": "rules/01__AI-RUN/01_Idea.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "07_Start_Building.mdc",
+        "path": "mdc:07_Start_Building.mdc",
+        "type": "markdown",
+        "source_file": "rules/01__AI-RUN/01_Idea.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "01_Idea.mdc",
+        "path": "01_Idea.mdc",
+        "type": "file_reference",
         "source_file": "rules/01__AI-RUN/01_Idea.mdc",
         "status": "unchecked"
       }
@@ -11633,7 +11697,57 @@
         "status": "unchecked"
       }
     ],
-    "rules_01__ai_run_07_start_building_mdc": [],
+    "rules_01__ai_run_07_start_building_mdc": [
+      {
+        "text": "01_Idea.mdc",
+        "path": "01_Idea.mdc",
+        "type": "markdown",
+        "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "02_Market_Research.mdc",
+        "path": "02_Market_Research.mdc",
+        "type": "markdown",
+        "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "03_Core_Concept.mdc",
+        "path": "03_Core_Concept.mdc",
+        "type": "markdown",
+        "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "04_PRD_Generation.mdc",
+        "path": "04_PRD_Generation.mdc",
+        "type": "markdown",
+        "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "05_Specs_Docs.mdc",
+        "path": "05_Specs_Docs.mdc",
+        "type": "markdown",
+        "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "path": "../02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
+        "type": "markdown",
+        "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "07_Start_Building.mdc",
+        "path": "07_Start_Building.mdc",
+        "type": "file_reference",
+        "source_file": "rules/01__AI-RUN/07_Start_Building.mdc",
+        "status": "unchecked"
+      }
+    ],
     "rules_01__ai_run_08_testing_mdc": [
       {
         "text": ".[.[/[projet/01_Idea/idea_document.mdc",
@@ -14851,9 +14965,51 @@
       "file": "rules/01__AI-RUN/07_Start_Building.mdc",
       "operation": "add",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T02:36:13.323Z",
+      "file": "rules/01__AI-RUN/07_Start_Building.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T02:39:40.820Z",
+      "file": "rules/01__AI-RUN/01_Idea.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T02:40:48.439Z",
+      "file": "rules/01__AI-RUN/01_Idea.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T02:40:53.226Z",
+      "file": "rules/01__AI-RUN/01_Idea.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T02:40:53.338Z",
+      "file": "rules/01__AI-RUN/01_Idea.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T02:40:55.346Z",
+      "file": "rules/01__AI-RUN/01_Idea.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T02:40:55.460Z",
+      "file": "rules/01__AI-RUN/01_Idea.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T02:34:51.939Z",
+  "last_updated": "2025-05-25T02:40:55.561Z",
   "scan_history": [
     {
       "id": "scan_1748139854554",

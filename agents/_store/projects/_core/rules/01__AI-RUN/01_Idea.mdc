@@ -1,165 +1,499 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
-# Project Idea Pre-Writing Template
-*For initializing the PRD "Streamlined Agentic AI Workflow" with the Agentic Agent*
+# 01_Idea.mdc
 
-**Creation Date:** [Date]
-**Idea Author:** [Your Name/ID]
-# AI Agent: Idea Generation and Definition
+**Phase:** Ideation & Concept Definition  
+**Role:** ConceptForge  
+**Status:** Project Initialization
 
-## SECTION A: THE CORE IDEA
-*Purpose: Capture the essence of the project for Sections 1.2 and 3.1 of the PRD*
+## Overview
 
-### 1. Project Working Title
+This document guides you through the systematic process of defining and refining your project idea. It integrates with the enhanced AAI system to provide intelligent assistance in concept development, market validation, and strategic planning.
 
-``` [What working name do you have in mind?]
+## Purpose
+
+Transform your initial project concept into a well-defined, structured idea that serves as the foundation for:
+- Market research and validation
+- Technical specification development
+- Product Requirements Document (PRD) creation
+- Implementation planning
+
+## Enhanced AAI Integration
+
+### 🧠 **AI-Powered Idea Development**
+Start your enhanced development environment for intelligent assistance:
+```bash
+npm run launch
 ```
 
-**Example:** "Neighborhood Carpooling App"
+The AAI system provides:
+- **Pattern Recognition** - Analyzes successful project patterns
+- **Market Intelligence** - Real-time market trend analysis
+- **Concept Validation** - AI-powered feasibility assessment
+- **Strategic Guidance** - Intelligent recommendations for concept refinement
 
-### 2. The Idea in a Few Words (Pitch/Central Concept)
+### 🎯 **Intelligent Assistance Available**
+- **Idea Refinement** - AI helps clarify and strengthen your concept
+- **Market Positioning** - Strategic positioning recommendations
+- **Feature Prioritization** - Data-driven feature importance analysis
+- **Risk Assessment** - Proactive identification of potential challenges
 
-``` [Describe the main concept in 1-2 sentences. What's the big idea?]
+## Role Definition
+
+You are **ConceptForge**, a strategic product visionary with expertise in:
+- Product concept development and validation
+- Market analysis and competitive intelligence
+- User experience design thinking
+- Technology strategy and feasibility assessment
+- Business model innovation
+
+Your mission is to transform raw ideas into well-structured, validated concepts ready for development.
+
+## Idea Development Framework
+
+### Section A: Core Concept Definition
+
+#### 1. Project Working Title
+**Purpose:** Create a memorable, descriptive name for your project
+
+```
+Working Title: [Your project name]
 ```
 
-**Example:** "A mobile application to facilitate spontaneous and local carpooling between neighbors for short trips (school, shopping, activities)."
+**Guidelines:**
+- Keep it simple and memorable
+- Should hint at the core value proposition
+- Can be changed later - focus on clarity over perfection
 
-### 3. Main Problem this Project Solves
+**Examples:**
+- "NeighborRide" (local carpooling app)
+- "SkillSwap" (peer-to-peer learning platform)
+- "GreenTrack" (sustainability tracking app)
 
-``` [What is the major pain point you're targeting? For whom is this problem most acute?]
+#### 2. The Big Idea (Elevator Pitch)
+**Purpose:** Capture the essence of your project in 1-2 sentences
+
+```
+Core Concept: [Describe your main idea in 1-2 clear sentences]
 ```
 
-**Example:** "Difficulty organizing small shared trips without the complexity of national platforms, lack of trust for carpooling with strangers over short distances, waste of empty seats in cars for recurring neighborhood trips."
-
-### 4. Proposed Solution (How the Project Solves the Problem)
-
-``` [How does your idea provide a solution? What is the unique approach?]
-```
-
-**Example:** "By creating a trust network based on locality, with a simple interface to offer/search for trips instantly, and verified profiles (optional) within a neighborhood community."
-
-## SECTION B: KEY FEATURES (INITIAL MVP)
-*Purpose: Feed Section 3.1 of the PRD*
-
-### 1. Essential Feature #1
-
-- **Name:** [Feature name]
-- **Description (what the user can do):** [Short description]
-- **Key Result for the User:** [What direct benefit?]
-- **Desired "Vibe"/Experience (Optional):** [What feeling/quality?]
+**Framework:**
+"[Product/Service] that helps [target users] to [achieve specific goal] by [unique approach/method]."
 
 **Example:**
-- **Name:** Neighborhood Registration & Profile
-- **Description:** Create an account, define your neighborhood of residence, add a photo.
-- **Result:** Be identified and able to interact with neighbors.
-- **Vibe:** Simple, quick, reassuring.
+"A mobile application that helps neighbors organize spontaneous carpooling for local trips by creating trusted community networks with instant trip matching."
 
-### 2. Essential Feature #2
-
-- **Name:** [Feature name]
-- **Description:** [Short description]
-- **Key Result for the User:** [What direct benefit?]
-- **Desired "Vibe"/Experience (Optional):** [What feeling/quality?]
-
-### 3. Essential Feature #3 (and #4 if needed)
-
-- **Name:** [Feature name]
-- **Description:** [Short description]
-- **Key Result for the User:** [What direct benefit?]
-- **Desired "Vibe"/Experience (Optional):** [What feeling/quality?]
-
-## SECTION C: INITIAL DESIGN & TECHNOLOGY PREFERENCES
-*Purpose: Guide AI proposals for Sections 1.10, 5.1, 5.2, 5.4 of the PRD*
-
-### 1. General "Vibe" and Desired Aesthetics
-
-``` [Describe the general atmosphere you envision. Use keywords if helpful (e.g., "modern and clean", "playful and colorful", "serious and professional", "artisanal and warm"). Are there any apps or websites whose design you like that could serve as inspiration (even vague)?]
-```
-
-**Example:** "I want something very simple, intuitive, with a modern and reassuring design. Soft colors. Inspiration: a mix between the 'Nextdoor' app for the local aspect and 'BlaBlaCar' for the simplicity of trip proposals."
-
-### 2. Primary Target Audience (First Intuition)
-
-``` [Who are the main users you're targeting? (e.g., neighborhood parents, young professionals without cars, active retirees). This will help the AI propose personas later.]
-```
-
-**Example:** "Residents of the same neighborhood or small town, especially families for school/activity trips, and people looking to save money or reduce their ecological footprint for local errands."
-
-### 3. Technology Stack (If you have strong preferences or constraints)
-
-The Agentic PRD suggests as a default: Next.js, Supabase, Tailwind CSS. However, the final technology choices can be adapted by the user.
-
-``` [Do you have reasons to deviate from this standard? Specific technologies you absolutely want to use or avoid? Particular libraries in mind for certain functionalities? If not, leave blank, and the AI will follow the defaults.]
-```
-
-**Example:** "The default stack works perfectly for me. Perhaps explore using [Library X] for mapping if needed."
-
-### 4. Anticipated Third-Party Integrations / MCPs (If clear ideas already exist)
-
-``` [Are you already thinking about specific external services to integrate? (e.g., payment system, mapping service, push notifications, AI for a specific feature)]
-```
-
-**Example:** "Probably a mapping service to visualize trips (e.g., Mapbox or Google Maps via MCP). Push notifications for new trip proposals."
-
-## SECTION D: INITIAL QUESTIONS FOR YOURSELF (AND FOR ROO LATER)
-*Purpose: Anticipate points to explore further*
-
-### 1. What are the biggest risks or uncertainties for this project at this stage?
-
-``` [E.g., User adoption, technical complexity of a feature, monetization...]
-```
-
-### 2. How could this project generate value (for users, for you/the company)?
-
-``` [What are the expected benefits?]
-```
-
-### 3. Are there any direct or indirect competitors that you already know of?
-
-``` [Even a simple list is useful.]
-```
-
-### 4. On a scale of 1 to 10, how clear is this idea to you (1=very vague, 10=very clear)? Which aspects are the most unclear?
-
-``` [Be honest, this will help Roo know where to focus questions.]
-```
-
-## Instructions for the Next Step
-
-### Saving Your Output
-
-Once you've completed this document:
-
-1. Save it as `[idea_document.mdc](../projet/01_Idea/idea_document.mdc)` in your project directory
-2. This file will serve as the foundation for the next phase of the workflow
-
-### Moving to Market Research
-
-To proceed with market research:
-
-1. Open the prompt file in `../01__AI-RUN/` that corresponds to the `[02_Market_Research.mdc](../01__AI-RUN/02_Market_Research.mdc)` logical step. (Ensure [01_AutoPilot.mdc](../01__AI-RUN/01_AutoPilot.mdc) or your manual process calls the correct actual filename for market research).
-2. Share it with your AI agent.
-3. When prompted for your idea, reference this completed `[idea_document.mdc](../projet/01_Idea/idea_document.mdc)`.
+#### 3. Problem Statement
+**Purpose:** Define the specific pain point your project addresses
 
 ```
-@MarketMaster Pro
+Primary Problem: [What major challenge are you solving?]
 
-Please analyze the market potential for my project idea. You can find the complete idea document at: `idea_document.mdc`
+Target Users: [Who experiences this problem most acutely?]
 
-The core concept is: [Brief 1-2 sentence summary of your idea]
+Current Pain Points:
+- [Specific issue #1]
+- [Specific issue #2]
+- [Specific issue #3]
 ```
 
-### What to Expect Next
+**Guidelines:**
+- Be specific about the problem
+- Quantify the impact when possible
+- Focus on real user pain, not assumed problems
 
-In the Market Research phase, the AI will:
+#### 4. Solution Approach
+**Purpose:** Explain how your project uniquely solves the identified problem
 
-1. Analyze your idea for market viability
-2. Research competitors and market trends
-3. Identify target user segments
-4. Provide pricing and go-to-market strategies
-5. Deliver a comprehensive market analysis report
+```
+Solution Overview: [How does your approach solve the problem?]
 
-This market validation is crucial before proceeding to refine your core concept in the next phase.
+Unique Value Proposition: [What makes your solution different/better?]
+
+Key Benefits:
+- [Primary benefit for users]
+- [Secondary benefit for users]
+- [Additional value created]
+```
+
+**Framework Questions:**
+- Why is your solution better than existing alternatives?
+- What makes it uniquely positioned to succeed?
+- How does it create value for all stakeholders?
+
+### Section B: Feature Definition (MVP Scope)
+
+#### Essential Feature Framework
+For each core feature, define:
+
+**Feature 1: [Core Feature Name]**
+```
+Description: [What users can do with this feature]
+User Value: [Direct benefit to the user]
+Success Metric: [How you'll measure success]
+Priority: [High/Medium/Low]
+Complexity: [Simple/Medium/Complex]
+```
+
+**Feature 2: [Core Feature Name]**
+```
+Description: [What users can do with this feature]
+User Value: [Direct benefit to the user]
+Success Metric: [How you'll measure success]
+Priority: [High/Medium/Low]
+Complexity: [Simple/Medium/Complex]
+```
+
+**Feature 3: [Core Feature Name]**
+```
+Description: [What users can do with this feature]
+User Value: [Direct benefit to the user]
+Success Metric: [How you'll measure success]
+Priority: [High/Medium/Low]
+Complexity: [Simple/Medium/Complex]
+```
+
+#### Feature Prioritization Matrix
+```
+Must-Have Features (MVP Core):
+- [Feature that's absolutely essential]
+- [Feature without which the product doesn't work]
+
+Should-Have Features (MVP Enhanced):
+- [Feature that significantly improves experience]
+- [Feature that differentiates from competitors]
+
+Could-Have Features (Future Versions):
+- [Nice-to-have feature for later]
+- [Advanced feature for power users]
+```
+
+### Section C: Design & Technology Vision
+
+#### 1. Design Philosophy & Aesthetics
+**Purpose:** Define the visual and experiential direction
+
+```
+Design Vision: [Overall aesthetic and feel you want to achieve]
+
+Key Design Principles:
+- [Principle #1: e.g., "Simplicity over complexity"]
+- [Principle #2: e.g., "Trust and safety first"]
+- [Principle #3: e.g., "Mobile-first experience"]
+
+Visual Inspiration: [Apps, websites, or design styles that inspire you]
+
+User Experience Goals:
+- [How should users feel when using your product?]
+- [What should be effortless vs. what can require effort?]
+```
+
+**Design Keywords:** Choose 3-5 words that capture your design vision
+- Examples: Modern, Clean, Trustworthy, Playful, Professional, Warm, Minimalist
+
+#### 2. Target Audience Definition
+**Purpose:** Clearly define your primary users
+
+```
+Primary User Segment: [Main target audience]
+
+User Characteristics:
+- Demographics: [Age, location, income, etc.]
+- Psychographics: [Values, interests, behaviors]
+- Technology Comfort: [Tech-savvy, moderate, beginner]
+- Current Solutions: [How they solve this problem today]
+
+Secondary User Segments: [Additional user groups to consider]
+```
+
+**User Persona Framework:**
+- **Who:** Demographics and basic info
+- **What:** Goals and motivations
+- **Why:** Pain points and frustrations
+- **How:** Current behavior and preferences
+
+#### 3. Technology Strategy
+**Purpose:** Define technical approach and constraints
+
+```
+Technology Preferences:
+- Platform: [Web, Mobile, Desktop, or Multi-platform]
+- Framework: [Specific preferences or open to recommendations]
+- Database: [Requirements or preferences]
+- Hosting: [Cloud provider preferences or requirements]
+
+Technical Constraints:
+- [Any specific requirements or limitations]
+- [Integration needs with existing systems]
+- [Performance or scalability requirements]
+
+Third-Party Services Needed:
+- [Payment processing, maps, notifications, etc.]
+- [AI/ML services, analytics, monitoring]
+```
+
+**Default Stack Recommendation:**
+- **Frontend:** Next.js with TypeScript
+- **Styling:** Tailwind CSS
+- **Backend:** Supabase (Database + Auth + Real-time)
+- **Deployment:** Vercel
+- **Analytics:** Plausible or Google Analytics
+
+#### 4. Integration & API Strategy
+**Purpose:** Plan for external service integrations
+
+```
+Required Integrations:
+- [Essential third-party services]
+- [Payment, mapping, communication services]
+
+Potential Integrations:
+- [Services that could enhance the product]
+- [Future integration opportunities]
+
+API Strategy:
+- [Will you provide APIs for others?]
+- [What data needs to be accessible externally?]
+```
+
+### Section D: Strategic Considerations
+
+#### 1. Risk Assessment
+**Purpose:** Identify and plan for potential challenges
+
+```
+Technical Risks:
+- [Complexity challenges, scalability concerns]
+- [Third-party dependency risks]
+
+Market Risks:
+- [Competition, market timing, user adoption]
+- [Regulatory or legal considerations]
+
+Business Risks:
+- [Monetization challenges, resource constraints]
+- [Team or execution risks]
+
+Mitigation Strategies:
+- [How you'll address each major risk]
+```
+
+#### 2. Value Creation Model
+**Purpose:** Define how the project creates value
+
+```
+User Value:
+- [Primary value for end users]
+- [Secondary benefits and outcomes]
+
+Business Value:
+- [Revenue model or monetization strategy]
+- [Strategic value and long-term potential]
+
+Market Value:
+- [Broader impact on the market/industry]
+- [Social or environmental benefits]
+```
+
+#### 3. Competitive Landscape
+**Purpose:** Understand the competitive environment
+
+```
+Direct Competitors:
+- [Products that solve the same problem]
+- [Their strengths and weaknesses]
+
+Indirect Competitors:
+- [Alternative solutions users might choose]
+- [Substitute products or behaviors]
+
+Competitive Advantages:
+- [What makes your approach unique]
+- [Barriers to entry you can create]
+```
+
+#### 4. Success Metrics & Vision
+**Purpose:** Define what success looks like
+
+```
+Short-term Success (3-6 months):
+- [User acquisition targets]
+- [Feature adoption metrics]
+- [Technical milestones]
+
+Medium-term Success (6-18 months):
+- [Growth and engagement targets]
+- [Revenue or business metrics]
+- [Product development milestones]
+
+Long-term Vision (1-3 years):
+- [Market position goals]
+- [Scale and impact objectives]
+- [Strategic expansion plans]
+
+Key Performance Indicators (KPIs):
+- [Primary metrics to track]
+- [Success thresholds for each metric]
+```
+
+## AAI-Assisted Idea Refinement
+
+### Intelligent Concept Analysis
+Use the AAI system to enhance your idea development:
+
+```bash
+# Analyze your concept for market potential
+npm run AAI:analyze-concept
+
+# Get competitive intelligence
+npm run AAI:competitive-analysis
+
+# Validate technical feasibility
+npm run AAI:technical-assessment
+```
+
+### AI-Powered Refinement Process
+
+**Step 1: Concept Validation**
+```
+@AAI Agent
+
+Please analyze my project concept:
+
+Project: [Your project title]
+Problem: [Your problem statement]
+Solution: [Your solution approach]
+
+Provide:
+1. Concept strength assessment
+2. Market opportunity analysis
+3. Technical feasibility evaluation
+4. Improvement recommendations
+```
+
+**Step 2: Feature Prioritization**
+```
+@AAI Agent
+
+Help me prioritize these features for my MVP:
+
+[List your features with descriptions]
+
+Consider:
+- User value and impact
+- Technical complexity
+- Market differentiation
+- Development timeline
+```
+
+**Step 3: Strategic Guidance**
+```
+@AAI Agent
+
+Provide strategic guidance for my project:
+
+Concept: [Brief description]
+Target Market: [Your target audience]
+Goals: [Your success metrics]
+
+Please advise on:
+- Go-to-market strategy
+- Risk mitigation approaches
+- Technology stack optimization
+- Competitive positioning
+```
+
+## Next Steps & Workflow Integration
+
+### Completion Checklist
+Before proceeding to market research, ensure you have:
+
+- [ ] **Clear Problem Definition** - Specific, validated user pain point
+- [ ] **Compelling Solution** - Unique approach with clear value proposition
+- [ ] **Defined MVP Scope** - 3-5 core features prioritized by value
+- [ ] **Target Audience** - Specific user segments with clear characteristics
+- [ ] **Technical Strategy** - Technology choices aligned with requirements
+- [ ] **Success Metrics** - Measurable goals and KPIs defined
+- [ ] **Risk Assessment** - Major risks identified with mitigation plans
+
+### Save Your Work
+```bash
+# Save your completed idea document
+# The AAI system will automatically track and version your work
+```
+
+### Transition to Market Research
+Once your idea is well-defined, proceed to market validation:
+
+```
+@AAI Agent
+
+My project idea is complete. Please help me transition to market research.
+
+Project: [Your project title]
+Core Concept: [1-2 sentence summary]
+
+Next steps needed:
+1. Competitive analysis
+2. Market size assessment
+3. User validation strategy
+4. Go-to-market planning
+```
+
+The AAI system will guide you through:
+1. **Market Analysis** ([02_Market_Research.mdc](mdc:02_Market_Research.mdc)) - Comprehensive market research and validation
+2. **Core Concept Refinement** ([03_Core_Concept.mdc](mdc:03_Core_Concept.mdc)) - Detailed concept development
+3. **PRD Generation** ([04_PRD_Generation.mdc](mdc:04_PRD_Generation.mdc)) - Technical specification creation
+4. **Implementation Planning** ([07_Start_Building.mdc](mdc:07_Start_Building.mdc)) - Development roadmap
+
+## Best Practices
+
+### Idea Development
+1. **Start Broad, Then Focus** - Begin with the big picture, then drill down
+2. **Validate Assumptions** - Test your assumptions with real users early
+3. **Iterate Quickly** - Refine your concept based on feedback and insights
+4. **Think Systems** - Consider how your product fits into users' lives
+5. **Balance Vision and Reality** - Dream big but stay grounded in feasibility
+
+### Using AAI Assistance
+1. **Be Specific** - Provide detailed context for better AI recommendations
+2. **Ask Follow-up Questions** - Dig deeper into AI suggestions and analysis
+3. **Validate AI Insights** - Use AI guidance as input, not absolute truth
+4. **Document Decisions** - Record your reasoning for future reference
+5. **Iterate with AI** - Use multiple rounds of AI assistance to refine ideas
+
+### Quality Assurance
+1. **User-Centric Focus** - Always prioritize user value over features
+2. **Market Reality Check** - Ensure your idea addresses real market needs
+3. **Technical Feasibility** - Validate that your vision is technically achievable
+4. **Resource Alignment** - Match your scope to available resources and timeline
+5. **Differentiation** - Ensure your approach offers unique value in the market
+
+## Expected Outcomes
+
+By completing this idea development process, you will have:
+
+### Strategic Clarity
+- ✅ **Well-Defined Problem** - Clear understanding of user pain points
+- ✅ **Compelling Solution** - Unique approach with strong value proposition
+- ✅ **Market Positioning** - Clear differentiation from competitors
+- ✅ **Success Framework** - Measurable goals and success criteria
+
+### Technical Foundation
+- ✅ **Technology Strategy** - Appropriate tech stack for your requirements
+- ✅ **Feature Roadmap** - Prioritized features for MVP and beyond
+- ✅ **Integration Plan** - Third-party services and API strategy
+- ✅ **Risk Mitigation** - Identified challenges with mitigation strategies
+
+### Business Readiness
+- ✅ **Target Market** - Clearly defined user segments and personas
+- ✅ **Value Proposition** - Compelling reasons for users to choose your product
+- ✅ **Competitive Advantage** - Unique positioning in the market
+- ✅ **Growth Strategy** - Framework for scaling and expansion
+
+---
+
+*This enhanced idea development framework, powered by AAI intelligence, transforms raw concepts into well-structured, validated project foundations ready for market research and technical development.*
