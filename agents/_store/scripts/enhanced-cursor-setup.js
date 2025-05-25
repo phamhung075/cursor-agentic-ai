@@ -69,7 +69,7 @@ class EnhancedCursorSetup {
 
     const dirs = [
       this.cursorDir,
-      `${this.cursorDir}/.cursorrules`,
+      `${this.cursorDir}/rules`,
       `${this.agentsDir}/cursor-integration`,
       `${this.agentsDir}/_store/cursor-summaries`,
       `${this.agentsDir}/_store/cursor-cache`,
@@ -235,6 +235,44 @@ class EnhancedCursorSetup {
               "templates": { "type": "object" }
             }
           }
+        },
+        {
+          "fileMatch": ["agents/_store/cursor-summaries/ai-session-memory.json"],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "sessionId": { "type": "string" },
+              "timestamp": { "type": "string", "format": "date-time" },
+              "aiInteractions": { "type": "array" },
+              "learnedPatterns": { "type": "array" },
+              "contextHistory": { "type": "array" },
+              "decisionHistory": { "type": "array" }
+            }
+          }
+        },
+        {
+          "fileMatch": ["agents/_store/cursor-summaries/shared-ai-context.json"],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "sharedContext": { "type": "object" },
+              "crossAIInsights": { "type": "array" },
+              "collaborativeDecisions": { "type": "array" },
+              "consensusPatterns": { "type": "array" }
+            }
+          }
+        },
+        {
+          "fileMatch": ["agents/_store/intelligence/cursor-learning.json"],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "learnedPatterns": { "type": "array" },
+              "codeStyles": { "type": "object" },
+              "userPreferences": { "type": "object" },
+              "projectConventions": { "type": "object" }
+            }
+          }
         }
       ],
 
@@ -376,6 +414,10 @@ class EnhancedCursorSetup {
         "agents/prompts/**/*.md",
         "agents/config/**/*.json",
         "agents/_store/cursor-summaries/**/*.json",
+        ".cursor/settings.json",
+        "agents/_store/docs/CURSOR-*.md",
+        "agents/_store/scripts/enhanced-cursor-setup.js",
+        "agents/_store/scripts/protect-enhanced-cursor-settings.js",
         "README.md",
         "package.json",
         "tsconfig.json",
@@ -384,8 +426,11 @@ class EnhancedCursorSetup {
       "cursor.ai.priorityFiles": [
         "agents/_core/rules/**/*.mdc",
         "agents/_store/projects/_core/rules/**/*.mdc",
+        ".cursor/settings.json",
         "agents/_store/cursor-summaries/workspace-context.json",
         "agents/_store/cursor-summaries/latest-insights.json",
+        "agents/_store/cursor-summaries/ai-session-memory.json",
+        "agents/_store/cursor-summaries/shared-ai-context.json",
         "agents/workflows/core.json",
         "agents/config/main.json"
       ],
@@ -445,6 +490,80 @@ class EnhancedCursorSetup {
       "aai.autoSync.enabled": true,
       "aai.contextAwareness.level": "high",
 
+      // === AI COOPERATION ENHANCEMENTS ===
+      "cursor.ai.sessionMemory": {
+        "enabled": true,
+        "persistAcrossSessions": true,
+        "memoryPath": "agents/_store/cursor-summaries/ai-session-memory.json",
+        "maxMemoryEntries": 1000,
+        "contextRetention": "7d"
+      },
+
+      "cursor.ai.crossAISharing": {
+        "enabled": true,
+        "sharedContextPath": "agents/_store/cursor-summaries/shared-ai-context.json",
+        "includeDecisionHistory": true,
+        "includePatternLearning": true,
+        "syncInterval": "5m"
+      },
+
+      "cursor.ai.learningMode": {
+        "enabled": true,
+        "patternRecognition": true,
+        "codeStyleLearning": true,
+        "projectConventionLearning": true,
+        "userPreferenceLearning": true,
+        "learningDataPath": "agents/_store/intelligence/cursor-learning.json"
+      },
+
+      "cursor.ai.adaptiveContext": {
+        "enabled": true,
+        "dynamicContextAdjustment": true,
+        "relevanceScoring": true,
+        "contextOptimization": "auto",
+        "maxContextTokens": 50000
+      },
+
+      "cursor.ai.fileTypeIntelligence": {
+        "*.mdc": {
+          "treatAs": "enhanced-markdown",
+          "includeMetadata": true,
+          "contextWeight": "high",
+          "suggestionsMode": "comprehensive"
+        },
+        "*.memory.json": {
+          "treatAs": "aai-memory",
+          "includeEmbeddings": false,
+          "contextWeight": "medium",
+          "suggestionsMode": "structured"
+        },
+        "*.analysis.json": {
+          "treatAs": "aai-analysis",
+          "includeInsights": true,
+          "contextWeight": "high",
+          "suggestionsMode": "analytical"
+        },
+        "*.intelligence.json": {
+          "treatAs": "aai-intelligence",
+          "includePatterns": true,
+          "contextWeight": "very-high",
+          "suggestionsMode": "intelligent"
+        }
+      },
+
+      "cursor.ai.realTimeSync": {
+        "enabled": true,
+        "syncWithAAIAgent": true,
+        "syncPath": "agents/_store/cursor-summaries/realtime-sync.json",
+        "syncEvents": [
+          "fileChange",
+          "codeCompletion",
+          "chatInteraction",
+          "analysisUpdate"
+        ],
+        "syncInterval": "30s"
+      },
+
       // === CURSOR CHAT EXCLUSIONS ===
       "cursor.chat.excludeFiles": [
         "**/*.backup",
@@ -501,7 +620,7 @@ class EnhancedCursorSetup {
   async setupCursorRules() {
     console.log('📋 Setting up Cursor rules for AAI...');
 
-    const rulesPath = path.join(this.cursorDir, '.cursorrules', 'aai.md');
+    const rulesPath = path.join(this.cursorDir, 'rules', 'aai.md');
     
     const rules = `# AAI Development Rules for Cursor
 
@@ -973,7 +1092,7 @@ module.exports = AAIFileWatcher;
 
     const files = {
       '.cursor/settings.json': 'Enhanced Cursor settings',
-      '.cursor/.cursorrules/aai.md': 'AAI development rules',
+      '.cursor/rules/aai.md': 'AAI development rules',
       '.cursor/snippets/aai.json': 'AAI code snippets',
       '.cursor/tasks.json': 'AAI tasks',
       'agents/cursor-integration/file-watcher.js': 'File watcher',

@@ -1,8 +1,8 @@
 {
-  "timestamp": "2025-05-25T07:41:58.291Z",
+  "timestamp": "2025-05-25T07:51:58.317Z",
   "summary": {
     "memoryUsage": "3.9 MB",
-    "totalFiles": 2077,
+    "totalFiles": 2082,
     "bottlenecks": 1,
     "optimizations": 2
   },
@@ -11,27 +11,27 @@
       "nodeVersion": "v20.19.2",
       "platform": "darwin",
       "arch": "x64",
-      "startTime": "2025-05-25T07:41:58.235Z"
+      "startTime": "2025-05-25T07:51:58.256Z"
     },
     "memory": {
       "heapUsed": 4051640,
       "heapTotal": 4689920,
       "external": 1444748,
-      "rss": 26562560,
-      "timestamp": "2025-05-25T07:41:58.236Z"
+      "rss": 26476544,
+      "timestamp": "2025-05-25T07:51:58.258Z"
     },
     "operations": {},
     "suggestions": [],
     "filesystem": {
-      "totalFiles": 2077,
-      "totalSize": 18186537,
-      "scanTime": 52.073315,
-      "averageFileSize": 8756.156475686086
+      "totalFiles": 2082,
+      "totalSize": 18255889,
+      "scanTime": 56.881142,
+      "averageFileSize": 8768.438520653219
     },
     "memorySystem": {
-      "size": 852427,
+      "size": 852619,
       "files": 21,
-      "scanTime": 0.3131100000000089,
+      "scanTime": 0.3461029999999994,
       "efficiency": "Optimized"
     },
     "bottlenecks": [
