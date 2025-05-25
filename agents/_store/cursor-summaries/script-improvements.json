@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T07:55:58.329Z",
+  "timestamp": "2025-05-25T08:05:02.397Z",
   "source": "Script Analysis → Cursor Improvements",
   "categories": {
     "documentation": [
@@ -18,7 +18,21 @@
         "estimatedTime": "10-15 minutes"
       },
       {
+        "script": "aai-task-manager.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
         "script": "agent-intelligence-enhancer.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
+        "script": "cursor-aai-integration.js",
         "issue": "Missing or inadequate description",
         "suggestion": "Add comprehensive JSDoc comments and description",
         "priority": "medium",

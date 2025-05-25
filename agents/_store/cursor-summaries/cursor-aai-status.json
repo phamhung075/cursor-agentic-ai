@@ -1,0 +1,11 @@
+{
+  "active": true,
+  "version": "1.0.0",
+  "initialized": "2025-05-25T08:03:20.448Z",
+  "features": {
+    "autoTaskCreation": true,
+    "taskExecution": true,
+    "resultCompilation": true,
+    "contextAwareness": true
+  }
+}

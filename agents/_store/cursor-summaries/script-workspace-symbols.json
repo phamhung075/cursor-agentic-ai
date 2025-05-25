@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T07:55:58.329Z",
+  "timestamp": "2025-05-25T08:05:02.397Z",
   "scriptSymbols": [
     {
       "name": "comprehensive-cleanup.js",
@@ -18,9 +18,25 @@
       "containerName": "AAI Scripts/cleanup"
     },
     {
+      "name": "aai-task-manager.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/aai-task-manager.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
       "name": "agent-intelligence-enhancer.js",
       "kind": "Function",
       "location": "agents/_store/scripts/agent-intelligence-enhancer.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "cursor-aai-integration.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/cursor-aai-integration.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -196,7 +212,7 @@
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "21 scripts in uncategorized category",
+      "detail": "23 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
@@ -471,6 +487,76 @@
       "name": "cursor:status",
       "kind": "Function",
       "detail": "node agents/_store/scripts/enhanced-cursor-setup.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:task-init",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/aai-task-manager.js init",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:task-analyze",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/aai-task-manager.js analyze",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:task-execute",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/aai-task-manager.js execute",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:task-status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/aai-task-manager.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "aai:task-auto-manage",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/aai-task-manager.js auto-manage",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:aai-init",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-aai-integration.js init",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:aai-request",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-aai-integration.js request",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:aai-quick",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-aai-integration.js quick",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:aai-auto-manage",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-aai-integration.js auto-manage",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:aai-status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/cursor-aai-integration.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     }

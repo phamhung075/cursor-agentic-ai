@@ -19,8 +19,18 @@
     "utility": [],
     "uncategorized": [
       {
+        "name": "aai-task-manager.js",
+        "path": "agents/_store/scripts/aai-task-manager.js",
+        "description": "No description available"
+      },
+      {
         "name": "agent-intelligence-enhancer.js",
         "path": "agents/_store/scripts/agent-intelligence-enhancer.js",
+        "description": "No description available"
+      },
+      {
+        "name": "cursor-aai-integration.js",
+        "path": "agents/_store/scripts/cursor-aai-integration.js",
         "description": "No description available"
       },
       {
@@ -304,9 +314,49 @@
     {
       "name": "cursor:status",
       "command": "node agents/_store/scripts/enhanced-cursor-setup.js status"
+    },
+    {
+      "name": "aai:task-init",
+      "command": "node agents/_store/scripts/aai-task-manager.js init"
+    },
+    {
+      "name": "aai:task-analyze",
+      "command": "node agents/_store/scripts/aai-task-manager.js analyze"
+    },
+    {
+      "name": "aai:task-execute",
+      "command": "node agents/_store/scripts/aai-task-manager.js execute"
+    },
+    {
+      "name": "aai:task-status",
+      "command": "node agents/_store/scripts/aai-task-manager.js status"
+    },
+    {
+      "name": "aai:task-auto-manage",
+      "command": "node agents/_store/scripts/aai-task-manager.js auto-manage"
+    },
+    {
+      "name": "cursor:aai-init",
+      "command": "node agents/_store/scripts/cursor-aai-integration.js init"
+    },
+    {
+      "name": "cursor:aai-request",
+      "command": "node agents/_store/scripts/cursor-aai-integration.js request"
+    },
+    {
+      "name": "cursor:aai-quick",
+      "command": "node agents/_store/scripts/cursor-aai-integration.js quick"
+    },
+    {
+      "name": "cursor:aai-auto-manage",
+      "command": "node agents/_store/scripts/cursor-aai-integration.js auto-manage"
+    },
+    {
+      "name": "cursor:aai-status",
+      "command": "node agents/_store/scripts/cursor-aai-integration.js status"
     }
   ],
-  "totalFiles": 26,
+  "totalFiles": 28,
   "categories": {
     "scripts": {
       "core": "Core framework management",
@@ -323,5 +373,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T07:55:58.298Z"
+  "lastUpdated": "2025-05-25T08:05:02.379Z"
 }

@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-05-25T07:55:58.328Z",
+  "timestamp": "2025-05-25T08:05:02.396Z",
   "source": "AAI Script Manager → Cursor Integration",
   "summary": {
-    "totalScripts": 26,
+    "totalScripts": 28,
     "categories": 6,
-    "npmIntegrated": 39
+    "npmIntegrated": 49
   },
   "scripts": {
     "cleanup": [
@@ -87,6 +87,44 @@
     ],
     "uncategorized": [
       {
+        "name": "aai-task-manager.js",
+        "path": "agents/_store/scripts/aai-task-manager.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/aai-task-manager.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/aai-task-manager.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/aai-task-manager.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
         "name": "agent-intelligence-enhancer.js",
         "path": "agents/_store/scripts/agent-intelligence-enhancer.js",
         "description": "No description available",
@@ -110,6 +148,44 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/agent-intelligence-enhancer.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "cursor-aai-integration.js",
+        "path": "agents/_store/scripts/cursor-aai-integration.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/cursor-aai-integration.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/cursor-aai-integration.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/cursor-aai-integration.js",
               "Add description"
             ]
           }

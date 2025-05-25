@@ -64,7 +64,18 @@
     "cursor:test-integration": "echo \"Testing enhanced integration...\" && ls -la agents/_store/cursor-summaries/",
     "cursor:status": "node agents/_store/scripts/enhanced-cursor-setup.js status",
     "AAI:cursor-sync": "npm run cursor:update-summaries && echo \"Cursor sync complete\"",
-    "AAI:enhanced-start": "npm run cursor:start-watcher & npm run AAI:start"
+    "AAI:enhanced-start": "npm run cursor:start-watcher & npm run AAI:start",
+    "aai:task-init": "node agents/_store/scripts/aai-task-manager.js init",
+    "aai:task-analyze": "node agents/_store/scripts/aai-task-manager.js analyze",
+    "aai:task-execute": "node agents/_store/scripts/aai-task-manager.js execute",
+    "aai:task-status": "node agents/_store/scripts/aai-task-manager.js status",
+    "aai:task-auto-manage": "node agents/_store/scripts/aai-task-manager.js auto-manage",
+    "cursor:aai-init": "node agents/_store/scripts/cursor-aai-integration.js init",
+    "cursor:aai-request": "node agents/_store/scripts/cursor-aai-integration.js request",
+    "cursor:aai-quick": "node agents/_store/scripts/cursor-aai-integration.js quick",
+    "cursor:aai-auto-manage": "node agents/_store/scripts/cursor-aai-integration.js auto-manage",
+    "cursor:aai-status": "node agents/_store/scripts/cursor-aai-integration.js status",
+    "AAI:task-workflow": "npm run cursor:aai-init && npm run aai:task-auto-manage"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^2.0.1",
