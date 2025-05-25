@@ -47,7 +47,7 @@ git clone <repository-url> <project-name>
 
 ## Integration with Main Framework
 
-This src structure is independent of the main `agents/_store/` framework but can be integrated through:
+This src structure is independent of the main `.cursor/rules/agents/_store/` framework but can be integrated through:
 - Build scripts that reference both structures
 - Shared configuration management
 - Cross-project dependency tracking 

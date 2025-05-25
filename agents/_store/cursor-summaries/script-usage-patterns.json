@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T14:26:52.182Z",
+  "timestamp": "2025-05-25T14:39:48.516Z",
   "mostUsedCategories": [
     {
       "category": "uncategorized",
@@ -17,312 +17,312 @@
   "integrationPatterns": [
     {
       "npmCommand": "launch",
-      "scriptPath": "node agents/_store/scripts/launch-aai-complete.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/launch-aai-complete.js",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:cleanup",
-      "scriptPath": "node agents/_store/scripts/comprehensive-cleanup.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/comprehensive-cleanup.js",
       "category": "cleanup"
     },
     {
       "npmCommand": "AAI:memory-cleanup",
-      "scriptPath": "node agents/_store/scripts/memory-cleanup.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/memory-cleanup.js",
       "category": "cleanup"
     },
     {
       "npmCommand": "AAI:intelligence-enhance",
-      "scriptPath": "node agents/_store/scripts/agent-intelligence-enhancer.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/agent-intelligence-enhancer.js",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:context-track",
-      "scriptPath": "node agents/_store/scripts/smart-context-tracker.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/smart-context-tracker.js",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:performance-optimize",
-      "scriptPath": "node agents/_store/scripts/performance-optimizer.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/performance-optimizer.js",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:sync-preserved",
-      "scriptPath": "node agents/_store/scripts/sync-preserved-to-memory.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:sync-preserved-status",
-      "scriptPath": "node agents/_store/scripts/sync-preserved-to-memory.js status",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js status",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:test-agent",
-      "scriptPath": "node agents/_store/tests/test_new_agent.js",
+      "scriptPath": "node .cursor/rules/agents/_store/tests/test_new_agent.js",
       "category": "testing"
     },
     {
       "npmCommand": "AAI:test-integration",
-      "scriptPath": "node agents/_store/tests/test_autopilot_integration.js",
+      "scriptPath": "node .cursor/rules/agents/_store/tests/test_autopilot_integration.js",
       "category": "testing"
     },
     {
       "npmCommand": "AAI:test-system",
-      "scriptPath": "node agents/_store/tests/test_new_system.js",
+      "scriptPath": "node .cursor/rules/agents/_store/tests/test_new_system.js",
       "category": "testing"
     },
     {
       "npmCommand": "AAI:test-dependencies",
-      "scriptPath": "node agents/_store/tests/test_dependency_tracking.js",
+      "scriptPath": "node .cursor/rules/agents/_store/tests/test_dependency_tracking.js",
       "category": "testing"
     },
     {
       "npmCommand": "AAI:setup-env",
-      "scriptPath": "node agents/_store/scripts/setup-env.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/setup-env.js",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:install-to",
-      "scriptPath": "node agents/_store/scripts/install-agent-ai.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/install-agent-ai.js",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:sync-memory",
-      "scriptPath": "node agents/_store/scripts/sync-memory.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/sync-memory.js",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:sync-status",
-      "scriptPath": "node agents/_store/scripts/sync-memory.js status",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/sync-memory.js status",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:sync-up",
-      "scriptPath": "node agents/_store/scripts/sync-memory.js up",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/sync-memory.js up",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:sync-down",
-      "scriptPath": "node agents/_store/scripts/sync-memory.js down",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/sync-memory.js down",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:sync-both",
-      "scriptPath": "node agents/_store/scripts/sync-memory.js both",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/sync-memory.js both",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:fix-embeddings",
-      "scriptPath": "node agents/_store/scripts/sync-memory.js fix-embeddings",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/sync-memory.js fix-embeddings",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:scripts-analyze",
-      "scriptPath": "node agents/_store/scripts/script_manager.js analyze",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/script_manager.js analyze",
       "category": "analysis"
     },
     {
       "npmCommand": "AAI:scripts-list",
-      "scriptPath": "node agents/_store/scripts/script_manager.js list",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/script_manager.js list",
       "category": "utility"
     },
     {
       "npmCommand": "AAI:core-monitor",
-      "scriptPath": "node agents/_store/scripts/core/core_file_monitor.js start",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/core/core_file_monitor.js start",
       "category": "core"
     },
     {
       "npmCommand": "AAI:core-monitor-status",
-      "scriptPath": "node agents/_store/scripts/core/core_file_monitor.js status",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/core/core_file_monitor.js status",
       "category": "core"
     },
     {
       "npmCommand": "cursor:setup",
-      "scriptPath": "node agents/_store/scripts/enhanced-cursor-setup.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:setup-enhanced",
-      "scriptPath": "node agents/_store/scripts/enhanced-cursor-setup.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:update-settings",
-      "scriptPath": "node agents/_store/scripts/update-cursor-settings.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/update-cursor-settings.js",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:settings-status",
-      "scriptPath": "node agents/_store/scripts/update-cursor-settings.js status",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/update-cursor-settings.js status",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:settings-restore",
-      "scriptPath": "node agents/_store/scripts/update-cursor-settings.js restore",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/update-cursor-settings.js restore",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:protect",
-      "scriptPath": "node agents/_store/scripts/protect-enhanced-cursor-settings.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:protect-enable",
-      "scriptPath": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --enable",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js --enable",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:protect-monitor",
-      "scriptPath": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --monitor",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js --monitor",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:protect-restore",
-      "scriptPath": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --restore",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js --restore",
       "category": "utility"
     },
     {
       "npmCommand": "mdc:status",
-      "scriptPath": "node agents/_store/scripts/mdc-dependency-tracker.js status",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js status",
       "category": "utility"
     },
     {
       "npmCommand": "mdc:fix",
-      "scriptPath": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
       "category": "utility"
     },
     {
       "npmCommand": "mdc:fix-apply",
-      "scriptPath": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix --apply",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js fix --apply",
       "category": "utility"
     },
     {
       "npmCommand": "mdc:fix-file",
-      "scriptPath": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:status",
-      "scriptPath": "node agents/_store/scripts/enhanced-cursor-setup.js status",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js status",
       "category": "utility"
     },
     {
       "npmCommand": "aai:analyze-deps",
-      "scriptPath": "node agents/_store/scripts/enhanced-dependency-analyzer.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js",
       "category": "analysis"
     },
     {
       "npmCommand": "aai:analyze-delete",
-      "scriptPath": "node agents/_store/scripts/enhanced-dependency-analyzer.js delete",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js delete",
       "category": "analysis"
     },
     {
       "npmCommand": "aai:analyze-edit",
-      "scriptPath": "node agents/_store/scripts/enhanced-dependency-analyzer.js edit",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js edit",
       "category": "analysis"
     },
     {
       "npmCommand": "aai:analyze-move",
-      "scriptPath": "node agents/_store/scripts/enhanced-dependency-analyzer.js move",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js move",
       "category": "analysis"
     },
     {
       "npmCommand": "safe-echo",
-      "scriptPath": "node agents/_store/scripts/safe-echo.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/safe-echo.js",
       "category": "utility"
     },
     {
       "npmCommand": "msg",
-      "scriptPath": "node agents/_store/scripts/safe-echo.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/safe-echo.js",
       "category": "utility"
     },
     {
       "npmCommand": "silent",
-      "scriptPath": "node agents/_store/scripts/silent-output.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/silent-output.js",
       "category": "utility"
     },
     {
       "npmCommand": "out",
-      "scriptPath": "node agents/_store/scripts/silent-output.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/silent-output.js",
       "category": "utility"
     },
     {
       "npmCommand": "mdc:init",
-      "scriptPath": "node agents/_store/scripts/mdc-dependency-tracker.js init",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js init",
       "category": "utility"
     },
     {
       "npmCommand": "mdc:watch",
-      "scriptPath": "node agents/_store/scripts/mdc-dependency-tracker.js watch",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js watch",
       "category": "utility"
     },
     {
       "npmCommand": "mdc:scan",
-      "scriptPath": "node agents/_store/scripts/mdc-dependency-tracker.js scan",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js scan",
       "category": "utility"
     },
     {
       "npmCommand": "mdc:cursor-setup",
-      "scriptPath": "node agents/_store/scripts/cursor-mdc-integration.js setup",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/cursor-mdc-integration.js setup",
       "category": "utility"
     },
     {
       "npmCommand": "mdc:cursor-status",
-      "scriptPath": "node agents/_store/scripts/cursor-mdc-integration.js status",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/cursor-mdc-integration.js status",
       "category": "utility"
     },
     {
       "npmCommand": "mdc:cursor-watch",
-      "scriptPath": "node agents/_store/scripts/cursor-mdc-watcher.js",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/cursor-mdc-watcher.js",
       "category": "utility"
     },
     {
       "npmCommand": "aai:task-init",
-      "scriptPath": "node agents/_store/scripts/aai-task-manager.js init",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js init",
       "category": "utility"
     },
     {
       "npmCommand": "aai:task-analyze",
-      "scriptPath": "node agents/_store/scripts/aai-task-manager.js analyze",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js analyze",
       "category": "analysis"
     },
     {
       "npmCommand": "aai:task-execute",
-      "scriptPath": "node agents/_store/scripts/aai-task-manager.js execute",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js execute",
       "category": "utility"
     },
     {
       "npmCommand": "aai:task-status",
-      "scriptPath": "node agents/_store/scripts/aai-task-manager.js status",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js status",
       "category": "utility"
     },
     {
       "npmCommand": "aai:task-auto-manage",
-      "scriptPath": "node agents/_store/scripts/aai-task-manager.js auto-manage",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js auto-manage",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:aai-init",
-      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js init",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js init",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:aai-request",
-      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js request",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js request",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:aai-quick",
-      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js quick",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js quick",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:aai-auto-manage",
-      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js auto-manage",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js auto-manage",
       "category": "utility"
     },
     {
       "npmCommand": "cursor:aai-status",
-      "scriptPath": "node agents/_store/scripts/cursor-aai-integration.js status",
+      "scriptPath": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js status",
       "category": "utility"
     }
   ],

@@ -55,7 +55,7 @@
       "type": "shell",
       "command": "node",
       "args": [
-        "agents/cursor-integration/file-watcher.js"
+        ".cursor/rules/agents/cursor-integration/file-watcher.js"
       ],
       "group": "build",
       "isBackground": true,
@@ -87,7 +87,7 @@
       "type": "shell",
       "command": "node",
       "args": [
-        "agents/_store/scripts/mdc-dependency-tracker.js",
+        ".cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js",
         "init"
       ],
       "group": "build",
@@ -104,7 +104,7 @@
       "type": "shell",
       "command": "node",
       "args": [
-        "agents/_store/scripts/mdc-dependency-tracker.js",
+        ".cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js",
         "watch"
       ],
       "group": "build",
@@ -121,7 +121,7 @@
       "type": "shell",
       "command": "node",
       "args": [
-        "agents/_store/scripts/mdc-dependency-tracker.js",
+        ".cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js",
         "scan"
       ],
       "group": "build",
@@ -137,7 +137,7 @@
       "type": "shell",
       "command": "node",
       "args": [
-        "agents/_store/scripts/mdc-dependency-tracker.js",
+        ".cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js",
         "status"
       ],
       "group": "test",

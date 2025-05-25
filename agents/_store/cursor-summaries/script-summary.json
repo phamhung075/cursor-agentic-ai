@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T14:26:52.191Z",
+  "timestamp": "2025-05-25T14:39:48.764Z",
   "totalScripts": 32,
   "categories": 7,
   "improvements": 0,
@@ -7,8 +7,8 @@
     {
       "name": "enhanced-dependency-analyzer.js",
       "category": "analysis",
-      "path": "agents/_store/scripts/enhanced-dependency-analyzer.js",
-      "quickCommand": "node agents/_store/scripts/enhanced-dependency-analyzer.js"
+      "path": ".cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js",
+      "quickCommand": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js"
     }
   ],
   "topRecommendations": []

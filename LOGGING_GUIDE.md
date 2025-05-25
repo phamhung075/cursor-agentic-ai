@@ -24,7 +24,7 @@ Your AI agent now has a comprehensive logging system that tracks all operations,
 
 ### 📁 **Dual Output**
 - **Console**: Real-time colored output with timestamps
-- **File**: Detailed logs saved to `agents/_store/logs/`
+- **File**: Detailed logs saved to `.cursor/rules/agents/_store/logs/`
 
 ## Usage
 
@@ -33,7 +33,7 @@ The logger automatically initializes when you start the agent:
 
 ```bash
 # Interactive mode with logging
-node agents/self-improvement/index.js
+node .cursor/rules/agents/self-improvement/index.js
 
 # Test mode with logging
 npm run AAI:test-logging
@@ -92,7 +92,7 @@ The logging system tracks comprehensive metrics:
 ## Log File Structure
 
 ### 📁 **File Location**
-Log files are stored in: `agents/_store/logs/`
+Log files are stored in: `.cursor/rules/agents/_store/logs/`
 
 ### 📝 **File Naming**
 - Format: `agent-{timestamp}-{random}.log`
@@ -141,7 +141,7 @@ Each log file contains:
 Set log level via environment variable:
 ```bash
 export LOG_LEVEL=DEBUG
-node agents/self-improvement/index.js
+node .cursor/rules/agents/self-improvement/index.js
 ```
 
 Available levels: `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`
@@ -151,7 +151,7 @@ Available levels: `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`
 ### 🚨 **Common Issues**
 
 1. **Log files not created**
-   - Check if `agents/_store/logs/` directory exists
+   - Check if `.cursor/rules/agents/_store/logs/` directory exists
    - Verify write permissions
 
 2. **Too verbose logging**
@@ -164,7 +164,7 @@ Available levels: `ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`
 
 ### 🔍 **Debugging**
 - Use `logs status` to check current metrics
-- Check log files in `agents/_store/logs/`
+- Check log files in `.cursor/rules/agents/_store/logs/`
 - Increase log level for more detail
 - Use `logs summary` for session overview
 
@@ -203,9 +203,9 @@ Use the metrics to monitor:
 
 ## Quick Start
 
-1. **Start the agent**: `node agents/self-improvement/index.js`
+1. **Start the agent**: `node .cursor/rules/agents/self-improvement/index.js`
 2. **Check status**: `logs status`
-3. **View logs**: Check `agents/_store/logs/` directory
+3. **View logs**: Check `.cursor/rules/agents/_store/logs/` directory
 4. **Adjust level**: `logs level DEBUG` for more detail
 5. **Get summary**: `logs summary` when done
 

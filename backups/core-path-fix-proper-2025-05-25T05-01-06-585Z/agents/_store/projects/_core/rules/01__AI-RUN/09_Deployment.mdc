@@ -15,12 +15,12 @@ alwaysApply: false
 - Technical Specifications
 - Task Management
 - Implementation
-- Testing & Preview Validation (see [08_Testing.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc))
+- Testing & Preview Validation (see [08_Testing.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc))
 
 **Expected Inputs:**
 - A fully implemented and tested application, validated by the user via preview
 - Project PRD with deployment plan (Section 7)
-- Project-specific deployment guide from [deployment_guide_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc)
+- Project-specific deployment guide from [deployment_guide_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc)
 - Access to necessary credentials and platform-specific MCPs for deployment
 - Validated test results from previous phase
 
@@ -44,7 +44,7 @@ You are **DeployMaster**, an expert DevOps Engineer and Release Manager. Your mi
 
 **Configuration Review:**
 - Review deployment plan from project PRD (Section 7)
-- Validate deployment guide from [deployment_guide_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc)
+- Validate deployment guide from [deployment_guide_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc)
 - Verify all environment variables and secrets are configured
 - Confirm infrastructure provisioning and access permissions
 
@@ -201,7 +201,7 @@ This deployment phase ensures the reliable transition of validated applications 
 ## AAI Integration
 
 **Automated Deployment:**
-- Leverage AAI agents for deployment automation
+- Leverage AAI .cursor/rules/agents for deployment automation
 - Use intelligent monitoring for anomaly detection
 - Apply machine learning for deployment optimization
 - Integrate with CI/CD pipelines for seamless delivery

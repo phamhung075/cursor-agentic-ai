@@ -797,7 +797,7 @@ This file contains a list of project ideas that can be used as starting points f
 ### 73. AI Workflow Audit & Automation Suggester
 
 *   **Problem:** Businesses (especially SMEs, freelancers) are unaware of tasks within their workflows that could be easily automated, losing time and efficiency.
-*   **Solution:** SaaS where users describe or record (e.g., via browser extension "shadowing") their workflows. AI analyzes the process, identifies high-ROI automation opportunities, suggests specific tools (Zapier, Make, etc.) or micro-AI agents, and visualizes the potential time/cost savings.
+*   **Solution:** SaaS where users describe or record (e.g., via browser extension "shadowing") their workflows. AI analyzes the process, identifies high-ROI automation opportunities, suggests specific tools (Zapier, Make, etc.) or micro-AI .cursor/rules/agents, and visualizes the potential time/cost savings.
 *   **Key Features (MVP):** Workflow input (text description), AI analysis for automation potential, Suggestion of automatable tasks & tools, Basic time/cost saving estimation.
 *   **Potential Monetization:** Freemium (basic audit), Subscription for advanced features (browser shadowing analysis, interactive process rebuilding suggestions, direct integration suggestions for Zapier/Make).
 *   **Design Style:** Analytical, Process-oriented, Actionable.

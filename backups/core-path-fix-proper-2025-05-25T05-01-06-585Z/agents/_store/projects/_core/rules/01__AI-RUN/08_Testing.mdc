@@ -16,12 +16,12 @@ This document guides you through comprehensive testing and quality assurance of 
 ## Prerequisites
 
 Before starting testing and quality assurance, ensure you have completed:
-- ✅ **Idea Document** ([01_Idea.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) - Well-defined project concept
-- ✅ **Market Research** ([02_Market_Research.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)) - Comprehensive market validation
-- ✅ **Core Concept** ([03_Core_Concept.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) - Refined, market-validated concept
-- ✅ **PRD Generation** ([04_PRD_Generation.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) - Comprehensive product requirements
-- ✅ **Technical Specifications** ([05_Specs_Docs.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) - Detailed technical documentation
-- ✅ **Implementation** ([07_Start_Building.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)) - Completed application implementation
+- ✅ **Idea Document** ([01_Idea.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) - Well-defined project concept
+- ✅ **Market Research** ([02_Market_Research.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)) - Comprehensive market validation
+- ✅ **Core Concept** ([03_Core_Concept.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) - Refined, market-validated concept
+- ✅ **PRD Generation** ([04_PRD_Generation.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) - Comprehensive product requirements
+- ✅ **Technical Specifications** ([05_Specs_Docs.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) - Detailed technical documentation
+- ✅ **Implementation** ([07_Start_Building.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)) - Completed application implementation
 
 ## Purpose
 
@@ -643,7 +643,7 @@ Next steps needed:
 ```
 
 The AAI system will guide you through:
-1. **Deployment** ([09_Deployment.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc)) - Production deployment and launch
+1. **Deployment** ([09_Deployment.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc)) - Production deployment and launch
 
 ## Best Practices
 

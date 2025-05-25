@@ -1,24 +1,24 @@
 # 🗂️ Script & Test Organization Rules
 
-## 📋 IMPORTANT RULES FOR AI AGENTS
+## 📋 IMPORTANT RULES FOR AI .cursor/rules/agents
 
 ### 🎯 **MANDATORY STORAGE LOCATIONS**
 # 🗂️ Script & Test Organization Rules
 
-## 📋 IMPORTANT RULES FOR AI AGENTS
+## 📋 IMPORTANT RULES FOR AI .cursor/rules/agents
 
 ### 🎯 **MANDATORY STORAGE LOCATIONS**
 
-All scripts and tests created by AI agents for improvement or management MUST be stored in:
+All scripts and tests created by AI .cursor/rules/agents for improvement or management MUST be stored in:
 
 ```
-agents/_store/scripts/     - All utility scripts
-agents/_store/tests/       - All test files
+.cursor/rules/agents/_store/scripts/     - All utility scripts
+.cursor/rules/agents/_store/tests/       - All test files
 ```
 
 ### 📂 **CATEGORIZATION SYSTEM**
 
-#### **agents/_store/scripts/** Categories:
+#### **.cursor/rules/agents/_store/scripts/** Categories:
 - `core/` - Core framework management
 - `backup/` - Backup and recovery utilities
 - `analysis/` - Analysis and reporting tools
@@ -26,7 +26,7 @@ agents/_store/tests/       - All test files
 - `migration/` - Migration and conversion tools
 - `utility/` - General purpose utilities
 
-#### **agents/_store/tests/** Categories:
+#### **.cursor/rules/agents/_store/tests/** Categories:
 - `integration/` - Integration tests
 - `unit/` - Unit tests
 - `system/` - System tests
@@ -34,7 +34,7 @@ agents/_store/tests/       - All test files
 
 ### 🗃️ **CORE FILE MANAGEMENT SYSTEM**
 
-**CRITICAL:** For all operations involving `agents/_store/projects/_core/` files:
+**CRITICAL:** For all operations involving `.cursor/rules/agents/_store/projects/_core/` files:
 
 #### **🚨 MANDATORY FILE ACCESS:**
 ```javascript
@@ -105,7 +105,7 @@ All new scripts MUST be registered in `package.json`:
 ```json
 {
   "scripts": {
-    "AAI:your-script": "node agents/_store/scripts/your_script.js"
+    "AAI:your-script": "node .cursor/rules/agents/_store/scripts/your_script.js"
   }
 }
 ```
@@ -122,10 +122,10 @@ npm run AAI:scripts-help        # Show available scripts and usage
 
 ### 🛠️ **AGENT RESPONSIBILITIES**
 
-When creating new utilities, AI agents MUST:
+When creating new utilities, AI .cursor/rules/agents MUST:
 
 1. 🔍 **Check existing scripts** - Avoid duplication
-2. 📂 **Use proper location** - `agents/_store/scripts/` or `agents/_store/tests/`
+2. 📂 **Use proper location** - `.cursor/rules/agents/_store/scripts/` or `.cursor/rules/agents/_store/tests/`
 3. 🏷️ **Apply categorization** - Place in appropriate subdirectory
 4. 📝 **Document thoroughly** - Purpose, usage, examples
 5. 🔗 **Register in package.json** - For easy access
@@ -134,6 +134,6 @@ When creating new utilities, AI agents MUST:
 
 ---
 
-**Status:** ✅ **ACTIVE RULES - ALL AGENTS MUST FOLLOW**
+**Status:** ✅ **ACTIVE RULES - ALL .cursor/rules/agents MUST FOLLOW**
 **Last Updated:** 2025-05-24
 **Core Management:** ✅ **FULLY OPERATIONAL**

@@ -51,4 +51,4 @@ sed -i '' -e 's/@\([^\.]*\.mdc\)/[\1]/g' -e 's/\/\.\/\/g' -e 's/\.\/.cursor\/.cu
 
 ---
 
-*This documentation center helps AI agents quickly find and apply proven solutions*
+*This documentation center helps AI .cursor/rules/agents quickly find and apply proven solutions*

@@ -3,9 +3,9 @@ description:
 globs:
 alwaysApply: false
 ---
-# 🧠 Quick Self-Improvement Reference v3.0 for AAI Agents
+# 🧠 Quick Self-Improvement Reference v3.0 for AAI .cursor/rules/agents
 
-*Comprehensive guide for AI agents to continuously improve the AAI framework during workflow execution.*
+*Comprehensive guide for AI .cursor/rules/agents to continuously improve the AAI framework during workflow execution.*
 
 ## 🚀 **Agent Activation & Setup**
 
@@ -305,7 +305,7 @@ npm run legacy:improve
 - **Knowledge Base Growth**: Rate of knowledge accumulation
 - **Prediction Accuracy**: Success rate of predictive issue detection
 
-## 🎯 **Best Practices for AI Agents**
+## 🎯 **Best Practices for AI .cursor/rules/agents**
 
 ### **Context Management**
 1. **Always set context** before performing analysis
@@ -340,14 +340,14 @@ npm run legacy:improve
 - **Adaptive Guidance**: Dynamic adjustment of guidance based on project needs
 
 ### **Knowledge Management**
-- **Centralized Learning**: Shared knowledge base across all AAI agents
+- **Centralized Learning**: Shared knowledge base across all AAI .cursor/rules/agents
 - **Pattern Library**: Reusable patterns for common improvement scenarios
 - **Best Practices Repository**: Curated collection of proven improvements
 - **Version Control**: Tracked evolution of framework improvements
 
 ## Purpose
 
-The Quick Self-Improvement Reference serves as the comprehensive guide for AAI agents to continuously enhance the framework's effectiveness, ensuring optimal user experience and workflow efficiency through intelligent, context-aware improvements.
+The Quick Self-Improvement Reference serves as the comprehensive guide for AAI .cursor/rules/agents to continuously enhance the framework's effectiveness, ensuring optimal user experience and workflow efficiency through intelligent, context-aware improvements.
 
 ### Key Goals:
 - **Continuous Quality Enhancement**: Systematically improve framework components

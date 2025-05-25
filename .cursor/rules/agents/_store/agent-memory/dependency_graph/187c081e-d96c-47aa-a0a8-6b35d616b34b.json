@@ -1,0 +1,15 @@
+{
+  "id": "187c081e-d96c-47aa-a0a8-6b35d616b34b",
+  "type": "dependency_graph",
+  "content": "{\"dependencies\":[[\"package.json\",{}],[\"src/docs/autoresume.js\",{}],[\"package-lock.json\",{}]],\"reverseDependencies\":[],\"fileHashes\":[[\"package.json\",\"0979a0cbb412dcb80c09378889b9df7f\"],[\"src/docs/autoresume.js\",\"2af378fcc4aa6a4e0aa8ab5719de5490\"],[\"package-lock.json\",\"61772f84e8bed2afaead8a4fd1013d8a\"]],\"lastUpdated\":1748176443428,\"saveCount\":10}",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "content": "{\"dependencies\":[[\"package.json\",{}],[\"src/docs/autoresume.js\",{}],[\"package-lock.json\",{}]],\"reverseDependencies\":[],\"fileHashes\":[[\"package.json\",\"0979a0cbb412dcb80c09378889b9df7f\"],[\"src/docs/autoresume.js\",\"2af378fcc4aa6a4e0aa8ab5719de5490\"],[\"package-lock.json\",\"61772f84e8bed2afaead8a4fd1013d8a\"]],\"lastUpdated\":1748176443428,\"saveCount\":10}",
+    "fileCount": 3,
+    "memoryClass": "agent",
+    "saveId": 1,
+    "timestamp": 1748176443428,
+    "type": "dependency_graph"
+  },
+  "embedding": []
+}

@@ -1,0 +1,68 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# AI Builder Project Workflow
+
+This document outlines the general automated workflow for the "Agentic Coding Framework" project. The process is designed to guide a software development project from initial idea to deployment, orchestrated by AI .cursor/rules/agents and structured prompts.
+
+## Workflow Diagram
+# AI Builder Project Workflow
+
+This document outlines the general automated workflow for the "Agentic Coding Framework" project. The process is designed to guide a software development project from initial idea to deployment, orchestrated by AI .cursor/rules/agents and structured prompts.
+
+## Workflow Diagram
+
+```mermaid
+flowchart TD
+    A0[Phase 0: Startup & Initialization ([`.cursor/rules/01__AI-RUN/[737](.cursor/rules/01__AI-RUN/00_Getting_Started.mdc)`](.cursor/rules/01__AI-RUN/00_Getting_Started.mdc), [`.cursor/rules/01__AI-RUN/[871](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc))] --> A
+    A[Phase 1: Idea ([`.cursor/rules/01__AI-RUN/[1021](.cursor/rules/01__AI-RUN/01_Idea.mdc)`](.cursor/rules/01__AI-RUN/01_Idea.mdc))] --> B
+    B[Phase 2: Market Research ([`.cursor/rules/01__AI-RUN/[1173](.cursor/rules/01__AI-RUN/02_Market_Research.mdc)`](.cursor/rules/01__AI-RUN/02_Market_Research.mdc))] --> C
+    C[Phase 3: Core Concept ([`.cursor/rules/01__AI-RUN/[1344](.cursor/rules/01__AI-RUN/03_Core_Concept.mdc)`](.cursor/rules/01__AI-RUN/03_Core_Concept.mdc))] --> D
+    D[Phase 4: PRD Generation ([`.cursor/rules/01__AI-RUN/[1511](.cursor/rules/01__AI-RUN/04_PRD_Generation.mdc)`](.cursor/rules/01__AI-RUN/04_PRD_Generation.mdc))] --> E
+    E[Phase 5: Specifications & Technical Docs ([`.cursor/rules/01__AI-RUN/[1699](.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc)`](.cursor/rules/01__AI-RUN/05_Specs_Docs.mdc))] --> F
+    F[Phase 6: Task Manager ([`.cursor/rules/01__AI-RUN/[1860](.cursor/rules/01__AI-RUN/06_Task_Manager.mdc)`](.cursor/rules/01__AI-RUN/06_Task_Manager.mdc) & [`.cursor/rules/02__AI-DOCS/TaskManagement/[2006](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)`](.cursor/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc))] --> G
+    G[Phase 6.5: README Generation (in [`.cursor/rules/01__AI-RUN/[1938](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)`](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc))] --> H
+    H[Phase 7: Implementation ([`.cursor/rules/01__AI-RUN/[2329](.cursor/rules/01__AI-RUN/07_Start_Building.mdc)`](.cursor/rules/01__AI-RUN/07_Start_Building.mdc))] --> I
+    I[Phase 8: Testing ([`.cursor/rules/01__AI-RUN/[2493](.cursor/rules/01__AI-RUN/08_Testing.mdc)`](.cursor/rules/01__AI-RUN/08_Testing.mdc))] --> J
+    J[Phase 9: Deployment ([`.cursor/rules/01__AI-RUN/[2646](.cursor/rules/01__AI-RUN/09_Deployment.mdc)`](.cursor/rules/01__AI-RUN/09_Deployment.mdc))] --> K
+    K[🎉 Complete Project!]
+
+    A0 -- Reads & Continuously Updates --> PSJ([project_session_state.json])
+    A -- Creates --> [2927](.cursor/rules/projet/01_Idea/idea_document.mdc)(.cursor/rules/projet/01_Idea/idea_document.mdc)
+    A --> projet_01_Idea[projet/01_Idea/]
+    A -- User Validation --> B
+    B -- Creates --> [3124](.cursor/rules/projet/02_Market_Research/market_research.mdc)(.cursor/rules/projet/02_Market_Research/market_research.mdc)
+    B --> projet_02_Market[projet/02_Market_Research/]
+    B -- User Validation (Optional Review) --> C
+    C -- Creates --> [3050](.cursor/rules/01__AI-RUN/03_Core_Concept.mdc)(.cursor/rules/projet/03_Core_Concept/core_concept.mdc)
+    C --> projet_03_Core[projet/03_Core_Concept/]
+    C -- User Validation --> D
+    D -- Creates --> [3588](.cursor/rules/projet/PRD_template/project_prd.mdc)(.cursor/rules/projet/PRD_template/project_prd.mdc)
+    D --> projet_PRD[projet/PRD_template/]
+    D -- User Validation (Optional Review) --> E
+    E -- Creates/Populates --> TechDocs[Files in 02__AI-DOCS/ & 03__SPECS/]
+    E -- Creates/Updates --> SpecsIndex([.cursor/rules/03__SPECS/documentation_index.mdc])
+    F -- Creates --> tasks_json[tasks/tasks.json]
+    F -- User Validation --> G
+    G -- Finalization --> H
+    H -- Implements --> SourceCode[Source Code & Features]
+    H -- User Review (Iterative) --> I
+    I -- Tests --> TestedCode[Fully Tested Application]
+    I -- User Validation --> J
+    J -- Deploys --> LiveApp[🚀 Live Application]
+    J -- User Validation --> K
+```
+
+## Key Operational Principles:
+
+*   **Orchestration:** The entire workflow is primarily orchestrated by the script and logic defined in [3906](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)(.cursor/rules/01__AI-RUN/01_AutoPilot.mdc).
+*   **State Management:** The [project_session_state.json](.cursor/rules/project_session_state.json) file is critical. It's read at startup and **continuously updated** by the AI agent after every significant step within each phase to track progress, store key information, and manage state.
+*   **Sequential Prompts:** Each phase (1-9) is driven by a corresponding `.mdc` file in the `.cursor/rules/01__AI-RUN/` directory, which defines the AI's role and tasks for that phase.
+*   **Document Generation:** Specific documents are generated at each phase (e.g., [5006](.cursor/rules/projet/01_Idea/idea_document.mdc)(.cursor/rules/projet/01_Idea/idea_document.mdc), [5191](.cursor/rules/projet/PRD_template/project_prd.mdc)(.cursor/rules/projet/PRD_template/project_prd.mdc), [tasks.json](.cursor/rules/tasks/tasks.json), serving as inputs for subsequent phases. Technical documentation and specifications in `.cursor/rules/02__AI-DOCS/` and `.cursor/rules/03__SPECS/` are created from templates.
+*   **User Validation:** The workflow includes explicit points for user validation and intervention, as indicated in the diagram and detailed in [5035](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)(.cursor/rules/01__AI-RUN/01_AutoPilot.mdc).
+*   **MCP Integration:** The AI .cursor/rules/agents leverage Model Context Protocol (MCP) servers for extended capabilities like research, tool usage, and interaction with external services.
+*   **Spec-Driven Development:** The process emphasizes adherence to specifications detailed in the PRD and technical documents.
+
+This diagram provides a high-level overview. For detailed step-by-step logic, refer to [5493](.cursor/rules/01__AI-RUN/01_AutoPilot.mdc)(.cursor/rules/01__AI-RUN/01_AutoPilot.mdc) and [6293](.cursor/rules/logic.mdc)(.cursor/rules/logic.mdc).

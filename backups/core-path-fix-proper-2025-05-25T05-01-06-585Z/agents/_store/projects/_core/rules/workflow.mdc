@@ -5,12 +5,12 @@ alwaysApply: false
 ---
 # AI Builder Project Workflow
 
-This document outlines the general automated workflow for the "Agentic Coding Framework" project. The process is designed to guide a software development project from initial idea to deployment, orchestrated by AI agents and structured prompts.
+This document outlines the general automated workflow for the "Agentic Coding Framework" project. The process is designed to guide a software development project from initial idea to deployment, orchestrated by AI .cursor/rules/agents and structured prompts.
 
 ## Workflow Diagram
 # AI Builder Project Workflow
 
-This document outlines the general automated workflow for the "Agentic Coding Framework" project. The process is designed to guide a software development project from initial idea to deployment, orchestrated by AI agents and structured prompts.
+This document outlines the general automated workflow for the "Agentic Coding Framework" project. The process is designed to guide a software development project from initial idea to deployment, orchestrated by AI .cursor/rules/agents and structured prompts.
 
 ## Workflow Diagram
 
@@ -62,7 +62,7 @@ flowchart TD
 *   **Sequential Prompts:** Each phase (1-9) is driven by a corresponding `.mdc` file in the `01__AI-RUN/` directory, which defines the AI's role and tasks for that phase.
 *   **Document Generation:** Specific documents are generated at each phase (e.g., [idea_document.mdc](projet/01_Idea/idea_document.mdc), [project_prd.mdc](projet/PRD_template/project_prd.mdc), [tasks.json](tasks/tasks.json), serving as inputs for subsequent phases. Technical documentation and specifications in `02__AI-DOCS/` and `03__SPECS/` are created from templates.
 *   **User Validation:** The workflow includes explicit points for user validation and intervention, as indicated in the diagram and detailed in [01_AutoPilot.mdc](01__AI-RUN/01_AutoPilot.mdc).
-*   **MCP Integration:** The AI agents leverage Model Context Protocol (MCP) servers for extended capabilities like research, tool usage, and interaction with external services.
+*   **MCP Integration:** The AI .cursor/rules/agents leverage Model Context Protocol (MCP) servers for extended capabilities like research, tool usage, and interaction with external services.
 *   **Spec-Driven Development:** The process emphasizes adherence to specifications detailed in the PRD and technical documents.
 
 This diagram provides a high-level overview. For detailed step-by-step logic, refer to [01_AutoPilot.mdc](01__AI-RUN/01_AutoPilot.mdc) and [logic.mdc](logic.mdc).

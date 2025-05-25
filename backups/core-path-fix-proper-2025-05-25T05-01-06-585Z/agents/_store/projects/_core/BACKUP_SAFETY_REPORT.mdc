@@ -14,9 +14,9 @@ Your request for proper backups has been implemented. You now have **MULTIPLE la
 - **Coverage**: ALL project files including `.cursor/rules`
 
 ### **2. Multiple File System Backups**
-- **agents/_store/project-memory/pre-improved-fix-backup/** - Before improved script
-- **agents/_store/project-memory/comprehensive-backup/** - Complete directory backup
-- **agents/_store/project-memory/backups/** - Individual file backups (timestamped)
+- **.cursor/rules/agents/_store/project-memory/pre-improved-fix-backup/** - Before improved script
+- **.cursor/rules/agents/_store/project-memory/comprehensive-backup/** - Complete directory backup
+- **.cursor/rules/agents/_store/project-memory/backups/** - Individual file backups (timestamped)
 - **backups/cursor-rules-[timestamp]/** - Fresh timestamped backup (today)
 
 ### **3. Emergency Recovery Scripts**
@@ -48,7 +48,7 @@ git checkout f021b58 -- rules/01__AI-RUN/00_Getting_Started.mdc
 cp -r backups/cursor-rules-2025-05-24_10-*/  .cursor/rules/
 
 # Or use the emergency restore script
-node agents/_store/projects/emergency_restore.js
+node .cursor/rules/agents/_store/projects/emergency_restore.js
 ```
 
 ### **Verify Backup Integrity**
@@ -58,7 +58,7 @@ git log --oneline -5
 
 # List available backups
 ls -la backups/
-ls -la agents/_store/project-memory/*/
+ls -la .cursor/rules/agents/_store/project-memory/*/
 ```
 
 ## ⚠️ **SAFE TO PROCEED**

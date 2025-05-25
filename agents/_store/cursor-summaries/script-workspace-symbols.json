@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-05-25T14:26:52.182Z",
+  "timestamp": "2025-05-25T14:39:48.516Z",
   "scriptSymbols": [
     {
       "name": "enhanced-dependency-analyzer.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/enhanced-dependency-analyzer.js",
+      "location": ".cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js",
       "detail": "No description available",
       "category": "analysis",
       "containerName": "AAI Scripts/analysis"
@@ -12,7 +12,7 @@
     {
       "name": "comprehensive-cleanup.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/comprehensive-cleanup.js",
+      "location": ".cursor/rules/agents/_store/scripts/comprehensive-cleanup.js",
       "detail": "No description available",
       "category": "cleanup",
       "containerName": "AAI Scripts/cleanup"
@@ -20,7 +20,7 @@
     {
       "name": "memory-cleanup.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/memory-cleanup.js",
+      "location": ".cursor/rules/agents/_store/scripts/memory-cleanup.js",
       "detail": "No description available",
       "category": "cleanup",
       "containerName": "AAI Scripts/cleanup"
@@ -28,7 +28,7 @@
     {
       "name": "agent-intelligence-enhancer.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/agent-intelligence-enhancer.js",
+      "location": ".cursor/rules/agents/_store/scripts/agent-intelligence-enhancer.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -36,7 +36,7 @@
     {
       "name": "check-running-processes.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/check-running-processes.js",
+      "location": ".cursor/rules/agents/_store/scripts/check-running-processes.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -44,7 +44,7 @@
     {
       "name": "cursor-mdc-integration.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/cursor-mdc-integration.js",
+      "location": ".cursor/rules/agents/_store/scripts/cursor-mdc-integration.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -52,7 +52,7 @@
     {
       "name": "cursor-mdc-watcher.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/cursor-mdc-watcher.js",
+      "location": ".cursor/rules/agents/_store/scripts/cursor-mdc-watcher.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -60,7 +60,7 @@
     {
       "name": "demo-aai-cursor-integration.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/demo-aai-cursor-integration.js",
+      "location": ".cursor/rules/agents/_store/scripts/demo-aai-cursor-integration.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -68,7 +68,7 @@
     {
       "name": "enhanced-cursor-setup.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/enhanced-cursor-setup.js",
+      "location": ".cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -76,7 +76,7 @@
     {
       "name": "enhanced-mdc-path-fixer.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/enhanced-mdc-path-fixer.js",
+      "location": ".cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -84,7 +84,7 @@
     {
       "name": "enhanced-task-converter.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/enhanced-task-converter.js",
+      "location": ".cursor/rules/agents/_store/scripts/enhanced-task-converter.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -92,7 +92,7 @@
     {
       "name": "fix_single_mdc.py",
       "kind": "Function",
-      "location": "agents/_store/scripts/fix_single_mdc.py",
+      "location": ".cursor/rules/agents/_store/scripts/fix_single_mdc.py",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -100,7 +100,7 @@
     {
       "name": "install-agent-ai.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/install-agent-ai.js",
+      "location": ".cursor/rules/agents/_store/scripts/install-agent-ai.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -108,7 +108,7 @@
     {
       "name": "launch-aai-complete.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/launch-aai-complete.js",
+      "location": ".cursor/rules/agents/_store/scripts/launch-aai-complete.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -116,7 +116,7 @@
     {
       "name": "mdc-dependency-tracker.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/mdc-dependency-tracker.js",
+      "location": ".cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -124,7 +124,7 @@
     {
       "name": "performance-optimizer.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/performance-optimizer.js",
+      "location": ".cursor/rules/agents/_store/scripts/performance-optimizer.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -132,7 +132,7 @@
     {
       "name": "protect-enhanced-cursor-settings.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/protect-enhanced-cursor-settings.js",
+      "location": ".cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -140,7 +140,7 @@
     {
       "name": "replace_file_links.sh",
       "kind": "Function",
-      "location": "agents/_store/scripts/replace_file_links.sh",
+      "location": ".cursor/rules/agents/_store/scripts/replace_file_links.sh",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -148,7 +148,7 @@
     {
       "name": "script_manager.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/script_manager.js",
+      "location": ".cursor/rules/agents/_store/scripts/script_manager.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -156,7 +156,7 @@
     {
       "name": "setup-cursor-integration.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/setup-cursor-integration.js",
+      "location": ".cursor/rules/agents/_store/scripts/setup-cursor-integration.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -164,7 +164,7 @@
     {
       "name": "setup-env.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/setup-env.js",
+      "location": ".cursor/rules/agents/_store/scripts/setup-env.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -172,7 +172,7 @@
     {
       "name": "silent-output.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/silent-output.js",
+      "location": ".cursor/rules/agents/_store/scripts/silent-output.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -180,7 +180,7 @@
     {
       "name": "smart-context-tracker.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/smart-context-tracker.js",
+      "location": ".cursor/rules/agents/_store/scripts/smart-context-tracker.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -188,7 +188,7 @@
     {
       "name": "start-cursor-aai.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/start-cursor-aai.js",
+      "location": ".cursor/rules/agents/_store/scripts/start-cursor-aai.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -196,7 +196,7 @@
     {
       "name": "sync-memory.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/sync-memory.js",
+      "location": ".cursor/rules/agents/_store/scripts/sync-memory.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -204,7 +204,7 @@
     {
       "name": "sync-preserved-to-memory.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/sync-preserved-to-memory.js",
+      "location": ".cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -212,7 +212,7 @@
     {
       "name": "update-cursor-settings.js",
       "kind": "Function",
-      "location": "agents/_store/scripts/update-cursor-settings.js",
+      "location": ".cursor/rules/agents/_store/scripts/update-cursor-settings.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -220,7 +220,7 @@
     {
       "name": "update_files.sh",
       "kind": "Function",
-      "location": "agents/_store/scripts/update_files.sh",
+      "location": ".cursor/rules/agents/_store/scripts/update_files.sh",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -228,7 +228,7 @@
     {
       "name": "validate_mdc_paths.sh",
       "kind": "Function",
-      "location": "agents/_store/scripts/validate_mdc_paths.sh",
+      "location": ".cursor/rules/agents/_store/scripts/validate_mdc_paths.sh",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -258,434 +258,434 @@
     {
       "name": "launch",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/launch-aai-complete.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/launch-aai-complete.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:cleanup",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/comprehensive-cleanup.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/comprehensive-cleanup.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:memory-cleanup",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/memory-cleanup.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/memory-cleanup.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:intelligence-enhance",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/agent-intelligence-enhancer.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/agent-intelligence-enhancer.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:context-track",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/smart-context-tracker.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/smart-context-tracker.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:performance-optimize",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/performance-optimizer.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/performance-optimizer.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:sync-preserved",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/sync-preserved-to-memory.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:sync-preserved-status",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/sync-preserved-to-memory.js status",
+      "detail": "node .cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:test-agent",
       "kind": "Function",
-      "detail": "node agents/_store/tests/test_new_agent.js",
+      "detail": "node .cursor/rules/agents/_store/tests/test_new_agent.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:test-integration",
       "kind": "Function",
-      "detail": "node agents/_store/tests/test_autopilot_integration.js",
+      "detail": "node .cursor/rules/agents/_store/tests/test_autopilot_integration.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:test-system",
       "kind": "Function",
-      "detail": "node agents/_store/tests/test_new_system.js",
+      "detail": "node .cursor/rules/agents/_store/tests/test_new_system.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:test-dependencies",
       "kind": "Function",
-      "detail": "node agents/_store/tests/test_dependency_tracking.js",
+      "detail": "node .cursor/rules/agents/_store/tests/test_dependency_tracking.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:setup-env",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/setup-env.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/setup-env.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:install-to",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/install-agent-ai.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/install-agent-ai.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:sync-memory",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/sync-memory.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/sync-memory.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:sync-status",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/sync-memory.js status",
+      "detail": "node .cursor/rules/agents/_store/scripts/sync-memory.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:sync-up",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/sync-memory.js up",
+      "detail": "node .cursor/rules/agents/_store/scripts/sync-memory.js up",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:sync-down",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/sync-memory.js down",
+      "detail": "node .cursor/rules/agents/_store/scripts/sync-memory.js down",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:sync-both",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/sync-memory.js both",
+      "detail": "node .cursor/rules/agents/_store/scripts/sync-memory.js both",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:fix-embeddings",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/sync-memory.js fix-embeddings",
+      "detail": "node .cursor/rules/agents/_store/scripts/sync-memory.js fix-embeddings",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:scripts-analyze",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/script_manager.js analyze",
+      "detail": "node .cursor/rules/agents/_store/scripts/script_manager.js analyze",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:scripts-list",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/script_manager.js list",
+      "detail": "node .cursor/rules/agents/_store/scripts/script_manager.js list",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:core-monitor",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/core/core_file_monitor.js start",
+      "detail": "node .cursor/rules/agents/_store/scripts/core/core_file_monitor.js start",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "AAI:core-monitor-status",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/core/core_file_monitor.js status",
+      "detail": "node .cursor/rules/agents/_store/scripts/core/core_file_monitor.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:setup",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/enhanced-cursor-setup.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:setup-enhanced",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/enhanced-cursor-setup.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:update-settings",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/update-cursor-settings.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/update-cursor-settings.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:settings-status",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/update-cursor-settings.js status",
+      "detail": "node .cursor/rules/agents/_store/scripts/update-cursor-settings.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:settings-restore",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/update-cursor-settings.js restore",
+      "detail": "node .cursor/rules/agents/_store/scripts/update-cursor-settings.js restore",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:protect",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/protect-enhanced-cursor-settings.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:protect-enable",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --enable",
+      "detail": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js --enable",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:protect-monitor",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --monitor",
+      "detail": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js --monitor",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:protect-restore",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --restore",
+      "detail": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js --restore",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "mdc:status",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/mdc-dependency-tracker.js status",
+      "detail": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "mdc:fix",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
+      "detail": "node .cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "mdc:fix-apply",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix --apply",
+      "detail": "node .cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js fix --apply",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "mdc:fix-file",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
+      "detail": "node .cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js fix",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:status",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/enhanced-cursor-setup.js status",
+      "detail": "node .cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "aai:analyze-deps",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/enhanced-dependency-analyzer.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "aai:analyze-delete",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/enhanced-dependency-analyzer.js delete",
+      "detail": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js delete",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "aai:analyze-edit",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/enhanced-dependency-analyzer.js edit",
+      "detail": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js edit",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "aai:analyze-move",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/enhanced-dependency-analyzer.js move",
+      "detail": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js move",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "safe-echo",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/safe-echo.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/safe-echo.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "msg",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/safe-echo.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/safe-echo.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "silent",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/silent-output.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/silent-output.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "out",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/silent-output.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/silent-output.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "mdc:init",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/mdc-dependency-tracker.js init",
+      "detail": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js init",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "mdc:watch",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/mdc-dependency-tracker.js watch",
+      "detail": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js watch",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "mdc:scan",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/mdc-dependency-tracker.js scan",
+      "detail": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js scan",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "mdc:cursor-setup",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-mdc-integration.js setup",
+      "detail": "node .cursor/rules/agents/_store/scripts/cursor-mdc-integration.js setup",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "mdc:cursor-status",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-mdc-integration.js status",
+      "detail": "node .cursor/rules/agents/_store/scripts/cursor-mdc-integration.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "mdc:cursor-watch",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-mdc-watcher.js",
+      "detail": "node .cursor/rules/agents/_store/scripts/cursor-mdc-watcher.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "aai:task-init",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/aai-task-manager.js init",
+      "detail": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js init",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "aai:task-analyze",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/aai-task-manager.js analyze",
+      "detail": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js analyze",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "aai:task-execute",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/aai-task-manager.js execute",
+      "detail": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js execute",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "aai:task-status",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/aai-task-manager.js status",
+      "detail": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "aai:task-auto-manage",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/aai-task-manager.js auto-manage",
+      "detail": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js auto-manage",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:aai-init",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-aai-integration.js init",
+      "detail": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js init",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:aai-request",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-aai-integration.js request",
+      "detail": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js request",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:aai-quick",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-aai-integration.js quick",
+      "detail": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js quick",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:aai-auto-manage",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-aai-integration.js auto-manage",
+      "detail": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js auto-manage",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
     {
       "name": "cursor:aai-status",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/cursor-aai-integration.js status",
+      "detail": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js status",
       "location": "package.json",
       "containerName": "NPM Scripts"
     }

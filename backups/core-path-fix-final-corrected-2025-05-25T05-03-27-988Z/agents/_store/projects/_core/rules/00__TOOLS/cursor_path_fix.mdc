@@ -7,7 +7,7 @@ alwaysApply: false
 
 ## Overview
 
-This guide helps AI agents systematically identify and fix broken file path links in .mdc files within the cursor rules project structure. All links should use the full path format with proper markdown linking syntax.
+This guide helps AI .cursor/rules/agents systematically identify and fix broken file path links in .mdc files within the cursor rules project structure. All links should use the full path format with proper markdown linking syntax.
 
 ## File Structure Reference
 
@@ -153,7 +153,7 @@ Look for these patterns in each file:
 
 ## Implementation Instructions
 
-### For AI Agents:
+### For AI .cursor/rules/agents:
 1. **Load this guide** before starting any link-fixing tasks
 2. **Scan each .mdc file** systematically for broken links
 3. **Apply fixes** using the reference map above

@@ -53,7 +53,7 @@ alwaysApply: false
 ### **Organizational Benefits:**
 - **Clean workspace root** - No documentation clutter
 - **Consistent structure** - All AI materials organized together
-- **Easy discovery** - Future agents know where to look
+- **Easy discovery** - Future .cursor/rules/agents know where to look
 - **Project separation** - AI docs separate from project code
 
 ### **Technical Benefits:**

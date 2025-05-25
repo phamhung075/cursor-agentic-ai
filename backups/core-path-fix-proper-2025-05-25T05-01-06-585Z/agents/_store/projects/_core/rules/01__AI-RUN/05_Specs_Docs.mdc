@@ -16,10 +16,10 @@ This document guides you through creating comprehensive technical specifications
 ## Prerequisites
 
 Before starting technical specifications, ensure you have completed:
-- ✅ **Idea Document** ([01_Idea.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) - Well-defined project concept
-- ✅ **Market Research** ([02_Market_Research.mdc](agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)) - Comprehensive market validation
-- ✅ **Core Concept** ([03_Core_Concept.mdc](agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) - Refined, market-validated concept
-- ✅ **PRD Generation** ([04_PRD_Generation.mdc](agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) - Comprehensive product requirements
+- ✅ **Idea Document** ([01_Idea.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) - Well-defined project concept
+- ✅ **Market Research** ([02_Market_Research.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)) - Comprehensive market validation
+- ✅ **Core Concept** ([03_Core_Concept.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) - Refined, market-validated concept
+- ✅ **PRD Generation** ([04_PRD_Generation.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) - Comprehensive product requirements
 
 ## Purpose
 
@@ -546,7 +546,7 @@ Next steps needed:
 ```
 
 The AAI system will guide you through:
-1. **Implementation Planning** ([07_Start_Building.mdc](agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)) - Development execution and coordination
+1. **Implementation Planning** ([07_Start_Building.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)) - Development execution and coordination
 
 ## Best Practices
 

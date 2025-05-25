@@ -1,0 +1,13 @@
+{
+  "id": "d60c97ad-6191-41d1-9daf-99007bce6acd",
+  "type": "context_pattern",
+  "content": "{\"context\":\"autopilot\",\"timestamp\":1748160414341}",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "content": "{\"context\":\"autopilot\",\"timestamp\":1748160414341}",
+    "memoryClass": "agent",
+    "timestamp": 1748160414341,
+    "type": "context_pattern"
+  },
+  "embedding": []
+}

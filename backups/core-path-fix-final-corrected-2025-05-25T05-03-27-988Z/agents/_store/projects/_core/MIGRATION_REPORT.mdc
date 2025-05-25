@@ -7,7 +7,7 @@ alwaysApply: false
 
 **Date:** $(date +"%Y-%m-%d %H:%M:%S")
 **Source:** `.cursor/` directory
-**Destination:** `agents/_store/projects/_core`
+**Destination:** `.cursor/rules/agents/_store/projects/_core`
 **Status:** ✅ **COMPLETED SUCCESSFULLY**
 
 ## 📊 Migration Statistics
@@ -48,14 +48,14 @@ alwaysApply: false
 
 ### **For Development Process:**
 1. **🔒 Centralized Framework**: Single source of truth
-2. **🤖 AI-Enhanced Development**: Better context for AI agents
+2. **🤖 AI-Enhanced Development**: Better context for AI .cursor/rules/agents
 3. **📈 Scalability**: Easy replication for new projects
 4. **🔄 Version Control**: Framework updates in Agent AI system
 
 ## 🛠️ **Post-Migration Setup**
 
 ### **Agent AI Integration:**
-- ✅ Core framework accessible at `agents/_store/projects/_core`
+- ✅ Core framework accessible at `.cursor/rules/agents/_store/projects/_core`
 - ✅ Workflow files ready for Agent AI commands
 - ✅ Templates available for project initialization
 - ✅ Documentation integrated into memory system

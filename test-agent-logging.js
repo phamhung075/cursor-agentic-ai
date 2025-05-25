@@ -6,7 +6,7 @@
  * Demonstrates the comprehensive logging capabilities of the AI agent
  */
 
-const SelfImprovementAgent = require('./agents/self-improvement/index.js');
+const SelfImprovementAgent = require('./.cursor/rules/agents/self-improvement/index.js');
 
 async function testAgentLogging() {
   console.log('🧪 Testing AI Agent Logging System');
@@ -55,7 +55,7 @@ async function testAgentLogging() {
     await agent.shutdown();
     
     console.log('\n✅ Logging test completed successfully!');
-    console.log(`📁 Check logs in: agents/_store/logs/`);
+    console.log(`📁 Check logs in: .cursor/rules/agents/_store/logs/`);
     
   } catch (error) {
     console.error('❌ Test failed:', error.message);

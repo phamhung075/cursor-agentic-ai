@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T14:26:52.181Z",
+  "timestamp": "2025-05-25T14:39:48.515Z",
   "source": "AAI Script Manager → Cursor Integration",
   "summary": {
     "totalScripts": 32,
@@ -10,28 +10,28 @@
     "analysis": [
       {
         "name": "enhanced-dependency-analyzer.js",
-        "path": "agents/_store/scripts/enhanced-dependency-analyzer.js",
+        "path": ".cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/enhanced-dependency-analyzer.js"
+              ".cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/enhanced-dependency-analyzer.js"
+              "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/enhanced-dependency-analyzer.js",
+              ".cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js",
               "Add description"
             ]
           }
@@ -50,28 +50,28 @@
     "cleanup": [
       {
         "name": "comprehensive-cleanup.js",
-        "path": "agents/_store/scripts/comprehensive-cleanup.js",
+        "path": ".cursor/rules/agents/_store/scripts/comprehensive-cleanup.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/comprehensive-cleanup.js"
+              ".cursor/rules/agents/_store/scripts/comprehensive-cleanup.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/comprehensive-cleanup.js"
+              "node .cursor/rules/agents/_store/scripts/comprehensive-cleanup.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/comprehensive-cleanup.js",
+              ".cursor/rules/agents/_store/scripts/comprehensive-cleanup.js",
               "Add description"
             ]
           }
@@ -88,28 +88,28 @@
       },
       {
         "name": "memory-cleanup.js",
-        "path": "agents/_store/scripts/memory-cleanup.js",
+        "path": ".cursor/rules/agents/_store/scripts/memory-cleanup.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/memory-cleanup.js"
+              ".cursor/rules/agents/_store/scripts/memory-cleanup.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/memory-cleanup.js"
+              "node .cursor/rules/agents/_store/scripts/memory-cleanup.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/memory-cleanup.js",
+              ".cursor/rules/agents/_store/scripts/memory-cleanup.js",
               "Add description"
             ]
           }
@@ -128,28 +128,28 @@
     "uncategorized": [
       {
         "name": "agent-intelligence-enhancer.js",
-        "path": "agents/_store/scripts/agent-intelligence-enhancer.js",
+        "path": ".cursor/rules/agents/_store/scripts/agent-intelligence-enhancer.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/agent-intelligence-enhancer.js"
+              ".cursor/rules/agents/_store/scripts/agent-intelligence-enhancer.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/agent-intelligence-enhancer.js"
+              "node .cursor/rules/agents/_store/scripts/agent-intelligence-enhancer.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/agent-intelligence-enhancer.js",
+              ".cursor/rules/agents/_store/scripts/agent-intelligence-enhancer.js",
               "Add description"
             ]
           }
@@ -166,28 +166,28 @@
       },
       {
         "name": "check-running-processes.js",
-        "path": "agents/_store/scripts/check-running-processes.js",
+        "path": ".cursor/rules/agents/_store/scripts/check-running-processes.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/check-running-processes.js"
+              ".cursor/rules/agents/_store/scripts/check-running-processes.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/check-running-processes.js"
+              "node .cursor/rules/agents/_store/scripts/check-running-processes.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/check-running-processes.js",
+              ".cursor/rules/agents/_store/scripts/check-running-processes.js",
               "Add description"
             ]
           }
@@ -204,28 +204,28 @@
       },
       {
         "name": "cursor-mdc-integration.js",
-        "path": "agents/_store/scripts/cursor-mdc-integration.js",
+        "path": ".cursor/rules/agents/_store/scripts/cursor-mdc-integration.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/cursor-mdc-integration.js"
+              ".cursor/rules/agents/_store/scripts/cursor-mdc-integration.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/cursor-mdc-integration.js"
+              "node .cursor/rules/agents/_store/scripts/cursor-mdc-integration.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/cursor-mdc-integration.js",
+              ".cursor/rules/agents/_store/scripts/cursor-mdc-integration.js",
               "Add description"
             ]
           }
@@ -242,28 +242,28 @@
       },
       {
         "name": "cursor-mdc-watcher.js",
-        "path": "agents/_store/scripts/cursor-mdc-watcher.js",
+        "path": ".cursor/rules/agents/_store/scripts/cursor-mdc-watcher.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/cursor-mdc-watcher.js"
+              ".cursor/rules/agents/_store/scripts/cursor-mdc-watcher.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/cursor-mdc-watcher.js"
+              "node .cursor/rules/agents/_store/scripts/cursor-mdc-watcher.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/cursor-mdc-watcher.js",
+              ".cursor/rules/agents/_store/scripts/cursor-mdc-watcher.js",
               "Add description"
             ]
           }
@@ -280,28 +280,28 @@
       },
       {
         "name": "demo-aai-cursor-integration.js",
-        "path": "agents/_store/scripts/demo-aai-cursor-integration.js",
+        "path": ".cursor/rules/agents/_store/scripts/demo-aai-cursor-integration.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/demo-aai-cursor-integration.js"
+              ".cursor/rules/agents/_store/scripts/demo-aai-cursor-integration.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/demo-aai-cursor-integration.js"
+              "node .cursor/rules/agents/_store/scripts/demo-aai-cursor-integration.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/demo-aai-cursor-integration.js",
+              ".cursor/rules/agents/_store/scripts/demo-aai-cursor-integration.js",
               "Add description"
             ]
           }
@@ -318,28 +318,28 @@
       },
       {
         "name": "enhanced-cursor-setup.js",
-        "path": "agents/_store/scripts/enhanced-cursor-setup.js",
+        "path": ".cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/enhanced-cursor-setup.js"
+              ".cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/enhanced-cursor-setup.js"
+              "node .cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/enhanced-cursor-setup.js",
+              ".cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js",
               "Add description"
             ]
           }
@@ -356,28 +356,28 @@
       },
       {
         "name": "enhanced-mdc-path-fixer.js",
-        "path": "agents/_store/scripts/enhanced-mdc-path-fixer.js",
+        "path": ".cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/enhanced-mdc-path-fixer.js"
+              ".cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/enhanced-mdc-path-fixer.js"
+              "node .cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/enhanced-mdc-path-fixer.js",
+              ".cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js",
               "Add description"
             ]
           }
@@ -394,28 +394,28 @@
       },
       {
         "name": "enhanced-task-converter.js",
-        "path": "agents/_store/scripts/enhanced-task-converter.js",
+        "path": ".cursor/rules/agents/_store/scripts/enhanced-task-converter.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/enhanced-task-converter.js"
+              ".cursor/rules/agents/_store/scripts/enhanced-task-converter.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/enhanced-task-converter.js"
+              "node .cursor/rules/agents/_store/scripts/enhanced-task-converter.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/enhanced-task-converter.js",
+              ".cursor/rules/agents/_store/scripts/enhanced-task-converter.js",
               "Add description"
             ]
           }
@@ -432,28 +432,28 @@
       },
       {
         "name": "fix_single_mdc.py",
-        "path": "agents/_store/scripts/fix_single_mdc.py",
+        "path": ".cursor/rules/agents/_store/scripts/fix_single_mdc.py",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/fix_single_mdc.py"
+              ".cursor/rules/agents/_store/scripts/fix_single_mdc.py"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/fix_single_mdc.py"
+              "node .cursor/rules/agents/_store/scripts/fix_single_mdc.py"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/fix_single_mdc.py",
+              ".cursor/rules/agents/_store/scripts/fix_single_mdc.py",
               "Add description"
             ]
           }
@@ -470,28 +470,28 @@
       },
       {
         "name": "install-agent-ai.js",
-        "path": "agents/_store/scripts/install-agent-ai.js",
+        "path": ".cursor/rules/agents/_store/scripts/install-agent-ai.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/install-agent-ai.js"
+              ".cursor/rules/agents/_store/scripts/install-agent-ai.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/install-agent-ai.js"
+              "node .cursor/rules/agents/_store/scripts/install-agent-ai.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/install-agent-ai.js",
+              ".cursor/rules/agents/_store/scripts/install-agent-ai.js",
               "Add description"
             ]
           }
@@ -508,28 +508,28 @@
       },
       {
         "name": "launch-aai-complete.js",
-        "path": "agents/_store/scripts/launch-aai-complete.js",
+        "path": ".cursor/rules/agents/_store/scripts/launch-aai-complete.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/launch-aai-complete.js"
+              ".cursor/rules/agents/_store/scripts/launch-aai-complete.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/launch-aai-complete.js"
+              "node .cursor/rules/agents/_store/scripts/launch-aai-complete.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/launch-aai-complete.js",
+              ".cursor/rules/agents/_store/scripts/launch-aai-complete.js",
               "Add description"
             ]
           }
@@ -546,28 +546,28 @@
       },
       {
         "name": "mdc-dependency-tracker.js",
-        "path": "agents/_store/scripts/mdc-dependency-tracker.js",
+        "path": ".cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/mdc-dependency-tracker.js"
+              ".cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/mdc-dependency-tracker.js"
+              "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/mdc-dependency-tracker.js",
+              ".cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js",
               "Add description"
             ]
           }
@@ -584,28 +584,28 @@
       },
       {
         "name": "performance-optimizer.js",
-        "path": "agents/_store/scripts/performance-optimizer.js",
+        "path": ".cursor/rules/agents/_store/scripts/performance-optimizer.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/performance-optimizer.js"
+              ".cursor/rules/agents/_store/scripts/performance-optimizer.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/performance-optimizer.js"
+              "node .cursor/rules/agents/_store/scripts/performance-optimizer.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/performance-optimizer.js",
+              ".cursor/rules/agents/_store/scripts/performance-optimizer.js",
               "Add description"
             ]
           }
@@ -622,28 +622,28 @@
       },
       {
         "name": "protect-enhanced-cursor-settings.js",
-        "path": "agents/_store/scripts/protect-enhanced-cursor-settings.js",
+        "path": ".cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/protect-enhanced-cursor-settings.js"
+              ".cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/protect-enhanced-cursor-settings.js"
+              "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/protect-enhanced-cursor-settings.js",
+              ".cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js",
               "Add description"
             ]
           }
@@ -660,28 +660,28 @@
       },
       {
         "name": "replace_file_links.sh",
-        "path": "agents/_store/scripts/replace_file_links.sh",
+        "path": ".cursor/rules/agents/_store/scripts/replace_file_links.sh",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/replace_file_links.sh"
+              ".cursor/rules/agents/_store/scripts/replace_file_links.sh"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/replace_file_links.sh"
+              "node .cursor/rules/agents/_store/scripts/replace_file_links.sh"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/replace_file_links.sh",
+              ".cursor/rules/agents/_store/scripts/replace_file_links.sh",
               "Add description"
             ]
           }
@@ -698,28 +698,28 @@
       },
       {
         "name": "script_manager.js",
-        "path": "agents/_store/scripts/script_manager.js",
+        "path": ".cursor/rules/agents/_store/scripts/script_manager.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/script_manager.js"
+              ".cursor/rules/agents/_store/scripts/script_manager.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/script_manager.js"
+              "node .cursor/rules/agents/_store/scripts/script_manager.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/script_manager.js",
+              ".cursor/rules/agents/_store/scripts/script_manager.js",
               "Add description"
             ]
           }
@@ -736,28 +736,28 @@
       },
       {
         "name": "setup-cursor-integration.js",
-        "path": "agents/_store/scripts/setup-cursor-integration.js",
+        "path": ".cursor/rules/agents/_store/scripts/setup-cursor-integration.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/setup-cursor-integration.js"
+              ".cursor/rules/agents/_store/scripts/setup-cursor-integration.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/setup-cursor-integration.js"
+              "node .cursor/rules/agents/_store/scripts/setup-cursor-integration.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/setup-cursor-integration.js",
+              ".cursor/rules/agents/_store/scripts/setup-cursor-integration.js",
               "Add description"
             ]
           }
@@ -774,28 +774,28 @@
       },
       {
         "name": "setup-env.js",
-        "path": "agents/_store/scripts/setup-env.js",
+        "path": ".cursor/rules/agents/_store/scripts/setup-env.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/setup-env.js"
+              ".cursor/rules/agents/_store/scripts/setup-env.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/setup-env.js"
+              "node .cursor/rules/agents/_store/scripts/setup-env.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/setup-env.js",
+              ".cursor/rules/agents/_store/scripts/setup-env.js",
               "Add description"
             ]
           }
@@ -812,28 +812,28 @@
       },
       {
         "name": "silent-output.js",
-        "path": "agents/_store/scripts/silent-output.js",
+        "path": ".cursor/rules/agents/_store/scripts/silent-output.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/silent-output.js"
+              ".cursor/rules/agents/_store/scripts/silent-output.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/silent-output.js"
+              "node .cursor/rules/agents/_store/scripts/silent-output.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/silent-output.js",
+              ".cursor/rules/agents/_store/scripts/silent-output.js",
               "Add description"
             ]
           }
@@ -850,28 +850,28 @@
       },
       {
         "name": "smart-context-tracker.js",
-        "path": "agents/_store/scripts/smart-context-tracker.js",
+        "path": ".cursor/rules/agents/_store/scripts/smart-context-tracker.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/smart-context-tracker.js"
+              ".cursor/rules/agents/_store/scripts/smart-context-tracker.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/smart-context-tracker.js"
+              "node .cursor/rules/agents/_store/scripts/smart-context-tracker.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/smart-context-tracker.js",
+              ".cursor/rules/agents/_store/scripts/smart-context-tracker.js",
               "Add description"
             ]
           }
@@ -888,28 +888,28 @@
       },
       {
         "name": "start-cursor-aai.js",
-        "path": "agents/_store/scripts/start-cursor-aai.js",
+        "path": ".cursor/rules/agents/_store/scripts/start-cursor-aai.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/start-cursor-aai.js"
+              ".cursor/rules/agents/_store/scripts/start-cursor-aai.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/start-cursor-aai.js"
+              "node .cursor/rules/agents/_store/scripts/start-cursor-aai.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/start-cursor-aai.js",
+              ".cursor/rules/agents/_store/scripts/start-cursor-aai.js",
               "Add description"
             ]
           }
@@ -926,28 +926,28 @@
       },
       {
         "name": "sync-memory.js",
-        "path": "agents/_store/scripts/sync-memory.js",
+        "path": ".cursor/rules/agents/_store/scripts/sync-memory.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/sync-memory.js"
+              ".cursor/rules/agents/_store/scripts/sync-memory.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/sync-memory.js"
+              "node .cursor/rules/agents/_store/scripts/sync-memory.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/sync-memory.js",
+              ".cursor/rules/agents/_store/scripts/sync-memory.js",
               "Add description"
             ]
           }
@@ -964,28 +964,28 @@
       },
       {
         "name": "sync-preserved-to-memory.js",
-        "path": "agents/_store/scripts/sync-preserved-to-memory.js",
+        "path": ".cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/sync-preserved-to-memory.js"
+              ".cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/sync-preserved-to-memory.js"
+              "node .cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/sync-preserved-to-memory.js",
+              ".cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js",
               "Add description"
             ]
           }
@@ -1002,28 +1002,28 @@
       },
       {
         "name": "update-cursor-settings.js",
-        "path": "agents/_store/scripts/update-cursor-settings.js",
+        "path": ".cursor/rules/agents/_store/scripts/update-cursor-settings.js",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/update-cursor-settings.js"
+              ".cursor/rules/agents/_store/scripts/update-cursor-settings.js"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/update-cursor-settings.js"
+              "node .cursor/rules/agents/_store/scripts/update-cursor-settings.js"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/update-cursor-settings.js",
+              ".cursor/rules/agents/_store/scripts/update-cursor-settings.js",
               "Add description"
             ]
           }
@@ -1040,28 +1040,28 @@
       },
       {
         "name": "update_files.sh",
-        "path": "agents/_store/scripts/update_files.sh",
+        "path": ".cursor/rules/agents/_store/scripts/update_files.sh",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/update_files.sh"
+              ".cursor/rules/agents/_store/scripts/update_files.sh"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/update_files.sh"
+              "node .cursor/rules/agents/_store/scripts/update_files.sh"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/update_files.sh",
+              ".cursor/rules/agents/_store/scripts/update_files.sh",
               "Add description"
             ]
           }
@@ -1078,28 +1078,28 @@
       },
       {
         "name": "validate_mdc_paths.sh",
-        "path": "agents/_store/scripts/validate_mdc_paths.sh",
+        "path": ".cursor/rules/agents/_store/scripts/validate_mdc_paths.sh",
         "description": "No description available",
         "cursorActions": [
           {
             "title": "Open Script",
             "command": "cursor.open",
             "arguments": [
-              "agents/_store/scripts/validate_mdc_paths.sh"
+              ".cursor/rules/agents/_store/scripts/validate_mdc_paths.sh"
             ]
           },
           {
             "title": "Run Script",
             "command": "terminal.run",
             "arguments": [
-              "node agents/_store/scripts/validate_mdc_paths.sh"
+              "node .cursor/rules/agents/_store/scripts/validate_mdc_paths.sh"
             ]
           },
           {
             "title": "Edit Description",
             "command": "cursor.edit",
             "arguments": [
-              "agents/_store/scripts/validate_mdc_paths.sh",
+              ".cursor/rules/agents/_store/scripts/validate_mdc_paths.sh",
               "Add description"
             ]
           }
@@ -1120,8 +1120,8 @@
     {
       "name": "enhanced-dependency-analyzer.js",
       "category": "analysis",
-      "path": "agents/_store/scripts/enhanced-dependency-analyzer.js",
-      "quickCommand": "node agents/_store/scripts/enhanced-dependency-analyzer.js"
+      "path": ".cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js",
+      "quickCommand": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js"
     }
   ],
   "recommendations": []

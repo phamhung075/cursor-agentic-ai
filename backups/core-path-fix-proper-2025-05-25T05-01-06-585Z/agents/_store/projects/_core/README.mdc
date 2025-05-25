@@ -5,7 +5,7 @@ alwaysApply: false
 ---
 # 🚀 Agentic Coding Framework - Core Development System
 
-**Location:** `agents/_store/projects/_core`
+**Location:** `.cursor/rules/agents/_store/projects/_core`
 **Purpose:** Complete development framework for project creation and AI-assisted coding
 **Status:** Active Core Framework
 
@@ -17,8 +17,8 @@ This directory contains the **foundational core development framework** for the 
 
 ### 🎯 **Root Framework Files**
 ```
-agents/_store/projects/_core/
-├── AI_AGENT_RULES.mdc              # Core rules for all AI agents
+.cursor/rules/agents/_store/projects/_core/
+├── AI_AGENT_RULES.mdc              # Core rules for all AI .cursor/rules/agents
 ├── ORGANIZATION_COMPLETE.mdc        # Organization summary & status
 ├── BACKUP_SAFETY_REPORT.mdc        # Safety and backup procedures
 ├── MIGRATION_REPORT.mdc            # Migration tracking and status
@@ -63,7 +63,7 @@ rules/02__AI-DOCS/
 #### 📋 **03__SPECS/** - **Specification Templates**
 ```
 rules/03__SPECS/
-├── agents/                        # Agent specification templates
+├── .cursor/rules/agents/                        # Agent specification templates
 ├── features/                      # Feature specification templates
 ├── bugfixes/                      # Bug fix specification templates
 ├── documentation_index.mdc        # Documentation organization index

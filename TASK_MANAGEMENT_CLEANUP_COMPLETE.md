@@ -14,8 +14,8 @@ Successfully completed a comprehensive cleanup of all task management systems in
 - **Quick Task**: The original quick-task.js file
 
 ### ✅ Directories Removed (7 total)
-- `agents/_store/tasks/` (entire directory structure)
-- `agents/_store/ai-context/`
+- `.cursor/rules/agents/_store/tasks/` (entire directory structure)
+- `.cursor/rules/agents/_store/ai-context/`
 - `.cursor/chat-logs/`
 - `.cursor/chat-history/`
 
@@ -44,7 +44,7 @@ Only legitimate, manually-created tasks remain:
 All task management commands have been removed. Only core project scripts remain.
 
 ### Project Structure
-- ✅ Clean `agents/_store/` directory (no task management files)
+- ✅ Clean `.cursor/rules/agents/_store/` directory (no task management files)
 - ✅ Clean `.cursor/` directory (no AI-generated tasks)
 - ✅ No orphaned task-related files
 - ✅ No background task processes

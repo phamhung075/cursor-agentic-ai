@@ -55,7 +55,7 @@
       "type": "shell",
       "command": "node",
       "args": [
-        "agents/cursor-integration/file-watcher.js"
+        ".cursor/rules/agents/cursor-integration/file-watcher.js"
       ],
       "group": "build",
       "isBackground": true,

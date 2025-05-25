@@ -16,7 +16,7 @@ This document guides you through comprehensive market research and validation fo
 ## Prerequisites
 
 Before starting market research, ensure you have completed:
-- ✅ **Idea Document** ([01_Idea.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) - Well-defined project concept
+- ✅ **Idea Document** ([01_Idea.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) - Well-defined project concept
 
 ## Purpose
 
@@ -630,10 +630,10 @@ Next steps needed:
 ```
 
 The AAI system will guide you through:
-1. **Core Concept Refinement** ([03_Core_Concept.mdc](agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) - Market-validated concept development
-2. **PRD Generation** ([04_PRD_Generation.mdc](agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) - Technical specification creation
-3. **Technical Specifications** ([05_Specs_Docs.mdc](agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) - Detailed technical planning
-4. **Implementation Planning** ([07_Start_Building.mdc](agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)) - Development roadmap
+1. **Core Concept Refinement** ([03_Core_Concept.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) - Market-validated concept development
+2. **PRD Generation** ([04_PRD_Generation.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) - Technical specification creation
+3. **Technical Specifications** ([05_Specs_Docs.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) - Detailed technical planning
+4. **Implementation Planning** ([07_Start_Building.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)) - Development roadmap
 
 ## Best Practices
 

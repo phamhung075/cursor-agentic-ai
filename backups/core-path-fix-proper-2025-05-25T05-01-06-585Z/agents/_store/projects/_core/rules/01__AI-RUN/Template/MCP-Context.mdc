@@ -108,7 +108,7 @@ Provides tools for AI-based audio generation and manipulation from ElevenLabs:
   - Cloning: voice_clone
   - Creation from previews: create_voice_from_preview
   - Details retrieval: get_voice
-- **AI Conversational Agents**: create_agent, add_knowledge_base_to_agent, list_agents, get_agent
+- **AI Conversational .cursor/rules/agents**: create_agent, add_knowledge_base_to_agent, list_.cursor/rules/agents, get_agent
 - **Speech-to-Speech Transformation**: speech_to_speech
 - **Voice Preview Creation**: text_to_voice
 - **Outbound Calls**: make_outbound_call

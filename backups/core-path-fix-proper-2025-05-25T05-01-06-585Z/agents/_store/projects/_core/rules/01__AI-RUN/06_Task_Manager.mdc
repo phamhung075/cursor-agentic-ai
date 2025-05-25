@@ -5,7 +5,7 @@ alwaysApply: false
 ---
 # Task Management Process
 
-The primary documentation for the project's task management process, including workflow with Roo Orchestrator/Code and the structure of `[tasks.json](agents/_store/projects/_core/tasks/tasks.json)`, has been moved.
+The primary documentation for the project's task management process, including workflow with Roo Orchestrator/Code and the structure of `[tasks.json](.cursor/rules/agents/_store/projects/_core/tasks/tasks.json)`, has been moved.
 
 Please refer to the new centralized documentation here:
 # Task Management Workflow
@@ -13,18 +13,18 @@ Please refer to the new centralized documentation here:
 ## Context Awareness
 
 **Previous Phases:**
-- Idea Document ([01_Idea.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc))
-- Market Research ([02_Market_Research.mdc](agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc))
-- Core Concept ([03_Core_Concept.mdc](agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc))
-- PRD Generation ([04_PRD_Generation.mdc](agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc))
-- Technical Specifications ([05_Specs_Docs.mdc](agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc))
+- Idea Document ([01_Idea.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc))
+- Market Research ([02_Market_Research.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc))
+- Core Concept ([03_Core_Concept.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc))
+- PRD Generation ([04_PRD_Generation.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc))
+- Technical Specifications ([05_Specs_Docs.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc))
 
 **Current Phase:** Task Management and Breakdown
 
 ## Key Resources
 
-- **Main Workflow:** [Roo_Task_Workflow.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)
-- **Task Structure:** [Tasks_JSON_Structure.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+- **Main Workflow:** [Roo_Task_Workflow.mdc](.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)
+- **Task Structure:** [Tasks_JSON_Structure.mdc](.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
 
 ## Purpose
 
@@ -51,7 +51,7 @@ The task management process follows these key steps:
 
 For detailed instructions on the task management process, refer to the comprehensive workflow document:
 
-**[Roo Task Workflow](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)**
+**[Roo Task Workflow](.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)**
 
 This document provides:
 - Step-by-step task breakdown methodology
@@ -63,19 +63,19 @@ This document provides:
 
 The task management phase produces a structured JSON file containing all project tasks:
 
-**Task File Location:** `[tasks.json](agents/_store/projects/_core/tasks/tasks.json)`
+**Task File Location:** `[tasks.json](.cursor/rules/agents/_store/projects/_core/tasks/tasks.json)`
 
 For detailed information about the task JSON structure and requirements, see:
-**[Tasks JSON Structure](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)**
+**[Tasks JSON Structure](.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)**
 
 ## Next Steps
 
 After completing the task breakdown:
 
-1. **Implementation Phase**: Proceed to [07_Start_Building.mdc](agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)
+1. **Implementation Phase**: Proceed to [07_Start_Building.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)
 2. **Development**: Use the task hierarchy to guide development
-3. **Testing**: Follow tasks through [08_Testing.mdc](agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc)
-4. **Deployment**: Complete with [09_Deployment.mdc](agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc)
+3. **Testing**: Follow tasks through [08_Testing.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc)
+4. **Deployment**: Complete with [09_Deployment.mdc](.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc)
 
 ---
 

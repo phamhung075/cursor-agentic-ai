@@ -20,7 +20,7 @@ The core purpose of Vibe-Task is to bridge the gap between high-level project re
 ## 3. Target Audience
 
 *   **Software Developers using AI-assisted coding environments (e.g., Cursor):** Primary users who will interact with Vibe-Task via an AI assistant.
-*   **AI Assistants/Agents:** The direct consumers of the MCP tool's API, executing commands on behalf of developers.
+*   **AI Assistants/.cursor/rules/agents:** The direct consumers of the MCP tool's API, executing commands on behalf of developers.
 *   **Technical Leads/Project Managers:** Who may use the system for project planning, tracking, and oversight.
 
 ## 4. User Stories / Use Cases (MCP Context)

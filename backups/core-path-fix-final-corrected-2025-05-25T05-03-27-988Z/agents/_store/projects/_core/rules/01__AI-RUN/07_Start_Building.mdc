@@ -17,12 +17,12 @@ This document guides the systematic implementation of your project from PRD to w
 
 Before starting implementation, ensure you have completed:
 
-- ✅ **Idea Document** ([01_Idea.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) - Well-defined project concept
-- ✅ **Market Research** ([02_Market_Research.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)) - Comprehensive market validation
-- ✅ **Core Concept** ([03_Core_Concept.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) - Refined, market-validated concept
-- ✅ **PRD Generation** ([04_PRD_Generation.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) - Comprehensive product requirements
-- ✅ **Technical Specifications** ([05_Specs_Docs.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) - Detailed technical documentation
-- ✅ **Task Management Setup** ([Roo_Task_Workflow.mdc](../agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)) - Comprehensive task breakdown
+- ✅ **Idea Document** ([01_Idea.mdc](../.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) - Well-defined project concept
+- ✅ **Market Research** ([02_Market_Research.mdc](../.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)) - Comprehensive market validation
+- ✅ **Core Concept** ([03_Core_Concept.mdc](../.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) - Refined, market-validated concept
+- ✅ **PRD Generation** ([04_PRD_Generation.mdc](../.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) - Comprehensive product requirements
+- ✅ **Technical Specifications** ([05_Specs_Docs.mdc](../.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) - Detailed technical documentation
+- ✅ **Task Management Setup** ([Roo_Task_Workflow.mdc](../.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)) - Comprehensive task breakdown
 
 ## Purpose
 

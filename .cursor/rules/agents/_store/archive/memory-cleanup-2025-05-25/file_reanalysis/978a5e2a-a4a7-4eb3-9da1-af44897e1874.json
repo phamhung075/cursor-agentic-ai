@@ -1,0 +1,14 @@
+{
+  "id": "978a5e2a-a4a7-4eb3-9da1-af44897e1874",
+  "type": "file_reanalysis",
+  "content": "{\"fileName\":\"test-component.js\",\"filePath\":\"/Users/admin/Documents/Hung/AI/cursor-agentic-ai/test-deps/test-component.js\",\"reanalyzed\":true,\"reason\":\"dependency_change\",\"timestamp\":1748069927868}",
+  "metadata": {
+    "content": "{\"fileName\":\"test-component.js\",\"filePath\":\"/Users/admin/Documents/Hung/AI/cursor-agentic-ai/test-deps/test-component.js\",\"reanalyzed\":true,\"reason\":\"dependency_change\",\"timestamp\":1748069927868}",
+    "fileName": "test-component.js",
+    "projectType": "unknown",
+    "timestamp": 1748069927868,
+    "trigger": "dependency_change",
+    "type": "file_reanalysis"
+  },
+  "embedding": []
+}

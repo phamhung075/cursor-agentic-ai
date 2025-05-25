@@ -1,6 +1,6 @@
 ---
 description:
-globs: agents/_store/projects/_core/*.mdc
+globs: .cursor/rules/agents/_store/projects/_core/*.mdc
 alwaysApply: false
 ---
 # MDC File Path Update Guide - Methodology & Standards
@@ -23,7 +23,7 @@ This guide documents the standardized methodology for updating .mdc files within
 #### 1.1 Directory Structure Analysis
 ```bash
 # Use list_dir tool to verify directory contents
-agents/_store/projects/_core/
+.cursor/rules/agents/_store/projects/_core/
 ├── rules/
 │   ├── 01__AI-RUN/     # Check all workflow files
 │   ├── 02__AI-DOCS/    # Check documentation templates
@@ -55,16 +55,16 @@ agents/_store/projects/_core/
 #### 2.1 URL Format Standard
 ```markdown
 # Standard Format:
-[Display Text](../agents/_store/projects/_core/path/to/file.mdc)
+[Display Text](../.cursor/rules/agents/_store/projects/_core/path/to/file.mdc)
 
 # Examples:
-[agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
+[.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](../.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
 
-[Task JSON Structure Guide](../agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+[Task JSON Structure Guide](../.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
 ```
 
 #### 2.2 URL Formatting Rules
-1. **Always Start With**: `agents/_store/projects/_core`
+1. **Always Start With**: `.cursor/rules/agents/_store/projects/_core`
 2. **Use Forward Slashes**: Even on Windows systems
 3. **Preserve File Extensions**: Always include `.mdc`
 4. **Display Text Options**:
@@ -76,7 +76,7 @@ agents/_store/projects/_core/
 
 | Context | Display Text Style | Example |
 |---------|-------------------|---------|
-| **Technical Reference** | Full path | `agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc` |
+| **Technical Reference** | Full path | `.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc` |
 | **User-Friendly Links** | Descriptive name | `Getting Started Guide` |
 | **Workflow Steps** | Action-oriented | `Task Management Workflow` |
 
@@ -103,7 +103,7 @@ agents/_store/projects/_core/
 2. **Verification Commands**:
    ```bash
    # Check specific directory
-   list_dir("agents/_store/projects/_core/rules/01__AI-RUN")
+   list_dir(".cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN")
 
    # Verify file existence
    file_search("filename.mdc")
@@ -115,7 +115,7 @@ agents/_store/projects/_core/
    `rules/01__AI-RUN/00_Getting_Started.mdc`
 
    # To:
-   [agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
+   [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](../.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
    ```
 
 #### 3.3 Quality Assurance
@@ -132,16 +132,16 @@ agents/_store/projects/_core/
 #### Directory Verification
 ```bash
 # Check framework structure
-list_dir("agents/_store/projects/_core")
+list_dir(".cursor/rules/agents/_store/projects/_core")
 
 # Check specific workflow directory
-list_dir("agents/_store/projects/_core/rules/01__AI-RUN")
+list_dir(".cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN")
 
 # Check documentation templates
-list_dir("agents/_store/projects/_core/rules/02__AI-DOCS")
+list_dir(".cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS")
 
 # Check specifications
-list_dir("agents/_store/projects/_core/rules/03__SPECS")
+list_dir(".cursor/rules/agents/_store/projects/_core/rules/03__SPECS")
 ```
 
 #### File Search & Verification
@@ -167,7 +167,7 @@ edit_file("target_file.mdc", "instructions", "content_updates")
 Execute `rules/01__AI-RUN/02_Market_Research.mdc` internally
 
 # After:
-Execute [agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc) internally
+Execute [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](../.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc) internally
 ```
 
 ### Pattern 2: Documentation References
@@ -176,7 +176,7 @@ Execute [agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](.
 Follow structure defined in `02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`
 
 # After:
-Follow structure defined in [agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](../agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+Follow structure defined in [.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](../.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
 ```
 
 ### Pattern 3: Template References
@@ -185,7 +185,7 @@ Follow structure defined in [agents/_store/projects/_core/rules/02__AI-DOCS/Task
 Copy relevant templates (e.g., `03__SPECS/feature_spec_template.mdc`)
 
 # After:
-Copy relevant templates (e.g., [agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc](../agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc))
+Copy relevant templates (e.g., [.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc](../.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc))
 ```
 
 ## 🎯 Common Update Scenarios
@@ -228,7 +228,7 @@ Copy relevant templates (e.g., [agents/_store/projects/_core/rules/03__SPECS/fea
 - Maintain separation between framework and project content
 
 ### Consistency Requirements
-- All URLs must start with `agents/_store/projects/_core`
+- All URLs must start with `.cursor/rules/agents/_store/projects/_core`
 - Use consistent display text styles within same document
 - Maintain proper markdown formatting
 - Preserve document readability
@@ -244,7 +244,7 @@ Copy relevant templates (e.g., [agents/_store/projects/_core/rules/03__SPECS/fea
 ### Validation Process
 ```bash
 # 1. Verify directory structure hasn't changed
-list_dir("agents/_store/projects/_core/rules")
+list_dir(".cursor/rules/agents/_store/projects/_core/rules")
 
 # 2. Check for new files
 find . -name "*.mdc" -newer last_update.timestamp
@@ -267,7 +267,7 @@ find . -name "*.mdc" -newer last_update.timestamp
 **After**:
 ```markdown
 - Follow prompts 01-09 in sequence using these verified files:
-  - [agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)
+  - [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](../.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)
 ```
 
 ### Template Reference Update Example
@@ -278,7 +278,7 @@ Copy relevant templates (e.g., `03__SPECS/feature_spec_template.mdc`)
 
 **After**:
 ```markdown
-Copy relevant templates (e.g., [agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc](../agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc))
+Copy relevant templates (e.g., [.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc](../.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc))
 ```
 
 ## 🚀 Quick Reference Commands
@@ -286,7 +286,7 @@ Copy relevant templates (e.g., [agents/_store/projects/_core/rules/03__SPECS/fea
 ### Standard Update Sequence
 ```bash
 # 1. Verify current structure
-list_dir("agents/_store/projects/_core/rules/01__AI-RUN")
+list_dir(".cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN")
 
 # 2. Read target file
 read_file("target_file.mdc")

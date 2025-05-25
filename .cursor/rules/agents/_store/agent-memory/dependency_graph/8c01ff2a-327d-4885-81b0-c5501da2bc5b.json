@@ -1,0 +1,15 @@
+{
+  "id": "8c01ff2a-327d-4885-81b0-c5501da2bc5b",
+  "type": "dependency_graph",
+  "content": "{\"dependencies\":[[\".cursor/docs/README.mdc\",{}],[\".cursor/docs/path-fixing/AI_AGENT_MEMORY.mdc\",{}],[\".cursor/docs/path-fixing/AI_Path_Fix_Guide.mdc\",{}],[\".cursor/docs/path-fixing/QUICK_PATH_FIX.mdc\",{}]],\"reverseDependencies\":[[\"filename.mdc\",{}]],\"fileHashes\":[[\".cursor/docs/README.mdc\",\"cee18563ee3f32b2586d6673366dc874\"],[\".cursor/docs/path-fixing/AI_AGENT_MEMORY.mdc\",\"47af2d527c699b84db2b2caa16ef0335\"],[\".cursor/docs/path-fixing/AI_Path_Fix_Guide.mdc\",\"c5043ff28072efb9aa57175f0d425f1c\"],[\".cursor/docs/path-fixing/QUICK_PATH_FIX.mdc\",\"fbe2d1cc2015aad69deac1d2b48472fe\"]],\"lastUpdated\":1748097845924,\"saveCount\":10}",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "content": "{\"dependencies\":[[\".cursor/docs/README.mdc\",{}],[\".cursor/docs/path-fixing/AI_AGENT_MEMORY.mdc\",{}],[\".cursor/docs/path-fixing/AI_Path_Fix_Guide.mdc\",{}],[\".cursor/docs/path-fixing/QUICK_PATH_FIX.mdc\",{}]],\"reverseDependencies\":[[\"filename.mdc\",{}]],\"fileHashes\":[[\".cursor/docs/README.mdc\",\"cee18563ee3f32b2586d6673366dc874\"],[\".cursor/docs/path-fixing/AI_AGENT_MEMORY.mdc\",\"47af2d527c699b84db2b2caa16ef0335\"],[\".cursor/docs/path-fixing/AI_Path_Fix_Guide.mdc\",\"c5043ff28072efb9aa57175f0d425f1c\"],[\".cursor/docs/path-fixing/QUICK_PATH_FIX.mdc\",\"fbe2d1cc2015aad69deac1d2b48472fe\"]],\"lastUpdated\":1748097845924,\"saveCount\":10}",
+    "fileCount": 4,
+    "memoryClass": "agent",
+    "saveId": 1,
+    "timestamp": 1748097845924,
+    "type": "dependency_graph"
+  },
+  "embedding": []
+}

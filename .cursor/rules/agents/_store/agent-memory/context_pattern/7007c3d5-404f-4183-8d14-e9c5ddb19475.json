@@ -1,0 +1,13 @@
+{
+  "id": "7007c3d5-404f-4183-8d14-e9c5ddb19475",
+  "type": "context_pattern",
+  "content": "{\"context\":\"i have demande agent ai to memory how we fix path on .mdc, but agent have write file to root, is affect important rules, never write or create file on root on passe\",\"timestamp\":1748097467319}",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "content": "{\"context\":\"i have demande agent ai to memory how we fix path on .mdc, but agent have write file to root, is affect important rules, never write or create file on root on passe\",\"timestamp\":1748097467319}",
+    "memoryClass": "agent",
+    "timestamp": 1748097467320,
+    "type": "context_pattern"
+  },
+  "embedding": []
+}

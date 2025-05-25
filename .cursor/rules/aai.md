@@ -1,9 +1,9 @@
 # AAI Development Rules for Cursor
 
 ## Context Awareness
-- Always check agents/_store/cursor-summaries/ for latest context
-- Reference agents/_core/rules/ for coding conventions
-- Use agents/_store/memory/ for historical insights
+- Always check .cursor/rules/agents/_store/cursor-summaries/ for latest context
+- Reference .cursor/rules/agents/_core/rules/ for coding conventions
+- Use .cursor/rules/agents/_store/memory/ for historical insights
 
 ## File Patterns
 - `.mdc` files are enhanced markdown with metadata
@@ -14,7 +14,7 @@
 ## Development Workflow
 1. Check workspace-context.json for current focus
 2. Review latest-insights.json for recent analysis
-3. Follow conventions in agents/_store/projects/_core/rules/
+3. Follow conventions in .cursor/rules/agents/_store/projects/_core/rules/
 4. Update memory when making significant changes
 
 ## AI Assistance Guidelines

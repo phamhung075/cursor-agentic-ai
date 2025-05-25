@@ -1,0 +1,505 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# AAI Task Workflow: A Comprehensive Guide
+### Leveraging AAI's Orchestration and Coding Capabilities for Task Management
+
+## Overview
+AAI (Agentic AI), as your integrated AI assistant, handles task management directly through its advanced agentic capabilities. No separate installation or external tools are required. This document outlines how to guide AAI through the project task definition process. AAI will manage the overall workflow and may leverage specialized .cursor/rules/agents for specific technical task detailing or code generation.
+
+## 🤖 AAI Integration Features
+
+### Core AAI Capabilities
+- **Intelligent Task Decomposition**: AAI automatically breaks down complex features into optimal task hierarchies
+- **Context-Aware Planning**: Leverages project documentation and specifications for informed task creation
+- **Adaptive Workflow Management**: Adjusts task priorities and dependencies based on project evolution
+- **Multi-Agent Coordination**: Orchestrates specialized .cursor/rules/agents for different aspects of development
+- **Continuous Learning**: Improves task planning based on project outcomes and feedback
+
+### AAI-Enhanced Task Management
+- **Smart Dependency Detection**: Automatically identifies and maps task dependencies
+- **Complexity Analysis**: AI-powered assessment of task complexity and effort estimation
+- **Risk Assessment**: Proactive identification of potential blockers and risks
+- **Resource Optimization**: Intelligent allocation of tasks to appropriate .cursor/rules/agents or team members
+- **Quality Assurance Integration**: Built-in validation and testing strategy generation
+
+## Context Awareness
+
+**Previous Phases:**
+- Idea Document ([mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) and saved as [mdc:.cursor/rules/agents/_store/projects/_core/projet/01_Idea/idea_document.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/01_Idea/idea_document.mdc)
+- Market Research ([mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)) and saved as [mdc:.cursor/rules/agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc)
+- Core Concept ([mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) and saved as [mdc:.cursor/rules/agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc)
+- PRD Generation ([mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) and saved as [mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)
+- Technical Specifications ([mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) logical prompt
+
+**Expected Inputs:**
+- A comprehensive [mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)
+- **Created** project-specific technical specifications and documentation within `.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/` ([mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc) and [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)) and `.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/`
+- Foundational design principles outlined in [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)
+- Coding best practices from [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)
+
+**Current Phase:** AAI-Enhanced Task Management
+
+## Purpose
+
+This document establishes a structured workflow for breaking down the PRD into a hierarchical task system using AAI's advanced capabilities. AAI will analyze the project requirements and intelligently delegate detailed technical task generation or code stub creation to specialized .cursor/rules/agents. The goal is to create extremely precise, granular tasks that are optimally sized for implementation, avoiding overly large or ambiguous work items.
+
+### Advanced Concepts and Vision for AI Task Management
+
+For a deeper dive into advanced AI-driven task management systems and a vision for future capabilities, refer to the **Product Requirements Document for Vibe-Task**. This document, available at [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc), serves as a detailed example and conceptual blueprint.
+
+The Vibe-Task PRD can be used as a source of inspiration for:
+- Optimizing the current AAI-based task workflow
+- Understanding best practices for agentic task management
+- Exploring potential future capabilities and more sophisticated AI integrations in task planning, decomposition, and execution
+- Implementing continuous learning and adaptation in task management systems
+
+## When to Use
+
+Execute this prompt after the PRD has been fully generated and validated. The AAI task decomposition process requires a complete PRD with well-defined features in Section 3.1.
+
+## 🚀 Guiding AAI for Enhanced Task Management
+
+To initiate AAI-powered task management, provide AAI with the necessary project details. Here's an example of how you might phrase your request:
+
+## Project Initialization and AAI Task Decomposition Request
+
+I need comprehensive AAI-powered task management setup for this project, with features broken down into precise, implementable units of work using advanced agentic capabilities. The PRD is complete and ready for intelligent task decomposition.
+
+### Project Context
+
+- **Project Name:** {{project_name}}
+- **PRD Reference:** {{prd_reference_id}}
+- **Project Objective:** {{project_objective}}
+- **AAI Approach:** AAI will utilize its advanced agentic capabilities, specialized .cursor/rules/agents, and continuous learning to perform these tasks with optimal efficiency and quality.
+
+### Primary AAI Request
+
+Please perform the following operations using your advanced agentic capabilities:
+
+1. **Intelligent Project Analysis**: Analyze the PRD and project context using AAI's deep understanding capabilities
+2. **Smart Epic Creation**: Create epics from the feature list with intelligent categorization and prioritization
+3. **Adaptive Task Decomposition**: Decompose each feature into a hierarchy of precisely defined tasks using specialized .cursor/rules/agents
+4. **AI-Powered Complexity Analysis**: Analyze implementation complexity using machine learning models
+5. **Dynamic Roadmap Generation**: Generate a detailed implementation roadmap with adaptive timeline estimates
+6. **Risk Assessment Integration**: Identify potential risks and mitigation strategies
+7. **Quality Assurance Planning**: Integrate testing and validation strategies throughout the task hierarchy
+
+### Feature List for AAI Epic Creation
+
+{{features_json}}
+
+### AAI Decomposition Guidelines
+
+- Break down each feature into tasks that represent no more than 4 hours of development work
+- Ensure each task has a single, clear responsibility with AAI-validated clarity
+- Include specific technical requirements in task descriptions with AI-enhanced detail
+- **Crucially, ensure the `details` field of each task** ([mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) **contains direct links to, or embeds content from, the specific, relevant *created* specification documents. This includes:**
+  - Relevant sections of [mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)
+  - Specific feature specifications (e.g., `.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`)
+  - Architectural diagrams or guidelines from the created `.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc`
+  - For UI tasks: links to mockups, wireframes, component designs, and the created [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc). Adherence to [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc) is paramount
+  - For backend tasks: API contracts (from `.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Integrations/` or `.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/`), data models, and the created [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc). Adherence to [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) is key
+  - For database tasks: schema details, migration scripts, etc.
+- Create logical dependencies between tasks using AAI's dependency analysis
+- Prioritize tasks based on technical dependencies and user value using AI-powered prioritization
+- Tag tasks with appropriate categories (UI, Backend, Database, etc.) with intelligent categorization
+- Include acceptance criteria for each task, reflecting the linked specifications with AAI validation
+- Assign an initial `status` (e.g., 'todo', 'in progress', 'done') to each task with intelligent status management
+- **AAI Enhancement**: Include `aaiContext` field with AI-generated insights and recommendations
+- **AAI Enhancement**: Add `learningNotes` field for continuous improvement and knowledge capture
+
+### Expected AAI-Enhanced Outputs
+
+1. Complete task hierarchy with intelligent IDs and categorization
+2. AI-powered complexity analysis report with confidence scores
+3. Adaptive implementation roadmap with dynamic timeline estimates
+4. Intelligent dependency graph with risk assessment
+5. Quality assurance integration plan with automated testing strategies
+6. Continuous learning recommendations for future projects
+
+Thank you for leveraging AAI's advanced capabilities in organizing this project for optimal implementation.
+
+## 🔄 Interactive Workflow with AAI
+
+### Step 1: AAI Project Initialization
+
+You will provide the initial information to AAI as detailed in the "Guiding AAI for Enhanced Task Management" section. AAI will confirm receipt and provide intelligent analysis of the project context.
+
+- `{{project_name}}`: The official name of the project from the PRD
+- `{{prd_reference_id}}`: A unique identifier for the PRD document
+- `{{project_objective}}`: A concise summary of the project's core purpose from PRD Section 1.2
+- `{{features_json}}`: A JSON array of feature objects extracted from PRD Section 3.1
+
+Example features_json format with AAI enhancements:
+
+```json
+[
+  {
+    "feature_id": "F1",
+    "name": "User Authentication",
+    "description": "Secure login system with email and social authentication options",
+    "key_user_outcomes": "Users can securely access their accounts through multiple authentication methods",
+    "priority": "High",
+    "complexity": "Medium",
+    "aaiInsights": "Consider implementing OAuth 2.0 for social authentication and JWT for session management",
+    "riskFactors": ["Security vulnerabilities", "Third-party API dependencies"],
+    "estimatedEffort": "2-3 weeks"
+  },
+  {
+    "feature_id": "F2",
+    "name": "Dashboard",
+    "description": "Interactive dashboard showing key user metrics and activities",
+    "key_user_outcomes": "Users can quickly view and understand their account status and recent activities",
+    "priority": "High",
+    "complexity": "High",
+    "aaiInsights": "Implement real-time data updates and responsive design for optimal user experience",
+    "riskFactors": ["Performance with large datasets", "Real-time synchronization complexity"],
+    "estimatedEffort": "3-4 weeks"
+  }
+]
+```
+
+### Step 2: Task Decomposition Workflow
+
+AAI will typically prompt you for the next steps or await your instructions. You will guide AAI through the decomposition. AAI may create sub-tasks for specialized .cursor/rules/agents to handle detailed technical aspects or generate related code stubs.
+
+1. **Review Epic Creation**
+   - Confirm all features have been properly converted to epics
+   - Note the assigned task IDs for each epic
+
+2. **Initiate Detailed Decomposition**
+   - For each epic, instruct AAI:
+   
+   User to AAI: 'AAI, please perform detailed decomposition of epic {{epic_id}} - "{{epic_name}}". Adhere to these requirements:
+   
+   Requirements for decomposition:
+   - Maximum task size: 4 hours of development work
+   - Include technical implementation details
+   - Specify UI components, API endpoints, database changes, etc. **in accordance with the project's design standards, as detailed in** [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) **and** [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)
+   - Create clear acceptance criteria for each task, **including design and UX/UI aspects for relevant tasks, referring to the convention documents**
+   - Establish dependencies between tasks
+   - Tag tasks with appropriate categories'
+   
+   AAI will process this, potentially involving specialized .cursor/rules/agents for technical details.
+
+3. **Analyze Task Complexity**
+   - After task decomposition, instruct AAI:
+   
+   User to AAI: 'AAI, please analyze the complexity of all tasks for epic {{epic_id}}.
+   
+   Provide:
+   - Complexity score (1-5) for each task
+   - Risk assessment for complex tasks
+   - Suggestions for breaking down any tasks still too large
+   - Overall complexity assessment for the epic'
+
+4. **Generate Implementation Roadmap**
+   - Once all epics are decomposed, instruct AAI:
+   
+   User to AAI: 'AAI, please generate a comprehensive implementation roadmap for project {{project_name}}.
+   
+   Include:
+   - Suggested implementation phases
+   - Critical path analysis
+   - Resource allocation recommendations
+   - Timeline estimates with confidence levels
+   - Risk mitigation strategies'
+
+### Leveraging Task Hierarchies for High-Quality Agentic Coding
+
+The strategy of breaking down project requirements into a deep hierarchy of tasks (tasks, subtasks, sub-subtasks, etc.) is fundamental to achieving high-quality and reliable outcomes when employing AI coding .cursor/rules/agents like AAI. This granular approach offers several key advantages:
+
+* **Granularity for Precision:** Decomposing work into very small, specific units provides AI coding .cursor/rules/agents with a narrow, well-defined scope. This precision minimizes ambiguity and allows the AI to focus on a limited set of requirements, leading to more accurate and targeted code generation.
+
+* **Clarity of Scope, Details, and Acceptance Criteria:** Each granular unit, regardless of its level in the hierarchy (be it a primary task, subtask, or sub-subtask), must be a complete task object as defined in [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc). This means it must possess a clear `description`, and crucially, comprehensive `details`. **The `details` field is paramount and MUST contain direct links to, or embed content from, all relevant *created* project-specific documents.** This includes:
+  * Design specifications ([mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc), specific mockups, UI component guides)
+  * Coding conventions ([mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc))
+  * Technical specifications (e.g., `.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`, `.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc`, API contracts)
+  * Contextual information inherited from parent tasks
+  
+  The task must also have an explicit `testStrategy`. This `testStrategy`, informed by the linked specifications in `details`, effectively serves as the acceptance criteria for the unit, leaving little room for misinterpretation by the AI.
+
+* **Enhanced Testability:** Smaller, well-defined units of code are inherently easier to test thoroughly. The specific `testStrategy` associated with each granular task guides both automated testing (e.g., unit tests, integration tests) and manual verification. This focused testing approach helps catch errors early and ensures each component functions as expected.
+
+* **Iterative Development and Feedback Cycle:** Granularity supports an agile and iterative development process. The AI can complete a small unit of work, which can then be quickly tested and reviewed. Feedback from this review can be incorporated efficiently, and corrections can be made before significant effort is invested in a potentially flawed direction. This rapid feedback loop is crucial for maintaining quality and adapting to any emergent complexities.
+
+* **Reduced Cognitive Load for AI:** AI .cursor/rules/agents, much like human developers, perform better when dealing with focused, less complex tasks. By breaking down large problems into manageable sub-units, the cognitive load on the AI is significantly reduced, allowing it to process information more effectively and generate higher-quality code with fewer errors.
+
+* **Effective Dependency Management:** The clear definition of `dependencies` between these granular tasks ([mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) ensures a correct and logical sequence of development. Prerequisites are explicitly stated, preventing out-of-order work and ensuring that foundational components are in place before dependent tasks are attempted.
+
+AAI plays a key role in guiding this detailed decomposition process, ensuring that features from the PRD are meticulously broken down. Subsequently, specialized .cursor/rules/agents benefit immensely from these well-defined, granular tasks, as they provide the precise instructions needed to generate accurate, testable, and high-quality code. This hierarchical and detailed approach to task management is a cornerstone of effective AI-driven (agentic) software development.
+
+### Step 3: Task Refinement
+
+After receiving the complete task breakdown:
+
+1. Review all tasks for clarity and appropriate sizing
+2. Identify any tasks that need further decomposition
+3. Request refinement of specific tasks if needed:
+
+   User to AAI: 'AAI, please refine task {{task_id}} - "{{task_name}}".
+
+This task appears to be too large/ambiguous. Please break it down further into more precise sub-tasks with clear technical specifications.'
+
+## Best Practices
+
+1. **Maintain Hierarchy**: Ensure a clear 3-level hierarchy (Epics → Tasks → Sub-tasks)
+2. **Be Specific**: Each task should have concrete, measurable outcomes
+3. **Include Technical Details**: Specify implementation requirements in task descriptions
+4. **Set Clear Boundaries**: Define what's in and out of scope for each task
+5. **Consider Dependencies**: Establish logical task sequencing
+6. **Balance Size**: Tasks should be small enough to be manageable but not so small that overhead increases
+7. **Include Validation**: Each task should include acceptance criteria
+
+## Example Task Decomposition
+
+For a feature "User Authentication":
+
+**Epic**: User Authentication System
+
+**Tasks**:
+1. Design authentication database schema
+2. Implement email registration endpoint
+3. Create login form UI component
+4. Implement JWT token generation service
+5. Create password reset flow
+
+**Sub-tasks** (for "Implement email registration endpoint"):
+1. Create API route structure
+2. Implement input validation
+3. Add email verification logic
+4. Implement password hashing
+5. Write unit tests for registration endpoint
+
+## Expected Outcome
+
+The result of this process, orchestrated by AAI, will be a comprehensive task breakdown that:
+
+- Provides clear direction for implementation
+- Breaks complex features into manageable pieces
+- Establishes logical dependencies and sequencing
+- Enables accurate progress tracking
+- Facilitates efficient resource allocation
+
+This task structure will serve as the foundation for the implementation phase, guiding the development process with precision and clarity.
+
+## Next Steps
+
+### Saving Your Output
+
+Once this task management setup is complete:
+
+1. AAI (either Orchestrator mode directly or via a delegated task to specialized agent) will save the task breakdown as [tasks.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json). The detailed structure for this JSON file is defined in [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
+2. This task hierarchy will guide the implementation phase.
+
+### Moving to Implementation
+
+To proceed with implementing the project:
+
+1. Open the prompt file that corresponds to the [07_Start_Building.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc) logical step ([01_AutoPilot.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc) or your manual process calls the correct actual filename).
+2. Share it with your AI agent.
+3. Reference your [project_prd.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc), the **created** project-specific documentation in `.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/` and `.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/`, and the task breakdown in [tasks.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json).
+
+```
+@ImplementationArchitect
+
+Please help me implement my project according to the PRD and task breakdown. You can find:
+- The complete PRD at: [project_prd.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)
+- The task breakdown at: [tasks.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json)
+- Technical documentation in the [02__AI-DOCS](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS) ([coding_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc) and [design_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)) and [03__SPECS](mdc:.cursor/rules/agents/_store/projects/_core/rules/03__SPECS) directories, as well as the guiding principles from [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
+
+I'm ready to start building, beginning with the first task in the hierarchy.
+```
+
+### What to Expect Next
+
+In the Implementation phase, the AI will:
+
+1. Set up the development environment according to the technology stack
+2. Implement the core architectural components
+3. Systematically work through tasks in the hierarchy
+4. Write code, tests, and documentation
+5. Validate implementations against acceptance criteria
+
+This implementation phase will transform the detailed plans and specifications into a working product, following the roadmap established by the task decomposition. After implementation is complete, the project will move into the "Testing & Preview Visibility" phase to ensure quality before any deployment discussions.
+
+### Output Storage
+
+All task data, managed and generated through AAI's orchestration, will be stored in [tasks.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json). Each task object in this JSON file should include a `status` attribute (e.g., `"status": "todo"`, `"status": "in progress"`, `"status": "done"`). The detailed structure for this JSON file is defined in [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
+
+This file will be referenced in the implementation phase.
+
+## Task Refinement Follow-up
+
+After receiving the initial task breakdown, you may need to further refine complex tasks:
+
+User to AAI: '**Action:** Refine task breakdown for epic [epic_id] and identify subtasks.
+
+**Instructions:**
+
+1. Review the detailed specification for epic [epic_id]
+2. Identify complex components that need further breakdown
+3. For each complex component, create actionable subtasks
+4. Ensure subtasks are granular (4 hours max) but not fragmented
+5. Maintain clear parent-child relationships in the task hierarchy
+
+**Expected Response:**
+AAI will provide a list of newly created subtasks with their details and confirm their integration into the project's task structure.
+
+* Confirmation that these subtasks have been added to the project tracking system under the parent epic.
+
+## 🎯 AAI-Enhanced Best Practices
+
+1. **Maintain Hierarchy**: Ensure a clear 3-level hierarchy (Epics → Tasks → Sub-tasks) with AAI-optimized structure
+2. **Be Specific**: Each task should have concrete, measurable outcomes validated by AAI
+3. **Include Technical Details**: Specify implementation requirements in task descriptions with AI-enhanced precision
+4. **Set Clear Boundaries**: Define what's in and out of scope for each task using AAI boundary analysis
+5. **Consider Dependencies**: Establish logical task sequencing with AI-powered dependency mapping
+6. **Balance Size**: Tasks should be small enough to be manageable but not so small that overhead increases (AAI-optimized sizing)
+7. **Include Validation**: Each task should include acceptance criteria with AAI-generated test strategies
+8. **🤖 AAI Learning Integration**: Capture insights and lessons learned for continuous improvement
+9. **🔄 Adaptive Planning**: Allow for dynamic task adjustment based on AAI recommendations
+10. **📊 Quality Metrics**: Include AAI-generated quality and complexity scores
+
+## 🚀 AAI-Enhanced Example Task Decomposition
+
+For a feature "User Authentication" with AAI enhancements:
+
+**Epic**: User Authentication System (AAI Complexity Score: 7/10)
+
+**AAI-Enhanced Tasks**:
+1. Design authentication database schema (AAI Priority: Critical, Risk: Low)
+2. Implement email registration endpoint (AAI Priority: High, Risk: Medium)
+3. Create login form UI component (AAI Priority: High, Risk: Low)
+4. Implement JWT token generation service (AAI Priority: Critical, Risk: Medium)
+5. Create password reset flow (AAI Priority: Medium, Risk: Low)
+
+**AAI-Enhanced Sub-tasks** (for "Implement email registration endpoint"):
+1. Create API route structure (AAI Effort: 2h, Dependencies: Schema design)
+2. Implement input validation (AAI Effort: 1.5h, Risk Factors: Security validation)
+3. Add email verification logic (AAI Effort: 3h, External Dependencies: Email service)
+4. Implement password hashing (AAI Effort: 1h, Security Critical: Yes)
+5. Write unit tests for registration endpoint (AAI Effort: 2h, Coverage Target: 95%)
+
+### 🧠 AAI Learning Context
+Each task includes:
+- **aaiInsights**: AI-generated recommendations and best practices
+- **learningNotes**: Captured knowledge for future similar tasks
+- **riskAssessment**: AI-identified potential issues and mitigation strategies
+- **qualityMetrics**: Automated quality scoring and improvement suggestions
+
+## 🔄 AAI Continuous Improvement Features
+
+### Adaptive Task Management
+- **Dynamic Prioritization**: AAI adjusts task priorities based on project evolution
+- **Smart Resource Allocation**: Intelligent assignment of tasks to appropriate .cursor/rules/agents
+- **Predictive Risk Management**: Proactive identification of potential blockers
+- **Quality Optimization**: Continuous improvement of task definitions and outcomes
+
+### Learning and Knowledge Capture
+- **Pattern Recognition**: AAI identifies recurring patterns in task execution
+- **Best Practice Evolution**: Automatic updating of guidelines based on successful outcomes
+- **Failure Analysis**: Learning from unsuccessful attempts to improve future planning
+- **Cross-Project Learning**: Applying insights from previous projects to current tasks
+
+## Expected AAI-Enhanced Outcome
+
+The result of this AAI-powered process will be a comprehensive task breakdown that:
+
+- Provides clear direction for implementation with AI-validated clarity
+- Breaks complex features into manageable pieces with optimal sizing
+- Establishes logical dependencies and sequencing with intelligent analysis
+- Enables accurate progress tracking with predictive insights
+- Facilitates efficient resource allocation with AI optimization
+- **🤖 Includes continuous learning and adaptation capabilities**
+- **📊 Provides quality metrics and improvement recommendations**
+- **🔄 Supports dynamic adjustment based on project evolution**
+
+This AAI-enhanced task structure will serve as the foundation for the implementation phase, guiding the development process with precision, intelligence, and continuous improvement capabilities.
+
+## 🎯 Next Steps with AAI Integration
+
+### Saving Your AAI-Enhanced Output
+
+Once this AAI task management setup is complete:
+
+1. AAI will save the enhanced task breakdown as [mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json) with additional AAI fields
+2. Learning insights will be captured in [mdc:.cursor/rules/agents/_store/projects/_core/tasks/aai-insights.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/aai-insights.json)
+3. Quality metrics will be stored in [mdc:.cursor/rules/agents/_store/projects/_core/tasks/quality-metrics.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/quality-metrics.json)
+4. This enhanced task hierarchy will guide the implementation phase with continuous learning
+
+### Moving to AAI-Powered Implementation
+
+To proceed with implementing the project using AAI:
+
+1. Open the prompt file that corresponds to the [mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc) logical step
+2. Share it with your AAI system
+3. Reference your enhanced documentation and AAI-generated insights
+
+```
+@AAI-ImplementationOrchestrator
+
+Please help me implement my project according to the PRD and AAI-enhanced task breakdown. You can find:
+- The complete PRD at: [mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)
+- The AAI-enhanced task breakdown at: [mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json)
+- AAI insights and recommendations at: [mdc:.cursor/rules/agents/_store/projects/_core/tasks/aai-insights.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/aai-insights.json)
+- Quality metrics and targets at: [mdc:.cursor/rules/agents/_store/projects/_core/tasks/quality-metrics.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/quality-metrics.json)
+- Technical documentation with AAI optimizations in the [02__AI-DOCS](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS) and [03__SPECS](mdc:.cursor/rules/agents/_store/projects/_core/rules/03__SPECS) directories
+
+I'm ready to start building with AAI-powered implementation, beginning with the highest-priority task in the hierarchy.
+```
+
+### What to Expect with AAI-Enhanced Implementation
+
+In the AAI-powered Implementation phase, the system will:
+
+1. Set up the development environment according to AAI-optimized technology stack recommendations
+2. Implement the core architectural components with AI-enhanced code generation
+3. Systematically work through tasks in the hierarchy with intelligent prioritization
+4. Write code, tests, and documentation with AAI quality assurance
+5. Validate implementations against AAI-enhanced acceptance criteria
+6. **🤖 Continuously learn and adapt based on implementation outcomes**
+7. **📊 Provide real-time quality metrics and improvement suggestions**
+8. **🔄 Dynamically adjust the implementation plan based on emerging insights**
+
+This AAI-enhanced implementation phase will transform the detailed plans and specifications into a working product, following the intelligent roadmap established by the AAI task decomposition system.
+
+### AAI Output Storage and Management
+
+All AAI-enhanced task data will be stored in multiple interconnected files:
+
+- **[mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json)**: Core task structure with AAI enhancements
+- **[mdc:.cursor/rules/agents/_store/projects/_core/tasks/aai-insights.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/aai-insights.json)**: AI-generated insights and recommendations
+- **[mdc:.cursor/rules/agents/_store/projects/_core/tasks/quality-metrics.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/quality-metrics.json)**: Quality scores and improvement targets
+- **[mdc:.cursor/rules/agents/_store/projects/_core/tasks/learning-log.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/learning-log.json)**: Continuous learning and adaptation records
+
+The detailed structure for these files is defined in [mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
+
+## 🔄 AAI Task Refinement and Continuous Improvement
+
+After receiving the initial AAI-enhanced task breakdown, the system will continuously refine and optimize:
+
+User to AAI: '**Action:** Continuously refine and optimize task breakdown for epic [epic_id] using AAI capabilities.
+
+**AAI Instructions:**
+
+1. Analyze the current task structure using machine learning models
+2. Identify optimization opportunities based on complexity analysis
+3. Suggest improvements using pattern recognition from similar projects
+4. Update risk assessments based on current project context
+5. Optimize resource allocation using intelligent scheduling algorithms
+6. Generate quality improvement recommendations
+7. Update learning insights for future projects
+
+**Expected AAI Response:**
+AAI will provide:
+- Optimized task structure with improved efficiency
+- Updated risk assessments and mitigation strategies
+- Quality improvement recommendations with specific metrics
+- Learning insights captured for continuous improvement
+- Confirmation of integration into the AAI-enhanced project tracking system
+
+This AAI-powered approach ensures that task management becomes increasingly intelligent and effective over time, learning from each project to improve future outcomes.

@@ -789,7 +789,7 @@ module.exports = ResourceRepository;
 ## 🔄 AAI Integration
 
 ### Automated Code Generation
-- Use AAI agents to generate boilerplate code
+- Use AAI .cursor/rules/agents to generate boilerplate code
 - Implement consistent patterns across endpoints
 - Automate test generation based on specifications
 - Generate API documentation from code

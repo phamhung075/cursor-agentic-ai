@@ -1,7 +1,7 @@
 # AI Agent Guide: Fixing Markdown Path Issues
 
 ## 🎯 **Purpose**
-This guide provides a systematic approach for AI agents to identify and fix broken markdown file paths, based on successful resolution of `rules/01__AI-RUN/00_Getting_Started.mdc` path issues.
+This guide provides a systematic approach for AI .cursor/rules/agents to identify and fix broken markdown file paths, based on successful resolution of `rules/01__AI-RUN/00_Getting_Started.mdc` path issues.
 
 ## 🔍 **Common Path Issues Identified**
 
@@ -174,7 +174,7 @@ grep -c "@" "$filename" && echo "❌ @ symbols remain" || echo "✅ No @ symbols
 grep -c "/\./" "$filename" && echo "❌ / patterns remain" || echo "✅ No / patterns"
 ```
 
-## 💡 **Pro Tips for AI Agents**
+## 💡 **Pro Tips for AI .cursor/rules/agents**
 
 1. **Always check file existence** before creating links
 2. **Use workspace-relative paths** for maximum compatibility

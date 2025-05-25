@@ -18,7 +18,7 @@ This workflow is designed to guide a software development project from the initi
 3.  **Prompt Sequence:** The workflow relies on a series of prompts (`.mdc` files in `01__AI-RUN/`) that define the AI's role and the tasks to be accomplished for each phase.
 4.  **Document Generation:** Each phase produces specific documents (e.g., `[idea_document.mdc](projet/01_Idea/idea_document.mdc)`, `[project_prd.mdc](projet/PRD_template/project_prd.mdc)`, `[tasks.json](tasks/tasks.json)`) which serve as input for subsequent phases.
 5.  **Template Management:** For technical documentation (`02__AI-DOCS/`) and specifications (`03__SPECS/`), the system **creates new project-specific files** based on the provided templates. The original templates remain intact.
-6.  **Spec-Driven Vision:** The entire process is guided by the principle of spec-driven development, with AI agents consistently referring to and being guided by documentation. The overarching vision for AI collaboration and task management is detailed in [AI_Task_Management_Optimization.mdc](02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc).
+6.  **Spec-Driven Vision:** The entire process is guided by the principle of spec-driven development, with AI .cursor/rules/agents consistently referring to and being guided by documentation. The overarching vision for AI collaboration and task management is detailed in [AI_Task_Management_Optimization.mdc](02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc).
 
 ## General Workflow Diagram
 

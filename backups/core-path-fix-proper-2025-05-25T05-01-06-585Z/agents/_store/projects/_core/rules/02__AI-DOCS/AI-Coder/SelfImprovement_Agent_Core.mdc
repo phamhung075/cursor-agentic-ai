@@ -13,7 +13,7 @@ The Agent AI System is built with a sophisticated modular architecture designed 
 
 ### **📁 Core Directory Structure**
 ```
-agents/
+.cursor/rules/agents/
 ├── _store/                          # Organized data storage
 │   ├── docs/                       # System documentation
 │   ├── project-memory/              # Project-specific memories
@@ -243,7 +243,7 @@ class CommandSystem {
 
 ### **⚙️ Adaptive Configuration System**
 ```json
-/ agents/self-improvement/config/default.json
+/ .cursor/rules/agents/self-improvement/config/default.json
 {
   "agent": {
     "memoryEnabled": true,
@@ -328,13 +328,13 @@ class EnvironmentManager {
 / package.json scripts
 {
   "scripts": {
-    "AAI:agent": "node agents/self-improvement/core/agent.js",
-    "AAI:demo": "node agents/self-improvement/demo/demo.js",
-    "AAI:setup-env": "node agents/self-improvement/setup/setup-env.js",
-    "AAI:test-system": "node agents/self-improvement/tests/test-system.js",
-    "AAI:test-dependencies": "node agents/self-improvement/tests/test-dependencies.js",
-    "AAI:test-agent": "node agents/self-improvement/tests/test-agent.js",
-    "AAI:legacy": "node agents/self-improvement/legacy/legacy-agent.js"
+    "AAI:agent": "node .cursor/rules/agents/self-improvement/core/agent.js",
+    "AAI:demo": "node .cursor/rules/agents/self-improvement/demo/demo.js",
+    "AAI:setup-env": "node .cursor/rules/agents/self-improvement/setup/setup-env.js",
+    "AAI:test-system": "node .cursor/rules/agents/self-improvement/tests/test-system.js",
+    "AAI:test-dependencies": "node .cursor/rules/agents/self-improvement/tests/test-dependencies.js",
+    "AAI:test-agent": "node .cursor/rules/agents/self-improvement/tests/test-agent.js",
+    "AAI:legacy": "node .cursor/rules/agents/self-improvement/legacy/legacy-agent.js"
   }
 }
 ```

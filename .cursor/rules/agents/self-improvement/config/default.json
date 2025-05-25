@@ -1,0 +1,194 @@
+{
+  "agent": {
+    "name": "Self-Improvement Agent",
+    "version": "2.0.0",
+    "rulesPath": ".cursor/rules",
+    "memoryEnabled": true,
+    "fileStoreEnabled": true
+  },
+  "memory": {
+    "indexName": "agentic-framework-memory",
+    "maxLocalMemories": 1000,
+    "memoryRetentionDays": 90,
+    "enablePinecone": true,
+    "enableOpenAI": true
+  },
+  "fileStore": {
+    "storeRoot": "./.cursor/rules/agents/_store",
+    "projectsPath": "projects",
+    "memoryPath": "memory",
+    "templatesPath": "templates",
+    "logsPath": "logs",
+    "autoMigrate": true
+  },
+  "patterns": {
+    "security": [
+      {
+        "text": "eval(",
+        "issue": "Dangerous use of eval()",
+        "fix": "Use safer alternatives like JSON.parse() or Function constructor"
+      },
+      {
+        "text": "innerHTML =",
+        "issue": "Potential XSS vulnerability",
+        "fix": "Use textContent or sanitize input properly"
+      },
+      "hardcoded credentials",
+      "SQL injection vulnerability",
+      "XSS vulnerability",
+      "insecure randomness",
+      "missing authentication",
+      "missing authorization",
+      "weak encryption",
+      "exposed sensitive data",
+      "insecure dependencies",
+      "missing input validation"
+    ],
+    "syntax": [
+      {
+        "regex": "\\[\\]\\(",
+        "issue": "Invalid array syntax",
+        "fix": "Check array initialization syntax"
+      }
+    ],
+    "obsolete": {
+      "technology": {
+        "React 16": "Consider upgrading to React 18+ for improved performance and new features",
+        "Node.js 14": "Upgrade to Node.js 18+ LTS for better security and performance",
+        "jQuery": "Consider modern JavaScript or React/Vue for better maintainability",
+        "Bootstrap 4": "Upgrade to Bootstrap 5 for improved CSS custom properties",
+        "Webpack 4": "Upgrade to Webpack 5 for better module federation and performance",
+        "Vue 2": "Upgrade to Vue 3 for composition API and better TypeScript support",
+        "Angular 12": "Consider upgrading to Angular 15+ for standalone components",
+        "Python 3.7": "Upgrade to Python 3.11+ for better performance and security",
+        "PHP 7": "Upgrade to PHP 8+ for improved performance and new features",
+        "MySQL 5": "Consider upgrading to MySQL 8+ for better performance",
+        "MongoDB 4": "Upgrade to MongoDB 6+ for improved query performance"
+      },
+      "practices": {
+        "class components": "Consider using functional components with hooks",
+        "componentDidMount": "Consider using useEffect hook instead",
+        "var keyword": "Use const or let instead of var for better scoping",
+        "function declarations": "Consider arrow functions for consistency",
+        "require()": "Use ES6 import/export syntax when possible",
+        "callback functions": "Consider using async/await or Promises",
+        "XMLHttpRequest": "Use fetch() API or axios for HTTP requests",
+        "document.getElementById": "Consider using querySelector or modern framework",
+        "eval()": "Avoid eval() for security reasons, use safer alternatives"
+      }
+    },
+    "bestPractices": [
+      {
+        "antiPattern": "console\\.log\\(",
+        "issue": "Console logs left in production code",
+        "betterApproach": "Use proper logging library or remove debug statements"
+      },
+      {
+        "antiPattern": "== ",
+        "issue": "Using loose equality",
+        "betterApproach": "Use strict equality (===) for better type safety"
+      },
+      "missing error handling",
+      "no input validation",
+      "hardcoded values",
+      "missing documentation",
+      "no type checking",
+      "inconsistent naming",
+      "missing tests",
+      "large function size",
+      "deeply nested code",
+      "missing accessibility",
+      "no responsive design",
+      "missing SEO optimization",
+      "no performance optimization",
+      "missing logging",
+      "no configuration management"
+    ],
+    "terminology": [
+      {
+        "pattern": "(AI|ai|Ai)[ -]?(agent|Agent|AGENT)",
+        "preferred": "AI agent"
+      },
+      {
+        "pattern": "(work[ -]?flow|Workflow|WORKFLOW)",
+        "preferred": "workflow"
+      }
+    ]
+  },
+  "detectionRules": {
+    "maxIssuesPerAnalysis": 5,
+    "priorityOrder": [
+      "HIGH",
+      "MEDIUM",
+      "LOW"
+    ],
+    "contextSensitive": true,
+    "learningEnabled": true,
+    "priorityLevels": {
+      "HIGH": [
+        "security",
+        "critical bugs",
+        "breaking changes"
+      ],
+      "MEDIUM": [
+        "obsolete technology",
+        "performance issues",
+        "maintainability"
+      ],
+      "LOW": [
+        "code style",
+        "minor improvements",
+        "suggestions"
+      ]
+    }
+  },
+  "messages": {
+    "analyzing": "🔍 Analyzing: {filename}",
+    "found": "📊 Found {count} improvement opportunities:",
+    "priority": {
+      "HIGH": "🚨",
+      "MEDIUM": "⚠️",
+      "LOW": "💡"
+    },
+    "categories": {
+      "Security": "🔒",
+      "Technology": "🔧",
+      "Best Practice": "✨",
+      "Performance": "⚡",
+      "Maintainability": "🔨"
+    }
+  },
+  "cli": {
+    "prompt": "🤖 > ",
+    "commands": {
+      "analyze": "Analyze specific .mdc file",
+      "improve": "Get improvement suggestions",
+      "context": "Set current work context",
+      "smart-detect": "Analyze based on current context",
+      "memory": "Memory management commands",
+      "projects": "Project management commands",
+      "dependencies": "File dependency tracking commands",
+      "migrate": "Migrate files to agent store",
+      "help": "Show help information",
+      "exit": "Stop the agent"
+    }
+  },
+  "learning": {
+    "trackUserFeedback": true,
+    "adaptSuggestions": true,
+    "storeSuccessPatterns": true,
+    "contextAwareMemory": true,
+    "feedbackWeight": {
+      "approved": 1,
+      "rejected": -0.5,
+      "modified": 0.5
+    }
+  },
+  "coreFramework": {
+    "path": ".cursor/rules/agents/_store/projects/_core",
+    "rulesPath": ".cursor/rules/agents/_store/projects/_core/rules",
+    "workflowPath": ".cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN",
+    "templatesPath": ".cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS",
+    "specsPath": ".cursor/rules/agents/_store/projects/_core/rules/03__SPECS"
+  }
+}

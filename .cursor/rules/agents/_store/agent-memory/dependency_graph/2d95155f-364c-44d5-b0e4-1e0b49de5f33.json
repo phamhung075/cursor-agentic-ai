@@ -1,0 +1,15 @@
+{
+  "id": "2d95155f-364c-44d5-b0e4-1e0b49de5f33",
+  "type": "dependency_graph",
+  "content": "{\"dependencies\":[[\"package.json\",{}]],\"reverseDependencies\":[],\"fileHashes\":[[\"package.json\",\"9554a76b4c7bfb9c8c96e3d3a1ec447a\"]],\"lastUpdated\":1748137786999,\"saveCount\":10}",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "content": "{\"dependencies\":[[\"package.json\",{}]],\"reverseDependencies\":[],\"fileHashes\":[[\"package.json\",\"9554a76b4c7bfb9c8c96e3d3a1ec447a\"]],\"lastUpdated\":1748137786999,\"saveCount\":10}",
+    "fileCount": 1,
+    "memoryClass": "agent",
+    "saveId": 1,
+    "timestamp": 1748137787003,
+    "type": "dependency_graph"
+  },
+  "embedding": []
+}

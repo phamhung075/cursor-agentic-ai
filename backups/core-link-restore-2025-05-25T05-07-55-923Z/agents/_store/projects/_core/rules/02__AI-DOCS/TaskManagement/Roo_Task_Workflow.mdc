@@ -17,17 +17,17 @@ Roo, as your integrated AI assistant, handles task management directly. No separ
 ## Context Awareness
 
 **Previous Phases:**
-- Idea Document ([01_Idea.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) and saved as `[idea_document.mdc](mdc:agents/_store/projects/_core/projet/01_Idea/idea_document.mdc)`
-- Market Research ([02_Market_Research.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)) and saved as `[market_research.mdc](mdc:agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc)`
-- Core Concept ([03_Core_Concept.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) and saved as `[core_concept.mdc](mdc:agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc)`
-- PRD Generation ([04_PRD_Generation.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) and saved as `[project_prd.mdc](mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)`
-- Technical Specifications ([05_Specs_Docs.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) logical prompt
+- Idea Document ([01_Idea.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) and saved as `[idea_document.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/01_Idea/idea_document.mdc)`
+- Market Research ([02_Market_Research.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)) and saved as `[market_research.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc)`
+- Core Concept ([03_Core_Concept.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) and saved as `[core_concept.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/03_Core_Concept/core_concept.mdc)`
+- PRD Generation ([04_PRD_Generation.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) and saved as `[project_prd.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)`
+- Technical Specifications ([05_Specs_Docs.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) logical prompt
 
 **Expected Inputs:**
-- A comprehensive `[project_prd.mdc](mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)`
-- **Created** project-specific technical specifications and documentation within `agents/_store/projects/_core/rules/02__AI-DOCS/` ([coding_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc) and [design_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)) and `agents/_store/projects/_core/rules/03__SPECS/`
-- Foundational design principles outlined in [AI_Design_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)
-- Coding best practices from [AI_Coding_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)
+- A comprehensive `[project_prd.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)`
+- **Created** project-specific technical specifications and documentation within `.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/` ([coding_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc) and [design_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)) and `.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/`
+- Foundational design principles outlined in [AI_Design_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)
+- Coding best practices from [AI_Coding_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc)
 
 **Current Phase:** Task Management
 
@@ -37,7 +37,7 @@ This document establishes a structured workflow for breaking down the PRD into a
 
 ### Advanced Concepts and Vision for AI Task Management
 
-For a deeper dive into advanced AI-driven task management systems and a vision for future capabilities, refer to the **Product Requirements Document for Vibe-Task**. This document, available at [AI_Task_Management_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc), serves as a detailed example and conceptual blueprint.
+For a deeper dive into advanced AI-driven task management systems and a vision for future capabilities, refer to the **Product Requirements Document for Vibe-Task**. This document, available at [AI_Task_Management_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc), serves as a detailed example and conceptual blueprint.
 
 The Vibe-Task PRD can be used as a source of inspiration for:
 - Optimizing the current Roo-based task workflow
@@ -82,12 +82,12 @@ Please perform the following operations in sequence:
 - Break down each feature into tasks that represent no more than 4 hours of development work
 - Ensure each task has a single, clear responsibility
 - Include specific technical requirements in task descriptions
-- **Crucially, ensure the `details` field of each task** ([Tasks_JSON_Structure.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) **contains direct links to, or embeds content from, the specific, relevant *created* specification documents. This includes:**
-  - Relevant sections of `[project_prd.mdc](mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)`
-  - Specific feature specifications (e.g., `agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`)
-  - Architectural diagrams or guidelines from the created `agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc`
-  - For UI tasks: links to mockups, wireframes, component designs, and the created [design_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc). Adherence to [AI_Design_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc) is paramount
-  - For backend tasks: API contracts (from `agents/_store/projects/_core/rules/02__AI-DOCS/Integrations/` or `agents/_store/projects/_core/rules/03__SPECS/`), data models, and the created [coding_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc). Adherence to [AI_Coding_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) is key
+- **Crucially, ensure the `details` field of each task** ([Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) **contains direct links to, or embeds content from, the specific, relevant *created* specification documents. This includes:**
+  - Relevant sections of `[project_prd.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)`
+  - Specific feature specifications (e.g., `.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`)
+  - Architectural diagrams or guidelines from the created `.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc`
+  - For UI tasks: links to mockups, wireframes, component designs, and the created [design_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc). Adherence to [AI_Design_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc) is paramount
+  - For backend tasks: API contracts (from `.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Integrations/` or `.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/`), data models, and the created [coding_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc). Adherence to [AI_Coding_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) is key
   - For database tasks: schema details, migration scripts, etc.
 - Create logical dependencies between tasks
 - Prioritize tasks based on technical dependencies and user value
@@ -154,7 +154,7 @@ Roo Orchestrator will typically prompt you for the next steps or await your inst
    Requirements for decomposition:
    - Maximum task size: 4 hours of development work
    - Include technical implementation details
-   - Specify UI components, API endpoints, database changes, etc. **in accordance with the project's design standards, as detailed in** [design_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) **and** [AI_Design_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)
+   - Specify UI components, API endpoints, database changes, etc. **in accordance with the project's design standards, as detailed in** [design_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc) **and** [AI_Design_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc)
    - Create clear acceptance criteria for each task, **including design and UX/UI aspects for relevant tasks, referring to the convention documents**
    - Establish dependencies between tasks
    - Tag tasks with appropriate categories'
@@ -186,14 +186,14 @@ Roo Orchestrator will typically prompt you for the next steps or await your inst
 
 ### Leveraging Task Hierarchies for High-Quality Agentic Coding
 
-The strategy of breaking down project requirements into a deep hierarchy of tasks (tasks, subtasks, sub-subtasks, etc.) is fundamental to achieving high-quality and reliable outcomes when employing AI coding agents like Roo Code. This granular approach offers several key advantages:
+The strategy of breaking down project requirements into a deep hierarchy of tasks (tasks, subtasks, sub-subtasks, etc.) is fundamental to achieving high-quality and reliable outcomes when employing AI coding .cursor/rules/agents like Roo Code. This granular approach offers several key advantages:
 
-* **Granularity for Precision:** Decomposing work into very small, specific units provides AI coding agents with a narrow, well-defined scope. This precision minimizes ambiguity and allows the AI to focus on a limited set of requirements, leading to more accurate and targeted code generation.
+* **Granularity for Precision:** Decomposing work into very small, specific units provides AI coding .cursor/rules/agents with a narrow, well-defined scope. This precision minimizes ambiguity and allows the AI to focus on a limited set of requirements, leading to more accurate and targeted code generation.
 
-* **Clarity of Scope, Details, and Acceptance Criteria:** Each granular unit, regardless of its level in the hierarchy (be it a primary task, subtask, or sub-subtask), must be a complete task object as defined in [Tasks_JSON_Structure.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc). This means it must possess a clear `description`, and crucially, comprehensive `details`. **The `details` field is paramount and MUST contain direct links to, or embed content from, all relevant *created* project-specific documents.** This includes:
-  * Design specifications ([design_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc), specific mockups, UI component guides)
-  * Coding conventions ([coding_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc))
-  * Technical specifications (e.g., `agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`, `agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc`, API contracts)
+* **Clarity of Scope, Details, and Acceptance Criteria:** Each granular unit, regardless of its level in the hierarchy (be it a primary task, subtask, or sub-subtask), must be a complete task object as defined in [Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc). This means it must possess a clear `description`, and crucially, comprehensive `details`. **The `details` field is paramount and MUST contain direct links to, or embed content from, all relevant *created* project-specific documents.** This includes:
+  * Design specifications ([design_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc), specific mockups, UI component guides)
+  * Coding conventions ([coding_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc))
+  * Technical specifications (e.g., `.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/features/feature_spec_FEAT-XXX.mdc`, `.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Architecture/architecture.mdc`, API contracts)
   * Contextual information inherited from parent tasks
   
   The task must also have an explicit `testStrategy`. This `testStrategy`, informed by the linked specifications in `details`, effectively serves as the acceptance criteria for the unit, leaving little room for misinterpretation by the AI.
@@ -202,9 +202,9 @@ The strategy of breaking down project requirements into a deep hierarchy of task
 
 * **Iterative Development and Feedback Cycle:** Granularity supports an agile and iterative development process. The AI can complete a small unit of work, which can then be quickly tested and reviewed. Feedback from this review can be incorporated efficiently, and corrections can be made before significant effort is invested in a potentially flawed direction. This rapid feedback loop is crucial for maintaining quality and adapting to any emergent complexities.
 
-* **Reduced Cognitive Load for AI:** AI agents, much like human developers, perform better when dealing with focused, less complex tasks. By breaking down large problems into manageable sub-units, the cognitive load on the AI is significantly reduced, allowing it to process information more effectively and generate higher-quality code with fewer errors.
+* **Reduced Cognitive Load for AI:** AI .cursor/rules/agents, much like human developers, perform better when dealing with focused, less complex tasks. By breaking down large problems into manageable sub-units, the cognitive load on the AI is significantly reduced, allowing it to process information more effectively and generate higher-quality code with fewer errors.
 
-* **Effective Dependency Management:** The clear definition of `dependencies` between these granular tasks ([Tasks_JSON_Structure.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) ensures a correct and logical sequence of development. Prerequisites are explicitly stated, preventing out-of-order work and ensuring that foundational components are in place before dependent tasks are attempted.
+* **Effective Dependency Management:** The clear definition of `dependencies` between these granular tasks ([Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)) ensures a correct and logical sequence of development. Prerequisites are explicitly stated, preventing out-of-order work and ensuring that foundational components are in place before dependent tasks are attempted.
 
 Roo Orchestrator plays a key role in guiding this detailed decomposition process, ensuring that features from the PRD are meticulously broken down. Subsequently, Roo Code mode benefits immensely from these well-defined, granular tasks, as they provide the precise instructions needed to generate accurate, testable, and high-quality code. This hierarchical and detailed approach to task management is a cornerstone of effective AI-driven (agentic) software development.
 
@@ -268,24 +268,24 @@ This task structure will serve as the foundation for the implementation phase, g
 
 Once this task management setup is complete:
 
-1. Roo (either Orchestrator mode directly or via a delegated task to Code mode) will save the task breakdown as [tasks.json](mdc:agents/_store/projects/_core/tasks/tasks.json). The detailed structure for this JSON file is defined in [Tasks_JSON_Structure.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
+1. Roo (either Orchestrator mode directly or via a delegated task to Code mode) will save the task breakdown as [tasks.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json). The detailed structure for this JSON file is defined in [Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
 2. This task hierarchy will guide the implementation phase.
 
 ### Moving to Implementation
 
 To proceed with implementing the project:
 
-1. Open the prompt file that corresponds to the [07_Start_Building.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc) logical step ([01_AutoPilot.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc) or your manual process calls the correct actual filename).
+1. Open the prompt file that corresponds to the [07_Start_Building.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc) logical step ([01_AutoPilot.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc) or your manual process calls the correct actual filename).
 2. Share it with your AI agent.
-3. Reference your [project_prd.mdc](mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc), the **created** project-specific documentation in `agents/_store/projects/_core/rules/02__AI-DOCS/` and `agents/_store/projects/_core/rules/03__SPECS/`, and the task breakdown in [tasks.json](mdc:agents/_store/projects/_core/tasks/tasks.json).
+3. Reference your [project_prd.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc), the **created** project-specific documentation in `.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/` and `.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/`, and the task breakdown in [tasks.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json).
 
 ```
 @ImplementationArchitect
 
 Please help me implement my project according to the PRD and task breakdown. You can find:
-- The complete PRD at: [project_prd.mdc](mdc:agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)
-- The task breakdown at: [tasks.json](mdc:agents/_store/projects/_core/tasks/tasks.json)
-- Technical documentation in the [02__AI-DOCS](mdc:agents/_store/projects/_core/rules/02__AI-DOCS) ([coding_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc) and [design_conventions_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)) and [03__SPECS](mdc:agents/_store/projects/_core/rules/03__SPECS) directories, as well as the guiding principles from [AI_Design_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
+- The complete PRD at: [project_prd.mdc](mdc:.cursor/rules/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc)
+- The task breakdown at: [tasks.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json)
+- Technical documentation in the [02__AI-DOCS](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS) ([coding_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc) and [design_conventions_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc)) and [03__SPECS](mdc:.cursor/rules/agents/_store/projects/_core/rules/03__SPECS) directories, as well as the guiding principles from [AI_Design_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc).
 
 I'm ready to start building, beginning with the first task in the hierarchy.
 ```
@@ -304,7 +304,7 @@ This implementation phase will transform the detailed plans and specifications i
 
 ### Output Storage
 
-All task data, managed and generated through Roo's orchestration, will be stored in [tasks.json](mdc:agents/_store/projects/_core/tasks/tasks.json). Each task object in this JSON file should include a `status` attribute (e.g., `"status": "todo"`, `"status": "in progress"`, `"status": "done"`). The detailed structure for this JSON file is defined in [Tasks_JSON_Structure.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
+All task data, managed and generated through Roo's orchestration, will be stored in [tasks.json](mdc:.cursor/rules/agents/_store/projects/_core/tasks/tasks.json). Each task object in this JSON file should include a `status` attribute (e.g., `"status": "todo"`, `"status": "in progress"`, `"status": "done"`). The detailed structure for this JSON file is defined in [Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc).
 
 This file will be referenced in the implementation phase.
 

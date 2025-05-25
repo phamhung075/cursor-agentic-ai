@@ -1,0 +1,23 @@
+{
+  "filename": "cursor_rules_state_manager.js",
+  "originalPath": ".cursor/rules/agents/_store/projects/cursor_rules_state_manager.js",
+  "preservedAt": "2025-05-25T01:35:35.670Z",
+  "size": 15443,
+  "functions": [
+    "CursorRulesStateManager"
+  ],
+  "description": "No description available",
+  "dependencies": [
+    "fs",
+    "path",
+    "crypto"
+  ],
+  "keyFeatures": [
+    "Object-Oriented",
+    "Async/Await",
+    "File System",
+    "Path Manipulation",
+    "Logging",
+    "JSON Processing"
+  ]
+}

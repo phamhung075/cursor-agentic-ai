@@ -4,7 +4,7 @@
  * 🔍 Core Path Analyzer
  * 
  * Comprehensive analyzer to detect corrupt, obsolete, and broken path patterns
- * in agents/_store/projects/_core content after migration
+ * in .cursor/rules/agents/_store/projects/_core content after migration
  * EXCLUDES backup folders entirely
  * FIXED: Now properly fixes broken links that were malformed by previous scripts
  */
@@ -14,7 +14,7 @@ const path = require('path');
 
 class CorePathAnalyzer {
   constructor() {
-    this.coreDir = 'agents/_store/projects/_core';
+    this.coreDir = '.cursor/rules/agents/_store/projects/_core';
     this.rulesDir = path.join(this.coreDir, 'rules');
     this.excludedDirs = [
       'backups',
@@ -48,8 +48,8 @@ class CorePathAnalyzer {
       // Broken absolute paths - UPDATED: Skip intentional full rule paths
       brokenAbsolute: [
         // Skip these patterns as they are intentional
-        // /agents\/_store\/projects\/_core\/rules\/[^\s\)\]\,\;]+/g,
-        // /\[([^\]]+)\]\(agents\/_store\/projects\/_core\/rules\/([^)]+)\)/g
+        // /.cursor/rules/agents\/_store\/projects\/_core\/rules\/[^\s\)\]\,\;]+/g,
+        // /\[([^\]]+)\]\(.cursor/rules/agents\/_store\/projects\/_core\/rules\/([^)]+)\)/g
       ],
       
       // Self-referential patterns
@@ -176,7 +176,7 @@ class CorePathAnalyzer {
 
       // Check for corrupt path patterns (redundant elements)
       const redundantPatterns = [
-        /agents\/_store\/projects\/_core\/agents\/_store/g,
+        /.cursor/rules/agents\/_store\/projects\/_core\/.cursor/rules/agents\/_store/g,
         /rules\/rules\//g,
         /\.mdc\/\.mdc/g,
         /\/\.\//g,
@@ -241,7 +241,7 @@ class CorePathAnalyzer {
         
         // Resolve path relative to current file
         let resolvedPath;
-        if (linkPath.startsWith('agents/_store/projects/_core/')) {
+        if (linkPath.startsWith('.cursor/rules/agents/_store/projects/_core/')) {
           resolvedPath = linkPath;
         } else if (path.isAbsolute(linkPath)) {
           resolvedPath = linkPath;
@@ -348,7 +348,7 @@ class CorePathAnalyzer {
     }
 
     // Save detailed reports
-    const logsDir = 'agents/_store/logs';
+    const logsDir = '.cursor/rules/agents/_store/logs';
     await fs.mkdir(logsDir, { recursive: true });
 
     // JSON report

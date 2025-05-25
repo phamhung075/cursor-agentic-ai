@@ -80,11 +80,11 @@ user_preferences.json
 knowledge_base.json
 analytics_data.json
 
-# Agents Runtime Data (v2.0)
-agents/self-improvement/data/
-agents/*/data/
-agents/*/logs/
-agents/*/cache/
+# .cursor/rules/agents Runtime Data (v2.0)
+.cursor/rules/agents/self-improvement/data/
+.cursor/rules/agents/*/data/
+.cursor/rules/agents/*/logs/
+.cursor/rules/agents/*/cache/
 
 # Agent Configuration (keep templates, ignore actual configs)
 **/agent_config_local.json

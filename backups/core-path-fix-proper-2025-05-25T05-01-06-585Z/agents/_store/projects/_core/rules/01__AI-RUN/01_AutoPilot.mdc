@@ -11,15 +11,15 @@ The AutoPilot system enables fully automated development workflows where the AI 
 
 ## 🏗️ Framework Location & Structure
 
-**Core Framework Path:** `agents/_store/projects/_core/`
-**AutoPilot File Path:** [agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc)
+**Core Framework Path:** `.cursor/rules/agents/_store/projects/_core/`
+**AutoPilot File Path:** [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc)
 
 ## Framework Architecture & Path Structure
 
 The Agentic Coding Framework operates with this verified directory structure:
 
 ```
-agents/_store/projects/_core/
+.cursor/rules/agents/_store/projects/_core/
 ├── rules/                           # Core framework rules
 │   ├── 01__AI-RUN/                 # Workflow orchestration prompts
 │   │   ├── 00_Getting_Started.mdc  # Framework initialization guide
@@ -47,7 +47,7 @@ agents/_store/projects/_core/
 │   │   ├── documentation_index.mdc # Specification index
 │   │   ├── features/               # Feature specifications
 │   │   ├── bugfixes/              # Bug fix specifications
-│   │   ├── agents/                # Agent specifications
+│   │   ├── .cursor/rules/agents/                # Agent specifications
 │   │   ├── feature_spec_template.mdc
 │   │   └── bugfix_spec_template.mdc
 │   ├── 00__TOOLS/                  # Framework utilities
@@ -88,7 +88,7 @@ Before proceeding with any new actions, you MUST:
 **MANDATORY: Framework Analysis (Post-State Check)**
 After state validation, you MUST:
 
-a. **Read Primary Guide**: Load and internalize [agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
+a. **Read Primary Guide**: Load and internalize [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
 b. **Analyze Environment**: Examine provided file structure and understand:
    - Purpose of main directories: `01__AI-RUN/`, `02__AI-DOCS/`, `03__SPECS/`, `projet/`, `tasks/`
    - Template locations and their intended use
@@ -113,14 +113,14 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
 
 **1. Workflow Adherence**
 - Follow prompts 01-09 in sequence using these verified files:
-  - [agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)
-  - [agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)
-  - [agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)
-  - [agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)
-  - [agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc)
-  - [agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)
-  - [agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc)
-  - [agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc)
+  - [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)
+  - [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)
+  - [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)
+  - [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)
+  - [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc)
+  - [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)
+  - [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc)
+  - [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc)
 - To execute a phase: Read the prompt file, adopt the specified AI persona, follow all instructions
 - Save outputs to specified locations with correct naming conventions
 - Update session state after successful phase completion
@@ -136,20 +136,20 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
 
 **4. Document Creation from Templates**
 - During Phase 5: Create NEW project-specific files in `02__AI-DOCS/` and `03__SPECS/`
-- Copy relevant templates (e.g., [agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc](mdc:agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc)) to new locations
+- Copy relevant templates (e.g., [.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc)) to new locations
 - Populate with project-specific information from PRD and research
 - Keep original templates unchanged
 
 **5. File Path & Creation Standards**
 - Intermediate documents: Created in `projet/` subdirectories
-- Task management: `tasks/tasks.json` following [agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+- Task management: `tasks/tasks.json` following [.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
 - Project-specific docs: Created in respective `02__AI-DOCS/` and `03__SPECS/` subdirectories
 
 **6. Best Practices Adherence**
 - Reference optimization guides in `02__AI-DOCS/Documentation/`:
-  - [agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) for coding standards
-  - [agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc) for design principles
-  - [agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc) for collaboration guidelines
+  - [.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc) for coding standards
+  - [.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Design_Agent_Optimization.mdc) for design principles
+  - [.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation/AI_Task_Management_Optimization.mdc) for collaboration guidelines
 
 **7. Spec-Driven Development (MANDATORY)**
 - Always consult specifications before development
@@ -188,8 +188,8 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
    - **State Update 1.1**: Store all gathered information, set `currentWorkflowPhase` to "ideaGeneration", `lastCompletedStep` to "initialInfoGathered"
 
 2. **Idea Document Creation**
-   - **State Update 1.2**: Set `pendingAction` to "idea document creation via [agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)"
-   - Execute [agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc) internally (adopt specified persona)
+   - **State Update 1.2**: Set `pendingAction` to "idea document creation via [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)"
+   - Execute [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc) internally (adopt specified persona)
    - Create structured content for `projet/01_Idea/idea_document.mdc`
    - **State Update 1.3**: Clear `pendingAction`, set `lastCompletedStep` to "ideaDocumentCreated"
 
@@ -203,8 +203,8 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
 
 1. **Research Execution**
    - Announce initiation of in-depth market research
-   - **State Update 2.1**: Set `pendingAction` to "comprehensive market research via [agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)"
-   - Execute [agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc) internally
+   - **State Update 2.1**: Set `pendingAction` to "comprehensive market research via [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)"
+   - Execute [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc) internally
    - Analyze `projet/01_Idea/idea_document.mdc` and generate detailed `projet/02_Market_Research/market_research.mdc`
    - **State Update 2.2**: Clear `pendingAction`, set `lastCompletedStep` to "marketResearchCompleted"
 
@@ -218,8 +218,8 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
 
 1. **Concept Development**
    - Announce core concept development initiation
-   - **State Update 3.1**: Set `pendingAction` to "core concept development via [agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)"
-   - Execute [agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc) internally
+   - **State Update 3.1**: Set `pendingAction` to "core concept development via [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)"
+   - Execute [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc) internally
    - Synthesize idea and market research into `projet/03_Core_Concept/core_concept.mdc`
    - **State Update 3.2**: Clear `pendingAction`, set `lastCompletedStep` to "coreConceptGenerated"
 
@@ -233,8 +233,8 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
 
 1. **PRD Creation**
    - Announce PRD generation initiation
-   - **State Update 4.1**: Set `pendingAction` to "PRD generation via [agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)"
-   - Execute [agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc) internally
+   - **State Update 4.1**: Set `pendingAction` to "PRD generation via [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)"
+   - Execute [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc) internally
    - Generate complete PRD in `projet/PRD_template/project_prd.mdc`
    - **State Update 4.2**: Clear `pendingAction`, set `lastCompletedStep` to "prdGenerated"
 
@@ -248,8 +248,8 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
 
 1. **Technical Documentation Creation**
    - Announce technical documentation development
-   - **State Update 5.1**: Set `pendingAction` to "technical specifications creation via [agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)"
-   - Execute [agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc) internally to:
+   - **State Update 5.1**: Set `pendingAction` to "technical specifications creation via [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)"
+   - Execute [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc) internally to:
      - Analyze PRD and identify required technical documents
      - Create project-specific files by copying templates:
        - `02__AI-DOCS/Architecture/architecture.mdc`
@@ -257,7 +257,7 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
        - `02__AI-DOCS/Conventions/design_conventions.mdc`
        - `03__SPECS/features/feature_spec_FEAT-XXX.mdc` (as needed)
      - Populate with project-specific information from PRD and research
-     - Update/create [agents/_store/projects/_core/rules/03__SPECS/documentation_index.mdc](mdc:agents/_store/projects/_core/rules/03__SPECS/documentation_index.mdc) with links to all created documents
+     - Update/create [.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/documentation_index.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/03__SPECS/documentation_index.mdc) with links to all created documents
    - **State Update 5.2**: Clear `pendingAction`, set `lastCompletedStep` to "technicalDocsCreated"
 
 2. **Technical Stack Presentation**
@@ -270,11 +270,11 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
 **Objective**: Break down project into manageable, prioritized tasks
 
 1. **Task Structure Creation**
-   - Announce task breakdown initiation following [agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)
-   - **State Update 6.1**: Set `pendingAction` to "task breakdown via [agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc)"
-   - Execute [agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc) internally to:
+   - Announce task breakdown initiation following [.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)
+   - **State Update 6.1**: Set `pendingAction` to "task breakdown via [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc)"
+   - Execute [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/06_Task_Manager.mdc) internally to:
      - Create hierarchical task structure in `tasks/tasks.json`
-     - Follow structure defined in [agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+     - Follow structure defined in [.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
      - Ensure task `details` field links to/embeds specific requirements from PRD and specifications
      - Handle epic creation, task breakdown, and sub-task definition
    - **State Update 6.2**: Clear `pendingAction`, set `lastCompletedStep` to "tasksGenerated"
@@ -298,7 +298,7 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
      - Description from `projectObjective`
      - Main technical stack from architecture documentation
      - Quick start instructions (placeholder or basic steps)
-     - Project structure overview with link to [agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
+     - Project structure overview with link to [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
    - Save to project root as README.mdc
    - **State Update 6.5.2**: Clear `pendingAction`, set `lastCompletedStep` to "readmeGenerated", `currentWorkflowPhase` to "implementation"
 
@@ -308,8 +308,8 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
 
 1. **Implementation Automation**
    - Announce implementation phase initiation
-   - **State Update 7.1**: Set `pendingAction` to "systematic implementation via [agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)"
-   - Execute [agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc) internally to:
+   - **State Update 7.1**: Set `pendingAction` to "systematic implementation via [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)"
+   - Execute [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc) internally to:
      - Set up project environment (folders, dependencies, version control)
      - Implement tasks systematically via Roo Orchestrator
      - For each task:
@@ -331,8 +331,8 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
 
 1. **Testing Execution**
    - Announce testing phase initiation
-   - **State Update 8.1**: Set `pendingAction` to "comprehensive testing via [agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc)"
-   - Execute [agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc) internally (adopt QualityGuardian persona) to:
+   - **State Update 8.1**: Set `pendingAction` to "comprehensive testing via [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc)"
+   - Execute [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc) internally (adopt QualityGuardian persona) to:
      - Execute all defined tests (unit, integration, E2E)
      - Verify features against PRD specifications and technical requirements
      - Set up preview environment with user access instructions
@@ -349,8 +349,8 @@ e. **Establish Spec-Driven Workflow**: For all development tasks, locate and str
 
 1. **Deployment Execution**
    - Announce deployment phase initiation
-   - **State Update 9.1**: Set `pendingAction` to "production deployment via [agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc)"
-   - Execute [agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc) internally (adopt DeployMaster persona) to:
+   - **State Update 9.1**: Set `pendingAction` to "production deployment via [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc)"
+   - Execute [.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc) internally (adopt DeployMaster persona) to:
      - Follow deployment plan from PRD Section 7 and `02__AI-DOCS/Deployment/deployment_guide.mdc`
      - Execute pre-deployment checks (environment config, final build, backups)
      - Deploy to production using appropriate tools/commands
@@ -446,7 +446,7 @@ After gathering this information, I will create a structured idea document and p
 
 This AutoPilot implementation ensures:
 
-- ✅ **Path Accuracy**: All file paths verified relative to `agents/_store/projects/_core/`
+- ✅ **Path Accuracy**: All file paths verified relative to `.cursor/rules/agents/_store/projects/_core/`
 - ✅ **Template Integration**: Proper utilization of templates in `02__AI-DOCS/` and `03__SPECS/`
 - ✅ **State Management**: Comprehensive session state tracking with immediate updates
 - ✅ **Error Handling**: Built-in error recovery and reporting mechanisms

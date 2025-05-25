@@ -5,19 +5,19 @@
     "analysis": [
       {
         "name": "enhanced-dependency-analyzer.js",
-        "path": "agents/_store/scripts/enhanced-dependency-analyzer.js",
+        "path": ".cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js",
         "description": "No description available"
       }
     ],
     "cleanup": [
       {
         "name": "comprehensive-cleanup.js",
-        "path": "agents/_store/scripts/comprehensive-cleanup.js",
+        "path": ".cursor/rules/agents/_store/scripts/comprehensive-cleanup.js",
         "description": "No description available"
       },
       {
         "name": "memory-cleanup.js",
-        "path": "agents/_store/scripts/memory-cleanup.js",
+        "path": ".cursor/rules/agents/_store/scripts/memory-cleanup.js",
         "description": "No description available"
       }
     ],
@@ -26,132 +26,132 @@
     "uncategorized": [
       {
         "name": "agent-intelligence-enhancer.js",
-        "path": "agents/_store/scripts/agent-intelligence-enhancer.js",
+        "path": ".cursor/rules/agents/_store/scripts/agent-intelligence-enhancer.js",
         "description": "No description available"
       },
       {
         "name": "check-running-processes.js",
-        "path": "agents/_store/scripts/check-running-processes.js",
+        "path": ".cursor/rules/agents/_store/scripts/check-running-processes.js",
         "description": "No description available"
       },
       {
         "name": "cursor-mdc-integration.js",
-        "path": "agents/_store/scripts/cursor-mdc-integration.js",
+        "path": ".cursor/rules/agents/_store/scripts/cursor-mdc-integration.js",
         "description": "No description available"
       },
       {
         "name": "cursor-mdc-watcher.js",
-        "path": "agents/_store/scripts/cursor-mdc-watcher.js",
+        "path": ".cursor/rules/agents/_store/scripts/cursor-mdc-watcher.js",
         "description": "No description available"
       },
       {
         "name": "demo-aai-cursor-integration.js",
-        "path": "agents/_store/scripts/demo-aai-cursor-integration.js",
+        "path": ".cursor/rules/agents/_store/scripts/demo-aai-cursor-integration.js",
         "description": "No description available"
       },
       {
         "name": "enhanced-cursor-setup.js",
-        "path": "agents/_store/scripts/enhanced-cursor-setup.js",
+        "path": ".cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js",
         "description": "No description available"
       },
       {
         "name": "enhanced-mdc-path-fixer.js",
-        "path": "agents/_store/scripts/enhanced-mdc-path-fixer.js",
+        "path": ".cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js",
         "description": "No description available"
       },
       {
         "name": "enhanced-task-converter.js",
-        "path": "agents/_store/scripts/enhanced-task-converter.js",
+        "path": ".cursor/rules/agents/_store/scripts/enhanced-task-converter.js",
         "description": "No description available"
       },
       {
         "name": "fix_single_mdc.py",
-        "path": "agents/_store/scripts/fix_single_mdc.py",
+        "path": ".cursor/rules/agents/_store/scripts/fix_single_mdc.py",
         "description": "No description available"
       },
       {
         "name": "install-agent-ai.js",
-        "path": "agents/_store/scripts/install-agent-ai.js",
+        "path": ".cursor/rules/agents/_store/scripts/install-agent-ai.js",
         "description": "No description available"
       },
       {
         "name": "launch-aai-complete.js",
-        "path": "agents/_store/scripts/launch-aai-complete.js",
+        "path": ".cursor/rules/agents/_store/scripts/launch-aai-complete.js",
         "description": "No description available"
       },
       {
         "name": "mdc-dependency-tracker.js",
-        "path": "agents/_store/scripts/mdc-dependency-tracker.js",
+        "path": ".cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js",
         "description": "No description available"
       },
       {
         "name": "performance-optimizer.js",
-        "path": "agents/_store/scripts/performance-optimizer.js",
+        "path": ".cursor/rules/agents/_store/scripts/performance-optimizer.js",
         "description": "No description available"
       },
       {
         "name": "protect-enhanced-cursor-settings.js",
-        "path": "agents/_store/scripts/protect-enhanced-cursor-settings.js",
+        "path": ".cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js",
         "description": "No description available"
       },
       {
         "name": "replace_file_links.sh",
-        "path": "agents/_store/scripts/replace_file_links.sh",
+        "path": ".cursor/rules/agents/_store/scripts/replace_file_links.sh",
         "description": "No description available"
       },
       {
         "name": "script_manager.js",
-        "path": "agents/_store/scripts/script_manager.js",
+        "path": ".cursor/rules/agents/_store/scripts/script_manager.js",
         "description": "No description available"
       },
       {
         "name": "setup-cursor-integration.js",
-        "path": "agents/_store/scripts/setup-cursor-integration.js",
+        "path": ".cursor/rules/agents/_store/scripts/setup-cursor-integration.js",
         "description": "No description available"
       },
       {
         "name": "setup-env.js",
-        "path": "agents/_store/scripts/setup-env.js",
+        "path": ".cursor/rules/agents/_store/scripts/setup-env.js",
         "description": "No description available"
       },
       {
         "name": "silent-output.js",
-        "path": "agents/_store/scripts/silent-output.js",
+        "path": ".cursor/rules/agents/_store/scripts/silent-output.js",
         "description": "No description available"
       },
       {
         "name": "smart-context-tracker.js",
-        "path": "agents/_store/scripts/smart-context-tracker.js",
+        "path": ".cursor/rules/agents/_store/scripts/smart-context-tracker.js",
         "description": "No description available"
       },
       {
         "name": "start-cursor-aai.js",
-        "path": "agents/_store/scripts/start-cursor-aai.js",
+        "path": ".cursor/rules/agents/_store/scripts/start-cursor-aai.js",
         "description": "No description available"
       },
       {
         "name": "sync-memory.js",
-        "path": "agents/_store/scripts/sync-memory.js",
+        "path": ".cursor/rules/agents/_store/scripts/sync-memory.js",
         "description": "No description available"
       },
       {
         "name": "sync-preserved-to-memory.js",
-        "path": "agents/_store/scripts/sync-preserved-to-memory.js",
+        "path": ".cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js",
         "description": "No description available"
       },
       {
         "name": "update-cursor-settings.js",
-        "path": "agents/_store/scripts/update-cursor-settings.js",
+        "path": ".cursor/rules/agents/_store/scripts/update-cursor-settings.js",
         "description": "No description available"
       },
       {
         "name": "update_files.sh",
-        "path": "agents/_store/scripts/update_files.sh",
+        "path": ".cursor/rules/agents/_store/scripts/update_files.sh",
         "description": "No description available"
       },
       {
         "name": "validate_mdc_paths.sh",
-        "path": "agents/_store/scripts/validate_mdc_paths.sh",
+        "path": ".cursor/rules/agents/_store/scripts/validate_mdc_paths.sh",
         "description": "No description available"
       }
     ]
@@ -164,17 +164,17 @@
     "uncategorized": [
       {
         "name": "test_cursor_rules_state_manager.js",
-        "path": "agents/_store/tests/test_cursor_rules_state_manager.js",
+        "path": ".cursor/rules/agents/_store/tests/test_cursor_rules_state_manager.js",
         "description": "No description available"
       },
       {
         "name": "test_dependency_tracking.js",
-        "path": "agents/_store/tests/test_dependency_tracking.js",
+        "path": ".cursor/rules/agents/_store/tests/test_dependency_tracking.js",
         "description": "No description available"
       },
       {
         "name": "test_new_agent.js",
-        "path": "agents/_store/tests/test_new_agent.js",
+        "path": ".cursor/rules/agents/_store/tests/test_new_agent.js",
         "description": "No description available"
       }
     ]
@@ -182,251 +182,251 @@
   "npmScripts": [
     {
       "name": "launch",
-      "command": "node agents/_store/scripts/launch-aai-complete.js"
+      "command": "node .cursor/rules/agents/_store/scripts/launch-aai-complete.js"
     },
     {
       "name": "AAI:cleanup",
-      "command": "node agents/_store/scripts/comprehensive-cleanup.js"
+      "command": "node .cursor/rules/agents/_store/scripts/comprehensive-cleanup.js"
     },
     {
       "name": "AAI:memory-cleanup",
-      "command": "node agents/_store/scripts/memory-cleanup.js"
+      "command": "node .cursor/rules/agents/_store/scripts/memory-cleanup.js"
     },
     {
       "name": "AAI:intelligence-enhance",
-      "command": "node agents/_store/scripts/agent-intelligence-enhancer.js"
+      "command": "node .cursor/rules/agents/_store/scripts/agent-intelligence-enhancer.js"
     },
     {
       "name": "AAI:context-track",
-      "command": "node agents/_store/scripts/smart-context-tracker.js"
+      "command": "node .cursor/rules/agents/_store/scripts/smart-context-tracker.js"
     },
     {
       "name": "AAI:performance-optimize",
-      "command": "node agents/_store/scripts/performance-optimizer.js"
+      "command": "node .cursor/rules/agents/_store/scripts/performance-optimizer.js"
     },
     {
       "name": "AAI:sync-preserved",
-      "command": "node agents/_store/scripts/sync-preserved-to-memory.js"
+      "command": "node .cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js"
     },
     {
       "name": "AAI:sync-preserved-status",
-      "command": "node agents/_store/scripts/sync-preserved-to-memory.js status"
+      "command": "node .cursor/rules/agents/_store/scripts/sync-preserved-to-memory.js status"
     },
     {
       "name": "AAI:test-agent",
-      "command": "node agents/_store/tests/test_new_agent.js"
+      "command": "node .cursor/rules/agents/_store/tests/test_new_agent.js"
     },
     {
       "name": "AAI:test-integration",
-      "command": "node agents/_store/tests/test_autopilot_integration.js"
+      "command": "node .cursor/rules/agents/_store/tests/test_autopilot_integration.js"
     },
     {
       "name": "AAI:test-system",
-      "command": "node agents/_store/tests/test_new_system.js"
+      "command": "node .cursor/rules/agents/_store/tests/test_new_system.js"
     },
     {
       "name": "AAI:test-dependencies",
-      "command": "node agents/_store/tests/test_dependency_tracking.js"
+      "command": "node .cursor/rules/agents/_store/tests/test_dependency_tracking.js"
     },
     {
       "name": "AAI:setup-env",
-      "command": "node agents/_store/scripts/setup-env.js"
+      "command": "node .cursor/rules/agents/_store/scripts/setup-env.js"
     },
     {
       "name": "AAI:install-to",
-      "command": "node agents/_store/scripts/install-agent-ai.js"
+      "command": "node .cursor/rules/agents/_store/scripts/install-agent-ai.js"
     },
     {
       "name": "AAI:sync-memory",
-      "command": "node agents/_store/scripts/sync-memory.js"
+      "command": "node .cursor/rules/agents/_store/scripts/sync-memory.js"
     },
     {
       "name": "AAI:sync-status",
-      "command": "node agents/_store/scripts/sync-memory.js status"
+      "command": "node .cursor/rules/agents/_store/scripts/sync-memory.js status"
     },
     {
       "name": "AAI:sync-up",
-      "command": "node agents/_store/scripts/sync-memory.js up"
+      "command": "node .cursor/rules/agents/_store/scripts/sync-memory.js up"
     },
     {
       "name": "AAI:sync-down",
-      "command": "node agents/_store/scripts/sync-memory.js down"
+      "command": "node .cursor/rules/agents/_store/scripts/sync-memory.js down"
     },
     {
       "name": "AAI:sync-both",
-      "command": "node agents/_store/scripts/sync-memory.js both"
+      "command": "node .cursor/rules/agents/_store/scripts/sync-memory.js both"
     },
     {
       "name": "AAI:fix-embeddings",
-      "command": "node agents/_store/scripts/sync-memory.js fix-embeddings"
+      "command": "node .cursor/rules/agents/_store/scripts/sync-memory.js fix-embeddings"
     },
     {
       "name": "AAI:scripts-analyze",
-      "command": "node agents/_store/scripts/script_manager.js analyze"
+      "command": "node .cursor/rules/agents/_store/scripts/script_manager.js analyze"
     },
     {
       "name": "AAI:scripts-list",
-      "command": "node agents/_store/scripts/script_manager.js list"
+      "command": "node .cursor/rules/agents/_store/scripts/script_manager.js list"
     },
     {
       "name": "AAI:core-monitor",
-      "command": "node agents/_store/scripts/core/core_file_monitor.js start"
+      "command": "node .cursor/rules/agents/_store/scripts/core/core_file_monitor.js start"
     },
     {
       "name": "AAI:core-monitor-status",
-      "command": "node agents/_store/scripts/core/core_file_monitor.js status"
+      "command": "node .cursor/rules/agents/_store/scripts/core/core_file_monitor.js status"
     },
     {
       "name": "cursor:setup",
-      "command": "node agents/_store/scripts/enhanced-cursor-setup.js"
+      "command": "node .cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js"
     },
     {
       "name": "cursor:setup-enhanced",
-      "command": "node agents/_store/scripts/enhanced-cursor-setup.js"
+      "command": "node .cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js"
     },
     {
       "name": "cursor:update-settings",
-      "command": "node agents/_store/scripts/update-cursor-settings.js"
+      "command": "node .cursor/rules/agents/_store/scripts/update-cursor-settings.js"
     },
     {
       "name": "cursor:settings-status",
-      "command": "node agents/_store/scripts/update-cursor-settings.js status"
+      "command": "node .cursor/rules/agents/_store/scripts/update-cursor-settings.js status"
     },
     {
       "name": "cursor:settings-restore",
-      "command": "node agents/_store/scripts/update-cursor-settings.js restore"
+      "command": "node .cursor/rules/agents/_store/scripts/update-cursor-settings.js restore"
     },
     {
       "name": "cursor:protect",
-      "command": "node agents/_store/scripts/protect-enhanced-cursor-settings.js"
+      "command": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js"
     },
     {
       "name": "cursor:protect-enable",
-      "command": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --enable"
+      "command": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js --enable"
     },
     {
       "name": "cursor:protect-monitor",
-      "command": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --monitor"
+      "command": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js --monitor"
     },
     {
       "name": "cursor:protect-restore",
-      "command": "node agents/_store/scripts/protect-enhanced-cursor-settings.js --restore"
+      "command": "node .cursor/rules/agents/_store/scripts/protect-enhanced-cursor-settings.js --restore"
     },
     {
       "name": "mdc:status",
-      "command": "node agents/_store/scripts/mdc-dependency-tracker.js status"
+      "command": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js status"
     },
     {
       "name": "mdc:fix",
-      "command": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix"
+      "command": "node .cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js fix"
     },
     {
       "name": "mdc:fix-apply",
-      "command": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix --apply"
+      "command": "node .cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js fix --apply"
     },
     {
       "name": "mdc:fix-file",
-      "command": "node agents/_store/scripts/enhanced-mdc-path-fixer.js fix"
+      "command": "node .cursor/rules/agents/_store/scripts/enhanced-mdc-path-fixer.js fix"
     },
     {
       "name": "cursor:status",
-      "command": "node agents/_store/scripts/enhanced-cursor-setup.js status"
+      "command": "node .cursor/rules/agents/_store/scripts/enhanced-cursor-setup.js status"
     },
     {
       "name": "aai:analyze-deps",
-      "command": "node agents/_store/scripts/enhanced-dependency-analyzer.js"
+      "command": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js"
     },
     {
       "name": "aai:analyze-delete",
-      "command": "node agents/_store/scripts/enhanced-dependency-analyzer.js delete"
+      "command": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js delete"
     },
     {
       "name": "aai:analyze-edit",
-      "command": "node agents/_store/scripts/enhanced-dependency-analyzer.js edit"
+      "command": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js edit"
     },
     {
       "name": "aai:analyze-move",
-      "command": "node agents/_store/scripts/enhanced-dependency-analyzer.js move"
+      "command": "node .cursor/rules/agents/_store/scripts/enhanced-dependency-analyzer.js move"
     },
     {
       "name": "safe-echo",
-      "command": "node agents/_store/scripts/safe-echo.js"
+      "command": "node .cursor/rules/agents/_store/scripts/safe-echo.js"
     },
     {
       "name": "msg",
-      "command": "node agents/_store/scripts/safe-echo.js"
+      "command": "node .cursor/rules/agents/_store/scripts/safe-echo.js"
     },
     {
       "name": "silent",
-      "command": "node agents/_store/scripts/silent-output.js"
+      "command": "node .cursor/rules/agents/_store/scripts/silent-output.js"
     },
     {
       "name": "out",
-      "command": "node agents/_store/scripts/silent-output.js"
+      "command": "node .cursor/rules/agents/_store/scripts/silent-output.js"
     },
     {
       "name": "mdc:init",
-      "command": "node agents/_store/scripts/mdc-dependency-tracker.js init"
+      "command": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js init"
     },
     {
       "name": "mdc:watch",
-      "command": "node agents/_store/scripts/mdc-dependency-tracker.js watch"
+      "command": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js watch"
     },
     {
       "name": "mdc:scan",
-      "command": "node agents/_store/scripts/mdc-dependency-tracker.js scan"
+      "command": "node .cursor/rules/agents/_store/scripts/mdc-dependency-tracker.js scan"
     },
     {
       "name": "mdc:cursor-setup",
-      "command": "node agents/_store/scripts/cursor-mdc-integration.js setup"
+      "command": "node .cursor/rules/agents/_store/scripts/cursor-mdc-integration.js setup"
     },
     {
       "name": "mdc:cursor-status",
-      "command": "node agents/_store/scripts/cursor-mdc-integration.js status"
+      "command": "node .cursor/rules/agents/_store/scripts/cursor-mdc-integration.js status"
     },
     {
       "name": "mdc:cursor-watch",
-      "command": "node agents/_store/scripts/cursor-mdc-watcher.js"
+      "command": "node .cursor/rules/agents/_store/scripts/cursor-mdc-watcher.js"
     },
     {
       "name": "aai:task-init",
-      "command": "node agents/_store/scripts/aai-task-manager.js init"
+      "command": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js init"
     },
     {
       "name": "aai:task-analyze",
-      "command": "node agents/_store/scripts/aai-task-manager.js analyze"
+      "command": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js analyze"
     },
     {
       "name": "aai:task-execute",
-      "command": "node agents/_store/scripts/aai-task-manager.js execute"
+      "command": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js execute"
     },
     {
       "name": "aai:task-status",
-      "command": "node agents/_store/scripts/aai-task-manager.js status"
+      "command": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js status"
     },
     {
       "name": "aai:task-auto-manage",
-      "command": "node agents/_store/scripts/aai-task-manager.js auto-manage"
+      "command": "node .cursor/rules/agents/_store/scripts/aai-task-manager.js auto-manage"
     },
     {
       "name": "cursor:aai-init",
-      "command": "node agents/_store/scripts/cursor-aai-integration.js init"
+      "command": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js init"
     },
     {
       "name": "cursor:aai-request",
-      "command": "node agents/_store/scripts/cursor-aai-integration.js request"
+      "command": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js request"
     },
     {
       "name": "cursor:aai-quick",
-      "command": "node agents/_store/scripts/cursor-aai-integration.js quick"
+      "command": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js quick"
     },
     {
       "name": "cursor:aai-auto-manage",
-      "command": "node agents/_store/scripts/cursor-aai-integration.js auto-manage"
+      "command": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js auto-manage"
     },
     {
       "name": "cursor:aai-status",
-      "command": "node agents/_store/scripts/cursor-aai-integration.js status"
+      "command": "node .cursor/rules/agents/_store/scripts/cursor-aai-integration.js status"
     }
   ],
   "totalFiles": 32,
@@ -446,5 +446,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T14:26:52.157Z"
+  "lastUpdated": "2025-05-25T14:39:48.497Z"
 }

@@ -1,0 +1,191 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 🚨 CRITICAL AI AGENT RULES
+
+## ⚠️ **MANDATORY FILE CONVENTIONS**
+
+### **🎯 Rule #1: File Location**
+**ALL documentation and memory files MUST be created in `.cursor` folder or its subfolders.**
+
+❌ **INCORRECT:**
+- Creating files in workspace root
+- Creating files outside `.cursor` directory
+- Cluttering the main project structure
+
+✅ **CORRECT:**
+- `.cursor/docs/filename.mdc`
+- `rules/filename.mdc`
+- `.cursor/memory/filename.mdc`
+- `.cursor/guides/filename.mdc`
+
+### **🎯 Rule #2: File Extension**
+**ALL documentation files MUST use `.mdc` extension, NOT `.md`**
+
+❌ **INCORRECT:**
+- `README.md`
+- `guide.md`
+- `memory.md`
+
+✅ **CORRECT:**
+- `README.mdc`
+- `guide.mdc`
+- `memory.mdc`
+
+### **🎯 Rule #3: Absolute Path URLs**
+**ALL file URL paths in .md/.mdc files MUST use absolute path from workspace root**
+
+❌ **INCORRECT:**
+- `file` - Relative path
+- `file` - Relative path
+- `file` - File-relative path
+- `file` - Directory-relative path
+
+✅ **CORRECT:**
+- `file` - Absolute from root
+- `file` - Absolute from root
+- `file` - Absolute from root
+
+### **🎯 Rule #4: Script Improvement Protocol**
+**When improving or fixing existing scripts, ALWAYS backup and edit the existing file - NEVER create new files**
+
+❌ **INCORRECT:**
+- Creating `script_v2.js`, `script_fixed.js`, `script_corrected.js`
+- Creating multiple versions of the same script
+- Leaving obsolete scripts in the project
+
+✅ **CORRECT:**
+- Create backup: `cp script.js backups/script-backup-$(date +%Y%m%d-%H%M%S).js`
+- Edit existing file: Modify `script.js` directly
+- Clean up: Remove obsolete scripts after successful fix
+
+### **🎯 Rule #5: Backup and Cleanup Protocol**
+**MANDATORY steps when improving any script file:**
+
+1. **Create timestamped backup:**
+   ```bash
+   mkdir -p backups
+   cp original_script.js backups/original_script-backup-$(date +%Y%m%d-%H%M%S).js
+   ```
+
+2. **Edit the existing file directly:**
+   - Modify the original file in place
+   - Do NOT create new files with different names
+
+3. **Clean up obsolete scripts:**
+   - Remove any previous versions or failed attempts
+   - Keep only the working version and its backup
+
+4. **Test the improved script:**
+   - Verify functionality before cleanup
+   - Ensure no regressions introduced
+
+## 🧠 **WHY THESE RULES EXIST**
+
+### **Organizational Benefits:**
+- **Clean workspace root** - No documentation clutter
+- **Consistent structure** - All AI materials organized together
+- **Easy discovery** - Future .cursor/rules/agents know where to look
+- **Project separation** - AI docs separate from project code
+- **No script proliferation** - Prevents multiple versions of same script
+- **Clear file purpose** - Each script has one clear function
+
+### **Technical Benefits:**
+- **Editor compatibility** - `.mdc` extension works with markdown tools
+- **Path consistency** - All internal references use same structure
+- **Universal navigation** - Links work from any file location
+- **Version control** - Cleaner git history and organization
+- **Backup safety** - Original versions preserved before changes
+- **Reduced confusion** - No ambiguity about which script to use
+
+## 🔧 **IMPLEMENTATION CHECKLIST**
+
+When creating new documentation:
+- [ ] **Location**: File is in `.cursor/` or subfolder
+- [ ] **Extension**: File uses `.mdc` not `.md`
+- [ ] **Path URLs**: All links use absolute paths from workspace root
+- [ ] **References**: All internal links use `.mdc` extension
+- [ ] **Organization**: Logical subfolder structure used
+
+When improving existing scripts:
+- [ ] **Backup created**: Original file backed up with timestamp
+- [ ] **Edit in place**: Modified existing file, not created new one
+- [ ] **Cleanup done**: Removed obsolete script versions
+- [ ] **Testing completed**: Verified improved script works correctly
+- [ ] **Documentation updated**: Updated any references to the script
+
+## 🚀 **STANDARD DIRECTORY STRUCTURE**
+
+```
+.cursor/
+├── docs/                    # Main documentation
+│   ├── README.mdc          # Master index
+│   └── path-fixing/        # Specialized guides
+├── rules/                   # Project-specific rules
+├── memory/                  # AI agent memories
+└── guides/                  # How-to guides
+
+backups/                     # Timestamped backups
+├── script-backup-20250525-120000.js
+└── config-backup-20250525-120100.json
+```
+
+## ⛔ **COMMON VIOLATIONS TO AVOID**
+
+1. **Creating `.md` files** - Use `.mdc` always
+2. **Root directory creation** - Use `.cursor/` subfolders
+3. **Relative path URLs** - Use absolute paths from workspace root
+4. **Inconsistent references** - Update all links when moving files
+5. **Mixed extensions** - Don't mix `.md` and `.mdc` in same project
+6. **Script proliferation** - Creating multiple versions instead of editing existing
+7. **No backups** - Modifying files without creating safety backups
+8. **Leaving obsolete files** - Not cleaning up after improvements
+
+## 🔄 **CORRECTION PROCEDURE**
+
+If files were created incorrectly:
+```bash
+# Move to correct location
+mv filename.md .cursor/docs/filename.mdc
+
+# Update all references to use absolute paths
+grep -r "\]\(\.\/" .cursor/ | # Find relative path references
+sed -i '' 's/\]\(\.\/](.cursor\/g' # Convert to absolute paths
+
+# Update extensions
+sed -i '' 's/filename\.md/filename.mdc/g' # Update extension
+```
+
+If multiple script versions exist:
+```bash
+# Backup the working version
+cp working_script.js backups/working_script-backup-$(date +%Y%m%d-%H%M%S).js
+
+# Remove obsolete versions
+rm script_v2.js script_fixed.js script_corrected.js
+
+# Keep only the main script file
+```
+
+## 🔍 **PATH VALIDATION COMMANDS**
+
+Check for violations:
+```bash
+# Find relative paths in markdown files
+grep -r "\]\(\.\/" .cursor/ | grep "\.
+
+# Find incorrect extensions
+grep -r "\.md)" .cursor/ | grep "\.
+
+# Find files outside .cursor
+find . -maxdepth 1 -name "*.mdc" -o -name "*.md" | grep -v "\.cursor"
+
+# Find multiple script versions
+find . -name "*_v[0-9]*.js" -o -name "*_fixed*.js" -o -name "*_corrected*.js"
+```
+
+---
+
+**🎯 REMEMBER: `.cursor` folder + `.mdc` extension + absolute paths + backup & edit existing files = MANDATORY**
