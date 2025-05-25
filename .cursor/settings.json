@@ -178,6 +178,79 @@
           }
         }
       }
+    },
+    {
+      "fileMatch": [
+        "agents/_store/cursor-summaries/ai-session-memory.json"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "aiInteractions": {
+            "type": "array"
+          },
+          "learnedPatterns": {
+            "type": "array"
+          },
+          "contextHistory": {
+            "type": "array"
+          },
+          "decisionHistory": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    {
+      "fileMatch": [
+        "agents/_store/cursor-summaries/shared-ai-context.json"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "sharedContext": {
+            "type": "object"
+          },
+          "crossAIInsights": {
+            "type": "array"
+          },
+          "collaborativeDecisions": {
+            "type": "array"
+          },
+          "consensusPatterns": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    {
+      "fileMatch": [
+        "agents/_store/intelligence/cursor-learning.json"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "learnedPatterns": {
+            "type": "array"
+          },
+          "codeStyles": {
+            "type": "object"
+          },
+          "userPreferences": {
+            "type": "object"
+          },
+          "projectConventions": {
+            "type": "object"
+          }
+        }
+      }
     }
   ],
   "markdown.suggest.paths.enabled": true,
@@ -297,6 +370,10 @@
     "agents/prompts/**/*.md",
     "agents/config/**/*.json",
     "agents/_store/cursor-summaries/**/*.json",
+    ".cursor/settings.json",
+    "agents/_store/docs/CURSOR-*.md",
+    "agents/_store/scripts/enhanced-cursor-setup.js",
+    "agents/_store/scripts/protect-enhanced-cursor-settings.js",
     "README.md",
     "package.json",
     "tsconfig.json",
@@ -305,8 +382,11 @@
   "cursor.ai.priorityFiles": [
     "agents/_core/rules/**/*.mdc",
     "agents/_store/projects/_core/rules/**/*.mdc",
+    ".cursor/settings.json",
     "agents/_store/cursor-summaries/workspace-context.json",
     "agents/_store/cursor-summaries/latest-insights.json",
+    "agents/_store/cursor-summaries/ai-session-memory.json",
+    "agents/_store/cursor-summaries/shared-ai-context.json",
     "agents/workflows/core.json",
     "agents/config/main.json"
   ],
@@ -354,6 +434,73 @@
   "aai.intelligenceMode": "enhanced",
   "aai.autoSync.enabled": true,
   "aai.contextAwareness.level": "high",
+  "cursor.ai.sessionMemory": {
+    "enabled": true,
+    "persistAcrossSessions": true,
+    "memoryPath": "agents/_store/cursor-summaries/ai-session-memory.json",
+    "maxMemoryEntries": 1000,
+    "contextRetention": "7d"
+  },
+  "cursor.ai.crossAISharing": {
+    "enabled": true,
+    "sharedContextPath": "agents/_store/cursor-summaries/shared-ai-context.json",
+    "includeDecisionHistory": true,
+    "includePatternLearning": true,
+    "syncInterval": "5m"
+  },
+  "cursor.ai.learningMode": {
+    "enabled": true,
+    "patternRecognition": true,
+    "codeStyleLearning": true,
+    "projectConventionLearning": true,
+    "userPreferenceLearning": true,
+    "learningDataPath": "agents/_store/intelligence/cursor-learning.json"
+  },
+  "cursor.ai.adaptiveContext": {
+    "enabled": true,
+    "dynamicContextAdjustment": true,
+    "relevanceScoring": true,
+    "contextOptimization": "auto",
+    "maxContextTokens": 50000
+  },
+  "cursor.ai.fileTypeIntelligence": {
+    "*.mdc": {
+      "treatAs": "enhanced-markdown",
+      "includeMetadata": true,
+      "contextWeight": "high",
+      "suggestionsMode": "comprehensive"
+    },
+    "*.memory.json": {
+      "treatAs": "aai-memory",
+      "includeEmbeddings": false,
+      "contextWeight": "medium",
+      "suggestionsMode": "structured"
+    },
+    "*.analysis.json": {
+      "treatAs": "aai-analysis",
+      "includeInsights": true,
+      "contextWeight": "high",
+      "suggestionsMode": "analytical"
+    },
+    "*.intelligence.json": {
+      "treatAs": "aai-intelligence",
+      "includePatterns": true,
+      "contextWeight": "very-high",
+      "suggestionsMode": "intelligent"
+    }
+  },
+  "cursor.ai.realTimeSync": {
+    "enabled": true,
+    "syncWithAAIAgent": true,
+    "syncPath": "agents/_store/cursor-summaries/realtime-sync.json",
+    "syncEvents": [
+      "fileChange",
+      "codeCompletion",
+      "chatInteraction",
+      "analysisUpdate"
+    ],
+    "syncInterval": "30s"
+  },
   "cursor.chat.excludeFiles": [
     "**/*.backup",
     "**/*.backup.*",
@@ -396,74 +543,5 @@
     "**/agents/_store/backups/**",
     "**/agents/_store/memory/backup/**",
     "**/agents/_store/analysis/backup/**"
-  ],
-  "terminal.integrated.enablePersistentSessions": false,
-  "terminal.integrated.enableTaskDetection": false,
-  "terminal.integrated.commandDetection": false,
-  "task.autoDetect": "off",
-  "task.showDecorations": false,
-  "task.problemMatchers.neverPrompt": true,
-  "task.quickOpen.skip": true,
-  "task.saveBeforeRun": "never",
-  "cursor.chat.commandDetection": false,
-  "cursor.terminal.commandSuggestions": false,
-  "terminal.integrated.shellIntegration.enabled": false,
-  "terminal.integrated.shellIntegration.decorationsEnabled": false,
-  "terminal.integrated.shellIntegration.history": 0,
-  "terminal.integrated.shellIntegration.suggestEnabled": false,
-  "terminal.integrated.commandsToSkipShell": [],
-  "terminal.integrated.autoReplies": {},
-  "task.allowAutomaticTasks": "off",
-  "task.runInTerminal": false,
-  "task.showRunningTask": false,
-  "task.slowProviderWarning": false,
-  "typescript.tsc.autoDetect": "off",
-  "npm.autoDetect": "off",
-  "grunt.autoDetect": "off",
-  "gulp.autoDetect": "off",
-  "jake.autoDetect": "off",
-  "cursor.ai.enableTaskSuggestions": false,
-  "cursor.ai.enableTerminalIntegration": false,
-  "cursor.ai.enableCommandDetection": false,
-  "cursor.terminal.enableAI": false,
-  "cursor.terminal.enableSuggestions": false,
-  "workbench.panel.defaultLocation": "bottom",
-  "terminal.integrated.tabs.enabled": false,
-  "terminal.integrated.tabs.showActions": "never",
-  "terminal.integrated.tabs.showActiveTerminal": "never",
-  "terminal.integrated.enableBell": false,
-  "terminal.integrated.enableImages": false,
-  "terminal.integrated.enableFileLinks": false,
-  "terminal.integrated.enableMultiLinePasteWarning": false,
-  "terminal.integrated.rightClickBehavior": "nothing",
-  "terminal.integrated.copyOnSelection": false,
-  "terminal.integrated.cursorBlinking": false,
-  "terminal.integrated.cursorStyle": "line",
-  "terminal.integrated.drawBoldTextInBrightColors": false,
-  "terminal.integrated.fastScrollSensitivity": 1,
-  "terminal.integrated.mouseWheelScrollSensitivity": 1,
-  "terminal.integrated.scrollback": 1000,
-  "terminal.integrated.smoothScrolling": false,
-  "terminal.integrated.splitCwd": "workspaceRoot",
-  "terminal.integrated.wordSeparators": " ()[]{}',\"`─''",
-  "terminal.integrated.allowChords": false,
-  "terminal.integrated.allowMnemonics": false,
-  "terminal.integrated.altClickMovesCursor": false,
-  "terminal.integrated.confirmOnExit": "never",
-  "terminal.integrated.confirmOnKill": "never",
-  "terminal.integrated.persistentSessionReviveProcess": "never",
-  "terminal.integrated.showExitAlert": false,
-  "terminal.integrated.inheritEnv": false,
-  "workbench.panel.opensMaximized": "never",
-  "task.autoDetect": "off",
-  "task.allowAutomaticTasks": "off",
-  "task.showDecorations": false,
-  "task.problemMatchers.neverPrompt": true,
-  "task.quickOpen.skip": true,
-  "task.saveBeforeRun": "never",
-  "task.runInTerminal": false,
-  "task.showRunningTask": false,
-  "task.slowProviderWarning": false,
-  "extensions.autoCheckUpdates": false,
-  "extensions.autoUpdate": false
+  ]
 }

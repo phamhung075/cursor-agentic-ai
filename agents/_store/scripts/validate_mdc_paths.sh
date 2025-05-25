@@ -123,7 +123,7 @@ validate_files() {
     local verbose=${1:-false}
     
     log_info "🔍 VALIDATING MDC FILES (DRY RUN)"
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\n"
     
     local cmd="python3 \"$VALIDATOR_SCRIPT\" --project-root \"$PROJECT_ROOT\""
     
@@ -133,7 +133,7 @@ validate_files() {
     
     eval "$cmd"
     
-    echo ""
+    printf "\\n"
     log_info "Validation complete. No files were modified."
     log_info "Use 'fix' command to apply changes."
 }
@@ -143,11 +143,11 @@ fix_files() {
     local verbose=${1:-false}
     
     log_info "🔧 FIXING MDC FILES"
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\n"
     
     log_warning "This will modify your MDC files. Make sure you have backups!"
     read -p "Continue? (y/N): " -n 1 -r
-    echo
+    printf "\\n"
     
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
         log_info "Operation cancelled"
@@ -182,7 +182,7 @@ check_file() {
     fi
     
     log_info "🔍 CHECKING FILE: $file"
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\n"
     
     # For now, run full validation but focus output on the specific file
     local cmd="python3 \"$VALIDATOR_SCRIPT\" --project-root \"$PROJECT_ROOT\""
@@ -202,7 +202,7 @@ update_and_validate() {
     local verbose=${1:-false}
     
     log_info "📋 UPDATING CORE FILES LIST & VALIDATING"
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\n"
     
     local cmd="python3 \"$VALIDATOR_SCRIPT\" --update-list --project-root \"$PROJECT_ROOT\""
     
@@ -225,7 +225,7 @@ generate_report() {
     fi
     
     log_info "📄 GENERATING VALIDATION REPORT"
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\n"
     
     local cmd="python3 \"$VALIDATOR_SCRIPT\" --report \"$report_file\" --project-root \"$PROJECT_ROOT\""
     
@@ -241,7 +241,7 @@ generate_report() {
 # Function to show project status
 show_status() {
     log_info "📊 PROJECT STATUS"
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    printf "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\n"
     
     log_info "Project Root: $PROJECT_ROOT"
     log_info "Validator Script: $VALIDATOR_SCRIPT"
@@ -259,7 +259,7 @@ show_status() {
         log_warning "Core files list not found"
     fi
     
-    echo ""
+    printf "\\n"
 }
 
 # Main script logic
@@ -326,7 +326,7 @@ main() {
             ;;
         *)
             log_error "Unknown command: $command"
-            echo ""
+            printf "\\n"
             show_usage
             exit 1
             ;;

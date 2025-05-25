@@ -2,12 +2,12 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "🔄 Restore Enhanced Settings",
+      "label": "AAI: Start Agent",
       "type": "shell",
-      "command": "cp",
+      "command": "npm",
       "args": [
-        ".cursor/settings.enhanced.backup.json",
-        ".cursor/settings.json"
+        "run",
+        "AAI:start"
       ],
       "group": "build",
       "presentation": {
@@ -16,42 +16,71 @@
         "focus": false,
         "panel": "shared"
       },
-      "detail": "Restore enhanced settings from backup"
+      "problemMatcher": []
     },
     {
-      "label": "🛡️ Enable Protection",
+      "label": "AAI: Analyze Code",
       "type": "shell",
       "command": "npm",
       "args": [
         "run",
-        "cursor:protect-enable"
-      ],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "detail": "Enable protection to prevent future overwrites of enhanced settings"
-    },
-    {
-      "label": "✅ Verify Fix & Status",
-      "type": "shell",
-      "command": "npm",
-      "args": [
-        "run",
-        "cursor:protect",
-        "--status"
+        "AAI:analyze"
       ],
       "group": "test",
       "presentation": {
         "echo": true,
         "reveal": "always",
-        "focus": true,
+        "focus": false,
         "panel": "shared"
-      },
-      "detail": "Final verification that the settings.json overwrite issue is completely fixed"
+      }
+    },
+    {
+      "label": "AAI: Update Cursor Summaries",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "cursor:update-summaries"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "AAI: Start File Watcher",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "agents/cursor-integration/file-watcher.js"
+      ],
+      "group": "build",
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "AAI: Memory Stats",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "AAI:memory-stats"
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
     }
   ]
 }
