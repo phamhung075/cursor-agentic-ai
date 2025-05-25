@@ -8,11 +8,21 @@
         "name": "comprehensive-cleanup.js",
         "path": "agents/_store/scripts/comprehensive-cleanup.js",
         "description": "No description available"
+      },
+      {
+        "name": "memory-cleanup.js",
+        "path": "agents/_store/scripts/memory-cleanup.js",
+        "description": "No description available"
       }
     ],
     "migration": [],
     "utility": [],
     "uncategorized": [
+      {
+        "name": "agent-intelligence-enhancer.js",
+        "path": "agents/_store/scripts/agent-intelligence-enhancer.js",
+        "description": "No description available"
+      },
       {
         "name": "demo-aai-cursor-integration.js",
         "path": "agents/_store/scripts/demo-aai-cursor-integration.js",
@@ -26,6 +36,11 @@
       {
         "name": "launch-aai-complete.js",
         "path": "agents/_store/scripts/launch-aai-complete.js",
+        "description": "No description available"
+      },
+      {
+        "name": "performance-optimizer.js",
+        "path": "agents/_store/scripts/performance-optimizer.js",
         "description": "No description available"
       },
       {
@@ -51,6 +66,11 @@
       {
         "name": "simple-cursor-setup.js",
         "path": "agents/_store/scripts/simple-cursor-setup.js",
+        "description": "No description available"
+      },
+      {
+        "name": "smart-context-tracker.js",
+        "path": "agents/_store/scripts/smart-context-tracker.js",
         "description": "No description available"
       },
       {
@@ -106,6 +126,22 @@
     {
       "name": "AAI:cleanup",
       "command": "node agents/_store/scripts/comprehensive-cleanup.js"
+    },
+    {
+      "name": "AAI:memory-cleanup",
+      "command": "node agents/_store/scripts/memory-cleanup.js"
+    },
+    {
+      "name": "AAI:intelligence-enhance",
+      "command": "node agents/_store/scripts/agent-intelligence-enhancer.js"
+    },
+    {
+      "name": "AAI:context-track",
+      "command": "node agents/_store/scripts/smart-context-tracker.js"
+    },
+    {
+      "name": "AAI:performance-optimize",
+      "command": "node agents/_store/scripts/performance-optimizer.js"
     },
     {
       "name": "AAI:sync-preserved",
@@ -184,7 +220,7 @@
       "command": "node agents/_store/scripts/simple-cursor-setup.js"
     }
   ],
-  "totalFiles": 16,
+  "totalFiles": 20,
   "categories": {
     "scripts": {
       "core": "Core framework management",
@@ -201,5 +237,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T01:51:49.179Z"
+  "lastUpdated": "2025-05-25T02:24:14.967Z"
 }

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T01:51:49.193Z",
+  "timestamp": "2025-05-25T02:24:14.983Z",
   "scriptSymbols": [
     {
       "name": "comprehensive-cleanup.js",
@@ -8,6 +8,22 @@
       "detail": "No description available",
       "category": "cleanup",
       "containerName": "AAI Scripts/cleanup"
+    },
+    {
+      "name": "memory-cleanup.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/memory-cleanup.js",
+      "detail": "No description available",
+      "category": "cleanup",
+      "containerName": "AAI Scripts/cleanup"
+    },
+    {
+      "name": "agent-intelligence-enhancer.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/agent-intelligence-enhancer.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
     },
     {
       "name": "demo-aai-cursor-integration.js",
@@ -29,6 +45,14 @@
       "name": "launch-aai-complete.js",
       "kind": "Function",
       "location": "agents/_store/scripts/launch-aai-complete.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "performance-optimizer.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/performance-optimizer.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -74,6 +98,14 @@
       "containerName": "AAI Scripts/uncategorized"
     },
     {
+      "name": "smart-context-tracker.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/smart-context-tracker.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
       "name": "start-cursor-aai.js",
       "kind": "Function",
       "location": "agents/_store/scripts/start-cursor-aai.js",
@@ -110,13 +142,13 @@
     {
       "name": "cleanup Scripts",
       "kind": "Module",
-      "detail": "1 scripts in cleanup category",
+      "detail": "2 scripts in cleanup category",
       "location": "agents/_store/scripts/cleanup/"
     },
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "12 scripts in uncategorized category",
+      "detail": "15 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
@@ -132,6 +164,34 @@
       "name": "AAI:cleanup",
       "kind": "Function",
       "detail": "node agents/_store/scripts/comprehensive-cleanup.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:memory-cleanup",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/memory-cleanup.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:intelligence-enhance",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/agent-intelligence-enhancer.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:context-track",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/smart-context-tracker.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "AAI:performance-optimize",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/performance-optimizer.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },

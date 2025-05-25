@@ -1,4 +1,4 @@
-# 🚀 Quick Start: Cursor + AAI Integration
+# 🚀 Quick Start: Complete AAI System
 
 ## 📂 **When You Open This Project**
 
@@ -11,54 +11,51 @@ cd /Users/admin/Documents/Hung/AI/cursor-agentic-ai
 cursor .
 ```
 
-### **Step 2: Initialize AAI Integration (One-time setup)**
+### **Step 2: Launch Complete AAI System (One Command)**
 ```bash
-# Install dependencies
-npm install
-
-# Setup Cursor integration
-npm run cursor:setup
-
-# Generate initial script awareness
-npm run cursor:script-awareness
+# This single command does everything:
+npm run launch
 ```
 
-### **Step 3: Start AAI Agent**
+**What this does automatically:**
+- ✅ Sets up Cursor integration
+- ✅ Launches AAI Agent with interactive mode
+- ✅ Starts Auto-Sync for real-time Cursor updates
+- ✅ Initializes Memory Sync with Pinecone
+- ✅ Begins Core Monitoring and health checks
+- ✅ Starts continuous improvement cycles
+- ✅ Provides automatic recovery and error handling
+
+### **Step 3: Verify Everything is Working**
 ```bash
-# Start the AAI agent
-npm run AAI:start
+# Check system status (in another terminal)
+npm run cursor:auto-sync-status
 ```
 
-### **Step 4: Enable Auto-Sync (Recommended)**
-```bash
-# In a new terminal, start auto-sync
-npm run cursor:auto-sync
+## 🎯 **How to Use AAI with Cursor**
+
+### **Method 1: Interactive AAI Agent**
+The AAI agent runs automatically with the launcher in interactive mode:
+```
+🤖 AAI Agent ready for interaction!
+🤖 > help                    # Get help
+🤖 > analyze src/           # Analyze specific directory  
+🤖 > improve               # Get improvement suggestions
+🤖 > context set project   # Set project context
 ```
 
-## 🎯 **How to Tell Cursor to Use AAI**
-
-### **Method 1: Direct Commands in Cursor Terminal**
-Open Cursor's integrated terminal (`Ctrl/Cmd + ` `) and run:
+### **Method 2: Direct Commands in Cursor Terminal**
+Open Cursor's integrated terminal (`Ctrl/Cmd + ` `) for manual operations:
 
 ```bash
-# Start AAI agent
-npm run AAI:start
-
-# Or start specific AAI functions
-npm run AAI:analyze     # Analyze current code
-npm run AAI:improve     # Get improvement suggestions
-npm run AAI:scripts-list # See all available scripts
+# Manual operations (when needed)
+npm run AAI:cleanup         # Run cleanup operations
+npm run AAI:memory-index    # View preserved code memory
+npm run AAI:sync-preserved  # Manual memory sync
+npm run AAI:test-agent      # Run agent tests
 ```
 
-### **Method 2: Use Cursor's Command Palette**
-1. **Press `Ctrl/Cmd + Shift + P`**
-2. **Type "Terminal: Run Task"**
-3. **Select any AAI command:**
-   - `AAI:start` - Start the agent
-   - `AAI:analyze` - Analyze code
-   - `cursor:script-awareness` - Update script awareness
-
-### **Method 3: Quick File Access**
+### **Method 3: Quick File Access in Cursor**
 1. **Press `Ctrl/Cmd + P`** (Quick Open)
 2. **Type script names** to find AAI scripts instantly
 3. **Open awareness files:**
@@ -66,117 +63,162 @@ npm run AAI:scripts-list # See all available scripts
    - Type `script-improvements` → See suggestions
    - Type `script-catalog` → Browse all scripts
 
-## 🔧 **Essential Commands for Daily Use**
+## 🔧 **Essential Information**
 
-### **Starting AAI:**
-```bash
-npm run AAI:start          # Start interactive AAI agent
-npm run cursor:auto-sync   # Keep Cursor updated automatically
+### **System is Running When You See:**
+```
+✅ AAI SYSTEM FULLY OPERATIONAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 SYSTEM STATUS:
+   ✅ cursorIntegration
+   ✅ aaiAgent  
+   ✅ autoSync
+   ✅ monitoring
+   ✅ memorySync
+
+🔄 [Time] Health check...
+🔄 [Time] Improvement cycle #1
+📊 System uptime: X minutes | Cycles: X
 ```
 
-### **Getting Help:**
+### **Available Manual Commands:**
 ```bash
-npm run AAI:scripts-help   # See all available scripts
-npm run cursor:auto-sync-status  # Check integration status
-```
+# System Management
+npm run launch                    # Start complete AAI system
+npm run cursor:auto-sync-status   # Check integration status
 
-### **Analyzing Code:**
-```bash
-npm run AAI:analyze        # Analyze current project
-npm run AAI:core-status    # Check core framework status
-npm run AAI:scripts-analyze # Analyze script usage
+# Memory & Cleanup
+npm run AAI:cleanup              # Manual cleanup operations
+npm run AAI:memory-index         # View memory index
+npm run AAI:sync-preserved       # Sync preserved code
+npm run AAI:sync-preserved-status # Check memory sync status
+
+# Testing & Analysis  
+npm run AAI:test-agent           # Test AAI agent
+npm run AAI:test-system          # Test system integration
+npm run AAI:scripts-analyze      # Analyze script usage
+npm run AAI:core-health          # Check core framework health
 ```
 
 ## 📋 **What Cursor Can Now Do with AAI**
 
 ### **🔍 Automatic Script Discovery**
 - **Press `Ctrl/Cmd + P`** → type any script name
-- **All 16+ scripts** are instantly searchable
-- **NPM commands** are auto-cataloged
+- **All 10+ active scripts** are instantly searchable
+- **NPM commands** are auto-cataloged and discoverable
 
 ### **💡 Smart Suggestions**
 - **Open** `agents/_store/cursor-summaries/script-improvements.json`
 - **See actionable improvements** with time estimates
-- **Get context-aware recommendations**
+- **Get context-aware recommendations** updated automatically
 
 ### **🎯 Quick Navigation**
 - **Workspace symbols** for all AAI scripts
-- **Category-based organization**
-- **Direct links to script files**
+- **Category-based organization** in file explorer
+- **Direct links** to script files and documentation
 
 ## 🚀 **Typical Workflow**
 
 ### **1. Project Startup:**
 ```bash
-# Open project
+# Open project in Cursor
 cursor .
 
-# Start AAI (in Cursor terminal)
-npm run AAI:start
-
-# Start auto-sync (in second terminal)
-npm run cursor:auto-sync
+# Start complete AAI system (one command)
+npm run launch
 ```
 
 ### **2. During Development:**
-- **Use AAI commands** through Cursor terminal
-- **Check script improvements** via Quick Open (`Ctrl/Cmd + P`)
-- **Let auto-sync** keep everything updated automatically
+- **AAI agent runs interactively** - ask it questions directly
+- **Auto-sync keeps Cursor updated** automatically
+- **Check improvements** via Quick Open (`Ctrl/Cmd + P` → "script-improvements")
+- **All processes run continuously** with health monitoring
 
-### **3. Getting AAI Help:**
+### **3. Manual Operations (when needed):**
 ```bash
-# In Cursor terminal:
-🤖 > help                 # AAI agent help
-🤖 > analyze src/         # Analyze specific directory
-🤖 > improve              # Get improvement suggestions
-🤖 > context set project  # Set project context
+# Check system status
+npm run cursor:auto-sync-status
+
+# Run cleanup
+npm run AAI:cleanup
+
+# View memory
+npm run AAI:memory-index
 ```
 
 ## 📂 **Key Files to Know**
 
-### **Quick Access Files:**
-- `agents/_store/cursor-summaries/script-summary.json` - Overview
-- `agents/_store/cursor-summaries/script-improvements.json` - Suggestions
-- `CURSOR-SCRIPT-INTEGRATION-GUIDE.md` - Complete guide
+### **Quick Access Files (via Ctrl/Cmd + P):**
+- `script-summary.json` - Complete overview of all scripts
+- `script-improvements.json` - Actionable improvement suggestions  
+- `script-catalog.json` - Detailed script catalog
+- `script-workspace-symbols.json` - Cursor workspace symbols
 
-### **Configuration Files:**
+### **Documentation:**
+- `agents/_store/docs/COMPLETE-LAUNCHER-README.md` - Complete launcher guide
+- `agents/_store/docs/CLEANUP-AND-MEMORY-INTEGRATION-SUMMARY.md` - Recent cleanup summary
+
+### **System Files:**
+- `agents/_store/scripts/launch-aai-complete.js` - Main launcher
+- `agents/_store/memory/` - Preserved code memory
 - `.cursor/settings.json` - Cursor integration settings
-- `package.json` - All AAI commands listed
 
 ## 🔧 **Troubleshooting**
 
-### **If AAI doesn't start:**
+### **If Launch Fails:**
 ```bash
-npm install              # Reinstall dependencies
-npm run AAI:test-startup # Test AAI startup
+# Check Node.js version (needs >=14.0.0)
+node --version
+
+# Reinstall dependencies
+npm install
+
+# Check file permissions
+ls -la agents/_store/scripts/launch-aai-complete.js
 ```
 
-### **If Cursor doesn't see scripts:**
+### **If AAI Agent Doesn't Respond:**
+- The agent runs interactively in the launch terminal
+- Look for the `🤖 >` prompt
+- Type `help` for available commands
+
+### **If Cursor Doesn't See Scripts:**
 ```bash
-npm run cursor:manual-sync  # Force update
-npm run cursor:setup       # Re-setup integration
+# Check auto-sync status
+npm run cursor:auto-sync-status
+
+# The system auto-regenerates files, but you can force update:
+npm run cursor:auto-sync
 ```
 
-### **If auto-sync isn't working:**
+### **If Memory Sync Issues:**
 ```bash
-npm run cursor:auto-sync-status  # Check status
-npm run cursor:auto-sync         # Restart auto-sync
+# Check memory sync status
+npm run AAI:sync-preserved-status
+
+# Manual memory sync
+npm run AAI:sync-preserved
 ```
 
 ## ✅ **Success Indicators**
 
-You'll know it's working when:
-- ✅ **AAI agent starts** with interactive prompt
+You'll know everything is working when:
+- ✅ **Launch shows** "✅ AAI SYSTEM FULLY OPERATIONAL"
+- ✅ **AAI agent shows** interactive `🤖 >` prompt
 - ✅ **Cursor finds scripts** when you press `Ctrl/Cmd + P`
-- ✅ **Auto-sync shows** "✅ Full sync completed"
-- ✅ **Script improvements** appear in cursor-summaries/
+- ✅ **Auto-sync shows** periodic "✅ Full sync completed"
+- ✅ **Health checks** appear every minute in the terminal
+- ✅ **Improvement cycles** run every 5 minutes automatically
 
 ## 🎉 **You're Ready!**
 
-**Cursor is now fully integrated with your AAI agent!**
+**Your complete AAI system is now running with full Cursor integration!**
 
 **Quick test:**
-1. Press `Ctrl/Cmd + P` in Cursor
-2. Type "script-summary" 
+1. In the launch terminal, type at the `🤖 >` prompt: `help`
+2. Press `Ctrl/Cmd + P` in Cursor and type "script-summary"
 3. Open the file to see all your scripts
-4. Start coding with AAI assistance! 🚀 
+4. **Start coding with full AAI assistance!** 🚀
+
+**To stop the system:** Press `Ctrl+C` in the launch terminal for graceful shutdown. 

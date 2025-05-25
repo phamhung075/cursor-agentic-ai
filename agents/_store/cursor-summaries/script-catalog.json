@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-05-25T01:51:49.192Z",
+  "timestamp": "2025-05-25T02:24:14.983Z",
   "source": "AAI Script Manager → Cursor Integration",
   "summary": {
-    "totalScripts": 16,
+    "totalScripts": 20,
     "categories": 6,
-    "npmIntegrated": 21
+    "npmIntegrated": 25
   },
   "scripts": {
     "cleanup": [
@@ -45,9 +45,85 @@
             "estimatedTime": "10-15 minutes"
           }
         ]
+      },
+      {
+        "name": "memory-cleanup.js",
+        "path": "agents/_store/scripts/memory-cleanup.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/memory-cleanup.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/memory-cleanup.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/memory-cleanup.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
       }
     ],
     "uncategorized": [
+      {
+        "name": "agent-intelligence-enhancer.js",
+        "path": "agents/_store/scripts/agent-intelligence-enhancer.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/agent-intelligence-enhancer.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/agent-intelligence-enhancer.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/agent-intelligence-enhancer.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
       {
         "name": "demo-aai-cursor-integration.js",
         "path": "agents/_store/scripts/demo-aai-cursor-integration.js",
@@ -148,6 +224,44 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/launch-aai-complete.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "performance-optimizer.js",
+        "path": "agents/_store/scripts/performance-optimizer.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/performance-optimizer.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/performance-optimizer.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/performance-optimizer.js",
               "Add description"
             ]
           }
@@ -338,6 +452,44 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/simple-cursor-setup.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "smart-context-tracker.js",
+        "path": "agents/_store/scripts/smart-context-tracker.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/smart-context-tracker.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/smart-context-tracker.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/smart-context-tracker.js",
               "Add description"
             ]
           }

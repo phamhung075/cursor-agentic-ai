@@ -835,6 +835,12 @@ if (require.main === module) {
     testMode: false
   };
   
+  // Check environment variable for non-interactive mode (from orchestrator)
+  if (process.env.AAI_NON_INTERACTIVE === 'true') {
+    options.interactive = false;
+    console.log('🤖 Starting AAI Agent in service mode for Cursor integration...');
+  }
+  
   if (args.includes('--test') || args.includes('-t')) {
     options.testMode = true;
     options.interactive = false;
@@ -854,10 +860,14 @@ if (require.main === module) {
     console.log('  --no-interactive, -n Run in non-interactive mode');
     console.log('  --help, -h           Show this help message');
     console.log('');
+    console.log('Environment Variables:');
+    console.log('  AAI_NON_INTERACTIVE=true  Run in service mode (for orchestrator)');
+    console.log('');
     console.log('Examples:');
     console.log('  node index.js                # Interactive mode (default)');
     console.log('  node index.js --test         # Test mode (quick check)');
     console.log('  node index.js --no-interactive # Non-interactive mode');
+    console.log('  AAI_NON_INTERACTIVE=true node index.js # Service mode');
     process.exit(0);
   }
   
@@ -869,6 +879,20 @@ if (require.main === module) {
     if (options.testMode && result && result.success) {
       console.log('🎯 Test mode finished - exiting');
       process.exit(0);
+    }
+    
+    // In non-interactive service mode, keep running and log status
+    if (!options.interactive && !options.testMode) {
+      console.log('✅ AAI Agent initialized in service mode');
+      console.log('🔄 Agent ready for Cursor integration and continuous operation');
+      
+      // Keep the process alive and responsive
+      setInterval(() => {
+        // Periodic health check
+        if (agent.isInitialized) {
+          console.log(`🔄 [${new Date().toLocaleTimeString()}] AAI Agent service running...`);
+        }
+      }, 300000); // Every 5 minutes
     }
   });
 }

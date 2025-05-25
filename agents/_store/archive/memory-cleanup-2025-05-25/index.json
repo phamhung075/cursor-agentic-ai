@@ -152,11 +152,5 @@
       ],
       "size": 12399
     }
-  ],
-  "lastCleanup": "2025-05-25T02:05:42.811Z",
-  "cleanupStats": {
-    "filesRemoved": 88,
-    "sizeFreed": 2233033,
-    "filesKept": 21
-  }
+  ]
 }

@@ -1,0 +1,20 @@
+{
+  "userInteractionLearning": {
+    "enabled": true,
+    "trackCommands": true,
+    "trackPreferences": true,
+    "adaptToPatterns": true
+  },
+  "codePatternLearning": {
+    "enabled": true,
+    "analyzeSuccessfulCode": true,
+    "learnFromErrors": true,
+    "suggestImprovements": true
+  },
+  "contextualLearning": {
+    "enabled": true,
+    "projectContext": true,
+    "fileContext": true,
+    "taskContext": true
+  }
+}

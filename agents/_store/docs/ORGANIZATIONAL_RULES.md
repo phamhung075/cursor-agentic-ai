@@ -1,104 +1,119 @@
-# 📋 Organizational Rules & Critical Fixes
+# 📋 Organizational Rules & File Structure
 
-## 🚨 **CRITICAL RULE ESTABLISHED**
+## 🚨 **CRITICAL RULES**
 
 **Never save any file in root unless specifically requested by user.**
 
 ### 📁 **Correct File Locations:**
 
+#### **For AAI Scripts:**
+- ✅ `agents/_store/scripts/` - All AAI utility scripts
+- ❌ Root directory - Never save scripts here
+
 #### **For Tests:**
 - ✅ `agents/_store/tests/` - All test files go here
 - ❌ `test_*.js` in root - Never save here
 
-#### **For Agent Files:**
-- ✅ `./agents/` - Agent-related code and modules
-- ✅ `./.cursor/` - Cursor rules and configuration
-- ✅ `./scripts/` - Utility and maintenance scripts
-
 #### **For Documentation:**
-- ✅ `agents/_store/docs/` - Agent documentation and guides
+- ✅ `agents/_store/docs/` - AAI documentation and guides
+- ❌ `*.md` in root - Never save documentation here
+
+#### **For Agent Files:**
+- ✅ `agents/self-improvement/` - Main AAI agent
+- ✅ `agents/cursor-integration/` - Cursor IDE integration
+- ✅ `agents/shared/` - Shared utilities
+- ✅ `agents/_store/` - All AAI storage and utilities
+
+#### **For Project Code:**
+- ✅ `src/[project]/` - Project-specific code
+- ✅ `.cursor/` - Cursor rules and configuration
 
 ---
 
-## 🔧 **Critical Fixes Implemented**
+## 🏗️ **Current System Architecture**
 
-### 1. **Recursive Dependency Loop Prevention**
-**Problem:** Agent was tracking its own memory files, causing infinite recursion and memory crash.
+### **Directory Structure:**
+```
+cursor-agentic-ai/
+├── package.json                    # Main project config
+├── .cursor/                        # Cursor IDE settings
+├── agents/
+│   ├── self-improvement/          # Main AAI agent
+│   ├── cursor-integration/        # Cursor integration
+│   ├── shared/                    # Shared utilities
+│   └── _store/
+│       ├── scripts/              # All AAI scripts (moved from root)
+│       ├── docs/                 # Documentation (moved from root)
+│       ├── memory/               # Preserved code memory
+│       ├── tests/                # All test files
+│       ├── cursor-summaries/     # Cursor integration files
+│       └── archive/              # Archived obsolete files
+└── src/
+    └── [project]/                # Project-specific code
+```
 
-**Solution:**
-- Completely excluded `agents/_store/**` from file watching
-- Added multiple layers of protection against recursion
-- Reduced file watching patterns to be more selective
+### **Launch System:**
+- **Single Entry Point:** `npm run launch`
+- **Main Launcher:** `agents/_store/scripts/launch-aai-complete.js`
+- **All Components:** Launched and managed automatically
 
+---
+
+## 🔧 **File Organization Rules**
+
+### **For AI Agents Creating Files:**
+
+1. **Scripts:** Always save in `agents/_store/scripts/[category]/`
+2. **Tests:** Always save in `agents/_store/tests/[category]/`
+3. **Documentation:** Always save in `agents/_store/docs/`
+4. **Never save in root** unless explicitly requested
+
+### **Naming Conventions:**
+```
+Scripts: action_target_description.js
+Tests:   test_component_functionality.js
+Docs:    DESCRIPTIVE_NAME.md
+```
+
+### **NPM Script Registration:**
+```javascript
+// All AAI scripts should be registered with AAI: prefix
+"AAI:script-name": "node agents/_store/scripts/category/script-name.js"
+```
+
+---
+
+## 🚨 **Critical Protections**
+
+### **Prevent Recursive Loops:**
 ```javascript
 // CRITICAL: Never track any _store files to prevent recursion
 if (filePath.includes('_store') || 
     filePath.includes('memory') ||
-    // ... other exclusions
-) {
+    filePath.includes('node_modules')) {
   return false;
 }
 ```
 
-### 2. **Selective File Tracking**
-**Before:** Tracked all files including node_modules, causing performance issues.
-
-**After:** Only tracks project-relevant files:
-- Project documentation (`.mdc`, `.md`)
-- Source code in `src/` only
-- Core agent files (specific paths)
-- Essential config files
-- Script files
-
-### 3. **Reduced Memory Storage Frequency**
-**Before:** Stored every dependency change immediately.
-
-**After:** Batched storage:
-- Dependency memory: Only every 5th update
-- Dependency graph: Only every 10th change
-- Only stores meaningful dependencies
-
-### 4. **Proper File Organization**
-**Before:** Test files scattered in root.
-
-**After:** All files in correct locations:
-- Tests: `agents/_store/tests/`
-- Docs: `agents/_store/docs/` 
-- Scripts: `scripts/`
-
----
-
-## ✅ **Current Status**
-
-### **Performance Metrics:**
-- **Dependencies tracked:** 0 (clean start)
-- **Agent memory:** 5 entries (normal system data)
-- **No recursive loops:** ✅ Fixed
-- **No memory crashes:** ✅ Fixed
-- **Proper file organization:** ✅ Implemented
-
 ### **File Watching Patterns:**
 ```javascript
 const watchPatterns = [
-  '**/*.mdc',                           // Project docs
-  '**/*.md',                            // Markdown files
-  'src/**/*.js',                        // Source JS only
-  '.cursor/rules/**/*.mdc',             // Cursor rules
-  'agents/self-improvement/core/**/*.js', // Core agent files
-  'scripts/**/*.js',                    // Scripts
-  'package.json',                       // Root config
-  '*.json'                              // Root configs only
+  'src/**/*.js',                        # Project source code
+  'agents/self-improvement/**/*.js',    # AAI agent files
+  'agents/cursor-integration/**/*.js',  # Cursor integration
+  'agents/shared/**/*.js',              # Shared utilities
+  'package.json',                       # Main config
+  '.cursor/**/*'                        # Cursor settings
 ];
 ```
 
 ### **Ignored Patterns:**
 ```javascript
 ignored: [
-  '**/node_modules/**',     // All node_modules
-  'agents/_store/**',       // CRITICAL: All _store files
-  '**/agents/_store/**',    // Additional protection
-  '**/*memory*/**',         // Any memory directories
-  '**/test_*.js'            // Test files in root
+  '**/node_modules/**',     # Dependencies
+  'agents/_store/**',       # CRITICAL: All _store files
+  '**/memory/**',           # Memory directories
+  '**/archive/**'           # Archived files
 ]
 ```
 
@@ -106,53 +121,56 @@ ignored: [
 
 ## 🎯 **Usage Guidelines**
 
-### **For Future Development:**
+### **For Development:**
 
-1. **Test Files:** Always save in `agents/_store/tests/`
-2. **Documentation:** Always save in `agents/_store/docs/`
-3. **Agent Code:** Save in appropriate `agents/` subdirectories
-4. **Scripts:** Save in `scripts/` directory
-5. **Root Files:** Only save when explicitly requested by user
+1. **Use Single Launch:** `npm run launch` starts everything
+2. **Manual Operations:** Use `npm run AAI:*` commands when needed
+3. **File Creation:** Always use proper directory structure
+4. **Testing:** All tests in `agents/_store/tests/`
 
-### **Path References in Tests:**
+### **Path References:**
 ```javascript
-// Correct way to reference agent from tests
-const SelfImprovementAgent = require('../../self-improvement/index.js');
+// Correct way to reference files from tests
+const launcher = require('../../scripts/launch-aai-complete.js');
+const agent = require('../../../self-improvement/index.js');
 ```
 
 ---
 
-## 📊 **Monitoring**
+## 📊 **System Health**
 
-The agent now provides clean output without excessive "Stored agent memory: dependencies" spam:
+### **Current Status:**
+- ✅ **Clean file structure** (76% reduction from cleanup)
+- ✅ **Single launch command** for all functionality
+- ✅ **No recursive loops** in file watching
+- ✅ **Proper memory management** with Pinecone
+- ✅ **Automated monitoring** and recovery
 
+### **Performance Metrics:**
+- **Active Scripts:** 10+ (organized and discoverable)
+- **NPM Commands:** 30+ (cataloged and functional)
+- **Memory Usage:** Optimized with preserved code system
+- **File Organization:** Clean and maintainable
+
+---
+
+## 🔄 **Maintenance Commands**
+
+### **System Management:**
+```bash
+npm run launch                    # Start complete AAI system
+npm run AAI:cleanup              # Manual cleanup operations
+npm run AAI:memory-index         # View preserved code memory
 ```
-📊 Current Dependency Stats:
-  📁 Total Files Tracked: 0
-  🔗 Total Dependencies: 0
-  👀 File Watcher Active: Yes (no recursion)
+
+### **Health Checks:**
+```bash
+npm run cursor:auto-sync-status  # Check Cursor integration
+npm run AAI:core-health          # Check core framework
+npm run AAI:scripts-analyze      # Analyze script usage
 ```
 
 ---
 
-## 🔄 **Maintenance**
-
-### **Clean Dependency Memory:**
-```bash
-node scripts/clean_dependency_memory.js
-```
-
-### **Test Agent:**
-```bash
-node agents/_store/tests/test_clean_agent.js
-```
-
-### **Analysis Demo:**
-```bash
-node agents/_store/tests/test_agent_analysis.js
-```
-
----
-
-**Last Updated:** December 2024  
-**Status:** ✅ All critical issues resolved 
+**Last Updated:** May 2025  
+**Status:** ✅ All systems operational with single-command launch 

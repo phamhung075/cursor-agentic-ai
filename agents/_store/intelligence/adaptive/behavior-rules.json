@@ -1,0 +1,38 @@
+{
+  "behaviorRules": [
+    {
+      "condition": "user_repeats_command",
+      "action": "suggest_automation",
+      "priority": "high"
+    },
+    {
+      "condition": "error_pattern_detected",
+      "action": "proactive_fix_suggestion",
+      "priority": "high"
+    },
+    {
+      "condition": "performance_degradation",
+      "action": "optimization_suggestion",
+      "priority": "medium"
+    },
+    {
+      "condition": "new_code_pattern",
+      "action": "learn_and_adapt",
+      "priority": "low"
+    }
+  ],
+  "adaptationStrategies": {
+    "immediate": [
+      "error_handling",
+      "performance_fixes"
+    ],
+    "shortTerm": [
+      "workflow_optimization",
+      "pattern_learning"
+    ],
+    "longTerm": [
+      "system_evolution",
+      "capability_expansion"
+    ]
+  }
+}

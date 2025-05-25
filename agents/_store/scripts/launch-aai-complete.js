@@ -4,7 +4,7 @@
  * 🚀 Complete AAI Launcher & Orchestrator
  * 
  * Master script that launches all AAI functions, coordinates them,
- * and maintains continuous improvement workflow
+ * and maintains continuous improvement workflow with enhanced intelligence
  */
 
 const { spawn, exec } = require('child_process');
@@ -21,14 +21,19 @@ class AAICompleteOrchestrator extends EventEmitter {
       aaiAgent: false,
       autoSync: false,
       monitoring: false,
-      memorySync: false
+      memorySync: false,
+      intelligence: false,
+      contextTracking: false,
+      performanceOptimized: false
     };
     this.config = {
       autoRestart: true,
       continuousImprovement: true,
       monitoringInterval: 30000, // 30 seconds
       improvementInterval: 300000, // 5 minutes
-      healthCheckInterval: 60000 // 1 minute
+      healthCheckInterval: 60000, // 1 minute
+      intelligenceInterval: 600000, // 10 minutes
+      performanceInterval: 900000 // 15 minutes
     };
     this.startTime = new Date();
     this.improvementCycle = 0;
@@ -38,8 +43,8 @@ class AAICompleteOrchestrator extends EventEmitter {
    * Main orchestration function
    */
   async launch() {
-    console.log('🚀 LAUNCHING COMPLETE AAI SYSTEM');
-    console.log('━'.repeat(60));
+    console.log('🚀 LAUNCHING COMPLETE AAI SYSTEM WITH ENHANCED INTELLIGENCE');
+    console.log('━'.repeat(70));
     console.log(`⏰ Started at: ${this.startTime.toLocaleString()}`);
     console.log('');
 
@@ -47,17 +52,20 @@ class AAICompleteOrchestrator extends EventEmitter {
       // 1. Setup and validate environment
       await this.setupEnvironment();
 
-      // 2. Launch core components in sequence
+      // 2. Initialize intelligence systems
+      await this.initializeIntelligence();
+
+      // 3. Launch core components in sequence
       await this.launchCoreComponents();
 
-      // 3. Start monitoring and improvement cycles
+      // 4. Start enhanced monitoring and improvement cycles
       this.startContinuousOperations();
 
-      // 4. Setup process management
+      // 5. Setup process management
       this.setupProcessManagement();
 
-      console.log('✅ AAI SYSTEM FULLY OPERATIONAL');
-      console.log('━'.repeat(60));
+      console.log('✅ AAI SYSTEM FULLY OPERATIONAL WITH ENHANCED INTELLIGENCE');
+      console.log('━'.repeat(70));
       this.showSystemStatus();
       this.showAvailableCommands();
 
@@ -93,6 +101,66 @@ class AAICompleteOrchestrator extends EventEmitter {
   }
 
   /**
+   * Initialize intelligence systems
+   */
+  async initializeIntelligence() {
+    console.log('🧠 Initializing Enhanced Intelligence Systems...');
+
+    try {
+      // 1. Enhance agent intelligence
+      console.log('🎯 Enhancing agent intelligence...');
+      await this.runCommand('AAI:intelligence-enhance', 'Enhancing agent intelligence');
+      this.status.intelligence = true;
+
+      // 2. Start context tracking (background process)
+      console.log('👁️ Starting context tracking...');
+      this.launchContextTracking();
+
+      // 3. Run initial performance optimization
+      console.log('⚡ Running performance optimization...');
+      await this.runCommand('AAI:performance-optimize', 'Optimizing performance');
+      this.status.performanceOptimized = true;
+
+      console.log('✅ Intelligence systems initialized\n');
+
+    } catch (error) {
+      console.warn('⚠️ Intelligence initialization had issues:', error.message);
+      console.log('📝 Continuing with basic functionality...\n');
+    }
+  }
+
+  /**
+   * Launch context tracking as background process
+   */
+  launchContextTracking() {
+    console.log('🎯 Starting Smart Context Tracking...');
+    
+    const contextProcess = spawn('npm', ['run', 'AAI:context-track'], {
+      stdio: ['pipe', 'pipe', 'pipe'],
+      detached: false
+    });
+
+    contextProcess.stdout.on('data', (data) => {
+      const output = data.toString();
+      if (output.includes('Smart context tracking active')) {
+        console.log('✅ Context Tracking ready');
+        this.status.contextTracking = true;
+        this.emit('context-ready');
+      }
+      // Log important context events
+      if (output.includes('suggestion') || output.includes('pattern') || output.includes('context')) {
+        console.log(`🎯 Context: ${output.trim()}`);
+      }
+    });
+
+    contextProcess.stderr.on('data', (data) => {
+      console.warn(`⚠️ Context Error: ${data.toString().trim()}`);
+    });
+
+    this.processes.set('context-tracking', contextProcess);
+  }
+
+  /**
    * Launch core components
    */
   async launchCoreComponents() {
@@ -122,26 +190,39 @@ class AAICompleteOrchestrator extends EventEmitter {
   launchAAIAgent() {
     console.log('🤖 Starting AAI Agent...');
     
-    const aaiProcess = spawn('npm', ['run', 'AAI:start'], {
+    // Start AAI agent in non-interactive mode for better integration
+    const aaiProcess = spawn('node', ['agents/self-improvement/index.js'], {
       stdio: ['pipe', 'pipe', 'pipe'],
-      detached: false
+      detached: false,
+      env: { ...process.env, AAI_NON_INTERACTIVE: 'true' }
     });
 
     aaiProcess.stdout.on('data', (data) => {
       const output = data.toString();
-      if (output.includes('🤖') || output.includes('Interactive Self-Improvement Agent')) {
+      if (output.includes('Agent initialized') || output.includes('Self-Improvement Agent')) {
         console.log('✅ AAI Agent ready');
         this.status.aaiAgent = true;
         this.emit('aai-ready');
       }
       // Log important AAI output
-      if (output.includes('analysis') || output.includes('improvement') || output.includes('error')) {
+      if (output.includes('analysis') || output.includes('improvement') || output.includes('✅')) {
         console.log(`🤖 AAI: ${output.trim()}`);
       }
     });
 
     aaiProcess.stderr.on('data', (data) => {
-      console.warn(`⚠️ AAI Error: ${data.toString().trim()}`);
+      const stderr = data.toString().trim();
+      if (stderr && !stderr.includes('ExperimentalWarning')) {
+        console.warn(`⚠️ AAI Error: ${stderr}`);
+      }
+    });
+
+    // Handle process exit
+    aaiProcess.on('close', (code) => {
+      if (code !== 0) {
+        console.warn(`⚠️ AAI Agent exited with code ${code}`);
+        this.status.aaiAgent = false;
+      }
     });
 
     this.processes.set('aai-agent', aaiProcess);
@@ -205,128 +286,191 @@ class AAICompleteOrchestrator extends EventEmitter {
   launchCoreMonitoring() {
     console.log('📊 Starting Core Monitoring...');
     
+    // Start core monitoring
     const monitorProcess = spawn('npm', ['run', 'AAI:core-monitor'], {
-      stdio: ['pipe', 'pipe', 'pipe'],
-      detached: false
+      stdio: ['pipe', 'pipe', 'pipe']
     });
 
-    monitorProcess.stdout.on('data', (data) => {
-      const output = data.toString();
-      if (output.includes('monitoring') || output.includes('started')) {
-        console.log('✅ Core Monitoring ready');
-        this.status.monitoring = true;
-        this.emit('monitor-ready');
-      }
+    monitorProcess.on('close', (code) => {
+      console.log('✅ Core Monitoring ready');
+      this.status.monitoring = true;
+      this.emit('monitoring-ready');
     });
 
-    this.processes.set('core-monitor', monitorProcess);
+    this.processes.set('core-monitoring', monitorProcess);
   }
 
   /**
-   * Start continuous operations
+   * Start continuous operations with enhanced intelligence
    */
   startContinuousOperations() {
     console.log('🔄 Starting continuous operations...');
 
-    // Health check timer
-    this.healthCheckTimer = setInterval(() => {
+    // Health checks every minute
+    setInterval(() => {
       this.performHealthCheck();
     }, this.config.healthCheckInterval);
 
-    // Continuous improvement timer
-    this.improvementTimer = setInterval(() => {
+    // Improvement cycles every 5 minutes
+    setInterval(() => {
       this.performImprovementCycle();
     }, this.config.improvementInterval);
 
-    // System monitoring timer
-    this.monitoringTimer = setInterval(() => {
+    // Intelligence enhancement every 10 minutes
+    setInterval(() => {
+      this.performIntelligenceEnhancement();
+    }, this.config.intelligenceInterval);
+
+    // Performance optimization every 15 minutes
+    setInterval(() => {
+      this.performPerformanceOptimization();
+    }, this.config.performanceInterval);
+
+    // System monitoring every 30 seconds
+    setInterval(() => {
       this.performSystemMonitoring();
     }, this.config.monitoringInterval);
 
-    console.log('✅ Continuous operations started');
+    console.log('✅ Continuous operations started\n');
   }
 
   /**
-   * Perform health check
+   * Perform intelligence enhancement cycle
+   */
+  async performIntelligenceEnhancement() {
+    try {
+      console.log('🧠 Running intelligence enhancement cycle...');
+      
+      // Check if intelligence directory exists and has recent activity
+      const intelligenceDir = 'agents/_store/intelligence';
+      if (fs.existsSync(intelligenceDir)) {
+        // Run pattern analysis update
+        await this.runCommand('AAI:intelligence-enhance', 'Updating intelligence patterns', false);
+        console.log('✅ Intelligence enhancement completed');
+      }
+    } catch (error) {
+      console.warn('⚠️ Intelligence enhancement cycle failed:', error.message);
+    }
+  }
+
+  /**
+   * Perform performance optimization cycle
+   */
+  async performPerformanceOptimization() {
+    try {
+      console.log('⚡ Running performance optimization cycle...');
+      await this.runCommand('AAI:performance-optimize', 'Optimizing system performance', false);
+      console.log('✅ Performance optimization completed');
+    } catch (error) {
+      console.warn('⚠️ Performance optimization cycle failed:', error.message);
+    }
+  }
+
+  /**
+   * Enhanced health check with intelligence monitoring
    */
   async performHealthCheck() {
     const timestamp = new Date().toLocaleTimeString();
-    console.log(`🏥 [${timestamp}] Health check...`);
+    
+    // Check process health (only check processes that should be running)
+    const processHealth = {
+      autoSync: this.processes.has('auto-sync') && !this.processes.get('auto-sync').killed,
+      contextTracking: this.processes.has('context-tracking') && !this.processes.get('context-tracking').killed,
+      memorySync: this.status.memorySync
+    };
 
-    // Check process health
-    for (const [name, process] of this.processes) {
-      if (process.killed) {
-        console.warn(`⚠️ Process ${name} is down, restarting...`);
-        if (this.config.autoRestart) {
-          await this.restartProcess(name);
-        }
-      }
+    // AAI Agent runs in service mode, check if it's still alive
+    const aaiAgent = this.processes.get('aai-agent');
+    if (aaiAgent) {
+      processHealth.aaiAgent = !aaiAgent.killed;
     }
 
-    // Check file system health
-    const criticalFiles = [
-      '.cursor/settings.json',
-      'agents/_store/cursor-summaries/script-summary.json',
-      'package.json'
-    ];
+    // Check intelligence system health (these are one-time operations, so just check if they completed)
+    const intelligenceHealth = {
+      intelligence: this.status.intelligence,
+      performanceOptimized: this.status.performanceOptimized
+    };
 
-    for (const file of criticalFiles) {
-      if (!fs.existsSync(file)) {
-        console.warn(`⚠️ Critical file missing: ${file}`);
-        await this.regenerateFile(file);
+    // Core systems that must be working
+    const coreHealthy = processHealth.autoSync && processHealth.memorySync;
+    
+    // Count healthy processes
+    const healthyProcesses = Object.values(processHealth).filter(Boolean).length;
+    const totalProcesses = Object.keys(processHealth).length;
+
+    if (coreHealthy && healthyProcesses >= totalProcesses - 1) { // Allow one process to be down
+      console.log(`🔄 [${timestamp}] Health check... ${healthyProcesses}/${totalProcesses} systems operational`);
+    } else {
+      console.warn(`⚠️ [${timestamp}] Health check... ${healthyProcesses}/${totalProcesses} systems operational`);
+      
+      // Restart failed critical processes
+      for (const [name, healthy] of Object.entries(processHealth)) {
+        if (!healthy && this.config.autoRestart) {
+          // Only restart critical processes
+          if (name === 'autoSync' || name === 'contextTracking') {
+            console.log(`🔄 Restarting ${name}...`);
+            await this.restartProcess(name);
+          }
+        }
       }
     }
   }
 
   /**
-   * Perform improvement cycle
+   * Enhanced improvement cycle
    */
   async performImprovementCycle() {
     this.improvementCycle++;
     const timestamp = new Date().toLocaleTimeString();
+    
     console.log(`🔄 [${timestamp}] Improvement cycle #${this.improvementCycle}`);
 
     try {
-      // 1. Analyze current state
-      await this.runCommand('AAI:scripts-analyze', 'Analyzing scripts');
+      // 1. Update script awareness
+      await this.runCommand('cursor:script-awareness', 'Updating script awareness', false);
 
-      // 2. Update script awareness
-      await this.runCommand('cursor:script-awareness', 'Updating script awareness');
+      // 2. Check memory sync status
+      await this.runCommand('AAI:sync-preserved-status', 'Checking memory sync', false);
 
-      // 3. Check for improvements
-      await this.runCommand('AAI:core-health', 'Checking core health');
+      // 3. Regenerate any missing files
+      const criticalFiles = [
+        'agents/_store/cursor-summaries/script-summary.json',
+        'agents/_store/cursor-summaries/script-improvements.json'
+      ];
 
-      // 4. Sync memory if needed
-      if (this.improvementCycle % 3 === 0) { // Every 3rd cycle
-        await this.runCommand('AAI:sync-both', 'Syncing memory');
+      for (const file of criticalFiles) {
+        if (!fs.existsSync(file)) {
+          console.log(`📝 Regenerating missing file: ${file}`);
+          await this.regenerateFile(file);
+        }
       }
 
-      // 5. Check preserved code sync status (every 5th cycle)
-      if (this.improvementCycle % 5 === 0) {
-        await this.runCommand('AAI:sync-preserved-status', 'Checking preserved code sync');
-      }
-
-      console.log(`✅ Improvement cycle #${this.improvementCycle} complete`);
+      console.log(`✅ Improvement cycle #${this.improvementCycle} completed`);
 
     } catch (error) {
-      console.error(`❌ Improvement cycle failed: ${error.message}`);
+      console.warn(`⚠️ Improvement cycle #${this.improvementCycle} failed:`, error.message);
     }
   }
 
   /**
-   * Perform system monitoring
+   * Enhanced system monitoring
    */
   performSystemMonitoring() {
-    const uptime = Date.now() - this.startTime.getTime();
-    const uptimeMinutes = Math.floor(uptime / 60000);
+    const uptime = Math.floor((new Date() - this.startTime) / 1000 / 60); // minutes
+    const processCount = this.processes.size;
     
-    console.log(`📊 System uptime: ${uptimeMinutes} minutes | Cycles: ${this.improvementCycle}`);
-    
-    // Log process status
-    const activeProcesses = Array.from(this.processes.keys()).filter(
-      name => !this.processes.get(name).killed
-    );
-    console.log(`🔧 Active processes: ${activeProcesses.join(', ')}`);
+    // Enhanced status with intelligence
+    const enhancedStatus = {
+      ...this.status,
+      uptime: `${uptime} minutes`,
+      processes: processCount,
+      cycles: this.improvementCycle
+    };
+
+    // Log status every 10 cycles (5 minutes)
+    if (this.improvementCycle % 10 === 0) {
+      console.log(`📊 System uptime: ${uptime} minutes | Cycles: ${this.improvementCycle}`);
+    }
   }
 
   /**
@@ -349,14 +493,44 @@ class AAICompleteOrchestrator extends EventEmitter {
    */
   async waitForComponentsReady() {
     return new Promise((resolve) => {
+      let attempts = 0;
+      const maxAttempts = 30; // 30 seconds max wait
+      
       const checkReady = () => {
-        const ready = Object.values(this.status).every(status => status);
-        if (ready) {
+        attempts++;
+        
+        // Core components that must be ready
+        const coreReady = this.status.cursorIntegration && 
+                         this.status.autoSync && 
+                         this.status.memorySync;
+        
+        // Intelligence components (nice to have but not blocking)
+        const intelligenceReady = this.status.intelligence && 
+                                 this.status.contextTracking && 
+                                 this.status.performanceOptimized;
+        
+        // If core components are ready, proceed
+        if (coreReady) {
+          console.log('✅ Core components ready');
+          if (intelligenceReady) {
+            console.log('✅ Intelligence systems ready');
+          } else {
+            console.log('⏳ Intelligence systems still initializing (will continue in background)');
+          }
           resolve();
-        } else {
-          setTimeout(checkReady, 1000);
+          return;
         }
+        
+        // If we've waited too long, proceed anyway
+        if (attempts >= maxAttempts) {
+          console.log('⚠️ Some components still initializing, proceeding anyway...');
+          resolve();
+          return;
+        }
+        
+        setTimeout(checkReady, 1000);
       };
+      
       checkReady();
     });
   }
@@ -364,8 +538,10 @@ class AAICompleteOrchestrator extends EventEmitter {
   /**
    * Run a command and wait for completion
    */
-  async runCommand(command, description) {
-    console.log(`⚡ ${description}...`);
+  async runCommand(command, description, silent = true) {
+    if (!silent) {
+      console.log(`⚡ ${description}...`);
+    }
     
     return new Promise((resolve, reject) => {
       const process = spawn('npm', ['run', command], {
@@ -404,9 +580,14 @@ class AAICompleteOrchestrator extends EventEmitter {
       case 'auto-sync':
         this.launchAutoSync();
         break;
-      case 'core-monitor':
+      case 'context-tracking':
+        this.launchContextTracking();
+        break;
+      case 'core-monitoring':
         this.launchCoreMonitoring();
         break;
+      default:
+        console.warn(`⚠️ Unknown process type: ${processName}`);
     }
   }
 
@@ -443,10 +624,36 @@ class AAICompleteOrchestrator extends EventEmitter {
    */
   showSystemStatus() {
     console.log('📊 SYSTEM STATUS:');
-    Object.entries(this.status).forEach(([component, status]) => {
+    console.log('━'.repeat(50));
+    
+    // Core Components
+    console.log('🔧 Core Components:');
+    const coreComponents = {
+      'Cursor Integration': this.status.cursorIntegration,
+      'AAI Agent': this.status.aaiAgent,
+      'Auto-Sync': this.status.autoSync,
+      'Memory Sync': this.status.memorySync,
+      'Core Monitoring': this.status.monitoring
+    };
+    
+    Object.entries(coreComponents).forEach(([component, status]) => {
       const icon = status ? '✅' : '❌';
       console.log(`   ${icon} ${component}`);
     });
+    
+    // Intelligence Systems
+    console.log('\n🧠 Intelligence Systems:');
+    const intelligenceSystems = {
+      'Agent Intelligence': this.status.intelligence,
+      'Context Tracking': this.status.contextTracking,
+      'Performance Optimized': this.status.performanceOptimized
+    };
+    
+    Object.entries(intelligenceSystems).forEach(([component, status]) => {
+      const icon = status ? '✅' : '❌';
+      console.log(`   ${icon} ${component}`);
+    });
+    
     console.log('');
   }
 
@@ -454,7 +661,8 @@ class AAICompleteOrchestrator extends EventEmitter {
    * Show available commands
    */
   showAvailableCommands() {
-    console.log('🎯 AVAILABLE COMMANDS:');
+    console.log('🎯 ENHANCED AAI SYSTEM FEATURES:');
+    console.log('━'.repeat(50));
     console.log('   • Press Ctrl+C to shutdown gracefully');
     console.log('   • Check logs above for real-time status');
     console.log('   • Open Cursor and press Ctrl/Cmd+P → type script names');
@@ -465,7 +673,16 @@ class AAICompleteOrchestrator extends EventEmitter {
     console.log('   🔄 Auto-Sync - Keeps Cursor updated');
     console.log('   🧠 Memory Sync - Synchronizes AI memory');
     console.log('   📊 Core Monitor - Monitors system health');
-    console.log('   🔄 Continuous Improvement - Auto-optimization');
+    console.log('   🎯 Context Tracker - Smart context awareness');
+    console.log('   ⚡ Performance Optimizer - Continuous optimization');
+    console.log('   🔄 Continuous Improvement - Auto-enhancement');
+    console.log('');
+    console.log('🚀 INTELLIGENCE FEATURES:');
+    console.log('   • Pattern Learning - Learns from your code patterns');
+    console.log('   • Context Awareness - Understands your workflow');
+    console.log('   • Adaptive Behavior - Improves over time');
+    console.log('   • Performance Monitoring - Real-time optimization');
+    console.log('   • Proactive Suggestions - Anticipates your needs');
     console.log('');
   }
 

@@ -1,13 +1,13 @@
 {
-  "timestamp": "2025-05-25T01:51:49.193Z",
+  "timestamp": "2025-05-25T02:24:14.984Z",
   "mostUsedCategories": [
     {
       "category": "uncategorized",
-      "count": 12
+      "count": 15
     },
     {
       "category": "cleanup",
-      "count": 1
+      "count": 2
     }
   ],
   "integrationPatterns": [
@@ -20,6 +20,26 @@
       "npmCommand": "AAI:cleanup",
       "scriptPath": "node agents/_store/scripts/comprehensive-cleanup.js",
       "category": "cleanup"
+    },
+    {
+      "npmCommand": "AAI:memory-cleanup",
+      "scriptPath": "node agents/_store/scripts/memory-cleanup.js",
+      "category": "cleanup"
+    },
+    {
+      "npmCommand": "AAI:intelligence-enhance",
+      "scriptPath": "node agents/_store/scripts/agent-intelligence-enhancer.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:context-track",
+      "scriptPath": "node agents/_store/scripts/smart-context-tracker.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "AAI:performance-optimize",
+      "scriptPath": "node agents/_store/scripts/performance-optimizer.js",
+      "category": "utility"
     },
     {
       "npmCommand": "AAI:sync-preserved",

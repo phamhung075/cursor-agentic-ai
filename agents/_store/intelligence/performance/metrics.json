@@ -1,0 +1,77 @@
+{
+  "timestamp": "2025-05-25T02:24:13.988Z",
+  "summary": {
+    "memoryUsage": "3.9 MB",
+    "totalFiles": 1208,
+    "bottlenecks": 1,
+    "optimizations": 2
+  },
+  "metrics": {
+    "system": {
+      "nodeVersion": "v20.19.2",
+      "platform": "darwin",
+      "arch": "x64",
+      "startTime": "2025-05-25T02:24:13.925Z"
+    },
+    "memory": {
+      "heapUsed": 4042432,
+      "heapTotal": 4689920,
+      "external": 1444748,
+      "rss": 26632192,
+      "timestamp": "2025-05-25T02:24:13.927Z"
+    },
+    "operations": {},
+    "suggestions": [],
+    "filesystem": {
+      "totalFiles": 1208,
+      "totalSize": 18655604,
+      "scanTime": 59.129498999999996,
+      "averageFileSize": 15443.380794701987
+    },
+    "memorySystem": {
+      "size": 116011,
+      "files": 21,
+      "scanTime": 0.31870600000000593,
+      "efficiency": "Optimized"
+    },
+    "bottlenecks": [
+      {
+        "type": "filesystem",
+        "severity": "medium",
+        "description": "Large number of files in project",
+        "suggestion": "Consider archiving old files",
+        "command": "npm run AAI:cleanup"
+      }
+    ],
+    "optimizations": [
+      {
+        "type": "file-operations",
+        "description": "Optimized file reading patterns",
+        "impact": "low",
+        "applied": true
+      },
+      {
+        "type": "system",
+        "description": "Increased event listener limit",
+        "impact": "low",
+        "applied": true
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "category": "filesystem",
+      "priority": "low",
+      "title": "Large project detected",
+      "description": "Consider organizing files into subdirectories for better performance.",
+      "command": "npm run AAI:cleanup"
+    },
+    {
+      "category": "system",
+      "priority": "low",
+      "title": "Regular performance monitoring",
+      "description": "Run performance optimization regularly to maintain system health.",
+      "command": "npm run AAI:performance-optimize"
+    }
+  ]
+}

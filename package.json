@@ -6,6 +6,10 @@
   "scripts": {
     "launch": "node agents/_store/scripts/launch-aai-complete.js",
     "AAI:cleanup": "node agents/_store/scripts/comprehensive-cleanup.js",
+    "AAI:memory-cleanup": "node agents/_store/scripts/memory-cleanup.js",
+    "AAI:intelligence-enhance": "node agents/_store/scripts/agent-intelligence-enhancer.js",
+    "AAI:context-track": "node agents/_store/scripts/smart-context-tracker.js",
+    "AAI:performance-optimize": "node agents/_store/scripts/performance-optimizer.js",
     "AAI:memory-index": "cat agents/_store/memory/index.json",
     "AAI:sync-preserved": "node agents/_store/scripts/sync-preserved-to-memory.js",
     "AAI:sync-preserved-status": "node agents/_store/scripts/sync-preserved-to-memory.js status",
@@ -38,7 +42,8 @@
     "cursor:setup": "node agents/_store/scripts/simple-cursor-setup.js",
     "cursor:script-awareness": "node agents/cursor-integration/script-awareness.js",
     "cursor:auto-sync": "node agents/cursor-integration/auto-sync.js start",
-    "cursor:auto-sync-status": "node agents/cursor-integration/auto-sync.js status"
+    "cursor:auto-sync-status": "node agents/cursor-integration/auto-sync.js status",
+    "cursor:test": "echo \"Testing...\" && ls -la agents/_store/ 2>/dev/null || echo \"agents/_store not found yet\""
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^2.0.1",

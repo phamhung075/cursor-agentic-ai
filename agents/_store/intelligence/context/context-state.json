@@ -1,0 +1,20 @@
+{
+  "projectContext": {
+    "currentProject": null,
+    "recentFiles": [],
+    "activeFeatures": [],
+    "codebaseStructure": {}
+  },
+  "userContext": {
+    "preferences": {},
+    "commonTasks": [],
+    "workingPatterns": [],
+    "successfulApproaches": []
+  },
+  "systemContext": {
+    "performance": {},
+    "errors": [],
+    "improvements": [],
+    "health": {}
+  }
+}

@@ -1,14 +1,9 @@
 {
-  "createdAt": "2025-05-25T01:35:35.674Z",
-  "totalEntries": 9,
-  "entries": [
+  "codePatterns": [
     {
       "filename": "install-agent-ai.js",
-      "description": "No description available",
-      "functions": [
-        "AgentAIInstaller"
-      ],
-      "keyFeatures": [
+      "functions": 1,
+      "features": [
         "Object-Oriented",
         "Async/Await",
         "File System",
@@ -17,15 +12,13 @@
         "Logging",
         "JSON Processing"
       ],
-      "size": 14149
+      "size": 14149,
+      "complexity": 23
     },
     {
       "filename": "script_manager.js",
-      "description": "No description available",
-      "functions": [
-        "ScriptManager"
-      ],
-      "keyFeatures": [
+      "functions": 1,
+      "features": [
         "Object-Oriented",
         "Async/Await",
         "File System",
@@ -34,47 +27,35 @@
         "Logging",
         "JSON Processing"
       ],
-      "size": 14136
+      "size": 14136,
+      "complexity": 23
     },
     {
       "filename": "setup-env.js",
-      "description": "No description available",
-      "functions": [
-        "EnvSetup"
-      ],
-      "keyFeatures": [
+      "functions": 1,
+      "features": [
         "Object-Oriented",
         "Async/Await",
         "File System",
         "Logging"
       ],
-      "size": 4596
+      "size": 4596,
+      "complexity": 10
     },
     {
       "filename": "sync-memory.js",
-      "description": "No description available",
-      "functions": [
-        "main",
-        "showStatus",
-        "syncUp",
-        "syncDown",
-        "syncBoth",
-        "resetPinecone",
-        "showHelp"
-      ],
-      "keyFeatures": [
+      "functions": 7,
+      "features": [
         "Async/Await",
         "Logging"
       ],
-      "size": 6309
+      "size": 6309,
+      "complexity": 22
     },
     {
       "filename": "comprehensive_backup_and_fix.js",
-      "description": "No description available",
-      "functions": [
-        "ComprehensiveBackupAndFix"
-      ],
-      "keyFeatures": [
+      "functions": 1,
+      "features": [
         "Object-Oriented",
         "Async/Await",
         "File System",
@@ -82,15 +63,13 @@
         "Logging",
         "JSON Processing"
       ],
-      "size": 9279
+      "size": 9279,
+      "complexity": 17
     },
     {
       "filename": "core_path_analyzer.js",
-      "description": "No description available",
-      "functions": [
-        "CorePathAnalyzer"
-      ],
-      "keyFeatures": [
+      "functions": 1,
+      "features": [
         "Object-Oriented",
         "Async/Await",
         "File System",
@@ -100,15 +79,13 @@
         "JSON Processing",
         "Regular Expressions"
       ],
-      "size": 13816
+      "size": 13816,
+      "complexity": 23
     },
     {
       "filename": "core_path_fixer.js",
-      "description": "No description available",
-      "functions": [
-        "CorePathFixer"
-      ],
-      "keyFeatures": [
+      "functions": 1,
+      "features": [
         "Object-Oriented",
         "Async/Await",
         "File System",
@@ -118,15 +95,13 @@
         "JSON Processing",
         "Regular Expressions"
       ],
-      "size": 15597
+      "size": 15597,
+      "complexity": 25
     },
     {
       "filename": "cursor_rules_state_manager.js",
-      "description": "No description available",
-      "functions": [
-        "CursorRulesStateManager"
-      ],
-      "keyFeatures": [
+      "functions": 1,
+      "features": [
         "Object-Oriented",
         "Async/Await",
         "File System",
@@ -134,15 +109,13 @@
         "Logging",
         "JSON Processing"
       ],
-      "size": 15443
+      "size": 15443,
+      "complexity": 23
     },
     {
       "filename": "integrate_agents_architecture.js",
-      "description": "No description available",
-      "functions": [
-        "AgentsArchitectureIntegrator"
-      ],
-      "keyFeatures": [
+      "functions": 1,
+      "features": [
         "Object-Oriented",
         "Async/Await",
         "File System",
@@ -150,13 +123,35 @@
         "Logging",
         "JSON Processing"
       ],
-      "size": 12399
+      "size": 12399,
+      "complexity": 20
     }
   ],
-  "lastCleanup": "2025-05-25T02:05:42.811Z",
-  "cleanupStats": {
-    "filesRemoved": 88,
-    "sizeFreed": 2233033,
-    "filesKept": 21
+  "functionPatterns": {
+    "AgentAIInstaller": 1,
+    "ScriptManager": 1,
+    "EnvSetup": 1,
+    "main": 1,
+    "showStatus": 1,
+    "syncUp": 1,
+    "syncDown": 1,
+    "syncBoth": 1,
+    "resetPinecone": 1,
+    "showHelp": 1,
+    "ComprehensiveBackupAndFix": 1,
+    "CorePathAnalyzer": 1,
+    "CorePathFixer": 1,
+    "CursorRulesStateManager": 1,
+    "AgentsArchitectureIntegrator": 1
+  },
+  "featurePatterns": {
+    "Object-Oriented": 8,
+    "Async/Await": 9,
+    "File System": 8,
+    "Path Manipulation": 7,
+    "Process Management": 4,
+    "Logging": 9,
+    "JSON Processing": 7,
+    "Regular Expressions": 2
   }
 }

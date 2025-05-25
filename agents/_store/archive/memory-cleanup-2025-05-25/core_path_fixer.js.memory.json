@@ -1,0 +1,24 @@
+{
+  "filename": "core_path_fixer.js",
+  "originalPath": "agents/_store/projects/core_path_fixer.js",
+  "preservedAt": "2025-05-25T01:35:35.668Z",
+  "size": 15597,
+  "functions": [
+    "CorePathFixer"
+  ],
+  "description": "No description available",
+  "dependencies": [
+    "fs",
+    "path"
+  ],
+  "keyFeatures": [
+    "Object-Oriented",
+    "Async/Await",
+    "File System",
+    "Path Manipulation",
+    "Process Management",
+    "Logging",
+    "JSON Processing",
+    "Regular Expressions"
+  ]
+}
