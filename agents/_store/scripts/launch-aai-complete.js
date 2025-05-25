@@ -142,7 +142,7 @@ class AAICompleteOrchestrator extends EventEmitter {
 
     contextProcess.stdout.on('data', (data) => {
       const output = data.toString();
-      if (output.includes('Smart context tracking active')) {
+      if (output.includes('✅ Smart context tracking active')) {
         console.log('✅ Context Tracking ready');
         this.status.contextTracking = true;
         this.emit('context-ready');
@@ -670,7 +670,7 @@ class AAICompleteOrchestrator extends EventEmitter {
     console.log('\n🧠 Intelligence Systems:');
     const intelligenceSystems = {
       'Agent Intelligence': this.status.intelligence,
-      'Context Tracking': this.status.contextTracking,
+      'Context Tracking': this.processes.has('context-tracking') && !this.processes.get('context-tracking').killed,
       'Performance Optimized': this.status.performanceOptimized
     };
     
