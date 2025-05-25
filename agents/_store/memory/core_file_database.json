@@ -651,69 +651,104 @@
       "full_path": "agents/_store/projects/_core/rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
       "description": "globs: agents/_store/projects/_core/*.mdc",
       "status": "valid",
-      "size": 10411,
-      "last_modified": "2025-05-25T05:22:14.652Z",
-      "last_accessed": "2025-05-25T07:01:53.366Z",
+      "size": 14936,
+      "last_modified": "2025-05-25T07:17:08.855Z",
+      "last_accessed": "2025-05-25T07:17:08.969Z",
       "links_out": [
         {
           "text": "Display Text",
-          "path": "agents/_store/projects/_core/path/to/file.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/file.mdc",
+          "type": "markdown",
+          "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "Display Text",
+          "path": "mdc:path/to/file.mdc",
+          "type": "markdown",
+          "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "agents/_store/projects/_core/rules/01__AI-RUN/file.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/file.mdc",
+          "type": "markdown",
+          "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "GitHub",
+          "path": "mdc:agents/_store/projects/_core/https:/github.com/example/repo",
+          "type": "markdown",
+          "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "GitHub",
+          "path": "mdc:rules/github/repo.mdc",
+          "type": "markdown",
+          "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+          "status": "unchecked"
+        },
+        {
+          "text": "Display Text",
+          "path": "mdc:agents/_store/projects/_core/path/to/file.mdc",
           "type": "markdown",
           "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
           "status": "unchecked"
         },
         {
           "text": "agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
           "type": "markdown",
           "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
           "status": "unchecked"
         },
         {
           "text": "Task JSON Structure Guide",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "type": "markdown",
           "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
           "status": "unchecked"
         },
         {
           "text": "agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
           "type": "markdown",
           "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
           "status": "unchecked"
         },
         {
           "text": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
           "type": "markdown",
           "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
           "status": "unchecked"
         },
         {
           "text": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
           "type": "markdown",
           "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
           "status": "unchecked"
         },
         {
           "text": "agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
-          "path": "agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
           "type": "markdown",
           "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
           "status": "unchecked"
         },
         {
           "text": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
           "type": "markdown",
           "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
           "status": "unchecked"
         },
         {
           "text": "agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
-          "path": "agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
           "type": "markdown",
           "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
           "status": "unchecked"
@@ -749,7 +784,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "60734189"
+      "content_hash": "2eb4e7f"
     },
     "rules_00__tools_script_organization_rules_mdc": {
       "id": "rules_00__tools_script_organization_rules_mdc",
@@ -9268,63 +9303,98 @@
     "rules_00__tools_mdc_path_update_guide_mdc": [
       {
         "text": "Display Text",
-        "path": "agents/_store/projects/_core/path/to/file.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/file.mdc",
+        "type": "markdown",
+        "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Display Text",
+        "path": "mdc:path/to/file.mdc",
+        "type": "markdown",
+        "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "agents/_store/projects/_core/rules/01__AI-RUN/file.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/file.mdc",
+        "type": "markdown",
+        "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "GitHub",
+        "path": "mdc:agents/_store/projects/_core/https:/github.com/example/repo",
+        "type": "markdown",
+        "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "GitHub",
+        "path": "mdc:rules/github/repo.mdc",
+        "type": "markdown",
+        "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+        "status": "unchecked"
+      },
+      {
+        "text": "Display Text",
+        "path": "mdc:agents/_store/projects/_core/path/to/file.mdc",
         "type": "markdown",
         "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
         "status": "unchecked"
       },
       {
         "text": "agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
         "type": "markdown",
         "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
         "status": "unchecked"
       },
       {
         "text": "Task JSON Structure Guide",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "type": "markdown",
         "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
         "status": "unchecked"
       },
       {
         "text": "agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc",
         "type": "markdown",
         "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
         "status": "unchecked"
       },
       {
         "text": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
         "type": "markdown",
         "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
         "status": "unchecked"
       },
       {
         "text": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
-        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc",
         "type": "markdown",
         "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
         "status": "unchecked"
       },
       {
         "text": "agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
-        "path": "agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
         "type": "markdown",
         "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
         "status": "unchecked"
       },
       {
         "text": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
         "type": "markdown",
         "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
         "status": "unchecked"
       },
       {
         "text": "agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
-        "path": "agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc",
         "type": "markdown",
         "source_file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
         "status": "unchecked"
@@ -20170,9 +20240,45 @@
       "file": "rules/02__AI-DOCS/Documentation/AI_Coding_Agent_Optimization.mdc",
       "operation": "add",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:15:54.152Z",
+      "file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:15:54.279Z",
+      "file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:16:12.262Z",
+      "file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:16:28.758Z",
+      "file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:16:34.689Z",
+      "file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T07:17:08.969Z",
+      "file": "rules/00__TOOLS/MDC_Path_Update_Guide.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T07:06:25.869Z",
+  "last_updated": "2025-05-25T07:17:09.070Z",
   "scan_history": [
     {
       "id": "scan_1748147161162",
