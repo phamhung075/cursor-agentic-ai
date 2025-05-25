@@ -4098,13 +4098,21 @@
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
       "description": "This prompt will guide you in implementing a new API endpoint according to project standards and best practices. Please follow these instructions to ensure the endpoint is correctly implemented, teste",
       "status": "valid",
-      "size": 5071,
-      "last_modified": "2025-05-24T15:40:33.544Z",
-      "last_accessed": "2025-05-25T03:24:15.045Z",
-      "links_out": [],
+      "size": 22319,
+      "last_modified": "2025-05-25T04:16:48.980Z",
+      "last_accessed": "2025-05-25T04:16:49.542Z",
+      "links_out": [
+        {
+          "text": "res.json",
+          "path": "res.json",
+          "type": "file_reference",
+          "source_file": "rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
+          "status": "unchecked"
+        }
+      ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "-453b9aa"
+      "content_hash": "-7a7a5c30"
     },
     "rules_02__ai_docs_ai_coder_contextprime_context_prime_template_mdc": {
       "id": "rules_02__ai_docs_ai_coder_contextprime_context_prime_template_mdc",
@@ -10568,7 +10576,15 @@
         "status": "broken"
       }
     ],
-    "rules_02__ai_docs_ai_coder_commontasks_api_endpoint_template_mdc": [],
+    "rules_02__ai_docs_ai_coder_commontasks_api_endpoint_template_mdc": [
+      {
+        "text": "res.json",
+        "path": "res.json",
+        "type": "file_reference",
+        "source_file": "rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
+        "status": "unchecked"
+      }
+    ],
     "rules_02__ai_docs_ai_coder_contextprime_context_prime_template_mdc": [
       {
         "text": "AI_Design_Agent_Optimization.mdc",
@@ -13301,9 +13317,21 @@
       "file": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T04:15:58.695Z",
+      "file": "rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T04:16:49.542Z",
+      "file": "rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T04:11:21.643Z",
+  "last_updated": "2025-05-25T04:16:49.643Z",
   "scan_history": [
     {
       "id": "scan_1748139854554",
