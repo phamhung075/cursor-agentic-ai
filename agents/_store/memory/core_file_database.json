@@ -3208,187 +3208,75 @@
     },
     "rules_01__ai_run_08_testing_mdc": {
       "id": "rules_01__ai_run_08_testing_mdc",
-      "title": "Testing & Preview Phase Prompt",
+      "title": "08_Testing.mdc",
       "path": "rules/01__AI-RUN/08_Testing.mdc",
       "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc",
-      "description": "- Idea Document [.[.[/[projet/01_Idea/idea_document.mdc](agents/_store/projects/_core/projet/01_Idea/idea_document.mdc)`)",
+      "description": "This document guides you through comprehensive testing and quality assurance of your implemented application. It integrates with the enhanced AAI system to provide intelligent testing automation, qual",
       "status": "valid",
-      "size": 9536,
-      "last_modified": "2025-05-24T17:36:33.821Z",
-      "last_accessed": "2025-05-25T03:24:15.035Z",
+      "size": 24819,
+      "last_modified": "2025-05-25T03:40:21.785Z",
+      "last_accessed": "2025-05-25T03:40:21.910Z",
       "links_out": [
         {
-          "text": ".[.[/[projet/01_Idea/idea_document.mdc",
-          "path": "agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+          "text": "01_Idea.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/08_Testing.mdc",
           "status": "unchecked"
         },
         {
-          "text": ".[.[/[projet/02_Market_Research/market_research.mdc",
-          "path": "agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
+          "text": "02_Market_Research.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/08_Testing.mdc",
           "status": "unchecked"
         },
         {
-          "text": "0[3[_Core_Concept.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
+          "text": "03_Core_Concept.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/08_Testing.mdc",
           "status": "unchecked"
         },
         {
-          "text": ".[.[/[projet/PRD_template/project_prd.mdc",
-          "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "text": "04_PRD_Generation.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/08_Testing.mdc",
           "status": "unchecked"
         },
         {
-          "text": "tasks.json",
-          "path": "tasks/tasks.json",
+          "text": "05_Specs_Docs.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/08_Testing.mdc",
           "status": "unchecked"
         },
         {
-          "text": "0[7[_Start_Building.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
+          "text": "07_Start_Building.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/08_Testing.mdc",
           "status": "unchecked"
         },
         {
-          "text": "../projet/PRD_template/project_prd.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+          "text": "09_Deployment.mdc",
+          "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc",
           "type": "markdown",
           "source_file": "rules/01__AI-RUN/08_Testing.mdc",
           "status": "unchecked"
         },
         {
-          "text": "tasks.json",
-          "path": "tasks/tasks.json",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "architecture.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "coding_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/coding_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "design_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "XXX.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/XXX.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../projet/PRD_template/project_prd.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "tasks.json",
-          "path": "tasks/tasks.json",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../projet/PRD_template/project_prd.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "tasks.json",
-          "path": "tasks/tasks.json",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../projet/PRD_template/project_prd.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "design_conventions.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "d[e[ployment_guide.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/deployment_guide.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "tasks.json",
-          "path": "tasks/tasks.json",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "../projet/PRD_template/project_prd.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "project_session_state.json",
-          "path": "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/project_session_state.json",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "tasks.json",
-          "path": "tasks/tasks.json",
-          "type": "markdown",
-          "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-          "status": "unchecked"
-        },
-        {
-          "text": "0[9[_Deployment.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc",
-          "type": "markdown",
+          "text": "08_Testing.mdc",
+          "path": "08_Testing.mdc",
+          "type": "file_reference",
           "source_file": "rules/01__AI-RUN/08_Testing.mdc",
           "status": "unchecked"
         }
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "-274ca14e"
+      "content_hash": "-1f0aef71"
     },
     "rules_01__ai_run_09_deployment_mdc": {
       "id": "rules_01__ai_run_09_deployment_mdc",
@@ -9902,170 +9790,58 @@
     ],
     "rules_01__ai_run_08_testing_mdc": [
       {
-        "text": ".[.[/[projet/01_Idea/idea_document.mdc",
-        "path": "agents/_store/projects/_core/projet/01_Idea/idea_document.mdc",
+        "text": "01_Idea.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/08_Testing.mdc",
         "status": "unchecked"
       },
       {
-        "text": ".[.[/[projet/02_Market_Research/market_research.mdc",
-        "path": "agents/_store/projects/_core/projet/02_Market_Research/market_research.mdc",
+        "text": "02_Market_Research.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/08_Testing.mdc",
         "status": "unchecked"
       },
       {
-        "text": "0[3[_Core_Concept.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
+        "text": "03_Core_Concept.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/08_Testing.mdc",
         "status": "unchecked"
       },
       {
-        "text": ".[.[/[projet/PRD_template/project_prd.mdc",
-        "path": "agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "text": "04_PRD_Generation.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/08_Testing.mdc",
         "status": "unchecked"
       },
       {
-        "text": "tasks.json",
-        "path": "tasks/tasks.json",
+        "text": "05_Specs_Docs.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/08_Testing.mdc",
         "status": "unchecked"
       },
       {
-        "text": "0[7[_Start_Building.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
+        "text": "07_Start_Building.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/08_Testing.mdc",
         "status": "unchecked"
       },
       {
-        "text": "../projet/PRD_template/project_prd.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
+        "text": "09_Deployment.mdc",
+        "path": "mdc:agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc",
         "type": "markdown",
         "source_file": "rules/01__AI-RUN/08_Testing.mdc",
         "status": "unchecked"
       },
       {
-        "text": "tasks.json",
-        "path": "tasks/tasks.json",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "architecture.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/architecture.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "coding_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/coding_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "design_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "XXX.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/XXX.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../projet/PRD_template/project_prd.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "tasks.json",
-        "path": "tasks/tasks.json",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../projet/PRD_template/project_prd.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "tasks.json",
-        "path": "tasks/tasks.json",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../projet/PRD_template/project_prd.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "design_conventions.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/design_conventions.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "d[e[ployment_guide.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/deployment_guide.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "tasks.json",
-        "path": "tasks/tasks.json",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "../projet/PRD_template/project_prd.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/projet/PRD_template/project_prd.mdc",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "project_session_state.json",
-        "path": "agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/project_session_state.json",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "tasks.json",
-        "path": "tasks/tasks.json",
-        "type": "markdown",
-        "source_file": "rules/01__AI-RUN/08_Testing.mdc",
-        "status": "unchecked"
-      },
-      {
-        "text": "0[9[_Deployment.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc",
-        "type": "markdown",
+        "text": "08_Testing.mdc",
+        "path": "08_Testing.mdc",
+        "type": "file_reference",
         "source_file": "rules/01__AI-RUN/08_Testing.mdc",
         "status": "unchecked"
       }
@@ -13495,9 +13271,33 @@
       "file": "rules/01__AI-RUN/07_Start_Building.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:38:32.382Z",
+      "file": "rules/01__AI-RUN/08_Testing.mdc",
+      "operation": "delete",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:40:12.890Z",
+      "file": "rules/01__AI-RUN/08_Testing.mdc",
+      "operation": "add",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:40:21.797Z",
+      "file": "rules/01__AI-RUN/08_Testing.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T03:40:21.910Z",
+      "file": "rules/01__AI-RUN/08_Testing.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T03:34:29.779Z",
+  "last_updated": "2025-05-25T03:40:22.010Z",
   "scan_history": [
     {
       "id": "scan_1748139854554",

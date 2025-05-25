@@ -216,7 +216,7 @@ After receiving the complete task breakdown:
 2. Identify any tasks that need further decomposition
 3. Request refinement of specific tasks if needed:
 
-User to Roo: 'Roo, please refine task {{task_id}} - "{{task_name}}".
+   User to Roo: 'Roo, please refine task {{task_id}} - "{{task_name}}".
 
 This task appears to be too large/ambiguous. Please break it down further into more precise sub-tasks with clear technical specifications.'
 

@@ -292,8 +292,8 @@ class AAICompleteOrchestrator extends EventEmitter {
     });
 
     monitorProcess.on('close', (code) => {
-      console.log('✅ Core Monitoring ready');
-      this.status.monitoring = true;
+        console.log('✅ Core Monitoring ready');
+        this.status.monitoring = true;
       this.emit('monitoring-ready');
     });
 
@@ -409,9 +409,9 @@ class AAICompleteOrchestrator extends EventEmitter {
           // Only restart critical processes
           if (name === 'autoSync' || name === 'contextTracking') {
             console.log(`🔄 Restarting ${name}...`);
-            await this.restartProcess(name);
-          }
+          await this.restartProcess(name);
         }
+      }
       }
     }
   }
@@ -466,7 +466,7 @@ class AAICompleteOrchestrator extends EventEmitter {
       processes: processCount,
       cycles: this.improvementCycle
     };
-
+    
     // Log status every 10 cycles (5 minutes)
     if (this.improvementCycle % 10 === 0) {
       console.log(`📊 System uptime: ${uptime} minutes | Cycles: ${this.improvementCycle}`);
@@ -540,7 +540,7 @@ class AAICompleteOrchestrator extends EventEmitter {
    */
   async runCommand(command, description, silent = true) {
     if (!silent) {
-      console.log(`⚡ ${description}...`);
+    console.log(`⚡ ${description}...`);
     }
     
     return new Promise((resolve, reject) => {
