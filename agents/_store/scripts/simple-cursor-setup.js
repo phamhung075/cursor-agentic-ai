@@ -54,7 +54,7 @@ if (fs.existsSync('package.json')) {
   try {
     const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
     pkg.scripts = pkg.scripts || {};
-    pkg.scripts['cursor:setup'] = 'node simple-cursor-setup.js';
+    pkg.scripts['cursor:setup'] = 'node agents/_store/scripts/simple-cursor-setup.js';
     pkg.scripts['cursor:test'] = 'echo "Testing..." && ls -la agents/_store/ 2>/dev/null || echo "agents/_store not found yet"';
     
     fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));

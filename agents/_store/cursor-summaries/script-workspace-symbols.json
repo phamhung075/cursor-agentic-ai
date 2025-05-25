@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T01:41:49.239Z",
+  "timestamp": "2025-05-25T01:51:49.193Z",
   "scriptSymbols": [
     {
       "name": "comprehensive-cleanup.js",
@@ -10,9 +10,25 @@
       "containerName": "AAI Scripts/cleanup"
     },
     {
+      "name": "demo-aai-cursor-integration.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/demo-aai-cursor-integration.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
       "name": "install-agent-ai.js",
       "kind": "Function",
       "location": "agents/_store/scripts/install-agent-ai.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "launch-aai-complete.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/launch-aai-complete.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -34,9 +50,33 @@
       "containerName": "AAI Scripts/uncategorized"
     },
     {
+      "name": "setup-cursor-integration.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/setup-cursor-integration.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
       "name": "setup-env.js",
       "kind": "Function",
       "location": "agents/_store/scripts/setup-env.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "simple-cursor-setup.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/simple-cursor-setup.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "start-cursor-aai.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/start-cursor-aai.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -76,11 +116,18 @@
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "7 scripts in uncategorized category",
+      "detail": "12 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
   "npmSymbols": [
+    {
+      "name": "launch",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/launch-aai-complete.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
     {
       "name": "AAI:cleanup",
       "kind": "Function",
@@ -187,55 +234,6 @@
       "containerName": "NPM Scripts"
     },
     {
-      "name": "AAI:backup-core",
-      "kind": "Function",
-      "detail": "bash agents/_store/scripts/backup_core_structure.sh",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "AAI:update-file-list",
-      "kind": "Function",
-      "detail": "python3 agents/_store/scripts/update_core_files_list.py",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "AAI:clean-scripts",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/cleanup_obsolete_scripts.js",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "AAI:scripts-help",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/script_manager.js help",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "AAI:scripts-migrate",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/migrate_scripts_to_store.js",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "AAI:scripts-list",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/script_manager.js list",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "AAI:scripts-organize",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/script_manager.js organize",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
       "name": "AAI:scripts-analyze",
       "kind": "Function",
       "detail": "node agents/_store/scripts/script_manager.js analyze",
@@ -243,30 +241,9 @@
       "containerName": "NPM Scripts"
     },
     {
-      "name": "AAI:scripts-categories",
+      "name": "AAI:scripts-list",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/script_manager.js categories",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "AAI:core-scan",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/core/core_file_manager.js scan",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "AAI:core-report",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/core/core_file_manager.js report",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "AAI:core-search",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/core/core_file_manager.js search",
+      "detail": "node agents/_store/scripts/script_manager.js list",
       "location": "package.json",
       "containerName": "NPM Scripts"
     },
@@ -285,23 +262,9 @@
       "containerName": "NPM Scripts"
     },
     {
-      "name": "AAI:core-api",
+      "name": "cursor:setup",
       "kind": "Function",
-      "detail": "node agents/_store/scripts/core/core_file_api.js",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "AAI:core-api-status",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/core/core_file_api.js status",
-      "location": "package.json",
-      "containerName": "NPM Scripts"
-    },
-    {
-      "name": "AAI:core-validate",
-      "kind": "Function",
-      "detail": "node agents/_store/scripts/core/core_file_monitor.js validate",
+      "detail": "node agents/_store/scripts/simple-cursor-setup.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     }

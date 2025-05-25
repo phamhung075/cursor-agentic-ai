@@ -14,8 +14,18 @@
     "utility": [],
     "uncategorized": [
       {
+        "name": "demo-aai-cursor-integration.js",
+        "path": "agents/_store/scripts/demo-aai-cursor-integration.js",
+        "description": "No description available"
+      },
+      {
         "name": "install-agent-ai.js",
         "path": "agents/_store/scripts/install-agent-ai.js",
+        "description": "No description available"
+      },
+      {
+        "name": "launch-aai-complete.js",
+        "path": "agents/_store/scripts/launch-aai-complete.js",
         "description": "No description available"
       },
       {
@@ -29,8 +39,23 @@
         "description": "No description available"
       },
       {
+        "name": "setup-cursor-integration.js",
+        "path": "agents/_store/scripts/setup-cursor-integration.js",
+        "description": "No description available"
+      },
+      {
         "name": "setup-env.js",
         "path": "agents/_store/scripts/setup-env.js",
+        "description": "No description available"
+      },
+      {
+        "name": "simple-cursor-setup.js",
+        "path": "agents/_store/scripts/simple-cursor-setup.js",
+        "description": "No description available"
+      },
+      {
+        "name": "start-cursor-aai.js",
+        "path": "agents/_store/scripts/start-cursor-aai.js",
         "description": "No description available"
       },
       {
@@ -74,6 +99,10 @@
     ]
   },
   "npmScripts": [
+    {
+      "name": "launch",
+      "command": "node agents/_store/scripts/launch-aai-complete.js"
+    },
     {
       "name": "AAI:cleanup",
       "command": "node agents/_store/scripts/comprehensive-cleanup.js"
@@ -135,52 +164,12 @@
       "command": "node agents/_store/scripts/sync-memory.js fix-embeddings"
     },
     {
-      "name": "AAI:backup-core",
-      "command": "bash agents/_store/scripts/backup_core_structure.sh"
-    },
-    {
-      "name": "AAI:update-file-list",
-      "command": "python3 agents/_store/scripts/update_core_files_list.py"
-    },
-    {
-      "name": "AAI:clean-scripts",
-      "command": "node agents/_store/scripts/cleanup_obsolete_scripts.js"
-    },
-    {
-      "name": "AAI:scripts-help",
-      "command": "node agents/_store/scripts/script_manager.js help"
-    },
-    {
-      "name": "AAI:scripts-migrate",
-      "command": "node agents/_store/scripts/migrate_scripts_to_store.js"
-    },
-    {
-      "name": "AAI:scripts-list",
-      "command": "node agents/_store/scripts/script_manager.js list"
-    },
-    {
-      "name": "AAI:scripts-organize",
-      "command": "node agents/_store/scripts/script_manager.js organize"
-    },
-    {
       "name": "AAI:scripts-analyze",
       "command": "node agents/_store/scripts/script_manager.js analyze"
     },
     {
-      "name": "AAI:scripts-categories",
-      "command": "node agents/_store/scripts/script_manager.js categories"
-    },
-    {
-      "name": "AAI:core-scan",
-      "command": "node agents/_store/scripts/core/core_file_manager.js scan"
-    },
-    {
-      "name": "AAI:core-report",
-      "command": "node agents/_store/scripts/core/core_file_manager.js report"
-    },
-    {
-      "name": "AAI:core-search",
-      "command": "node agents/_store/scripts/core/core_file_manager.js search"
+      "name": "AAI:scripts-list",
+      "command": "node agents/_store/scripts/script_manager.js list"
     },
     {
       "name": "AAI:core-monitor",
@@ -191,19 +180,11 @@
       "command": "node agents/_store/scripts/core/core_file_monitor.js status"
     },
     {
-      "name": "AAI:core-api",
-      "command": "node agents/_store/scripts/core/core_file_api.js"
-    },
-    {
-      "name": "AAI:core-api-status",
-      "command": "node agents/_store/scripts/core/core_file_api.js status"
-    },
-    {
-      "name": "AAI:core-validate",
-      "command": "node agents/_store/scripts/core/core_file_monitor.js validate"
+      "name": "cursor:setup",
+      "command": "node agents/_store/scripts/simple-cursor-setup.js"
     }
   ],
-  "totalFiles": 11,
+  "totalFiles": 16,
   "categories": {
     "scripts": {
       "core": "Core framework management",
@@ -220,5 +201,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T01:41:49.223Z"
+  "lastUpdated": "2025-05-25T01:51:49.179Z"
 }

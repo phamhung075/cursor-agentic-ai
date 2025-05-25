@@ -1,67 +1,82 @@
-# 📚 Agent AI Documentation Center
+# 🤖 Agentic Coding Framework + Cursor Integration
 
-This directory contains all Agent AI documentation, implementation reports, and completion summaries.
+**Self-improving AI agent with complete Cursor IDE integration**
 
-## 📖 **Documentation Index**
+## 🚀 **Quick Start (When You Open This Project)**
 
-### **📋 Implementation Reports**
-- **[AGENT_STORE_COMPLETE.md](./AGENT_STORE_COMPLETE.md)** - Agent store & Pinecone memory integration report
-- **[AGENT_FILES_REORGANIZED.md](./AGENT_FILES_REORGANIZED.md)** - File reorganization completion summary
-- **[AUTOPILOT_INTEGRATION_COMPLETE.md](./AUTOPILOT_INTEGRATION_COMPLETE.md)** - AutoPilot integration report
-- **[REORGANIZATION_COMPLETE.md](./REORGANIZATION_COMPLETE.md)** - Agent reorganization report
-
-### **🤖 Agent Documentation**
-- **[README_Self_Improvement_Agent.md](./README_Self_Improvement_Agent.md)** - Self-improvement agent documentation
-- **[SELF_IMPROVEMENT_INTEGRATION_SUMMARY.md](./SELF_IMPROVEMENT_INTEGRATION_SUMMARY.md)** - Integration summary report
-
-## 🎯 **Quick Reference**
-
-### **What's Been Implemented**
-1. ✅ **File Separation** - Agent working files separated from user project code
-2. ✅ **Pinecone Integration** - Persistent vector memory for agent learning
-3. ✅ **File Organization** - Professional directory structure with proper categorization
-4. ✅ **Memory System** - Local fallback with cloud enhancement capabilities
-5. ✅ **Project Management** - Project-based file organization and migration tools
-6. ✅ **AutoPilot Integration** - Seamless integration with the main framework
-
-### **Current Architecture**
-```
-agents/
-├── _store/                   # Agent working files (this directory)
-│   ├── scripts/              # Utility scripts
-│   ├── tests/                # Test files
-│   ├── templates/            # Configuration templates
-│   ├── docs/                 # Documentation (you are here)
-│   ├── projects/             # Project-specific files
-│   ├── memory/               # Pinecone memory storage
-│   └── logs/                 # Operation logs
-└── self-improvement/         # Agent code
-```
-
-### **Key Commands**
+### **One Command Setup:**
 ```bash
-npm run AAI:agent             # Start the agent
-npm run AAI:setup-env         # Setup environment
-npm run AAI:test-system       # Test system integration
-npm run AAI:migrate-files     # Migrate existing files
+npm run start-cursor-aai
 ```
 
-## 📈 **Development History**
+This will:
+- ✅ Setup Cursor integration automatically
+- ✅ Generate script awareness for all 16+ scripts
+- ✅ Show you exactly what to do next
+- ✅ Optionally start the AAI agent
 
-This collection documents the evolution of the Agent AI system from a basic script to a sophisticated, memory-enhanced, modular architecture with proper file organization and security measures.
+### **Manual Steps:**
+```bash
+# 1. Setup Cursor integration
+npm run cursor:setup
 
-### **Major Milestones**
-- **v1.0** - Basic self-improvement agent
-- **v2.0** - Modular architecture with memory integration
-- **v2.1** - File organization and professional structure
+# 2. Generate script awareness
+npm run cursor:script-awareness
 
-## 🔗 **Related Documentation**
+# 3. Start AAI agent
+npm run AAI:start
 
-- **Main Agent Code**: `../self-improvement/`
-- **Configuration**: `../self-improvement/config/default.json`
-- **Environment Setup**: `../self-improvement/docs/ENVIRONMENT_SETUP.md`
-- **Main Project README**: `../../../README.md`
+# 4. Enable auto-sync (in new terminal)
+npm run cursor:auto-sync
+```
+
+## 🎯 **How to Use AAI with Cursor**
+
+### **In Cursor IDE:**
+1. **Press `Ctrl/Cmd + P`** → type any script name to find it instantly
+2. **Open** `agents/_store/cursor-summaries/script-summary.json` for overview
+3. **Check** `script-improvements.json` for actionable improvements
+4. **Use terminal** for AAI commands: `npm run AAI:start`
+
+### **Key Commands:**
+```bash
+npm run AAI:start              # Start interactive AAI agent
+npm run AAI:scripts-list       # See all available scripts
+npm run cursor:auto-sync       # Keep Cursor updated automatically
+npm run cursor:auto-sync-status # Check integration status
+```
+
+## 📋 **What's Integrated**
+
+- **16+ Scripts** automatically discoverable in Cursor
+- **28+ NPM commands** cataloged and searchable
+- **Real-time script awareness** with auto-sync
+- **Improvement suggestions** with time estimates
+- **Complete workspace symbols** for navigation
+
+## 📂 **Key Files**
+
+- `QUICK-START-GUIDE.md` - Complete startup instructions
+- `CURSOR-SCRIPT-INTEGRATION-GUIDE.md` - Detailed integration guide
+- `agents/_store/cursor-summaries/` - All script awareness files
+- `.cursor/settings.json` - Cursor integration settings
+
+## 🔧 **Troubleshooting**
+
+```bash
+npm run start-cursor-aai status  # Check integration status
+npm run cursor:manual-sync       # Force update script awareness
+npm run AAI:scripts-help         # See all available scripts
+```
+
+## 🎉 **Success Test**
+
+1. Open this project in Cursor
+2. Press `Ctrl/Cmd + P`
+3. Type "script-summary"
+4. Open the file to see all your scripts
+5. **You're ready to code with AAI assistance!** 🚀
 
 ---
 
-**📚 This documentation center keeps track of all Agent AI development progress and implementation details.** 
+**🤖 Your AAI agent is ready to help with code analysis, improvements, and automation!** 
