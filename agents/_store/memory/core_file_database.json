@@ -9,7 +9,7 @@
       "status": "valid",
       "size": 6127,
       "last_modified": "2025-05-25T05:19:05.017Z",
-      "last_accessed": "2025-05-25T05:19:05.148Z",
+      "last_accessed": "2025-05-25T05:42:37.118Z",
       "links_out": [
         {
           "text": "filename.mdc",
@@ -81,7 +81,7 @@
       "status": "valid",
       "size": 2604,
       "last_modified": "2025-05-25T05:17:38.536Z",
-      "last_accessed": "2025-05-25T05:17:38.854Z",
+      "last_accessed": "2025-05-25T05:42:37.123Z",
       "links_out": [
         {
           "text": "00_Getting_Started.mdc",
@@ -104,7 +104,7 @@
       "status": "valid",
       "size": 932,
       "last_modified": "2025-05-25T04:53:20.089Z",
-      "last_accessed": "2025-05-25T04:53:20.420Z",
+      "last_accessed": "2025-05-25T05:42:37.125Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -119,7 +119,7 @@
       "status": "valid",
       "size": 3649,
       "last_modified": "2025-05-25T05:17:38.536Z",
-      "last_accessed": "2025-05-25T05:17:38.956Z",
+      "last_accessed": "2025-05-25T05:42:37.127Z",
       "links_out": [
         {
           "text": "AI_AGENT_RULES.mdc",
@@ -156,7 +156,7 @@
       "status": "valid",
       "size": 2352,
       "last_modified": "2025-05-25T05:17:38.537Z",
-      "last_accessed": "2025-05-25T05:17:39.057Z",
+      "last_accessed": "2025-05-25T05:42:37.129Z",
       "links_out": [
         {
           "text": ".cursor/docs/README.md",
@@ -207,7 +207,7 @@
       "status": "valid",
       "size": 9453,
       "last_modified": "2025-05-25T05:17:38.537Z",
-      "last_accessed": "2025-05-25T05:17:39.172Z",
+      "last_accessed": "2025-05-25T05:42:37.131Z",
       "links_out": [
         {
           "text": "AI_AGENT_RULES.mdc",
@@ -433,7 +433,7 @@
       "status": "valid",
       "size": 1543,
       "last_modified": "2025-05-25T05:17:38.538Z",
-      "last_accessed": "2025-05-25T05:17:39.274Z",
+      "last_accessed": "2025-05-25T05:42:37.133Z",
       "links_out": [
         {
           "text": "AI_Path_Fix_Guide.mdc",
@@ -477,7 +477,7 @@
       "status": "valid",
       "size": 2194,
       "last_modified": "2025-05-25T05:17:38.538Z",
-      "last_accessed": "2025-05-25T05:17:39.375Z",
+      "last_accessed": "2025-05-25T05:42:37.139Z",
       "links_out": [
         {
           "text": "AI_Path_Fix_Guide.md",
@@ -528,7 +528,7 @@
       "status": "valid",
       "size": 5806,
       "last_modified": "2025-05-25T05:17:38.539Z",
-      "last_accessed": "2025-05-25T05:17:39.476Z",
+      "last_accessed": "2025-05-25T05:42:37.142Z",
       "links_out": [
         {
           "text": "\\1",
@@ -593,7 +593,7 @@
       "status": "valid",
       "size": 968,
       "last_modified": "2025-05-25T05:17:38.540Z",
-      "last_accessed": "2025-05-25T05:17:39.578Z",
+      "last_accessed": "2025-05-25T05:42:37.147Z",
       "links_out": [
         {
           "text": "your_file.mdc",
@@ -622,22 +622,22 @@
       "description": "*This file was automatically created as a placeholder.*",
       "status": "valid",
       "size": 253,
-      "last_modified": "2025-05-24T15:40:33.465Z",
-      "last_accessed": "2025-05-25T04:26:01.218Z",
+      "last_modified": "2025-05-25T05:17:38.540Z",
+      "last_accessed": "2025-05-25T05:42:37.154Z",
       "links_out": [
         {
           "text": "AI_Coding_Agent_Optimization.mdc",
           "path": "AI_Coding_Agent_Optimization.mdc",
           "type": "file_reference",
           "source_file": "rules/00__TOOLS/.cI-DOCS/Docing_Agent_Optimization.mdc",
-          "status": "broken"
+          "status": "unchecked"
         },
         {
           "text": "cursor_path_fix.mdc",
           "path": "cursor_path_fix.mdc",
           "type": "file_reference",
           "source_file": "rules/00__TOOLS/.cI-DOCS/Docing_Agent_Optimization.mdc",
-          "status": "broken"
+          "status": "unchecked"
         }
       ],
       "links_in": [],
@@ -653,7 +653,7 @@
       "status": "valid",
       "size": 10411,
       "last_modified": "2025-05-25T05:22:14.652Z",
-      "last_accessed": "2025-05-25T05:22:14.763Z",
+      "last_accessed": "2025-05-25T05:42:37.160Z",
       "links_out": [
         {
           "text": "Display Text",
@@ -760,7 +760,7 @@
       "status": "valid",
       "size": 4819,
       "last_modified": "2025-05-25T05:17:38.542Z",
-      "last_accessed": "2025-05-25T05:17:39.783Z",
+      "last_accessed": "2025-05-25T05:42:37.164Z",
       "links_out": [
         {
           "text": "logic.mdc",
@@ -797,7 +797,7 @@
       "status": "valid",
       "size": 4293,
       "last_modified": "2025-05-25T05:17:38.543Z",
-      "last_accessed": "2025-05-25T05:17:39.885Z",
+      "last_accessed": "2025-05-25T05:42:37.170Z",
       "links_out": [
         {
           "text": "cursor_path_fix.mdc",
@@ -1135,7 +1135,7 @@
       "status": "valid",
       "size": 9420,
       "last_modified": "2025-05-25T05:20:23.797Z",
-      "last_accessed": "2025-05-25T05:20:23.981Z",
+      "last_accessed": "2025-05-25T05:42:37.174Z",
       "links_out": [
         {
           "text": "00_Getting_Started.mdc",
@@ -1823,7 +1823,7 @@
       "status": "valid",
       "size": 5901,
       "last_modified": "2025-05-25T05:17:38.545Z",
-      "last_accessed": "2025-05-25T05:17:40.089Z",
+      "last_accessed": "2025-05-25T05:42:37.176Z",
       "links_out": [
         {
           "text": "cursor_files_list.mdc",
@@ -1979,7 +1979,7 @@
       "status": "valid",
       "size": 21964,
       "last_modified": "2025-05-25T05:17:38.545Z",
-      "last_accessed": "2025-05-25T05:17:40.191Z",
+      "last_accessed": "2025-05-25T05:42:37.178Z",
       "links_out": [
         {
           "text": "Main README",
@@ -2366,7 +2366,7 @@
       "status": "valid",
       "size": 26820,
       "last_modified": "2025-05-25T05:22:14.671Z",
-      "last_accessed": "2025-05-25T05:22:14.864Z",
+      "last_accessed": "2025-05-25T05:42:37.180Z",
       "links_out": [
         {
           "text": "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
@@ -2760,7 +2760,7 @@
       "status": "valid",
       "size": 14836,
       "last_modified": "2025-05-25T05:22:14.673Z",
-      "last_accessed": "2025-05-25T05:22:14.968Z",
+      "last_accessed": "2025-05-25T05:42:37.181Z",
       "links_out": [
         {
           "text": "02_Market_Research.mdc",
@@ -2811,7 +2811,7 @@
       "status": "valid",
       "size": 20557,
       "last_modified": "2025-05-25T05:17:38.548Z",
-      "last_accessed": "2025-05-25T05:17:40.498Z",
+      "last_accessed": "2025-05-25T05:42:37.183Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -2869,7 +2869,7 @@
       "status": "valid",
       "size": 19835,
       "last_modified": "2025-05-25T05:22:14.677Z",
-      "last_accessed": "2025-05-25T05:22:15.069Z",
+      "last_accessed": "2025-05-25T05:42:37.185Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -2927,7 +2927,7 @@
       "status": "valid",
       "size": 20533,
       "last_modified": "2025-05-25T05:17:38.549Z",
-      "last_accessed": "2025-05-25T05:17:40.704Z",
+      "last_accessed": "2025-05-25T05:42:37.188Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -2985,7 +2985,7 @@
       "status": "valid",
       "size": 23569,
       "last_modified": "2025-05-25T05:17:38.549Z",
-      "last_accessed": "2025-05-25T05:17:40.807Z",
+      "last_accessed": "2025-05-25T05:42:37.189Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -3043,7 +3043,7 @@
       "status": "valid",
       "size": 3703,
       "last_modified": "2025-05-25T05:17:38.550Z",
-      "last_accessed": "2025-05-25T05:17:40.908Z",
+      "last_accessed": "2025-05-25T05:42:37.190Z",
       "links_out": [
         {
           "text": "tasks.json",
@@ -3157,7 +3157,7 @@
       "status": "valid",
       "size": 24115,
       "last_modified": "2025-05-25T05:22:14.685Z",
-      "last_accessed": "2025-05-25T05:22:15.172Z",
+      "last_accessed": "2025-05-25T05:42:37.192Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -3229,7 +3229,7 @@
       "status": "valid",
       "size": 24791,
       "last_modified": "2025-05-25T05:22:14.687Z",
-      "last_accessed": "2025-05-25T05:22:15.297Z",
+      "last_accessed": "2025-05-25T05:42:37.193Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -3299,9 +3299,9 @@
       "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc",
       "description": "- Technical Specifications",
       "status": "valid",
-      "size": 8026,
-      "last_modified": "2025-05-25T05:22:14.688Z",
-      "last_accessed": "2025-05-25T05:22:15.433Z",
+      "size": 8021,
+      "last_modified": "2025-05-25T05:25:00.987Z",
+      "last_accessed": "2025-05-25T05:42:37.194Z",
       "links_out": [
         {
           "text": "08_Testing.mdc",
@@ -3334,7 +3334,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "d4c9659"
+      "content_hash": "-15f402ef"
     },
     "rules_01__ai_run_quick_self_improvement_reference_mdc": {
       "id": "rules_01__ai_run_quick_self_improvement_reference_mdc",
@@ -3343,9 +3343,9 @@
       "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
       "description": "*Comprehensive guide for AI agents to continuously improve the AAI framework during workflow execution.*",
       "status": "valid",
-      "size": 12994,
-      "last_modified": "2025-05-25T05:17:38.553Z",
-      "last_accessed": "2025-05-25T05:17:41.315Z",
+      "size": 12995,
+      "last_modified": "2025-05-25T05:25:01.010Z",
+      "last_accessed": "2025-05-25T05:42:37.196Z",
       "links_out": [
         {
           "text": "09_Deployment.mdc",
@@ -3371,7 +3371,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "-6973d972"
+      "content_hash": "3af8ab3c"
     },
     "rules_01__ai_run_template_mcp_context_mdc": {
       "id": "rules_01__ai_run_template_mcp_context_mdc",
@@ -3382,7 +3382,7 @@
       "status": "valid",
       "size": 7925,
       "last_modified": "2025-05-25T04:55:05.968Z",
-      "last_accessed": "2025-05-25T04:55:08.632Z",
+      "last_accessed": "2025-05-25T05:42:37.198Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -3397,7 +3397,7 @@
       "status": "valid",
       "size": 3519,
       "last_modified": "2025-05-25T04:53:20.108Z",
-      "last_accessed": "2025-05-25T04:53:22.279Z",
+      "last_accessed": "2025-05-25T05:42:37.200Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -3412,7 +3412,7 @@
       "status": "valid",
       "size": 75171,
       "last_modified": "2025-05-25T05:17:38.554Z",
-      "last_accessed": "2025-05-25T05:17:41.418Z",
+      "last_accessed": "2025-05-25T05:42:37.203Z",
       "links_out": [
         {
           "text": "User Name/ID",
@@ -4112,9 +4112,9 @@
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
       "description": "This prompt will guide you in implementing a new API endpoint according to project standards and best practices. Please follow these instructions to ensure the endpoint is correctly implemented, teste",
       "status": "valid",
-      "size": 22319,
-      "last_modified": "2025-05-25T05:17:38.555Z",
-      "last_accessed": "2025-05-25T05:17:41.522Z",
+      "size": 22257,
+      "last_modified": "2025-05-25T05:25:01.009Z",
+      "last_accessed": "2025-05-25T05:42:37.207Z",
       "links_out": [
         {
           "text": "res.json",
@@ -4126,7 +4126,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "-7a7a5c30"
+      "content_hash": "-1609cf6"
     },
     "rules_02__ai_docs_ai_coder_contextprime_context_prime_template_mdc": {
       "id": "rules_02__ai_docs_ai_coder_contextprime_context_prime_template_mdc",
@@ -4137,14 +4137,14 @@
       "status": "valid",
       "size": 1841,
       "last_modified": "2025-05-25T04:55:05.970Z",
-      "last_accessed": "2025-05-25T04:55:08.946Z",
+      "last_accessed": "2025-05-25T05:42:37.209Z",
       "links_out": [
         {
           "text": "AI_Design_Agent_Optimization.mdc",
           "path": "AI_Design_Agent_Optimization.mdc",
           "type": "file_reference",
           "source_file": "rules/02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc",
-          "status": "broken"
+          "status": "unchecked"
         }
       ],
       "links_in": [],
@@ -4160,7 +4160,7 @@
       "status": "valid",
       "size": 4291,
       "last_modified": "2025-05-25T04:55:05.971Z",
-      "last_accessed": "2025-05-25T04:55:09.048Z",
+      "last_accessed": "2025-05-25T05:42:37.210Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4175,21 +4175,21 @@
       "status": "valid",
       "size": 12629,
       "last_modified": "2025-05-25T04:55:05.972Z",
-      "last_accessed": "2025-05-25T04:55:09.150Z",
+      "last_accessed": "2025-05-25T05:42:37.212Z",
       "links_out": [
         {
           "text": "package.json",
           "path": "package.json",
           "type": "file_reference",
           "source_file": "rules/02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
-          "status": "broken"
+          "status": "unchecked"
         },
         {
           "text": "default.json",
           "path": "default.json",
           "type": "file_reference",
           "source_file": "rules/02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
-          "status": "broken"
+          "status": "unchecked"
         }
       ],
       "links_in": [],
@@ -4205,7 +4205,7 @@
       "status": "valid",
       "size": 3967,
       "last_modified": "2025-05-25T04:55:05.973Z",
-      "last_accessed": "2025-05-25T04:55:09.252Z",
+      "last_accessed": "2025-05-25T05:42:37.213Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4220,7 +4220,7 @@
       "status": "valid",
       "size": 265,
       "last_modified": "2025-05-25T05:17:38.556Z",
-      "last_accessed": "2025-05-25T05:17:41.623Z",
+      "last_accessed": "2025-05-25T05:42:37.214Z",
       "links_out": [
         {
           "text": "architecture.mdc",
@@ -4250,7 +4250,7 @@
       "status": "valid",
       "size": 3055,
       "last_modified": "2025-05-25T05:17:38.557Z",
-      "last_accessed": "2025-05-25T05:17:41.724Z",
+      "last_accessed": "2025-05-25T05:42:37.214Z",
       "links_out": [
         {
           "text": "Provide a high-level description of the system architecture. Include a brief explanation of the architectural style (e.g., microservices, monolithic, serverles",
@@ -4273,7 +4273,7 @@
       "status": "valid",
       "size": 3049,
       "last_modified": "2025-05-25T04:55:05.974Z",
-      "last_accessed": "2025-05-25T04:55:09.454Z",
+      "last_accessed": "2025-05-25T05:42:37.215Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4288,7 +4288,7 @@
       "status": "valid",
       "size": 270,
       "last_modified": "2025-05-25T05:17:38.557Z",
-      "last_accessed": "2025-05-25T05:17:41.826Z",
+      "last_accessed": "2025-05-25T05:42:37.216Z",
       "links_out": [
         {
           "text": "coding_conventions.mdc",
@@ -4318,7 +4318,7 @@
       "status": "valid",
       "size": 8842,
       "last_modified": "2025-05-25T05:17:38.558Z",
-      "last_accessed": "2025-05-25T05:17:41.929Z",
+      "last_accessed": "2025-05-25T05:42:37.217Z",
       "links_out": [
         {
           "text": "design_conventions_template.mdc",
@@ -4348,7 +4348,7 @@
       "status": "valid",
       "size": 270,
       "last_modified": "2025-05-25T05:17:38.559Z",
-      "last_accessed": "2025-05-25T05:17:42.032Z",
+      "last_accessed": "2025-05-25T05:42:37.218Z",
       "links_out": [
         {
           "text": "design_conventions.mdc",
@@ -4378,7 +4378,7 @@
       "status": "valid",
       "size": 9400,
       "last_modified": "2025-05-25T05:17:38.560Z",
-      "last_accessed": "2025-05-25T05:17:42.134Z",
+      "last_accessed": "2025-05-25T05:42:37.219Z",
       "links_out": [
         {
           "text": "AI_Design_Agent_Optimization.mdc",
@@ -4422,7 +4422,7 @@
       "status": "valid",
       "size": 4979,
       "last_modified": "2025-05-25T04:55:05.977Z",
-      "last_accessed": "2025-05-25T04:55:09.775Z",
+      "last_accessed": "2025-05-25T05:42:37.221Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4437,7 +4437,7 @@
       "status": "valid",
       "size": 78268,
       "last_modified": "2025-05-25T05:17:38.561Z",
-      "last_accessed": "2025-05-25T05:17:42.239Z",
+      "last_accessed": "2025-05-25T05:42:37.224Z",
       "links_out": [
         {
           "text": "ui-library-prop-types.mdc",
@@ -4495,7 +4495,7 @@
       "status": "valid",
       "size": 53497,
       "last_modified": "2025-05-25T04:55:05.980Z",
-      "last_accessed": "2025-05-25T04:55:09.984Z",
+      "last_accessed": "2025-05-25T05:42:37.226Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4510,7 +4510,7 @@
       "status": "valid",
       "size": 17803,
       "last_modified": "2025-05-25T05:17:38.563Z",
-      "last_accessed": "2025-05-25T05:17:42.341Z",
+      "last_accessed": "2025-05-25T05:42:37.227Z",
       "links_out": [
         {
           "text": "`.vibetaskconfig`",
@@ -4561,7 +4561,7 @@
       "status": "valid",
       "size": 2828,
       "last_modified": "2025-05-25T04:55:05.981Z",
-      "last_accessed": "2025-05-25T04:55:10.187Z",
+      "last_accessed": "2025-05-25T05:42:37.229Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -4576,7 +4576,7 @@
       "status": "valid",
       "size": 22059,
       "last_modified": "2025-05-25T05:22:14.724Z",
-      "last_accessed": "2025-05-25T05:22:15.535Z",
+      "last_accessed": "2025-05-25T05:42:37.238Z",
       "links_out": [
         {
           "text": "01_Idea.mdc",
@@ -4900,7 +4900,7 @@
       "status": "valid",
       "size": 7725,
       "last_modified": "2025-05-25T05:17:38.565Z",
-      "last_accessed": "2025-05-25T05:17:42.548Z",
+      "last_accessed": "2025-05-25T05:42:37.240Z",
       "links_out": [
         {
           "text": "tasks.json",
@@ -4972,21 +4972,21 @@
       "status": "valid",
       "size": 245,
       "last_modified": "2025-05-25T04:42:13.046Z",
-      "last_accessed": "2025-05-25T04:42:19.434Z",
+      "last_accessed": "2025-05-25T05:42:37.249Z",
       "links_out": [
         {
           "text": "Specs_Docs.mdc",
           "path": "Specs_Docs.mdc",
           "type": "file_reference",
           "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/05_Specs_Docs_1.mdc",
-          "status": "broken"
+          "status": "unchecked"
         },
         {
           "text": "documentation_index.mdc",
           "path": "documentation_index.mdc",
           "type": "file_reference",
           "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/05_Specs_Docs_1.mdc",
-          "status": "broken"
+          "status": "unchecked"
         }
       ],
       "links_in": [],
@@ -5002,21 +5002,21 @@
       "status": "valid",
       "size": 247,
       "last_modified": "2025-05-25T04:42:13.046Z",
-      "last_accessed": "2025-05-25T04:42:19.536Z",
+      "last_accessed": "2025-05-25T05:42:37.250Z",
       "links_out": [
         {
           "text": "Task_Manager.mdc",
           "path": "Task_Manager.mdc",
           "type": "file_reference",
           "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/06_Task_Manager_1.mdc",
-          "status": "broken"
+          "status": "unchecked"
         },
         {
           "text": "documentation_index.mdc",
           "path": "documentation_index.mdc",
           "type": "file_reference",
           "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/06_Task_Manager_1.mdc",
-          "status": "broken"
+          "status": "unchecked"
         }
       ],
       "links_in": [],
@@ -5032,21 +5032,21 @@
       "status": "valid",
       "size": 249,
       "last_modified": "2025-05-25T04:42:13.047Z",
-      "last_accessed": "2025-05-25T04:42:19.638Z",
+      "last_accessed": "2025-05-25T05:42:37.251Z",
       "links_out": [
         {
           "text": "Start_Building.mdc",
           "path": "Start_Building.mdc",
           "type": "file_reference",
           "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/07_Start_Building_1.mdc",
-          "status": "broken"
+          "status": "unchecked"
         },
         {
           "text": "documentation_index.mdc",
           "path": "documentation_index.mdc",
           "type": "file_reference",
           "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/07_Start_Building_1.mdc",
-          "status": "broken"
+          "status": "unchecked"
         }
       ],
       "links_in": [],
@@ -5062,7 +5062,7 @@
       "status": "valid",
       "size": 251,
       "last_modified": "2025-05-25T05:17:38.566Z",
-      "last_accessed": "2025-05-25T05:17:42.650Z",
+      "last_accessed": "2025-05-25T05:42:37.252Z",
       "links_out": [
         {
           "text": "gfix_spec_template.mdc",
@@ -5092,7 +5092,7 @@
       "status": "valid",
       "size": 2510,
       "last_modified": "2025-05-25T04:55:05.984Z",
-      "last_accessed": "2025-05-25T04:55:10.494Z",
+      "last_accessed": "2025-05-25T05:42:37.254Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -5107,7 +5107,7 @@
       "status": "valid",
       "size": 2463,
       "last_modified": "2025-05-25T05:17:38.567Z",
-      "last_accessed": "2025-05-25T05:17:42.752Z",
+      "last_accessed": "2025-05-25T05:42:37.256Z",
       "links_out": [
         {
           "text": "f[e[ature_spec_template.mdc",
@@ -5193,7 +5193,7 @@
       "status": "valid",
       "size": 252,
       "last_modified": "2025-05-25T05:17:38.567Z",
-      "last_accessed": "2025-05-25T05:17:42.853Z",
+      "last_accessed": "2025-05-25T05:42:37.257Z",
       "links_out": [
         {
           "text": "ature_spec_template.mdc",
@@ -5223,7 +5223,7 @@
       "status": "valid",
       "size": 268,
       "last_modified": "2025-05-25T05:17:38.568Z",
-      "last_accessed": "2025-05-25T05:17:42.955Z",
+      "last_accessed": "2025-05-25T05:42:37.258Z",
       "links_out": [
         {
           "text": "feature_spec_FEAT-XXX.mdc",
@@ -5253,7 +5253,7 @@
       "status": "valid",
       "size": 240,
       "last_modified": "2025-05-25T05:17:38.569Z",
-      "last_accessed": "2025-05-25T05:17:43.057Z",
+      "last_accessed": "2025-05-25T05:42:37.259Z",
       "links_out": [
         {
           "text": "feature_spec_ID.mdc",
@@ -5283,7 +5283,7 @@
       "status": "valid",
       "size": 4908,
       "last_modified": "2025-05-25T05:17:38.570Z",
-      "last_accessed": "2025-05-25T05:17:43.158Z",
+      "last_accessed": "2025-05-25T05:42:37.262Z",
       "links_out": [
         {
           "text": "Link to wireframe/mockup or detailed description. The AI should propose designs (or variations if requested and justifie",
@@ -5313,7 +5313,7 @@
       "status": "valid",
       "size": 248,
       "last_modified": "2025-05-25T05:17:38.571Z",
-      "last_accessed": "2025-05-25T05:17:43.260Z",
+      "last_accessed": "2025-05-25T05:42:37.263Z",
       "links_out": [
         {
           "text": "gin_timeout_fix.mdc",
@@ -5343,7 +5343,7 @@
       "status": "valid",
       "size": 250,
       "last_modified": "2025-05-25T05:17:38.571Z",
-      "last_accessed": "2025-05-25T05:17:43.361Z",
+      "last_accessed": "2025-05-25T05:42:37.264Z",
       "links_out": [
         {
           "text": "er_authentication.mdc",
@@ -5373,7 +5373,7 @@
       "status": "valid",
       "size": 225813,
       "last_modified": "2025-05-25T05:17:38.574Z",
-      "last_accessed": "2025-05-25T05:17:43.468Z",
+      "last_accessed": "2025-05-25T05:42:37.270Z",
       "links_out": [
         {
           "text": "01_AutoPilot.mdc",
@@ -5396,7 +5396,7 @@
       "status": "valid",
       "size": 20253,
       "last_modified": "2025-05-25T05:17:38.575Z",
-      "last_accessed": "2025-05-25T05:17:43.572Z",
+      "last_accessed": "2025-05-25T05:42:37.272Z",
       "links_out": [
         {
           "text": "00_Getting_Started.mdc",
@@ -5930,7 +5930,7 @@
       "status": "valid",
       "size": 28764,
       "last_modified": "2025-05-25T05:17:38.575Z",
-      "last_accessed": "2025-05-25T05:17:43.676Z",
+      "last_accessed": "2025-05-25T05:42:37.274Z",
       "links_out": [
         {
           "text": "01_AutoPilot.mdc",
@@ -6667,7 +6667,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.154Z",
-      "last_accessed": "2025-05-25T04:53:25.206Z",
+      "last_accessed": "2025-05-25T05:42:37.275Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6682,7 +6682,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.155Z",
-      "last_accessed": "2025-05-25T04:53:25.307Z",
+      "last_accessed": "2025-05-25T05:42:37.276Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6697,7 +6697,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.159Z",
-      "last_accessed": "2025-05-25T04:53:25.511Z",
+      "last_accessed": "2025-05-25T05:42:37.277Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6712,7 +6712,7 @@
       "status": "valid",
       "size": 47,
       "last_modified": "2025-05-25T04:53:20.157Z",
-      "last_accessed": "2025-05-25T04:53:25.410Z",
+      "last_accessed": "2025-05-25T05:42:37.277Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -6727,7 +6727,7 @@
       "status": "valid",
       "size": 4975,
       "last_modified": "2025-05-25T05:17:38.578Z",
-      "last_accessed": "2025-05-25T05:17:43.779Z",
+      "last_accessed": "2025-05-25T05:42:37.279Z",
       "links_out": [
         {
           "text": "Phase 0: Startup & Initialization ([`01__AI-RUN/00_Getting_Started.mdc`",
@@ -6925,7 +6925,7 @@
       "status": "valid",
       "size": 0,
       "last_modified": "2025-05-25T04:42:13.051Z",
-      "last_accessed": "2025-05-25T04:42:20.249Z",
+      "last_accessed": "2025-05-25T05:42:37.279Z",
       "links_out": [],
       "links_in": [],
       "fix_history": [],
@@ -8939,14 +8939,14 @@
         "path": "AI_Coding_Agent_Optimization.mdc",
         "type": "file_reference",
         "source_file": "rules/00__TOOLS/.cI-DOCS/Docing_Agent_Optimization.mdc",
-        "status": "broken"
+        "status": "unchecked"
       },
       {
         "text": "cursor_path_fix.mdc",
         "path": "cursor_path_fix.mdc",
         "type": "file_reference",
         "source_file": "rules/00__TOOLS/.cI-DOCS/Docing_Agent_Optimization.mdc",
-        "status": "broken"
+        "status": "unchecked"
       }
     ],
     "rules_00__tools_mdc_path_update_guide_mdc": [
@@ -12145,7 +12145,7 @@
         "path": "AI_Design_Agent_Optimization.mdc",
         "type": "file_reference",
         "source_file": "rules/02__AI-DOCS/AI-Coder/ContextPrime/context_prime_template.mdc",
-        "status": "broken"
+        "status": "unchecked"
       }
     ],
     "rules_02__ai_docs_ai_coder_refactoring_refactoring_template_mdc": [],
@@ -12155,14 +12155,14 @@
         "path": "package.json",
         "type": "file_reference",
         "source_file": "rules/02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
-        "status": "broken"
+        "status": "unchecked"
       },
       {
         "text": "default.json",
         "path": "default.json",
         "type": "file_reference",
         "source_file": "rules/02__AI-DOCS/AI-Coder/SelfImprovement_Agent_Core.mdc",
-        "status": "broken"
+        "status": "unchecked"
       }
     ],
     "rules_02__ai_docs_ai_coder_testgenerators_test_generator_template_mdc": [],
@@ -12728,14 +12728,14 @@
         "path": "Specs_Docs.mdc",
         "type": "file_reference",
         "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/05_Specs_Docs_1.mdc",
-        "status": "broken"
+        "status": "unchecked"
       },
       {
         "text": "documentation_index.mdc",
         "path": "documentation_index.mdc",
         "type": "file_reference",
         "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/05_Specs_Docs_1.mdc",
-        "status": "broken"
+        "status": "unchecked"
       }
     ],
     "rules_03__specs_agents__store_project_memory_corrupted_backup_2025_05_24t09_13_58_352z_01__ai_run_06_task_manager_1_mdc": [
@@ -12744,14 +12744,14 @@
         "path": "Task_Manager.mdc",
         "type": "file_reference",
         "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/06_Task_Manager_1.mdc",
-        "status": "broken"
+        "status": "unchecked"
       },
       {
         "text": "documentation_index.mdc",
         "path": "documentation_index.mdc",
         "type": "file_reference",
         "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/06_Task_Manager_1.mdc",
-        "status": "broken"
+        "status": "unchecked"
       }
     ],
     "rules_03__specs_agents__store_project_memory_corrupted_backup_2025_05_24t09_13_58_352z_01__ai_run_07_start_building_1_mdc": [
@@ -12760,14 +12760,14 @@
         "path": "Start_Building.mdc",
         "type": "file_reference",
         "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/07_Start_Building_1.mdc",
-        "status": "broken"
+        "status": "unchecked"
       },
       {
         "text": "documentation_index.mdc",
         "path": "documentation_index.mdc",
         "type": "file_reference",
         "source_file": "rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN/07_Start_Building_1.mdc",
-        "status": "broken"
+        "status": "unchecked"
       }
     ],
     "rules_03__specs_bugfix_spec_template_mdc": [
@@ -19304,9 +19304,27 @@
       "file": "rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T05:25:01.199Z",
+      "file": "rules/01__AI-RUN/09_Deployment.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T05:25:01.303Z",
+      "file": "rules/02__AI-DOCS/AI-Coder/CommonTasks/api_endpoint_template.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T05:25:01.404Z",
+      "file": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T05:22:15.636Z",
+  "last_updated": "2025-05-25T05:42:37.279Z",
   "scan_history": [
     {
       "id": "scan_1748139854554",
@@ -19337,6 +19355,22 @@
       "timestamp": "2025-05-25T04:26:01.162Z",
       "completed": "2025-05-25T04:26:01.363Z",
       "files_found": 120,
+      "corrupt_files": 0,
+      "fixes_applied": 0
+    },
+    {
+      "id": "scan_1748150761514",
+      "timestamp": "2025-05-25T05:26:01.514Z",
+      "completed": "2025-05-25T05:26:01.608Z",
+      "files_found": 678,
+      "corrupt_files": 0,
+      "fixes_applied": 0
+    },
+    {
+      "id": "scan_1748151757105",
+      "timestamp": "2025-05-25T05:42:37.105Z",
+      "completed": "2025-05-25T05:42:37.279Z",
+      "files_found": 71,
       "corrupt_files": 0,
       "fixes_applied": 0
     }

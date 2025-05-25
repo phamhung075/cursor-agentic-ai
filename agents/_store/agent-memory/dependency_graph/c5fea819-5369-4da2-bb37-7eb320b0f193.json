@@ -1,0 +1,15 @@
+{
+  "id": "c5fea819-5369-4da2-bb37-7eb320b0f193",
+  "type": "dependency_graph",
+  "content": "{\"dependencies\":[[\"agents/self-improvement/config/default.json\",{}],[\"agents/self-improvement/core/fileManager.js\",{}],[\"agents/self-improvement/core/analyzer.js\",{}],[\"package.json\",{}],[\"scripts/analyze_and_cleanup_scripts.js\",{}],[\"scripts/cleanup_obsolete_scripts.js\",{}],[\"scripts/SCRIPTS_CLEANUP_SUMMARY.md\",{}],[\"backups/scripts-migration-2025-05-24T16-07-39-178Z/original-scripts/SCRIPTS_CLEANUP_SUMMARY.md\",{}]],\"reverseDependencies\":[],\"fileHashes\":[[\"agents/self-improvement/config/default.json\",\"38cd2133e0587f9a6cefe29eb04b0f16\"],[\"agents/self-improvement/core/fileManager.js\",\"2024d1ed52e80f33cf97f32ee63014dc\"],[\"agents/self-improvement/core/analyzer.js\",\"7c85370162366cb3f41823ae5e92e6a1\"],[\"package.json\",\"45546a18be89b66cd1fcc303c19c1fee\"],[\"scripts/analyze_and_cleanup_scripts.js\",\"f36c902160bd3028929fc27134368839\"],[\"scripts/cleanup_obsolete_scripts.js\",\"0652eecaafb03084884fe2d05efc110d\"],[\"scripts/SCRIPTS_CLEANUP_SUMMARY.md\",\"66ad7e3d683cfddfe24b9498e5115cf0\"],[\"backups/scrip",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "content": "{\"dependencies\":[[\"agents/self-improvement/config/default.json\",{}],[\"agents/self-improvement/core/fileManager.js\",{}],[\"agents/self-improvement/core/analyzer.js\",{}],[\"package.json\",{}],[\"scripts/analyze_and_cleanup_scripts.js\",{}],[\"scripts/cleanup_obsolete_scripts.js\",{}],[\"scripts/SCRIPTS_CLEANUP_SUMMARY.md\",{}],[\"backups/scripts-migration-2025-05-24T16-07-39-178Z/original-scripts/SCRIPTS_CLEANUP_SUMMARY.md\",{}]],\"reverseDependencies\":[],\"fileHashes\":[[\"agents/self-improvement/config/default.json\",\"38cd2133e0587f9a6cefe29eb04b0f16\"],[\"agents/self-improvement/core/fileManager.js\",\"2024d1ed52e80f33cf97f32ee63014dc\"],[\"agents/self-improvement/core/analyzer.js\",\"7c85370162366cb3f41823ae5e92e6a1\"],[\"package.json\",\"45546a18be89b66cd1fcc303c19c1fee\"],[\"scripts/analyze_and_cleanup_scripts.js\",\"f36c902160bd3028929fc27134368839\"],[\"scripts/cleanup_obsolete_scripts.js\",\"0652eecaafb03084884fe2d05efc110d\"],[\"scripts/SCRIPTS_CLEANUP_SUMMARY.md\",\"66ad7e3d683cfddfe24b9498e5115cf0\"],[\"backups/scrip",
+    "fileCount": 8,
+    "memoryClass": "agent",
+    "saveId": 2,
+    "timestamp": 1748102906880,
+    "type": "dependency_graph"
+  },
+  "embedding": []
+}

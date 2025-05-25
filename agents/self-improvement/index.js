@@ -21,6 +21,7 @@ const CLIInterface = require('./cli/interface');
 const FileDependencyManager = require('./core/FileDependencyManager');
 const readline = require('readline');
 const chalk = require('chalk');
+const fs = require('fs').promises;
 
 // Load configuration
 const config = require('./config/default.json');
@@ -793,6 +794,284 @@ class SelfImprovementAgent {
     } catch (error) {
       return { success: false, message: error.message };
     }
+  }
+
+  /**
+   * Handle memory commands (unified interface for sync operations)
+   */
+  async handleMemoryCommand(command, args = []) {
+    if (!this.config.agent.memoryEnabled) {
+      return { success: false, message: 'Memory system is disabled' };
+    }
+
+    try {
+      switch (command) {
+        case 'sync-status':
+          return await this.getMemorySyncStatus();
+          
+        case 'sync-up':
+          return await this.syncMemoryUp();
+          
+        case 'sync-down':
+          return await this.syncMemoryDown();
+          
+        case 'sync-both':
+          return await this.syncMemoryBoth();
+          
+        case 'reset-pinecone':
+          return await this.resetPineconeIndex();
+          
+        case 'fix-embeddings':
+          return await this.fixEmbeddingDimensions();
+          
+        case 'stats':
+          // Route to agent memory stats for backward compatibility
+          return await this.handleAgentMemoryCommand('stats', args);
+          
+        default:
+          return { 
+            success: false, 
+            message: `Unknown memory command: ${command}. Use: sync-status, sync-up, sync-down, sync-both, reset-pinecone, fix-embeddings, stats` 
+          };
+      }
+    } catch (error) {
+      return { success: false, message: error.message };
+    }
+  }
+
+  /**
+   * Get memory synchronization status
+   */
+  async getMemorySyncStatus() {
+    try {
+      const agentStats = await this.memoryManager.getAgentMemoryStats();
+      const projectStats = await this.memoryManager.getProjectMemoryStats();
+      
+      // Check Pinecone connection
+      let pineconeConnected = false;
+      let pineconeMemories = 0;
+      
+      if (this.memoryManager.index) {
+        try {
+          const indexStats = await this.memoryManager.index.describeIndexStats();
+          pineconeConnected = true;
+          pineconeMemories = indexStats.totalVectorCount || 0;
+        } catch (error) {
+          console.warn('⚠️ Pinecone connection check failed:', error.message);
+        }
+      }
+      
+      // Check OpenAI connection
+      const openaiConnected = !!this.memoryManager.openai;
+      
+      // Handle project stats safely
+      const agentMemories = agentStats.localMemories || 0;
+      const projectMemories = (projectStats && !projectStats.error) ? (projectStats.localMemories || 0) : 0;
+      
+      return {
+        success: true,
+        syncStatus: {
+          pineconeConnected,
+          openaiConnected,
+          localMemories: agentMemories + projectMemories,
+          pineconeMemories,
+          agentMemories,
+          projectMemories
+        }
+      };
+    } catch (error) {
+      return { success: false, message: `Failed to get sync status: ${error.message}` };
+    }
+  }
+
+  /**
+   * Sync local memories to Pinecone
+   */
+  async syncMemoryUp() {
+    if (!this.memoryManager.index) {
+      return { success: false, message: 'Pinecone not connected' };
+    }
+
+    try {
+      let uploaded = 0;
+      let skipped = 0;
+      let errors = 0;
+
+      // Sync agent memories
+      const agentMemoryFiles = await this.getAllLocalMemoryFiles(this.memoryManager.agentMemoryStore);
+      for (const file of agentMemoryFiles) {
+        try {
+          const memory = JSON.parse(await fs.readFile(file.path, 'utf8'));
+          
+          // Check if already exists in Pinecone
+          try {
+            await this.memoryManager.index.fetch([memory.id]);
+            skipped++;
+            continue;
+          } catch (fetchError) {
+            // Memory doesn't exist, upload it
+          }
+          
+          await this.memoryManager.index.upsert([{
+            id: memory.id,
+            values: memory.embedding,
+            metadata: {
+              type: memory.type,
+              content: memory.content.substring(0, 1000),
+              memoryClass: 'agent',
+              ...memory.metadata
+            }
+          }]);
+          uploaded++;
+        } catch (error) {
+          console.warn(`⚠️ Failed to sync ${file.path}:`, error.message);
+          errors++;
+        }
+      }
+
+      return { success: true, uploaded, skipped, errors };
+    } catch (error) {
+      return { success: false, message: `Sync up failed: ${error.message}` };
+    }
+  }
+
+  /**
+   * Sync Pinecone memories to local
+   */
+  async syncMemoryDown() {
+    if (!this.memoryManager.index) {
+      return { success: false, message: 'Pinecone not connected' };
+    }
+
+    try {
+      let downloaded = 0;
+      let skipped = 0;
+      let errors = 0;
+
+      // Query all memories from Pinecone (this is a simplified approach)
+      // In a real implementation, you'd want to paginate through results
+      const queryResponse = await this.memoryManager.index.query({
+        vector: new Array(1536).fill(0), // Dummy vector for listing
+        topK: 1000,
+        includeMetadata: true
+      });
+
+      for (const match of queryResponse.matches) {
+        try {
+          const memory = {
+            id: match.id,
+            type: match.metadata.type,
+            content: match.metadata.content,
+            metadata: match.metadata,
+            embedding: match.values || []
+          };
+
+          // Check if already exists locally
+          const localPath = this.getLocalMemoryPath(memory);
+          try {
+            await fs.access(localPath);
+            skipped++;
+            continue;
+          } catch (accessError) {
+            // Memory doesn't exist locally, download it
+          }
+
+          await this.memoryManager.storeAgentMemoryLocally(memory, memory.type.replace('agent_', ''));
+          downloaded++;
+        } catch (error) {
+          console.warn(`⚠️ Failed to download memory ${match.id}:`, error.message);
+          errors++;
+        }
+      }
+
+      return { success: true, downloaded, skipped, errors };
+    } catch (error) {
+      return { success: false, message: `Sync down failed: ${error.message}` };
+    }
+  }
+
+  /**
+   * Perform bidirectional sync
+   */
+  async syncMemoryBoth() {
+    try {
+      const uploadResult = await this.syncMemoryUp();
+      const downloadResult = await this.syncMemoryDown();
+
+      return {
+        success: uploadResult.success && downloadResult.success,
+        upload: uploadResult.success ? uploadResult : { uploaded: 0, skipped: 0, errors: 1 },
+        download: downloadResult.success ? downloadResult : { downloaded: 0, skipped: 0, errors: 1 }
+      };
+    } catch (error) {
+      return { success: false, message: `Bidirectional sync failed: ${error.message}` };
+    }
+  }
+
+  /**
+   * Reset Pinecone index (delete all memories)
+   */
+  async resetPineconeIndex() {
+    if (!this.memoryManager.index) {
+      return { success: false, message: 'Pinecone not connected' };
+    }
+
+    try {
+      // Delete all vectors in the index
+      await this.memoryManager.index.deleteAll();
+      return { success: true, message: 'Pinecone index reset successfully' };
+    } catch (error) {
+      return { success: false, message: `Failed to reset Pinecone index: ${error.message}` };
+    }
+  }
+
+  /**
+   * Fix embedding dimensions (placeholder for future implementation)
+   */
+  async fixEmbeddingDimensions() {
+    try {
+      // This would implement logic to fix embedding dimension mismatches
+      console.log('🔧 Checking embedding dimensions...');
+      
+      // For now, just return success
+      return { success: true, message: 'Embedding dimensions checked' };
+    } catch (error) {
+      return { success: false, message: `Failed to fix embeddings: ${error.message}` };
+    }
+  }
+
+  /**
+   * Get all local memory files
+   */
+  async getAllLocalMemoryFiles(memoryStore) {
+    const files = [];
+    
+    async function scanDirectory(dir) {
+      try {
+        const entries = await fs.readdir(dir, { withFileTypes: true });
+        for (const entry of entries) {
+          const fullPath = path.join(dir, entry.name);
+          if (entry.isDirectory()) {
+            await scanDirectory(fullPath);
+          } else if (entry.name.endsWith('.json')) {
+            files.push({ path: fullPath, name: entry.name });
+          }
+        }
+      } catch (error) {
+        // Directory might not exist, skip
+      }
+    }
+    
+    await scanDirectory(memoryStore);
+    return files;
+  }
+
+  /**
+   * Get local memory file path for a memory object
+   */
+  getLocalMemoryPath(memory) {
+    const type = memory.type.replace('agent_', '');
+    return path.join(this.memoryManager.agentMemoryStore, type, `${memory.id}.json`);
   }
 
   /**

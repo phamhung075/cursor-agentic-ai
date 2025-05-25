@@ -1,0 +1,15 @@
+{
+  "id": "a22cfa0e-bc6b-4f80-ab12-4424f1f3433b",
+  "type": "dependency_graph",
+  "content": "{\"dependencies\":[[\"agents/self-improvement/config/default.json\",{}],[\"agents/self-improvement/core/fileManager.js\",{}],[\"agents/self-improvement/core/analyzer.js\",{}],[\"package.json\",{}],[\"backups/scripts-migration-2025-05-24T16-07-39-178Z/original-scripts/SCRIPTS_CLEANUP_SUMMARY.md\",{}]],\"reverseDependencies\":[],\"fileHashes\":[[\"agents/self-improvement/config/default.json\",\"38cd2133e0587f9a6cefe29eb04b0f16\"],[\"agents/self-improvement/core/fileManager.js\",\"2024d1ed52e80f33cf97f32ee63014dc\"],[\"agents/self-improvement/core/analyzer.js\",\"7c85370162366cb3f41823ae5e92e6a1\"],[\"package.json\",\"5b046242406e3738c05eb702e6846150\"],[\"backups/scripts-migration-2025-05-24T16-07-39-178Z/original-scripts/SCRIPTS_CLEANUP_SUMMARY.md\",\"66ad7e3d683cfddfe24b9498e5115cf0\"]],\"lastUpdated\":1748104016715,\"saveCount\":30}",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "content": "{\"dependencies\":[[\"agents/self-improvement/config/default.json\",{}],[\"agents/self-improvement/core/fileManager.js\",{}],[\"agents/self-improvement/core/analyzer.js\",{}],[\"package.json\",{}],[\"backups/scripts-migration-2025-05-24T16-07-39-178Z/original-scripts/SCRIPTS_CLEANUP_SUMMARY.md\",{}]],\"reverseDependencies\":[],\"fileHashes\":[[\"agents/self-improvement/config/default.json\",\"38cd2133e0587f9a6cefe29eb04b0f16\"],[\"agents/self-improvement/core/fileManager.js\",\"2024d1ed52e80f33cf97f32ee63014dc\"],[\"agents/self-improvement/core/analyzer.js\",\"7c85370162366cb3f41823ae5e92e6a1\"],[\"package.json\",\"5b046242406e3738c05eb702e6846150\"],[\"backups/scripts-migration-2025-05-24T16-07-39-178Z/original-scripts/SCRIPTS_CLEANUP_SUMMARY.md\",\"66ad7e3d683cfddfe24b9498e5115cf0\"]],\"lastUpdated\":1748104016715,\"saveCount\":30}",
+    "fileCount": 5,
+    "memoryClass": "agent",
+    "saveId": 3,
+    "timestamp": 1748104016715,
+    "type": "dependency_graph"
+  },
+  "embedding": []
+}

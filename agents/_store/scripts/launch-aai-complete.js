@@ -291,10 +291,34 @@ class AAICompleteOrchestrator extends EventEmitter {
       stdio: ['pipe', 'pipe', 'pipe']
     });
 
-    monitorProcess.on('close', (code) => {
-        console.log('✅ Core Monitoring ready');
-        this.status.monitoring = true;
+    // Set status to true when process starts successfully (not when it closes)
+    monitorProcess.on('spawn', () => {
+      console.log('✅ Core Monitoring ready');
+      this.status.monitoring = true;
       this.emit('monitoring-ready');
+    });
+
+    // Handle process output
+    monitorProcess.stdout.on('data', (data) => {
+      if (!this.config.silent) {
+        console.log(`[Core Monitor] ${data.toString().trim()}`);
+      }
+    });
+
+    monitorProcess.stderr.on('data', (data) => {
+      console.warn(`[Core Monitor Error] ${data.toString().trim()}`);
+    });
+
+    // Handle unexpected process closure
+    monitorProcess.on('close', (code) => {
+      console.warn('⚠️ Core Monitoring process closed unexpectedly');
+      this.status.monitoring = false;
+      
+      // Auto-restart if enabled
+      if (this.config.autoRestart) {
+        console.log('🔄 Restarting Core Monitoring...');
+        setTimeout(() => this.launchCoreMonitoring(), 5000);
+      }
     });
 
     this.processes.set('core-monitoring', monitorProcess);
@@ -376,7 +400,8 @@ class AAICompleteOrchestrator extends EventEmitter {
     const processHealth = {
       autoSync: this.processes.has('auto-sync') && !this.processes.get('auto-sync').killed,
       contextTracking: this.processes.has('context-tracking') && !this.processes.get('context-tracking').killed,
-      memorySync: this.status.memorySync
+      memorySync: this.status.memorySync,
+      monitoring: this.processes.has('core-monitoring') && !this.processes.get('core-monitoring').killed // Check if process is running
     };
 
     // AAI Agent runs in service mode, check if it's still alive
@@ -391,8 +416,8 @@ class AAICompleteOrchestrator extends EventEmitter {
       performanceOptimized: this.status.performanceOptimized
     };
 
-    // Core systems that must be working
-    const coreHealthy = processHealth.autoSync && processHealth.memorySync;
+    // Core systems that must be working (including monitoring)
+    const coreHealthy = processHealth.autoSync && processHealth.memorySync && processHealth.monitoring;
     
     // Count healthy processes
     const healthyProcesses = Object.values(processHealth).filter(Boolean).length;
@@ -407,11 +432,11 @@ class AAICompleteOrchestrator extends EventEmitter {
       for (const [name, healthy] of Object.entries(processHealth)) {
         if (!healthy && this.config.autoRestart) {
           // Only restart critical processes
-          if (name === 'autoSync' || name === 'contextTracking') {
+          if (name === 'autoSync' || name === 'contextTracking' || name === 'monitoring') {
             console.log(`🔄 Restarting ${name}...`);
-          await this.restartProcess(name);
+            await this.restartProcess(name === 'monitoring' ? 'core-monitoring' : name);
+          }
         }
-      }
       }
     }
   }
@@ -633,7 +658,7 @@ class AAICompleteOrchestrator extends EventEmitter {
       'AAI Agent': this.status.aaiAgent,
       'Auto-Sync': this.status.autoSync,
       'Memory Sync': this.status.memorySync,
-      'Core Monitoring': this.status.monitoring
+      'Core Monitoring': this.processes.has('core-monitoring') && !this.processes.get('core-monitoring').killed
     };
     
     Object.entries(coreComponents).forEach(([component, status]) => {

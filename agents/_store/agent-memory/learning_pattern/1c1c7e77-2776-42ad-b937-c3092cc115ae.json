@@ -1,0 +1,16 @@
+{
+  "id": "1c1c7e77-2776-42ad-b937-c3092cc115ae",
+  "type": "learning_pattern",
+  "content": "{\"pattern\":{\"pattern\":\"Workflow files often need technology stack updates\",\"context\":\"Framework analysis revealed multiple outdated technology references\",\"confidence\":0.85,\"category\":\"technology_updates\"},\"context\":{\"analysisDate\":1748075316393,\"filesAnalyzed\":4,\"framework\":\"agentic-coding\"},\"success\":true}",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "analysisDate": 1748075316393,
+    "content": "{\"pattern\":{\"pattern\":\"Workflow files often need technology stack updates\",\"context\":\"Framework analysis revealed multiple outdated technology references\",\"confidence\":0.85,\"category\":\"technology_updates\"},\"context\":{\"analysisDate\":1748075316393,\"filesAnalyzed\":4,\"framework\":\"agentic-coding\"},\"success\":true}",
+    "filesAnalyzed": 4,
+    "framework": "agentic-coding",
+    "memoryClass": "agent",
+    "timestamp": 1748075316394,
+    "type": "learning_pattern"
+  },
+  "embedding": []
+}

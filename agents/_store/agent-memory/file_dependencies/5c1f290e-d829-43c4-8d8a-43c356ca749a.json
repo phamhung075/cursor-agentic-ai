@@ -1,0 +1,15 @@
+{
+  "id": "5c1f290e-d829-43c4-8d8a-43c356ca749a",
+  "type": "file_dependencies",
+  "content": "{\"filePath\":\"agents/_store/agent-memory/dependencies/c87dc20f-9045-4435-b8ab-5dd41512e306.json\",\"dependencies\":[],\"dependentCount\":0,\"timestamp\":1748075585120}",
+  "metadata": {
+    "agentVersion": "2.0.0",
+    "content": "{\"filePath\":\"agents/_store/agent-memory/dependencies/c87dc20f-9045-4435-b8ab-5dd41512e306.json\",\"dependencies\":[],\"dependentCount\":0,\"timestamp\":1748075585120}",
+    "dependencyCount": 0,
+    "fileName": "c87dc20f-9045-4435-b8ab-5dd41512e306.json",
+    "memoryClass": "agent",
+    "timestamp": 1748075585120,
+    "type": "file_dependencies"
+  },
+  "embedding": []
+}
