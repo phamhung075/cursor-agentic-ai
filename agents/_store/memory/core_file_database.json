@@ -3324,33 +3324,40 @@
     },
     "rules_01__ai_run_quick_self_improvement_reference_mdc": {
       "id": "rules_01__ai_run_quick_self_improvement_reference_mdc",
-      "title": "🧠 Quick Self-Improvement Reference v2.0 for AI Agents",
+      "title": "🧠 Quick Self-Improvement Reference v3.0 for AAI Agents",
       "path": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
       "full_path": "agents/_store/projects/_core/rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
-      "description": "*Use the new modular Self-Improvement Agent during AutoPilot workflow execution.*",
+      "description": "*Comprehensive guide for AI agents to continuously improve the AAI framework during workflow execution.*",
       "status": "valid",
-      "size": 5038,
-      "last_modified": "2025-05-24T17:36:33.823Z",
-      "last_accessed": "2025-05-25T03:24:15.037Z",
+      "size": 12994,
+      "last_modified": "2025-05-25T04:11:21.374Z",
+      "last_accessed": "2025-05-25T04:11:21.542Z",
       "links_out": [
         {
-          "text": "0[1[_[AutoPilot.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
-          "type": "markdown",
+          "text": "09_Deployment.mdc",
+          "path": "09_Deployment.mdc",
+          "type": "file_reference",
           "source_file": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
-          "status": "broken"
+          "status": "unchecked"
         },
         {
-          "text": "0[2[_[Market_Research.mdc",
-          "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
-          "type": "markdown",
+          "text": "deployment_guide_template.mdc",
+          "path": "deployment_guide_template.mdc",
+          "type": "file_reference",
           "source_file": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
-          "status": "broken"
+          "status": "unchecked"
+        },
+        {
+          "text": "05_Technical_Specifications.mdc",
+          "path": "05_Technical_Specifications.mdc",
+          "type": "file_reference",
+          "source_file": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
+          "status": "unchecked"
         }
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "612905f3"
+      "content_hash": "-6973d972"
     },
     "rules_01__ai_run_template_mcp_context_mdc": {
       "id": "rules_01__ai_run_template_mcp_context_mdc",
@@ -9850,18 +9857,25 @@
     ],
     "rules_01__ai_run_quick_self_improvement_reference_mdc": [
       {
-        "text": "0[1[_[AutoPilot.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc",
-        "type": "markdown",
+        "text": "09_Deployment.mdc",
+        "path": "09_Deployment.mdc",
+        "type": "file_reference",
         "source_file": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
-        "status": "broken"
+        "status": "unchecked"
       },
       {
-        "text": "0[2[_[Market_Research.mdc",
-        "path": "agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc",
-        "type": "markdown",
+        "text": "deployment_guide_template.mdc",
+        "path": "deployment_guide_template.mdc",
+        "type": "file_reference",
         "source_file": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
-        "status": "broken"
+        "status": "unchecked"
+      },
+      {
+        "text": "05_Technical_Specifications.mdc",
+        "path": "05_Technical_Specifications.mdc",
+        "type": "file_reference",
+        "source_file": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
+        "status": "unchecked"
       }
     ],
     "rules_01__ai_run_template_mcp_context_mdc": [],
@@ -13275,9 +13289,21 @@
       "file": "rules/01__AI-RUN/09_Deployment.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T04:10:40.255Z",
+      "file": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
+      "operation": "change",
+      "success": true
+    },
+    {
+      "timestamp": "2025-05-25T04:11:21.542Z",
+      "file": "rules/01__AI-RUN/Quick_Self_Improvement_Reference.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T04:07:33.123Z",
+  "last_updated": "2025-05-25T04:11:21.643Z",
   "scan_history": [
     {
       "id": "scan_1748139854554",

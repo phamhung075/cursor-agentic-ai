@@ -3,18 +3,26 @@ description:
 globs: 
 alwaysApply: false
 ---
-# 🧠 Quick Self-Improvement Reference v2.0 for AI Agents
+# 🧠 Quick Self-Improvement Reference v3.0 for AAI Agents
 
-*Use the new modular Self-Improvement Agent during AutoPilot workflow execution.*
+*Comprehensive guide for AI agents to continuously improve the AAI framework during workflow execution.*
 
-## 🚀 **Agent Activation**
+## 🚀 **Agent Activation & Setup**
 
+### **Primary Activation**
 ```bash
-# Start the new modular agent
+# Start the AAI Self-Improvement Agent
 npm run AAI:agent
 
-# Legacy fallback (if needed)
-npm run legacy
+# Alternative activation methods
+npm run launch  # Full system with self-improvement
+npm run agent:improve  # Standalone improvement agent
+```
+
+### **Legacy Support**
+```bash
+# Fallback for older systems
+npm run legacy:improve
 ```
 
 ## 🎯 **Context-Aware Workflow Integration**
@@ -22,135 +30,339 @@ npm run legacy
 ### **Phase-Based Context Setting**
 ```bash
 # Set context for current workflow phase
-🤖 > context workflow  # During workflow design/execution
-🤖 > context market-research  # During Phase 2
-🤖 > context architecture  # During Phase 5 (technical docs)
-🤖 > context testing  # During Phase 8
-🤖 > context deployment  # During Phase 9
+🤖 > context autopilot        # Phase 1: AutoPilot workflow
+🤖 > context market-research  # Phase 2: Market Research
+🤖 > context core-concept     # Phase 3: Core Concept
+🤖 > context prd-generation   # Phase 4: PRD Generation
+🤖 > context architecture     # Phase 5: Technical Specifications
+🤖 > context task-management  # Phase 6: Task Management
+🤖 > context implementation   # Phase 7: Implementation
+🤖 > context testing          # Phase 8: Testing & Preview
+🤖 > context deployment       # Phase 9: Deployment
+🤖 > context iteration        # Post-deployment iteration
 ```
 
-### **Smart Detection Triggers**
+### **Smart Detection & Analysis**
 ```bash
 # Automatically find and analyze relevant files
 🤖 > smart-detect
 
-# Result example:
-🎯 Found 4 relevant files
-📊 Total issues detected: 6
-📄 [0[1[_[AutoPilot.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_AutoPilot.mdc) (2 issues)
-📄 [0[2[_[Market_Research.mdc](agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc) (1 issue)
+# Context-specific analysis
+🤖 > analyze-context <phase-name>
+🤖 > detect-issues --priority=high
+🤖 > scan-templates --project-type=<type>
+
+# Example output:
+🎯 Context: deployment
+📊 Found 7 relevant files
+🔍 Issues detected: 4 (2 high, 1 medium, 1 low)
+📄 09_Deployment.mdc (2 high priority issues)
+📄 deployment_guide_template.mdc (1 medium priority issue)
 ```
 
-## 📋 **Integration Points During AutoPilot**
+## 📋 **Integration Points During AAI Workflow**
 
-### **Before Using Workflow Files (Phases 1-9)**
+### **Pre-Phase Analysis**
 ```bash
-🔍 Quick Check Commands:
-🤖 > context workflow
-🤖 > analyze autopilot  # Check AutoPilot for current project type
-🤖 > analyze market_research  # Verify Phase 2 guidance is current
-🤖 > analyze testing  # Ensure Phase 8 matches project needs
+🔍 Before Starting Each Phase:
+🤖 > context <current-phase>
+🤖 > analyze-phase-readiness
+🤖 > validate-prerequisites
+🤖 > check-template-currency
+
+# Example for Phase 5 (Architecture):
+🤖 > context architecture
+🤖 > analyze 05_Technical_Specifications.mdc
+🤖 > validate-tech-stack --current
 ```
 
-### **After Generating Key Documents**
+### **During Phase Execution**
 ```bash
-📊 Document Validation:
-🤖 > analyze project_prd  # Check PRD for improvements
-🤖 > analyze architecture  # Validate technical architecture
-🤖 > analyze feature_spec  # Review feature specifications
+📊 Real-time Monitoring:
+🤖 > monitor-workflow-quality
+🤖 > detect-user-friction
+🤖 > analyze-output-quality
+🤖 > suggest-improvements --live
+
+# Adaptive learning:
+🤖 > learn-from-user-feedback
+🤖 > update-patterns --success-rate
 ```
 
-### **During User Confusion/Issues**
+### **Post-Phase Validation**
 ```bash
-💬 Troubleshooting:
-🤖 > context [current-issue]  # Set context to specific problem area
-🤖 > smart-detect  # Find relevant framework files
-🤖 > improve [problematic-file] # Get detailed suggestions
+📈 After Phase Completion:
+🤖 > analyze-phase-outcomes
+🤖 > validate-deliverables
+🤖 > capture-lessons-learned
+🤖 > update-phase-templates
+
+# Quality assurance:
+🤖 > verify-output-standards
+🤖 > check-documentation-completeness
 ```
 
-## ⚡ **Priority-Based Actions**
+### **User Issue Resolution**
+```bash
+💬 When Users Experience Problems:
+🤖 > context <problem-area>
+🤖 > diagnose-user-issue
+🤖 > suggest-immediate-fixes
+🤖 > escalate-if-critical
 
-### **🚨 HIGH Priority (Critical Issues)**
+# Proactive support:
+🤖 > predict-potential-issues
+🤖 > prepare-preventive-guidance
+```
+
+## ⚡ **Priority-Based Action Framework**
+
+### **🚨 CRITICAL Priority (Immediate Action Required)**
 - **Security vulnerabilities** in framework files
-- **Syntax errors** that break workflows  - **Missing critical guidance** causing user blocks
-- **Action:** PAUSE workflow, present improvement, implement if approved
+- **Syntax errors** breaking workflow execution
+- **Missing essential guidance** causing user blocks
+- **Broken integrations** with external services
+- **Data corruption** risks in templates
 
-### **⚠️ MEDIUM Priority (Improvement Opportunities)**
-- **Outdated technology references** (React 18, Node.js 20, etc.)
-- **Missing examples** that would help current project type
-- **Template gaps** for specific use cases
-- **Action:** Note for end-of-phase review
+**Action Protocol:**
+1. PAUSE current workflow immediately
+2. Present critical issue to user with clear explanation
+3. Provide immediate fix or workaround
+4. Implement approved solution
+5. Resume workflow with verification
 
-### **💡 LOW Priority (Optimizations)**
-- **Better code examples** in templates
-- **Improved wording** for clarity
-- **Additional best practices** 
-- **Action:** Log for post-project optimization
+### **⚠️ HIGH Priority (End-of-Phase Review)**
+- **Outdated technology references** (frameworks, versions)
+- **Missing examples** for current project type
+- **Template gaps** causing user confusion
+- **Performance bottlenecks** in workflow execution
+- **Integration issues** with development tools
 
-## 🎨 **Improved Communication Format**
+**Action Protocol:**
+1. Note issue with detailed context
+2. Continue current phase without interruption
+3. Present improvements at phase completion
+4. Implement approved changes before next phase
 
-When presenting improvements to users:
+### **💡 MEDIUM Priority (Scheduled Improvement)**
+- **Enhanced code examples** in templates
+- **Improved documentation** clarity
+- **Additional best practices** integration
+- **User experience** optimizations
+- **Workflow efficiency** improvements
 
+**Action Protocol:**
+1. Log improvement opportunity
+2. Analyze impact and effort required
+3. Schedule for next maintenance cycle
+4. Batch with similar improvements
+
+### **🔧 LOW Priority (Continuous Enhancement)**
+- **Minor wording** improvements
+- **Cosmetic formatting** updates
+- **Optional feature** additions
+- **Nice-to-have** enhancements
+
+**Action Protocol:**
+1. Add to improvement backlog
+2. Consider during major version updates
+3. Implement during low-activity periods
+
+## 🎨 **Enhanced Communication Protocols**
+
+### **Issue Detection Format**
 ```
-🧠 **Self-Improvement Agent Detection**: [Context: workflow]
-🔍 **Issue Found**: ⚠️ Outdated reference to React 18 in architecture template
-💡 **Suggested Enhancement**: Update to React 18+ with modern features guide
-⚡ **Workflow Impact**: Ensures users get current best practices for new projects
-❓ **Action Required**: Note for phase review (Medium priority)
+🧠 **AAI Self-Improvement Agent**: [Context: <current-phase>]
+🔍 **Issue Detected**: <priority-level> <issue-description>
+💡 **Proposed Enhancement**: <specific-improvement>
+⚡ **Impact Assessment**: <workflow-impact-description>
+🎯 **Recommended Action**: <immediate/scheduled/logged>
+📊 **Confidence Level**: <high/medium/low>
+❓ **User Decision Required**: <yes/no>
 ```
 
-## 📊 **Available Commands Reference**
+### **Improvement Suggestion Format**
+```
+🚀 **Enhancement Opportunity**
+📍 **Location**: <file-path>:<line-range>
+🔧 **Current State**: <existing-content-summary>
+✨ **Proposed Change**: <improvement-description>
+📈 **Expected Benefit**: <user-experience-improvement>
+⏱️ **Implementation Time**: <estimated-effort>
+🎯 **Success Metrics**: <measurable-outcomes>
+```
 
+## 📊 **Comprehensive Command Reference**
+
+### **Core Analysis Commands**
 ```bash
-🤖 > analyze <filename>  # Analyze specific .mdc file
-🤖 > improve <filename>  # Get detailed improvement suggestions  🤖 > context <topic>  # Set current work context
-🤖 > smart-detect  # Context-aware file analysis
-🤖 > help  # Show all commands
-🤖 > exit  # Stop agent
+🤖 > analyze <filename>           # Deep analysis of specific file
+🤖 > analyze-batch <pattern>      # Analyze multiple files
+🤖 > analyze-phase <phase-name>   # Comprehensive phase analysis
+🤖 > analyze-project-type <type>  # Project-specific analysis
 ```
 
-## 💡 **Pro Tips for AI Agents**
+### **Context Management**
+```bash
+🤖 > context <topic>              # Set current work context
+🤖 > context-stack               # View context history
+🤖 > context-clear              # Reset context
+🤖 > context-auto               # Auto-detect context
+```
 
-1. **Set context first** - Always use `context <current-phase>` for better results
-2. **Use smart-detect** - Let the agent find relevant files automatically
-3. **Check critical files** - Analyze key templates before using them
-4. **Track patterns** - The agent learns from user feedback to improve suggestions
-5. **Respect priorities** - Only interrupt workflow for HIGH priority issues
+### **Improvement Operations**
+```bash
+🤖 > improve <filename>          # Get detailed improvement suggestions
+🤖 > improve-batch <pattern>     # Batch improvement analysis
+🤖 > improve-critical           # Focus on critical issues only
+🤖 > improve-preview            # Preview improvements without applying
+```
 
-## 🔧 **Technical Notes**
+### **Smart Detection & Monitoring**
+```bash
+🤖 > smart-detect               # Context-aware file analysis
+🤖 > monitor-quality            # Real-time quality monitoring
+🤖 > detect-patterns           # Pattern recognition analysis
+🤖 > predict-issues            # Predictive issue detection
+```
 
-- **Modular Architecture**: New agent has separated concerns for better performance
-- **No Full Scans**: Only analyzes relevant files based on context
-- **Learning Capability**: Adapts suggestions based on user approval patterns
-- **Backward Compatible**: Legacy agent still available with `npm run legacy`
+### **Learning & Adaptation**
+```bash
+🤖 > learn-from-feedback        # Process user feedback
+🤖 > update-patterns           # Update learned patterns
+🤖 > export-insights           # Export improvement insights
+🤖 > import-best-practices     # Import external best practices
+```
+
+### **Utility Commands**
+```bash
+🤖 > status                     # Agent status and metrics
+🤖 > help                       # Show all commands
+🤖 > help <command>             # Detailed command help
+🤖 > version                    # Agent version information
+🤖 > exit                       # Stop agent gracefully
+```
+
+## 💡 **Advanced Usage Patterns**
+
+### **Proactive Improvement Workflow**
+1. **Context Awareness**: Always set appropriate context before analysis
+2. **Predictive Analysis**: Use pattern recognition to anticipate issues
+3. **Continuous Learning**: Incorporate user feedback into improvement suggestions
+4. **Quality Monitoring**: Track workflow quality metrics in real-time
+5. **Adaptive Responses**: Adjust improvement strategies based on project characteristics
+
+### **Integration with Development Workflow**
+```bash
+# Pre-development setup
+🤖 > context implementation
+🤖 > analyze-tech-stack --current
+🤖 > validate-architecture-alignment
+
+# During development
+🤖 > monitor-code-quality
+🤖 > suggest-best-practices --real-time
+🤖 > detect-anti-patterns
+
+# Post-development review
+🤖 > analyze-implementation-quality
+🤖 > capture-development-insights
+🤖 > update-implementation-templates
+```
+
+## 🔧 **Technical Architecture**
+
+### **Modular Design**
+- **Context Engine**: Intelligent context detection and management
+- **Analysis Engine**: Multi-layered file and workflow analysis
+- **Learning Engine**: Pattern recognition and adaptation
+- **Communication Engine**: User interaction and feedback processing
+- **Integration Engine**: Seamless workflow integration
+
+### **Performance Optimizations**
+- **Selective Analysis**: Only analyzes relevant files based on context
+- **Caching System**: Intelligent caching of analysis results
+- **Parallel Processing**: Concurrent analysis of multiple files
+- **Incremental Updates**: Only re-analyze changed content
+
+### **Quality Assurance**
+- **Validation Pipeline**: Multi-stage validation of improvements
+- **Testing Framework**: Automated testing of improvement suggestions
+- **Rollback Capability**: Safe rollback of problematic changes
+- **Audit Trail**: Complete history of all improvements
+
+## 📈 **Metrics & Analytics**
+
+### **Improvement Metrics**
+- **Issue Detection Rate**: Number of issues found per analysis
+- **Resolution Success Rate**: Percentage of successfully implemented improvements
+- **User Satisfaction**: Feedback scores on improvement quality
+- **Workflow Efficiency**: Time saved through improvements
+
+### **Learning Metrics**
+- **Pattern Recognition Accuracy**: Success rate of pattern-based predictions
+- **Adaptation Speed**: Time to incorporate new patterns
+- **Knowledge Base Growth**: Rate of knowledge accumulation
+- **Prediction Accuracy**: Success rate of predictive issue detection
+
+## 🎯 **Best Practices for AI Agents**
+
+### **Context Management**
+1. **Always set context** before performing analysis
+2. **Maintain context stack** for complex workflows
+3. **Auto-detect context** when user context is unclear
+4. **Clear context** between unrelated tasks
+
+### **Quality Assurance**
+1. **Validate before suggesting** - Ensure improvements are beneficial
+2. **Test improvements** - Verify changes don't break existing functionality
+3. **Provide rollback options** - Always offer safe rollback paths
+4. **Document changes** - Maintain clear audit trail
+
+### **User Experience**
+1. **Respect workflow flow** - Don't interrupt unless critical
+2. **Provide clear explanations** - Help users understand improvements
+3. **Offer choices** - Present options when multiple solutions exist
+4. **Learn from feedback** - Continuously improve based on user responses
+
+### **Continuous Learning**
+1. **Capture patterns** - Learn from successful and failed improvements
+2. **Adapt strategies** - Adjust approach based on project characteristics
+3. **Share insights** - Contribute learnings back to the knowledge base
+4. **Stay current** - Continuously update with latest best practices
+
+## 🔄 **Integration with AAI Ecosystem**
+
+### **Workflow Integration**
+- **Seamless Phase Transitions**: Automatic context switching between phases
+- **Real-time Quality Monitoring**: Continuous assessment of workflow quality
+- **Predictive Issue Prevention**: Proactive identification of potential problems
+- **Adaptive Guidance**: Dynamic adjustment of guidance based on project needs
+
+### **Knowledge Management**
+- **Centralized Learning**: Shared knowledge base across all AAI agents
+- **Pattern Library**: Reusable patterns for common improvement scenarios
+- **Best Practices Repository**: Curated collection of proven improvements
+- **Version Control**: Tracked evolution of framework improvements
+
+## Purpose
+
+The Quick Self-Improvement Reference serves as the comprehensive guide for AAI agents to continuously enhance the framework's effectiveness, ensuring optimal user experience and workflow efficiency through intelligent, context-aware improvements.
+
+### Key Goals:
+- **Continuous Quality Enhancement**: Systematically improve framework components
+- **User Experience Optimization**: Reduce friction and enhance workflow efficiency
+- **Adaptive Learning**: Evolve based on usage patterns and feedback
+- **Proactive Issue Prevention**: Anticipate and prevent common problems
+- **Knowledge Accumulation**: Build comprehensive improvement knowledge base
+
+### Success Metrics:
+- **Reduced User Friction**: Fewer workflow interruptions and confusion points
+- **Improved Workflow Efficiency**: Faster completion of development phases
+- **Higher Quality Outputs**: Better documentation, code, and project outcomes
+- **Enhanced User Satisfaction**: Positive feedback on framework improvements
+- **Continuous Learning**: Growing knowledge base and pattern recognition accuracy
 
 ---
 
-*This reference assumes the new Self-Improvement Agent v2.0 is properly installed and configured.*  ## Purpose
-
-This section defines the purpose and objectives of this workflow step.
-
-### Key Goals:
-- Define clear objectives
-- Establish success criteria
-- Align with overall framework goals
-
-## Steps
-
-This section outlines the step-by-step process for this workflow.
-
-### Process:
-1. **Preparation**: Set up necessary resources and context
-2. **Execution**: Follow the defined workflow process
-3. **Validation**: Verify outputs and quality
-4. **Documentation**: Record results and learnings
-
-## Output
-
-This section describes the expected outputs and deliverables.
-
-### Expected Deliverables:
-- Primary output files
-- Documentation updates
-- Status reports
-- Next steps recommendations
+*This reference guide is designed for AAI Self-Improvement Agent v3.0 and integrates seamlessly with the complete AAI ecosystem for optimal development workflow enhancement.*
