@@ -60,6 +60,7 @@ class CLIInterface {
     console.log(chalk.gray(''));
     console.log(chalk.gray('  ⚙️ System Commands:'));
     console.log(chalk.gray('    migrate              - Migrate files to agent store'));
+    console.log(chalk.gray('    logs                 - View logging information and metrics'));
     console.log(chalk.gray('    status               - Show agent status'));
     console.log(chalk.gray('    help                 - Show help information'));
     console.log(chalk.gray('    exit                 - Stop the agent'));
@@ -120,6 +121,9 @@ class CLIInterface {
           break;
         case 'migrate':
           await this.handleMigrate(args);
+          break;
+        case 'logs':
+          await this.handleLogs(args);
           break;
         case 'status':
           await this.handleStatus();
@@ -850,6 +854,19 @@ class CLIInterface {
     } else if (result.message) {
       console.log(chalk.gray(result.message));
     }
+  }
+
+  /**
+   * Handle logs command
+   */
+  async handleLogs(args) {
+    const subcommand = args[0] || 'status';
+    const subArgs = args.slice(1);
+    
+    console.log(chalk.blue(`📊 Logs: ${subcommand}`));
+    
+    const result = await this.agent.handleLogsCommand(subcommand, subArgs);
+    this.displayCommandResult(result, 'logs');
   }
 
   /**

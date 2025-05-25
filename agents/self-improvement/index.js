@@ -19,6 +19,7 @@ const FileManager = require('./core/fileManager');
 const GitProjectManager = require('./core/gitProjectManager');
 const CLIInterface = require('./cli/interface');
 const FileDependencyManager = require('./core/FileDependencyManager');
+const AgentLogger = require('./core/logger');
 const readline = require('readline');
 const chalk = require('chalk');
 const fs = require('fs').promises;
@@ -29,6 +30,15 @@ const config = require('./config/default.json');
 class SelfImprovementAgent {
   constructor() {
     this.config = require('./config/default.json');
+    
+    // Initialize logger first
+    this.logger = new AgentLogger({
+      logLevel: process.env.LOG_LEVEL || 'INFO',
+      logPath: this.config.fileStore.storeRoot + '/' + this.config.fileStore.logsPath,
+      logToConsole: true,
+      logToFile: true
+    });
+    
     this.detector = new PatternDetector(this.config);
     this.analyzer = new FileAnalyzer(this.detector);
     this.memoryManager = new MemoryManager(this.config);
@@ -39,23 +49,31 @@ class SelfImprovementAgent {
     this.cli = new CLIInterface(this, this.config);
     this.rl = null;
     this.isInitialized = false;
+    
+    this.logger.info('🤖 Self-Improvement Agent v2.0 initialized');
   }
 
   /**
    * Start the agent (with optional non-interactive mode)
    */
   async start(options = {}) {
+    const startTime = Date.now();
     const { interactive = true, testMode = false } = options;
+    
+    this.logger.logOperation('agent_start', { interactive, testMode });
     
     try {
       await this.initialize();
       
       if (testMode) {
+        this.logger.info('🧪 Running in test mode');
         console.log('✅ Agent started successfully in test mode');
         console.log('🔍 All systems operational');
         
         // Quick system check
         const status = await this.getStatus();
+        this.logger.logOperation('system_check', status);
+        
         console.log(`🤖 Agent: ${status.agent.name} v${status.agent.version}`);
         console.log(`🧠 Agent Memory: ${status.memory.agent ? status.memory.agent.localMemories : 0} entries`);
         console.log(`📁 Project Memory: ${status.memory.project ? status.memory.project.localMemories : 0} entries`);
@@ -71,15 +89,20 @@ class SelfImprovementAgent {
         // Clean shutdown in test mode to ensure process exits
         await this.shutdown();
         
+        const duration = Date.now() - startTime;
+        this.logger.logPerformance('agent_test_mode', duration);
+        
         return { success: true, message: 'Agent test completed' };
       }
       
       if (!interactive) {
+        this.logger.info('🔧 Running in non-interactive mode');
         console.log('✅ Agent initialized in non-interactive mode');
         return { success: true, message: 'Agent ready for programmatic use' };
       }
       
       // Interactive mode
+      this.logger.info('🎮 Starting interactive mode');
       console.log('🧠 Interactive Self-Improvement Agent v2.0');
       console.log('💡 I can analyze files and manage git projects with dual memory.');
       console.log('📋 Available Commands:');
@@ -92,6 +115,7 @@ class SelfImprovementAgent {
       console.log('  git-projects       - Git project management commands');
       console.log('  dependencies       - File dependency tracking commands');
       console.log('  migrate            - Migrate files to agent store');
+      console.log('  logs               - View logging information and metrics');
       console.log('  help               - Show help information');
       console.log('  exit               - Stop the agent');
       console.log('');
@@ -100,6 +124,7 @@ class SelfImprovementAgent {
       await this.cli.start();
       
     } catch (error) {
+      this.logger.error('Failed to start agent', { error: error.message, stack: error.stack });
       console.error('❌ Failed to start agent:', error.message);
       throw error;
     }
@@ -109,28 +134,41 @@ class SelfImprovementAgent {
    * Initialize all agent components
    */
   async initialize() {
+    const startTime = Date.now();
+    this.logger.logOperation('agent_initialize', { memoryEnabled: this.config.agent.memoryEnabled, fileStoreEnabled: this.config.agent.fileStoreEnabled });
+    
     try {
       // Initialize file manager
       if (this.config.agent.fileStoreEnabled) {
         await this.fileManager.initialize();
+        this.logger.info('📁 FileManager initialized');
         console.log('📁 FileManager initialized');
       }
 
       // Initialize memory manager (dual memory system)
       if (this.config.agent.memoryEnabled) {
         await this.memoryManager.initialize();
+        this.logger.logMemory('initialize', 'dual_memory_system');
       }
 
       // Initialize git project manager
       await this.gitProjectManager.initialize();
+      this.logger.logGit('initialize', 'project_manager');
 
       // Initialize file dependency manager
       if (this.config.agent.memoryEnabled && this.config.agent.dependencyTrackingEnabled !== false) {
         await this.fileDependencyManager.initialize();
+        this.logger.info('🔗 FileDependencyManager initialized');
         console.log('🔗 FileDependencyManager initialized');
       }
 
+      this.isInitialized = true;
+      const duration = Date.now() - startTime;
+      this.logger.logPerformance('agent_initialize', duration);
+      this.logger.info('✅ Agent initialization completed successfully');
+
     } catch (error) {
+      this.logger.error('Agent initialization failed', { error: error.message, stack: error.stack });
       console.warn('⚠️ Initialization warning:', error.message);
     }
   }
@@ -162,22 +200,43 @@ class SelfImprovementAgent {
    * Analyze a specific file
    */
   async analyzeSpecificFile(filename) {
+    const startTime = Date.now();
+    this.logger.logOperation('analyze_file', { filename });
+    
     try {
       // Find the file
+      this.logger.debug('🔍 Searching for file', { filename });
       const filePath = await this.analyzer.findFile(filename);
       
       if (!filePath) {
-        return {
+        const result = {
           success: false,
           message: `File not found: ${filename}. Try a partial name or check spelling.`
         };
+        this.logger.warn('File not found', { filename, searchAttempted: true });
+        return result;
       }
+
+      this.logger.info('📄 File found, starting analysis', { filename, filePath });
 
       // Analyze the file
       const improvements = await this.analyzer.analyzeFile(filePath);
+      const duration = Date.now() - startTime;
+      
+      this.logger.logAnalysis(filename, {
+        issuesFound: improvements.length,
+        suggestions: improvements.length,
+        duration,
+        filePath
+      });
       
       // Store analysis in agent memory for learning (global improvement patterns)
       if (this.config.agent.memoryEnabled && improvements.length > 0) {
+        this.logger.logMemory('store', 'agent_learning', { 
+          filename, 
+          improvementCount: improvements.length 
+        });
+        
         await this.memoryManager.storeAgentMemory('learning', JSON.stringify({
           fileName: filename,
           filePath,
@@ -193,6 +252,11 @@ class SelfImprovementAgent {
       // Store project-specific context if we have a current project
       const currentGitProject = this.gitProjectManager.getCurrentProject();
       if (currentGitProject && this.config.agent.memoryEnabled) {
+        this.logger.logMemory('store', 'project_context', { 
+          filename, 
+          project: currentGitProject.name 
+        });
+        
         await this.memoryManager.storeProjectMemory('context', JSON.stringify({
           fileName: filename,
           filePath,
@@ -207,14 +271,28 @@ class SelfImprovementAgent {
         });
       }
       
-      return {
+      const result = {
         success: true,
         filePath,
         improvements,
         stats: await this.analyzer.getFileStats(filePath)
       };
       
+      this.logger.info('✅ File analysis completed successfully', { 
+        filename, 
+        issuesFound: improvements.length,
+        duration: Date.now() - startTime 
+      });
+      
+      return result;
+      
     } catch (error) {
+      this.logger.error('File analysis failed', { 
+        filename, 
+        error: error.message, 
+        duration: Date.now() - startTime 
+      });
+      
       return {
         success: false,
         message: `Error analyzing file: ${error.message}`
@@ -226,20 +304,32 @@ class SelfImprovementAgent {
    * Get improvement suggestions for a file with memory-enhanced learning
    */
   async getImprovementSuggestions(filename) {
+    const startTime = Date.now();
+    this.logger.logOperation('get_suggestions', { filename });
+    
     try {
       const analysisResult = await this.analyzeSpecificFile(filename);
       
       if (!analysisResult.success) {
+        this.logger.warn('Analysis failed, cannot generate suggestions', { filename });
         return analysisResult;
       }
 
       // Generate detailed improvement suggestions
       let suggestions = this.generateDetailedSuggestions(analysisResult.improvements);
+      this.logger.debug('Generated base suggestions', { filename, count: suggestions.length });
       
       // Enhance suggestions with agent memory if available
       if (this.config.agent.memoryEnabled) {
+        this.logger.debug('Enhancing suggestions with memory', { filename });
         suggestions = await this.enhanceWithAgentMemory(suggestions, filename);
       }
+      
+      const duration = Date.now() - startTime;
+      this.logger.logPerformance('get_suggestions', duration, { 
+        filename, 
+        suggestionsCount: suggestions.length 
+      });
       
       return {
         success: true,
@@ -248,6 +338,11 @@ class SelfImprovementAgent {
       };
       
     } catch (error) {
+      this.logger.error('Failed to generate suggestions', { 
+        filename, 
+        error: error.message 
+      });
+      
       return {
         success: false,
         message: `Error generating suggestions: ${error.message}`
@@ -450,11 +545,15 @@ class SelfImprovementAgent {
    * Handle git project commands
    */
   async handleGitProjectCommand(subcommand, args = []) {
+    this.logger.logUserInteraction('git-projects', [subcommand, ...args]);
+    this.logger.logGit('command', subcommand, { args });
+    
     try {
       switch (subcommand) {
         case 'add':
           const [name, gitUrl] = args;
           if (!name || !gitUrl) {
+            this.logger.warn('Git add command missing parameters', { name, gitUrl });
             return { success: false, message: 'Usage: git-projects add <name> <git-url> [--branch <branch>]' };
           }
           
@@ -464,12 +563,15 @@ class SelfImprovementAgent {
             options.branch = args[branchIndex + 1];
           }
           
+          this.logger.logGit('add_project', name, { gitUrl, options });
           const project = await this.gitProjectManager.addProject(name, gitUrl, options);
+          this.logger.logGit('add_project_success', name, { project: project.name });
           return { success: true, project };
           
         case 'remove':
           const projectToRemove = args[0];
           if (!projectToRemove) {
+            this.logger.warn('Git remove command missing project name');
             return { success: false, message: 'Usage: git-projects remove <name> [--force] [--clean-memory]' };
           }
           
@@ -478,135 +580,139 @@ class SelfImprovementAgent {
             cleanMemory: args.includes('--clean-memory')
           };
           
+          this.logger.logGit('remove_project', projectToRemove, removeOptions);
           const removeResult = await this.gitProjectManager.removeProject(projectToRemove, removeOptions);
+          this.logger.logGit('remove_project_success', projectToRemove, removeResult);
           return { success: true, ...removeResult };
           
         case 'switch':
           const projectToSwitch = args[0];
           if (!projectToSwitch) {
+            this.logger.warn('Git switch command missing project name');
             return { success: false, message: 'Usage: git-projects switch <name>' };
           }
           
+          this.logger.logGit('switch_project', projectToSwitch);
           const switchedProject = await this.gitProjectManager.switchProject(projectToSwitch);
+          this.logger.logGit('switch_project_success', projectToSwitch, { newProject: switchedProject.name });
           return { success: true, project: switchedProject };
           
         case 'list':
+          this.logger.logGit('list_projects', 'all');
           const projects = this.gitProjectManager.listProjects();
+          this.logger.debug('Listed git projects', { count: projects.length });
           return { success: true, projects };
           
         case 'status':
           const statusProject = args[0];
+          this.logger.logGit('get_status', statusProject || 'current');
           const status = await this.gitProjectManager.getProjectStatus(statusProject);
+          this.logger.debug('Retrieved git project status', { project: statusProject, status: status.status });
           return { success: true, status };
           
         case 'sync-memory':
           const syncProject = args[0];
+          this.logger.logGit('sync_memory', syncProject || 'current');
           const syncResult = await this.gitProjectManager.syncProjectMemory(syncProject);
+          this.logger.logGit('sync_memory_success', syncProject, syncResult);
           return { success: true, ...syncResult };
           
         case 'clean':
           const cleanProject = args[0];
           if (!cleanProject) {
+            this.logger.warn('Git clean command missing project name');
             return { success: false, message: 'Usage: git-projects clean <name>' };
           }
           
+          this.logger.logGit('clean_project', cleanProject);
           const cleanResult = await this.gitProjectManager.cleanProjectForSwitch(cleanProject);
+          this.logger.logGit('clean_project_success', cleanProject, cleanResult);
           return { success: true, ...cleanResult };
           
         case 'stats':
+          this.logger.logGit('get_stats', 'all');
           const stats = await this.gitProjectManager.getProjectsStats();
+          this.logger.debug('Retrieved git projects stats', { totalProjects: stats.totalProjects });
           return { success: true, stats };
           
         default:
+          this.logger.warn('Unknown git project command', { subcommand, availableCommands: ['add', 'remove', 'switch', 'list', 'status', 'sync-memory', 'clean', 'stats'] });
           return { 
             success: false, 
             message: `Unknown git project command: ${subcommand}. Use: add, remove, switch, list, status, sync-memory, clean, stats` 
           };
       }
     } catch (error) {
+      this.logger.error('Git project command failed', { 
+        subcommand, 
+        args, 
+        error: error.message,
+        stack: error.stack 
+      });
       return { success: false, message: error.message };
     }
   }
 
   /**
-   * Handle agent memory commands
+   * Handle agent memory commands (global learning patterns)
    */
   async handleAgentMemoryCommand(subcommand, args = []) {
+    this.logger.logUserInteraction('agent-memory', [subcommand, ...args]);
+    
     if (!this.config.agent.memoryEnabled) {
-      return { success: false, message: 'Agent memory is disabled' };
+      const result = { success: false, message: 'Agent memory is disabled in configuration' };
+      this.logger.warn('Agent memory command attempted but memory disabled', { subcommand });
+      return result;
     }
 
+    this.logger.logMemory('command', 'agent', { subcommand, args });
+
     try {
-      switch (subcommand) {
-        case 'stats':
-          const stats = await this.memoryManager.getAgentMemoryStats();
-          return { success: true, stats };
-          
-        case 'search':
-          const query = args.join(' ');
-          if (!query) {
-            return { success: false, message: 'Search query required' };
-          }
-          const results = await this.memoryManager.searchAgentMemories(query);
-          return { success: true, results };
-          
-        case 'sync-to-git':
-          const syncResult = await this.memoryManager.syncAgentMemoryToGit();
-          return { success: true, ...syncResult };
-          
-        default:
-          return { 
-            success: false, 
-            message: `Unknown agent memory command: ${subcommand}. Use: stats, search, sync-to-git` 
-          };
-      }
+      const result = await this.memoryManager.handleAgentMemoryCommand(subcommand, args);
+      this.logger.logMemory('command_result', 'agent', { 
+        subcommand, 
+        success: result.success,
+        message: result.message 
+      });
+      return result;
     } catch (error) {
+      this.logger.error('Agent memory command failed', { 
+        subcommand, 
+        args, 
+        error: error.message 
+      });
       return { success: false, message: error.message };
     }
   }
 
   /**
-   * Handle project memory commands
+   * Handle project memory commands (project-specific context)
    */
   async handleProjectMemoryCommand(subcommand, args = []) {
+    this.logger.logUserInteraction('project-memory', [subcommand, ...args]);
+    
     if (!this.config.agent.memoryEnabled) {
-      return { success: false, message: 'Project memory is disabled' };
+      const result = { success: false, message: 'Project memory is disabled in configuration' };
+      this.logger.warn('Project memory command attempted but memory disabled', { subcommand });
+      return result;
     }
 
+    this.logger.logMemory('command', 'project', { subcommand, args });
+
     try {
-      switch (subcommand) {
-        case 'stats':
-          const projectName = args[0];
-          const stats = await this.memoryManager.getProjectMemoryStats(projectName);
-          return { success: true, stats };
-          
-        case 'search':
-          const query = args.join(' ');
-          if (!query) {
-            return { success: false, message: 'Search query required' };
-          }
-          const results = await this.memoryManager.searchProjectMemories(query);
-          return { success: true, results };
-          
-        case 'clean':
-          const cleanProjectName = args[0];
-          if (!cleanProjectName) {
-            return { success: false, message: 'Project name required' };
-          }
-          const cleanResult = await this.memoryManager.cleanProjectMemory(cleanProjectName);
-          return { success: true, cleaned: cleanResult, project: cleanProjectName };
-          
-        case 'list-projects':
-          const projectList = await this.memoryManager.listProjectsWithMemory();
-          return { success: true, projects: projectList };
-          
-        default:
-          return { 
-            success: false, 
-            message: `Unknown project memory command: ${subcommand}. Use: stats, search, clean, list-projects` 
-          };
-      }
+      const result = await this.memoryManager.handleProjectMemoryCommand(subcommand, args);
+      this.logger.logMemory('command_result', 'project', { 
+        subcommand, 
+        success: result.success,
+        message: result.message 
+      });
+      return result;
     } catch (error) {
+      this.logger.error('Project memory command failed', { 
+        subcommand, 
+        args, 
+        error: error.message 
+      });
       return { success: false, message: error.message };
     }
   }
@@ -1075,30 +1181,123 @@ class SelfImprovementAgent {
   }
 
   /**
-   * Graceful shutdown - close all connections and watchers
+   * Shutdown the agent gracefully
    */
   async shutdown() {
-    console.log('👋 Shutting down Self-Improvement Agent...');
+    this.logger.logOperation('agent_shutdown');
     
     try {
-      // Stop file dependency manager
-      if (this.fileDependencyManager && this.fileDependencyManager.isInitialized) {
-        await this.fileDependencyManager.shutdown();
-      }
-      
-      // Close CLI interface
-      if (this.cli) {
-        this.cli.stop();
-      }
-      
-      // Close readline interface
+      // Close CLI interface if running
       if (this.rl) {
         this.rl.close();
+        this.logger.debug('CLI interface closed');
       }
+
+      // Shutdown memory manager
+      if (this.memoryManager && typeof this.memoryManager.shutdown === 'function') {
+        await this.memoryManager.shutdown();
+        this.logger.logMemory('shutdown', 'memory_manager');
+      } else if (this.memoryManager) {
+        this.logger.debug('Memory manager does not have shutdown method');
+      }
+
+      // Shutdown file dependency manager
+      if (this.fileDependencyManager && typeof this.fileDependencyManager.shutdown === 'function') {
+        await this.fileDependencyManager.shutdown();
+        this.logger.debug('File dependency manager shutdown');
+      }
+
+      // Generate final session summary and shutdown logger
+      await this.logger.shutdown();
       
       console.log('✅ Agent shutdown complete');
+      
     } catch (error) {
-      console.warn('⚠️ Warning during shutdown:', error.message);
+      console.error('❌ Error during shutdown:', error.message);
+      if (this.logger) {
+        this.logger.error('Shutdown error', { error: error.message });
+      }
+    }
+  }
+
+  /**
+   * Handle logs command - view logging information and metrics
+   */
+  async handleLogsCommand(subcommand = 'status', args = []) {
+    this.logger.logUserInteraction('logs', [subcommand, ...args]);
+    
+    try {
+      switch (subcommand) {
+        case 'status':
+        case 'metrics':
+          const metrics = this.logger.getMetrics();
+          console.log('\n📊 LOGGING METRICS:');
+          console.log('━'.repeat(50));
+          console.log(`🆔 Session ID: ${metrics.sessionId}`);
+          console.log(`⏱️  Uptime: ${metrics.uptimeFormatted}`);
+          console.log(`📈 Operations: ${metrics.operations}`);
+          console.log(`📊 Analyses: ${metrics.analysisCount}`);
+          console.log(`🧠 Memory Ops: ${metrics.memoryOperations}`);
+          console.log(`📁 Git Ops: ${metrics.gitOperations}`);
+          console.log(`📄 File Ops: ${metrics.fileOperations}`);
+          console.log(`❌ Errors: ${metrics.errors}`);
+          console.log(`⚠️  Warnings: ${metrics.warnings}`);
+          console.log(`📊 Log Level: ${metrics.logLevel}`);
+          
+          if (metrics.operations > 0) {
+            const errorRate = ((metrics.errors / metrics.operations) * 100).toFixed(2);
+            const successRate = (100 - errorRate).toFixed(2);
+            console.log(`\n🎯 PERFORMANCE:`);
+            console.log(`   Success Rate: ${successRate}%`);
+            console.log(`   Error Rate: ${errorRate}%`);
+            console.log(`   Ops/Min: ${(metrics.operations / (metrics.uptime / 60000)).toFixed(2)}`);
+          }
+          
+          return { success: true, metrics };
+
+        case 'level':
+          if (args.length > 0) {
+            const newLevel = args[0].toUpperCase();
+            if (['ERROR', 'WARN', 'INFO', 'DEBUG', 'TRACE'].includes(newLevel)) {
+              this.logger.config.logLevel = newLevel;
+              this.logger.currentLogLevel = this.logger.logLevels[newLevel];
+              console.log(`✅ Log level set to: ${newLevel}`);
+              this.logger.info(`Log level changed to ${newLevel}`);
+              return { success: true, level: newLevel };
+            } else {
+              console.log('❌ Invalid log level. Use: ERROR, WARN, INFO, DEBUG, or TRACE');
+              return { success: false, message: 'Invalid log level' };
+            }
+          } else {
+            console.log(`📊 Current log level: ${this.logger.config.logLevel}`);
+            return { success: true, level: this.logger.config.logLevel };
+          }
+
+        case 'summary':
+          await this.logger.generateSessionSummary();
+          return { success: true, message: 'Session summary generated' };
+
+        case 'help':
+          console.log('\n📋 LOGS COMMANDS:');
+          console.log('━'.repeat(50));
+          console.log('  logs status    - Show current metrics and status');
+          console.log('  logs metrics   - Same as status');
+          console.log('  logs level     - Show current log level');
+          console.log('  logs level X   - Set log level (ERROR/WARN/INFO/DEBUG/TRACE)');
+          console.log('  logs summary   - Generate session summary');
+          console.log('  logs help      - Show this help');
+          console.log('');
+          return { success: true };
+
+        default:
+          console.log(`❌ Unknown logs command: ${subcommand}`);
+          console.log('💡 Use "logs help" to see available commands');
+          return { success: false, message: 'Unknown command' };
+      }
+    } catch (error) {
+      this.logger.error('Logs command failed', { subcommand, error: error.message });
+      console.error('❌ Error handling logs command:', error.message);
+      return { success: false, message: error.message };
     }
   }
 }

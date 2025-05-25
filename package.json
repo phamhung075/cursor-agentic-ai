@@ -18,6 +18,7 @@
     "AAI:test-integration": "node agents/_store/tests/test_autopilot_integration.js",
     "AAI:test-system": "node agents/_store/tests/test_new_system.js",
     "AAI:test-dependencies": "node agents/_store/tests/test_dependency_tracking.js",
+    "AAI:test-logging": "node test-agent-logging.js",
     "AAI:setup-env": "node agents/_store/scripts/setup-env.js",
     "AAI:install-to": "node agents/_store/scripts/install-agent-ai.js",
     "AAI:sync-memory": "node agents/_store/scripts/sync-memory.js",
