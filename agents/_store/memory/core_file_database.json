@@ -4308,13 +4308,13 @@
       "full_path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
       "description": "This document outlines the coding conventions and style guidelines for the project. Following these conventions ensures consistency, readability, and maintainability across the codebase. It should be ",
       "status": "valid",
-      "size": 23153,
-      "last_modified": "2025-05-25T06:32:22.341Z",
-      "last_accessed": "2025-05-25T06:33:36.843Z",
+      "size": 23261,
+      "last_modified": "2025-05-25T06:43:18.954Z",
+      "last_accessed": "2025-05-25T06:43:19.065Z",
       "links_out": [
         {
           "text": "**Design Conventions and Style Guide**",
-          "path": "mdc:design_conventions_template.md:1",
+          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
           "status": "unchecked"
@@ -4328,7 +4328,7 @@
         },
         {
           "text": "**Design Conventions and Style Guide**",
-          "path": "mdc:design_conventions_template.md:1",
+          "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
           "type": "markdown",
           "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
           "status": "unchecked"
@@ -4350,7 +4350,7 @@
       ],
       "links_in": [],
       "fix_history": [],
-      "content_hash": "-4418f7aa"
+      "content_hash": "222a1b6e"
     },
     "rules_02__ai_docs_conventions_design_conventions_mdc": {
       "id": "rules_02__ai_docs_conventions_design_conventions_mdc",
@@ -12336,7 +12336,7 @@
     "rules_02__ai_docs_conventions_coding_conventions_template_mdc": [
       {
         "text": "**Design Conventions and Style Guide**",
-        "path": "mdc:design_conventions_template.md:1",
+        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
         "status": "unchecked"
@@ -12350,7 +12350,7 @@
       },
       {
         "text": "**Design Conventions and Style Guide**",
-        "path": "mdc:design_conventions_template.md:1",
+        "path": "agents/_store/projects/_core/rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
         "type": "markdown",
         "source_file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
         "status": "unchecked"
@@ -19771,9 +19771,15 @@
       "file": "rules/02__AI-DOCS/Conventions/design_conventions_template.mdc",
       "operation": "change",
       "success": true
+    },
+    {
+      "timestamp": "2025-05-25T06:43:19.065Z",
+      "file": "rules/02__AI-DOCS/Conventions/coding_conventions_template.mdc",
+      "operation": "change",
+      "success": true
     }
   ],
-  "last_updated": "2025-05-25T06:42:58.581Z",
+  "last_updated": "2025-05-25T06:43:19.167Z",
   "scan_history": [
     {
       "id": "scan_1748143455002",
