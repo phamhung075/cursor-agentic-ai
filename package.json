@@ -41,10 +41,15 @@
     "src:docs": "node src/scripts/project_manager.js docs",
     "src:help": "node src/scripts/project_manager.js help",
     "cursor:setup": "node agents/_store/scripts/simple-cursor-setup.js",
+    "cursor:setup-enhanced": "node agents/_store/scripts/enhanced-cursor-setup.js",
+    "cursor:update-settings": "node agents/_store/scripts/update-cursor-settings.js",
+    "cursor:settings-status": "node agents/_store/scripts/update-cursor-settings.js status",
+    "cursor:settings-restore": "node agents/_store/scripts/update-cursor-settings.js restore",
     "cursor:script-awareness": "node agents/cursor-integration/script-awareness.js",
     "cursor:auto-sync": "node agents/cursor-integration/auto-sync.js start",
     "cursor:auto-sync-status": "node agents/cursor-integration/auto-sync.js status",
-    "cursor:test": "echo \"Testing...\" && ls -la agents/_store/ 2>/dev/null || echo \"agents/_store not found yet\""
+    "cursor:test": "echo \"Testing...\" && ls -la agents/_store/ 2>/dev/null || echo \"agents/_store not found yet\"",
+    "cursor:test-enhanced": "echo \"Testing enhanced integration...\" && ls -la agents/_store/cursor-summaries/ && echo \"✅ Enhanced Cursor integration active\""
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^2.0.1",

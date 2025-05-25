@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T06:51:11.696Z",
+  "timestamp": "2025-05-25T07:01:53.936Z",
   "scriptSymbols": [
     {
       "name": "comprehensive-cleanup.js",
@@ -29,6 +29,14 @@
       "name": "demo-aai-cursor-integration.js",
       "kind": "Function",
       "location": "agents/_store/scripts/demo-aai-cursor-integration.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
+      "name": "enhanced-cursor-setup.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/enhanced-cursor-setup.js",
       "detail": "No description available",
       "category": "uncategorized",
       "containerName": "AAI Scripts/uncategorized"
@@ -138,6 +146,14 @@
       "containerName": "AAI Scripts/uncategorized"
     },
     {
+      "name": "update-cursor-settings.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/update-cursor-settings.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
       "name": "update_files.sh",
       "kind": "Function",
       "location": "agents/_store/scripts/update_files.sh",
@@ -164,7 +180,7 @@
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "17 scripts in uncategorized category",
+      "detail": "19 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
@@ -341,6 +357,34 @@
       "name": "cursor:setup",
       "kind": "Function",
       "detail": "node agents/_store/scripts/simple-cursor-setup.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:setup-enhanced",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/enhanced-cursor-setup.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:update-settings",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/update-cursor-settings.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:settings-status",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/update-cursor-settings.js status",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "cursor:settings-restore",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/update-cursor-settings.js restore",
       "location": "package.json",
       "containerName": "NPM Scripts"
     }

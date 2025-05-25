@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T06:51:11.696Z",
+  "timestamp": "2025-05-25T07:01:53.936Z",
   "source": "Script Analysis → Cursor Improvements",
   "categories": {
     "documentation": [
@@ -26,6 +26,13 @@
       },
       {
         "script": "demo-aai-cursor-integration.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
+        "script": "enhanced-cursor-setup.js",
         "issue": "Missing or inadequate description",
         "suggestion": "Add comprehensive JSDoc comments and description",
         "priority": "medium",
@@ -117,6 +124,13 @@
       },
       {
         "script": "sync-preserved-to-memory.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
+        "script": "update-cursor-settings.js",
         "issue": "Missing or inadequate description",
         "suggestion": "Add comprehensive JSDoc comments and description",
         "priority": "medium",

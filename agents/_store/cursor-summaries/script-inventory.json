@@ -29,6 +29,11 @@
         "description": "No description available"
       },
       {
+        "name": "enhanced-cursor-setup.js",
+        "path": "agents/_store/scripts/enhanced-cursor-setup.js",
+        "description": "No description available"
+      },
+      {
         "name": "fix_single_mdc.py",
         "path": "agents/_store/scripts/fix_single_mdc.py",
         "description": "No description available"
@@ -91,6 +96,11 @@
       {
         "name": "sync-preserved-to-memory.js",
         "path": "agents/_store/scripts/sync-preserved-to-memory.js",
+        "description": "No description available"
+      },
+      {
+        "name": "update-cursor-settings.js",
+        "path": "agents/_store/scripts/update-cursor-settings.js",
         "description": "No description available"
       },
       {
@@ -228,9 +238,25 @@
     {
       "name": "cursor:setup",
       "command": "node agents/_store/scripts/simple-cursor-setup.js"
+    },
+    {
+      "name": "cursor:setup-enhanced",
+      "command": "node agents/_store/scripts/enhanced-cursor-setup.js"
+    },
+    {
+      "name": "cursor:update-settings",
+      "command": "node agents/_store/scripts/update-cursor-settings.js"
+    },
+    {
+      "name": "cursor:settings-status",
+      "command": "node agents/_store/scripts/update-cursor-settings.js status"
+    },
+    {
+      "name": "cursor:settings-restore",
+      "command": "node agents/_store/scripts/update-cursor-settings.js restore"
     }
   ],
-  "totalFiles": 22,
+  "totalFiles": 24,
   "categories": {
     "scripts": {
       "core": "Core framework management",
@@ -247,5 +273,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T06:51:11.575Z"
+  "lastUpdated": "2025-05-25T07:01:53.919Z"
 }

@@ -1,6 +1,0 @@
----
-description: 
-globs: 
-alwaysApply: true
----
-for better know context projet and coop with another AI, need read [settings.json](mdc:.cursor/settings.json)

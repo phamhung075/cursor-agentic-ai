@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-05-25T06:51:11.696Z",
+  "timestamp": "2025-05-25T07:01:53.936Z",
   "mostUsedCategories": [
     {
       "category": "uncategorized",
-      "count": 17
+      "count": 19
     },
     {
       "category": "cleanup",
@@ -134,6 +134,26 @@
     {
       "npmCommand": "cursor:setup",
       "scriptPath": "node agents/_store/scripts/simple-cursor-setup.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "cursor:setup-enhanced",
+      "scriptPath": "node agents/_store/scripts/enhanced-cursor-setup.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "cursor:update-settings",
+      "scriptPath": "node agents/_store/scripts/update-cursor-settings.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "cursor:settings-status",
+      "scriptPath": "node agents/_store/scripts/update-cursor-settings.js status",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "cursor:settings-restore",
+      "scriptPath": "node agents/_store/scripts/update-cursor-settings.js restore",
       "category": "utility"
     }
   ],
