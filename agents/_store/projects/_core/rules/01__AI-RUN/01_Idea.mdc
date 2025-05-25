@@ -444,10 +444,10 @@ Next steps needed:
 ```
 
 The AAI system will guide you through:
-1. **Market Analysis** ([02_Market_Research.mdc](mdc:02_Market_Research.mdc)) - Comprehensive market research and validation
-2. **Core Concept Refinement** ([03_Core_Concept.mdc](mdc:03_Core_Concept.mdc)) - Detailed concept development
-3. **PRD Generation** ([04_PRD_Generation.mdc](mdc:04_PRD_Generation.mdc)) - Technical specification creation
-4. **Implementation Planning** ([07_Start_Building.mdc](mdc:07_Start_Building.mdc)) - Development roadmap
+1. **Market Analysis** ([02_Market_Research.mdc](02_Market_Research.mdc)) - Comprehensive market research and validation
+2. **Core Concept Refinement** ([03_Core_Concept.mdc](03_Core_Concept.mdc)) - Detailed concept development
+3. **PRD Generation** ([04_PRD_Generation.mdc](04_PRD_Generation.mdc)) - Technical specification creation
+4. **Implementation Planning** ([07_Start_Building.mdc](07_Start_Building.mdc)) - Development roadmap
 
 ## Best Practices
 

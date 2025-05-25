@@ -76,7 +76,7 @@ This guide helps AI agents systematically identify and fix broken file path link
 ## Link Format Standards
 
 ### Corremarkdown
-(../pdc)
+(..[pd](/pd.mdc)
 `
 - `(../01__AI-RUN/01_AutoPilot.mdc)`
 - `[AI_Coding_Agent_Optimization.mdc](.cI-DOCS/Docing_Agent_Optimization.mdc)`

@@ -1,0 +1,685 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# 02_Market_Research.mdc
+
+**Phase:** Market Research & Validation
+**Role:** MarketStrategist
+**Status:** Market Analysis Phase
+
+## Overview
+
+This document guides you through comprehensive market research and validation for your project idea. It integrates with the enhanced AAI system to provide intelligent market analysis, competitive intelligence, and strategic insights.
+
+## Prerequisites
+
+Before starting market research, ensure you have completed:
+- ✅ **Idea Document** ([01_Idea.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) - Well-defined project concept
+
+## Purpose
+
+Transform your project idea into a market-validated concept through:
+- Comprehensive market analysis and sizing
+- Competitive landscape assessment
+- User validation and persona development
+- Business model validation
+- Go-to-market strategy development
+
+## Enhanced AAI Integration
+
+### 🧠 **AI-Powered Market Intelligence**
+Start your enhanced development environment for intelligent market analysis:
+```bash
+npm run launch
+```
+
+The AAI system provides:
+- **Market Intelligence** - Real-time market trend analysis and data
+- **Competitive Analysis** - Automated competitor research and positioning
+- **User Research** - AI-powered user behavior and preference analysis
+- **Business Model Validation** - Strategic business model recommendations
+
+### 🎯 **Intelligent Research Capabilities**
+- **Market Sizing** - AI-driven market size estimation and segmentation
+- **Trend Analysis** - Real-time market trend identification and impact assessment
+- **Competitive Intelligence** - Automated competitor analysis and differentiation strategies
+- **User Insights** - AI-powered user research and persona development
+- **Risk Assessment** - Proactive market risk identification and mitigation strategies
+
+## Role Definition
+
+You are **MarketStrategist**, a strategic market research expert with expertise in:
+- Market analysis and competitive intelligence
+- User research and persona development
+- Business model validation and optimization
+- Go-to-market strategy development
+- Risk assessment and mitigation planning
+
+Your mission is to validate and refine your project concept through comprehensive market research and strategic analysis.
+
+## Market Research Framework
+
+### Phase 1: Market Analysis & Sizing
+
+#### 1.1 Market Definition & Segmentation
+**Purpose:** Define and quantify your target market
+
+```bash
+# Get AI-powered market analysis
+npm run AAI:market-analysis
+
+# Analyze market trends and opportunities
+npm run AAI:trend-analysis
+```
+
+**Market Definition Framework:**
+```
+Primary Market: [Core target market definition]
+
+Market Segments:
+- Primary Segment: [Main user group with demographics and characteristics]
+- Secondary Segment: [Additional user groups with potential]
+- Tertiary Segment: [Future expansion opportunities]
+
+Market Size Estimation:
+- TAM (Total Addressable Market): [Total market size]
+- SAM (Serviceable Addressable Market): [Realistic market reach]
+- SOM (Serviceable Obtainable Market): [Initial market capture potential]
+```
+
+**AAI-Assisted Market Sizing:**
+```
+@AAI Agent
+
+Please analyze the market size for my project:
+
+Project Concept: [Brief description from your idea document]
+Target Users: [Primary user segments]
+Geographic Focus: [Target regions/markets]
+
+Provide:
+1. Market size estimation (TAM/SAM/SOM)
+2. Market growth trends and projections
+3. Key market drivers and constraints
+4. Segmentation recommendations
+```
+
+#### 1.2 Market Trends & Dynamics
+**Purpose:** Understand market forces and opportunities
+
+**Trend Analysis Framework:**
+```
+Technology Trends:
+- [Relevant technological developments]
+- [Impact on your market and solution]
+
+Social/Cultural Trends:
+- [Behavioral and preference shifts]
+- [Demographic changes affecting your market]
+
+Economic Trends:
+- [Economic factors affecting market]
+- [Spending patterns and budget considerations]
+
+Regulatory/Legal Trends:
+- [Relevant regulations and compliance requirements]
+- [Policy changes affecting your market]
+
+Market Maturity:
+- [Market development stage: emerging, growing, mature, declining]
+- [Implications for your entry strategy]
+```
+
+#### 1.3 User Pain Points & Needs Analysis
+**Purpose:** Validate and deepen understanding of user problems
+
+**Pain Point Analysis:**
+```
+Primary Pain Points:
+- [Core problem your solution addresses]
+- [Evidence and examples of this pain]
+- [Current user workarounds and limitations]
+
+Secondary Pain Points:
+- [Related problems users experience]
+- [Opportunity for additional value creation]
+
+Unmet Needs:
+- [Gaps in current market solutions]
+- [Emerging needs not yet addressed]
+
+User Journey Pain Points:
+- [Specific friction points in current user workflows]
+- [Opportunities for improvement and optimization]
+```
+
+### Phase 2: Competitive Landscape Analysis
+
+#### 2.1 Competitive Intelligence
+**Purpose:** Understand competitive environment and positioning opportunities
+
+```bash
+# Get AI-powered competitive analysis
+npm run AAI:competitive-analysis
+
+# Analyze competitor positioning and strategies
+npm run AAI:positioning-analysis
+```
+
+**Competitive Analysis Framework:**
+
+**Direct Competitors:**
+```
+Competitor 1: [Company Name]
+- Overview: [Company size, funding, market position]
+- Product/Service: [Key features and capabilities]
+- Pricing: [Pricing model and strategy]
+- Strengths: [Key competitive advantages]
+- Weaknesses: [Limitations and vulnerabilities]
+- Market Share: [Estimated market position]
+- Customer Base: [Target users and segments]
+- Marketing Strategy: [Key marketing and acquisition channels]
+
+[Repeat for 3-5 key direct competitors]
+```
+
+**Indirect Competitors & Alternatives:**
+```
+Alternative Solutions:
+- [Current solutions users employ]
+- [Substitute products or services]
+- [DIY or manual approaches]
+
+Threat Assessment:
+- [Risk level from each alternative]
+- [Switching costs and barriers]
+```
+
+#### 2.2 Competitive Positioning & Differentiation
+**Purpose:** Identify unique positioning opportunities
+
+**Positioning Analysis:**
+```
+Market Gaps:
+- [Underserved user segments]
+- [Unaddressed feature needs]
+- [Service quality gaps]
+
+Differentiation Opportunities:
+- [Unique value propositions available]
+- [Technology or approach advantages]
+- [User experience improvements]
+
+Competitive Advantages:
+- [Your unique strengths and capabilities]
+- [Barriers to entry you can create]
+- [Network effects or moats possible]
+```
+
+**AAI-Powered Positioning:**
+```
+@AAI Agent
+
+Help me develop competitive positioning:
+
+My Solution: [Brief description of your approach]
+Key Competitors: [List main competitors]
+Target Users: [Primary user segments]
+
+Analyze:
+1. Competitive gaps and opportunities
+2. Unique positioning strategies
+3. Differentiation recommendations
+4. Competitive response strategies
+```
+
+### Phase 3: User Research & Validation
+
+#### 3.1 User Persona Development
+**Purpose:** Create detailed user profiles based on research
+
+```bash
+# Generate AI-powered user personas
+npm run AAI:persona-analysis
+
+# Validate user assumptions and preferences
+npm run AAI:user-validation
+```
+
+**Persona Framework:**
+
+**Primary Persona: [Persona Name]**
+```
+Demographics:
+- Age: [Age range]
+- Location: [Geographic distribution]
+- Income: [Income level and range]
+- Education: [Education level]
+- Occupation: [Job roles and industries]
+
+Psychographics:
+- Values: [Core values and beliefs]
+- Interests: [Hobbies and interests]
+- Lifestyle: [Daily routines and preferences]
+- Technology Adoption: [Tech comfort and usage patterns]
+
+Behavioral Patterns:
+- Current Solutions: [How they solve the problem today]
+- Decision Process: [How they make purchasing decisions]
+- Information Sources: [Where they get information and recommendations]
+- Communication Preferences: [Preferred channels and messaging]
+
+Pain Points & Goals:
+- Primary Frustrations: [Key problems they experience]
+- Success Metrics: [How they measure success]
+- Desired Outcomes: [What they want to achieve]
+
+Persona Quote: "[A quote that captures their perspective]"
+```
+
+#### 3.2 User Journey Mapping
+**Purpose:** Understand user experience and identify improvement opportunities
+
+**User Journey Framework:**
+```
+Current State Journey:
+1. Problem Recognition: [How users become aware of the problem]
+2. Information Gathering: [How they research solutions]
+3. Evaluation: [How they compare options]
+4. Decision: [How they make the final choice]
+5. Implementation: [How they adopt and use solutions]
+6. Ongoing Use: [Long-term usage patterns]
+
+Pain Points by Stage:
+- [Specific friction points at each stage]
+- [Opportunities for improvement]
+
+Future State Journey:
+- [How your solution improves each stage]
+- [New value created at each touchpoint]
+```
+
+### Phase 4: Business Model Validation
+
+#### 4.1 Monetization Strategy Analysis
+**Purpose:** Validate and optimize revenue models
+
+```bash
+# Analyze business model options
+npm run AAI:business-model-analysis
+
+# Validate pricing strategies
+npm run AAI:pricing-analysis
+```
+
+**Business Model Framework:**
+```
+Revenue Model Options:
+1. [Model 1: e.g., Subscription]
+   - Description: [How it works]
+   - Pros: [Advantages for your market]
+   - Cons: [Potential challenges]
+   - Market Fit: [Suitability for your users]
+   - Revenue Potential: [Estimated revenue impact]
+
+2. [Model 2: e.g., Freemium]
+   - Description: [How it works]
+   - Pros: [Advantages for your market]
+   - Cons: [Potential challenges]
+   - Market Fit: [Suitability for your users]
+   - Revenue Potential: [Estimated revenue impact]
+
+3. [Model 3: e.g., Marketplace]
+   - Description: [How it works]
+   - Pros: [Advantages for your market]
+   - Cons: [Potential challenges]
+   - Market Fit: [Suitability for your users]
+   - Revenue Potential: [Estimated revenue impact]
+
+Recommended Model: [Primary recommendation with rationale]
+```
+
+#### 4.2 Pricing Strategy Development
+**Purpose:** Develop competitive and sustainable pricing
+
+**Pricing Analysis:**
+```
+Competitive Pricing Landscape:
+- [Competitor pricing ranges and models]
+- [Market price sensitivity indicators]
+
+Value-Based Pricing:
+- [Value delivered to users]
+- [Willingness to pay indicators]
+- [Price anchoring opportunities]
+
+Pricing Strategy Options:
+1. [Strategy 1: e.g., Penetration Pricing]
+   - Approach: [Pricing methodology]
+   - Rationale: [Why this approach fits]
+   - Risks: [Potential challenges]
+
+2. [Strategy 2: e.g., Premium Pricing]
+   - Approach: [Pricing methodology]
+   - Rationale: [Why this approach fits]
+   - Risks: [Potential challenges]
+
+Recommended Pricing: [Primary recommendation with rationale]
+```
+
+### Phase 5: Go-to-Market Strategy
+
+#### 5.1 Market Entry Strategy
+**Purpose:** Plan initial market entry and user acquisition
+
+```bash
+# Develop go-to-market strategy
+npm run AAI:gtm-strategy
+
+# Analyze acquisition channels
+npm run AAI:channel-analysis
+```
+
+**Go-to-Market Framework:**
+```
+Market Entry Approach:
+- [Primary entry strategy: direct, partnership, etc.]
+- [Geographic rollout plan]
+- [Timing and sequencing]
+
+Target Customer Acquisition:
+- [Initial customer segments to focus on]
+- [Customer acquisition cost targets]
+- [Lifetime value projections]
+
+Channel Strategy:
+1. [Channel 1: e.g., Digital Marketing]
+   - Approach: [Specific tactics and methods]
+   - Cost: [Estimated acquisition costs]
+   - Reach: [Potential audience size]
+   - Effectiveness: [Expected conversion rates]
+
+2. [Channel 2: e.g., Partnerships]
+   - Approach: [Specific tactics and methods]
+   - Cost: [Estimated acquisition costs]
+   - Reach: [Potential audience size]
+   - Effectiveness: [Expected conversion rates]
+
+3. [Channel 3: e.g., Content Marketing]
+   - Approach: [Specific tactics and methods]
+   - Cost: [Estimated acquisition costs]
+   - Reach: [Potential audience size]
+   - Effectiveness: [Expected conversion rates]
+```
+
+#### 5.2 Marketing & Messaging Strategy
+**Purpose:** Develop compelling market communication
+
+**Messaging Framework:**
+```
+Core Value Proposition:
+- [Primary benefit statement]
+- [Unique differentiator]
+- [Proof points and evidence]
+
+Key Messages by Audience:
+- Primary Users: [Tailored messaging for main segment]
+- Secondary Users: [Messaging for additional segments]
+- Stakeholders: [Messaging for decision influencers]
+
+Marketing Channels:
+- [Primary marketing channels and tactics]
+- [Content strategy and themes]
+- [Campaign ideas and concepts]
+
+Brand Positioning:
+- [Brand personality and voice]
+- [Visual identity direction]
+- [Competitive positioning statement]
+```
+
+### Phase 6: Risk Assessment & Mitigation
+
+#### 6.1 Market Risk Analysis
+**Purpose:** Identify and plan for potential market challenges
+
+```bash
+# Analyze market risks and opportunities
+npm run AAI:risk-analysis
+
+# Develop mitigation strategies
+npm run AAI:mitigation-planning
+```
+
+**Risk Assessment Framework:**
+```
+Market Risks:
+1. [Risk 1: e.g., Market Timing]
+   - Description: [Specific risk details]
+   - Probability: [High/Medium/Low]
+   - Impact: [High/Medium/Low]
+   - Mitigation: [Strategies to address]
+
+2. [Risk 2: e.g., Competitive Response]
+   - Description: [Specific risk details]
+   - Probability: [High/Medium/Low]
+   - Impact: [High/Medium/Low]
+   - Mitigation: [Strategies to address]
+
+3. [Risk 3: e.g., User Adoption]
+   - Description: [Specific risk details]
+   - Probability: [High/Medium/Low]
+   - Impact: [High/Medium/Low]
+   - Mitigation: [Strategies to address]
+
+Technical Risks:
+- [Technology and implementation risks]
+- [Scalability and performance concerns]
+
+Business Risks:
+- [Financial and operational risks]
+- [Team and execution challenges]
+
+Regulatory Risks:
+- [Compliance and legal considerations]
+- [Policy and regulatory changes]
+```
+
+## AAI-Assisted Research Process
+
+### Comprehensive Market Analysis
+Use the AAI system to enhance your market research:
+
+```
+@AAI Agent
+
+Please conduct comprehensive market research for my project:
+
+Project: [Your project title]
+Core Concept: [Brief description from idea document]
+Target Market: [Primary user segments]
+
+Provide detailed analysis of:
+1. Market size and growth potential
+2. Competitive landscape and positioning opportunities
+3. User needs and pain point validation
+4. Business model recommendations
+5. Go-to-market strategy suggestions
+6. Key risks and mitigation strategies
+```
+
+### Competitive Intelligence Deep Dive
+```
+@AAI Agent
+
+Analyze the competitive landscape for my project:
+
+Solution Category: [Your solution type]
+Key Competitors: [Known competitors]
+Target Users: [User segments]
+
+Please provide:
+1. Detailed competitor analysis and positioning
+2. Market gaps and opportunities
+3. Differentiation strategies
+4. Competitive response planning
+5. Unique value proposition recommendations
+```
+
+### User Research & Validation
+```
+@AAI Agent
+
+Help me validate and refine my user understanding:
+
+Target Users: [Primary user segments]
+Problem Statement: [Core problem you're solving]
+Solution Approach: [Your proposed solution]
+
+Analyze:
+1. User persona refinement and validation
+2. Pain point prioritization and evidence
+3. User journey optimization opportunities
+4. Feature prioritization based on user needs
+5. Messaging and positioning recommendations
+```
+
+## Market Research Deliverables
+
+### Completion Checklist
+Before proceeding to core concept development, ensure you have:
+
+- [ ] **Market Size Analysis** - Clear understanding of market opportunity and sizing
+- [ ] **Competitive Landscape** - Comprehensive competitor analysis and positioning strategy
+- [ ] **User Validation** - Validated user personas and pain points
+- [ ] **Business Model** - Validated revenue model and pricing strategy
+- [ ] **Go-to-Market Plan** - Clear market entry and acquisition strategy
+- [ ] **Risk Assessment** - Identified risks with mitigation strategies
+- [ ] **Strategic Recommendations** - Actionable insights for concept refinement
+
+### Research Report Structure
+Your comprehensive market research should include:
+
+```
+# Market Research Report
+
+## Executive Summary
+- [Key findings and recommendations]
+- [Market viability assessment]
+- [Strategic priorities]
+
+## Market Analysis
+- [Market definition and sizing]
+- [Trends and dynamics]
+- [User needs and pain points]
+
+## Competitive Analysis
+- [Direct and indirect competitors]
+- [Positioning opportunities]
+- [Differentiation strategies]
+
+## User Research
+- [Validated personas]
+- [User journey insights]
+- [Feature prioritization]
+
+## Business Model Validation
+- [Revenue model recommendations]
+- [Pricing strategy]
+- [Financial projections]
+
+## Go-to-Market Strategy
+- [Market entry plan]
+- [Acquisition channels]
+- [Marketing strategy]
+
+## Risk Assessment
+- [Key risks and mitigation]
+- [Success factors]
+- [Contingency planning]
+
+## Strategic Recommendations
+- [Actionable next steps]
+- [Concept refinement priorities]
+- [Implementation roadmap]
+```
+
+## Next Steps & Workflow Integration
+
+### Transition to Core Concept Development
+Once your market research is complete, proceed to concept refinement:
+
+```
+@AAI Agent
+
+My market research is complete. Please help me transition to core concept development.
+
+Key Research Findings:
+- Market Opportunity: [Brief summary]
+- Competitive Positioning: [Key insights]
+- User Validation: [Main findings]
+- Business Model: [Recommended approach]
+
+Next steps needed:
+1. Concept refinement based on market insights
+2. Feature prioritization and MVP definition
+3. Technical specification development
+4. Implementation planning
+```
+
+The AAI system will guide you through:
+1. **Core Concept Refinement** ([03_Core_Concept.mdc](agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) - Market-validated concept development
+2. **PRD Generation** ([04_PRD_Generation.mdc](agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) - Technical specification creation
+3. **Technical Specifications** ([05_Specs_Docs.mdc](agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) - Detailed technical planning
+4. **Implementation Planning** ([07_Start_Building.mdc](agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)) - Development roadmap
+
+## Best Practices
+
+### Market Research Excellence
+1. **Data-Driven Decisions** - Base conclusions on evidence and analysis
+2. **User-Centric Focus** - Prioritize user needs and pain points
+3. **Competitive Awareness** - Understand competitive dynamics and positioning
+4. **Market Validation** - Test assumptions with real market data
+5. **Strategic Thinking** - Connect research insights to strategic decisions
+
+### Using AAI for Research
+1. **Comprehensive Queries** - Provide detailed context for better AI analysis
+2. **Iterative Refinement** - Use multiple rounds of AI assistance to deepen insights
+3. **Cross-Validation** - Validate AI insights with multiple sources and approaches
+4. **Strategic Application** - Apply AI insights to strategic decision-making
+5. **Documentation** - Record research process and findings for future reference
+
+### Quality Assurance
+1. **Source Validation** - Verify AI insights with credible sources when possible
+2. **Assumption Testing** - Challenge assumptions with evidence and analysis
+3. **Bias Awareness** - Consider potential biases in research and analysis
+4. **Stakeholder Input** - Incorporate diverse perspectives and feedback
+5. **Continuous Learning** - Update research based on new information and insights
+
+## Expected Outcomes
+
+By completing this market research process, you will have:
+
+### Market Intelligence
+- ✅ **Market Opportunity** - Clear understanding of market size and potential
+- ✅ **Competitive Positioning** - Strategic positioning and differentiation strategy
+- ✅ **User Insights** - Validated user personas and pain points
+- ✅ **Trend Analysis** - Understanding of market trends and dynamics
+
+### Strategic Foundation
+- ✅ **Business Model** - Validated revenue model and pricing strategy
+- ✅ **Go-to-Market Plan** - Clear market entry and acquisition strategy
+- ✅ **Risk Management** - Identified risks with mitigation strategies
+- ✅ **Success Metrics** - Defined KPIs and success criteria
+
+### Decision Support
+- ✅ **Strategic Recommendations** - Actionable insights for concept development
+- ✅ **Feature Prioritization** - User-driven feature importance ranking
+- ✅ **Investment Rationale** - Evidence-based case for project investment
+- ✅ **Implementation Guidance** - Clear direction for next development phases
+
+---
+
+*This enhanced market research framework, powered by AAI intelligence, transforms initial concepts into market-validated, strategically-positioned project foundations ready for technical development.*

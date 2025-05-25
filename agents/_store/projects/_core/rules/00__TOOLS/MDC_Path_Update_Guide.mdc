@@ -55,12 +55,12 @@ agents/_store/projects/_core/
 #### 2.1 URL Format Standard
 ```markdown
 # Standard Format:
-[Display Text](mdc:agents/_store/projects/_core/path/to/file.mdc)
+[Display Text](agents/_store/projects/_core/path/to/file.mdc)
 
 # Examples:
-[agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
+[agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
 
-[Task JSON Structure Guide](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+[Task JSON Structure Guide](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
 ```
 
 #### 2.2 URL Formatting Rules
@@ -115,7 +115,7 @@ agents/_store/projects/_core/
    `rules/01__AI-RUN/00_Getting_Started.mdc`
    
    # To:
-   [agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
+   [agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc](agents/_store/projects/_core/rules/01__AI-RUN/00_Getting_Started.mdc)
    ```
 
 #### 3.3 Quality Assurance
@@ -167,7 +167,7 @@ edit_file("target_file.mdc", "instructions", "content_updates")
 Execute `rules/01__AI-RUN/02_Market_Research.mdc` internally
 
 # After:
-Execute [agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc) internally
+Execute [agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc) internally
 ```
 
 ### Pattern 2: Documentation References
@@ -176,7 +176,7 @@ Execute [agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](m
 Follow structure defined in `02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc`
 
 # After:
-Follow structure defined in [agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+Follow structure defined in [agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
 ```
 
 ### Pattern 3: Template References
@@ -185,7 +185,7 @@ Follow structure defined in [agents/_store/projects/_core/rules/02__AI-DOCS/Task
 Copy relevant templates (e.g., `03__SPECS/feature_spec_template.mdc`)
 
 # After:
-Copy relevant templates (e.g., [agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc](mdc:agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc))
+Copy relevant templates (e.g., [agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc](agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc))
 ```
 
 ## 🎯 Common Update Scenarios
@@ -267,7 +267,7 @@ find . -name "*.mdc" -newer last_update.timestamp
 **After**:
 ```markdown
 - Follow prompts 01-09 in sequence using these verified files:
-  - [agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)
+  - [agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc](agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)
 ```
 
 ### Template Reference Update Example
@@ -278,7 +278,7 @@ Copy relevant templates (e.g., `03__SPECS/feature_spec_template.mdc`)
 
 **After**:
 ```markdown
-Copy relevant templates (e.g., [agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc](mdc:agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc))
+Copy relevant templates (e.g., [agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc](agents/_store/projects/_core/rules/03__SPECS/feature_spec_template.mdc))
 ```
 
 ## 🚀 Quick Reference Commands

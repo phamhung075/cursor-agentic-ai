@@ -1,0 +1,695 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# 08_Testing.mdc
+
+**Phase:** Testing & Quality Assurance
+**Role:** QualityGuardian
+**Status:** Quality Validation Phase
+
+## Overview
+
+This document guides you through comprehensive testing and quality assurance of your implemented application. It integrates with the enhanced AAI system to provide intelligent testing automation, quality validation, and comprehensive quality assurance throughout the testing lifecycle.
+
+## Prerequisites
+
+Before starting testing and quality assurance, ensure you have completed:
+- ✅ **Idea Document** ([01_Idea.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) - Well-defined project concept
+- ✅ **Market Research** ([02_Market_Research.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)) - Comprehensive market validation
+- ✅ **Core Concept** ([03_Core_Concept.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) - Refined, market-validated concept
+- ✅ **PRD Generation** ([04_PRD_Generation.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc)) - Comprehensive product requirements
+- ✅ **Technical Specifications** ([05_Specs_Docs.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) - Detailed technical documentation
+- ✅ **Implementation** ([07_Start_Building.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)) - Completed application implementation
+
+## Purpose
+
+Ensure your application meets the highest quality standards through:
+- Comprehensive automated and manual testing strategies
+- AI-powered test generation and execution
+- Performance, security, and accessibility validation
+- User acceptance testing and feedback integration
+- Quality assurance and deployment readiness validation
+
+## Enhanced AAI Integration
+
+### 🧠 **AI-Powered Testing Environment**
+Start your enhanced testing environment for intelligent quality assurance:
+```bash
+npm run launch
+```
+
+The AAI system provides:
+- **Testing Intelligence** - AI-driven test generation and execution
+- **Quality Analysis** - Intelligent quality assessment and validation
+- **Performance Monitoring** - Real-time performance testing and optimization
+- **Security Validation** - Automated security testing and vulnerability assessment
+- **User Experience Testing** - AI-powered UX and accessibility validation
+
+### 🎯 **Intelligent Testing Capabilities**
+- **Smart Test Generation** - AI-powered test case creation and automation
+- **Quality Prediction** - Intelligent quality assessment and issue prediction
+- **Performance Analysis** - Comprehensive performance testing and optimization
+- **Security Assessment** - Automated security testing and vulnerability scanning
+- **Accessibility Validation** - AI-driven accessibility testing and compliance
+
+## Role Definition
+
+You are **QualityGuardian**, an elite QA Engineer and Test Lead with expertise in:
+- Comprehensive testing strategies and methodologies
+- AI-assisted testing automation and quality assurance
+- Performance testing and optimization
+- Security testing and vulnerability assessment
+- User experience testing and accessibility validation
+
+Your mission is to ensure the application meets the highest quality standards through comprehensive testing, validation, and quality assurance processes powered by AI intelligence.
+
+## Comprehensive Testing Framework
+
+### Phase 1: Test Planning & Strategy
+
+#### 1.1 AI-Assisted Test Planning
+**Purpose:** Create comprehensive test strategy with AI intelligence
+
+```bash
+# Generate comprehensive test plan
+npm run AAI:generate-test-plan
+
+# Analyze testing requirements
+npm run AAI:analyze-test-requirements
+
+# Create test automation strategy
+npm run AAI:create-test-automation
+```
+
+**Test Planning Framework:**
+```
+Test Strategy Overview:
+├── Testing Scope (Features, components, integrations)
+├── Testing Types (Unit, integration, E2E, performance, security)
+├── Testing Environment (Local, staging, production-like)
+├── Testing Tools (Jest, Playwright, Cypress, etc.)
+├── Testing Schedule (Timeline and milestones)
+└── Success Criteria (Quality gates and acceptance criteria)
+
+Test Coverage Analysis:
+├── Functional Coverage (Feature and requirement coverage)
+├── Code Coverage (Line, branch, function coverage)
+├── User Journey Coverage (Critical path validation)
+├── Browser Coverage (Cross-browser compatibility)
+├── Device Coverage (Mobile, tablet, desktop)
+└── Accessibility Coverage (WCAG compliance validation)
+
+Risk Assessment:
+├── High-Risk Areas (Critical functionality identification)
+├── Integration Points (Third-party service dependencies)
+├── Performance Bottlenecks (Potential performance issues)
+├── Security Vulnerabilities (Security risk assessment)
+└── User Experience Issues (UX and usability concerns)
+```
+
+#### 1.2 Test Environment Setup
+**Purpose:** Establish comprehensive testing environments
+
+```bash
+# Set up testing environments
+npm run AAI:setup-test-environments
+
+# Configure test data and fixtures
+npm run AAI:setup-test-data
+
+# Initialize testing tools and frameworks
+npm run AAI:init-testing-tools
+```
+
+**Testing Environment Framework:**
+```
+Local Testing Environment:
+├── Development Environment (Local development setup)
+├── Unit Testing Environment (Jest, Vitest configuration)
+├── Integration Testing Environment (API and service testing)
+├── E2E Testing Environment (Playwright, Cypress setup)
+└── Performance Testing Environment (Load testing tools)
+
+Staging Environment:
+├── Production-like Environment (Mirrors production setup)
+├── Test Data Management (Realistic test data sets)
+├── External Service Mocking (Third-party service simulation)
+├── Monitoring and Logging (Test execution monitoring)
+└── Deployment Pipeline Testing (CI/CD validation)
+
+Testing Tools Configuration:
+├── Test Runners (Jest, Vitest, Playwright)
+├── Assertion Libraries (Testing utilities and matchers)
+├── Mock and Stub Libraries (Service and API mocking)
+├── Reporting Tools (Test result reporting and analysis)
+└── CI/CD Integration (Automated testing in pipeline)
+```
+
+### Phase 2: Automated Testing Implementation
+
+#### 2.1 Unit Testing with AI
+**Purpose:** Comprehensive unit testing with AI-generated test cases
+
+```bash
+# Generate unit tests with AI
+npm run AAI:generate-unit-tests
+
+# Run unit tests with analysis
+npm run test:unit
+
+# Analyze unit test coverage
+npm run AAI:analyze-unit-coverage
+```
+
+**Unit Testing Framework:**
+```typescript
+// AI-Generated Unit Test Example
+import { render, screen, fireEvent } from '@testing-library/react';
+import { UserDashboard } from '@/components/UserDashboard';
+import { mockUser, mockMetrics } from '@/test/fixtures';
+
+describe('UserDashboard', () => {
+  const defaultProps = {
+    user: mockUser,
+    metrics: mockMetrics,
+    onAction: jest.fn(),
+  };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('renders user information correctly', () => {
+    render(<UserDashboard {...defaultProps} />);
+
+    expect(screen.getByText(mockUser.name)).toBeInTheDocument();
+    expect(screen.getByText(mockUser.email)).toBeInTheDocument();
+  });
+
+  it('displays metrics with correct values', () => {
+    render(<UserDashboard {...defaultProps} />);
+
+    expect(screen.getByText(mockMetrics.totalUsers.toString())).toBeInTheDocument();
+    expect(screen.getByText(mockMetrics.activeUsers.toString())).toBeInTheDocument();
+  });
+
+  it('handles action callbacks correctly', () => {
+    render(<UserDashboard {...defaultProps} />);
+
+    const actionButton = screen.getByRole('button', { name: /quick action/i });
+    fireEvent.click(actionButton);
+
+    expect(defaultProps.onAction).toHaveBeenCalledWith({
+      type: 'QUICK_ACTION',
+      payload: expect.any(Object),
+    });
+  });
+
+  it('handles loading states appropriately', () => {
+    const loadingProps = {
+      ...defaultProps,
+      metrics: undefined,
+    };
+
+    render(<UserDashboard {...loadingProps} />);
+
+    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+  });
+});
+```
+
+**Unit Testing Coverage:**
+```
+Component Testing:
+├── Rendering Tests (Component renders correctly)
+├── Props Testing (Props are handled correctly)
+├── State Testing (Component state management)
+├── Event Testing (User interactions and callbacks)
+├── Edge Case Testing (Error states, loading states)
+└── Accessibility Testing (ARIA attributes, keyboard navigation)
+
+Function Testing:
+├── Pure Function Testing (Input/output validation)
+├── Utility Function Testing (Helper function validation)
+├── API Function Testing (Service layer validation)
+├── Hook Testing (Custom hook behavior)
+└── Error Handling Testing (Exception and error scenarios)
+
+Integration Testing:
+├── Component Integration (Component interaction testing)
+├── Service Integration (API and service integration)
+├── State Management Integration (Global state testing)
+├── Router Integration (Navigation and routing)
+└── External Library Integration (Third-party library usage)
+```
+
+#### 2.2 End-to-End Testing with AI
+**Purpose:** Comprehensive user journey testing with AI automation
+
+```bash
+# Generate E2E tests with AI
+npm run AAI:generate-e2e-tests
+
+# Run E2E tests with analysis
+npm run test:e2e
+
+# Analyze E2E test results
+npm run AAI:analyze-e2e-results
+```
+
+**E2E Testing Framework:**
+```typescript
+// AI-Generated E2E Test Example
+import { test, expect } from '@playwright/test';
+
+test.describe('User Registration Flow', () => {
+  test('complete user registration journey', async ({ page }) => {
+    // Navigate to registration page
+    await page.goto('/register');
+
+    // Fill registration form
+    await page.fill('[data-testid="email-input"]', 'test@example.com');
+    await page.fill('[data-testid="password-input"]', 'SecurePassword123!');
+    await page.fill('[data-testid="confirm-password-input"]', 'SecurePassword123!');
+    await page.fill('[data-testid="name-input"]', 'Test User');
+
+    // Submit registration
+    await page.click('[data-testid="register-button"]');
+
+    // Verify success message
+    await expect(page.locator('[data-testid="success-message"]')).toBeVisible();
+
+    // Verify redirect to dashboard
+    await expect(page).toHaveURL('/dashboard');
+
+    // Verify user is logged in
+    await expect(page.locator('[data-testid="user-menu"]')).toBeVisible();
+    await expect(page.locator('[data-testid="user-name"]')).toContainText('Test User');
+  });
+
+  test('handles registration validation errors', async ({ page }) => {
+    await page.goto('/register');
+
+    // Submit empty form
+    await page.click('[data-testid="register-button"]');
+
+    // Verify validation errors
+    await expect(page.locator('[data-testid="email-error"]')).toBeVisible();
+    await expect(page.locator('[data-testid="password-error"]')).toBeVisible();
+
+    // Fill invalid email
+    await page.fill('[data-testid="email-input"]', 'invalid-email');
+    await page.click('[data-testid="register-button"]');
+
+    await expect(page.locator('[data-testid="email-error"]')).toContainText('Invalid email format');
+  });
+});
+```
+
+**E2E Testing Coverage:**
+```
+User Journey Testing:
+├── Authentication Flows (Login, registration, logout)
+├── Core Feature Flows (Primary user workflows)
+├── Navigation Testing (Page navigation and routing)
+├── Form Interactions (Form submission and validation)
+├── Data Management (CRUD operations and data persistence)
+└── Error Scenarios (Error handling and recovery)
+
+Cross-Browser Testing:
+├── Chrome Testing (Primary browser validation)
+├── Firefox Testing (Cross-browser compatibility)
+├── Safari Testing (WebKit engine validation)
+├── Edge Testing (Microsoft browser support)
+└── Mobile Browser Testing (Mobile browser compatibility)
+
+Device Testing:
+├── Desktop Testing (Large screen validation)
+├── Tablet Testing (Medium screen validation)
+├── Mobile Testing (Small screen validation)
+├── Touch Interaction Testing (Touch-based interactions)
+└── Responsive Design Testing (Layout adaptation)
+```
+
+### Phase 3: Performance & Security Testing
+
+#### 3.1 Performance Testing with AI
+**Purpose:** Comprehensive performance validation and optimization
+
+```bash
+# Run performance tests with AI analysis
+npm run AAI:performance-test
+
+# Analyze performance metrics
+npm run AAI:analyze-performance
+
+# Generate performance optimization recommendations
+npm run AAI:optimize-performance
+```
+
+**Performance Testing Framework:**
+```
+Load Testing:
+├── Concurrent User Testing (Multiple user simulation)
+├── API Load Testing (Endpoint performance under load)
+├── Database Load Testing (Database performance validation)
+├── Resource Usage Testing (CPU, memory, network usage)
+└── Scalability Testing (System scaling behavior)
+
+Performance Metrics:
+├── Core Web Vitals (LCP, FID, CLS measurement)
+├── Page Load Times (Initial load and navigation)
+├── API Response Times (Endpoint performance metrics)
+├── Resource Loading (Asset loading performance)
+└── User Interaction Response (UI responsiveness)
+
+Performance Optimization:
+├── Bundle Analysis (JavaScript bundle optimization)
+├── Image Optimization (Image loading and compression)
+├── Caching Strategy (Browser and server caching)
+├── Code Splitting (Dynamic import optimization)
+└── Database Optimization (Query performance tuning)
+```
+
+#### 3.2 Security Testing with AI
+**Purpose:** Comprehensive security validation and vulnerability assessment
+
+```bash
+# Run security tests with AI
+npm run AAI:security-test
+
+# Perform vulnerability scanning
+npm run AAI:vulnerability-scan
+
+# Generate security recommendations
+npm run AAI:security-recommendations
+```
+
+**Security Testing Framework:**
+```
+Authentication & Authorization Testing:
+├── Login Security (Brute force protection, session management)
+├── Access Control (Role-based access validation)
+├── Token Security (JWT validation and expiration)
+├── Password Security (Password policy enforcement)
+└── Multi-Factor Authentication (MFA implementation testing)
+
+Input Validation Testing:
+├── SQL Injection Testing (Database injection prevention)
+├── XSS Testing (Cross-site scripting prevention)
+├── CSRF Testing (Cross-site request forgery protection)
+├── Input Sanitization (Data validation and cleaning)
+└── File Upload Security (File upload validation)
+
+Infrastructure Security:
+├── HTTPS Configuration (SSL/TLS implementation)
+├── Security Headers (Security header validation)
+├── API Security (API endpoint protection)
+├── Data Encryption (Data protection validation)
+└── Environment Security (Configuration and secrets)
+```
+
+### Phase 4: User Experience & Accessibility Testing
+
+#### 4.1 UX Testing with AI
+**Purpose:** Comprehensive user experience validation
+
+```bash
+# Run UX tests with AI analysis
+npm run AAI:ux-test
+
+# Analyze user experience metrics
+npm run AAI:analyze-ux
+
+# Generate UX improvement recommendations
+npm run AAI:improve-ux
+```
+
+**UX Testing Framework:**
+```
+Usability Testing:
+├── Navigation Testing (Intuitive navigation validation)
+├── User Flow Testing (Smooth user journey validation)
+├── Interface Testing (UI element functionality)
+├── Content Testing (Content clarity and effectiveness)
+└── Interaction Testing (User interaction responsiveness)
+
+Visual Design Testing:
+├── Design Consistency (Visual consistency validation)
+├── Typography Testing (Font and text readability)
+├── Color Contrast Testing (Accessibility color validation)
+├── Layout Testing (Responsive layout validation)
+└── Brand Consistency (Brand guideline adherence)
+
+User Feedback Integration:
+├── User Testing Sessions (Real user feedback collection)
+├── A/B Testing (Design variation testing)
+├── Analytics Integration (User behavior analysis)
+├── Feedback Collection (User feedback mechanisms)
+└── Improvement Implementation (Feedback-driven improvements)
+```
+
+#### 4.2 Accessibility Testing with AI
+**Purpose:** Comprehensive accessibility validation and compliance
+
+```bash
+# Run accessibility tests with AI
+npm run AAI:accessibility-test
+
+# Analyze accessibility compliance
+npm run AAI:analyze-accessibility
+
+# Generate accessibility improvements
+npm run AAI:improve-accessibility
+```
+
+**Accessibility Testing Framework:**
+```
+WCAG Compliance Testing:
+├── Level A Compliance (Basic accessibility requirements)
+├── Level AA Compliance (Standard accessibility requirements)
+├── Level AAA Compliance (Enhanced accessibility requirements)
+├── Keyboard Navigation (Keyboard-only navigation testing)
+└── Screen Reader Testing (Screen reader compatibility)
+
+Accessibility Features:
+├── Alt Text Validation (Image alternative text)
+├── ARIA Labels (Accessibility label validation)
+├── Focus Management (Focus indicator and management)
+├── Color Accessibility (Color contrast and usage)
+└── Text Accessibility (Font size and readability)
+
+Assistive Technology Testing:
+├── Screen Reader Testing (NVDA, JAWS, VoiceOver)
+├── Keyboard Navigation (Tab order and shortcuts)
+├── Voice Control Testing (Voice navigation support)
+├── Magnification Testing (Screen magnification support)
+└── Motor Accessibility (Motor impairment support)
+```
+
+## AAI-Assisted Testing Process
+
+### Comprehensive Test Execution
+Use the AAI system for intelligent, automated testing:
+
+```
+@AAI Agent
+
+Execute comprehensive testing for [project_name]:
+
+Application Status: [Current implementation status]
+Testing Scope: [Features and components to test]
+Quality Requirements: [Performance, security, accessibility standards]
+User Requirements: [User acceptance criteria and expectations]
+
+Please provide:
+1. Comprehensive test plan and strategy
+2. Automated test generation and execution
+3. Performance and security validation
+4. User experience and accessibility testing
+5. Quality assessment and recommendations
+6. Test result analysis and reporting
+```
+
+### Quality Assurance & Validation
+```
+@AAI Agent
+
+Perform quality assurance validation:
+
+Test Results: [Summary of test execution results]
+Performance Metrics: [Performance testing outcomes]
+Security Assessment: [Security testing results]
+Accessibility Compliance: [Accessibility validation results]
+
+Analyze for:
+1. Quality standards compliance and validation
+2. Performance optimization opportunities
+3. Security vulnerabilities and recommendations
+4. Accessibility improvements and compliance
+5. User experience enhancement suggestions
+6. Deployment readiness assessment
+```
+
+### User Acceptance Testing Support
+```
+@AAI Agent
+
+Support user acceptance testing process:
+
+Application Features: [Implemented features and functionality]
+User Requirements: [User expectations and acceptance criteria]
+Testing Environment: [Preview/staging environment details]
+Feedback Collection: [User feedback and validation results]
+
+Provide:
+1. User testing guidance and scenarios
+2. Feedback collection and analysis
+3. Issue identification and prioritization
+4. Improvement recommendations and implementation
+5. User satisfaction validation
+6. Final approval and sign-off support
+```
+
+## Testing Deliverables & Quality Gates
+
+### Completion Checklist
+Before proceeding to deployment, ensure you have:
+
+- [ ] **Unit Testing Complete** - Comprehensive unit test coverage with passing results
+- [ ] **Integration Testing Complete** - All integration tests passing with validation
+- [ ] **E2E Testing Complete** - User journey validation with successful scenarios
+- [ ] **Performance Testing Complete** - Performance benchmarks met and optimized
+- [ ] **Security Testing Complete** - Security validation with vulnerability assessment
+- [ ] **Accessibility Testing Complete** - WCAG compliance and accessibility validation
+- [ ] **UX Testing Complete** - User experience validation and optimization
+- [ ] **User Acceptance Testing Complete** - User validation and approval
+- [ ] **Quality Gates Passed** - All quality standards met and validated
+- [ ] **Deployment Readiness Confirmed** - Application ready for production deployment
+
+### Testing Documentation Structure
+Your comprehensive testing documentation should include:
+
+```
+# Testing & Quality Assurance Repository
+
+## 1. Test Strategy & Planning
+- Test Plan and Strategy Documentation
+- Test Coverage Analysis and Requirements
+- Testing Environment Setup and Configuration
+- Quality Gates and Success Criteria
+
+## 2. Automated Testing
+- Unit Test Suite and Coverage Reports
+- Integration Test Results and Analysis
+- End-to-End Test Scenarios and Results
+- Test Automation Framework and Tools
+
+## 3. Performance Testing
+- Performance Test Results and Metrics
+- Load Testing Analysis and Recommendations
+- Performance Optimization Implementation
+- Performance Monitoring and Alerting
+
+## 4. Security Testing
+- Security Test Results and Vulnerability Assessment
+- Security Compliance Validation
+- Security Recommendations and Implementation
+- Security Monitoring and Incident Response
+
+## 5. User Experience Testing
+- UX Testing Results and User Feedback
+- Accessibility Testing and WCAG Compliance
+- Usability Testing and Improvement Recommendations
+- User Acceptance Testing and Validation
+
+## 6. Quality Assurance
+- Quality Assessment and Validation Results
+- Bug Reports and Issue Tracking
+- Quality Improvement Recommendations
+- Deployment Readiness Assessment
+
+## 7. Test Reporting
+- Comprehensive Test Result Reports
+- Quality Metrics and KPI Analysis
+- Testing Timeline and Milestone Tracking
+- Stakeholder Communication and Updates
+```
+
+## Next Steps & Workflow Integration
+
+### Transition to Deployment
+Once testing and quality assurance are complete, proceed to deployment:
+
+```
+@AAI Agent
+
+Testing and quality assurance are complete. Please help me transition to deployment.
+
+Testing Summary:
+- Test Coverage: [Comprehensive test coverage achieved]
+- Quality Validation: [Quality standards met and validated]
+- Performance Metrics: [Performance benchmarks achieved]
+- Security Assessment: [Security validation completed]
+- User Acceptance: [User approval and sign-off received]
+
+Next steps needed:
+1. Deployment preparation and planning
+2. Production environment setup and configuration
+3. Deployment pipeline execution and monitoring
+4. Post-deployment validation and monitoring
+```
+
+The AAI system will guide you through:
+1. **Deployment** ([09_Deployment.mdc](../agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc)) - Production deployment and launch
+
+## Best Practices
+
+### Testing Excellence
+1. **Comprehensive Coverage** - Test all aspects of functionality, performance, and security
+2. **Automation First** - Prioritize automated testing for efficiency and reliability
+3. **Quality Gates** - Implement strict quality gates and standards
+4. **Continuous Testing** - Integrate testing throughout the development lifecycle
+5. **User-Centric Testing** - Focus on user experience and acceptance validation
+
+### Using AAI for Testing
+1. **Intelligent Test Generation** - Leverage AI for comprehensive test case creation
+2. **Automated Quality Analysis** - Use AI for quality assessment and validation
+3. **Performance Optimization** - Apply AI-driven performance testing and optimization
+4. **Security Validation** - Utilize AI for security testing and vulnerability assessment
+5. **Accessibility Compliance** - Employ AI for accessibility testing and compliance
+
+### Quality Assurance Standards
+1. **Quality First** - Maintain uncompromising quality standards
+2. **User Focus** - Prioritize user experience and satisfaction
+3. **Performance Standards** - Meet and exceed performance benchmarks
+4. **Security Compliance** - Ensure comprehensive security validation
+5. **Accessibility Standards** - Achieve full accessibility compliance
+
+## Expected Outcomes
+
+By completing this comprehensive testing process, you will have:
+
+### Quality Assurance
+- ✅ **Comprehensive Testing** - Complete test coverage across all functionality
+- ✅ **Performance Validation** - Optimized performance meeting all benchmarks
+- ✅ **Security Assurance** - Comprehensive security validation and compliance
+- ✅ **Accessibility Compliance** - Full WCAG compliance and accessibility validation
+
+### User Validation
+- ✅ **User Acceptance** - User validation and approval of all functionality
+- ✅ **User Experience Optimization** - Enhanced user experience and usability
+- ✅ **Feedback Integration** - User feedback incorporated and validated
+- ✅ **Satisfaction Confirmation** - User satisfaction and approval confirmed
+
+### Deployment Readiness
+- ✅ **Quality Standards Met** - All quality gates passed and validated
+- ✅ **Performance Optimized** - Performance benchmarks achieved and optimized
+- ✅ **Security Hardened** - Security validation and vulnerability assessment complete
+- ✅ **Production Ready** - Application ready for production deployment
+
+---
+
+*This enhanced testing framework, powered by AAI intelligence, ensures your application meets the highest quality standards through comprehensive testing, validation, and quality assurance processes.*

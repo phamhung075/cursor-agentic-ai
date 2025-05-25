@@ -1,6 +1,6 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: false
 ---
 # API Endpoint Implementation Guide
@@ -182,19 +182,19 @@ This prompt will guide you in implementing a new API endpoint according to proje
   "status": "error",
   "error": {
     "code": "VALIDATION_ERROR",
-    "message": "Invalid request parameters",
+  "message": "Invalid request parameters",
     "details": [
-      {
-        "field": "property1",
+    {
+      "field": "property1",
         "code": "REQUIRED",
-        "message": "Property1 is required"
+      "message": "Property1 is required"
       },
       {
         "field": "property2",
         "code": "INVALID_TYPE",
         "message": "Property2 must be a number"
-      }
-    ]
+    }
+  ]
   },
   "meta": {
     "requestId": "550e8400-e29b-41d4-a716-446655440000",
@@ -379,7 +379,7 @@ This prompt will guide you in implementing a new API endpoint according to proje
 
 ### Security Headers
 ```javascript
-// Security headers to implement
+/ Security headers to implement
 {
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
@@ -406,26 +406,26 @@ This prompt will guide you in implementing a new API endpoint according to proje
 
 ### Unit Tests
 ```javascript
-// Test categories to implement
+/ Test categories to implement
 describe('Controller Tests', () => {
-  // Input validation tests
-  // Authentication/authorization tests
-  // Service method invocation tests
-  // Response formatting tests
-  // Error handling tests
+  / Input validation tests
+  / Authentication/authorization tests
+  / Service method invocation tests
+  / Response formatting tests
+  / Error handling tests
 });
 
 describe('Service Tests', () => {
-  // Business logic tests
-  // Repository interaction tests
-  // External service integration tests
-  // Error handling tests
+  / Business logic tests
+  / Repository interaction tests
+  / External service integration tests
+  / Error handling tests
 });
 
 describe('Repository Tests', () => {
-  // Data access tests
-  // Query optimization tests
-  // Error handling tests
+  / Data access tests
+  / Query optimization tests
+  / Error handling tests
 });
 ```
 
@@ -488,10 +488,10 @@ const { body, param, query, validationResult } = require('express-validator');
 const rateLimit = require('express-rate-limit');
 const { v4: uuidv4 } = require('uuid');
 
-// Rate limiting middleware
+/ Rate limiting middleware
 const createResourceLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  windowMs: 15 * 60 * 1000, / 15 minutes
+  max: 100, / limit each IP to 100 requests per windowMs
   message: {
     status: 'error',
     error: {
@@ -501,7 +501,7 @@ const createResourceLimiter = rateLimit({
   }
 });
 
-// Validation middleware
+/ Validation middleware
 const validateCreateResource = [
   body('name')
     .isString()
@@ -518,16 +518,16 @@ const validateCreateResource = [
 
 const createResource = async (req, res, next) => {
   const requestId = req.headers['x-request-id'] || uuidv4();
-  
+
   try {
-    // Validate input
+    / Validate input
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
         status: 'error',
         error: {
           code: 'VALIDATION_ERROR',
-          message: 'Invalid request parameters',
+        message: 'Invalid request parameters',
           details: errors.array().map(err => ({
             field: err.param,
             code: 'INVALID_VALUE',
@@ -541,7 +541,7 @@ const createResource = async (req, res, next) => {
       });
     }
 
-    // Check authentication
+    / Check authentication
     if (!req.user) {
       return res.status(401).json({
         status: 'error',
@@ -553,7 +553,7 @@ const createResource = async (req, res, next) => {
       });
     }
 
-    // Check authorization
+    / Check authorization
     if (!req.user.hasPermission('resource:create')) {
       return res.status(403).json({
         status: 'error',
@@ -565,19 +565,19 @@ const createResource = async (req, res, next) => {
       });
     }
 
-    // Call service
+    / Call service
     const resource = await resourceService.createResource({
       ...req.body,
       createdBy: req.user.id
     });
 
-    // Set security headers
+    / Set security headers
     res.set({
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY'
     });
 
-    // Return success response
+    / Return success response
     return res.status(201).json({
       status: 'success',
       data: resource,
@@ -589,7 +589,7 @@ const createResource = async (req, res, next) => {
     });
 
   } catch (error) {
-    // Log error with context
+    / Log error with context
     logger.error('Error creating resource', {
       requestId,
       userId: req.user?.id,
@@ -597,7 +597,7 @@ const createResource = async (req, res, next) => {
       stack: error.stack
     });
 
-    // Handle specific errors
+    / Handle specific errors
     if (error.name === 'DuplicateError') {
       return res.status(409).json({
         status: 'error',
@@ -614,13 +614,13 @@ const createResource = async (req, res, next) => {
         status: 'error',
         error: {
           code: 'BUSINESS_LOGIC_ERROR',
-          message: error.message
+        message: error.message
         },
         meta: { requestId, timestamp: new Date().toISOString() }
       });
     }
 
-    // Pass to error handler
+    / Pass to error handler
     next(error);
   }
 };
@@ -645,16 +645,16 @@ class ResourceService {
   }
 
   async createResource(resourceData) {
-    // Validate business rules
+    / Validate business rules
     await this.validateBusinessRules(resourceData);
 
-    // Check for duplicates
+    / Check for duplicates
     const existingResource = await this.resourceRepository.findByEmail(resourceData.email);
     if (existingResource) {
       throw new DuplicateError('Resource with this email already exists');
     }
 
-    // Prepare data
+    / Prepare data
     const resource = {
       id: uuidv4(),
       ...resourceData,
@@ -662,50 +662,50 @@ class ResourceService {
       updatedAt: new Date().toISOString()
     };
 
-    // Hash sensitive data if needed
+    / Hash sensitive data if needed
     if (resource.password) {
       resource.password = await bcrypt.hash(resource.password, 12);
     }
 
-    // Start transaction
+    / Start transaction
     const transaction = await this.resourceRepository.beginTransaction();
 
     try {
-      // Create resource
+      / Create resource
       const createdResource = await this.resourceRepository.create(resource, transaction);
 
-      // Publish event
+      / Publish event
       await this.eventPublisher.publish('resource.created', {
         resourceId: createdResource.id,
         createdBy: resourceData.createdBy,
         timestamp: new Date().toISOString()
       });
 
-      // Commit transaction
+      / Commit transaction
       await transaction.commit();
 
-      // Invalidate cache
+      / Invalidate cache
       await this.cacheService.invalidate(`resources:${resourceData.createdBy}`);
 
-      // Remove sensitive data from response
+      / Remove sensitive data from response
       const { password, ...safeResource } = createdResource;
 
       return safeResource;
 
     } catch (error) {
-      // Rollback transaction
+      / Rollback transaction
       await transaction.rollback();
       throw error;
     }
   }
 
   async validateBusinessRules(resourceData) {
-    // Implement business validation logic
+    / Implement business validation logic
     if (resourceData.age && resourceData.age < 18) {
       throw new ValidationError('Age must be 18 or older');
     }
 
-    // Add more business rules as needed
+    / Add more business rules as needed
   }
 }
 
@@ -817,7 +817,7 @@ module.exports = ResourceRepository;
 
 ### Logging Requirements
 ```javascript
-// Structured logging example
+/ Structured logging example
 logger.info('API request processed', {
   requestId,
   method: req.method,
@@ -830,7 +830,7 @@ logger.info('API request processed', {
 
 ### Health Checks
 ```javascript
-// Health check endpoint
+/ Health check endpoint
 app.get('/health', (req, res) => {
   res.json({
     status: 'healthy',

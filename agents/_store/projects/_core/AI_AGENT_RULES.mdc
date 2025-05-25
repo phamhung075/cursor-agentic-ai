@@ -1,6 +1,6 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
 # 🚨 CRITICAL AI AGENT RULES
@@ -48,6 +48,40 @@ alwaysApply: false
 - `file` - Absolute from root
 - `file` - Absolute from root
 
+### **🎯 Rule #4: Script Improvement Protocol**
+**When improving or fixing existing scripts, ALWAYS backup and edit the existing file - NEVER create new files**
+
+❌ **INCORRECT:**
+- Creating `script_v2.js`, `script_fixed.js`, `script_corrected.js`
+- Creating multiple versions of the same script
+- Leaving obsolete scripts in the project
+
+✅ **CORRECT:**
+- Create backup: `cp script.js backups/script-backup-$(date +%Y%m%d-%H%M%S).js`
+- Edit existing file: Modify `script.js` directly
+- Clean up: Remove obsolete scripts after successful fix
+
+### **🎯 Rule #5: Backup and Cleanup Protocol**
+**MANDATORY steps when improving any script file:**
+
+1. **Create timestamped backup:**
+   ```bash
+   mkdir -p backups
+   cp original_script.js backups/original_script-backup-$(date +%Y%m%d-%H%M%S).js
+   ```
+
+2. **Edit the existing file directly:**
+   - Modify the original file in place
+   - Do NOT create new files with different names
+
+3. **Clean up obsolete scripts:**
+   - Remove any previous versions or failed attempts
+   - Keep only the working version and its backup
+
+4. **Test the improved script:**
+   - Verify functionality before cleanup
+   - Ensure no regressions introduced
+
 ## 🧠 **WHY THESE RULES EXIST**
 
 ### **Organizational Benefits:**
@@ -55,12 +89,16 @@ alwaysApply: false
 - **Consistent structure** - All AI materials organized together
 - **Easy discovery** - Future agents know where to look
 - **Project separation** - AI docs separate from project code
+- **No script proliferation** - Prevents multiple versions of same script
+- **Clear file purpose** - Each script has one clear function
 
 ### **Technical Benefits:**
 - **Editor compatibility** - `.mdc` extension works with markdown tools
 - **Path consistency** - All internal references use same structure
 - **Universal navigation** - Links work from any file location
 - **Version control** - Cleaner git history and organization
+- **Backup safety** - Original versions preserved before changes
+- **Reduced confusion** - No ambiguity about which script to use
 
 ## 🔧 **IMPLEMENTATION CHECKLIST**
 
@@ -70,6 +108,13 @@ When creating new documentation:
 - [ ] **Path URLs**: All links use absolute paths from workspace root
 - [ ] **References**: All internal links use `.mdc` extension
 - [ ] **Organization**: Logical subfolder structure used
+
+When improving existing scripts:
+- [ ] **Backup created**: Original file backed up with timestamp
+- [ ] **Edit in place**: Modified existing file, not created new one
+- [ ] **Cleanup done**: Removed obsolete script versions
+- [ ] **Testing completed**: Verified improved script works correctly
+- [ ] **Documentation updated**: Updated any references to the script
 
 ## 🚀 **STANDARD DIRECTORY STRUCTURE**
 
@@ -81,6 +126,10 @@ When creating new documentation:
 ├── rules/                   # Project-specific rules
 ├── memory/                  # AI agent memories
 └── guides/                  # How-to guides
+
+backups/                     # Timestamped backups
+├── script-backup-20250525-120000.js
+└── config-backup-20250525-120100.json
 ```
 
 ## ⛔ **COMMON VIOLATIONS TO AVOID**
@@ -90,6 +139,9 @@ When creating new documentation:
 3. **Relative path URLs** - Use absolute paths from workspace root
 4. **Inconsistent references** - Update all links when moving files
 5. **Mixed extensions** - Don't mix `.md` and `.mdc` in same project
+6. **Script proliferation** - Creating multiple versions instead of editing existing
+7. **No backups** - Modifying files without creating safety backups
+8. **Leaving obsolete files** - Not cleaning up after improvements
 
 ## 🔄 **CORRECTION PROCEDURE**
 
@@ -106,6 +158,17 @@ sed -i '' 's/\]\(\.\/](.cursor\/g' # Convert to absolute paths
 sed -i '' 's/filename\.md/filename.mdc/g' # Update extension
 ```
 
+If multiple script versions exist:
+```bash
+# Backup the working version
+cp working_script.js backups/working_script-backup-$(date +%Y%m%d-%H%M%S).js
+
+# Remove obsolete versions
+rm script_v2.js script_fixed.js script_corrected.js
+
+# Keep only the main script file
+```
+
 ## 🔍 **PATH VALIDATION COMMANDS**
 
 Check for violations:
@@ -118,8 +181,11 @@ grep -r "\.md)" .cursor/ | grep "\.
 
 # Find files outside .cursor
 find . -maxdepth 1 -name "*.mdc" -o -name "*.md" | grep -v "\.cursor"
+
+# Find multiple script versions
+find . -name "*_v[0-9]*.js" -o -name "*_fixed*.js" -o -name "*_corrected*.js"
 ```
 
 ---
 
-**🎯 REMEMBER: `.cursor` folder + `.mdc` extension + absolute paths = MANDATORY**
+**🎯 REMEMBER: `.cursor` folder + `.mdc` extension + absolute paths + backup & edit existing files = MANDATORY**

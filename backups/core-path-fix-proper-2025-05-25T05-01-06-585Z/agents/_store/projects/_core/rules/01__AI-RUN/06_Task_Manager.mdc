@@ -1,0 +1,82 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Task Management Process
+
+The primary documentation for the project's task management process, including workflow with Roo Orchestrator/Code and the structure of `[tasks.json](agents/_store/projects/_core/tasks/tasks.json)`, has been moved.
+
+Please refer to the new centralized documentation here:
+# Task Management Workflow
+
+## Context Awareness
+
+**Previous Phases:**
+- Idea Document ([01_Idea.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc))
+- Market Research ([02_Market_Research.mdc](agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc))
+- Core Concept ([03_Core_Concept.mdc](agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc))
+- PRD Generation ([04_PRD_Generation.mdc](agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc))
+- Technical Specifications ([05_Specs_Docs.mdc](agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc))
+
+**Current Phase:** Task Management and Breakdown
+
+## Key Resources
+
+- **Main Workflow:** [Roo_Task_Workflow.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)
+- **Task Structure:** [Tasks_JSON_Structure.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)
+
+## Purpose
+
+This workflow step focuses on breaking down the project requirements into manageable, implementable tasks using the Roo Orchestrator system. The goal is to create a comprehensive task hierarchy that will guide the development process.
+
+### Key Goals:
+- Break down PRD into granular, actionable tasks
+- Establish clear task dependencies and priorities
+- Create a structured implementation roadmap
+- Enable efficient tracking and progress monitoring
+
+## Process Overview
+
+The task management process follows these key steps:
+
+1. **PRD Analysis**: Review the completed Product Requirements Document
+2. **Epic Creation**: Convert major features into epics
+3. **Task Decomposition**: Break down epics into specific tasks
+4. **Dependency Mapping**: Establish relationships between tasks
+5. **Priority Assignment**: Set implementation priorities
+6. **Roadmap Generation**: Create implementation timeline
+
+## Primary Workflow
+
+For detailed instructions on the task management process, refer to the comprehensive workflow document:
+
+**[Roo Task Workflow](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Roo_Task_Workflow.mdc)**
+
+This document provides:
+- Step-by-step task breakdown methodology
+- Roo Orchestrator integration guidelines
+- Task sizing and complexity analysis
+- Quality assurance procedures
+
+## Output Structure
+
+The task management phase produces a structured JSON file containing all project tasks:
+
+**Task File Location:** `[tasks.json](agents/_store/projects/_core/tasks/tasks.json)`
+
+For detailed information about the task JSON structure and requirements, see:
+**[Tasks JSON Structure](agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)**
+
+## Next Steps
+
+After completing the task breakdown:
+
+1. **Implementation Phase**: Proceed to [07_Start_Building.mdc](agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)
+2. **Development**: Use the task hierarchy to guide development
+3. **Testing**: Follow tasks through [08_Testing.mdc](agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc)
+4. **Deployment**: Complete with [09_Deployment.mdc](agents/_store/projects/_core/rules/01__AI-RUN/09_Deployment.mdc)
+
+---
+
+*This file serves as a bridge to the comprehensive task management workflow. For detailed implementation guidance, always refer to the main workflow documents in the 02__AI-DOCS/TaskManagement directory.*

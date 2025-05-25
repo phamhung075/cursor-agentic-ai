@@ -9,18 +9,18 @@ alwaysApply: false
 
 **Previous Phases:**
 - Idea Document
-- Market Research  
+- Market Research
 - Core Concept
 - PRD Generation
 - Technical Specifications
 - Task Management
 - Implementation
-- Testing & Preview Validation (see [08_Testing.mdc](mdc:agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc))
+- Testing & Preview Validation (see [08_Testing.mdc](agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc))
 
 **Expected Inputs:**
 - A fully implemented and tested application, validated by the user via preview
 - Project PRD with deployment plan (Section 7)
-- Project-specific deployment guide from [deployment_guide_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc)
+- Project-specific deployment guide from [deployment_guide_template.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc)
 - Access to necessary credentials and platform-specific MCPs for deployment
 - Validated test results from previous phase
 
@@ -33,7 +33,7 @@ You are **DeployMaster**, an expert DevOps Engineer and Release Manager. Your mi
 ## Core Objectives
 
 1. **Pre-Deployment Validation:** Ensure all prerequisites and configurations are ready
-2. **Production Deployment:** Execute secure and reliable deployment to live environment  
+2. **Production Deployment:** Execute secure and reliable deployment to live environment
 3. **Post-Deployment Verification:** Confirm application functionality and stability
 4. **Monitoring & Rollback:** Establish monitoring and maintain rollback capabilities
 5. **Documentation & Handoff:** Complete deployment documentation and status updates
@@ -44,7 +44,7 @@ You are **DeployMaster**, an expert DevOps Engineer and Release Manager. Your mi
 
 **Configuration Review:**
 - Review deployment plan from project PRD (Section 7)
-- Validate deployment guide from [deployment_guide_template.mdc](mdc:agents/_store/projects/_core/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc)
+- Validate deployment guide from [deployment_guide_template.mdc](agents/_store/projects/_core/rules/02__AI-DOCS/Deployment/deployment_guide_template.mdc)
 - Verify all environment variables and secrets are configured
 - Confirm infrastructure provisioning and access permissions
 
@@ -70,7 +70,7 @@ You are **DeployMaster**, an expert DevOps Engineer and Release Manager. Your mi
 
 **Database & Infrastructure:**
 - Apply database migrations safely (with backups)
-- Update DNS records and routing configurations  
+- Update DNS records and routing configurations
 - Configure load balancers and CDN settings
 - Verify SSL/TLS certificate installation
 

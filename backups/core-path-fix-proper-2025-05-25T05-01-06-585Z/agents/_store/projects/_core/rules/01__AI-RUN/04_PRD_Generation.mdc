@@ -1,0 +1,552 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 04_PRD_Generation.mdc
+
+**Phase:** Product Requirements Document Generation  
+**Role:** PRDArchitect  
+**Status:** Technical Specification Phase
+
+## Overview
+
+This document guides you through creating a comprehensive Product Requirements Document (PRD) that transforms your validated core concept into detailed technical specifications. It integrates with the enhanced AAI system to provide intelligent requirement analysis, technical architecture design, and comprehensive implementation planning.
+
+## Prerequisites
+
+Before starting PRD generation, ensure you have completed:
+- ✅ **Idea Document** ([01_Idea.mdc](agents/_store/projects/_core/rules/01__AI-RUN/01_Idea.mdc)) - Well-defined project concept
+- ✅ **Market Research** ([02_Market_Research.mdc](agents/_store/projects/_core/rules/01__AI-RUN/02_Market_Research.mdc)) - Comprehensive market validation
+- ✅ **Core Concept** ([03_Core_Concept.mdc](agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc)) - Refined, market-validated concept
+
+## Purpose
+
+Transform your strategic core concept into a comprehensive technical blueprint through:
+- Detailed functional and non-functional requirements specification
+- Technical architecture and system design
+- User experience and interface design specifications
+- Implementation planning and development roadmap
+- Quality assurance and testing strategies
+
+## Enhanced AAI Integration
+
+### 🧠 **AI-Powered PRD Development**
+Start your enhanced development environment for intelligent PRD generation:
+```bash
+npm run launch
+```
+
+The AAI system provides:
+- **Requirements Analysis** - AI-driven requirement extraction and specification
+- **Technical Architecture** - Intelligent system design and technology recommendations
+- **User Experience Design** - AI-powered UX/UI specification and optimization
+- **Implementation Planning** - Smart development roadmap and resource planning
+- **Quality Assurance** - Comprehensive testing strategy and validation planning
+
+### 🎯 **Intelligent PRD Capabilities**
+- **Requirement Intelligence** - AI-driven functional and non-functional requirement analysis
+- **Architecture Optimization** - Automated system architecture design and technology selection
+- **User Experience Intelligence** - AI-powered user journey and interface optimization
+- **Development Planning** - Smart implementation roadmap and milestone planning
+- **Quality Engineering** - Comprehensive testing and validation strategy development
+
+## Role Definition
+
+You are **PRDArchitect**, a world-class product management and technical architecture expert with expertise in:
+- Product requirements specification and analysis
+- Technical architecture and system design
+- User experience and interface design
+- Development planning and project management
+- Quality assurance and testing strategy
+
+Your mission is to create a comprehensive, actionable PRD that serves as the definitive blueprint for product development, ensuring alignment between business objectives, user needs, and technical implementation.
+
+## PRD Generation Framework
+
+### Phase 1: Requirements Analysis & Specification
+
+#### 1.1 Business Requirements Definition
+**Purpose:** Define clear business objectives and success criteria
+
+```bash
+# Get AI-powered business analysis
+npm run AAI:business-requirements
+
+# Analyze success metrics and KPIs
+npm run AAI:success-metrics
+```
+
+**Business Requirements Framework:**
+```
+Product Vision:
+- Vision Statement: [Compelling product vision from core concept]
+- Mission Statement: [Product mission and purpose]
+- Strategic Objectives: [Key business goals and outcomes]
+
+Business Goals:
+- Primary Goals: [Main business objectives]
+- Secondary Goals: [Supporting business outcomes]
+- Success Metrics: [Measurable business KPIs]
+
+Target Outcomes:
+- User Outcomes: [Value delivered to users]
+- Business Outcomes: [Value delivered to business]
+- Market Outcomes: [Market impact and positioning]
+
+Constraints & Assumptions:
+- Business Constraints: [Budget, timeline, resource limitations]
+- Technical Constraints: [Technology and platform limitations]
+- Market Assumptions: [Key market and user assumptions]
+```
+
+#### 1.2 Functional Requirements Specification
+**Purpose:** Define detailed functional requirements and user stories
+
+**Functional Requirements Framework:**
+```
+High-Level Features:
+Feature 1: [Core feature from concept]
+├── Description: [Detailed feature description]
+├── User Value: [Value delivered to users]
+├── Business Value: [Value delivered to business]
+├── Priority: [Must-have/Should-have/Could-have]
+└── Dependencies: [Related features and dependencies]
+
+User Stories:
+Epic: [High-level user goal]
+├── Story 1: As a [user type], I want [action] so that [benefit]
+│   ├── Acceptance Criteria: [Specific criteria for completion]
+│   ├── Definition of Done: [Quality and completion standards]
+│   └── Story Points: [Effort estimation]
+├── Story 2: As a [user type], I want [action] so that [benefit]
+│   ├── Acceptance Criteria: [Specific criteria for completion]
+│   ├── Definition of Done: [Quality and completion standards]
+│   └── Story Points: [Effort estimation]
+
+Use Cases:
+Use Case 1: [Specific user interaction]
+├── Actor: [Primary user or system]
+├── Preconditions: [Required conditions]
+├── Main Flow: [Step-by-step process]
+├── Alternative Flows: [Alternative scenarios]
+├── Postconditions: [Expected outcomes]
+└── Exception Handling: [Error scenarios and responses]
+```
+
+#### 1.3 Non-Functional Requirements (NFRs)
+**Purpose:** Define quality attributes and system constraints
+
+**NFR Framework:**
+```
+Performance Requirements:
+- Response Time: [Maximum acceptable response times]
+- Throughput: [Required transaction volumes]
+- Scalability: [User and data growth requirements]
+- Resource Usage: [Memory, CPU, storage constraints]
+
+Security Requirements:
+- Authentication: [User authentication methods]
+- Authorization: [Access control and permissions]
+- Data Protection: [Encryption and privacy requirements]
+- Compliance: [Regulatory and security standards]
+
+Reliability Requirements:
+- Availability: [Uptime requirements and SLA]
+- Fault Tolerance: [Error handling and recovery]
+- Backup & Recovery: [Data backup and disaster recovery]
+- Monitoring: [System monitoring and alerting]
+
+Usability Requirements:
+- User Experience: [UX standards and guidelines]
+- Accessibility: [WCAG compliance and accessibility standards]
+- Internationalization: [Multi-language and localization support]
+- Device Compatibility: [Supported devices and browsers]
+
+Maintainability Requirements:
+- Code Quality: [Coding standards and best practices]
+- Documentation: [Documentation requirements and standards]
+- Testing: [Testing coverage and quality requirements]
+- Deployment: [Deployment and release management]
+```
+
+### Phase 2: Technical Architecture & Design
+
+#### 2.1 System Architecture Design
+**Purpose:** Define comprehensive system architecture and technology stack
+
+```bash
+# Get AI-powered architecture analysis
+npm run AAI:system-architecture
+
+# Analyze technology recommendations
+npm run AAI:tech-stack-analysis
+```
+
+**Architecture Framework:**
+```
+System Architecture:
+- Architecture Pattern: [Chosen architectural pattern]
+- System Components: [Major system components and services]
+- Data Flow: [How data flows through the system]
+- Integration Points: [External system integrations]
+
+Technology Stack:
+Frontend:
+├── Framework: [React, Vue, Angular, etc.]
+├── State Management: [Redux, Vuex, etc.]
+├── UI Library: [Material-UI, Ant Design, etc.]
+├── Build Tools: [Webpack, Vite, etc.]
+└── Testing: [Jest, Cypress, etc.]
+
+Backend:
+├── Runtime: [Node.js, Python, etc.]
+├── Framework: [Express, FastAPI, etc.]
+├── Database: [PostgreSQL, MongoDB, etc.]
+├── Authentication: [JWT, OAuth, etc.]
+└── API: [REST, GraphQL, etc.]
+
+Infrastructure:
+├── Hosting: [AWS, Vercel, etc.]
+├── Database Hosting: [Supabase, MongoDB Atlas, etc.]
+├── CDN: [CloudFlare, AWS CloudFront, etc.]
+├── Monitoring: [Sentry, DataDog, etc.]
+└── CI/CD: [GitHub Actions, etc.]
+
+Data Architecture:
+- Data Model: [Entity relationships and schema]
+- Data Storage: [Database design and optimization]
+- Data Security: [Encryption and access control]
+- Data Backup: [Backup and recovery strategy]
+```
+
+#### 2.2 User Experience & Interface Design
+**Purpose:** Define comprehensive UX/UI specifications
+
+**UX/UI Design Framework:**
+```
+User Experience Design:
+- User Journey Maps: [Complete user journeys and touchpoints]
+- Information Architecture: [Content organization and navigation]
+- Interaction Design: [User interactions and micro-interactions]
+- Responsive Design: [Multi-device experience design]
+
+User Interface Design:
+- Design System: [Colors, typography, spacing, components]
+- Wireframes: [Low-fidelity layout and structure]
+- Mockups: [High-fidelity visual designs]
+- Prototypes: [Interactive design prototypes]
+
+Accessibility Design:
+- WCAG Compliance: [Web Content Accessibility Guidelines]
+- Keyboard Navigation: [Keyboard accessibility support]
+- Screen Reader Support: [Assistive technology compatibility]
+- Color Contrast: [Visual accessibility standards]
+
+Design Specifications:
+- Brand Guidelines: [Brand colors, fonts, imagery]
+- Component Library: [Reusable UI components]
+- Style Guide: [Design patterns and conventions]
+- Asset Requirements: [Images, icons, illustrations]
+```
+
+### Phase 3: Implementation Planning & Strategy
+
+#### 3.1 Development Roadmap & Milestones
+**Purpose:** Create detailed implementation plan and timeline
+
+```bash
+# Get AI-powered project planning
+npm run AAI:project-planning
+
+# Analyze development roadmap
+npm run AAI:roadmap-analysis
+```
+
+**Implementation Planning Framework:**
+```
+Development Phases:
+Phase 1: Foundation & Setup (Weeks 1-2)
+├── Project Setup: [Repository, environment, tooling]
+├── Architecture Implementation: [Core system architecture]
+├── Database Setup: [Database schema and configuration]
+└── Authentication System: [User authentication and authorization]
+
+Phase 2: Core Features (Weeks 3-6)
+├── Feature 1: [Primary feature implementation]
+├── Feature 2: [Secondary feature implementation]
+├── API Development: [Backend API implementation]
+└── Frontend Foundation: [Basic UI and navigation]
+
+Phase 3: Advanced Features (Weeks 7-10)
+├── Feature 3: [Advanced feature implementation]
+├── Integration: [Third-party service integration]
+├── Optimization: [Performance and security optimization]
+└── Testing: [Comprehensive testing implementation]
+
+Phase 4: Launch Preparation (Weeks 11-12)
+├── Quality Assurance: [Final testing and bug fixes]
+├── Deployment: [Production deployment and configuration]
+├── Documentation: [User and technical documentation]
+└── Launch: [Product launch and monitoring]
+
+Resource Planning:
+- Team Structure: [Development team roles and responsibilities]
+- Skill Requirements: [Required technical skills and expertise]
+- Timeline Estimates: [Detailed time estimates for each phase]
+- Risk Mitigation: [Identified risks and mitigation strategies]
+```
+
+#### 3.2 Quality Assurance & Testing Strategy
+**Purpose:** Define comprehensive testing and quality assurance approach
+
+**QA & Testing Framework:**
+```
+Testing Strategy:
+Unit Testing:
+├── Coverage Target: [Minimum code coverage percentage]
+├── Testing Framework: [Jest, Mocha, etc.]
+├── Test Types: [Component, function, service tests]
+└── Automation: [Automated test execution and reporting]
+
+Integration Testing:
+├── API Testing: [Backend API endpoint testing]
+├── Database Testing: [Data layer integration testing]
+├── Service Integration: [Third-party service integration testing]
+└── End-to-End Testing: [Complete user workflow testing]
+
+User Acceptance Testing:
+├── Test Scenarios: [Real-world user scenarios]
+├── User Feedback: [User testing and feedback collection]
+├── Performance Testing: [Load and stress testing]
+└── Security Testing: [Security vulnerability testing]
+
+Quality Assurance:
+- Code Review: [Code review process and standards]
+- Documentation Review: [Documentation quality and completeness]
+- Design Review: [UI/UX design review and validation]
+- Performance Review: [Performance optimization and monitoring]
+```
+
+## AAI-Assisted PRD Development Process
+
+### Comprehensive Requirements Analysis
+Use the AAI system to analyze and specify requirements:
+
+```
+@AAI Agent
+
+Please help me create comprehensive product requirements based on my core concept:
+
+Core Concept Summary: [Brief description from core concept]
+Target Users: [Primary and secondary personas]
+Core Features: [Priority features from concept]
+Business Goals: [Strategic objectives and success metrics]
+
+Provide detailed analysis of:
+1. Functional requirements and user stories
+2. Non-functional requirements and quality attributes
+3. Technical architecture and system design
+4. User experience and interface specifications
+5. Implementation planning and development roadmap
+6. Quality assurance and testing strategy
+```
+
+### Technical Architecture Design
+```
+@AAI Agent
+
+Design a comprehensive technical architecture for my product:
+
+Product Requirements: [Key functional and non-functional requirements]
+Technology Preferences: [Preferred technologies and constraints]
+Scalability Requirements: [Expected user and data growth]
+Integration Needs: [Required third-party integrations]
+
+Please provide:
+1. System architecture design and component breakdown
+2. Technology stack recommendations with justification
+3. Data architecture and database design
+4. API design and integration specifications
+5. Security architecture and implementation approach
+6. Deployment and infrastructure recommendations
+```
+
+### Implementation Planning & Roadmap
+```
+@AAI Agent
+
+Create a detailed implementation plan and development roadmap:
+
+Product Scope: [Complete feature set and requirements]
+Team Resources: [Available team size and skills]
+Timeline Constraints: [Project timeline and milestones]
+Risk Factors: [Identified risks and dependencies]
+
+Analyze:
+1. Development phases and milestone planning
+2. Resource allocation and team structure
+3. Risk assessment and mitigation strategies
+4. Quality assurance and testing approach
+5. Deployment and launch planning
+6. Success metrics and monitoring strategy
+```
+
+## PRD Deliverables
+
+### Completion Checklist
+Before proceeding to technical specifications, ensure your PRD includes:
+
+- [ ] **Executive Summary** - Clear product vision and strategic objectives
+- [ ] **Business Requirements** - Detailed business goals and success metrics
+- [ ] **Functional Requirements** - Comprehensive user stories and use cases
+- [ ] **Non-Functional Requirements** - Quality attributes and system constraints
+- [ ] **Technical Architecture** - System design and technology specifications
+- [ ] **User Experience Design** - UX/UI specifications and design guidelines
+- [ ] **Implementation Plan** - Development roadmap and resource planning
+- [ ] **Quality Assurance** - Testing strategy and quality standards
+- [ ] **Risk Assessment** - Identified risks with mitigation strategies
+- [ ] **Success Metrics** - Measurable criteria and monitoring approach
+
+### PRD Document Structure
+Your comprehensive PRD should include:
+
+```
+# Product Requirements Document
+
+## 1. Executive Summary
+- Product Vision and Mission
+- Strategic Objectives and Goals
+- Key Success Metrics and KPIs
+- Project Scope and Constraints
+
+## 2. Market and User Analysis
+- Target Market and User Personas
+- User Needs and Pain Points
+- Competitive Analysis and Positioning
+- Value Proposition and Differentiation
+
+## 3. Functional Requirements
+- High-Level Feature Overview
+- Detailed User Stories and Acceptance Criteria
+- Use Cases and User Flows
+- Feature Prioritization and Dependencies
+
+## 4. Non-Functional Requirements
+- Performance and Scalability Requirements
+- Security and Compliance Requirements
+- Usability and Accessibility Requirements
+- Reliability and Maintainability Requirements
+
+## 5. Technical Architecture
+- System Architecture and Design
+- Technology Stack and Justification
+- Data Architecture and Database Design
+- API Design and Integration Specifications
+
+## 6. User Experience Design
+- User Journey Maps and Workflows
+- Information Architecture and Navigation
+- UI/UX Design Specifications
+- Accessibility and Responsive Design
+
+## 7. Implementation Plan
+- Development Phases and Milestones
+- Resource Planning and Team Structure
+- Timeline and Schedule
+- Risk Assessment and Mitigation
+
+## 8. Quality Assurance
+- Testing Strategy and Approach
+- Quality Standards and Metrics
+- Review and Validation Process
+- Deployment and Launch Criteria
+
+## 9. Success Metrics and Monitoring
+- Key Performance Indicators (KPIs)
+- User Analytics and Tracking
+- Business Metrics and ROI
+- Monitoring and Alerting Strategy
+
+## 10. Appendices
+- Technical Specifications
+- Design Assets and Mockups
+- Research and Validation Data
+- Glossary and Definitions
+```
+
+## Next Steps & Workflow Integration
+
+### Transition to Technical Specifications
+Once your PRD is complete, proceed to detailed technical documentation:
+
+```
+@AAI Agent
+
+My PRD development is complete. Please help me transition to technical specifications.
+
+PRD Summary:
+- Product Vision: [Brief summary]
+- Technical Architecture: [Key technical decisions]
+- Implementation Plan: [Development approach]
+- Quality Requirements: [Testing and quality standards]
+
+Next steps needed:
+1. Detailed technical documentation gathering
+2. API specifications and documentation
+3. Database schema and data model documentation
+4. Development environment setup and configuration
+```
+
+The AAI system will guide you through:
+1. **Technical Specifications** ([05_Specs_Docs.mdc](agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc)) - Detailed technical documentation
+2. **Implementation Planning** ([07_Start_Building.mdc](agents/_store/projects/_core/rules/01__AI-RUN/07_Start_Building.mdc)) - Development execution
+
+## Best Practices
+
+### PRD Development Excellence
+1. **Requirements Clarity** - Ensure all requirements are specific, measurable, and testable
+2. **Technical Feasibility** - Validate technical approach and architecture decisions
+3. **User-Centric Design** - Prioritize user needs and experience throughout
+4. **Implementation Focus** - Create actionable specifications for development teams
+5. **Quality Standards** - Define clear quality criteria and testing approaches
+
+### Using AAI for PRD Development
+1. **Comprehensive Context** - Provide detailed core concept and business context
+2. **Technical Depth** - Leverage AI for technical architecture and design decisions
+3. **Iterative Refinement** - Use multiple rounds of AI assistance to deepen specifications
+4. **Cross-Validation** - Validate AI recommendations with business and technical requirements
+5. **Implementation Readiness** - Ensure PRD provides clear guidance for development
+
+### Quality Assurance
+1. **Requirement Validation** - Verify all requirements are complete and consistent
+2. **Technical Validation** - Confirm technical architecture and design decisions
+3. **User Validation** - Ensure user experience and interface specifications meet user needs
+4. **Implementation Validation** - Verify PRD provides sufficient detail for development
+5. **Success Validation** - Confirm success metrics and monitoring approach
+
+## Expected Outcomes
+
+By completing this PRD development process, you will have:
+
+### Technical Foundation
+- ✅ **Comprehensive Requirements** - Complete functional and non-functional specifications
+- ✅ **Technical Architecture** - Detailed system design and technology specifications
+- ✅ **Implementation Plan** - Clear development roadmap and resource planning
+- ✅ **Quality Framework** - Comprehensive testing and quality assurance strategy
+
+### Development Readiness
+- ✅ **User Experience Design** - Complete UX/UI specifications and design guidelines
+- ✅ **API Specifications** - Detailed API design and integration requirements
+- ✅ **Data Architecture** - Complete database design and data model specifications
+- ✅ **Deployment Strategy** - Clear deployment and infrastructure requirements
+
+### Project Management
+- ✅ **Success Metrics** - Measurable KPIs and monitoring strategy
+- ✅ **Risk Management** - Identified risks with mitigation strategies
+- ✅ **Resource Planning** - Team structure and skill requirements
+- ✅ **Timeline Planning** - Detailed development schedule and milestones
+
+---
+
+*This enhanced PRD generation framework, powered by AAI intelligence, transforms strategic concepts into comprehensive technical blueprints ready for implementation.*

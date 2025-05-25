@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-05-25T04:03:54.978Z",
+  "timestamp": "2025-05-25T05:11:30.212Z",
   "summary": {
     "memoryUsage": "3.9 MB",
-    "totalFiles": 1213,
-    "bottlenecks": 1,
+    "totalFiles": 924,
+    "bottlenecks": 0,
     "optimizations": 2
   },
   "metrics": {
@@ -11,38 +11,30 @@
       "nodeVersion": "v20.19.2",
       "platform": "darwin",
       "arch": "x64",
-      "startTime": "2025-05-25T04:03:54.916Z"
+      "startTime": "2025-05-25T05:11:30.158Z"
     },
     "memory": {
       "heapUsed": 4042432,
       "heapTotal": 4689920,
       "external": 1444748,
-      "rss": 26701824,
-      "timestamp": "2025-05-25T04:03:54.919Z"
+      "rss": 26636288,
+      "timestamp": "2025-05-25T05:11:30.160Z"
     },
     "operations": {},
     "suggestions": [],
     "filesystem": {
-      "totalFiles": 1213,
-      "totalSize": 19225875,
-      "scanTime": 56.779942000000005,
-      "averageFileSize": 15849.855729596044
+      "totalFiles": 924,
+      "totalSize": 16047901,
+      "scanTime": 49.52816800000001,
+      "averageFileSize": 17367.858225108226
     },
     "memorySystem": {
-      "size": 603018,
+      "size": 623580,
       "files": 21,
-      "scanTime": 0.2800719999999899,
+      "scanTime": 0.34214000000000055,
       "efficiency": "Optimized"
     },
-    "bottlenecks": [
-      {
-        "type": "filesystem",
-        "severity": "medium",
-        "description": "Large number of files in project",
-        "suggestion": "Consider archiving old files",
-        "command": "npm run AAI:cleanup"
-      }
-    ],
+    "bottlenecks": [],
     "optimizations": [
       {
         "type": "file-operations",

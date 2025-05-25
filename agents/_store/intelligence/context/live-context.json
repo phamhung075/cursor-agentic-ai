@@ -1,6 +1,6 @@
 {
   "session": {
-    "startTime": "2025-05-25T02:24:13.963Z",
+    "startTime": "2025-05-25T04:26:00.487Z",
     "commands": [],
     "files": [],
     "patterns": []
@@ -559,258 +559,263 @@
       "agents/_store/projects/_core/rules/01__AI-RUN/03_Core_Concept.mdc",
       "agents/_store/projects/_core/rules/01__AI-RUN/04_PRD_Generation.mdc",
       "agents/_store/projects/_core/rules/01__AI-RUN/05_Specs_Docs.mdc",
-      "agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc"
+      "agents/_store/projects/_core/rules/01__AI-RUN/08_Testing.mdc",
+      "agents/_store/logs/core_path_fix_corrected_report.json",
+      "agents/_store/logs/core_path_fix_final_report.json",
+      "agents/_store/logs/core_path_fix_proper_report.json",
+      "agents/_store/logs/core_path_fix_final_corrected_report.json",
+      "agents/_store/logs/core_link_restoration_report.json"
     ],
     "recentChanges": [
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:05.760Z"
+        "timestamp": "2025-05-25T05:22:31.914Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:05.861Z"
+        "timestamp": "2025-05-25T05:22:32.014Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:05.962Z"
+        "timestamp": "2025-05-25T05:22:32.114Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:06.063Z"
+        "timestamp": "2025-05-25T05:22:32.214Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:06.164Z"
+        "timestamp": "2025-05-25T05:22:32.315Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:06.265Z"
+        "timestamp": "2025-05-25T05:22:32.416Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:06.366Z"
+        "timestamp": "2025-05-25T05:22:32.516Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:06.467Z"
+        "timestamp": "2025-05-25T05:22:32.616Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:06.568Z"
+        "timestamp": "2025-05-25T05:22:32.717Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:06.669Z"
+        "timestamp": "2025-05-25T05:22:32.818Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:06.770Z"
+        "timestamp": "2025-05-25T05:22:32.919Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:06.870Z"
+        "timestamp": "2025-05-25T05:22:33.020Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:06.970Z"
+        "timestamp": "2025-05-25T05:22:33.120Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:07.071Z"
+        "timestamp": "2025-05-25T05:22:33.221Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:07.172Z"
+        "timestamp": "2025-05-25T05:22:33.321Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:07.273Z"
+        "timestamp": "2025-05-25T05:22:33.422Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:07.373Z"
+        "timestamp": "2025-05-25T05:22:33.523Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:07.473Z"
+        "timestamp": "2025-05-25T05:22:33.624Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:07.574Z"
+        "timestamp": "2025-05-25T05:22:33.725Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:07.674Z"
+        "timestamp": "2025-05-25T05:22:33.826Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:07.774Z"
+        "timestamp": "2025-05-25T05:22:33.928Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:07.876Z"
+        "timestamp": "2025-05-25T05:22:34.027Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:07.976Z"
+        "timestamp": "2025-05-25T05:22:34.128Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:08.078Z"
+        "timestamp": "2025-05-25T05:22:34.229Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:08.179Z"
+        "timestamp": "2025-05-25T05:22:34.330Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:08.280Z"
+        "timestamp": "2025-05-25T05:22:34.431Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:08.381Z"
+        "timestamp": "2025-05-25T05:22:34.531Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:08.481Z"
+        "timestamp": "2025-05-25T05:22:34.632Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:08.582Z"
+        "timestamp": "2025-05-25T05:22:34.732Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:08.683Z"
+        "timestamp": "2025-05-25T05:22:34.832Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:08.783Z"
+        "timestamp": "2025-05-25T05:22:34.933Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:08.884Z"
+        "timestamp": "2025-05-25T05:22:35.033Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:08.985Z"
+        "timestamp": "2025-05-25T05:22:35.134Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:09.086Z"
+        "timestamp": "2025-05-25T05:22:35.235Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:09.187Z"
+        "timestamp": "2025-05-25T05:22:35.336Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:09.287Z"
+        "timestamp": "2025-05-25T05:22:35.437Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:09.388Z"
+        "timestamp": "2025-05-25T05:22:35.538Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:09.489Z"
+        "timestamp": "2025-05-25T05:22:35.638Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:09.590Z"
+        "timestamp": "2025-05-25T05:22:35.739Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:09.691Z"
+        "timestamp": "2025-05-25T05:22:35.839Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:09.791Z"
+        "timestamp": "2025-05-25T05:22:35.940Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:09.892Z"
+        "timestamp": "2025-05-25T05:22:36.040Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:09.992Z"
+        "timestamp": "2025-05-25T05:22:36.141Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:10.094Z"
+        "timestamp": "2025-05-25T05:22:36.242Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:10.195Z"
+        "timestamp": "2025-05-25T05:22:36.343Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:10.295Z"
+        "timestamp": "2025-05-25T05:22:36.444Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:10.396Z"
+        "timestamp": "2025-05-25T05:22:36.544Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:10.496Z"
+        "timestamp": "2025-05-25T05:22:36.645Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:10.597Z"
+        "timestamp": "2025-05-25T05:22:36.747Z"
       },
       {
         "path": "agents/_store/intelligence/context/live-context.json",
         "action": "modified",
-        "timestamp": "2025-05-25T04:17:10.697Z"
+        "timestamp": "2025-05-25T05:22:36.901Z"
       }
     ],
     "workingDirectory": "/Users/admin/Documents/Hung/AI/cursor-agentic-ai",
@@ -939,8 +944,31 @@
         "agents/_store/projects/_core/docs/path-fixing",
         "agents/_store/projects/_core/rules",
         "agents/_store/projects/_core/rules/00__TOOLS",
+        "agents/_store/projects/_core/rules/00__TOOLS/mdc:..",
+        "agents/_store/projects/_core/rules/00__TOOLS/mdc:../01__AI-RUN",
+        "agents/_store/projects/_core/rules/00__TOOLS/mdc:../02__AI-DOCS",
+        "agents/_store/projects/_core/rules/00__TOOLS/mdc:../02__AI-DOCS/TaskManagement",
+        "agents/_store/projects/_core/rules/00__TOOLS/mdc:../03__SPECS",
+        "agents/_store/projects/_core/rules/00__TOOLS/mdc:agents",
+        "agents/_store/projects/_core/rules/00__TOOLS/mdc:agents/_store",
+        "agents/_store/projects/_core/rules/00__TOOLS/mdc:agents/_store/projects",
+        "agents/_store/projects/_core/rules/00__TOOLS/mdc:agents/_store/projects/_core",
+        "agents/_store/projects/_core/rules/00__TOOLS/mdc:agents/_store/projects/_core/path",
+        "agents/_store/projects/_core/rules/00__TOOLS/mdc:agents/_store/projects/_core/path/to",
         "agents/_store/projects/_core/rules/01__AI-RUN",
         "agents/_store/projects/_core/rules/01__AI-RUN/Template",
+        "agents/_store/projects/_core/rules/01__AI-RUN/agents",
+        "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store",
+        "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects",
+        "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core",
+        "agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/docs",
+        "agents/_store/projects/_core/rules/01__AI-RUN/mdc:..",
+        "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN",
+        "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS",
+        "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/Deployment",
+        "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation",
+        "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/TaskManagement",
+        "agents/_store/projects/_core/rules/01__AI-RUN/mdc:../03__SPECS",
         "agents/_store/projects/_core/rules/02__AI-DOCS",
         "agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder",
         "agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/CommonTasks",
@@ -954,6 +982,26 @@
         "agents/_store/projects/_core/rules/02__AI-DOCS/Documentation",
         "agents/_store/projects/_core/rules/02__AI-DOCS/Integrations",
         "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/01__AI-RUN",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Conventions",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/TaskManagement",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents/_store",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents/_store/projects",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents/_store/projects/_core",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents/_store/projects/_core/projet",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents/_store/projects/_core/projet/PRD_template",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/01_Idea",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/02_Market_Research",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/03_Core_Concept",
+        "agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/PRD_template",
         "agents/_store/projects/_core/rules/03__SPECS",
         "agents/_store/projects/_core/rules/03__SPECS/agents",
         "agents/_store/projects/_core/rules/03__SPECS/agents/_store",
@@ -978,6 +1026,9 @@
         "agents/_store/tests",
         "agents/_store/tests/integration",
         "agents/_store/tests/system",
+        "agents/agents",
+        "agents/agents/_store",
+        "agents/agents/_store/reports",
         "agents/cursor-integration",
         "agents/self-improvement",
         "agents/self-improvement/cli",
@@ -1243,6 +1294,125 @@
         "backups/core-path-fix-2025-05-24T15-46-33-877Z/agents/_store/projects/_core/rules/projet/03_Core_Concept",
         "backups/core-path-fix-2025-05-24T15-46-33-877Z/agents/_store/projects/_core/rules/projet/PRD_template",
         "backups/core-path-fix-2025-05-24T15-46-33-877Z/agents/_store/projects/_core/rules/tasks",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/docs",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/docs/path-fixing",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/00__TOOLS",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/01__AI-RUN",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/01__AI-RUN/Template",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/CommonTasks",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/ContextPrime",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/Refactoring",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/TestGenerators",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/Architecture",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/BusinessLogic",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/Deployment",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/Integrations",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/03__SPECS",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/03__SPECS/agents",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/03__SPECS/agents/_store",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/03__SPECS/agents/_store/project-memory",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/03__SPECS/bugfixes",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/03__SPECS/features",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/projet",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/projet/01_Idea",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/projet/02_Market_Research",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/projet/03_Core_Concept",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/rules/projet/PRD_template",
+        "backups/core-path-fix-2025-05-25T04-24-09-189Z/agents/_store/projects/_core/tasks",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/docs",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/docs/path-fixing",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS/mdc:..",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS/mdc:../01__AI-RUN",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS/mdc:../02__AI-DOCS",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS/mdc:../02__AI-DOCS/TaskManagement",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS/mdc:../03__SPECS",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS/mdc:agents",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS/mdc:agents/_store",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS/mdc:agents/_store/projects",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS/mdc:agents/_store/projects/_core",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS/mdc:agents/_store/projects/_core/path",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/00__TOOLS/mdc:agents/_store/projects/_core/path/to",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/Template",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/agents",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/agents/_store",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/agents/_store/projects/_core/docs",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/mdc:..",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/mdc:../01__AI-RUN",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/Deployment",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/Documentation",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/mdc:../02__AI-DOCS/TaskManagement",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/01__AI-RUN/mdc:../03__SPECS",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/CommonTasks",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/ContextPrime",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/Refactoring",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/AI-Coder/TestGenerators",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/Architecture",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/BusinessLogic",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/Conventions",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/Deployment",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/Documentation",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/Integrations",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/01__AI-RUN",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Conventions",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/Documentation",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/02__AI-DOCS/TaskManagement",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents/_store",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents/_store/projects",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents/_store/projects/_core",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents/_store/projects/_core/projet",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/agents/_store/projects/_core/projet/PRD_template",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/01_Idea",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/02_Market_Research",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/03_Core_Concept",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/mdc:agents/_store/projects/_core/projet/PRD_template",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/03__SPECS",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/03__SPECS/agents",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/03__SPECS/agents/_store",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/03__SPECS/agents/_store/project-memory",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/03__SPECS/agents/_store/project-memory/corrupted-backup-2025-05-24T09-13-58-352Z/01__AI-RUN",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/03__SPECS/bugfixes",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/03__SPECS/features",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/projet",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/projet/01_Idea",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/projet/02_Market_Research",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/projet/03_Core_Concept",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/rules/projet/PRD_template",
+        "backups/core-path-fix-2025-05-25T04-25-16-272Z/agents/_store/projects/_core/tasks",
         "backups/cursor-rules-2025-05-24_16-56-14",
         "backups/cursor-rules-2025-05-24_16-56-14/00__TOOLS",
         "backups/cursor-rules-2025-05-24_16-56-14/01__AI-RUN",
@@ -1283,19 +1453,19 @@
         "src/scripts"
       ],
       "fileTypes": {
-        "": 37,
+        "": 43,
         ".md": 19,
-        ".json": 187,
+        ".json": 194,
         ".js": 74,
-        ".py": 12,
+        ".py": 14,
         ".content": 18,
-        ".mdc": 845,
-        ".log": 1,
-        ".sh": 13,
+        ".mdc": 1077,
+        ".log": 2,
+        ".sh": 14,
         ".env": 1,
         ".txt": 1
       },
-      "totalFiles": 1208
+      "totalFiles": 1457
     },
     "availableCommands": [
       "launch",
@@ -1351,14 +1521,14 @@
     "performance": {},
     "health": {
       "memoryUsage": {
-        "rss": 38821888,
+        "rss": 39530496,
         "heapTotal": 9408512,
-        "heapUsed": 6092064,
+        "heapUsed": 5207112,
         "external": 1415320,
         "arrayBuffers": 10515
       },
-      "uptime": 0.149038912,
-      "timestamp": "2025-05-25T02:24:14.040Z"
+      "uptime": 0.134833732,
+      "timestamp": "2025-05-25T04:26:00.564Z"
     },
     "suggestions": [
       {
