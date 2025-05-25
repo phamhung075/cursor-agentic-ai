@@ -29,6 +29,11 @@
         "description": "No description available"
       },
       {
+        "name": "fix_single_mdc.py",
+        "path": "agents/_store/scripts/fix_single_mdc.py",
+        "description": "No description available"
+      },
+      {
         "name": "install-agent-ai.js",
         "path": "agents/_store/scripts/install-agent-ai.js",
         "description": "No description available"
@@ -91,6 +96,11 @@
       {
         "name": "update_files.sh",
         "path": "agents/_store/scripts/update_files.sh",
+        "description": "No description available"
+      },
+      {
+        "name": "validate_mdc_paths.sh",
+        "path": "agents/_store/scripts/validate_mdc_paths.sh",
         "description": "No description available"
       }
     ]
@@ -220,7 +230,7 @@
       "command": "node agents/_store/scripts/simple-cursor-setup.js"
     }
   ],
-  "totalFiles": 20,
+  "totalFiles": 22,
   "categories": {
     "scripts": {
       "core": "Core framework management",
@@ -237,5 +247,5 @@
       "performance": "Performance tests"
     }
   },
-  "lastUpdated": "2025-05-25T02:39:43.432Z"
+  "lastUpdated": "2025-05-25T03:09:43.500Z"
 }

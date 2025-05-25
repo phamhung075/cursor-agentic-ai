@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T02:39:43.445Z",
+  "timestamp": "2025-05-25T03:09:43.512Z",
   "source": "Script Analysis → Cursor Improvements",
   "categories": {
     "documentation": [
@@ -26,6 +26,13 @@
       },
       {
         "script": "demo-aai-cursor-integration.js",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
+        "script": "fix_single_mdc.py",
         "issue": "Missing or inadequate description",
         "suggestion": "Add comprehensive JSDoc comments and description",
         "priority": "medium",
@@ -117,6 +124,13 @@
       },
       {
         "script": "update_files.sh",
+        "issue": "Missing or inadequate description",
+        "suggestion": "Add comprehensive JSDoc comments and description",
+        "priority": "medium",
+        "estimatedTime": "10-15 minutes"
+      },
+      {
+        "script": "validate_mdc_paths.sh",
         "issue": "Missing or inadequate description",
         "suggestion": "Add comprehensive JSDoc comments and description",
         "priority": "medium",

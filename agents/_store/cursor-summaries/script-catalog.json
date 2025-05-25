@@ -1,8 +1,8 @@
 {
-  "timestamp": "2025-05-25T02:39:43.445Z",
+  "timestamp": "2025-05-25T03:09:43.512Z",
   "source": "AAI Script Manager → Cursor Integration",
   "summary": {
-    "totalScripts": 20,
+    "totalScripts": 22,
     "categories": 6,
     "npmIntegrated": 25
   },
@@ -148,6 +148,44 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/demo-aai-cursor-integration.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "fix_single_mdc.py",
+        "path": "agents/_store/scripts/fix_single_mdc.py",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/fix_single_mdc.py"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/fix_single_mdc.py"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/fix_single_mdc.py",
               "Add description"
             ]
           }
@@ -642,6 +680,44 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/update_files.sh",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "validate_mdc_paths.sh",
+        "path": "agents/_store/scripts/validate_mdc_paths.sh",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/validate_mdc_paths.sh"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/validate_mdc_paths.sh"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/validate_mdc_paths.sh",
               "Add description"
             ]
           }
