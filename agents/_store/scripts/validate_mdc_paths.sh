@@ -19,28 +19,28 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
 # Function to print colored output
-print_status() {
-    echo -e "${BLUE}[INFO]${NC} $1"
+log_info() {
+    printf "${BLUE}[INFO]${NC} $1\n"
 }
 
-print_success() {
-    echo -e "${GREEN}[SUCCESS]${NC} $1"
+log_success() {
+    printf "${GREEN}[SUCCESS]${NC} $1\n"
 }
 
-print_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
+log_warning() {
+    printf "${YELLOW}[WARNING]${NC} $1\n"
 }
 
-print_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
+log_error() {
+    printf "${RED}[ERROR]${NC} $1\n"
 }
 
 print_header() {
-    echo -e "${PURPLE}$1${NC}"
+    printf "${PURPLE}$1${NC}\n"
 }
 
-print_command() {
-    echo -e "${CYAN}$1${NC}"
+print_subheader() {
+    printf "${CYAN}$1${NC}\n"
 }
 
 # Function to show usage
@@ -98,71 +98,71 @@ EOF
 
 # Function to check prerequisites
 check_prerequisites() {
-    print_status "Checking prerequisites..."
+    log_info "Checking prerequisites..."
     
     # Check if Python 3 is available
     if ! command -v python3 &> /dev/null; then
-        print_error "Python 3 is required but not installed"
+        log_error "Python 3 is required but not installed"
         exit 1
     fi
     
     # Check if validator script exists
     if [[ ! -f "$VALIDATOR_SCRIPT" ]]; then
-        print_error "Validator script not found: $VALIDATOR_SCRIPT"
+        log_error "Validator script not found: $VALIDATOR_SCRIPT"
         exit 1
     fi
     
     # Make sure script is executable
     chmod +x "$VALIDATOR_SCRIPT"
     
-    print_success "Prerequisites check passed"
+    log_success "Prerequisites check passed"
 }
 
 # Function to validate files (dry run)
 validate_files() {
     local verbose=${1:-false}
     
-    print_header "🔍 VALIDATING MDC FILES (DRY RUN)"
+    log_info "🔍 VALIDATING MDC FILES (DRY RUN)"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     
     local cmd="python3 \"$VALIDATOR_SCRIPT\" --project-root \"$PROJECT_ROOT\""
     
     if [[ "$verbose" == "true" ]]; then
-        print_command "Running: $cmd"
+        print_subheader "Running: $cmd"
     fi
     
     eval "$cmd"
     
     echo ""
-    print_status "Validation complete. No files were modified."
-    print_status "Use 'fix' command to apply changes."
+    log_info "Validation complete. No files were modified."
+    log_info "Use 'fix' command to apply changes."
 }
 
 # Function to fix files
 fix_files() {
     local verbose=${1:-false}
     
-    print_header "🔧 FIXING MDC FILES"
+    log_info "🔧 FIXING MDC FILES"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     
-    print_warning "This will modify your MDC files. Make sure you have backups!"
+    log_warning "This will modify your MDC files. Make sure you have backups!"
     read -p "Continue? (y/N): " -n 1 -r
     echo
     
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        print_status "Operation cancelled"
+        log_info "Operation cancelled"
         exit 0
     fi
     
     local cmd="python3 \"$VALIDATOR_SCRIPT\" --fix --project-root \"$PROJECT_ROOT\""
     
     if [[ "$verbose" == "true" ]]; then
-        print_command "Running: $cmd"
+        print_subheader "Running: $cmd"
     fi
     
     eval "$cmd"
     
-    print_success "MDC files have been fixed!"
+    log_success "MDC files have been fixed!"
 }
 
 # Function to check specific file
@@ -171,28 +171,28 @@ check_file() {
     local verbose=${2:-false}
     
     if [[ -z "$file" ]]; then
-        print_error "No file specified"
+        log_error "No file specified"
         show_usage
         exit 1
     fi
     
     if [[ ! -f "$file" ]]; then
-        print_error "File not found: $file"
+        log_error "File not found: $file"
         exit 1
     fi
     
-    print_header "🔍 CHECKING FILE: $file"
+    log_info "🔍 CHECKING FILE: $file"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     
     # For now, run full validation but focus output on the specific file
     local cmd="python3 \"$VALIDATOR_SCRIPT\" --project-root \"$PROJECT_ROOT\""
     
     if [[ "$verbose" == "true" ]]; then
-        print_command "Running: $cmd"
+        print_subheader "Running: $cmd"
     fi
     
     eval "$cmd" | grep -A 10 -B 2 "$(basename "$file")" || {
-        print_status "Running full validation to check file..."
+        log_info "Running full validation to check file..."
         eval "$cmd"
     }
 }
@@ -201,18 +201,18 @@ check_file() {
 update_and_validate() {
     local verbose=${1:-false}
     
-    print_header "📋 UPDATING CORE FILES LIST & VALIDATING"
+    log_info "📋 UPDATING CORE FILES LIST & VALIDATING"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     
     local cmd="python3 \"$VALIDATOR_SCRIPT\" --update-list --project-root \"$PROJECT_ROOT\""
     
     if [[ "$verbose" == "true" ]]; then
-        print_command "Running: $cmd"
+        print_subheader "Running: $cmd"
     fi
     
     eval "$cmd"
     
-    print_success "Core files list updated and validation complete!"
+    log_success "Core files list updated and validation complete!"
 }
 
 # Function to generate report
@@ -224,39 +224,39 @@ generate_report() {
         report_file="mdc_validation_report_$(date +%Y%m%d_%H%M%S).md"
     fi
     
-    print_header "📄 GENERATING VALIDATION REPORT"
+    log_info "📄 GENERATING VALIDATION REPORT"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     
     local cmd="python3 \"$VALIDATOR_SCRIPT\" --report \"$report_file\" --project-root \"$PROJECT_ROOT\""
     
     if [[ "$verbose" == "true" ]]; then
-        print_command "Running: $cmd"
+        print_subheader "Running: $cmd"
     fi
     
     eval "$cmd"
     
-    print_success "Report generated: $report_file"
+    log_success "Report generated: $report_file"
 }
 
 # Function to show project status
 show_status() {
-    print_header "📊 PROJECT STATUS"
+    log_info "📊 PROJECT STATUS"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     
-    print_status "Project Root: $PROJECT_ROOT"
-    print_status "Validator Script: $VALIDATOR_SCRIPT"
+    log_info "Project Root: $PROJECT_ROOT"
+    log_info "Validator Script: $VALIDATOR_SCRIPT"
     
     # Count MDC files
     local mdc_count=$(find "$PROJECT_ROOT" -name "*.mdc" -type f | wc -l)
-    print_status "MDC Files Found: $mdc_count"
+    log_info "MDC Files Found: $mdc_count"
     
     # Check if core files list exists
     local core_files_list="$PROJECT_ROOT/agents/_store/projects/_core/rules/00__TOOLS/cursor_files_list.mdc"
     if [[ -f "$core_files_list" ]]; then
         local list_count=$(wc -l < "$core_files_list")
-        print_status "Core Files List: $list_count entries"
+        log_info "Core Files List: $list_count entries"
     else
-        print_warning "Core files list not found"
+        log_warning "Core files list not found"
     fi
     
     echo ""
@@ -325,7 +325,7 @@ main() {
             show_usage
             ;;
         *)
-            print_error "Unknown command: $command"
+            log_error "Unknown command: $command"
             echo ""
             show_usage
             exit 1

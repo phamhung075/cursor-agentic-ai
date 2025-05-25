@@ -178,5 +178,83 @@
     "dependencies": [],
     "estimatedTime": 25,
     "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T09:40:15.913Z",
+    "originalRequest": "Fix npm run task to terminate properly when finished instead of hanging",
+    "context": {},
+    "intent": "fix",
+    "complexity": "medium",
+    "requiredActions": [
+      "general_task"
+    ],
+    "dependencies": [],
+    "estimatedTime": 20,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T09:42:57.036Z",
+    "originalRequest": "Test termination fix - this should exit properly",
+    "context": {},
+    "intent": "fix",
+    "complexity": "simple",
+    "requiredActions": [
+      "testing"
+    ],
+    "dependencies": [],
+    "estimatedTime": 10,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T09:49:43.195Z",
+    "originalRequest": "Test the echo task fix - should create fewer tasks",
+    "context": {},
+    "intent": "create",
+    "complexity": "medium",
+    "requiredActions": [
+      "testing"
+    ],
+    "dependencies": [],
+    "estimatedTime": 20,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T09:51:02.663Z",
+    "originalRequest": "Final test - no more echo tasks should be created",
+    "context": {},
+    "intent": "create",
+    "complexity": "medium",
+    "requiredActions": [
+      "testing"
+    ],
+    "dependencies": [],
+    "estimatedTime": 20,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T09:57:12.856Z",
+    "originalRequest": "Fix Cursor task detection - prevent all terminal commands from being detected as tasks by Cursor",
+    "context": {},
+    "intent": "fix",
+    "complexity": "medium",
+    "requiredActions": [
+      "general_task"
+    ],
+    "dependencies": [],
+    "estimatedTime": 20,
+    "priority": "normal"
+  },
+  {
+    "timestamp": "2025-05-25T10:04:47.750Z",
+    "originalRequest": "Find all code that uses echo commands and replace them with printf to prevent Cursor task detection issues",
+    "context": {},
+    "intent": "general",
+    "complexity": "medium",
+    "requiredActions": [
+      "code_writing"
+    ],
+    "dependencies": [],
+    "estimatedTime": 20,
+    "priority": "normal"
   }
 ]

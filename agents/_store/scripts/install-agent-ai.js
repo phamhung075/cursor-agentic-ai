@@ -51,7 +51,7 @@ class AgentAIInstaller {
       "AAI:legacy": "node agents/_store/scripts/self_improvement_agent_legacy.js",
       "AAI:demo": "node agents/_store/scripts/demo_agent.js",
       "AAI:install-deps": "npm install",
-      "AAI:test": "echo \"Tests to be implemented\" && exit 0",
+      "AAI:test": "printf \"Tests to be implemented\\n\" && exit 0",
       "AAI:test-agent": "node agents/_store/tests/test_new_agent.js",
       "AAI:test-system": "node agents/_store/tests/test_new_system.js",
       "AAI:test-integration": "node agents/_store/tests/test_autopilot_integration.js",

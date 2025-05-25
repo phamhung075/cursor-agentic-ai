@@ -1,0 +1,37 @@
+{
+  "id": "session-1748167032858-tuyxntgc5",
+  "userRequest": "Fix Cursor task detection - prevent all terminal commands from being detected as tasks by Cursor",
+  "tasks": [
+    {
+      "id": "task-1748167032858-v7a9urd9s",
+      "title": "Fix Cursor task detection - prevent all terminal commands from being detected as tasks by Cursor - Task",
+      "description": "Task generated from: \"Fix Cursor task detection - prevent all terminal commands from being detected as tasks by Cursor\"\nType: general\nCategory: task",
+      "type": "general",
+      "category": "task",
+      "status": "pending",
+      "priority": "normal",
+      "estimatedTime": 10,
+      "dependencies": [],
+      "validation": [
+        "task_complete"
+      ],
+      "created": "2025-05-25T09:57:12.858Z",
+      "updated": "2025-05-25T09:57:12.858Z",
+      "metadata": {
+        "sessionId": "session-1748167032852-zc32qksvw",
+        "originalRequest": "Fix Cursor task detection - prevent all terminal commands from being detected as tasks by Cursor",
+        "intent": "fix"
+      }
+    }
+  ],
+  "status": "active",
+  "created": "2025-05-25T09:57:12.858Z",
+  "updated": "2025-05-25T09:57:12.858Z",
+  "progress": {
+    "total": 1,
+    "completed": 0,
+    "pending": 1,
+    "failed": 0
+  },
+  "results": []
+}

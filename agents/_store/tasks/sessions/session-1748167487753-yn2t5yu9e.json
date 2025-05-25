@@ -1,7 +1,7 @@
 {
   "id": "session-1748167487753-yn2t5yu9e",
-  "userCommand": "Find all code that uses echo commands and replace them with printf to prevent Cursor task detection issues",
-  "aaiTasks": [
+  "userRequest": "Find all code that uses echo commands and replace them with printf to prevent Cursor task detection issues",
+  "tasks": [
     {
       "id": "task-1748167487752-0g7ncyt9n",
       "title": "General - Implementation",
@@ -27,18 +27,14 @@
       }
     }
   ],
-  "cursorTasks": [],
-  "executionPlan": {
-    "sessionId": "session-1748167487753-yn2t5yu9e",
-    "totalTasks": 0,
-    "executionOrder": [],
-    "instructions": [
-      "1. Open Command Palette (Ctrl/Cmd+Shift+P)",
-      "2. Type 'Tasks: Run Task'",
-      "3. Select the first task to start execution",
-      "4. Follow tasks in order for best results"
-    ]
+  "status": "active",
+  "created": "2025-05-25T10:04:47.753Z",
+  "updated": "2025-05-25T10:04:47.753Z",
+  "progress": {
+    "total": 1,
+    "completed": 0,
+    "pending": 1,
+    "failed": 0
   },
-  "status": "ready",
-  "created": "2025-05-25T10:04:47.755Z"
+  "results": []
 }

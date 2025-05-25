@@ -30,6 +30,8 @@ class CursorChatProcessor {
     this.isActive = false;
     this.lastProcessedCommand = null;
     this.currentSession = null;
+    this.watchers = []; // Track watchers for cleanup
+    this.oneShotMode = false; // Flag for single command processing
     
     // Enhanced dependency analysis triggers
     this.dependencyTriggers = [
@@ -52,17 +54,27 @@ class CursorChatProcessor {
   /**
    * Initialize the chat processor
    */
-  async initialize() {
+  async initialize(oneShotMode = false) {
     console.log('🗣️ Cursor Chat Processor v' + this.version);
     console.log('━'.repeat(50));
 
+    this.oneShotMode = oneShotMode;
+
     await this.taskManager.initialize();
     await this.aaiIntegration.initialize();
-    await this.setupChatMonitoring();
+    
+    // Only setup monitoring if not in one-shot mode
+    if (!oneShotMode) {
+      await this.setupChatMonitoring();
+      console.log('👁️ Command monitoring active');
+    }
     
     this.isActive = true;
     console.log('✅ Chat command processing active');
-    console.log('🎯 Ready to process user chat commands!');
+    
+    if (!oneShotMode) {
+      console.log('🎯 Ready to process user chat commands!');
+    }
   }
 
   /**
@@ -102,6 +114,9 @@ class CursorChatProcessor {
       await this.processNewCommands();
     });
 
+    // Track watcher for cleanup
+    this.watchers.push(watcher);
+
     // Also provide a direct API for command processing
     this.setupCommandAPI();
     
@@ -131,6 +146,9 @@ class CursorChatProcessor {
         console.warn('⚠️ Error processing command API:', error.message);
       }
     });
+
+    // Track watcher for cleanup
+    this.watchers.push(watcher);
   }
 
   /**
@@ -383,42 +401,25 @@ class CursorChatProcessor {
       }
     }
 
-    // Add header comment for user command
-    const commandHeader = {
-      label: `🗣️ User Command: ${userCommand}`,
-      type: "shell",
-      command: "echo",
-      args: [`"Processing: ${userCommand}"`],
-      group: "build",
-      presentation: {
-        echo: true,
-        reveal: "always",
-        focus: true,
-        panel: "new"
-      },
-      detail: `Generated from user command: "${userCommand}"`,
-      metadata: {
-        isCommandHeader: true,
-        userCommand: userCommand,
-        timestamp: new Date().toISOString()
-      }
-    };
-
-    // Combine tasks: header + new tasks + existing non-command tasks
+    // Filter out old command headers and add only actionable tasks
     const filteredExistingTasks = existingTasks.tasks.filter(task => 
       !task.metadata?.isCommandHeader && !task.metadata?.userCommand
     );
 
-    existingTasks.tasks = [
-      commandHeader,
-      ...cursorTasks,
-      ...filteredExistingTasks
-    ];
+    // Only add new tasks if they exist (skip empty task arrays)
+    if (cursorTasks.length > 0) {
+      existingTasks.tasks = [
+        ...cursorTasks,
+        ...filteredExistingTasks
+      ];
+    } else {
+      existingTasks.tasks = filteredExistingTasks;
+    }
 
     // Write updated tasks
     fs.writeFileSync(this.tasksPath, JSON.stringify(existingTasks, null, 2));
     
-    console.log(`✅ Updated .cursor/tasks.json with ${cursorTasks.length + 1} tasks`);
+    console.log(`✅ Updated .cursor/tasks.json with ${cursorTasks.length} tasks`);
   }
 
   /**
@@ -460,10 +461,32 @@ class CursorChatProcessor {
    */
   async processCommand(userCommand, context = {}) {
     if (!this.isActive) {
-      await this.initialize();
+      await this.initialize(true); // Use one-shot mode for single commands
     }
     
-    return await this.processUserCommand(userCommand, context);
+    const result = await this.processUserCommand(userCommand, context);
+    
+    // Clean up watchers if in one-shot mode
+    if (this.oneShotMode) {
+      this.cleanup();
+    }
+    
+    return result;
+  }
+
+  /**
+   * Clean up watchers and resources
+   */
+  cleanup() {
+    if (this.watchers.length > 0) {
+      console.log('🧹 Cleaning up watchers...');
+      this.watchers.forEach(watcher => {
+        if (watcher && typeof watcher.close === 'function') {
+          watcher.close();
+        }
+      });
+      this.watchers = [];
+    }
   }
 
   /**

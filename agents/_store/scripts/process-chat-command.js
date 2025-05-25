@@ -15,7 +15,7 @@ async function processCommand(userCommand) {
   if (!userCommand) {
     console.log('❌ Please provide a command to process');
     console.log('Usage: node process-chat-command.js "your command here"');
-    return;
+    process.exit(1);
   }
 
   console.log('🗣️ Processing Chat Command API');
@@ -32,7 +32,7 @@ async function processCommand(userCommand) {
       console.log('');
       console.log('📋 Results:');
       console.log(`• Session ID: ${session.id}`);
-      console.log(`• Tasks Created: ${session.cursorTasks.length}`);
+      console.log(`• Tasks Created: ${session.cursorTasks ? session.cursorTasks.length : session.taskCount || 'N/A'}`);
       console.log(`• Status: ${session.status}`);
       console.log('');
       console.log('🎯 Next Steps:');
@@ -44,8 +44,12 @@ async function processCommand(userCommand) {
       console.log('• .cursor/tasks.json - Updated with new tasks');
       console.log(`• .cursor/chat-logs/session-${session.id}.json - Session details`);
       console.log('• .cursor/chat-logs/latest-session.json - Latest session info');
+      
+      // Ensure process exits
+      process.exit(0);
     } else {
       console.log('❌ Failed to process command');
+      process.exit(1);
     }
 
   } catch (error) {

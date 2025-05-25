@@ -2,197 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "🗣️ User Command: Test the enhanced dependency analysis system with a sample delete operation",
-      "type": "shell",
-      "command": "echo",
-      "args": [
-        "\"Processing: Test the enhanced dependency analysis system with a sample delete operation\""
-      ],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "new"
-      },
-      "detail": "Generated from user command: \"Test the enhanced dependency analysis system with a sample delete operation\"",
-      "metadata": {
-        "isCommandHeader": true,
-        "userCommand": "Test the enhanced dependency analysis system with a sample delete operation",
-        "timestamp": "2025-05-25T09:33:53.756Z"
-      }
-    },
-    {
-      "label": "📋 1. Planning & Analysis",
-      "type": "shell",
-      "command": "echo",
-      "args": [
-        "\"🎯 PLANNING: Test the enhanced dependency analysis system with a sample delete operation\\n📊 Total Tasks: 2\\n⏱️  Estimated Time: 35 minutes\\n🔍 Analysis complete - ready to proceed\""
-      ],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "new",
-        "clear": true
-      },
-      "detail": "Planning phase for: Test the enhanced dependency analysis system with a sample delete operation",
-      "metadata": {
-        "isPlanning": true,
-        "userCommand": "Test the enhanced dependency analysis system with a sample delete operation"
-      }
-    },
-    {
-      "label": "✅ 2. Modify - Validation",
-      "type": "shell",
-      "command": "echo",
-      "args": [
-        "\"🧪 Testing: Modify - Validation\\n📝 Testing for: Test the enhanced dependency analysis system with a sample delete operation\\n✅ Ready to test\""
-      ],
-      "group": "test",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared",
-        "showReuseMessage": false,
-        "clear": false
-      },
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "problemMatcher": [],
-      "detail": "Task generated from: \"Test the enhanced dependency analysis system with a sample delete operation\"\nType: quality_assurance\nCategory: validation\n\nEstimated time: 15 minutes\nPriority: normal",
-      "dependsOn": [
-        "📋 1. Planning & Analysis"
-      ],
-      "metadata": {
-        "aaiTaskId": "task-1748165633753-3e3qdgwxt",
-        "aaiTaskType": "quality_assurance",
-        "aaiCategory": "validation",
-        "userCommand": "Test the enhanced dependency analysis system with a sample delete operation",
-        "estimatedTime": 15,
-        "priority": "normal",
-        "taskNumber": 2
-      }
-    },
-    {
-      "label": "⚡ 3. Modify - Optimization",
-      "type": "shell",
-      "command": "echo",
-      "args": [
-        "\"⚡ Modify - Optimization\\n📝 Task generated from: \"Test the enhanced dependency analysis system with a sample delete operation\"\nType: improvement\nCategory: optimization\\n✅ Task ready for execution\""
-      ],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared",
-        "showReuseMessage": false,
-        "clear": false
-      },
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "problemMatcher": [],
-      "detail": "Task generated from: \"Test the enhanced dependency analysis system with a sample delete operation\"\nType: improvement\nCategory: optimization\n\nEstimated time: 20 minutes\nPriority: normal",
-      "dependsOn": [
-        "⚡ 2. Previous Task"
-      ],
-      "metadata": {
-        "aaiTaskId": "task-1748165633753-f1m4id6gf",
-        "aaiTaskType": "improvement",
-        "aaiCategory": "optimization",
-        "userCommand": "Test the enhanced dependency analysis system with a sample delete operation",
-        "estimatedTime": 20,
-        "priority": "normal",
-        "taskNumber": 3
-      }
-    },
-    {
-      "label": "🎉 4. Task Completion",
-      "type": "shell",
-      "command": "echo",
-      "args": [
-        "\"✅ COMPLETED: Test the enhanced dependency analysis system with a sample delete operation\\n📊 All 2 tasks executed\\n🎯 User request fulfilled successfully\""
-      ],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": true,
-        "panel": "shared"
-      },
-      "detail": "Completion confirmation for: Test the enhanced dependency analysis system with a sample delete operation",
-      "metadata": {
-        "isCompletion": true,
-        "userCommand": "Test the enhanced dependency analysis system with a sample delete operation"
-      }
-    },
-    {
-      "label": "🔍 2. Analyze Current Settings Status",
-      "type": "shell",
-      "command": "echo",
-      "args": [
-        "\"🔍 ANALYZING SETTINGS.JSON STATUS\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\nChecking current settings.json file...\\nAnalyzing for AAI features and enhanced configuration...\""
-      ],
-      "group": "test",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "dependsOn": [
-        "📋 1. Planning & Analysis"
-      ],
-      "detail": "Analyze current settings.json status and detect if it's the simple or enhanced version"
-    },
-    {
-      "label": "🔍 3. Find Script Causing Overwrite",
-      "type": "shell",
-      "command": "grep",
-      "args": [
-        "-r",
-        "settings\\.json",
-        "agents/_store/scripts/",
-        "package.json"
-      ],
-      "group": "test",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "dependsOn": [
-        "🔍 2. Analyze Current Settings Status"
-      ],
-      "detail": "Search for scripts that modify settings.json and identify the root cause"
-    },
-    {
-      "label": "🔧 4. Fix Package.json Command",
-      "type": "shell",
-      "command": "echo",
-      "args": [
-        "\"🔧 FIXING PACKAGE.JSON CURSOR:SETUP COMMAND\\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\\nUpdating cursor:setup to point to enhanced-cursor-setup.js...\""
-      ],
-      "group": "build",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "shared"
-      },
-      "dependsOn": [
-        "🔍 3. Find Script Causing Overwrite"
-      ],
-      "detail": "Fix package.json to point cursor:setup to enhanced version instead of simple version"
-    },
-    {
-      "label": "🔄 5. Restore Enhanced Settings",
+      "label": "🔄 Restore Enhanced Settings",
       "type": "shell",
       "command": "cp",
       "args": [
@@ -206,13 +16,10 @@
         "focus": false,
         "panel": "shared"
       },
-      "dependsOn": [
-        "🔧 4. Fix Package.json Command"
-      ],
       "detail": "Restore enhanced settings from backup"
     },
     {
-      "label": "🛡️ 6. Enable Protection",
+      "label": "🛡️ Enable Protection",
       "type": "shell",
       "command": "npm",
       "args": [
@@ -226,13 +33,10 @@
         "focus": false,
         "panel": "shared"
       },
-      "dependsOn": [
-        "🔄 5. Restore Enhanced Settings"
-      ],
       "detail": "Enable protection to prevent future overwrites of enhanced settings"
     },
     {
-      "label": "✅ 7. Verify Fix & Status",
+      "label": "✅ Verify Fix & Status",
       "type": "shell",
       "command": "npm",
       "args": [
@@ -247,64 +51,7 @@
         "focus": true,
         "panel": "shared"
       },
-      "dependsOn": [
-        "🛡️ 6. Enable Protection"
-      ],
       "detail": "Final verification that the settings.json overwrite issue is completely fixed"
-    },
-    {
-      "label": "🗣️ User Command: delete test-file.js with dependency analysis",
-      "type": "shell",
-      "command": "echo \"Processing: delete agents/_store/scripts/test-file.js with comprehensive dependency analysis\"",
-      "group": "AAI-Enhanced-Analysis",
-      "detail": "Generated from enhanced dependency analysis for delete operation",
-      "metadata": {
-        "userCommand": "delete agents/_store/scripts/test-file.js",
-        "analysisType": "enhanced-dependency",
-        "timestamp": "2025-05-25T09:34:13.911Z"
-      }
-    },
-    {
-      "label": "🎯 Planning: delete test-file.js",
-      "type": "shell",
-      "command": "echo \"Comprehensive analysis and planning for delete operation\"",
-      "group": "AAI-Enhanced-Analysis",
-      "detail": "Comprehensive analysis and planning for delete operation\n\nType: planning\nPriority: high\nEstimated time: 10 minutes\n\nActions:\n• Review analysis results\n• Confirm operation scope\n• Validate affected files list",
-      "metadata": {
-        "taskId": "analysis-planning",
-        "taskType": "planning",
-        "priority": "high",
-        "estimatedTime": "10 minutes",
-        "files": [],
-        "actions": [
-          "Review analysis results",
-          "Confirm operation scope",
-          "Validate affected files list"
-        ]
-      }
-    },
-    {
-      "label": "✅ Final Cleanup and Verification",
-      "type": "shell",
-      "command": "echo \"Perform final cleanup and comprehensive verification\"",
-      "group": "AAI-Enhanced-Analysis",
-      "detail": "Perform final cleanup and comprehensive verification\n\nType: cleanup\nPriority: high\nEstimated time: 10 minutes\n\nActions:\n• Remove any remaining references\n• Clean up temporary files\n• Verify system functionality\n• Update documentation if needed",
-      "dependsOn": [
-        "analysis-planning"
-      ],
-      "metadata": {
-        "taskId": "final-cleanup",
-        "taskType": "cleanup",
-        "priority": "high",
-        "estimatedTime": "10 minutes",
-        "files": [],
-        "actions": [
-          "Remove any remaining references",
-          "Clean up temporary files",
-          "Verify system functionality",
-          "Update documentation if needed"
-        ]
-      }
     }
   ]
 }

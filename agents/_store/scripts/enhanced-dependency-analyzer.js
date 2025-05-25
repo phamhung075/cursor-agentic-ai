@@ -370,44 +370,89 @@ class EnhancedDependencyAnalyzer {
         
         const cursorTasks = [];
         
-        // User command header
-        cursorTasks.push({
-            label: `🗣️ User Command: ${this.analysisResults.operation} ${path.basename(this.analysisResults.targetFile)} with dependency analysis`,
-            type: "shell",
-            command: `echo "Processing: ${this.analysisResults.operation} ${this.analysisResults.targetFile} with comprehensive dependency analysis"`,
-            group: "AAI-Enhanced-Analysis",
-            detail: `Generated from enhanced dependency analysis for ${this.analysisResults.operation} operation`,
-            metadata: {
-                userCommand: `${this.analysisResults.operation} ${this.analysisResults.targetFile}`,
-                analysisType: 'enhanced-dependency',
-                timestamp: new Date().toISOString()
-            }
-        });
-
-        // Convert each task to Cursor format
+        // Only create actionable tasks, skip informational echo tasks
         for (const task of this.analysisResults.requiredTasks) {
-            cursorTasks.push({
-                label: `${task.title}`,
-                type: "shell",
-                command: `echo "${task.description}"`,
-                group: "AAI-Enhanced-Analysis",
-                detail: `${task.description}\n\nType: ${task.type}\nPriority: ${task.priority}\nEstimated time: ${task.estimatedTime}\n\nActions:\n${task.actions.map(action => `• ${action}`).join('\n')}${task.files ? `\n\nFiles to modify:\n${task.files.map(file => `• ${file}`).join('\n')}` : ''}`,
-                dependsOn: task.dependencies.length > 0 ? task.dependencies : undefined,
-                metadata: {
-                    taskId: task.id,
-                    taskType: task.type,
-                    priority: task.priority,
-                    estimatedTime: task.estimatedTime,
-                    files: task.files || [],
-                    actions: task.actions
-                }
-            });
+            // Skip planning and informational tasks
+            if (task.type === 'planning' || task.type === 'cleanup') {
+                continue;
+            }
+            
+            // Create actionable tasks based on type
+            let taskCommand = this.getActionableCommand(task);
+            
+            if (taskCommand) {
+                cursorTasks.push({
+                    label: `${task.title}`,
+                    type: "shell",
+                    command: taskCommand.command,
+                    args: taskCommand.args || [],
+                    group: "AAI-Enhanced-Analysis",
+                    detail: `${task.description}\n\nType: ${task.type}\nPriority: ${task.priority}\nEstimated time: ${task.estimatedTime}\n\nActions:\n${task.actions.map(action => `• ${action}`).join('\n')}${task.files ? `\n\nFiles to modify:\n${task.files.map(file => `• ${file}`).join('\n')}` : ''}`,
+                    metadata: {
+                        taskId: task.id,
+                        taskType: task.type,
+                        priority: task.priority,
+                        estimatedTime: task.estimatedTime,
+                        files: task.files || [],
+                        actions: task.actions
+                    }
+                });
+            }
         }
 
         // Save to .cursor/tasks.json
         await this.saveCursorTasks(cursorTasks);
         
         console.log(chalk.green(`✅ Created ${cursorTasks.length} Cursor tasks`));
+    }
+
+    /**
+     * Get actionable command for task
+     */
+    getActionableCommand(task) {
+        switch (task.type) {
+            case 'configuration':
+                if (task.files && task.files.length > 0) {
+                    // Open the first configuration file for editing
+                    return {
+                        command: 'code',
+                        args: [task.files[0]]
+                    };
+                }
+                break;
+                
+            case 'code':
+                if (task.files && task.files.length > 0) {
+                    // Open the first code file for editing
+                    return {
+                        command: 'code',
+                        args: [task.files[0]]
+                    };
+                }
+                break;
+                
+            case 'documentation':
+                if (task.files && task.files.length > 0) {
+                    // Open the first documentation file for editing
+                    return {
+                        command: 'code',
+                        args: [task.files[0]]
+                    };
+                }
+                break;
+                
+            case 'verification':
+                // Run a verification command
+                return {
+                    command: 'npm',
+                    args: ['run', 'cursor:status']
+                };
+                
+            default:
+                return null;
+        }
+        
+        return null;
     }
 
     /**

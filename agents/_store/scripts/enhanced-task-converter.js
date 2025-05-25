@@ -21,20 +21,31 @@ class EnhancedTaskConverter {
   async convertToActionableTasks(aaiTasks, userCommand) {
     const actionableTasks = [];
     
-    // Add a planning task first
-    actionableTasks.push(this.createPlanningTask(userCommand, aaiTasks));
-    
-    // Convert each AAI task
+    // Only add actionable tasks, skip informational echo tasks
     for (let i = 0; i < aaiTasks.length; i++) {
       const aaiTask = aaiTasks[i];
       const actionableTask = await this.convertToActionableTask(aaiTask, i + 1, userCommand);
-      actionableTasks.push(actionableTask);
+      
+      // Only add tasks that have real commands (not just echo)
+      if (actionableTask && !this.isInformationalTask(actionableTask)) {
+        actionableTasks.push(actionableTask);
+      }
     }
     
-    // Add a completion task
-    actionableTasks.push(this.createCompletionTask(userCommand, aaiTasks));
-    
     return actionableTasks;
+  }
+
+  /**
+   * Check if task is just informational (echo-based)
+   */
+  isInformationalTask(task) {
+    return task.command === 'echo' && 
+           task.args && 
+           task.args.length > 0 && 
+           (task.args[0].includes('PLANNING:') || 
+            task.args[0].includes('COMPLETED:') ||
+            task.args[0].includes('Testing:') ||
+            task.args[0].includes('Analysis:'));
   }
 
   /**
@@ -99,10 +110,15 @@ class EnhancedTaskConverter {
    * Convert single AAI task to actionable VS Code task
    */
   async convertToActionableTask(aaiTask, taskNumber, userCommand) {
-    const taskLabel = `${this.getTaskIcon(aaiTask.type)} ${taskNumber + 1}. ${aaiTask.title}`;
-    
     // Get specific command based on task type and content
     const command = this.getActionableCommand(aaiTask, userCommand);
+    
+    // Skip tasks that don't have actionable commands
+    if (!command) {
+      return null;
+    }
+    
+    const taskLabel = `${this.getTaskIcon(aaiTask.type)} ${taskNumber}. ${aaiTask.title}`;
     
     return {
       label: taskLabel,
@@ -123,7 +139,6 @@ class EnhancedTaskConverter {
       },
       problemMatcher: command.problemMatcher || [],
       detail: `${aaiTask.description}\n\nEstimated time: ${aaiTask.estimatedTime} minutes\nPriority: ${aaiTask.priority}`,
-      dependsOn: taskNumber === 1 ? ["📋 1. Planning & Analysis"] : [`${this.getTaskIcon(aaiTask.type)} ${taskNumber}. Previous Task`],
       metadata: {
         aaiTaskId: aaiTask.id,
         aaiTaskType: aaiTask.type,
@@ -131,7 +146,7 @@ class EnhancedTaskConverter {
         userCommand: userCommand,
         estimatedTime: aaiTask.estimatedTime,
         priority: aaiTask.priority,
-        taskNumber: taskNumber + 1
+        taskNumber: taskNumber
       }
     };
   }
@@ -383,40 +398,32 @@ export default ${componentName};
    * Configuration command
    */
   getConfigurationCommand(aaiTask, userCommand) {
-    return {
-      command: "echo",
-      args: [`"⚙️ Configuration: ${aaiTask.title}\\n📝 Setup required for: ${userCommand}\\n✅ Ready to configure"`]
-    };
+    // Return null for informational tasks - they will be filtered out
+    return null;
   }
 
   /**
    * Documentation command
    */
   getDocumentationCommand(aaiTask, userCommand) {
-    return {
-      command: "echo",
-      args: [`"📚 Documentation: ${aaiTask.title}\\n📝 Writing docs for: ${userCommand}\\n✅ Ready to document"`]
-    };
+    // Return null for informational tasks - they will be filtered out
+    return null;
   }
 
   /**
    * Testing command
    */
   getTestingCommand(aaiTask, userCommand) {
-    return {
-      command: "echo",
-      args: [`"🧪 Testing: ${aaiTask.title}\\n📝 Testing for: ${userCommand}\\n✅ Ready to test"`]
-    };
+    // Return null for informational tasks - they will be filtered out
+    return null;
   }
 
   /**
    * Default command
    */
   getDefaultCommand(aaiTask) {
-    return {
-      command: "echo",
-      args: [`"${this.getTaskIcon(aaiTask.type)} ${aaiTask.title}\\n📝 ${aaiTask.description}\\n✅ Task ready for execution"`]
-    };
+    // Return null for informational tasks - they will be filtered out
+    return null;
   }
 
   /**

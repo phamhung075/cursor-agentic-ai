@@ -22,24 +22,24 @@ COMPRESSION="tar.gz"
 
 # Print with colors
 print_header() {
-    echo -e "${BLUE}📦 CORE STRUCTURE BACKUP${NC}"
-    echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    printf "${BLUE}📦 CORE STRUCTURE BACKUP${NC}\n"
+    printf "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 }
 
 print_info() {
-    echo -e "${BLUE}ℹ️  $1${NC}"
+    printf "${BLUE}ℹ️  $1${NC}\n"
 }
 
 print_success() {
-    echo -e "${GREEN}✅ $1${NC}"
+    printf "${GREEN}✅ $1${NC}\n"
 }
 
 print_warning() {
-    echo -e "${YELLOW}⚠️  $1${NC}"
+    printf "${YELLOW}⚠️  $1${NC}\n"
 }
 
 print_error() {
-    echo -e "${RED}❌ $1${NC}"
+    printf "${RED}❌ $1${NC}\n"
 }
 
 # Check if core directory exists
@@ -59,9 +59,9 @@ check_core_directory() {
 get_directory_size() {
     local dir="$1"
     if command -v du >/dev/null 2>&1; then
-        du -sh "$dir" 2>/dev/null | cut -f1 || echo "Unknown"
+        du -sh "$dir" 2>/dev/null | cut -f1 || printf "Unknown\n"
     else
-        echo "Unknown"
+        printf "Unknown\n"
     fi
 }
 
@@ -71,7 +71,7 @@ count_files() {
     if [ -d "$dir" ]; then
         find "$dir" -type f | wc -l | tr -d ' '
     else
-        echo "0"
+        printf "0\n"
     fi
 }
 
@@ -129,7 +129,7 @@ create_compressed_archive() {
         rm -rf "$BACKUP_DIR"
         print_success "Cleaned up temporary backup directory"
         
-        echo "$archive_path"  # Return archive path
+        printf "$archive_path\n"  # Return archive path
     else
         print_error "Failed to create compressed archive"
         exit 1
@@ -182,7 +182,7 @@ main() {
     print_header
     print_info "Starting core structure backup..."
     print_info "Timestamp: $TIMESTAMP"
-    echo ""
+    printf "\n"
     
     # Check prerequisites
     check_core_directory
@@ -197,17 +197,17 @@ main() {
     # Generate report
     generate_backup_report "$archive_path"
     
-    echo ""
+    printf "\n"
     print_success "🎉 Core structure backup completed successfully!"
     print_info "📦 Archive: $archive_path"
     print_info "📊 Size: $(get_directory_size "$archive_path")"
     
-    echo ""
+    printf "\n"
     print_info "🔧 To restore this backup:"
     print_info "   tar -xzf \"$archive_path\""
     print_info "   cp -R \"core-structure-backup-${TIMESTAMP}/_core\" \"agents/_store/projects/\""
     
-    echo ""
+    printf "\n"
     print_success "✅ Backup process completed!"
 }
 

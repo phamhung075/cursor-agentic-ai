@@ -290,8 +290,8 @@ module.exports = AAICursorBridge;
         const agentFiles = fs.existsSync(agentMemoryDir) ? fs.readdirSync(agentMemoryDir).length : 0;
         const projectFiles = fs.existsSync(projectMemoryDir) ? fs.readdirSync(projectMemoryDir).length : 0;
         
-        console.log(\`📊 Found \$\{agentFiles\} agent memory files\`);
-        console.log(\`📊 Found \$\{projectFiles\} project memory files\`);
+        console.log(`📊 Found \$\{agentFiles\} agent memory files`);
+        console.log(`📊 Found ${projectFiles} project memory files`);
       } else {
         console.log('ℹ️ No memory directory found yet (will be created when AAI runs)');
       }
@@ -316,7 +316,7 @@ module.exports = AAICursorBridge;
         pkg.scripts = pkg.scripts || {};
         pkg.scripts['cursor:bridge'] = 'node agents/cursor-integration/bridge.js';
         pkg.scripts['cursor:setup'] = 'node setup-cursor-integration.js';
-        pkg.scripts['cursor:test'] = 'echo "Testing Cursor integration..." && ls -la agents/_store/';
+        pkg.scripts['cursor:test'] = 'printf "Testing Cursor integration...\\n" && ls -la agents/_store/';
         
         fs.writeFileSync(packagePath, JSON.stringify(pkg, null, 2));
         console.log('📦 Updated package.json with cursor integration scripts');

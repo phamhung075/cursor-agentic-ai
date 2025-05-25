@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-05-25T09:36:45.402Z",
+  "timestamp": "2025-05-25T11:45:42.104Z",
   "scriptSymbols": [
     {
       "name": "enhanced-dependency-analyzer.js",
@@ -186,6 +186,14 @@
       "containerName": "AAI Scripts/uncategorized"
     },
     {
+      "name": "silent-output.js",
+      "kind": "Function",
+      "location": "agents/_store/scripts/silent-output.js",
+      "detail": "No description available",
+      "category": "uncategorized",
+      "containerName": "AAI Scripts/uncategorized"
+    },
+    {
       "name": "smart-context-tracker.js",
       "kind": "Function",
       "location": "agents/_store/scripts/smart-context-tracker.js",
@@ -258,7 +266,7 @@
     {
       "name": "uncategorized Scripts",
       "kind": "Module",
-      "detail": "27 scripts in uncategorized category",
+      "detail": "28 scripts in uncategorized category",
       "location": "agents/_store/scripts/uncategorized/"
     }
   ],
@@ -694,6 +702,34 @@
       "name": "aai:analyze-move",
       "kind": "Function",
       "detail": "node agents/_store/scripts/enhanced-dependency-analyzer.js move",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "safe-echo",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/safe-echo.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "msg",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/safe-echo.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "silent",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/silent-output.js",
+      "location": "package.json",
+      "containerName": "NPM Scripts"
+    },
+    {
+      "name": "out",
+      "kind": "Function",
+      "detail": "node agents/_store/scripts/silent-output.js",
       "location": "package.json",
       "containerName": "NPM Scripts"
     }

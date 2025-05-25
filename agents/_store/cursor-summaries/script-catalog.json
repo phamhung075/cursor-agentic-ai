@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-05-25T09:36:45.401Z",
+  "timestamp": "2025-05-25T11:45:42.104Z",
   "source": "AAI Script Manager → Cursor Integration",
   "summary": {
-    "totalScripts": 33,
+    "totalScripts": 34,
     "categories": 6,
-    "npmIntegrated": 62
+    "npmIntegrated": 66
   },
   "scripts": {
     "analysis": [
@@ -872,6 +872,44 @@
             "command": "cursor.edit",
             "arguments": [
               "agents/_store/scripts/setup-env.js",
+              "Add description"
+            ]
+          }
+        ],
+        "improvementOpportunities": [
+          {
+            "category": "documentation",
+            "issue": "Missing or inadequate description",
+            "suggestion": "Add comprehensive JSDoc comments and description",
+            "priority": "medium",
+            "estimatedTime": "10-15 minutes"
+          }
+        ]
+      },
+      {
+        "name": "silent-output.js",
+        "path": "agents/_store/scripts/silent-output.js",
+        "description": "No description available",
+        "cursorActions": [
+          {
+            "title": "Open Script",
+            "command": "cursor.open",
+            "arguments": [
+              "agents/_store/scripts/silent-output.js"
+            ]
+          },
+          {
+            "title": "Run Script",
+            "command": "terminal.run",
+            "arguments": [
+              "node agents/_store/scripts/silent-output.js"
+            ]
+          },
+          {
+            "title": "Edit Description",
+            "command": "cursor.edit",
+            "arguments": [
+              "agents/_store/scripts/silent-output.js",
               "Add description"
             ]
           }

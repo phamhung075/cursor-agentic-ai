@@ -1,0 +1,135 @@
+{
+  "id": "session-1748166177039-5wvjrk7ua",
+  "userCommand": "Test termination fix - this should exit properly",
+  "aaiTasks": [
+    {
+      "id": "task-1748166177038-yh1esempb",
+      "title": "Fix - this should exit properly - Validation",
+      "description": "Task generated from: \"Test termination fix - this should exit properly\"\nType: quality_assurance\nCategory: validation",
+      "type": "quality_assurance",
+      "category": "validation",
+      "status": "pending",
+      "priority": "normal",
+      "estimatedTime": 15,
+      "dependencies": [
+        "code_writing"
+      ],
+      "validation": [
+        "tests_pass",
+        "coverage_adequate"
+      ],
+      "created": "2025-05-25T09:42:57.038Z",
+      "updated": "2025-05-25T09:42:57.038Z",
+      "metadata": {
+        "sessionId": "session-1748166177031-gl98j3ccz",
+        "originalRequest": "Test termination fix - this should exit properly",
+        "intent": "fix"
+      }
+    }
+  ],
+  "cursorTasks": [
+    {
+      "label": "📋 1. Planning & Analysis",
+      "type": "shell",
+      "command": "echo",
+      "args": [
+        "\"🎯 PLANNING: Test termination fix - this should exit properly\\n📊 Total Tasks: 1\\n⏱️  Estimated Time: 15 minutes\\n🔍 Analysis complete - ready to proceed\""
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new",
+        "clear": true
+      },
+      "detail": "Planning phase for: Test termination fix - this should exit properly",
+      "metadata": {
+        "isPlanning": true,
+        "userCommand": "Test termination fix - this should exit properly"
+      }
+    },
+    {
+      "label": "✅ 2. Fix - this should exit properly - Validation",
+      "type": "shell",
+      "command": "echo",
+      "args": [
+        "\"🧪 Testing: Fix - this should exit properly - Validation\\n📝 Testing for: Test termination fix - this should exit properly\\n✅ Ready to test\""
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": false
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "detail": "Task generated from: \"Test termination fix - this should exit properly\"\nType: quality_assurance\nCategory: validation\n\nEstimated time: 15 minutes\nPriority: normal",
+      "dependsOn": [
+        "📋 1. Planning & Analysis"
+      ],
+      "metadata": {
+        "aaiTaskId": "task-1748166177038-yh1esempb",
+        "aaiTaskType": "quality_assurance",
+        "aaiCategory": "validation",
+        "userCommand": "Test termination fix - this should exit properly",
+        "estimatedTime": 15,
+        "priority": "normal",
+        "taskNumber": 2
+      }
+    },
+    {
+      "label": "🎉 3. Task Completion",
+      "type": "shell",
+      "command": "echo",
+      "args": [
+        "\"✅ COMPLETED: Test termination fix - this should exit properly\\n📊 All 1 tasks executed\\n🎯 User request fulfilled successfully\""
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      },
+      "detail": "Completion confirmation for: Test termination fix - this should exit properly",
+      "metadata": {
+        "isCompletion": true,
+        "userCommand": "Test termination fix - this should exit properly"
+      }
+    }
+  ],
+  "executionPlan": {
+    "sessionId": "session-1748166177039-5wvjrk7ua",
+    "totalTasks": 3,
+    "executionOrder": [
+      {
+        "order": 1,
+        "label": "📋 1. Planning & Analysis"
+      },
+      {
+        "order": 2,
+        "label": "✅ 2. Fix - this should exit properly - Validation",
+        "aaiTaskId": "task-1748166177038-yh1esempb",
+        "estimatedTime": 15
+      },
+      {
+        "order": 3,
+        "label": "🎉 3. Task Completion"
+      }
+    ],
+    "instructions": [
+      "1. Open Command Palette (Ctrl/Cmd+Shift+P)",
+      "2. Type 'Tasks: Run Task'",
+      "3. Select the first task to start execution",
+      "4. Follow tasks in order for best results"
+    ]
+  },
+  "status": "ready",
+  "created": "2025-05-25T09:42:57.041Z"
+}

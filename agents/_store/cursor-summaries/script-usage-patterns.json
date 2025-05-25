@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-05-25T09:36:45.402Z",
+  "timestamp": "2025-05-25T11:45:42.104Z",
   "mostUsedCategories": [
     {
       "category": "uncategorized",
-      "count": 27
+      "count": 28
     },
     {
       "category": "cleanup",
@@ -324,6 +324,26 @@
       "npmCommand": "aai:analyze-move",
       "scriptPath": "node agents/_store/scripts/enhanced-dependency-analyzer.js move",
       "category": "analysis"
+    },
+    {
+      "npmCommand": "safe-echo",
+      "scriptPath": "node agents/_store/scripts/safe-echo.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "msg",
+      "scriptPath": "node agents/_store/scripts/safe-echo.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "silent",
+      "scriptPath": "node agents/_store/scripts/silent-output.js",
+      "category": "utility"
+    },
+    {
+      "npmCommand": "out",
+      "scriptPath": "node agents/_store/scripts/silent-output.js",
+      "category": "utility"
     }
   ],
   "recommendations": [],

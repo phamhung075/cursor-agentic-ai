@@ -958,7 +958,7 @@ module.exports = AAIFileWatcher;
         pkg.scripts['cursor:setup-enhanced'] = 'node agents/_store/scripts/enhanced-cursor-setup.js';
         pkg.scripts['cursor:update-summaries'] = 'node agents/cursor-integration/update-summaries.js';
         pkg.scripts['cursor:start-watcher'] = 'node agents/cursor-integration/file-watcher.js';
-        pkg.scripts['cursor:test-integration'] = 'echo "Testing enhanced integration..." && ls -la agents/_store/cursor-summaries/';
+        pkg.scripts['cursor:test-integration'] = 'printf "Testing enhanced integration...\\n" && ls -la agents/_store/cursor-summaries/';
         pkg.scripts['cursor:status'] = 'node agents/_store/scripts/enhanced-cursor-setup.js status';
         
         // AAI Task Management scripts
@@ -976,7 +976,7 @@ module.exports = AAIFileWatcher;
         pkg.scripts['cursor:aai-status'] = 'node agents/_store/scripts/cursor-aai-integration.js status';
         
         // AAI enhancement scripts
-        pkg.scripts['AAI:cursor-sync'] = 'npm run cursor:update-summaries && echo "Cursor sync complete"';
+        pkg.scripts['AAI:cursor-sync'] = 'npm run cursor:update-summaries && printf "Cursor sync complete\\n"';
         pkg.scripts['AAI:enhanced-start'] = 'npm run cursor:start-watcher & npm run AAI:start';
         pkg.scripts['AAI:task-workflow'] = 'npm run cursor:aai-init && npm run aai:task-auto-manage';
         

@@ -1,0 +1,40 @@
+{
+  "id": "session-1748166177039-5wvjrk7ua",
+  "userRequest": "Test termination fix - this should exit properly",
+  "tasks": [
+    {
+      "id": "task-1748166177038-yh1esempb",
+      "title": "Fix - this should exit properly - Validation",
+      "description": "Task generated from: \"Test termination fix - this should exit properly\"\nType: quality_assurance\nCategory: validation",
+      "type": "quality_assurance",
+      "category": "validation",
+      "status": "pending",
+      "priority": "normal",
+      "estimatedTime": 15,
+      "dependencies": [
+        "code_writing"
+      ],
+      "validation": [
+        "tests_pass",
+        "coverage_adequate"
+      ],
+      "created": "2025-05-25T09:42:57.038Z",
+      "updated": "2025-05-25T09:42:57.038Z",
+      "metadata": {
+        "sessionId": "session-1748166177031-gl98j3ccz",
+        "originalRequest": "Test termination fix - this should exit properly",
+        "intent": "fix"
+      }
+    }
+  ],
+  "status": "active",
+  "created": "2025-05-25T09:42:57.039Z",
+  "updated": "2025-05-25T09:42:57.039Z",
+  "progress": {
+    "total": 1,
+    "completed": 0,
+    "pending": 1,
+    "failed": 0
+  },
+  "results": []
+}
