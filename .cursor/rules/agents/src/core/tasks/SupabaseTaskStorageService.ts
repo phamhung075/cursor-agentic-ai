@@ -839,6 +839,237 @@ export class SupabaseTaskStorageService implements TaskStorageService {
       await this.initialize();
     }
   }
+
+  /**
+   * Get the highest priority task
+   */
+  public async getMostPriorityTask(status?: string, type?: string): Promise<TaskModel | null> {
+    let query = this.supabase.from('tasks').select('*');
+    
+    // Apply filters if provided
+    if (status) {
+      query = query.eq('status', status);
+    }
+    
+    if (type) {
+      query = query.eq('type', type);
+    }
+    
+    // Execute query
+    const { data, error } = await query;
+    
+    if (error || !data || data.length === 0) {
+      return null;
+    }
+    
+    // Score tasks by priority
+    const priorityScores: { [key: string]: number } = {
+      'critical': 4,
+      'high': 3,
+      'medium': 2,
+      'low': 1
+    };
+    
+    // Sort tasks by priority score
+    const sortedTasks = [...data].sort((a, b) => {
+      const aPriority = a['priority'] || 'medium';
+      const bPriority = b['priority'] || 'medium';
+      
+      const aScore = priorityScores[aPriority] || 0;
+      const bScore = priorityScores[bPriority] || 0;
+      
+      return bScore - aScore; // Descending order
+    });
+    
+    // Get the highest priority task
+    const highestPriorityTask = sortedTasks[0];
+    
+    // Get children info for this task
+    const { data: childrenData } = await this.supabase
+      .from('task_relationships')
+      .select('child_id')
+      .eq('parent_id', highestPriorityTask['id']);
+    
+    const children = childrenData?.map(rel => rel.child_id) || [];
+    
+    // Convert to task model
+    return this.convertToTaskModel(highestPriorityTask, children);
+  }
+
+  /**
+   * Get all subtasks of a task
+   */
+  public async getSubtasks(parentId: string): Promise<TaskModel[]> {
+    // First, check if the parent task exists
+    const { data: parentTask, error: parentError } = await this.supabase
+      .from('tasks')
+      .select('*')
+      .eq('id', parentId)
+      .single();
+    
+    if (parentError || !parentTask) {
+      throw new Error(`Parent task with ID ${parentId} not found`);
+    }
+    
+    // Find all direct subtasks using the task_relationships table
+    const { data: relationships, error: relError } = await this.supabase
+      .from('task_relationships')
+      .select('child_id')
+      .eq('parent_id', parentId);
+    
+    if (relError || !relationships || relationships.length === 0) {
+      return [];
+    }
+    
+    const childIds = relationships.map(rel => rel.child_id);
+    
+    // Get all subtask details
+    const { data: subtasks, error: subtasksError } = await this.supabase
+      .from('tasks')
+      .select('*')
+      .in('id', childIds);
+    
+    if (subtasksError || !subtasks) {
+      return [];
+    }
+    
+    // Prepare result array
+    const allSubtasks: TaskModel[] = [];
+    
+    // Process each direct subtask
+    for (const subtask of subtasks) {
+      // Get children of this subtask
+      const { data: childrenData } = await this.supabase
+        .from('task_relationships')
+        .select('child_id')
+        .eq('parent_id', subtask.id);
+      
+      const children = childrenData?.map(rel => rel.child_id) || [];
+      
+      // Convert to task model
+      const subtaskModel = this.convertToTaskModel(subtask, children);
+      allSubtasks.push(subtaskModel);
+      
+      // Recursively get nested subtasks (careful with potential performance issues)
+      try {
+        const nestedSubtasks = await this.getSubtasks(subtask.id);
+        allSubtasks.push(...nestedSubtasks);
+      } catch (error) {
+        console.error(`Error fetching nested subtasks for ${subtask.id}:`, error);
+      }
+    }
+    
+    return allSubtasks;
+  }
+
+  /**
+   * Delete all tasks
+   */
+  public async deleteAllTasks(): Promise<boolean> {
+    try {
+      // First delete all relationships
+      const { error: relError } = await this.supabase
+        .from('task_relationships')
+        .delete()
+        .neq('parent_id', 'dummy_to_match_all');
+      
+      if (relError) {
+        console.error('Error deleting task relationships:', relError);
+        return false;
+      }
+      
+      // Then delete all timeline events
+      const { error: timelineError } = await this.supabase
+        .from('task_timeline_events')
+        .delete()
+        .neq('task_id', 'dummy_to_match_all');
+      
+      if (timelineError) {
+        console.error('Error deleting task timeline events:', timelineError);
+        return false;
+      }
+      
+      // Finally delete all tasks
+      const { error: tasksError } = await this.supabase
+        .from('tasks')
+        .delete()
+        .neq('id', 'dummy_to_match_all');
+      
+      if (tasksError) {
+        console.error('Error deleting tasks:', tasksError);
+        return false;
+      }
+      
+      return true;
+    } catch (error) {
+      console.error('Failed to delete all tasks:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Delete all subtasks of a task
+   */
+  public async deleteAllSubtasks(parentId: string): Promise<boolean> {
+    try {
+      // First, get all subtasks
+      const subtasks = await this.getSubtasks(parentId);
+      
+      if (subtasks.length === 0) {
+        return true; // No subtasks to delete
+      }
+      
+      const subtaskIds = subtasks.map(task => task.id);
+      
+      // Delete relationships for these subtasks (as parent or child)
+      const { error: relParentError } = await this.supabase
+        .from('task_relationships')
+        .delete()
+        .in('parent_id', subtaskIds);
+      
+      if (relParentError) {
+        console.error('Error deleting subtask relationships (parent):', relParentError);
+        return false;
+      }
+      
+      const { error: relChildError } = await this.supabase
+        .from('task_relationships')
+        .delete()
+        .in('child_id', subtaskIds);
+      
+      if (relChildError) {
+        console.error('Error deleting subtask relationships (child):', relChildError);
+        return false;
+      }
+      
+      // Delete timeline events for these subtasks
+      const { error: timelineError } = await this.supabase
+        .from('task_timeline_events')
+        .delete()
+        .in('task_id', subtaskIds);
+      
+      if (timelineError) {
+        console.error('Error deleting subtask timeline events:', timelineError);
+        return false;
+      }
+      
+      // Delete the subtasks
+      const { error: tasksError } = await this.supabase
+        .from('tasks')
+        .delete()
+        .in('id', subtaskIds);
+      
+      if (tasksError) {
+        console.error('Error deleting subtasks:', tasksError);
+        return false;
+      }
+      
+      return true;
+    } catch (error) {
+      console.error(`Failed to delete subtasks of ${parentId}:`, error);
+      return false;
+    }
+  }
 }
 
 // Export a singleton instance

@@ -17,7 +17,7 @@ export class DatabaseService {
 
   private constructor() {
     // Default database path - will be overridden in initialize()
-    this.dbPath = path.resolve(process.cwd(), 'data', 'tasks.db');
+    this.dbPath = path.resolve(process.cwd(), '_store', 'tasks.db');
     this.migrationsPath = path.resolve(process.cwd(), 'drizzle');
   }
 
@@ -43,27 +43,49 @@ export class DatabaseService {
       return; // Already initialized
     }
 
-    if (options.dbPath) {
-      this.dbPath = options.dbPath;
-    }
-    
-    if (options.migrationsPath) {
-      this.migrationsPath = options.migrationsPath;
-    }
+    try {
+      if (options.dbPath) {
+        this.dbPath = options.dbPath;
+      }
+      
+      if (options.migrationsPath) {
+        this.migrationsPath = options.migrationsPath;
+      }
 
-    // Ensure the directory exists
-    const dir = path.dirname(this.dbPath);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
+      // Ensure the directory exists
+      const dir = path.dirname(this.dbPath);
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
 
-    // Initialize the SQLite database
-    this.db = new Database(this.dbPath);
-    this.drizzleDb = drizzle(this.db, { schema });
+      console.log(`Initializing SQLite database at: ${this.dbPath}`);
 
-    // Run migrations if needed
-    if (options.runMigrations && fs.existsSync(this.migrationsPath)) {
-      await this.runMigrations();
+      // Initialize the SQLite database
+      this.db = new Database(this.dbPath);
+      this.drizzleDb = drizzle(this.db, { schema });
+
+      // Run migrations if needed
+      if (options.runMigrations && fs.existsSync(this.migrationsPath)) {
+        await this.runMigrations();
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error 
+        ? `Database initialization failed: ${error.message}` 
+        : 'Unknown database initialization error';
+      console.error(errorMessage);
+      
+      // Clean up if initialization failed
+      if (this.db) {
+        try {
+          this.db.close();
+        } catch (closeError) {
+          // Ignore close errors during cleanup
+        }
+        this.db = null;
+        this.drizzleDb = null;
+      }
+      
+      throw new Error(errorMessage);
     }
   }
 

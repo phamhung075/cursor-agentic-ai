@@ -16,6 +16,8 @@ import taskStorageFactory from '../core/tasks/TaskStorageFactory';
 import { StorageType } from '../core/tasks/TaskStorageFactory';
 import { TaskModel } from '../core/database/TaskMapper';
 import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
 
 // Load environment variables
 dotenv.config();
@@ -72,8 +74,19 @@ interface MCPTool {
 			type: string;
 			description: string;
 			required?: boolean;
+			enum?: string[] | number[];
+			minimum?: number;
+			maximum?: number;
+			format?: string;
+			items?: {
+				type: string;
+				[key: string]: any;
+			};
+			examples?: any[];
+			[key: string]: any;
 		}>;
 		required?: string[];
+		examples?: any[];
 	};
 }
 
@@ -82,6 +95,11 @@ interface MCPResource {
 	name: string;
 	description?: string;
 	mimeType?: string;
+	schema?: {
+		type: string;
+		properties: Record<string, any>;
+		[key: string]: any;
+	};
 }
 
 interface MCPPrompt {
@@ -91,7 +109,9 @@ interface MCPPrompt {
 		name: string;
 		description: string;
 		required?: boolean;
+		example?: string;
 	}[];
+	template?: string;
 }
 
 interface SessionData {
@@ -122,86 +142,529 @@ class MCPSSEServer {
 	private readonly tools: MCPTool[] = [
 		{
 			name: 'create_task',
-			description: 'Create a new task in the system',
+			description: 'Create a new task in the system with comprehensive metadata. Tasks can be nested in a hierarchy and have various properties to describe their nature, priority, and relationships.',
 			inputSchema: {
 				type: 'object',
 				properties: {
-					title: { type: 'string', description: 'Task title' },
-					description: { type: 'string', description: 'Task description' },
-					type: { type: 'string', description: 'Task type (epic, feature, task, etc.)' },
-					level: { type: 'number', description: 'Task hierarchy level (1, 2, 3, etc.)' },
-					status: { type: 'string', description: 'Task status (pending, in-progress, completed, etc.)' },
-					priority: { type: 'string', description: 'Task priority (low, medium, high)' },
-					complexity: { type: 'string', description: 'Task complexity (low, medium, high)' },
-					parent: { type: 'string', description: 'Parent task ID (if any)' },
-					tags: { type: 'array', description: 'List of tags' }
+					title: { 
+						type: 'string', 
+						description: 'Task title - should be concise but descriptive (max 100 chars)'
+					},
+					description: { 
+						type: 'string', 
+						description: 'Detailed task description explaining what needs to be done, acceptance criteria, and any relevant context'
+					},
+					type: { 
+						type: 'string', 
+						description: 'Task type categorizing the work (epic, feature, task, bug, subtask, etc.)',
+						enum: ['epic', 'feature', 'task', 'bug', 'subtask', 'documentation', 'testing', 'implementation', 'design', 'research', 'other']
+					},
+					level: { 
+						type: 'number', 
+						description: 'Task hierarchy level (1=Epic, 2=Feature, 3=Task, 4=Subtask, etc.)',
+						minimum: 1,
+						maximum: 5
+					},
+					status: { 
+						type: 'string', 
+						description: 'Current task status in the workflow',
+						enum: ['pending', 'in-progress', 'reviewing', 'blocked', 'completed', 'cancelled']
+					},
+					priority: { 
+						type: 'string', 
+						description: 'Task priority level reflecting importance and urgency',
+						enum: ['low', 'medium', 'high', 'critical']
+					},
+					complexity: { 
+						type: 'string', 
+						description: 'Estimated task complexity affecting effort required',
+						enum: ['low', 'medium', 'high', 'very_complex']
+					},
+					parent: { 
+						type: 'string', 
+						description: 'Parent task ID if this is a subtask or part of a larger feature/epic (null for top-level tasks)'
+					},
+					tags: { 
+						type: 'array', 
+						description: 'List of tags for categorization and filtering',
+						items: {
+							type: 'string'
+						},
+						examples: [['backend', 'database', 'migration'], ['frontend', 'ui', 'component']]
+					},
+					estimatedHours: {
+						type: 'number',
+						description: 'Estimated time to complete the task in hours',
+						minimum: 0
+					},
+					dueDate: {
+						type: 'string',
+						description: 'Due date for task completion in ISO format (YYYY-MM-DDTHH:MM:SS.sssZ)',
+						format: 'date-time'
+					}
 				},
-				required: ['title', 'type', 'level']
+				required: ['title', 'type', 'level'],
+				examples: [
+					{
+						title: "Implement user authentication",
+						description: "Create the authentication system with login, registration, and password reset functionality",
+						type: "feature",
+						level: 2,
+						status: "pending",
+						priority: "high",
+						complexity: "medium",
+						tags: ["backend", "security", "user-management"]
+					},
+					{
+						title: "Fix navigation menu overflow on mobile",
+						description: "The navigation menu items overflow on mobile devices smaller than 375px width",
+						type: "bug",
+						level: 3,
+						status: "in-progress",
+						priority: "medium",
+						complexity: "low",
+						parent: "feat_001",
+						tags: ["frontend", "responsive", "mobile"]
+					}
+				]
 			}
 		},
 		{
 			name: 'get_tasks',
-			description: 'Get tasks with optional filtering',
+			description: 'Query and retrieve tasks with flexible filtering options. This tool allows you to search and filter tasks based on various criteria such as status, type, priority, etc. Results are paginated for efficient handling of large task sets.',
 			inputSchema: {
 				type: 'object',
 				properties: {
-					status: { type: 'string', description: 'Filter by status' },
-					type: { type: 'string', description: 'Filter by type' },
-					priority: { type: 'string', description: 'Filter by priority' },
-					level: { type: 'number', description: 'Filter by hierarchy level' },
-					parent: { type: 'string', description: 'Filter by parent ID' },
-					limit: { type: 'number', description: 'Number of tasks to return' },
-					offset: { type: 'number', description: 'Offset for pagination' }
-				}
+					status: { 
+						type: 'string', 
+						description: 'Filter tasks by their current status',
+						enum: ['pending', 'in-progress', 'reviewing', 'blocked', 'completed', 'cancelled']
+					},
+					type: { 
+						type: 'string', 
+						description: 'Filter tasks by their type category',
+						enum: ['epic', 'feature', 'task', 'bug', 'subtask', 'documentation', 'testing', 'implementation', 'design', 'research', 'other']
+					},
+					priority: { 
+						type: 'string', 
+						description: 'Filter tasks by priority level',
+						enum: ['low', 'medium', 'high', 'critical'] 
+					},
+					level: { 
+						type: 'number', 
+						description: 'Filter tasks by their hierarchy level',
+						minimum: 1,
+						maximum: 5
+					},
+					parent: { 
+						type: 'string', 
+						description: 'Filter tasks by their parent task ID to find all subtasks of a specific parent'
+					},
+					limit: { 
+						type: 'number', 
+						description: 'Maximum number of tasks to return (pagination)',
+						default: 10,
+						minimum: 1,
+						maximum: 100
+					},
+					offset: { 
+						type: 'number', 
+						description: 'Number of tasks to skip (for pagination)',
+						default: 0,
+						minimum: 0
+					},
+					search: {
+						type: 'string',
+						description: 'Text search query to filter tasks by title or description content'
+					},
+					tags: {
+						type: 'array',
+						description: 'Filter tasks that have all of the specified tags',
+						items: {
+							type: 'string'
+						}
+					},
+					sortBy: {
+						type: 'string',
+						description: 'Field to sort results by',
+						enum: ['createdAt', 'updatedAt', 'priority', 'level', 'title', 'status']
+					},
+					sortOrder: {
+						type: 'string',
+						description: 'Sort direction (ascending or descending)',
+						enum: ['asc', 'desc']
+					}
+				},
+				examples: [
+					{
+						status: "pending",
+						priority: "high",
+						limit: 5
+					},
+					{
+						type: "bug",
+						tags: ["frontend", "ui"],
+						sortBy: "priority",
+						sortOrder: "desc"
+					},
+					{
+						parent: "epic_001",
+						status: "in-progress"
+					}
+				]
 			}
 		},
 		{
 			name: 'update_task',
-			description: 'Update an existing task',
+			description: 'Update an existing task with new values. This tool allows you to modify various properties of a task while maintaining its relationships and history. Only the specified fields will be updated; unspecified fields will retain their current values.',
 			inputSchema: {
 				type: 'object',
 				properties: {
-					id: { type: 'string', description: 'Task ID' },
-					title: { type: 'string', description: 'Task title' },
-					description: { type: 'string', description: 'Task description' },
-					status: { type: 'string', description: 'Task status' },
-					priority: { type: 'string', description: 'Task priority' },
-					complexity: { type: 'string', description: 'Task complexity' },
-					progress: { type: 'number', description: 'Task progress (0-100)' },
-					tags: { type: 'array', description: 'List of tags' }
+					id: { 
+						type: 'string', 
+						description: 'Unique task ID of the task to update (required)',
+						pattern: '^[a-zA-Z0-9_-]+$'
+					},
+					title: { 
+						type: 'string', 
+						description: 'New task title (max 100 chars)'
+					},
+					description: { 
+						type: 'string', 
+						description: 'New task description with details about what needs to be done'
+					},
+					status: { 
+						type: 'string', 
+						description: 'New task status to represent workflow progress',
+						enum: ['pending', 'in-progress', 'reviewing', 'blocked', 'completed', 'cancelled'] 
+					},
+					priority: { 
+						type: 'string', 
+						description: 'New task priority level',
+						enum: ['low', 'medium', 'high', 'critical'] 
+					},
+					complexity: { 
+						type: 'string', 
+						description: 'New estimated task complexity',
+						enum: ['low', 'medium', 'high', 'very_complex'] 
+					},
+					progress: { 
+						type: 'number', 
+						description: 'New task completion percentage (0-100)',
+						minimum: 0,
+						maximum: 100
+					},
+					tags: { 
+						type: 'array', 
+						description: 'New list of tags for categorization (replaces existing tags)',
+						items: {
+							type: 'string'
+						}
+					},
+					parent: {
+						type: 'string',
+						description: 'New parent task ID to move this task under a different parent'
+					},
+					estimatedHours: {
+						type: 'number',
+						description: 'New estimated hours to complete the task',
+						minimum: 0
+					},
+					actualHours: {
+						type: 'number',
+						description: 'Actual hours spent on the task',
+						minimum: 0
+					},
+					dueDate: {
+						type: 'string',
+						description: 'New due date for task completion in ISO format (YYYY-MM-DDTHH:MM:SS.sssZ)',
+						format: 'date-time'
+					},
+					assignee: {
+						type: 'string',
+						description: 'ID or name of person assigned to the task'
+					}
 				},
-				required: ['id']
+				required: ['id'],
+				examples: [
+					{
+						id: "task_123",
+						status: "in-progress",
+						progress: 25
+					},
+					{
+						id: "bug_456",
+						priority: "high",
+						assignee: "developer1",
+						tags: ["critical", "customer-impacting"]
+					},
+					{
+						id: "feat_789",
+						title: "Improved user authentication flow",
+						description: "Updated authentication flow with better error handling and user feedback",
+						status: "completed",
+						progress: 100,
+						actualHours: 12
+					}
+				]
 			}
 		},
 		{
 			name: 'delete_task',
-			description: 'Delete a task',
+			description: 'Permanently remove a task from the system. This operation cannot be undone. When deleting a parent task, you can optionally cascade delete all of its subtasks or promote them to the parent level.',
 			inputSchema: {
 				type: 'object',
 				properties: {
-					id: { type: 'string', description: 'Task ID' },
+					id: { 
+						type: 'string', 
+						description: 'Unique ID of the task to delete',
+						pattern: '^[a-zA-Z0-9_-]+$'
+					},
+					cascade: {
+						type: 'boolean',
+						description: 'If true and the task has subtasks, all subtasks will also be deleted. If false, subtasks will be kept and promoted to the parent level.',
+						default: false
+					},
+					reason: {
+						type: 'string',
+						description: 'Optional reason for deleting the task (for audit purposes)'
+					}
 				},
-				required: ['id']
+				required: ['id'],
+				examples: [
+					{
+						id: "task_123"
+					},
+					{
+						id: "feat_456",
+						cascade: true,
+						reason: "Feature no longer needed in product roadmap"
+					}
+				]
 			}
 		},
 		{
 			name: 'get_task_tree',
-			description: 'Get a hierarchical tree of tasks starting from a root task',
+			description: 'Retrieve a hierarchical tree representation of tasks starting from a specified root task. This builds a nested structure showing the complete task hierarchy with parent-child relationships maintained.',
 			inputSchema: {
 				type: 'object',
 				properties: {
-					rootId: { type: 'string', description: 'Root task ID' },
-					depth: { type: 'number', description: 'Tree depth to retrieve' }
+					rootId: { 
+						type: 'string', 
+						description: 'ID of the root task to start the tree from. For complete project tree, use a top-level epic ID.',
+						pattern: '^[a-zA-Z0-9_-]+$'
+					},
+					depth: { 
+						type: 'number', 
+						description: 'Maximum depth of hierarchy to retrieve. Use -1 for unlimited depth.',
+						default: -1,
+						minimum: -1
+					},
+					includeCompleted: {
+						type: 'boolean',
+						description: 'If true, completed tasks will be included in the tree. If false, only pending and in-progress tasks are included.',
+						default: true
+					},
+					format: {
+						type: 'string',
+						description: 'Format of the returned tree structure',
+						enum: ['full', 'summary', 'minimal'],
+						default: 'full'
+					}
 				},
-				required: ['rootId']
+				required: ['rootId'],
+				examples: [
+					{
+						rootId: "epic_001",
+						depth: 2
+					},
+					{
+						rootId: "feat_123",
+						includeCompleted: false,
+						format: "summary"
+					}
+				]
 			}
 		},
 		{
 			name: 'get_system_status',
-			description: 'Get current system status and health information',
+			description: 'Retrieve comprehensive information about the current system status including health metrics, storage information, uptime, and active sessions. This tool is useful for monitoring system health and troubleshooting issues.',
 			inputSchema: {
 				type: 'object',
-				properties: {}
+				properties: {
+					includeMetrics: {
+						type: 'boolean',
+						description: 'Include detailed performance metrics in the response',
+						default: false
+					},
+					format: {
+						type: 'string',
+						description: 'Format of the response data',
+						enum: ['simple', 'detailed'],
+						default: 'simple'
+					}
+				},
+				examples: [
+					{},
+					{ includeMetrics: true, format: 'detailed' }
+				]
+			}
+		},
+		{
+			name: 'get_most_priority_task',
+			description: 'Identify and retrieve the highest priority task in the system based on a combination of priority, status, and due date. This tool is useful for focusing on the most important work.',
+			inputSchema: {
+				type: 'object',
+				properties: {
+					status: { 
+						type: 'string', 
+						description: 'Optional filter by task status. If provided, only tasks with this status will be considered.',
+						enum: ['pending', 'in-progress', 'reviewing', 'blocked', 'completed', 'cancelled']
+					},
+					type: { 
+						type: 'string', 
+						description: 'Optional filter by task type. If provided, only tasks of this type will be considered.',
+						enum: ['epic', 'feature', 'task', 'bug', 'subtask', 'documentation', 'testing', 'implementation', 'design', 'research', 'other']
+					},
+					algorithm: {
+						type: 'string',
+						description: 'Algorithm to use for priority calculation',
+						enum: ['simple', 'weighted', 'ml-enhanced'],
+						default: 'weighted'
+					},
+					excludeTags: {
+						type: 'array',
+						description: 'List of tags to exclude from consideration',
+						items: {
+							type: 'string'
+						}
+					}
+				},
+				examples: [
+					{},
+					{ status: 'pending', type: 'bug' },
+					{ algorithm: 'ml-enhanced', excludeTags: ['backlog', 'future'] }
+				]
+			}
+		},
+		{
+			name: 'get_subtasks',
+			description: 'Retrieve all subtasks of a specified parent task. This provides a flattened list of all direct child tasks with their complete details.',
+			inputSchema: {
+				type: 'object',
+				properties: {
+					parentId: { 
+						type: 'string', 
+						description: 'ID of the parent task to get subtasks for',
+						pattern: '^[a-zA-Z0-9_-]+$'
+					},
+					includeCompleted: {
+						type: 'boolean',
+						description: 'Include completed subtasks in the results',
+						default: true
+					},
+					recursive: {
+						type: 'boolean',
+						description: 'If true, also include subtasks of subtasks (all descendants)',
+						default: false
+					},
+					sortBy: {
+						type: 'string',
+						description: 'Field to sort subtasks by',
+						enum: ['priority', 'status', 'createdAt', 'title'],
+						default: 'priority'
+					},
+					sortOrder: {
+						type: 'string',
+						description: 'Sort direction',
+						enum: ['asc', 'desc'],
+						default: 'desc'
+					}
+				},
+				required: ['parentId'],
+				examples: [
+					{ parentId: "feat_123" },
+					{ parentId: "epic_001", recursive: true, sortBy: "status" }
+				]
+			}
+		},
+		{
+			name: 'delete_all_tasks',
+			description: 'Delete all tasks in the system. This is a destructive operation that cannot be undone and should be used with extreme caution. Typically used for system cleanup or resetting during development.',
+			inputSchema: {
+				type: 'object',
+				properties: {
+					confirm: { 
+						type: 'boolean', 
+						description: 'Confirmation flag that must be set to true to perform this destructive operation',
+					},
+					backupBeforeDelete: {
+						type: 'boolean',
+						description: 'Create a backup of all tasks before deletion',
+						default: true
+					},
+					type: {
+						type: 'string',
+						description: 'Optional filter to delete only tasks of a specific type',
+						enum: ['epic', 'feature', 'task', 'bug', 'subtask', 'documentation', 'testing', 'implementation', 'design', 'research', 'other']
+					},
+					status: {
+						type: 'string',
+						description: 'Optional filter to delete only tasks with a specific status',
+						enum: ['pending', 'in-progress', 'reviewing', 'blocked', 'completed', 'cancelled']
+					},
+					auditReason: {
+						type: 'string',
+						description: 'Reason for this mass deletion (for audit logs)'
+					}
+				},
+				required: ['confirm'],
+				examples: [
+					{ confirm: true, backupBeforeDelete: true, auditReason: "Development environment reset" },
+					{ confirm: true, status: "completed", auditReason: "Cleanup completed tasks" }
+				]
+			}
+		},
+		{
+			name: 'delete_all_subtasks',
+			description: 'Delete all subtasks of a specified parent task. This operation removes all direct child tasks while keeping the parent task intact. Useful for cleaning up or re-planning a feature or epic.',
+			inputSchema: {
+				type: 'object',
+				properties: {
+					parentId: { 
+						type: 'string', 
+						description: 'ID of the parent task whose subtasks should be deleted',
+						pattern: '^[a-zA-Z0-9_-]+$'
+					},
+					confirm: { 
+						type: 'boolean', 
+						description: 'Confirmation flag that must be set to true to perform this destructive operation',
+					},
+					recursive: {
+						type: 'boolean',
+						description: 'If true, also delete subtasks of subtasks (all descendants)',
+						default: false
+					},
+					backupBeforeDelete: {
+						type: 'boolean',
+						description: 'Create a backup of all subtasks before deletion',
+						default: true
+					},
+					onlyStatus: {
+						type: 'string',
+						description: 'Only delete subtasks with this status',
+						enum: ['pending', 'in-progress', 'reviewing', 'blocked', 'completed', 'cancelled']
+					},
+					auditReason: {
+						type: 'string',
+						description: 'Reason for this deletion (for audit logs)'
+					}
+				},
+				required: ['parentId', 'confirm'],
+				examples: [
+					{ parentId: "feat_123", confirm: true },
+					{ parentId: "epic_001", confirm: true, recursive: true, onlyStatus: "completed", auditReason: "Cleanup after milestone completion" }
+				]
 			}
 		}
 	];
@@ -210,33 +673,324 @@ class MCPSSEServer {
 		{
 			uri: 'task://list',
 			name: 'Task List',
-			description: 'Current list of all tasks in the system',
-			mimeType: 'application/json'
+			description: 'Comprehensive list of all tasks in the system with their properties, relationships, and metadata. This resource provides a current snapshot of the entire task database.',
+			mimeType: 'application/json',
+			schema: {
+				type: 'object',
+				properties: {
+					tasks: {
+						type: 'array',
+						items: {
+							type: 'object',
+							properties: {
+								id: { type: 'string' },
+								title: { type: 'string' },
+								description: { type: 'string' },
+								type: { type: 'string' },
+								level: { type: 'number' },
+								status: { type: 'string' },
+								priority: { type: 'string' },
+								complexity: { type: 'string' },
+								progress: { type: 'number' },
+								parent: { type: 'string', nullable: true },
+								children: { type: 'array', items: { type: 'string' } },
+								tags: { type: 'array', items: { type: 'string' } },
+								createdAt: { type: 'string', format: 'date-time' },
+								updatedAt: { type: 'string', format: 'date-time' }
+							}
+						}
+					},
+					total: { type: 'number' },
+					page: { type: 'number' },
+					pageSize: { type: 'number' },
+					totalPages: { type: 'number' }
+				}
+			}
+		},
+		{
+			uri: 'task://statistics',
+			name: 'Task Statistics',
+			description: 'Aggregated statistics and metrics about tasks in the system, including counts by status, type, priority, and other dimensions. Useful for dashboards and reporting.',
+			mimeType: 'application/json',
+			schema: {
+				type: 'object',
+				properties: {
+					totalTasks: { type: 'number' },
+					byStatus: { type: 'object' },
+					byPriority: { type: 'object' },
+					byType: { type: 'object' },
+					completionRate: { type: 'number' },
+					averageCompletionTime: { type: 'number' },
+					tasksByMonth: { type: 'object' },
+					topTags: { type: 'array' }
+				}
+			}
 		},
 		{
 			uri: 'config://settings',
 			name: 'System Configuration',
-			description: 'Current system configuration and settings',
-			mimeType: 'application/json'
+			description: 'Current system configuration settings including server parameters, storage options, feature flags, and integration settings. Provides insight into how the system is configured.',
+			mimeType: 'application/json',
+			schema: {
+				type: 'object',
+				properties: {
+					server: { type: 'object' },
+					storage: { type: 'object' },
+					features: { type: 'object' },
+					limits: { type: 'object' },
+					integration: { type: 'object' }
+				}
+			}
+		},
+		{
+			uri: 'system://health',
+			name: 'System Health',
+			description: 'Real-time health status of the system including uptime, performance metrics, active connections, and any detected issues. Useful for monitoring and troubleshooting.',
+			mimeType: 'application/json',
+			schema: {
+				type: 'object',
+				properties: {
+					status: { type: 'string', enum: ['healthy', 'degraded', 'critical'] },
+					uptime: { type: 'number' },
+					memoryUsage: { type: 'object' },
+					cpuUsage: { type: 'object' },
+					activeSessions: { type: 'number' },
+					lastError: { type: 'string' },
+					warningMessages: { type: 'array' }
+				}
+			}
 		}
 	];
 
 	private readonly prompts: MCPPrompt[] = [
 		{
 			name: 'analyze_task',
-			description: 'Analyze a task and provide insights',
+			description: 'Analyze a task and provide comprehensive insights including progress assessment, potential issues, recommendations, and dependency analysis. This prompt helps in understanding task status and next steps.',
 			arguments: [
-				{ name: 'task_id', description: 'ID of the task to analyze', required: true },
-				{ name: 'focus', description: 'Analysis focus area', required: false }
-			]
+				{ 
+					name: 'task_id', 
+					description: 'ID of the task to analyze', 
+					required: true,
+					example: 'task_123'
+				},
+				{ 
+					name: 'focus', 
+					description: 'Analysis focus area (e.g., "blockers", "dependencies", "resources", "timeline", "general")', 
+					required: false,
+					example: 'blockers'
+				},
+				{
+					name: 'depth',
+					description: 'Analysis depth (basic, standard, detailed)',
+					required: false,
+					example: 'detailed'
+				}
+			],
+			template: `Please analyze the following task with a focus on {{focus}}:
+
+Task ID: {{task.id}}
+Title: {{task.title}}
+Description: {{task.description}}
+Type: {{task.type}}
+Status: {{task.status}}
+Priority: {{task.priority}}
+Progress: {{task.progress}}%
+
+Provide insights on:
+1. Current progress assessment
+2. Potential issues or blockers
+3. Recommendations for next steps
+4. Dependency analysis
+5. Resource requirements
+`
+		},
+		{
+			name: 'task_breakdown',
+			description: 'Break down a complex task into smaller, actionable subtasks. This prompt helps in decomposing large tasks into manageable pieces with clear relationships and dependencies.',
+			arguments: [
+				{ 
+					name: 'task_id', 
+					description: 'ID of the parent task to break down', 
+					required: true,
+					example: 'feat_456'
+				},
+				{
+					name: 'min_subtasks',
+					description: 'Minimum number of subtasks to generate',
+					required: false,
+					example: '3'
+				},
+				{
+					name: 'max_subtasks',
+					description: 'Maximum number of subtasks to generate',
+					required: false,
+					example: '7'
+				},
+				{
+					name: 'breakdown_strategy',
+					description: 'Strategy for breaking down the task (sequential, parallel, mixed)',
+					required: false,
+					example: 'mixed'
+				}
+			],
+			template: `Please break down the following task into {{min_subtasks}}-{{max_subtasks}} smaller, actionable subtasks using a {{breakdown_strategy}} approach:
+
+Task ID: {{task.id}}
+Title: {{task.title}}
+Description: {{task.description}}
+Type: {{task.type}}
+
+For each subtask, provide:
+1. A clear, concise title
+2. A brief but thorough description
+3. Estimated complexity (low, medium, high)
+4. Dependencies on other subtasks, if any
+5. Suggested tags
+
+The subtasks should collectively address all aspects of the parent task while being independently manageable.`
 		},
 		{
 			name: 'generate_report',
-			description: 'Generate a comprehensive report',
+			description: 'Generate a comprehensive report about the task management system, including task statistics, progress tracking, and insights. Useful for status updates, sprint reviews, and project tracking.',
 			arguments: [
-				{ name: 'type', description: 'Report type', required: true },
-				{ name: 'period', description: 'Time period for the report', required: false }
-			]
+				{ 
+					name: 'type', 
+					description: 'Report type (e.g., "status", "progress", "summary", "detailed", "metrics")', 
+					required: true,
+					example: 'status'
+				},
+				{ 
+					name: 'period', 
+					description: 'Time period for the report (e.g., "daily", "weekly", "sprint", "monthly", "custom")', 
+					required: false,
+					example: 'weekly'
+				},
+				{
+					name: 'format',
+					description: 'Output format style (markdown, html, text, executive)',
+					required: false,
+					example: 'markdown'
+				},
+				{
+					name: 'focus_areas',
+					description: 'Specific areas to focus on in the report',
+					required: false,
+					example: 'blockers,progress,priorities'
+				}
+			],
+			template: `Generate a comprehensive {{type}} report for the {{period}} period in {{format}} format focusing on {{focus_areas}}.
+
+Include the following sections:
+1. Executive Summary
+2. Key Metrics and Statistics
+   - Tasks created/completed
+   - Progress by priority
+   - Completion rate
+3. Status Overview
+   - By task type
+   - By priority
+4. Notable Achievements
+5. Blockers and Issues
+6. Upcoming Priorities
+7. Resource Allocation
+8. Recommendations
+
+Data should be presented with appropriate formatting, and include both quantitative metrics and qualitative insights.`
+		},
+		{
+			name: 'task_status_update',
+			description: 'Create a structured update for a task status change, including impact analysis and next steps recommendations. This prompt helps in documenting task transitions with proper context.',
+			arguments: [
+				{ 
+					name: 'task_id', 
+					description: 'ID of the task being updated', 
+					required: true,
+					example: 'task_789'
+				},
+				{ 
+					name: 'status', 
+					description: 'New status for the task', 
+					required: true,
+					example: 'in-progress'
+				},
+				{
+					name: 'reason',
+					description: 'Reason for the status change',
+					required: false,
+					example: 'Development work started after prerequisites completed'
+				},
+				{
+					name: 'include_impact_analysis',
+					description: 'Whether to include impact analysis on related tasks',
+					required: false,
+					example: 'true'
+				}
+			],
+			template: `I'm updating the status of task "{{task.title}}" ({{task_id}}) from "{{task.status}}" to "{{status}}" due to: {{reason}}.
+
+Please provide:
+1. A summary of what this status change means for the project
+2. Actions that should be taken next
+3. Potential impacts on related tasks or the overall project timeline
+4. Any risks or considerations to be aware of
+5. Recommendations for smooth progress
+
+{{#if include_impact_analysis}}
+Also include a detailed analysis of how this change impacts:
+- Dependent tasks
+- Project timeline
+- Resource allocation
+- Overall project risk
+{{/if}}
+`
+		},
+		{
+			name: 'prioritization_analysis',
+			description: 'Analyze and recommend prioritization for a set of tasks based on various factors including business value, dependencies, effort, and deadlines. This prompt helps in making data-driven prioritization decisions.',
+			arguments: [
+				{
+					name: 'task_count',
+					description: 'Number of top tasks to analyze and prioritize',
+					required: false,
+					example: '5'
+				},
+				{
+					name: 'factors',
+					description: 'Comma-separated list of factors to consider in prioritization',
+					required: false,
+					example: 'business_value,effort,dependencies,deadline'
+				},
+				{
+					name: 'scope',
+					description: 'Scope of tasks to consider (all, pending, in-progress)',
+					required: false,
+					example: 'pending'
+				},
+				{
+					name: 'context',
+					description: 'Additional context for prioritization decisions',
+					required: false,
+					example: 'Preparing for quarterly release with focus on user-facing features'
+				}
+			],
+			template: `Please analyze and recommend prioritization for the top {{task_count}} {{scope}} tasks considering these factors: {{factors}}.
+
+Context: {{context}}
+
+For each task, evaluate:
+1. Business value (impact on users, revenue, or strategic goals)
+2. Required effort and available resources
+3. Dependencies and blockers
+4. Deadline proximity and urgency
+5. Risk factors
+
+Then provide:
+1. A ranked list of tasks in recommended priority order
+2. Justification for each ranking
+3. Suggested modifications to priority levels if needed
+4. Implementation recommendation (sequential vs parallel)
+5. Resource allocation suggestions
+`
 		}
 	];
 
@@ -856,6 +1610,116 @@ class MCPSSEServer {
 						}
 					};
 
+				case 'get_most_priority_task':
+					const statusFilter = toolArgs['status'] as string || '';
+					const typeFilter = toolArgs['type'] as string || '';
+					
+					const priorityTask = await taskStorage.getMostPriorityTask(statusFilter, typeFilter);
+					
+					if (!priorityTask) {
+						return {
+							...baseResponse,
+							error: {
+								code: -32602,
+								message: 'No priority task found'
+							}
+						};
+					}
+					
+					return {
+						...baseResponse,
+						result: {
+							content: [
+								{
+									type: 'text',
+									text: JSON.stringify(priorityTask, null, 2)
+								}
+							]
+						}
+					};
+
+				case 'get_subtasks':
+					const parentId = toolArgs['parentId'] as string;
+					
+					if (!parentId) {
+						return {
+							...baseResponse,
+							error: {
+								code: -32602,
+								message: 'Parent task ID is required'
+							}
+						};
+					}
+					
+					const subtasks = await taskStorage.getSubtasks(parentId);
+					
+					return {
+						...baseResponse,
+						result: {
+							content: [
+								{
+									type: 'text',
+									text: JSON.stringify(subtasks, null, 2)
+								}
+							]
+						}
+					};
+
+				case 'delete_all_tasks':
+					const confirm = toolArgs['confirm'] as boolean;
+					
+					if (confirm !== true) {
+						return {
+							...baseResponse,
+							error: {
+								code: -32602,
+								message: 'Confirmation flag must be true'
+							}
+						};
+					}
+					
+					const allTasksDeleted = await taskStorage.deleteAllTasks();
+					
+					return {
+						...baseResponse,
+						result: {
+							content: [
+								{
+									type: 'text',
+									text: allTasksDeleted ? 'All tasks deleted successfully' : 'Failed to delete all tasks'
+								}
+							]
+						}
+					};
+
+				case 'delete_all_subtasks':
+					const parentIdForDelete = toolArgs['parentId'] as string;
+					const confirmForDelete = toolArgs['confirm'] as boolean;
+					
+					if (!parentIdForDelete || confirmForDelete !== true) {
+						return {
+							...baseResponse,
+							error: {
+								code: -32602,
+								message: 'Parent task ID and confirmation flag are required'
+							}
+						};
+					}
+					
+					const allSubtasksDeleted = await taskStorage.deleteAllSubtasks(parentIdForDelete);
+					
+					return {
+						...baseResponse,
+						result: {
+							content: [
+								{
+									type: 'text',
+									text: allSubtasksDeleted ? 'All subtasks deleted successfully' : 'Failed to delete all subtasks'
+								}
+							]
+						}
+					};
+
 				default:
 					return {
 						...baseResponse,
@@ -1325,9 +2189,17 @@ class MCPSSEServer {
 				initOptions.supabaseKey = process.env['SUPABASE_ANON_KEY'];
 			}
 			
-			if (process.env['SQLITE_DB_PATH']) {
-				initOptions.sqliteDbPath = process.env['SQLITE_DB_PATH'];
+			// Ensure SQLite DB path is valid and exists
+			const defaultDbPath = path.resolve(process.cwd(), '_store', 'tasks.db');
+			initOptions.sqliteDbPath = process.env['SQLITE_DB_PATH'] || defaultDbPath;
+			
+			// Ensure the directory exists
+			const dbDir = path.dirname(initOptions.sqliteDbPath);
+			if (!fs.existsSync(dbDir)) {
+				fs.mkdirSync(dbDir, { recursive: true });
 			}
+			
+			log.info('MCP-SSE', `Using SQLite DB path: ${initOptions.sqliteDbPath}`);
 			
 			await taskStorageFactory.initialize(initOptions);
 			

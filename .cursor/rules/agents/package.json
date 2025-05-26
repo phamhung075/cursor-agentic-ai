@@ -27,14 +27,13 @@
     "sse:test": "node scripts/test-sse-server.js",
     "sse:kill": "pkill -f 'node.*test-sse-server.js' || true",
     "sse:status": "lsof -i :3233 | grep LISTEN || echo 'No SSE server running on port 3233'",
-    "mcp:adapter": "node scripts/mcp-inspector-adapter.js",
-    "mcp:adapter:kill": "pkill -f 'node.*mcp-inspector-adapter.js' || true",
-    "sse:auto-test": "npm run sse:test & npm run mcp:adapter",
-    "mcp:restart": "npm run sse:kill && npm run mcp:adapter:kill && npm run sse:auto-test",
+    "sse:auto-test": "npm run sse:test",
+    "mcp:restart": "npm run sse:kill && npm run sse",
     "mcp:hello": "node scripts/hello-world-mcp.js",
     "mcp:server": "node scripts/hello-world-mcp.js",
     "mcp:simple": "tsx src/api/SSEServerSimple.ts",
-    "db:deploy-supabase": "tsx scripts/deploy-to-supabase.ts"
+    "db:deploy-supabase": "tsx scripts/deploy-to-supabase.ts",
+    "cursor-mcp": "node scripts/mcp-cursor-launcher.js"
   },
   "keywords": [
     "ai",

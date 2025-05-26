@@ -5,8 +5,7 @@ export default {
   schema: './src/core/database/schema.ts',
   out: './drizzle',
   dialect: 'sqlite',
-  driver: 'better-sqlite3',
   dbCredentials: {
-    url: path.resolve(process.cwd(), 'data', 'tasks.db'),
+    url: path.resolve(process.cwd(), '_store', 'tasks.db'),
   },
 } satisfies Config; 

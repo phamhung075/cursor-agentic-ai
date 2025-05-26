@@ -177,4 +177,149 @@ console.log('Health:', status.health);
 
 ---
 
-**Need help?** Check the [full integration guide](./CURSOR_MCP_INTEGRATION.md) or [main README](../README.md) 
+**Need help?** Check the [full integration guide](./CURSOR_MCP_INTEGRATION.md) or [main README](../README.md)
+
+# MCP Server Quick Reference
+
+This is a quick reference guide for the MCP server tools and resources.
+
+## Task Creation
+
+```json
+{
+  "title": "New feature implementation",
+  "description": "Implement the new feature X for project Y",
+  "type": "feature",
+  "level": 2,
+  "status": "pending",
+  "priority": "high",
+  "complexity": "medium",
+  "tags": ["feature", "frontend", "api"]
+}
+```
+
+## Task Querying
+
+```json
+{
+  "status": "pending",
+  "priority": "high",
+  "limit": 10,
+  "sortBy": "priority",
+  "sortOrder": "desc"
+}
+```
+
+## Task Update
+
+```json
+{
+  "id": "task_123",
+  "status": "in-progress",
+  "progress": 25,
+  "assignee": "developer1"
+}
+```
+
+## Task Tree Retrieval
+
+```json
+{
+  "rootId": "epic_001",
+  "depth": 2,
+  "includeCompleted": false
+}
+```
+
+## Task Deletion
+
+```json
+{
+  "id": "task_123",
+  "cascade": true,
+  "reason": "Feature no longer needed"
+}
+```
+
+## Get Most Priority Task
+
+```json
+{
+  "status": "pending",
+  "type": "bug"
+}
+```
+
+## Get Subtasks
+
+```json
+{
+  "parentId": "feat_123",
+  "includeCompleted": false,
+  "recursive": true
+}
+```
+
+## Delete All Tasks
+
+```json
+{
+  "confirm": true,
+  "backupBeforeDelete": true,
+  "auditReason": "System reset for new phase"
+}
+```
+
+## Delete All Subtasks
+
+```json
+{
+  "parentId": "epic_001",
+  "confirm": true,
+  "recursive": true,
+  "onlyStatus": "completed"
+}
+```
+
+## System Status
+
+```json
+{
+  "includeMetrics": true,
+  "format": "detailed"
+}
+```
+
+## Starting MCP Server
+
+```bash
+# Start MCP server
+npm run cursor-mcp
+
+# Check status
+npm run sse:status
+
+# Stop server
+npm run sse:kill
+```
+
+## Cursor MCP Configuration
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "aai-system-enhanced": {
+        "command": "npm",
+        "args": ["run", "cursor-mcp"],
+        "cwd": ".cursor/rules/agents",
+        "env": { 
+          "STORAGE_TYPE": "sqlite",
+          "SQLITE_DB_PATH": "./_store/tasks.db"
+        }
+      }
+    },
+    "defaultServer": "aai-system-enhanced"
+  }
+}
+``` 

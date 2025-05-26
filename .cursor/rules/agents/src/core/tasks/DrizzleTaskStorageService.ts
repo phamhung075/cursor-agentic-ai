@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import { eq, and, asc, desc, like, inArray, isNull, SQL } from 'drizzle-orm';
+import { eq, and, asc, desc, like, inArray, isNull, SQL, or } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/better-sqlite3';
 import databaseService from '../database/DatabaseService';
 import { tasks, taskRelationships, taskTimelineEvents } from '../database/schema';
 import { TaskMapper, TaskModel } from '../database/TaskMapper';
@@ -11,24 +12,37 @@ import path from 'path';
  * DrizzleTaskStorageService - Implementation of task storage using Drizzle ORM
  */
 export class DrizzleTaskStorageService implements TaskStorageService {
-  private db = databaseService.getDb();
+  private db: ReturnType<typeof drizzle> | null = null;
   private taskCache: Map<string, TaskModel> = new Map();
   private initialized = false;
 
   /**
    * Initialize the storage service
    */
-  public async initialize(): Promise<void> {
+  public async initialize(options: { dbPath?: string; runMigrations?: boolean } = {}): Promise<void> {
     if (this.initialized) {
       return;
     }
 
     // Initialize the database
     await databaseService.initialize({
-      runMigrations: true
+      dbPath: options.dbPath,
+      runMigrations: options.runMigrations ?? true
     });
-
+    
+    // Now get the database instance
+    this.db = databaseService.getDb();
     this.initialized = true;
+  }
+
+  /**
+   * Get the database instance safely
+   */
+  private getDb(): ReturnType<typeof drizzle> {
+    if (!this.db) {
+      throw new Error('Database not initialized. Call initialize() first.');
+    }
+    return this.db;
   }
 
   /**
@@ -52,12 +66,12 @@ export class DrizzleTaskStorageService implements TaskStorageService {
     const dbTask = TaskMapper.toDatabaseTask(newTask);
 
     // Insert into database
-    await this.db.insert(tasks).values(dbTask);
+    await this.getDb().insert(tasks).values(dbTask);
 
     // Create parent-child relationships if any
     if (newTask.children.length > 0) {
       const relationships = TaskMapper.createTaskRelationships(id, newTask.children);
-      await this.db.insert(taskRelationships).values(relationships);
+      await this.getDb().insert(taskRelationships).values(relationships);
     }
 
     // Record the creation event
@@ -708,6 +722,197 @@ export class DrizzleTaskStorageService implements TaskStorageService {
   private async ensureInitialized(): Promise<void> {
     if (!this.initialized) {
       await this.initialize();
+    }
+  }
+
+  /**
+   * Get the highest priority task
+   */
+  public async getMostPriorityTask(status?: string, type?: string): Promise<TaskModel | null> {
+    await this.ensureInitialized();
+
+    // Build where conditions
+    const whereConditions: SQL[] = [];
+    
+    // Add status filter if provided
+    if (status) {
+      whereConditions.push(eq(tasks.status, status));
+    }
+    
+    // Add type filter if provided
+    if (type) {
+      whereConditions.push(eq(tasks.type, type));
+    }
+    
+    // Create the query
+    let query = this.getDb().select().from(tasks);
+    
+    if (whereConditions.length > 0) {
+      query = query.where(and(...whereConditions));
+    }
+    
+    // Sort by priority (assuming 'high' > 'medium' > 'low')
+    // Note: This is a simplistic approach - ideally we'd have a numeric priority value
+    const results = await query;
+    
+    if (results.length === 0) {
+      return null;
+    }
+    
+    // Score tasks by priority
+    const priorityScores: { [key: string]: number } = {
+      'critical': 4,
+      'high': 3,
+      'medium': 2,
+      'low': 1
+    };
+    
+    // Sort tasks by priority score
+    const sortedTasks = [...results].sort((a, b) => {
+      const aPriority = a.priority || 'medium';
+      const bPriority = b.priority || 'medium';
+      
+      const aScore = priorityScores[aPriority] || 0;
+      const bScore = priorityScores[bPriority] || 0;
+      
+      return bScore - aScore; // Descending order
+    });
+    
+    // Get the highest priority task
+    const highestPriorityTask = sortedTasks[0];
+    
+    // Convert to task model
+    const taskModel = TaskMapper.toTaskModel(highestPriorityTask, []);
+    
+    // Update cache
+    this.taskCache.set(taskModel.id, taskModel);
+    
+    return taskModel;
+  }
+
+  /**
+   * Get all subtasks of a task
+   */
+  public async getSubtasks(parentId: string): Promise<TaskModel[]> {
+    await this.ensureInitialized();
+    
+    // First, check if the parent task exists
+    const parentTask = await this.getTaskById(parentId);
+    if (!parentTask) {
+      throw new Error(`Parent task with ID ${parentId} not found`);
+    }
+    
+    // Find all direct subtasks using the task_relationships table
+    const relationships = await this.getDb()
+      .select()
+      .from(taskRelationships)
+      .where(eq(taskRelationships.parentId, parentId));
+    
+    if (relationships.length === 0) {
+      return [];
+    }
+    
+    const childIds = relationships.map(rel => rel.childId);
+    
+    // Get all subtask details
+    const subtaskDetails = await this.getDb()
+      .select()
+      .from(tasks)
+      .where(inArray(tasks.id, childIds));
+    
+    // Also find all nested subtasks recursively
+    const allSubtasks: TaskModel[] = [];
+    
+    // Map each direct child to a TaskModel
+    for (const subtask of subtaskDetails) {
+      const subtaskModel = TaskMapper.toTaskModel(subtask, []);
+      
+      // Add to cache
+      this.taskCache.set(subtaskModel.id, subtaskModel);
+      
+      // Add to result list
+      allSubtasks.push(subtaskModel);
+      
+      // Recursively get nested subtasks
+      const nestedSubtasks = await this.getSubtasks(subtaskModel.id);
+      allSubtasks.push(...nestedSubtasks);
+    }
+    
+    return allSubtasks;
+  }
+
+  /**
+   * Delete all tasks
+   */
+  public async deleteAllTasks(): Promise<boolean> {
+    await this.ensureInitialized();
+    
+    try {
+      // Execute in transaction to ensure atomicity
+      await this.getDb().transaction(async (tx) => {
+        // First delete all relationships
+        await tx.delete(taskRelationships);
+        
+        // Then delete all timeline events
+        await tx.delete(taskTimelineEvents);
+        
+        // Finally delete all tasks
+        await tx.delete(tasks);
+      });
+      
+      // Clear the cache
+      this.taskCache.clear();
+      
+      return true;
+    } catch (error) {
+      console.error('Failed to delete all tasks:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Delete all subtasks of a task
+   */
+  public async deleteAllSubtasks(parentId: string): Promise<boolean> {
+    await this.ensureInitialized();
+    
+    try {
+      // First, get all subtasks
+      const subtasks = await this.getSubtasks(parentId);
+      
+      if (subtasks.length === 0) {
+        return true; // No subtasks to delete
+      }
+      
+      const subtaskIds = subtasks.map(task => task.id);
+      
+      // Execute in transaction to ensure atomicity
+      await this.getDb().transaction(async (tx) => {
+        // Delete relationships for these subtasks
+        await tx.delete(taskRelationships)
+          .where(
+            or(
+              inArray(taskRelationships.parentId, subtaskIds),
+              inArray(taskRelationships.childId, subtaskIds)
+            )
+          );
+        
+        // Delete timeline events for these subtasks
+        await tx.delete(taskTimelineEvents)
+          .where(inArray(taskTimelineEvents.taskId, subtaskIds));
+        
+        // Delete the subtasks
+        await tx.delete(tasks)
+          .where(inArray(tasks.id, subtaskIds));
+      });
+      
+      // Remove from cache
+      subtaskIds.forEach(id => this.taskCache.delete(id));
+      
+      return true;
+    } catch (error) {
+      console.error(`Failed to delete subtasks of ${parentId}:`, error);
+      return false;
     }
   }
 }

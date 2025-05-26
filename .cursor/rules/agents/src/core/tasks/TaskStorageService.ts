@@ -35,7 +35,7 @@ export interface TaskStorageService {
   /**
    * Initialize the storage service
    */
-  initialize(): Promise<void>;
+  initialize(options?: Record<string, any>): Promise<void>;
 
   /**
    * Create a new task
@@ -48,7 +48,7 @@ export interface TaskStorageService {
   updateTask(id: string, updates: Partial<TaskModel>): Promise<TaskModel>;
 
   /**
-   * Delete a task and all its relationships
+   * Delete a task
    */
   deleteTask(id: string): Promise<boolean>;
 
@@ -84,4 +84,24 @@ export interface TaskStorageService {
     rootTaskId?: string;
     includeAll?: boolean;
   }): Promise<number>;
+
+  /**
+   * Get the highest priority task
+   */
+  getMostPriorityTask(status?: string, type?: string): Promise<TaskModel | null>;
+
+  /**
+   * Get all subtasks of a task
+   */
+  getSubtasks(parentId: string): Promise<TaskModel[]>;
+
+  /**
+   * Delete all tasks
+   */
+  deleteAllTasks(): Promise<boolean>;
+
+  /**
+   * Delete all subtasks of a task
+   */
+  deleteAllSubtasks(parentId: string): Promise<boolean>;
 } 

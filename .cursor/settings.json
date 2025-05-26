@@ -547,16 +547,16 @@
   "mcp": {
     "servers": {
       "aai-system-enhanced": {
-        "command": "node",
-        "args": ["simple-mcp-server.js"],
-        "cwd": "/Users/admin/Documents/Hung/AI/cursor-agentic-ai/.cursor/rules/agents",
-        "env": {
-          "AAI_MODE": "mcp",
-          "NODE_ENV": "production"
-        },
-        "transport": "stdio"
+        "command": "npm",
+        "args": ["run", "cursor-mcp"],
+        "cwd": ".cursor/rules/agents",
+        "env": { 
+          "STORAGE_TYPE": "sqlite",
+          "SQLITE_DB_PATH": "./_store/tasks.db"
+        }
       }
-    }
+    },
+    "defaultServer": "aai-system-enhanced"
   },
   "aai": {
     "mcp": {
@@ -786,5 +786,10 @@
       "showSearch": true,
       "autoRefresh": true
     }
-  }
+  },
+  "aai.mcp.enabled": true,
+  "aai.taskManagement.autoCreate": true,
+  "aai.taskManagement.autoUpdate": true,
+  "aai.workflow.automation": true,
+  "aai.workspace.path": "./.cursor/rules/agents"
 }
