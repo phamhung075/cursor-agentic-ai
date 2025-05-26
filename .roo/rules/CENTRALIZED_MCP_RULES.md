@@ -1,0 +1,246 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 🎯 Centralized Roo Code MCP Task Management Rules Index
+
+**Master index for automatic intelligent task management integration in Roo Code IDE**
+
+> **📝 IMPORTANT FOR roo AI**: When modifying any MCP task management content, you MUST update ALL related files listed below to maintain consistency across the rule system.
+
+## 🚨 CRITICAL DATA ACCESS RULE 🚨
+
+**NEVER ACCESS TASK DATA DIRECTLY FROM JSON FILES. ALL TASK DATA OPERATIONS MUST BE PERFORMED THROUGH THE MCP SERVER TOOLS ONLY.**
+
+- ❌ DO NOT read from or write to `nested_tasks.json` files directly
+- ✅ ALWAYS use MCP server tools (`create_task`, `get_tasks`, etc.) for task data operations
+- ✅ All task storage now uses a database backend (SQLite or Supabase) managed by the MCP server
+
+This fundamental rule ensures data consistency, proper validation, and reliable storage operations across the system.
+
+## 📋 Overview
+
+This is the central index for the complete MCP task management rule system. Each section below links to detailed rule files that work together to provide intelligent task management in Roo Code IDE.
+
+## 📁 Rule Files Structure
+
+### 🔧 Core MCP Integration Rules
+**File**: [MCP_TASK_MANAGEMENT_RULES.md](mdc:.roo/rules/MCP_TASK_MANAGEMENT_RULES.md)
+
+**Summary**: Contains 20 fundamental rules for MCP tool integration and task management
+- **Rules 1-5**: Task Management (Creation, Updates, Complexity, Decomposition, Priority)
+- **Rules 6-9**: Workflow Integration (Startup, Feature Development, Bug Fix, Code Review)
+- **Rules 10-12**: Context-Aware (File Types, Git Integration, Time-Based)
+- **Rules 13-15**: Automation (Smart Creation, Dependency Tracking, Progress)
+- **Rules 16-20**: System (Health Monitoring, Error Handling, Performance, Metrics, Improvement)
+
+**Key MCP Tools Used**: `create_task`, `update_task`, `analyze_complexity`, `decompose_task`, `calculate_priority`, `get_system_status`
+
+**Click to view**: [📖 View Complete MCP Task Management Rules](mdc:.roo/rules/MCP_TASK_MANAGEMENT_RULES.md)
+
+---
+
+### 🔄 Workflow Automation Rules
+**File**: [WORKFLOW_AUTOMATION_RULES.md](mdc:.roo/rules/WORKFLOW_AUTOMATION_RULES.md)
+
+**Summary**: Contains 11 workflow-specific automation rules for development process integration
+- **Workflows 1-4**: Development (Feature Development, Bug Fix, Refactoring, Testing)
+- **Workflow 5**: Documentation Updates
+- **Workflows 6-7**: Git Integration (Commit Updates, Pull Request Workflow)
+- **Workflows 8-9**: Time-Based (Daily Standup, Weekly Planning)
+- **Workflows 10-11**: Context-Aware (File-Based Context, Project Switching)
+
+**Key Features**: Automatic branch detection, commit-based updates, time-scheduled workflows, context switching
+
+**Click to view**: [📖 View Complete Workflow Automation Rules](mdc:.roo/rules/WORKFLOW_AUTOMATION_RULES.md)
+
+---
+
+### ⚙️ Roo Code MCP Configuration
+**File**: [ROO CODE_MCP_CONFIG.md](mdc:.roo/rules/ROO CODE_MCP_CONFIG.md)
+
+**Summary**: Complete Roo Code IDE configuration for MCP server integration and rule activation
+- **Core Configuration**: MCP server setup, workspace settings
+- **Event Triggers**: File events, Git events, time-based triggers
+- **Tool Integration**: MCP tool configuration and automation settings
+- **Advanced Settings**: Performance, security, analytics, monitoring
+- **UI Integration**: Command palette, status bar, sidebar integration
+
+**Key Components**: Server configuration, event handlers, tool mappings, performance optimization
+
+**Click to view**: [📖 View Complete Roo Code MCP Configuration](mdc:.roo/rules/ROO CODE_MCP_CONFIG.md)
+
+---
+
+## 🚀 Quick Reference Links
+
+### 📊 Available MCP Tools
+
+#### Core Task Operations
+- `create_task` - Create a new task with intelligent defaults
+- `get_tasks` - Query tasks with filtering and pagination
+- `update_task` - Modify existing tasks with validation
+- `delete_task` - Remove a specific task
+- `get_task_by_id` - Get detailed information for a single task
+
+#### Advanced Task Operations
+- `get_most_priority_task` - Retrieve the highest priority task in the system
+- `get_subtasks` - Get all subtasks of a specific parent task
+- `delete_all_tasks` - Remove all tasks from the system (use with caution)
+- `delete_all_subtasks` - Remove all subtasks of a specific parent task
+- `get_task_tree` - Get a hierarchical tree of tasks starting from a root task
+
+#### Analysis and Management
+- `analyze_complexity` - [Rule 3](mdc:.roo/rules/MCP_TASK_MANAGEMENT_RULES.md#rule-3-complexity-analysis)
+- `decompose_task` - [Rule 4](mdc:.roo/rules/MCP_TASK_MANAGEMENT_RULES.md#rule-4-task-decomposition)
+- `calculate_priority` - [Rule 5](mdc:.roo/rules/MCP_TASK_MANAGEMENT_RULES.md#rule-5-priority-recalculation)
+- `get_system_status` - [Rule 16](mdc:.roo/rules/MCP_TASK_MANAGEMENT_RULES.md#rule-16-mcp-server-health-monitoring)
+
+### 🔄 Key Workflows
+- **Feature Development** - [Workflow 1](mdc:.roo/rules/WORKFLOW_AUTOMATION_RULES.md#workflow-1-new-feature-development)
+- **Bug Fix Process** - [Workflow 2](mdc:.roo/rules/WORKFLOW_AUTOMATION_RULES.md#workflow-2-bug-fix-process)
+- **Daily Standup** - [Workflow 8](mdc:.roo/rules/WORKFLOW_AUTOMATION_RULES.md#workflow-8-daily-standup-preparation)
+- **Commit Updates** - [Workflow 6](mdc:.roo/rules/WORKFLOW_AUTOMATION_RULES.md#workflow-6-commit-based-task-updates)
+
+### ⚙️ Configuration Sections
+- **MCP Server Setup** - [Core Configuration](mdc:.roo/rules/ROO CODE_MCP_CONFIG.md#core-mcp-server-configuration)
+- **Event Triggers** - [Automatic Rule Activation](mdc:.roo/rules/ROO CODE_MCP_CONFIG.md#automatic-rule-activation)
+- **Tool Integration** - [MCP Tool Integration](mdc:.roo/rules/ROO CODE_MCP_CONFIG.md#mcp-tool-integration)
+
+## 🎯 Rule Activation Summary
+
+### Automatic Triggers
+```typescript
+// File Events → MCP_TASK_MANAGEMENT_RULES.md
+onFileCreate() → Rule 1 (Automatic Task Creation)
+onFileModify() → Rule 2 (Task Progress Updates)
+onFileOpen() → Rule 10 (File Type Specific Rules)
+
+// Git Events → WORKFLOW_AUTOMATION_RULES.md
+onBranchCreate() → Workflow 1 (Feature Development)
+onCommit() → Workflow 6 (Commit Updates)
+onPullRequest() → Workflow 7 (PR Workflow)
+
+// Time Events → WORKFLOW_AUTOMATION_RULES.md
+daily(09:00) → Workflow 8 (Daily Standup)
+weekly(monday, 10:00) → Workflow 9 (Sprint Planning)
+
+// Configuration → ROO CODE_MCP_CONFIG.md
+All event handlers and tool configurations
+```
+
+## 🔧 Quick Setup Guide
+
+### 1. MCP Server Configuration
+```json
+// From: ROO CODE_MCP_CONFIG.md
+{
+  "mcp": {
+    "servers": {
+      "aai-system-enhanced": {
+        "command": "npm",
+        "args": ["run", "sse"],
+        "cwd": ".roo/rules/agents",
+        "env": { 
+          "STORAGE_TYPE": "sqlite",
+          "SQLITE_DB_PATH": "./_store/tasks.db"
+        }
+      }
+    }
+  }
+}
+```
+
+### 2. Enable Automatic Rules
+```json
+// From: ROO CODE_MCP_CONFIG.md
+{
+  "aai.mcp.enabled": true,
+  "aai.taskManagement.autoCreate": true,
+  "aai.taskManagement.autoUpdate": true,
+  "aai.workflow.automation": true
+}
+```
+
+## 📝 File Update Instructions for Roo Code AI
+
+> **🚨 CRITICAL**: When modifying MCP task management content, follow these update rules:
+
+### When updating MCP tools or rules:
+1. **Primary Update**: Modify [MCP_TASK_MANAGEMENT_RULES.md](mdc:.roo/rules/MCP_TASK_MANAGEMENT_RULES.md)
+2. **Workflow Impact**: Check and update [WORKFLOW_AUTOMATION_RULES.md](mdc:.roo/rules/WORKFLOW_AUTOMATION_RULES.md)
+3. **Configuration Impact**: Update [ROO CODE_MCP_CONFIG.md](mdc:.roo/rules/ROO CODE_MCP_CONFIG.md)
+4. **Index Update**: Update this file with new summaries and links
+
+### When updating workflows:
+1. **Primary Update**: Modify [WORKFLOW_AUTOMATION_RULES.md](mdc:.roo/rules/WORKFLOW_AUTOMATION_RULES.md)
+2. **Rule Dependencies**: Check [MCP_TASK_MANAGEMENT_RULES.md](mdc:.roo/rules/MCP_TASK_MANAGEMENT_RULES.md) for related rules
+3. **Configuration Update**: Update [ROO CODE_MCP_CONFIG.md](mdc:.roo/rules/ROO CODE_MCP_CONFIG.md) event handlers
+4. **Index Update**: Update this file with workflow summaries
+
+### When updating configuration:
+1. **Primary Update**: Modify [ROO CODE_MCP_CONFIG.md](mdc:.roo/rules/ROO CODE_MCP_CONFIG.md)
+2. **Rule Validation**: Ensure all rules in [MCP_TASK_MANAGEMENT_RULES.md](mdc:.roo/rules/MCP_TASK_MANAGEMENT_RULES.md) are supported
+3. **Workflow Validation**: Ensure all workflows in [WORKFLOW_AUTOMATION_RULES.md](mdc:.roo/rules/WORKFLOW_AUTOMATION_RULES.md) are configured
+4. **Index Update**: Update this file with configuration summaries
+
+### File Consistency Checklist:
+- [ ] All MCP tools referenced consistently across files
+- [ ] All workflow triggers properly configured
+- [ ] All rule numbers and names match
+- [ ] All file links in this index are valid
+- [ ] All configuration examples are current
+
+## 🎯 Task Data Access Examples
+
+### Retrieving Tasks
+```javascript
+// ❌ INCORRECT: Direct file access
+const tasks = JSON.parse(fs.readFileSync('_store/projects/_core/tasks/nested_tasks.json'));
+
+// ✅ CORRECT: Using MCP tools
+const tasksResult = await mcpTool.call('get_tasks', { 
+  status: 'pending', 
+  priority: 'high'
+});
+```
+
+### Creating a Task
+```javascript
+// ❌ INCORRECT: Direct file modification
+tasks.push(newTask);
+fs.writeFileSync('_store/projects/_core/tasks/nested_tasks.json', JSON.stringify(tasks));
+
+// ✅ CORRECT: Using MCP tools
+const result = await mcpTool.call('create_task', {
+  title: 'Implement authentication',
+  description: 'Add user login and registration',
+  type: 'feature',
+  priority: 'high'
+});
+```
+
+### Working with Priority Tasks
+```javascript
+// ✅ NEW: Get the highest priority task
+const priorityTask = await mcpTool.call('get_most_priority_task', {
+  status: 'pending'
+});
+
+// ✅ NEW: Get all subtasks of a main task
+const subtasks = await mcpTool.call('get_subtasks', {
+  parentId: 'task_001'
+});
+```
+
+## 📚 Related Documentation
+
+- **[AAI System Enhanced README](mdc:.roo/rules/agents/README.md)** - Main system documentation
+- **[Integration Guide](mdc:.roo/rules/agents/docs/ROO CODE_MCP_INTEGRATION.md)** - Complete setup guide
+- **[Quick Reference](mdc:.roo/rules/agents/docs/QUICK_REFERENCE.md)** - Fast reference card
+- **[SSE Server Implementation](mdc:.roo/rules/agents/src/api/SSEServer.ts)** - MCP Server source code
+
+---
+
+**This centralized index provides quick access to all MCP task management rules while maintaining detailed documentation in separate files. When Roo Code reads this file, it knows to reference the linked files for complete implementation details.**

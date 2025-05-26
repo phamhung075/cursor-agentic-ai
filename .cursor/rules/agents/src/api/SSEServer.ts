@@ -142,7 +142,7 @@ class MCPSSEServer {
 					const now = new Date();
 					const staleTimeout = 5 * 60 * 1000; // 5 minutes
 					const sessions = this.mcpService.getAllSessions();
-					
+
 					for (const [sessionId, session] of sessions.entries()) {
 						if (now.getTime() - session.createdAt.getTime() > staleTimeout && !session.initialized) {
 							consoleLogger.warn('MCP-SSE', `Cleaning up stale session: ${sessionId}`);
@@ -195,9 +195,9 @@ class MCPSSEServer {
 				try {
 					// Use the controller to send the message
 					session.response.write(`event: message\ndata: ${JSON.stringify({
-						jsonrpc: '2.0',
-						method: 'notifications/cancelled',
-						params: { reason: 'Server shutting down' }
+							jsonrpc: '2.0',
+							method: 'notifications/cancelled',
+							params: { reason: 'Server shutting down' }
 					})}\n\n`);
 					session.response.end();
 				} catch (error: unknown) {

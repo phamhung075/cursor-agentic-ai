@@ -191,3 +191,13 @@ docs/.vitepress/dist/
 # Deployment files
 .vercel
 .netlify
+
+# Added by Claude Task Master
+dev-debug.log
+# Dependency directories
+# Environment variables
+.vscode
+# OS specific
+# Task files
+tasks.json
+tasks/ 

@@ -1,0 +1,639 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# ⚙️ Roo Code MCP Configuration for Automatic Task Management
+
+**Configuration file for enabling automatic MCP task management integration in Roo Code IDE**
+
+## 🎯 Core Configuration
+# ⚙️ Roo Code MCP Configuration for Task Management
+
+**Complete Roo Code IDE configuration for MCP server integration and automatic rule activation**
+
+> **📝 IMPORTANT FOR roo AI**: When modifying this file, you MUST also update:
+> - [CENTRALIZED_MCP_RULES.md](mdc:.roo/rules/CENTRALIZED_MCP_RULES.md) - Update configuration summaries and links
+> - [MCP_TASK_MANAGEMENT_RULES.md](mdc:.roo/rules/MCP_TASK_MANAGEMENT_RULES.md) - Ensure all rules are properly configured
+> - [WORKFLOW_AUTOMATION_RULES.md](mdc:.roo/rules/WORKFLOW_AUTOMATION_RULES.md) - Ensure all workflows have proper event handlers
+> 
+> **File Dependencies**: This file provides the technical configuration that enables all MCP rules and workflows.
+
+## 🎯 Core Configuration
+
+### MCP Server Configuration
+```json
+{
+  "mcp": {
+    "servers": {
+      "aai-system-enhanced": {
+        "command": "npm",
+        "args": ["run", "sse"],
+        "cwd": "/Users/admin/Documents/Hung/AI/roo-agentic-ai/.roo/rules/agents",
+        "env": {
+          "AAI_MODE": "mcp",
+          "NODE_ENV": "production"
+        },
+        "transport": "stdio"
+      }
+    }
+  },
+  "aai": {
+    "mcp": {
+      "enabled": true,
+      "autoConnect": true,
+      "taskManagement": {
+        "autoCreate": true,
+        "autoUpdate": true,
+        "autoAnalyze": true,
+        "autoDecompose": true,
+        "autoPrioritize": true
+      },
+      "workflow": {
+        "automation": true,
+        "gitIntegration": true,
+        "timeBasedTriggers": true,
+        "fileEventTriggers": true
+      },
+      "logging": {
+        "enabled": true,
+        "level": "info",
+        "showInOutput": true
+      }
+    }
+  }
+}
+```
+
+### Roo Code Workspace Settings
+```json
+{
+  "aai.mcp.enabled": true,
+  "aai.mcp.autoStart": true,
+  "aai.mcp.server": "aai-system-enhanced",
+  "aai.taskManagement.enabled": true,
+  "aai.taskManagement.autoCreate": true,
+  "aai.taskManagement.autoUpdate": true,
+  "aai.taskManagement.autoPriority": true,
+  "aai.workflow.automation": true,
+  "aai.git.integration": true,
+  "aai.analytics.enabled": true,
+  "aai.logging.level": "info"
+}
+```
+
+## 🔄 Automatic Rule Activation
+
+### File Event Triggers
+```typescript
+// Automatic task creation on file operations
+onFileCreate: {
+  trigger: "file.create",
+  condition: "file.extension in ['.ts', '.js', '.tsx', '.jsx', '.py', '.md']",
+  action: "mcp.call",
+  tool: "create_task",
+  args: {
+    title: "Work on ${file.name}",
+    description: "File created: ${file.path}",
+    projectId: "${workspace.name}",
+    priority: "medium",
+    tags: ["file-work", "${file.extension}"]
+  }
+}
+
+// Automatic task updates on file modifications
+onFileModify: {
+  trigger: "file.modify",
+  condition: "file.hasActiveTask",
+  action: "mcp.call",
+  tool: "update_task",
+  args: {
+    taskId: "${file.activeTaskId}",
+    status: "in_progress",
+    updatedAt: "${timestamp}",
+    notes: "File modified: ${file.path}"
+  }
+}
+
+// Complexity analysis for large files
+onFileOpen: {
+  trigger: "file.open",
+  condition: "file.lineCount > 200",
+  action: "mcp.call",
+  tool: "analyze_complexity",
+  args: {
+    description: "Analyze complexity of ${file.name}",
+    context: {
+      fileSize: "${file.lineCount}",
+      filePath: "${file.path}",
+      fileType: "${file.extension}"
+    }
+  }
+}
+```
+
+### Git Event Triggers
+```typescript
+// Feature branch creation
+onBranchCreate: {
+  trigger: "git.branchCreate",
+  condition: "branch.name.startsWith('feature/')",
+  action: "mcp.call",
+  tool: "create_task",
+  args: {
+    title: "Implement ${branch.featureName}",
+    description: "Feature branch: ${branch.name}",
+    projectId: "${git.repository}",
+    priority: "high",
+    tags: ["feature", "development"]
+  }
+}
+
+// Commit-based task updates
+onCommit: {
+  trigger: "git.commit",
+  condition: "commit.message.includes('task:')",
+  action: "mcp.call",
+  tool: "update_task",
+  args: {
+    taskId: "${commit.extractTaskId}",
+    status: "in_progress",
+    notes: "Commit: ${commit.message}",
+    progress: "${commit.calculateProgress}"
+  }
+}
+
+// Pull request workflow
+onPullRequest: {
+  trigger: "git.pullRequest",
+  condition: "pr.state === 'open'",
+  action: "mcp.call",
+  tool: "update_task",
+  args: {
+    taskId: "${pr.linkedTaskId}",
+    status: "review",
+    notes: "PR created: ${pr.title}",
+    reviewers: "${pr.reviewers}"
+  }
+}
+```
+
+### Time-Based Triggers
+```typescript
+// Daily standup preparation
+dailyStandup: {
+  trigger: "time.daily",
+  time: "09:00",
+  action: "mcp.call",
+  tool: "get_system_status",
+  followUp: [
+    {
+      tool: "list_tasks",
+      args: { status: "in_progress", limit: 10 }
+    },
+    {
+      tool: "calculate_priority",
+      args: { recalculateAll: true }
+    }
+  ]
+}
+
+// Weekly sprint planning
+weeklyPlanning: {
+  trigger: "time.weekly",
+  day: "monday",
+  time: "10:00",
+  action: "mcp.call",
+  tool: "decompose_task",
+  args: {
+    description: "Weekly sprint planning",
+    complexity: "high",
+    context: { type: "planning", duration: "week" }
+  }
+}
+```
+
+## 🎯 Context-Aware Configuration
+
+### Project-Specific Settings
+```typescript
+{
+  "roo.projects": {
+    "default": {
+      "projectId": "default",
+      "taskPrefix": "TASK",
+      "defaultPriority": "medium",
+      "autoEstimation": true,
+      "complexityAnalysis": true
+    },
+    "web-app": {
+      "projectId": "web-app-v2",
+      "taskPrefix": "WEB",
+      "defaultPriority": "high",
+      "technologies": ["react", "typescript", "node"],
+      "estimationModel": "agile"
+    },
+    "mobile-app": {
+      "projectId": "mobile-app-v1",
+      "taskPrefix": "MOB",
+      "defaultPriority": "medium",
+      "technologies": ["react-native", "typescript"],
+      "estimationModel": "scrum"
+    }
+  }
+}
+```
+
+### File Type Mappings
+```typescript
+{
+  "roo.fileTypes": {
+    ".tsx": {
+      "tags": ["frontend", "react", "typescript"],
+      "estimatedHours": 4,
+      "complexity": "medium",
+      "autoAnalysis": true
+    },
+    ".ts": {
+      "tags": ["backend", "typescript", "logic"],
+      "estimatedHours": 3,
+      "complexity": "medium",
+      "autoAnalysis": true
+    },
+    ".test.ts": {
+      "tags": ["testing", "qa", "typescript"],
+      "estimatedHours": 2,
+      "complexity": "low",
+      "autoAnalysis": false
+    },
+    ".css": {
+      "tags": ["styling", "ui", "frontend"],
+      "estimatedHours": 2,
+      "complexity": "low",
+      "autoAnalysis": false
+    },
+    ".md": {
+      "tags": ["documentation", "writing"],
+      "estimatedHours": 1,
+      "complexity": "low",
+      "autoAnalysis": false
+    }
+  }
+}
+```
+
+## 🚀 MCP Tool Integration
+
+### Tool Usage Configuration
+```typescript
+{
+  "roo.mcp.tools": {
+    "create_task": {
+      "enabled": true,
+      "autoTrigger": true,
+      "conditions": ["newFile", "newBranch", "todoComment"],
+      "defaultParams": {
+        "priority": "medium",
+        "projectId": "getCurrentProjectId()",
+        "tags": "getContextTags()"
+      }
+    },
+    "update_task": {
+      "enabled": true,
+      "autoTrigger": true,
+      "conditions": ["fileModify", "commit", "progressChange"],
+      "batchUpdates": true
+    },
+    "decompose_task": {
+      "enabled": true,
+      "autoTrigger": false,
+      "conditions": ["complexTask", "largeEstimate"],
+      "threshold": {
+        "estimatedHours": 8,
+        "complexity": "high"
+      }
+    },
+    "analyze_complexity": {
+      "enabled": true,
+      "autoTrigger": true,
+      "conditions": ["largeFile", "complexLogic"],
+      "threshold": {
+        "lines": 200,
+        "functions": 10
+      }
+    },
+    "calculate_priority": {
+      "enabled": true,
+      "autoTrigger": true,
+      "schedule": "daily",
+      "conditions": ["deadlineChange", "dependencyUpdate"]
+    }
+  }
+}
+```
+
+### Resource Access Configuration
+```typescript
+{
+  "roo.mcp.resources": {
+    "task": {
+      "enabled": true,
+      "caching": true,
+      "cacheDuration": 300000, // 5 minutes
+      "autoRefresh": true
+    },
+    "project": {
+      "enabled": true,
+      "caching": true,
+      "cacheDuration": 600000, // 10 minutes
+      "autoRefresh": false
+    }
+  }
+}
+```
+
+### Prompt Integration
+```typescript
+{
+  "roo.mcp.prompts": {
+    "task-analysis": {
+      "enabled": true,
+      "autoSuggest": true,
+      "contexts": ["complexTask", "newFeature"],
+      "template": "Analyze the following task: {taskDescription}"
+    },
+    "priority-assessment": {
+      "enabled": true,
+      "autoSuggest": false,
+      "contexts": ["sprintPlanning", "backlogGrooming"],
+      "template": "Assess priorities for: {taskList}"
+    }
+  }
+}
+```
+
+## 🔧 Advanced Configuration
+
+### Performance Settings
+```typescript
+{
+  "roo.mcp.performance": {
+    "batchSize": 10,
+    "requestTimeout": 5000,
+    "retryAttempts": 3,
+    "retryDelay": 1000,
+    "caching": {
+      "enabled": true,
+      "maxSize": 100,
+      "ttl": 300000
+    },
+    "throttling": {
+      "enabled": true,
+      "maxRequestsPerSecond": 10
+    }
+  }
+}
+```
+
+### Error Handling
+```typescript
+{
+  "roo.mcp.errorHandling": {
+    "retryOnFailure": true,
+    "fallbackMode": "graceful",
+    "logErrors": true,
+    "notifyUser": false,
+    "offlineMode": {
+      "enabled": true,
+      "queueRequests": true,
+      "maxQueueSize": 50
+    }
+  }
+}
+```
+
+### Security Settings
+```typescript
+{
+  "roo.mcp.security": {
+    "validateRequests": true,
+    "sanitizeInputs": true,
+    "rateLimiting": true,
+    "allowedOrigins": ["localhost", "127.0.0.1"],
+    "encryption": {
+      "enabled": false,
+      "algorithm": "aes-256-gcm"
+    }
+  }
+}
+```
+
+## 📊 Analytics and Monitoring
+
+### Metrics Collection
+```typescript
+{
+  "roo.mcp.analytics": {
+    "enabled": true,
+    "collectMetrics": true,
+    "metricsInterval": 300000, // 5 minutes
+    "trackEvents": [
+      "taskCreated",
+      "taskUpdated",
+      "taskCompleted",
+      "complexityAnalyzed",
+      "priorityCalculated"
+    ],
+    "performance": {
+      "trackResponseTimes": true,
+      "trackErrorRates": true,
+      "trackUsagePatterns": true
+    }
+  }
+}
+```
+
+### Logging Configuration
+```typescript
+{
+  "roo.mcp.logging": {
+    "level": "info",
+    "enableConsole": true,
+    "enableFile": true,
+    "logFile": ".roo/logs/mcp.log",
+    "maxFileSize": "10MB",
+    "maxFiles": 5,
+    "structured": true,
+    "includeTimestamp": true,
+    "includeContext": true
+  }
+}
+```
+
+## 🎯 User Interface Integration
+
+### Command Palette Integration
+```typescript
+{
+  "roo.commands": {
+    "aai.createTask": {
+      "title": "AAI: Create Task",
+      "category": "Task Management",
+      "keybinding": "ctrl+shift+t",
+      "when": "editorTextFocus"
+    },
+    "aai.updateTask": {
+      "title": "AAI: Update Current Task",
+      "category": "Task Management",
+      "keybinding": "ctrl+shift+u",
+      "when": "editorTextFocus"
+    },
+    "aai.analyzeComplexity": {
+      "title": "AAI: Analyze Code Complexity",
+      "category": "Analysis",
+      "keybinding": "ctrl+shift+a",
+      "when": "editorHasSelection"
+    },
+    "aai.decomposeTask": {
+      "title": "AAI: Decompose Task",
+      "category": "Task Management",
+      "when": "aai.hasActiveTask"
+    },
+    "aai.systemStatus": {
+      "title": "AAI: Show System Status",
+      "category": "Monitoring",
+      "keybinding": "ctrl+shift+s"
+    }
+  }
+}
+```
+
+### Status Bar Integration
+```typescript
+{
+  "roo.statusBar": {
+    "aai.taskStatus": {
+      "enabled": true,
+      "position": "left",
+      "priority": 100,
+      "text": "$(checklist) {activeTaskCount} tasks",
+      "tooltip": "Active tasks: {activeTaskList}",
+      "command": "aai.showTaskList"
+    },
+    "aai.mcpStatus": {
+      "enabled": true,
+      "position": "right",
+      "priority": 50,
+      "text": "$(server) MCP",
+      "tooltip": "MCP Server Status: {status}",
+      "command": "aai.systemStatus"
+    }
+  }
+}
+```
+
+### Sidebar Integration
+```typescript
+{
+  "roo.views": {
+    "aai-tasks": {
+      "id": "aai.taskExplorer",
+      "name": "AAI Tasks",
+      "when": "aai.mcp.enabled",
+      "contents": [
+        {
+          "id": "aai.activeTasks",
+          "name": "Active Tasks",
+          "type": "tree"
+        },
+        {
+          "id": "aai.recentTasks",
+          "name": "Recent Tasks",
+          "type": "tree"
+        },
+        {
+          "id": "aai.systemMetrics",
+          "name": "System Metrics",
+          "type": "webview"
+        }
+      ]
+    }
+  }
+}
+```
+
+## 🔄 Activation and Initialization
+
+### Startup Sequence
+```typescript
+{
+  "roo.activation": {
+    "events": ["onStartupFinished"],
+    "sequence": [
+      {
+        "action": "startMCPServer",
+        "timeout": 10000,
+        "required": true
+      },
+      {
+        "action": "loadConfiguration",
+        "timeout": 5000,
+        "required": true
+      },
+      {
+        "action": "initializeRules",
+        "timeout": 5000,
+        "required": true
+      },
+      {
+        "action": "registerEventHandlers",
+        "timeout": 3000,
+        "required": true
+      },
+      {
+        "action": "loadActiveProject",
+        "timeout": 5000,
+        "required": false
+      },
+      {
+        "action": "syncTasks",
+        "timeout": 10000,
+        "required": false
+      }
+    ]
+  }
+}
+```
+
+### Health Monitoring
+```typescript
+{
+  "roo.health": {
+    "checks": [
+      {
+        "name": "mcpServerHealth",
+        "interval": 60000,
+        "action": "get_system_status",
+        "timeout": 5000,
+        "retries": 3
+      },
+      {
+        "name": "taskSyncHealth",
+        "interval": 300000,
+        "action": "list_tasks",
+        "timeout": 10000,
+        "retries": 2
+      }
+    ],
+    "onFailure": {
+      "notify": true,
+      "restart": true,
+      "maxRestarts": 3
+    }
+  }
+}
+```
+
+---
+
+**This configuration enables seamless, automatic integration of intelligent task management into your Roo Code IDE workflow through the AAI System Enhanced MCP server. All rules and workflows will be automatically activated based on your development activities.** 

@@ -127,15 +127,18 @@
     "sse:auto-test": "npm run sse:test",
     "mcp:restart": "npm run sse:kill && npm run sse",
     "mcp:hello": "node scripts/hello-world-mcp.js",
-    "mcp:server": "node scripts/hello-world-mcp.js"
+    "mcp:server": "node scripts/hello-world-mcp.js",
+    "mcp:test": "./scripts/test-mcp.sh"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^2.0.1",
     "chalk": "^4.1.2",
     "chokidar": "^3.5.3",
     "dotenv": "^16.5.0",
+    "eventsource": "^4.0.0",
     "gray-matter": "^4.0.3",
     "marked": "^5.1.1",
+    "node-fetch": "^2.7.0",
     "openai": "^4.28.0"
   },
   "devDependencies": {
