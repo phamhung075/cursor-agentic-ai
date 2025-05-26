@@ -443,7 +443,7 @@ export class IntelligentTaskManagementSystem {
       
       this.apiServer = new APIServer(
         {
-          port: config?.api?.port || 3000,
+        port: config?.api?.port || 3000,
           host: config?.api?.host || 'localhost',
           cors: { origin: '*', credentials: false },
           rateLimit: { windowMs: 15 * 60 * 1000, max: 100 },
@@ -548,7 +548,7 @@ export async function quickStart(config?: SystemConfig): Promise<IntelligentTask
 }
 
 // Default export
-export default IntelligentTaskManagementSystem;
+export default IntelligentTaskManagementSystem; 
 
 /**
  * Main execution block - runs when this file is executed directly

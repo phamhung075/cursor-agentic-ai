@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
+import { log } from '../../utils';
 
 /**
  * Request Logger Middleware
- * 
- * Logs incoming API requests for monitoring and debugging.
+ * Logs incoming API requests for monitoring and debugging using the Logger utility.
  */
 export function requestLogger(
   req: Request,
@@ -12,14 +12,16 @@ export function requestLogger(
 ): void {
   const startTime = Date.now();
   const requestId = (req as any).context?.requestId || 'unknown';
-  
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl} - Request ID: ${requestId}`);
-  
-  // Log response when finished
+  const method = req.method;
+  const url = req.originalUrl;
+  const body = req.body;
+
+  log.info('API', `➡️ ${method} ${url} - Request ID: ${requestId}`, { body });
+
   res.on('finish', () => {
     const duration = Date.now() - startTime;
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl} - ${res.statusCode} - ${duration}ms - Request ID: ${requestId}`);
+    log.api(method, url, res.statusCode, duration, { requestId, body });
   });
-  
+
   next();
 } 

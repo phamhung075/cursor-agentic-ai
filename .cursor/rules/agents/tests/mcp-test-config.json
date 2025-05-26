@@ -1,0 +1,155 @@
+{
+  "mcpTestConfig": {
+    "serverStartupTimeout": 10000,
+    "requestTimeout": 5000,
+    "testDataPath": "./test-data",
+    "reportPath": "./reports",
+    "serverConfig": {
+      "mode": "mcp",
+      "port": 3001,
+      "host": "localhost",
+      "env": "test"
+    },
+    "testSuites": {
+      "basicTools": {
+        "enabled": true,
+        "tools": [
+          "create_task",
+          "get_task",
+          "list_tasks",
+          "update_task",
+          "delete_task"
+        ],
+        "testCases": {
+          "create_task": [
+            {
+              "name": "basic_creation",
+              "description": "Test basic task creation with minimal fields"
+            },
+            {
+              "name": "complex_creation",
+              "description": "Test task creation with all optional fields"
+            },
+            {
+              "name": "validation_errors",
+              "description": "Test validation error handling"
+            }
+          ],
+          "get_task": [
+            {
+              "name": "existing_task",
+              "description": "Retrieve an existing task"
+            },
+            {
+              "name": "non_existent_task",
+              "description": "Handle non-existent task gracefully"
+            }
+          ],
+          "list_tasks": [
+            {
+              "name": "list_all",
+              "description": "List all tasks without filters"
+            },
+            {
+              "name": "filtered_list",
+              "description": "List tasks with status and priority filters"
+            },
+            {
+              "name": "paginated_list",
+              "description": "List tasks with pagination"
+            }
+          ],
+          "update_task": [
+            {
+              "name": "status_update",
+              "description": "Update task status"
+            },
+            {
+              "name": "multiple_fields",
+              "description": "Update multiple task fields"
+            },
+            {
+              "name": "non_existent_update",
+              "description": "Handle updates to non-existent tasks"
+            }
+          ],
+          "delete_task": [
+            {
+              "name": "existing_deletion",
+              "description": "Delete an existing task"
+            },
+            {
+              "name": "non_existent_deletion",
+              "description": "Handle deletion of non-existent tasks"
+            }
+          ]
+        }
+      },
+      "aiTools": {
+        "enabled": true,
+        "tools": [
+          "decompose_task",
+          "analyze_complexity",
+          "calculate_priority",
+          "get_system_status"
+        ],
+        "testCases": {
+          "decompose_task": [
+            {
+              "name": "simple_decomposition",
+              "description": "Decompose a simple task"
+            },
+            {
+              "name": "complex_decomposition",
+              "description": "Decompose a complex multi-component task"
+            }
+          ],
+          "analyze_complexity": [
+            {
+              "name": "low_complexity",
+              "description": "Analyze a simple task"
+            },
+            {
+              "name": "high_complexity",
+              "description": "Analyze a complex technical task"
+            }
+          ],
+          "calculate_priority": [
+            {
+              "name": "single_task",
+              "description": "Calculate priority for a single task"
+            },
+            {
+              "name": "multiple_tasks",
+              "description": "Calculate and compare priorities for multiple tasks"
+            }
+          ],
+          "get_system_status": [
+            {
+              "name": "basic_status",
+              "description": "Get current system status"
+            }
+          ]
+        }
+      }
+    },
+    "expectedResults": {
+      "minimumSuccessRate": 85,
+      "criticalTools": [
+        "create_task",
+        "get_task",
+        "list_tasks"
+      ],
+      "performanceThresholds": {
+        "maxResponseTime": 3000,
+        "maxMemoryUsage": "100MB"
+      }
+    },
+    "reporting": {
+      "generateDetailedReport": true,
+      "includePerformanceMetrics": true,
+      "saveTestData": true,
+      "reportFormats": ["json", "console"]
+    }
+  }
+} 
