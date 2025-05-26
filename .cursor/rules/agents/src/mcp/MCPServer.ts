@@ -563,7 +563,7 @@ Provide a prioritized list with reasoning for each ranking.`
       timestamp: new Date().toISOString()
     };
 
-    this.logger.error(`MCP Tool Error [${toolName}]:`, error);
+    this.logger.error('MCP', `MCP Tool Error [${toolName}]:`, error);
 
     return {
       content: [{
@@ -583,12 +583,12 @@ Provide a prioritized list with reasoning for each ranking.`
 
       if (this.config.transport.type === 'stdio') {
         transport = new StdioServerTransport();
-        this.logger.info('Starting MCP server with stdio transport');
+        this.logger.info('MCP', 'Starting MCP server with stdio transport');
       } else if (this.config.transport.type === 'http') {
         transport = new StreamableHTTPServerTransport({
           sessionIdGenerator: () => Math.random().toString(36).substring(7)
         });
-        this.logger.info(`Starting MCP server with HTTP transport on port ${this.config.transport.port}`);
+        this.logger.info('MCP', `Starting MCP server with HTTP transport on port ${this.config.transport.port}`);
       } else {
         throw new Error(`Unsupported transport type: ${this.config.transport.type}`);
       }
@@ -598,13 +598,13 @@ Provide a prioritized list with reasoning for each ranking.`
       this.isRunning = true;
       this.startTime = new Date();
       
-      this.logger.info(`🚀 AAI MCP Server started successfully`);
-      this.logger.info(`📋 Available tools: ${this.getAvailableTools().length}`);
-      this.logger.info(`📚 Available resources: ${this.getAvailableResources().length}`);
-      this.logger.info(`💡 Available prompts: ${this.getAvailablePrompts().length}`);
+      this.logger.info('MCP', '🚀 AAI MCP Server started successfully');
+      this.logger.info('MCP', `📋 Available tools: ${this.getAvailableTools().length}`);
+      this.logger.info('MCP', `📚 Available resources: ${this.getAvailableResources().length}`);
+      this.logger.info('MCP', `💡 Available prompts: ${this.getAvailablePrompts().length}`);
 
     } catch (error) {
-      this.logger.error('Failed to start MCP server:', error);
+      this.logger.error('MCP', 'Failed to start MCP server:', error);
       throw error;
     }
   }
@@ -619,9 +619,9 @@ Provide a prioritized list with reasoning for each ranking.`
       }
       
       this.isRunning = false;
-      this.logger.info('🛑 AAI MCP Server stopped');
+      this.logger.info('MCP', '🛑 AAI MCP Server stopped');
     } catch (error) {
-      this.logger.error('Error stopping MCP server:', error);
+      this.logger.error('MCP', 'Error stopping MCP server:', error);
       throw error;
     }
   }

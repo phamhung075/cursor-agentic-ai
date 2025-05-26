@@ -227,14 +227,19 @@ export class SynchronizationService extends EventEmitter implements ISynchroniza
    * Initialize sync state
    */
   private initializeSyncState(): SyncState {
-    return {
+    const initialState: SyncState = {
       lastSyncTimestamp: new Date().toISOString(),
       version: 1,
-      checksum: this.calculateChecksum(),
+      checksum: '', // Initialize empty, will be calculated after assignment
       pendingChanges: [],
       conflictCount: 0,
       connectionCount: 0
     };
+    
+    // Calculate checksum after the state object is created
+    initialState.checksum = this.calculateChecksumForState(initialState);
+    
+    return initialState;
   }
 
   /**
@@ -518,13 +523,21 @@ export class SynchronizationService extends EventEmitter implements ISynchroniza
   /**
    * Calculate system checksum
    */
-  private calculateChecksum(): string {
+  private calculateChecksum(state?: SyncState): string {
+    const syncState = state || this.syncState;
     const data = {
-      timestamp: this.syncState.lastSyncTimestamp,
-      version: this.syncState.version,
-      pendingCount: this.syncState.pendingChanges.length
+      timestamp: syncState.lastSyncTimestamp,
+      version: syncState.version,
+      pendingCount: syncState.pendingChanges.length
     };
     return Buffer.from(JSON.stringify(data)).toString('base64');
+  }
+
+  /**
+   * Calculate checksum for a specific state
+   */
+  private calculateChecksumForState(state: SyncState): string {
+    return this.calculateChecksum(state);
   }
 
   /**
