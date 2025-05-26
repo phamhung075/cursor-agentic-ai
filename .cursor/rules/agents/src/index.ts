@@ -34,6 +34,12 @@ export { APIServer, createAPIRouter, TaskController, DecompositionController, Pr
 // All Types
 export * from './types';
 
+// Utilities (including Logger)
+export * from './utils';
+
+// Import logging utilities
+import { Logger, LogLevel, globalLogger, log } from './utils/Logger';
+
 /**
  * Main System Class
  * 
@@ -48,10 +54,13 @@ export class IntelligentTaskManagementSystem {
   private automationEngine: any;
   private realTimeSync: any;
   private apiServer: any;
+  private logger: Logger;
   private isInitialized: boolean = false;
 
   constructor(config?: SystemConfig) {
-    // System will be initialized with provided configuration
+    // Initialize logger first
+    this.logger = Logger.getInstance(config?.logging);
+    this.logger.info('SYSTEM', '🎯 Intelligent Task Management System created', { config });
   }
 
   /**
@@ -62,29 +71,45 @@ export class IntelligentTaskManagementSystem {
       throw new Error('System is already initialized');
     }
 
-    console.log('🚀 Initializing Intelligent Task Management System...');
+    const operationId = this.logger.startOperation('SYSTEM', 'initialize', { config });
+    const startTime = Date.now();
 
     try {
+      this.logger.info('SYSTEM', '🚀 Initializing Intelligent Task Management System...');
+
       // Initialize core components
       await this.initializeCore(config);
+      this.logger.info('SYSTEM', '✅ Core components initialized');
       
       // Initialize AI components
       await this.initializeAI(config);
+      this.logger.info('SYSTEM', '✅ AI components initialized');
       
       // Initialize automation
       await this.initializeAutomation(config);
+      this.logger.info('SYSTEM', '✅ Automation engine initialized');
       
       // Initialize real-time features
       await this.initializeRealTime(config);
+      this.logger.info('SYSTEM', '✅ Real-time features initialized');
       
       // Initialize API server
       await this.initializeAPI(config);
+      this.logger.info('SYSTEM', '✅ API server initialized');
 
       this.isInitialized = true;
-      console.log('✅ Intelligent Task Management System initialized successfully!');
+      const duration = Date.now() - startTime;
+      
+      this.logger.endOperation('SYSTEM', operationId, 'initialize', duration, true);
+      this.logger.logSystemEvent('system_initialized', { 
+        duration, 
+        components: ['core', 'ai', 'automation', 'realtime', 'api'] 
+      });
       
     } catch (error) {
-      console.error('❌ Failed to initialize system:', error);
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('SYSTEM', operationId, 'initialize', duration, false, error);
+      this.logger.error('SYSTEM', '❌ Failed to initialize system', { error });
       throw error;
     }
   }
@@ -97,53 +122,89 @@ export class IntelligentTaskManagementSystem {
       throw new Error('System must be initialized before starting');
     }
 
-    console.log('🎯 Starting Intelligent Task Management System...');
-    
-    // Start API server
-    if (this.apiServer) {
-      await this.apiServer.start();
-    }
+    const operationId = this.logger.startOperation('SYSTEM', 'start');
+    const startTime = Date.now();
 
-    // Start real-time services
-    if (this.realTimeSync) {
-      await this.realTimeSync.start();
-    }
+    try {
+      this.logger.info('SYSTEM', '🎯 Starting Intelligent Task Management System...');
+      
+      // Start API server
+      if (this.apiServer) {
+        await this.apiServer.start();
+        this.logger.info('SYSTEM', '✅ API server started');
+      }
 
-    // Start automation engine
-    if (this.automationEngine) {
-      await this.automationEngine.start();
-    }
+      // Start real-time services
+      if (this.realTimeSync) {
+        await this.realTimeSync.start();
+        this.logger.info('SYSTEM', '✅ Real-time services started');
+      }
 
-    console.log('🌟 Intelligent Task Management System is now running!');
+      // Start automation engine
+      if (this.automationEngine) {
+        await this.automationEngine.start();
+        this.logger.info('SYSTEM', '✅ Automation engine started');
+      }
+
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('SYSTEM', operationId, 'start', duration, true);
+      this.logger.logSystemEvent('system_started', { duration });
+      this.logger.info('SYSTEM', '🌟 Intelligent Task Management System is now running!');
+
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('SYSTEM', operationId, 'start', duration, false, error);
+      this.logger.error('SYSTEM', '❌ Failed to start system', { error });
+      throw error;
+    }
   }
 
   /**
    * Stop the system
    */
   public async stop(): Promise<void> {
-    console.log('🛑 Stopping Intelligent Task Management System...');
-    
-    // Stop all services gracefully
-    if (this.apiServer) {
-      await this.apiServer.stop();
-    }
-    
-    if (this.realTimeSync) {
-      await this.realTimeSync.stop();
-    }
-    
-    if (this.automationEngine) {
-      await this.automationEngine.stop();
-    }
+    const operationId = this.logger.startOperation('SYSTEM', 'stop');
+    const startTime = Date.now();
 
-    console.log('✅ Intelligent Task Management System stopped successfully');
+    try {
+      this.logger.info('SYSTEM', '🛑 Stopping Intelligent Task Management System...');
+      
+      // Stop all services gracefully
+      if (this.apiServer) {
+        await this.apiServer.stop();
+        this.logger.info('SYSTEM', '✅ API server stopped');
+      }
+      
+      if (this.realTimeSync) {
+        await this.realTimeSync.stop();
+        this.logger.info('SYSTEM', '✅ Real-time services stopped');
+      }
+      
+      if (this.automationEngine) {
+        await this.automationEngine.stop();
+        this.logger.info('SYSTEM', '✅ Automation engine stopped');
+      }
+
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('SYSTEM', operationId, 'stop', duration, true);
+      this.logger.logSystemEvent('system_stopped', { duration });
+      this.logger.info('SYSTEM', '✅ Intelligent Task Management System stopped successfully');
+
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('SYSTEM', operationId, 'stop', duration, false, error);
+      this.logger.error('SYSTEM', '❌ Failed to stop system gracefully', { error });
+      throw error;
+    }
   }
 
   /**
    * Get system health status
    */
   public async getHealthStatus(): Promise<SystemHealthStatus> {
-    return {
+    this.logger.debug('SYSTEM', '🔍 Checking system health status');
+    
+    const healthStatus: SystemHealthStatus = {
       status: 'healthy',
       timestamp: new Date().toISOString(),
       components: {
@@ -158,13 +219,20 @@ export class IntelligentTaskManagementSystem {
       uptime: process.uptime(),
       memoryUsage: process.memoryUsage()
     };
+
+    this.logger.logPerformance('SYSTEM', 'uptime', process.uptime(), 'seconds');
+    this.logger.logPerformance('SYSTEM', 'memory_usage', process.memoryUsage().heapUsed / 1024 / 1024, 'MB');
+
+    return healthStatus;
   }
 
   /**
    * Get system metrics
    */
   public getMetrics(): SystemMetrics {
-    return {
+    this.logger.debug('SYSTEM', '📊 Collecting system metrics');
+    
+    const metrics: SystemMetrics = {
       tasksManaged: this.taskManager?.getTaskCount() || 0,
       aiDecompositions: this.aiDecomposer?.getDecompositionCount() || 0,
       automationRules: this.automationEngine?.getRuleCount() || 0,
@@ -172,49 +240,143 @@ export class IntelligentTaskManagementSystem {
       apiRequests: this.apiServer?.getRequestCount() || 0,
       learningAccuracy: this.learningService?.getAccuracy() || 0
     };
+
+    // Log key metrics
+    Object.entries(metrics).forEach(([key, value]) => {
+      this.logger.logPerformance('SYSTEM', key, value as number, 'count');
+    });
+
+    return metrics;
+  }
+
+  /**
+   * Get recent logs
+   */
+  public getRecentLogs(count: number = 100): any[] {
+    return this.logger.getRecentLogs(count);
+  }
+
+  /**
+   * Get logs by component
+   */
+  public getLogsByComponent(component: string, count: number = 100): any[] {
+    return this.logger.getLogsByComponent(component, count);
+  }
+
+  /**
+   * Update logging configuration
+   */
+  public updateLoggingConfig(config: any): void {
+    this.logger.updateConfig(config);
+    this.logger.info('SYSTEM', '⚙️ Logging configuration updated', { config });
   }
 
   // Private initialization methods
   private async initializeCore(config?: SystemConfig): Promise<void> {
-    const { TaskManager, AITaskDecomposer, DynamicPriorityManager } = await import('./core/tasks');
-    
-    this.taskManager = new TaskManager();
-    this.aiDecomposer = new AITaskDecomposer();
-    this.priorityManager = new DynamicPriorityManager();
+    const operationId = this.logger.startOperation('CORE', 'initialize');
+    const startTime = Date.now();
+
+    try {
+      const { TaskManager, AITaskDecomposer, DynamicPriorityManager } = await import('./core/tasks');
+      
+      this.taskManager = new TaskManager();
+      this.aiDecomposer = new AITaskDecomposer();
+      this.priorityManager = new DynamicPriorityManager();
+
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('CORE', operationId, 'initialize', duration, true);
+      
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('CORE', operationId, 'initialize', duration, false, error);
+      throw error;
+    }
   }
 
   private async initializeAI(config?: SystemConfig): Promise<void> {
-    const { LearningService } = await import('./core/tasks/LearningService');
-    
-    this.learningService = new LearningService(this.taskManager);
+    const operationId = this.logger.startOperation('AI', 'initialize');
+    const startTime = Date.now();
+
+    try {
+      const { LearningService } = await import('./core/tasks/LearningService');
+      
+      this.learningService = new LearningService(this.taskManager);
+
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('AI', operationId, 'initialize', duration, true);
+      
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('AI', operationId, 'initialize', duration, false, error);
+      throw error;
+    }
   }
 
   private async initializeAutomation(config?: SystemConfig): Promise<void> {
-    const { AutomationEngine } = await import('./core/automation');
-    
-    this.automationEngine = new AutomationEngine(
-      this.taskManager,
-      this.learningService,
-      this.priorityManager,
-      this.aiDecomposer
-    );
+    const operationId = this.logger.startOperation('AUTOMATION', 'initialize');
+    const startTime = Date.now();
+
+    try {
+      const { AutomationEngine } = await import('./core/automation');
+      
+      this.automationEngine = new AutomationEngine(
+        this.taskManager,
+        this.learningService,
+        this.priorityManager,
+        this.aiDecomposer
+      );
+
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('AUTOMATION', operationId, 'initialize', duration, true);
+      
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('AUTOMATION', operationId, 'initialize', duration, false, error);
+      throw error;
+    }
   }
 
   private async initializeRealTime(config?: SystemConfig): Promise<void> {
-    const { SynchronizationService } = await import('./core/realtime');
-    
-    this.realTimeSync = new SynchronizationService(
-      this.taskManager
-    );
+    const operationId = this.logger.startOperation('REALTIME', 'initialize');
+    const startTime = Date.now();
+
+    try {
+      const { SynchronizationService } = await import('./core/realtime');
+      
+      this.realTimeSync = new SynchronizationService(
+        this.taskManager
+      );
+
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('REALTIME', operationId, 'initialize', duration, true);
+      
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('REALTIME', operationId, 'initialize', duration, false, error);
+      throw error;
+    }
   }
 
   private async initializeAPI(config?: SystemConfig): Promise<void> {
-    const { APIServer } = await import('./api');
-    
-    this.apiServer = new APIServer({
-      port: config?.api?.port || 3000,
-      host: config?.api?.host || 'localhost'
-    });
+    const operationId = this.logger.startOperation('API', 'initialize');
+    const startTime = Date.now();
+
+    try {
+      const { APIServer } = await import('./api');
+      
+      this.apiServer = new APIServer({
+        port: config?.api?.port || 3000,
+        host: config?.api?.host || 'localhost'
+      });
+
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('API', operationId, 'initialize', duration, true);
+      
+    } catch (error) {
+      const duration = Date.now() - startTime;
+      this.logger.endOperation('API', operationId, 'initialize', duration, false, error);
+      throw error;
+    }
   }
 }
 
@@ -237,6 +399,14 @@ export interface SystemConfig {
   };
   realTime?: {
     enabled?: boolean;
+  };
+  logging?: {
+    level?: LogLevel;
+    enableConsole?: boolean;
+    enableFile?: boolean;
+    filePath?: string;
+    enableStructured?: boolean;
+    includeStackTrace?: boolean;
   };
 }
 
@@ -261,8 +431,12 @@ export interface SystemMetrics {
  * Convenience function to create and initialize the system
  */
 export async function createIntelligentTaskManagementSystem(config?: SystemConfig): Promise<IntelligentTaskManagementSystem> {
+  log.system('system_creation_requested', { config });
+  
   const system = new IntelligentTaskManagementSystem(config);
   await system.initialize(config);
+  
+  log.system('system_created_successfully');
   return system;
 }
 
@@ -270,8 +444,12 @@ export async function createIntelligentTaskManagementSystem(config?: SystemConfi
  * Quick start function for development
  */
 export async function quickStart(config?: SystemConfig): Promise<IntelligentTaskManagementSystem> {
+  log.system('quick_start_requested', { config });
+  
   const system = await createIntelligentTaskManagementSystem(config);
   await system.start();
+  
+  log.system('quick_start_completed');
   return system;
 }
 
