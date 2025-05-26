@@ -142,7 +142,7 @@ cat > "$MCP_CONFIG_FILE" << EOF
   "description": "AAI System Enhanced - Intelligent Task Management MCP Server",
   "version": "2.0.0",
   "command": "npm",
-  "args": ["start"],
+  "args": ["run", "sse"],
   "cwd": "$PROJECT_ROOT",
   "env": {
     "AAI_MODE": "mcp",
@@ -185,7 +185,7 @@ cat > "$CURSOR_SETTINGS_TEMPLATE" << EOF
     "servers": {
       "aai-system-enhanced": {
         "command": "npm",
-        "args": ["start"],
+        "args": ["run", "sse"],
         "cwd": "$PROJECT_ROOT",
         "env": {
           "AAI_MODE": "mcp"
@@ -223,7 +223,7 @@ export NODE_ENV=production
 
 # Start MCP server
 echo "🚀 Starting AAI System Enhanced MCP Server..."
-npm start
+npm run sse
 EOF
 
 chmod +x "$STARTUP_SCRIPT"
@@ -247,7 +247,7 @@ export NODE_ENV=development
 
 # Start MCP server in development mode
 echo "🚀 Starting AAI System Enhanced MCP Server (Development Mode)..."
-npm run dev
+npm run sse
 EOF
 
 chmod +x "$DEV_SCRIPT"

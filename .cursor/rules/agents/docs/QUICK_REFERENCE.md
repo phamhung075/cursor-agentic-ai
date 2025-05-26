@@ -14,7 +14,7 @@
     "servers": {
       "aai-system-enhanced": {
         "command": "npm",
-        "args": ["start"],
+        "args": ["run", "sse"],
         "cwd": "/path/to/your/project/.cursor/rules/agents",
         "env": { "AAI_MODE": "mcp" }
       }
@@ -58,10 +58,10 @@
 ### Start MCP Server
 ```bash
 # Production
-AAI_MODE=mcp npm start
+AAI_MODE=mcp npm run sse
 
 # Development
-AAI_MODE=mcp npm run dev
+AAI_MODE=mcp npm run sse
 
 # Using scripts
 ./scripts/start-mcp.sh
@@ -71,10 +71,10 @@ AAI_MODE=mcp npm run dev
 ### Test MCP Server
 ```bash
 # Basic test
-echo '{"type": "ping"}' | AAI_MODE=mcp npm start
+echo '{"type": "ping"}' | AAI_MODE=mcp npm run sse
 
 # Health check
-curl -s http://localhost:3000/api/health
+curl -s http://localhost:3233/health
 ```
 
 ## 🎯 Common Usage Patterns
@@ -294,7 +294,7 @@ This is a quick reference guide for the MCP server tools and resources.
 
 ```bash
 # Start MCP server
-npm run cursor-mcp
+npm run sse
 
 # Check status
 npm run sse:status
@@ -311,7 +311,7 @@ npm run sse:kill
     "servers": {
       "aai-system-enhanced": {
         "command": "npm",
-        "args": ["run", "cursor-mcp"],
+        "args": ["run", "sse"],
         "cwd": ".cursor/rules/agents",
         "env": { 
           "STORAGE_TYPE": "sqlite",

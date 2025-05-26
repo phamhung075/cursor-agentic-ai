@@ -548,7 +548,7 @@
     "servers": {
       "aai-system-enhanced": {
         "command": "npm",
-        "args": ["run", "cursor-mcp"],
+        "args": ["run", "sse"],
         "cwd": ".cursor/rules/agents",
         "env": { 
           "STORAGE_TYPE": "sqlite",

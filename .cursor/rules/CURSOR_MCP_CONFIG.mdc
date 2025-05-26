@@ -27,8 +27,8 @@ alwaysApply: false
   "mcp": {
     "servers": {
       "aai-system-enhanced": {
-        "command": "node",
-        "args": ["simple-mcp-server.js"],
+        "command": "npm",
+        "args": ["run", "sse"],
         "cwd": "/Users/admin/Documents/Hung/AI/cursor-agentic-ai/.cursor/rules/agents",
         "env": {
           "AAI_MODE": "mcp",
