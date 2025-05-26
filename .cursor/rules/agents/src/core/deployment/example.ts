@@ -539,15 +539,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: docker build -t task-management:${{ github.sha }} .
-      - run: docker push registry.example.com/task-management:${{ github.sha }}
+      - run: docker build -t task-management:\${{ github.sha }} .
+      - run: docker push registry.example.com/task-management:\${{ github.sha }}
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: kubectl set image deployment/task-management task-management=registry.example.com/task-management:${{ github.sha }}
+      - run: kubectl set image deployment/task-management task-management=registry.example.com/task-management:\${{ github.sha }}
       - run: kubectl rollout status deployment/task-management
       - run: npm run test:smoke
 `

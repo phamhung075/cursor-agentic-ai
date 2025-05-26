@@ -1,329 +1,298 @@
 # 🧠 AAI System Enhanced
 
-**Premier AI-assisted development platform for Cursor IDE with intelligent task management and automation**
+**Premier AI-assisted development platform for Cursor IDE with intelligent task management, automation, and MCP server capabilities**
 
 ## 🌟 Overview
 
-The AAI System Enhanced (v2.0.0) is a comprehensive TypeScript-based AI platform designed specifically for Cursor IDE integration. It provides intelligent task management, automated workflow optimization, real-time collaboration, and adaptive learning capabilities to revolutionize your development experience.
+The AAI System Enhanced (v2.0.0) is a comprehensive TypeScript-based AI platform designed specifically for Cursor IDE integration. It provides intelligent task management, automated workflow optimization, real-time collaboration, adaptive learning capabilities, and **Model Context Protocol (MCP) server support** to revolutionize your development experience.
 
 ## 🎯 Production-Ready Implementation
 
 ### ✅ **Core TypeScript Architecture**
 - **✅ IntelligentTaskManagementSystem** - Unified system class managing all components (457 lines)
-- **✅ AI Task Decomposition** - ML-powered automatic task breakdown (898 lines)
-- **✅ Dynamic Priority Management** - Multi-factor priority optimization (786 lines)
-- **✅ Automation Engine** - Rule-based workflow automation (714 lines)
-- **✅ Real-time Collaboration** - Socket.io integration for live synchronization
-- **✅ Production API** - Express.js server with comprehensive middleware (476 lines)
+- **✅ AI Task Decomposition** - ML-powered automatic task breakdown and complexity analysis
+- **✅ Dynamic Priority Management** - Intelligent priority calculation with adaptive learning
+- **✅ Automation Engine** - Rule-based workflow automation with 439 lines of automation types
+- **✅ Real-time Collaboration** - WebSocket-based live synchronization
+- **✅ Learning Service** - Adaptive ML models that improve over time
+- **✅ Production API** - Complete REST API with Express.js server
+- **✅ MCP Server Support** - Model Context Protocol integration for AI model interaction
 
-### 🚀 **Technical Specifications**
-- **Language**: TypeScript 5.3.3 with strict mode
-- **Runtime**: Node.js >=18.0.0
-- **Architecture**: Modular microservice-ready design
-- **Database**: SQLite (dev) / PostgreSQL (prod) with better-sqlite3
-- **Vector DB**: Pinecone integration for semantic search
-- **Testing**: Jest with 90%+ coverage target
-- **API**: Express.js with security middleware
+### ✅ **Advanced Features**
+- **✅ Nested Task Hierarchies** - Multi-level task decomposition with dependency tracking
+- **✅ Intelligent Estimation** - AI-powered time and complexity estimation
+- **✅ Automated Workflows** - Event-driven automation with custom rules
+- **✅ Performance Analytics** - Comprehensive metrics and insights
+- **✅ Memory Management** - Intelligent context and learning retention
+- **✅ Testing Framework** - Complete test suite with coverage tracking
+- **✅ Deployment Ready** - Production deployment with monitoring
 
-## 📂 Actual Implementation Structure
+## 🚀 **NEW: MCP Server Integration**
 
-**Complete TypeScript codebase in `src/` (analyzed from real files):**
+The AAI System Enhanced now supports the **Model Context Protocol (MCP)**, allowing AI models to directly interact with the task management system.
+
+### **MCP Capabilities**
+
+#### 🛠️ **Available Tools**
+- `create_task` - Create new tasks with intelligent defaults
+- `update_task` - Modify existing tasks with validation
+- `get_task` - Retrieve detailed task information
+- `list_tasks` - Query tasks with filtering and pagination
+- `delete_task` - Remove tasks safely
+- `decompose_task` - AI-powered task breakdown
+- `analyze_complexity` - Complexity assessment for any description
+- `calculate_priority` - Dynamic priority calculation
+- `get_system_status` - Real-time system health and metrics
+
+#### 📚 **Available Resources**
+- `task://{taskId}` - Direct task data access
+- `project://{projectId}/tasks` - Project-specific task collections
+
+#### 💡 **Available Prompts**
+- `task-analysis` - Comprehensive task analysis template
+- `priority-assessment` - Multi-task prioritization template
+
+### **Starting the MCP Server**
+
+```bash
+# Start as MCP server using environment variable
+AAI_MODE=mcp npm start
+
+# Or start with command line argument
+npm start mcp
+
+# For development with MCP mode
+AAI_MODE=mcp npm run dev
+```
+
+### **MCP Integration Example**
+
+```json
+{
+  "type": "ping"
+}
+```
+
+Response:
+```json
+{
+  "type": "pong",
+  "timestamp": "2024-01-15T10:30:00.000Z"
+}
+```
+
+## 📁 **Project Structure**
 
 ```
 src/
-├── index.ts                   # 🎯 Main System (457 lines)
-│   └── IntelligentTaskManagementSystem class
-│
-├── types/                     # 📋 Type System (7 files, 3,000+ lines)
-│   ├── index.ts              # Core types (388 lines)
-│   ├── TaskTypes.ts          # Task management (586 lines)
-│   ├── APITypes.ts           # API definitions (418 lines)
-│   ├── AutomationTypes.ts    # Automation (439 lines)
-│   ├── RealTimeTypes.ts      # Real-time (343 lines)
-│   ├── TestingTypes.ts       # Testing (644 lines)
-│   └── DeploymentTypes.ts    # Deployment (834 lines)
-│
-├── core/                     # 🧠 Core Modules
-│   ├── tasks/                # Task Management (12 files)
-│   │   ├── TaskManager.ts           # Core task CRUD (505 lines)
-│   │   ├── AITaskDecomposer.ts      # AI decomposition (898 lines)
-│   │   ├── DynamicPriorityManager.ts # Priority engine (786 lines)
-│   │   ├── PriorityService.ts       # Priority logic (344 lines)
-│   │   ├── TaskHierarchyEngine.ts   # Nested tasks (490 lines)
-│   │   ├── LearningService.ts       # ML service (515 lines)
-│   │   ├── AdaptiveLearningEngine.ts # Adaptive ML (696 lines)
-│   │   ├── EstimationLearningModel.ts # Time estimation (503 lines)
-│   │   ├── LearningDataCollector.ts # Data collection (505 lines)
-│   │   └── [demos and utilities]
-│   │
-│   ├── automation/           # Automation Engine (7 files)
-│   │   ├── AutomationEngine.ts      # Main engine (714 lines)
-│   │   ├── RuleEngine.ts            # Rule processing (470 lines)
-│   │   ├── WorkflowManager.ts       # Workflows (482 lines)
-│   │   ├── EventProcessor.ts        # Events (48 lines)
-│   │   ├── SchedulingService.ts     # Scheduling (47 lines)
-│   │   └── NotificationService.ts   # Notifications (42 lines)
-│   │
+├── types/                      # 🏗️ Type Definitions (7 files, 300+ interfaces)
+│   ├── TaskTypes.ts           # Core task and project types
+│   ├── AutomationTypes.ts     # Automation and workflow types (439 lines)
+│   ├── LearningTypes.ts       # AI and learning model types
+│   ├── RealTimeTypes.ts       # Collaboration and sync types
+│   ├── TestingTypes.ts        # Testing framework types
+│   ├── DeploymentTypes.ts     # Production deployment types
+│   └── MCPTypes.ts           # 🆕 MCP server types and schemas
+├── core/                      # 🧠 Core System Components
+│   ├── tasks/                 # Task Management Engine
+│   │   ├── TaskManager.ts     # Core task operations
+│   │   ├── AITaskDecomposer.ts # AI-powered decomposition
+│   │   ├── DynamicPriorityManager.ts # Priority calculation
+│   │   ├── LearningService.ts # Adaptive learning
+│   │   └── AdaptiveLearningEngine.ts # ML engine
+│   ├── automation/            # Automation Engine
+│   │   ├── AutomationEngine.ts # Main automation controller
+│   │   ├── RuleEngine.ts      # Rule processing
+│   │   ├── WorkflowManager.ts # Workflow execution
+│   │   ├── EventProcessor.ts  # Event handling
+│   │   └── SchedulingService.ts # Task scheduling
 │   ├── realtime/             # Real-time Collaboration
+│   │   ├── RealTimeSync.ts   # WebSocket synchronization
+│   │   ├── CollaborationManager.ts # Multi-user coordination
+│   │   └── ConflictResolver.ts # Conflict resolution
 │   ├── testing/              # Testing Framework
-│   ├── deployment/           # Deployment Tools
-│   ├── memory/               # Memory Management
-│   ├── context/              # Context Analysis
-│   ├── analytics/            # Analytics Engine
-│   └── agent/                # AI Agent Core
-│
-├── api/                      # 🌐 REST API (5 files)
-│   ├── APIServer.ts          # Express server (476 lines)
-│   ├── index.ts              # API exports (26 lines)
-│   ├── example.ts            # Usage examples (156 lines)
-│   ├── routes/               # Route definitions
-│   ├── controllers/          # Request handlers
-│   └── middleware/           # Express middleware
-│
-└── utils/                    # 🔧 Utilities
-    └── Logger.ts             # Advanced logging
+│   │   ├── TestRunner.ts     # Test execution engine
+│   │   ├── MockServiceRegistry.ts # Service mocking
+│   │   └── PerformanceTracker.ts # Performance monitoring
+│   └── deployment/           # Production Deployment
+│       ├── DeploymentManager.ts # Deployment orchestration
+│       └── IntegrationTestRunner.ts # Integration testing
+├── api/                      # 🌐 REST API Server
+│   ├── APIServer.ts          # Express.js server (200+ lines)
+│   ├── controllers/          # API controllers
+│   ├── middleware/           # Custom middleware
+│   └── routes/              # API route definitions
+├── mcp/                      # 🆕 MCP Server Implementation
+│   ├── MCPServer.ts          # Full MCP server with SDK integration
+│   └── server.ts            # Standalone MCP server entry point
+├── utils/                    # 🛠️ Utilities
+│   ├── Logger.ts            # Comprehensive logging (391 lines)
+│   ├── DatabaseManager.ts   # Database operations
+│   └── ConfigManager.ts     # Configuration management
+└── index.ts                 # 🎯 Main System Entry Point (457 lines)
 ```
 
-## 🚀 Development Commands
+## 🚀 **Getting Started**
 
-### **Package.json Scripts (Actual)**
+### **Installation**
+
 ```bash
-# Development
-npm run dev                   # tsx watch src/index.ts
-npm run start:dev             # tsx src/index.ts
-npm run start:api             # tsx src/api/server.ts
-npm run start:agent           # tsx src/core/agent/index.ts
+# Install dependencies
+npm install
 
-# Production
-npm run build                 # tsc (TypeScript compilation)
-npm run start                 # node dist/index.js
+# Install MCP SDK for full MCP support
+npm install @modelcontextprotocol/sdk
 
-# Testing & Quality
-npm run test                  # jest
-npm run test:watch            # jest --watch
-npm run test:coverage         # jest --coverage
-npm run lint                  # eslint src/**/*.ts
-npm run lint:fix              # eslint src/**/*.ts --fix
-npm run format                # prettier --write src/**/*.ts
-
-# Database
-npm run db:migrate            # tsx scripts/migrate.ts
-npm run db:seed               # tsx scripts/seed.ts
+# Build the project
+npm run build
 ```
 
-## ✨ Core Implementation Features
+### **Development**
 
-### **🎯 IntelligentTaskManagementSystem Class**
+```bash
+# Start in development mode (API server by default)
+npm run dev
+
+# Start production build (API server)
+npm start
+
+# Start in MCP server mode
+AAI_MODE=mcp npm start
+# or
+npm start mcp
+```
+
+### **Environment Variables**
+
+```bash
+# Server mode (api or mcp)
+AAI_MODE=api
+
+# Server configuration
+PORT=3000
+HOST=localhost
+```
+
+### **Testing**
+
+```bash
+# Run tests
+npm test
+
+# Run with coverage
+npm run test:coverage
+
+# Run in watch mode
+npm run test:watch
+```
+
+## 🔧 **Configuration**
+
+### **System Configuration**
+
 ```typescript
-export class IntelligentTaskManagementSystem {
-  // Core components (actual implementation)
-  private taskManager: TaskManager;
-  private aiDecomposer: AITaskDecomposer;
-  private priorityManager: DynamicPriorityManager;
-  private learningService: LearningService;
-  private automationEngine: AutomationEngine;
-  private realTimeSync: RealTimeCollaborationEngine;
-  private apiServer: APIServer;
-  private logger: Logger;
-
-  // System lifecycle methods
-  async initialize(config?: SystemConfig): Promise<void>
-  async start(): Promise<void>
-  async stop(): Promise<void>
-  getHealthStatus(): Promise<SystemHealthStatus>
-  getMetrics(): SystemMetrics
-}
-```
-
-### **🧠 AI Task Management (Implemented)**
-- **TaskManager.ts**: Complete CRUD operations with hierarchy support (505 lines)
-- **AITaskDecomposer.ts**: Advanced ML-powered task breakdown (898 lines)
-- **DynamicPriorityManager.ts**: Multi-factor priority optimization (786 lines)
-- **AdaptiveLearningEngine.ts**: Continuous improvement ML engine (696 lines)
-- **LearningService.ts**: Machine learning service integration (515 lines)
-
-### **⚡ Automation Engine (Production-Ready)**
-- **AutomationEngine.ts**: Complete rule-based automation (714 lines)
-- **RuleEngine.ts**: Pattern matching and condition evaluation (470 lines)
-- **WorkflowManager.ts**: Multi-step workflow orchestration (482 lines)
-- **EventProcessor.ts**: Real-time event handling system
-- **SchedulingService.ts**: Time-based task scheduling
-
-### **🌐 API System (Express.js)**
-- **APIServer.ts**: Full Express.js implementation (476 lines)
-- **Security**: Helmet, CORS, rate limiting, JWT authentication
-- **Middleware**: Compression, Morgan logging, error handling
-- **Controllers**: Task, Priority, Learning, Automation, Analytics
-- **Documentation**: OpenAPI/Swagger integration ready
-
-## 🛠️ Production Configuration
-
-### **Actual Package Dependencies**
-```json
-{
-  "name": "aai-system-enhanced",
-  "version": "2.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "engines": { "node": ">=18.0.0" },
-  
-  "dependencies": {
-    "express": "^4.18.2",
-    "socket.io": "^4.7.4",
-    "better-sqlite3": "^9.2.2",
-    "@pinecone-database/pinecone": "^1.1.2",
-    "openai": "^4.20.1",
-    "winston": "^3.11.0",
-    "jsonwebtoken": "^9.0.2",
-    "helmet": "^7.2.0",
-    "cors": "^2.8.5",
-    "express-rate-limit": "^7.5.0"
+const config: SystemConfig = {
+  api: {
+    port: 3000,
+    host: 'localhost'
   },
-  
-  "devDependencies": {
-    "typescript": "^5.3.3",
-    "tsx": "^4.6.2",
-    "jest": "^29.7.0",
-    "eslint": "^8.56.0",
-    "prettier": "^3.1.1"
-  }
-}
-```
-
-### **System Configuration Interface**
-```typescript
-export interface SystemConfig {
-  api?: {
-    port?: number;
-    host?: string;
-  };
-  database?: {
-    url?: string;
-  };
-  ai?: {
-    enabled?: boolean;
-  };
-  automation?: {
-    enabled?: boolean;
-  };
-  realTime?: {
-    enabled?: boolean;
-  };
-  logging?: {
-    level?: LogLevel;
-    enableConsole?: boolean;
-    enableFile?: boolean;
-    filePath?: string;
-    enableStructured?: boolean;
-    includeStackTrace?: boolean;
-  };
-}
-```
-
-## 📚 Comprehensive Type System
-
-### **Type Files (Actual Implementation)**
-- **index.ts** (388 lines): Core types, ProjectContext, Memory, Automation
-- **TaskTypes.ts** (586 lines): Task hierarchies, priorities, decomposition
-- **APITypes.ts** (418 lines): Request/response types, error handling
-- **AutomationTypes.ts** (439 lines): Rules, workflows, event processing
-- **RealTimeTypes.ts** (343 lines): Collaboration and synchronization
-- **TestingTypes.ts** (644 lines): Test framework and assertions
-- **DeploymentTypes.ts** (834 lines): Integration and deployment
-
-### **Key Type Examples**
-```typescript
-// Core system types (from actual implementation)
-interface ProjectContext {
-  id: string;
-  name: string;
-  path: string;
-  contextData?: ContextData | EnrichedContext;
-  settings?: ProjectSettings;
-}
-
-interface Memory {
-  id: string;
-  content: string;
-  type: MemoryType;
-  projectId: string;
-  embeddingId?: string;
-  importance: number;
-  createdAt: Date;
-}
-
-interface AutomationRule {
-  id: string;
-  name: string;
-  projectId: string;
-  pattern: AutomationPattern;
-  template: AutomationTemplate;
-  isActive: boolean;
-}
-```
-
-## 🧪 Testing Framework (Jest)
-
-### **Jest Configuration (Actual)**
-```json
-{
-  "preset": "ts-jest",
-  "testEnvironment": "node",
-  "roots": ["<rootDir>/src", "<rootDir>/tests"],
-  "testMatch": ["**/__tests__/**/*.ts", "**/?(*.)+(spec|test).ts"],
-  "collectCoverageFrom": ["src/**/*.ts", "!src/**/*.d.ts"],
-  "coverageDirectory": "coverage",
-  "coverageReporters": ["text", "lcov", "html"]
-}
-```
-
-## 🎯 Quick Start Example
-
-### **System Initialization**
-```typescript
-import { createIntelligentTaskManagementSystem } from 'aai-system-enhanced';
-
-// Create and initialize the system
-const system = await createIntelligentTaskManagementSystem({
-  api: { port: 3000, host: 'localhost' },
+  logging: {
+    level: LogLevel.INFO,
+    enableConsole: true,
+    enableStructured: true
+  },
   ai: { enabled: true },
   automation: { enabled: true },
-  realTime: { enabled: true },
-  logging: { level: 'info', enableConsole: true }
-});
-
-// Start all services
-await system.start();
-
-// System now provides:
-// - REST API on http://localhost:3000
-// - AI task decomposition and priority management
-// - Real-time collaboration via Socket.io
-// - Automation engine with rule processing
-// - Advanced logging and monitoring
+  realTime: { enabled: true }
+};
 ```
 
-## 📊 Implementation Statistics
+### **MCP Configuration**
 
-### **Codebase Metrics (Actual)**
-- **Total TypeScript Files**: 50+ files
-- **Total Lines of Code**: 15,000+ lines
-- **Type Definitions**: 100+ interfaces and types
-- **Core Modules**: 9 major modules
-- **API Endpoints**: 20+ REST endpoints
-- **Test Coverage Target**: 90%+
+```typescript
+const mcpConfig: MCPServerConfig = {
+  name: 'aai-system-enhanced-mcp',
+  version: '2.0.0',
+  capabilities: {
+    tools: true,
+    resources: true,
+    prompts: true
+  },
+  transport: {
+    type: 'stdio' // or 'http'
+  }
+};
+```
 
-### **Performance Characteristics**
-- **Memory Usage**: < 100MB base footprint
-- **Startup Time**: < 2 seconds full initialization
-- **API Response**: < 50ms average response time
-- **Database Queries**: < 5ms SQLite operations
-- **Real-time Latency**: < 10ms Socket.io messages
+## 📊 **Key Features**
+
+### **Intelligent Task Management**
+- **Hierarchical Tasks**: Multi-level task organization with parent-child relationships
+- **AI Decomposition**: Automatic task breakdown using machine learning
+- **Smart Estimation**: AI-powered time and complexity estimation
+- **Dynamic Priorities**: Adaptive priority calculation based on multiple factors
+
+### **Automation Engine**
+- **Rule-Based Automation**: Custom automation rules with triggers and actions
+- **Workflow Management**: Complex workflow orchestration
+- **Event Processing**: Real-time event handling and processing
+- **Smart Scheduling**: Intelligent task scheduling optimization
+
+### **Learning & Analytics**
+- **Adaptive Learning**: ML models that improve from user patterns
+- **Performance Analytics**: Comprehensive metrics and insights
+- **Predictive Analysis**: Future workload and bottleneck prediction
+- **Continuous Improvement**: Self-optimizing algorithms
+
+### **Real-time Collaboration**
+- **Live Synchronization**: Real-time updates across all clients
+- **Conflict Resolution**: Intelligent merge conflict handling
+- **Multi-user Support**: Concurrent editing and collaboration
+- **Change Tracking**: Complete audit trail of all modifications
+
+### **MCP Integration**
+- **AI Model Access**: Direct integration with AI models via MCP protocol
+- **Tool Exposure**: Rich set of tools for AI interaction
+- **Resource Access**: Structured data access for AI models
+- **Prompt Templates**: Pre-built prompts for common tasks
+
+## 🎯 **Use Cases**
+
+### **For Development Teams**
+- **Project Management**: Comprehensive project and task tracking
+- **Workflow Automation**: Automated development workflows
+- **Team Collaboration**: Real-time team coordination
+- **Performance Monitoring**: Development metrics and analytics
+
+### **For AI Integration**
+- **MCP Server**: Direct AI model integration via Model Context Protocol
+- **Task Analysis**: AI-powered task analysis and recommendations
+- **Intelligent Automation**: AI-driven workflow optimization
+- **Predictive Planning**: AI-assisted project planning
+
+### **For Cursor IDE**
+- **Native Integration**: Seamless Cursor IDE integration
+- **Context Awareness**: Intelligent code context understanding
+- **Automated Workflows**: Code-aware task automation
+- **Development Analytics**: Code-focused metrics and insights
+
+## 🔮 **Future Roadmap**
+
+- **Enhanced MCP Tools**: Additional MCP tools for advanced AI interaction
+- **Plugin System**: Extensible plugin architecture
+- **Advanced Analytics**: Machine learning-powered insights
+- **Mobile App**: Mobile companion application
+- **Cloud Deployment**: Managed cloud hosting options
+- **Enterprise Features**: Advanced security and compliance features
+
+## 📝 **License**
+
+MIT License - see LICENSE file for details.
+
+## 🤝 **Contributing**
+
+We welcome contributions! Please see our contributing guidelines for details.
 
 ---
 
-**🎉 AAI System Enhanced v2.0.0 - A production-ready TypeScript platform with 15,000+ lines of code, comprehensive type safety, and enterprise-grade architecture!**
-
-**🚀 Built for Cursor IDE with intelligent task management, automation, and real-time collaboration!** 
-
-** AI, read this document to understand how it works. When working on this project, remember to come back and continue updating the document after each task. ** 
+**Built with ❤️ for the Cursor IDE community** 

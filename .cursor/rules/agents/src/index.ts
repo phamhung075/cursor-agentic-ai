@@ -271,6 +271,33 @@ export class IntelligentTaskManagementSystem {
     this.logger.info('SYSTEM', '⚙️ Logging configuration updated', { config });
   }
 
+  /**
+   * Get core components (for MCP server access)
+   */
+  public getTaskManager(): any {
+    return this.taskManager;
+  }
+
+  public getAIDecomposer(): any {
+    return this.aiDecomposer;
+  }
+
+  public getPriorityManager(): any {
+    return this.priorityManager;
+  }
+
+  public getLearningService(): any {
+    return this.learningService;
+  }
+
+  public getAutomationEngine(): any {
+    return this.automationEngine;
+  }
+
+  public getLogger(): Logger {
+    return this.logger;
+  }
+
   // Private initialization methods
   private async initializeCore(config?: SystemConfig): Promise<void> {
     const operationId = this.logger.startOperation('CORE', 'initialize');
@@ -323,7 +350,8 @@ export class IntelligentTaskManagementSystem {
         this.taskManager,
         this.learningService,
         this.priorityManager,
-        this.aiDecomposer
+        this.aiDecomposer,
+        {} // Empty config object for the 5th parameter
       );
 
       const duration = Date.now() - startTime;
@@ -341,10 +369,59 @@ export class IntelligentTaskManagementSystem {
     const startTime = Date.now();
 
     try {
-      const { SynchronizationService } = await import('./core/realtime');
+      const { SynchronizationService, WebSocketManager } = await import('./core/realtime');
+      const { Server: SocketIOServer } = await import('socket.io');
+      const { createServer } = await import('http');
+      
+      // Create HTTP server for WebSocket
+      const httpServer = createServer();
+      const io = new SocketIOServer(httpServer, {
+        cors: { origin: '*', credentials: false }
+      });
+      
+      // Create RealTime configuration
+      const realTimeConfig = {
+        enabled: true,
+        websocket: {
+          port: 3001,
+          path: '/ws',
+          cors: { origin: '*', credentials: false },
+          pingTimeout: 60000,
+          pingInterval: 25000,
+          maxConnections: 1000
+        },
+        events: {
+          maxRetries: 3,
+          retryDelay: 1000,
+          batchSize: 100,
+          flushInterval: 5000
+        },
+        presence: {
+          enabled: true,
+          heartbeatInterval: 30000,
+          timeoutThreshold: 60000
+        },
+        conflicts: {
+          detectionEnabled: true,
+          autoResolve: true,
+          resolutionTimeout: 30000
+        },
+        dashboard: {
+          updateInterval: 5000,
+          metricsRetention: 86400000,
+          maxEvents: 1000
+        }
+      };
+      
+      // Create WebSocket manager
+      const webSocketManager = new WebSocketManager(io, realTimeConfig);
       
       this.realTimeSync = new SynchronizationService(
-        this.taskManager
+        realTimeConfig,
+        this.taskManager,
+        this.learningService,
+        this.automationEngine,
+        webSocketManager
       );
 
       const duration = Date.now() - startTime;
@@ -364,10 +441,27 @@ export class IntelligentTaskManagementSystem {
     try {
       const { APIServer } = await import('./api');
       
-      this.apiServer = new APIServer({
-        port: config?.api?.port || 3000,
-        host: config?.api?.host || 'localhost'
-      });
+      this.apiServer = new APIServer(
+        {
+          port: config?.api?.port || 3000,
+          host: config?.api?.host || 'localhost',
+          cors: { origin: '*', credentials: false },
+          rateLimit: { windowMs: 15 * 60 * 1000, max: 100 },
+          auth: { enabled: false },
+          validation: { strict: false, stripUnknown: true },
+          logging: { 
+            level: 'info',
+            requests: true,
+            responses: false
+          },
+          websocket: { enabled: true, path: '/ws' }
+        },
+        this.taskManager,
+        this.learningService,
+        this.priorityManager,
+        this.aiDecomposer,
+        this.automationEngine
+      );
 
       const duration = Date.now() - startTime;
       this.logger.endOperation('API', operationId, 'initialize', duration, true);
@@ -454,4 +548,122 @@ export async function quickStart(config?: SystemConfig): Promise<IntelligentTask
 }
 
 // Default export
-export default IntelligentTaskManagementSystem; 
+export default IntelligentTaskManagementSystem;
+
+/**
+ * Main execution block - runs when this file is executed directly
+ */
+async function main() {
+  try {
+    // Check for mode from environment variable or command line argument
+    const mode = process.env['AAI_MODE'] || process.argv[2] || 'api';
+    
+    console.log(`🚀 Starting AAI System Enhanced in ${mode.toUpperCase()} mode...`);
+
+    // Default system configuration
+    const systemConfig: SystemConfig = {
+      api: {
+        port: parseInt(process.env['PORT'] || '3000'),
+        host: process.env['HOST'] || 'localhost'
+      },
+      logging: {
+        level: LogLevel.INFO,
+        enableConsole: true,
+        enableFile: false,
+        enableStructured: true
+      },
+      ai: { enabled: true },
+      automation: { enabled: true },
+      realTime: { enabled: true }
+    };
+
+    if (mode === 'mcp') {
+      // MCP Server mode
+      console.log('📡 Starting in MCP Server mode...');
+      
+      try {
+        // Try to use the full MCP server implementation
+        const { AAIMCPServer } = await import('./mcp/MCPServer');
+        const MCPTypes = await import('./types/MCPTypes');
+        
+        // Create system instance
+        const system = new IntelligentTaskManagementSystem(systemConfig);
+        await system.initialize(systemConfig);
+        
+        // MCP server configuration
+        const mcpConfig = {
+          name: 'aai-system-enhanced-mcp',
+          version: '2.0.0',
+          description: 'AAI System Enhanced MCP Server',
+          capabilities: {
+            tools: true,
+            resources: true,
+            prompts: true
+          },
+          transport: {
+            type: 'stdio' as const
+          },
+          logging: {
+            level: 'info' as const,
+            enabled: true
+          }
+        };
+        
+        // Create and start MCP server
+        const mcpServer = new AAIMCPServer(
+          mcpConfig,
+          system.getTaskManager(),
+          system.getAIDecomposer(),
+          system.getPriorityManager(),
+          system.getLearningService(),
+          system.getAutomationEngine(),
+          system.getLogger()
+        );
+        
+        await mcpServer.start();
+        console.log('✅ AAI MCP Server started successfully');
+        
+      } catch (mcpError) {
+        // Fallback to simplified MCP server
+        console.log('⚠️ Full MCP server unavailable, using simplified version...');
+        const { startMCPServer } = await import('./mcp/server');
+        await startMCPServer();
+      }
+      
+    } else {
+      // Default API mode
+      console.log('🌐 Starting in API Server mode...');
+      
+      const system = await quickStart(systemConfig);
+      
+      console.log('✅ AAI System Enhanced started successfully');
+      console.log(`📡 API Server: http://${systemConfig.api?.host}:${systemConfig.api?.port}`);
+      console.log('📊 Health Status: /api/health');
+      console.log('📈 Metrics: /api/metrics');
+      console.log('📋 Tasks API: /api/tasks');
+    }
+
+    // Handle graceful shutdown
+    process.on('SIGINT', async () => {
+      console.log('\n🛑 Shutting down AAI System Enhanced...');
+      process.exit(0);
+    });
+
+    process.on('SIGTERM', async () => {
+      console.log('\n🛑 Shutting down AAI System Enhanced...');
+      process.exit(0);
+    });
+
+  } catch (error) {
+    console.error('❌ Failed to start AAI System Enhanced:', error);
+    process.exit(1);
+  }
+}
+
+// Run main function if this file is executed directly
+if (require.main === module) {
+  main().catch((error) => {
+    console.error('Fatal error:', error);
+    process.exit(1);
+  });
+} 
