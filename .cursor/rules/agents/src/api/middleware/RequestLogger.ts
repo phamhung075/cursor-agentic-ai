@@ -15,13 +15,13 @@ export function requestLogger(
   const method = req.method;
   const url = req.originalUrl;
   const body = req.body;
-
+  
   log.info('API', `➡️ ${method} ${url} - Request ID: ${requestId}`, { body });
-
+  
   res.on('finish', () => {
     const duration = Date.now() - startTime;
     log.api(method, url, res.statusCode, duration, { requestId, body });
   });
-
+  
   next();
 } 
