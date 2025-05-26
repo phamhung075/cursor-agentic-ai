@@ -31,7 +31,6 @@
     "mcp:restart": "npm run sse:kill && npm run sse",
     "mcp:hello": "node scripts/hello-world-mcp.js",
     "mcp:server": "node scripts/hello-world-mcp.js",
-    "mcp:simple": "tsx src/api/SSEServerSimple.ts",
     "db:deploy-supabase": "tsx scripts/deploy-to-supabase.ts",
     "cursor-mcp": "node scripts/mcp-cursor-launcher.js"
   },

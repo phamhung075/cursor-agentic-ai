@@ -127,8 +127,7 @@
     "sse:auto-test": "npm run sse:test",
     "mcp:restart": "npm run sse:kill && npm run sse",
     "mcp:hello": "node scripts/hello-world-mcp.js",
-    "mcp:server": "node scripts/hello-world-mcp.js",
-    "mcp:simple": "tsx src/api/SSEServerSimple.ts"
+    "mcp:server": "node scripts/hello-world-mcp.js"
   },
   "dependencies": {
     "@pinecone-database/pinecone": "^2.0.1",
