@@ -1382,6 +1382,14 @@ Then provide:
 						enables: []
 					});
 
+					// Add console log for task creation
+					console.log('\n📝 TASK CREATED:');
+					console.log(`🔹 ID: ${newTask.id}`);
+					console.log(`🔹 Title: ${newTask.title}`);
+					console.log(`🔹 Type: ${newTask.type}`);
+					console.log(`🔹 Priority: ${newTask.priority}`);
+					console.log(`🔹 Status: ${newTask.status}\n`);
+
 					return {
 						...baseResponse,
 						result: {
@@ -1408,6 +1416,14 @@ Then provide:
 
 					// Get tasks
 					const tasksResult = await taskStorage.getTasks(queryOptions);
+					
+					// Add console log for tasks retrieval
+					console.log('\n📋 TASKS RETRIEVED:');
+					console.log(`🔹 Count: ${tasksResult.tasks.length} (Total: ${tasksResult.total})`);
+					tasksResult.tasks.forEach(task => {
+						console.log(`   - ${task.id}: ${task.title} [${task.status}] [${task.priority}]`);
+					});
+					console.log();
 					
 					return {
 						...baseResponse,
@@ -1443,6 +1459,14 @@ Then provide:
 							}
 						};
 					}
+
+					// Add console log for task retrieval
+					console.log('\n🔍 TASK RETRIEVED:');
+					console.log(`🔹 ID: ${task.id}`);
+					console.log(`🔹 Title: ${task.title}`);
+					console.log(`🔹 Status: ${task.status}`);
+					console.log(`🔹 Priority: ${task.priority}`);
+					console.log(`🔹 Progress: ${task.progress}%\n`);
 
 					return {
 						...baseResponse,
@@ -1499,6 +1523,15 @@ Then provide:
 					// Update the task
 					const updatedTask = await taskStorage.updateTask(taskId, updates);
 
+					// Add console log for task update
+					console.log('\n🔄 TASK UPDATED:');
+					console.log(`🔹 ID: ${taskId}`);
+					console.log('🔹 Updates:');
+					Object.entries(updates).forEach(([key, value]) => {
+						console.log(`   - ${key}: ${value}`);
+					});
+					console.log(`🔹 Updated at: ${updatedTask.updatedAt}\n`);
+
 					return {
 						...baseResponse,
 						result: {
@@ -1536,6 +1569,10 @@ Then provide:
 						};
 					}
 
+					// Add console log for task deletion
+					console.log('\n🗑️ TASK DELETED:');
+					console.log(`🔹 ID: ${deleteId}\n`);
+
 					return {
 						...baseResponse,
 						result: {
@@ -1565,6 +1602,12 @@ Then provide:
 					// Get the task tree
 					try {
 						const taskTree = await taskStorage.getTaskTree(rootId, depth);
+						
+						// Add console log for task tree retrieval
+						console.log('\n🌳 TASK TREE RETRIEVED:');
+						console.log(`🔹 Root ID: ${rootId}`);
+						console.log(`🔹 Depth: ${depth === -1 ? 'unlimited' : depth}`);
+						console.log(`🔹 Nodes: ${countNodes(taskTree)}\n`);
 						
 						return {
 							...baseResponse,
@@ -1626,6 +1669,13 @@ Then provide:
 						};
 					}
 					
+					// Add console log for priority task retrieval
+					console.log('\n⭐ HIGHEST PRIORITY TASK:');
+					console.log(`🔹 ID: ${priorityTask.id}`);
+					console.log(`🔹 Title: ${priorityTask.title}`);
+					console.log(`🔹 Priority: ${priorityTask.priority}`);
+					console.log(`🔹 Status: ${priorityTask.status}\n`);
+					
 					return {
 						...baseResponse,
 						result: {
@@ -1653,6 +1703,15 @@ Then provide:
 					
 					const subtasks = await taskStorage.getSubtasks(parentId);
 					
+					// Add console log for subtasks retrieval
+					console.log('\n📑 SUBTASKS RETRIEVED:');
+					console.log(`🔹 Parent ID: ${parentId}`);
+					console.log(`🔹 Count: ${subtasks.length}`);
+					subtasks.forEach(task => {
+						console.log(`   - ${task.id}: ${task.title} [${task.status}]`);
+					});
+					console.log();
+					
 					return {
 						...baseResponse,
 						result: {
@@ -1679,6 +1738,10 @@ Then provide:
 					}
 					
 					const allTasksDeleted = await taskStorage.deleteAllTasks();
+					
+					// Add console log for all tasks deletion
+					console.log('\n🗑️ ALL TASKS DELETED:');
+					console.log(`🔹 Success: ${allTasksDeleted ? 'Yes' : 'No'}\n`);
 					
 					return {
 						...baseResponse,
@@ -2349,4 +2412,16 @@ if (require.main === module) {
 			log.error('MCP-SSE', 'Failed to start server', { error: error.message });
 			process.exit(1);
 		});
+}
+
+// Helper function to count nodes in a task tree (add this near the top of the file, after other imports)
+function countNodes(taskTree: any): number {
+	if (!taskTree) return 0;
+	let count = 1; // Count the current node
+	if (Array.isArray(taskTree.children)) {
+		for (const child of taskTree.children) {
+			count += countNodes(child);
+		}
+	}
+	return count;
 }
