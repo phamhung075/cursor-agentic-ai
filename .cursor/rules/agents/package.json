@@ -18,7 +18,10 @@
     "db:seed": "tsx scripts/seed.ts",
     "build:watch": "tsc --watch",
     "clean": "rimraf dist",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "inspect:api": "node --inspect-brk dist/index.js",
+    "inspect:mcp": "AAI_MODE=mcp node --inspect-brk dist/index.js",
+    "sse": "node scripts/test-sse-server.js"
   },
   "keywords": [
     "ai",

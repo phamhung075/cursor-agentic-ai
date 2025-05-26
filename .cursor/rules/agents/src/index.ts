@@ -40,6 +40,9 @@ export * from './utils';
 // Import logging utilities
 import { Logger, LogLevel, globalLogger, log } from './utils/Logger';
 
+// Import the SSE Server
+import SSEServer from './api/SSEServer';
+
 /**
  * Main System Class
  * 
@@ -577,6 +580,11 @@ async function main() {
       realTime: { enabled: true }
     };
 
+    // Create and start SSE server
+    const sseServer = new SSEServer();
+    await sseServer.start();
+
+    // Start the main server based on mode
     if (mode === 'mcp') {
       // MCP Server mode
       console.log('📡 Starting in MCP Server mode...');
