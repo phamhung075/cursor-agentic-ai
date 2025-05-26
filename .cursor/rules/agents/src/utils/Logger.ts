@@ -238,7 +238,7 @@ export class Logger {
     const levelName = levelNames[entry.level] ?? 'UNKNOWN';
 
     if (this.config.enableStructured) {
-      const timestamp = entry.timestamp.split('T')[1].split('.')[0];
+      const timestamp = entry.timestamp.split('T')[1]?.split('.')[0] ?? '';
       const componentPadded = entry.component.padEnd(12);
       
       console.log(
