@@ -26,452 +26,618 @@ alwaysApply: false
 ## 🚀 Development Workflow Rules
 
 ### Workflow 1: New Feature Development
-**Trigger**: Creating a new feature branch or starting feature work
-**Automation Sequence**:
+**Trigger**: Feature branch creation (`feature/`, `feat/`)
+**MCP Tools**: `create_task`, `decompose_task`, `analyze_complexity`
 
 ```typescript
-// Step 1: Feature Branch Detection
-if (branchName.includes('feature/') || branchName.includes('feat/')) {
+onFeatureBranchCreate(branch: GitBranch) {
+  const featureName = extractFeatureName(branch.name);
   
-  // Step 2: Create Main Feature Task
-  const featureTask = await mcp.call('create_task', {
-    title: `Feature: ${extractFeatureName(branchName)}`,
-    description: `Implementation of ${featureName} feature`,
-    priority: "high",
-    projectId: getCurrentProjectId(),
-    tags: ["feature", "development"],
-    estimatedHours: 16 // Default for features
+  // Step 1: Create main feature task
+  const mainTask = await mcp.call('create_task', {
+    title: `Feature: ${featureName}`,
+    description: `Implement ${featureName} feature`,
+    priority: 'high',
+    projectId: workspace.name,
+    tags: ['feature', 'development'],
+    branchName: branch.name,
+    estimatedHours: estimateFeatureComplexity(featureName)
   });
   
-  // Step 3: AI-Powered Task Decomposition
+  // Step 2: Decompose into subtasks
   const decomposition = await mcp.call('decompose_task', {
-    taskId: featureTask.id,
-    maxDepth: 3,
-    analysisType: "comprehensive",
-    includeEstimates: true
+    description: `Implement ${featureName}`,
+    complexity: 'high',
+    context: {
+      featureName,
+      branchName: branch.name,
+      featureType: detectFeatureType(featureName)
+    }
   });
   
-  // Step 4: Set Up Task Hierarchy
+  // Step 3: Create subtasks
   for (const subtask of decomposition.subtasks) {
-    await mcp.call('update_task', {
-      taskId: subtask.id,
-      parentId: featureTask.id,
-      priority: calculateSubtaskPriority(subtask)
+    await mcp.call('create_task', {
+      title: subtask.title,
+      description: subtask.description,
+      priority: subtask.priority,
+      parentTaskId: mainTask.id,
+      tags: [...subtask.tags, 'subtask'],
+      estimatedHours: subtask.estimatedHours
+    });
+  }
+  
+  // Step 4: Show feature development plan
+  showFeaturePlan(mainTask, decomposition.subtasks);
+}
+
+// Auto-update on feature file creation
+onFileCreate(file: File) {
+  if (isFeatureBranch() && isFeatureFile(file)) {
+    const activeFeatureTask = getActiveFeatureTask();
+    
+    mcp.call('update_task', {
+      taskId: activeFeatureTask.id,
+      status: 'in_progress',
+      notes: `Started working on ${file.name}`,
+      files: [...activeFeatureTask.files, file.path]
     });
   }
 }
 ```
 
 ### Workflow 2: Bug Fix Process
-**Trigger**: Working on bug fixes or hotfixes
-**Automation Sequence**:
+**Trigger**: Bug branch creation (`bug/`, `fix/`, `hotfix/`)
+**MCP Tools**: `create_task`, `analyze_complexity`, `update_task`
 
 ```typescript
-// Bug Detection Patterns
-const bugPatterns = [
-  /bug[\/\-_]/, /fix[\/\-_]/, /hotfix[\/\-_]/,
-  /issue[\/\-_]/, /patch[\/\-_]/
-];
-
-if (bugPatterns.some(pattern => branchName.match(pattern))) {
+onBugBranchCreate(branch: GitBranch) {
+  const bugDescription = extractBugDescription(branch.name);
+  const severity = detectBugSeverity(branch.name);
   
-  // Create Bug Task with High Priority
+  // Step 1: Create bug fix task
   const bugTask = await mcp.call('create_task', {
-    title: `Bug Fix: ${extractBugTitle()}`,
-    description: `Fix for: ${getBugDescription()}`,
-    priority: "urgent",
-    projectId: getCurrentProjectId(),
-    tags: ["bug", "hotfix", "critical"],
-    estimatedHours: 4
+    title: `Bug Fix: ${bugDescription}`,
+    description: `Fix bug: ${bugDescription}`,
+    priority: severity === 'critical' ? 'urgent' : 'high',
+    projectId: workspace.name,
+    tags: ['bug', 'fix', severity],
+    branchName: branch.name,
+    bugSeverity: severity
   });
   
-  // Analyze Bug Complexity
-  await mcp.call('analyze_complexity', {
-    taskDescription: bugTask.description,
-    context: `Bug fix in ${getCurrentFilePath()}`,
-    includeRecommendations: true
-  });
-  
-  // Set Up Bug Tracking
-  await mcp.call('update_task', {
-    taskId: bugTask.id,
-    metadata: {
-      bugType: classifyBugType(),
-      severity: assessBugSeverity(),
-      affectedComponents: getAffectedComponents()
+  // Step 2: Analyze bug complexity
+  const complexity = await mcp.call('analyze_complexity', {
+    description: `Bug fix: ${bugDescription}`,
+    context: {
+      bugType: detectBugType(bugDescription),
+      severity: severity,
+      affectedAreas: detectAffectedAreas(branch.name)
     }
   });
+  
+  // Step 3: Update task with complexity analysis
+  await mcp.call('update_task', {
+    taskId: bugTask.id,
+    complexity: complexity.level,
+    estimatedHours: complexity.estimatedHours,
+    notes: `Complexity analysis: ${complexity.summary}`
+  });
+  
+  // Step 4: Set up bug tracking
+  setupBugTracking(bugTask);
+}
+
+// Auto-update on bug investigation
+onFileOpen(file: File) {
+  if (isBugBranch() && isBugRelatedFile(file)) {
+    const activeBugTask = getActiveBugTask();
+    
+    mcp.call('update_task', {
+      taskId: activeBugTask.id,
+      notes: `Investigating ${file.name}`,
+      investigatedFiles: [...activeBugTask.investigatedFiles, file.path]
+    });
+  }
 }
 ```
 
-### Workflow 3: Code Refactoring
-**Trigger**: Refactoring existing code
-**Automation Sequence**:
+### Workflow 3: Refactoring Process
+**Trigger**: Refactor branch creation (`refactor/`, `improve/`)
+**MCP Tools**: `create_task`, `analyze_complexity`, `decompose_task`
 
 ```typescript
-// Refactoring Detection
-if (commitMessage.includes('refactor') || 
-    branchName.includes('refactor') ||
-    detectLargeCodeChanges()) {
+onRefactorBranchCreate(branch: GitBranch) {
+  const refactorTarget = extractRefactorTarget(branch.name);
   
-  // Create Refactoring Task
-  const refactorTask = await mcp.call('create_task', {
-    title: `Refactor: ${getRefactorScope()}`,
-    description: `Code refactoring for ${getTargetComponent()}`,
-    priority: "medium",
-    projectId: getCurrentProjectId(),
-    tags: ["refactor", "improvement", "technical-debt"],
-    estimatedHours: calculateRefactorTime()
-  });
-  
-  // Analyze Current Code Complexity
-  const complexityBefore = await mcp.call('analyze_complexity', {
-    taskDescription: `Pre-refactor analysis of ${getCurrentFile()}`,
-    context: getFileContext(),
-    includeRecommendations: true
-  });
-  
-  // Set Refactoring Goals
-  await mcp.call('update_task', {
-    taskId: refactorTask.id,
-    metadata: {
-      complexityBefore: complexityBefore.score,
-      targetComplexity: complexityBefore.score * 0.7, // 30% improvement
-      refactorType: getRefactorType()
+  // Step 1: Analyze current complexity
+  const currentComplexity = await mcp.call('analyze_complexity', {
+    description: `Current state of ${refactorTarget}`,
+    context: {
+      refactorType: 'before',
+      targetArea: refactorTarget,
+      codebaseSection: detectCodebaseSection(refactorTarget)
     }
   });
+  
+  // Step 2: Create refactoring task
+  const refactorTask = await mcp.call('create_task', {
+    title: `Refactor: ${refactorTarget}`,
+    description: `Refactor ${refactorTarget} to improve code quality`,
+    priority: 'medium',
+    projectId: workspace.name,
+    tags: ['refactor', 'improvement', 'code-quality'],
+    branchName: branch.name,
+    currentComplexity: currentComplexity.level
+  });
+  
+  // Step 3: Decompose refactoring steps
+  const steps = await mcp.call('decompose_task', {
+    description: `Refactor ${refactorTarget}`,
+    complexity: currentComplexity.level,
+    context: {
+      refactorType: 'improvement',
+      currentState: currentComplexity,
+      targetImprovement: 'reduce_complexity'
+    }
+  });
+  
+  // Step 4: Create refactoring checklist
+  createRefactoringChecklist(refactorTask, steps.subtasks);
 }
 ```
 
 ### Workflow 4: Testing Implementation
-**Trigger**: Writing or updating tests
-**Automation Sequence**:
+**Trigger**: Test file creation, test branch creation
+**MCP Tools**: `create_task`, `update_task`
 
 ```typescript
-// Test File Detection
-if (fileName.includes('.test.') || 
-    fileName.includes('.spec.') ||
-    filePath.includes('/tests/')) {
+onTestFileCreate(file: File) {
+  if (file.name.includes('.test.') || file.name.includes('.spec.')) {
+    const testTarget = extractTestTarget(file.name);
+    
+    // Create testing task
+    const testTask = await mcp.call('create_task', {
+      title: `Test: ${testTarget}`,
+      description: `Implement tests for ${testTarget}`,
+      priority: 'medium',
+      projectId: workspace.name,
+      tags: ['testing', 'qa', getTestType(file)],
+      testFile: file.path,
+      testTarget: testTarget
+    });
+    
+    // Link to main feature task if exists
+    const relatedTask = findRelatedFeatureTask(testTarget);
+    if (relatedTask) {
+      await mcp.call('update_task', {
+        taskId: relatedTask.id,
+        testTaskId: testTask.id,
+        notes: `Test task created: ${testTask.title}`
+      });
+    }
+  }
+}
+
+// Auto-update on test runs
+onTestRun(results: TestResults) {
+  const affectedTasks = findTasksByTestFiles(results.files);
   
-  // Create Testing Task
-  const testTask = await mcp.call('create_task', {
-    title: `Testing: ${getTestSubject()}`,
-    description: `Implement tests for ${getTargetComponent()}`,
-    priority: "medium",
-    projectId: getCurrentProjectId(),
-    tags: ["testing", "qa", "coverage"],
-    estimatedHours: 3
-  });
-  
-  // Link to Related Feature Task
-  const relatedTask = findRelatedFeatureTask();
-  if (relatedTask) {
+  for (const task of affectedTasks) {
     await mcp.call('update_task', {
-      taskId: testTask.id,
-      parentId: relatedTask.id,
-      dependencies: [relatedTask.id]
+      taskId: task.id,
+      testStatus: results.passed ? 'passing' : 'failing',
+      testCoverage: results.coverage,
+      notes: `Tests ${results.passed ? 'passed' : 'failed'}: ${results.summary}`
     });
   }
-  
-  // Set Testing Goals
-  await mcp.call('update_task', {
-    taskId: testTask.id,
-    metadata: {
-      testType: getTestType(), // unit, integration, e2e
-      coverageTarget: 90,
-      testFramework: getTestFramework()
-    }
-  });
 }
 ```
 
 ## 📝 Documentation Workflow Rules
 
 ### Workflow 5: Documentation Updates
-**Trigger**: Working on documentation files
-**Automation Sequence**:
+**Trigger**: Documentation file creation/modification
+**MCP Tools**: `create_task`, `update_task`
 
 ```typescript
-// Documentation Detection
-if (fileName.endsWith('.md') || 
-    filePath.includes('/docs/') ||
-    fileName === 'README.md') {
-  
-  // Create Documentation Task
-  const docTask = await mcp.call('create_task', {
-    title: `Documentation: ${getDocumentTitle()}`,
-    description: `Update documentation for ${getDocumentScope()}`,
-    priority: "low",
-    projectId: getCurrentProjectId(),
-    tags: ["documentation", "writing"],
-    estimatedHours: 2
-  });
-  
-  // Link to Related Development Tasks
-  const relatedTasks = findRelatedDevelopmentTasks();
-  if (relatedTasks.length > 0) {
-    await mcp.call('update_task', {
-      taskId: docTask.id,
-      dependencies: relatedTasks.map(t => t.id)
-    });
+onDocumentationChange(file: File) {
+  if (file.extension === '.md' || file.path.includes('/docs/')) {
+    const docType = detectDocumentationType(file);
+    
+    // Create or update documentation task
+    const existingTask = findDocumentationTask(file.path);
+    
+    if (existingTask) {
+      await mcp.call('update_task', {
+        taskId: existingTask.id,
+        status: 'in_progress',
+        notes: `Updated documentation: ${file.name}`,
+        lastModified: new Date()
+      });
+    } else {
+      await mcp.call('create_task', {
+        title: `Documentation: ${file.name}`,
+        description: `Update documentation in ${file.path}`,
+        priority: 'low',
+        projectId: workspace.name,
+        tags: ['documentation', docType],
+        documentationFile: file.path
+      });
+    }
   }
+}
+
+// Auto-link documentation to features
+onFeatureDocumentation(file: File, featureTask: Task) {
+  await mcp.call('update_task', {
+    taskId: featureTask.id,
+    documentationFiles: [...featureTask.documentationFiles, file.path],
+    notes: `Documentation added: ${file.name}`
+  });
 }
 ```
 
 ## 🔄 Git Integration Workflow Rules
 
 ### Workflow 6: Commit-Based Task Updates
-**Trigger**: Making commits
-**Automation Sequence**:
+**Trigger**: Git commits with task references
+**MCP Tools**: `update_task`, `calculate_priority`
 
 ```typescript
-// On Commit Event
-onCommit(async (commitData) => {
-  const { message, files, additions, deletions } = commitData;
+onCommit(commit: GitCommit) {
+  // Extract task references from commit message
+  const taskReferences = extractTaskReferences(commit.message);
   
-  // Find Related Tasks
-  const relatedTasks = await findTasksForFiles(files);
-  
-  for (const task of relatedTasks) {
-    // Update Task Progress
-    const progress = calculateProgressFromCommit(task, commitData);
+  for (const taskRef of taskReferences) {
+    const task = await findTaskById(taskRef.taskId);
     
-    await mcp.call('update_task', {
-      taskId: task.id,
-      progress: progress,
-      notes: `Commit: ${message}`,
-      metadata: {
-        lastCommit: commitData.hash,
-        linesAdded: additions,
-        linesDeleted: deletions
-      }
-    });
-    
-    // Check if Task is Complete
-    if (progress >= 100) {
+    if (task) {
+      // Calculate progress based on commit
+      const progress = calculateCommitProgress(commit, task);
+      
       await mcp.call('update_task', {
         taskId: task.id,
-        status: "completed",
-        completedAt: new Date().toISOString()
+        progress: progress,
+        status: determineStatusFromCommit(commit.message),
+        notes: `Commit: ${commit.message}`,
+        commits: [...task.commits, commit.hash],
+        lastActivity: new Date()
       });
+      
+      // Recalculate priority if significant progress
+      if (progress > task.progress + 20) {
+        await mcp.call('calculate_priority', {
+          taskId: task.id,
+          urgency: calculateUrgency(task),
+          importance: calculateImportance(task),
+          effort: task.estimatedHours - (task.estimatedHours * progress / 100)
+        });
+      }
     }
   }
-});
+  
+  // Auto-create tasks from commit messages
+  if (shouldCreateTaskFromCommit(commit.message)) {
+    await mcp.call('create_task', {
+      title: extractTaskTitleFromCommit(commit.message),
+      description: `Task created from commit: ${commit.message}`,
+      priority: 'medium',
+      projectId: workspace.name,
+      tags: ['auto-created', 'commit'],
+      sourceCommit: commit.hash
+    });
+  }
+}
+
+// Commit message patterns that trigger task creation
+const commitPatterns = {
+  'feat:': { priority: 'medium', tags: ['feature'] },
+  'fix:': { priority: 'high', tags: ['bug', 'fix'] },
+  'refactor:': { priority: 'low', tags: ['refactor'] },
+  'test:': { priority: 'low', tags: ['testing'] },
+  'docs:': { priority: 'low', tags: ['documentation'] }
+};
 ```
 
 ### Workflow 7: Pull Request Workflow
-**Trigger**: Creating or updating pull requests
-**Automation Sequence**:
+**Trigger**: Pull request creation, review, merge
+**MCP Tools**: `update_task`, `create_task`
 
 ```typescript
-// On Pull Request Creation
-onPullRequest(async (prData) => {
-  const { title, description, files, branch } = prData;
-  
-  // Find Related Tasks
-  const relatedTasks = await findTasksForBranch(branch);
+onPullRequestCreate(pr: PullRequest) {
+  // Find related tasks
+  const relatedTasks = findTasksByBranch(pr.sourceBranch);
   
   for (const task of relatedTasks) {
-    // Mark Task as Ready for Review
     await mcp.call('update_task', {
       taskId: task.id,
-      status: "review",
-      notes: `PR created: ${title}`,
-      metadata: {
-        pullRequestUrl: prData.url,
-        reviewers: prData.reviewers
-      }
+      status: 'review',
+      pullRequestId: pr.id,
+      pullRequestUrl: pr.url,
+      reviewers: pr.reviewers,
+      notes: `PR created: ${pr.title}`
     });
   }
   
-  // Create Review Task if Needed
-  if (prData.reviewers.length > 0) {
+  // Create review tasks for each reviewer
+  for (const reviewer of pr.reviewers) {
     await mcp.call('create_task', {
-      title: `Code Review: ${title}`,
-      description: `Review PR: ${description}`,
-      priority: "high",
-      projectId: getCurrentProjectId(),
-      tags: ["review", "qa"],
-      estimatedHours: 2,
-      assignees: prData.reviewers
+      title: `Review PR: ${pr.title}`,
+      description: `Code review for pull request #${pr.number}`,
+      priority: 'medium',
+      assignee: reviewer,
+      projectId: workspace.name,
+      tags: ['review', 'pr'],
+      pullRequestId: pr.id,
+      estimatedHours: estimateReviewTime(pr)
     });
   }
-});
+}
+
+onPullRequestMerge(pr: PullRequest) {
+  // Complete related tasks
+  const relatedTasks = findTasksByPullRequest(pr.id);
+  
+  for (const task of relatedTasks) {
+    if (task.tags.includes('review')) {
+      // Complete review tasks
+      await mcp.call('update_task', {
+        taskId: task.id,
+        status: 'completed',
+        completedAt: new Date(),
+        notes: `PR merged: ${pr.title}`
+      });
+    } else {
+      // Update main tasks
+      await mcp.call('update_task', {
+        taskId: task.id,
+        status: 'completed',
+        completedAt: new Date(),
+        mergedPullRequest: pr.id,
+        notes: `Feature merged: ${pr.title}`
+      });
+    }
+  }
+}
 ```
 
 ## ⏰ Time-Based Workflow Rules
 
 ### Workflow 8: Daily Standup Preparation
-**Trigger**: Start of work day (configurable time)
-**Automation Sequence**:
+**Trigger**: Daily at 9:00 AM
+**MCP Tools**: `get_system_status`, `list_tasks`, `calculate_priority`
 
 ```typescript
-// Daily Standup Automation (9:00 AM)
-scheduleDaily('09:00', async () => {
+scheduleDailyStandup('09:00', async () => {
+  // Step 1: Get system health
+  const systemStatus = await mcp.call('get_system_status');
   
-  // Get Yesterday's Completed Tasks
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-  
-  const completedTasks = await mcp.call('list_tasks', {
-    status: "completed",
-    completedAfter: yesterday.toISOString(),
+  // Step 2: Get active tasks
+  const activeTasks = await mcp.call('list_tasks', {
+    status: 'in_progress',
+    assignee: currentUser,
     limit: 10
   });
   
-  // Get Today's Planned Tasks
-  const todayTasks = await mcp.call('list_tasks', {
-    status: "in_progress",
-    priority: ["high", "urgent"],
-    limit: 5
+  // Step 3: Get completed tasks from yesterday
+  const completedTasks = await mcp.call('list_tasks', {
+    status: 'completed',
+    completedAfter: getYesterday(),
+    assignee: currentUser
   });
   
-  // Recalculate Priorities
-  for (const task of todayTasks.tasks) {
+  // Step 4: Recalculate priorities
+  for (const task of activeTasks.tasks) {
     await mcp.call('calculate_priority', {
       taskId: task.id,
-      factors: {
-        urgency: getDeadlineUrgency(task),
-        importance: getBusinessValue(task),
-        effort: task.estimatedHours,
-        dependencies: task.dependencies?.length || 0
+      urgency: calculateUrgency(task),
+      importance: calculateImportance(task),
+      effort: task.remainingHours
+    });
+  }
+  
+  // Step 5: Generate standup report
+  const standupReport = generateStandupReport({
+    systemHealth: systemStatus,
+    activeTasks: activeTasks.tasks,
+    completedTasks: completedTasks.tasks,
+    blockers: findBlockedTasks(activeTasks.tasks)
+  });
+  
+  // Step 6: Show standup summary
+  showStandupSummary(standupReport);
+});
+
+function generateStandupReport(data: StandupData) {
+  return {
+    yesterday: data.completedTasks.map(task => ({
+      title: task.title,
+      progress: task.progress,
+      timeSpent: task.timeSpent
+    })),
+    today: data.activeTasks.slice(0, 3).map(task => ({
+      title: task.title,
+      priority: task.priority,
+      estimatedTime: task.estimatedHours
+    })),
+    blockers: data.blockers.map(task => ({
+      title: task.title,
+      blocker: task.blockerReason
+    })),
+    systemHealth: data.systemHealth.health
+  };
+}
+```
+
+### Workflow 9: Weekly Sprint Planning
+**Trigger**: Weekly on Monday at 10:00 AM
+**MCP Tools**: `list_tasks`, `decompose_task`, `calculate_priority`
+
+```typescript
+scheduleWeeklyPlanning('monday', '10:00', async () => {
+  // Step 1: Review last week's performance
+  const lastWeekTasks = await mcp.call('list_tasks', {
+    completedAfter: getLastWeek(),
+    completedBefore: getToday()
+  });
+  
+  // Step 2: Get pending tasks
+  const pendingTasks = await mcp.call('list_tasks', {
+    status: ['pending', 'in_progress'],
+    limit: 50
+  });
+  
+  // Step 3: Decompose large tasks for the week
+  const largeTasks = pendingTasks.tasks.filter(task => 
+    task.estimatedHours > 8 || task.complexity === 'high'
+  );
+  
+  for (const task of largeTasks) {
+    await mcp.call('decompose_task', {
+      description: task.description,
+      complexity: task.complexity,
+      context: {
+        sprintPlanning: true,
+        weeklyCapacity: calculateWeeklyCapacity()
       }
     });
   }
   
-  // Generate Standup Report
-  generateStandupReport(completedTasks, todayTasks);
-});
-```
-
-### Workflow 9: Weekly Sprint Planning
-**Trigger**: Weekly (configurable day/time)
-**Automation Sequence**:
-
-```typescript
-// Weekly Sprint Planning (Monday 10:00 AM)
-scheduleWeekly('monday', '10:00', async () => {
-  
-  // Get System Status and Metrics
-  const systemStatus = await mcp.call('get_system_status', {
-    includeMetrics: true,
-    includeAnalytics: true
-  });
-  
-  // Get All Pending Tasks
-  const pendingTasks = await mcp.call('list_tasks', {
-    status: ["pending", "in_progress"],
-    limit: 50
-  });
-  
-  // Recalculate All Priorities
+  // Step 4: Recalculate all priorities for sprint planning
   for (const task of pendingTasks.tasks) {
     await mcp.call('calculate_priority', {
-      taskId: task.id
+      taskId: task.id,
+      urgency: calculateSprintUrgency(task),
+      importance: calculateBusinessValue(task),
+      effort: task.estimatedHours,
+      sprintContext: true
     });
   }
   
-  // Analyze Sprint Capacity
-  const sprintCapacity = calculateSprintCapacity(systemStatus.metrics);
-  
-  // Generate Sprint Plan
-  generateSprintPlan(pendingTasks, sprintCapacity);
+  // Step 5: Generate sprint plan
+  const sprintPlan = generateSprintPlan(pendingTasks.tasks);
+  showSprintPlan(sprintPlan);
 });
 ```
 
 ## 🎯 Context-Aware Workflow Rules
 
-### Workflow 10: File-Based Context Rules
-**Trigger**: Opening or working on specific files
-**Automation Sequence**:
+### Workflow 10: File-Based Context Switching
+**Trigger**: File opening, workspace switching
+**MCP Tools**: `list_tasks`, `update_task`
 
 ```typescript
-// File Context Detection
-onFileOpen(async (filePath) => {
+onFileOpen(file: File) {
+  // Find tasks related to this file
+  const relatedTasks = await mcp.call('list_tasks', {
+    files: [file.path],
+    status: ['pending', 'in_progress']
+  });
   
-  // Get File-Related Tasks
-  const relatedTasks = await findTasksForFile(filePath);
-  
-  if (relatedTasks.length === 0) {
-    // No existing tasks, check if we should create one
-    if (shouldCreateTaskForFile(filePath)) {
-      
-      const fileTask = await mcp.call('create_task', {
-        title: `Work on ${getFileName(filePath)}`,
-        description: `Development work on ${filePath}`,
-        priority: "medium",
-        projectId: getCurrentProjectId(),
-        tags: [getFileType(filePath), "development"],
-        estimatedHours: estimateTimeForFile(filePath)
-      });
-      
-      // Analyze File Complexity
-      await mcp.call('analyze_complexity', {
-        taskDescription: `Analysis of ${filePath}`,
-        context: getFileContext(filePath),
-        includeRecommendations: true
+  if (relatedTasks.tasks.length > 0) {
+    // Show context-aware task panel
+    showContextualTasks(relatedTasks.tasks);
+    
+    // Update task activity
+    for (const task of relatedTasks.tasks) {
+      await mcp.call('update_task', {
+        taskId: task.id,
+        lastActivity: new Date(),
+        currentFile: file.path,
+        notes: `Working on ${file.name}`
       });
     }
   } else {
-    // Update existing task with current work session
+    // Suggest creating a task for this file
+    if (shouldSuggestTaskCreation(file)) {
+      suggestTaskCreation(file);
+    }
+  }
+}
+
+onWorkspaceSwitch(fromWorkspace: string, toWorkspace: string) {
+  // Pause tasks from old workspace
+  const oldTasks = await mcp.call('list_tasks', {
+    projectId: fromWorkspace,
+    status: 'in_progress'
+  });
+  
+  for (const task of oldTasks.tasks) {
     await mcp.call('update_task', {
-      taskId: relatedTasks[0].id,
-      notes: `Working on ${filePath}`,
-      metadata: {
-        lastWorkedOn: new Date().toISOString(),
-        currentFile: filePath
-      }
+      taskId: task.id,
+      status: 'paused',
+      notes: `Paused due to workspace switch to ${toWorkspace}`
     });
   }
-});
+  
+  // Resume tasks for new workspace
+  const newTasks = await mcp.call('list_tasks', {
+    projectId: toWorkspace,
+    status: 'paused'
+  });
+  
+  for (const task of newTasks.tasks) {
+    await mcp.call('update_task', {
+      taskId: task.id,
+      status: 'in_progress',
+      notes: `Resumed in workspace ${toWorkspace}`
+    });
+  }
+}
 ```
 
-### Workflow 11: Project Context Rules
-**Trigger**: Switching between projects
-**Automation Sequence**:
+### Workflow 11: Project Type Detection
+**Trigger**: Project initialization, configuration changes
+**MCP Tools**: `create_task`, `decompose_task`
 
 ```typescript
-// Project Switch Detection
-onProjectSwitch(async (newProjectId, oldProjectId) => {
+onProjectDetection(projectType: ProjectType) {
+  const projectTemplates = {
+    'react-app': {
+      tasks: [
+        'Set up component structure',
+        'Configure routing',
+        'Set up state management',
+        'Implement styling system'
+      ],
+      tags: ['react', 'frontend']
+    },
+    'node-api': {
+      tasks: [
+        'Set up Express server',
+        'Configure database',
+        'Implement authentication',
+        'Set up API routes'
+      ],
+      tags: ['node', 'backend', 'api']
+    },
+    'python-app': {
+      tasks: [
+        'Set up virtual environment',
+        'Configure dependencies',
+        'Implement main modules',
+        'Set up testing framework'
+      ],
+      tags: ['python', 'backend']
+    }
+  };
   
-  // Save Current Work State
-  if (oldProjectId) {
-    const activeTasks = await mcp.call('list_tasks', {
-      projectId: oldProjectId,
-      status: "in_progress"
-    });
-    
-    for (const task of activeTasks.tasks) {
-      await mcp.call('update_task', {
-        taskId: task.id,
-        metadata: {
-          lastWorkedOn: new Date().toISOString(),
-          workSession: calculateWorkSession(task)
-        }
+  const template = projectTemplates[projectType];
+  if (template) {
+    // Create project setup tasks
+    for (const taskTitle of template.tasks) {
+      await mcp.call('create_task', {
+        title: taskTitle,
+        description: `Project setup: ${taskTitle}`,
+        priority: 'medium',
+        projectId: workspace.name,
+        tags: [...template.tags, 'setup', 'project-init'],
+        projectType: projectType
       });
     }
   }
-  
-  // Load New Project Context
-  if (newProjectId) {
-    // Get Project Status
-    const projectTasks = await mcp.call('list_tasks', {
-      projectId: newProjectId,
-      status: ["in_progress", "pending"],
-      limit: 10
-    });
-    
-    // Recalculate Priorities for New Context
-    for (const task of projectTasks.tasks) {
-      await mcp.call('calculate_priority', {
-        taskId: task.id
-      });
-    }
-    
-    // Show Project Dashboard
-    showProjectDashboard(projectTasks);
-  }
-});
+}
 ```
 
 ## 🔧 Configuration and Setup
@@ -526,4 +692,4 @@ function shouldCreateTaskForFile(filePath: string): boolean {
 
 ---
 
-**These workflow automation rules ensure that task management is seamlessly integrated into every aspect of your development process, making project tracking effortless and intelligent.** 
+**These workflow automation rules provide comprehensive automatic task management for all common development scenarios. Each workflow is designed to trigger appropriate MCP operations based on specific development activities, ensuring seamless integration between your development process and intelligent task management.** 

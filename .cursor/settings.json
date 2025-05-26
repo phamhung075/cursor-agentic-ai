@@ -543,5 +543,248 @@
     "**/.cursor/rules/agents/_store/backups/**",
     "**/.cursor/rules/agents/_store/memory/backup/**",
     "**/.cursor/rules/agents/_store/analysis/backup/**"
-  ]
+  ],
+  "mcp": {
+    "servers": {
+      "aai-system-enhanced": {
+        "command": "node",
+        "args": ["simple-mcp-server.js"],
+        "cwd": "/Users/admin/Documents/Hung/AI/cursor-agentic-ai/.cursor/rules/agents",
+        "env": {
+          "AAI_MODE": "mcp",
+          "NODE_ENV": "production"
+        },
+        "transport": "stdio"
+      }
+    }
+  },
+  "aai": {
+    "mcp": {
+      "enabled": true,
+      "autoConnect": true,
+      "taskManagement": {
+        "autoCreate": true,
+        "autoUpdate": true,
+        "autoAnalyze": true,
+        "autoDecompose": true,
+        "autoPrioritize": true
+      },
+      "workflow": {
+        "automation": true,
+        "gitIntegration": true,
+        "timeBasedTriggers": true,
+        "fileEventTriggers": true
+      },
+      "logging": {
+        "enabled": true,
+        "level": "info",
+        "showInOutput": true
+      }
+    }
+  },
+  "cursor.events": {
+    "onFileCreate": {
+      "enabled": true,
+      "rules": ["MCP_TASK_MANAGEMENT_RULES.mdc#Rule1"],
+      "conditions": {
+        "directories": ["src/", "components/", "pages/", "api/"],
+        "extensions": [".ts", ".tsx", ".js", ".jsx", ".vue", ".py"]
+      }
+    },
+    "onFileModify": {
+      "enabled": true,
+      "rules": ["MCP_TASK_MANAGEMENT_RULES.mdc#Rule2"],
+      "conditions": {
+        "minLines": 50,
+        "significantChanges": true
+      }
+    },
+    "onFileOpen": {
+      "enabled": true,
+      "rules": ["WORKFLOW_AUTOMATION_RULES.mdc#Workflow10"],
+      "conditions": {
+        "trackWorkSessions": true,
+        "updateTaskContext": true
+      }
+    }
+  },
+  "cursor.git": {
+    "onBranchCreate": {
+      "enabled": true,
+      "rules": ["WORKFLOW_AUTOMATION_RULES.mdc#Workflow1", "WORKFLOW_AUTOMATION_RULES.mdc#Workflow2"],
+      "patterns": {
+        "feature": ["feature/", "feat/"],
+        "bugfix": ["bug/", "fix/", "hotfix/"],
+        "refactor": ["refactor/", "improve/"]
+      }
+    },
+    "onCommit": {
+      "enabled": true,
+      "rules": ["WORKFLOW_AUTOMATION_RULES.mdc#Workflow6"],
+      "conditions": {
+        "updateProgress": true,
+        "trackTime": true,
+        "analyzeChanges": true
+      }
+    },
+    "onPullRequest": {
+      "enabled": true,
+      "rules": ["WORKFLOW_AUTOMATION_RULES.mdc#Workflow7"],
+      "conditions": {
+        "createReviewTasks": true,
+        "updateTaskStatus": true
+      }
+    }
+  },
+  "cursor.schedule": {
+    "dailyStandup": {
+      "enabled": true,
+      "time": "09:00",
+      "rules": ["WORKFLOW_AUTOMATION_RULES.mdc#Workflow8"],
+      "actions": [
+        "get_system_status",
+        "list_tasks",
+        "calculate_priority",
+        "generateStandupReport"
+      ]
+    },
+    "weeklyPlanning": {
+      "enabled": true,
+      "day": "monday",
+      "time": "10:00",
+      "rules": ["WORKFLOW_AUTOMATION_RULES.mdc#Workflow9"],
+      "actions": [
+        "get_system_status",
+        "list_tasks",
+        "calculate_priority",
+        "generateSprintPlan"
+      ]
+    },
+    "healthCheck": {
+      "enabled": true,
+      "interval": "5m",
+      "rules": ["MCP_TASK_MANAGEMENT_RULES.mdc#Rule16"],
+      "actions": ["get_system_status"]
+    }
+  },
+  "mcp.tools": {
+    "create_task": {
+      "enabled": true,
+      "autoTriggers": ["file.create", "git.branchCreate", "comment.todo"],
+      "defaultArgs": {
+        "priority": "medium",
+        "status": "pending",
+        "projectId": "${workspace.name}"
+      }
+    },
+    "update_task": {
+      "enabled": true,
+      "autoTriggers": ["file.modify", "git.commit", "time.interval"],
+      "defaultArgs": {
+        "updatedAt": "${timestamp}"
+      }
+    },
+    "analyze_complexity": {
+      "enabled": true,
+      "autoTriggers": ["file.open.large", "task.create.complex"],
+      "conditions": {
+        "file.lineCount": "> 200",
+        "task.description.length": "> 500"
+      }
+    },
+    "decompose_task": {
+      "enabled": true,
+      "autoTriggers": ["task.create.complex", "planning.session"],
+      "conditions": {
+        "task.complexity": "high",
+        "task.estimatedHours": "> 8"
+      }
+    },
+    "calculate_priority": {
+      "enabled": true,
+      "autoTriggers": ["task.create", "task.update", "time.daily"],
+      "schedule": "every 4 hours"
+    },
+    "get_system_status": {
+      "enabled": true,
+      "autoTriggers": ["workspace.open", "time.daily"],
+      "schedule": "every 1 hour"
+    }
+  },
+  "mcp.performance": {
+    "maxConcurrentCalls": 5,
+    "requestTimeout": 30000,
+    "retryAttempts": 3,
+    "retryDelay": 1000,
+    "batchOperations": true,
+    "cacheResults": true,
+    "cacheTTL": 300000
+  },
+  "mcp.security": {
+    "allowedTools": [
+      "create_task",
+      "update_task", 
+      "get_task",
+      "list_tasks",
+      "delete_task",
+      "analyze_complexity",
+      "decompose_task",
+      "calculate_priority",
+      "get_system_status"
+    ],
+    "requireConfirmation": ["delete_task"],
+    "autoApprove": ["get_task", "list_tasks", "get_system_status"],
+    "rateLimiting": {
+      "enabled": true,
+      "maxRequestsPerMinute": 60
+    }
+  },
+  "commands": [
+    {
+      "command": "aai.createTask",
+      "title": "AAI: Create Task",
+      "category": "Task Management",
+      "keybinding": "ctrl+shift+t"
+    },
+    {
+      "command": "aai.updateTask",
+      "title": "AAI: Update Current Task",
+      "category": "Task Management",
+      "keybinding": "ctrl+shift+u"
+    },
+    {
+      "command": "aai.analyzeComplexity",
+      "title": "AAI: Analyze File Complexity",
+      "category": "Analysis",
+      "keybinding": "ctrl+shift+a"
+    },
+    {
+      "command": "aai.decomposeTask",
+      "title": "AAI: Decompose Task",
+      "category": "Planning",
+      "keybinding": "ctrl+shift+d"
+    },
+    {
+      "command": "aai.systemStatus",
+      "title": "AAI: Show System Status",
+      "category": "Monitoring",
+      "keybinding": "ctrl+shift+s"
+    }
+  ],
+  "statusBar": {
+    "showTaskCount": true,
+    "showCurrentTask": true,
+    "showSystemHealth": true,
+    "showMCPConnection": true,
+    "refreshInterval": 30000
+  },
+  "sidebar": {
+    "taskPanel": {
+      "enabled": true,
+      "position": "left",
+      "showFilters": true,
+      "showSearch": true,
+      "autoRefresh": true
+    }
+  }
 }

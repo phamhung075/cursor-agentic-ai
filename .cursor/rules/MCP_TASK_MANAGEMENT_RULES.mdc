@@ -3,346 +3,555 @@ description:
 globs: 
 alwaysApply: false
 ---
-# 🔧 MCP Task Management Rules for Cursor IDE
+# 🎯 MCP Task Management Rules for Cursor IDE
 
-**Fundamental rules for automatic intelligent task management using Model Context Protocol**
+> **📝 UPDATE INSTRUCTIONS**: When modifying these rules, also update [CENTRALIZED_MCP_RULES.mdc](mdc:.cursor/rules/CENTRALIZED_MCP_RULES.mdc), [WORKFLOW_AUTOMATION_RULES.mdc](mdc:.cursor/rules/WORKFLOW_AUTOMATION_RULES.mdc), and [CURSOR_MCP_CONFIG.mdc](mdc:.cursor/rules/CURSOR_MCP_CONFIG.mdc) to maintain consistency.
 
-> **📝 IMPORTANT FOR CURSOR AI**: When modifying this file, you MUST also update:
-> - [CENTRALIZED_MCP_RULES.mdc](mdc:.cursor/rules/CENTRALIZED_MCP_RULES.mdc) - Update summaries and links
-> - [WORKFLOW_AUTOMATION_RULES.mdc](mdc:.cursor/rules/WORKFLOW_AUTOMATION_RULES.mdc) - Check workflow dependencies
-> - [CURSOR_MCP_CONFIG.mdc](mdc:.cursor/rules/CURSOR_MCP_CONFIG.mdc) - Update configuration mappings
-> 
-> **File Dependencies**: This file is referenced by the centralized index and workflow automation rules.
-
-**Automatic integration rules for using AAI System Enhanced MCP server during development**
-
-## 🔧 Core MCP Integration Rules
+## 🚀 Core Task Management Rules (1-5)
 
 ### Rule 1: Automatic Task Creation
-**Trigger**: When creating new files or starting new features
-**Action**: Use MCP `create_task` tool
-**Conditions**:
-- New file creation in `src/`, `components/`, `pages/`, `api/` directories
-- Git branch names containing: `feature/`, `feat/`, `task/`, `story/`
-- Commit messages starting with: `feat:`, `add:`, `implement:`
+**Trigger**: File creation, TODO comments, branch creation
+**MCP Tool**: `create_task`
 
 ```typescript
-// MCP Tool: create_task
-{
-  title: `Implement ${fileName || branchName}`,
-  description: `Development task for ${filePath || featureName}`,
-  priority: "medium",
-  projectId: getCurrentProjectId(),
-  tags: [getFileType(), "development"],
-  estimatedHours: calculateEstimatedHours(fileSize, complexity)
+// When user creates a new file
+onFileCreate(file) {
+  if (file.extension in ['.ts', '.tsx', '.js', '.jsx', '.py', '.md']) {
+    mcp.call('create_task', {
+      title: `Work on ${file.name}`,
+      description: `File created: ${file.path}`,
+      projectId: workspace.name,
+      priority: 'medium',
+      tags: ['file-work', file.extension],
+      estimatedHours: calculateEstimatedHours(file)
+    });
+  }
+}
+
+// When user writes TODO comments
+onTodoComment(comment) {
+  mcp.call('create_task', {
+    title: comment.text,
+    description: `TODO found in ${comment.file}:${comment.line}`,
+    projectId: workspace.name,
+    priority: 'low',
+    tags: ['todo', 'comment'],
+    context: { file: comment.file, line: comment.line }
+  });
 }
 ```
 
 ### Rule 2: Task Progress Updates
-**Trigger**: When making significant code changes
-**Action**: Use MCP `update_task` tool
-**Conditions**:
-- File modifications > 50 lines
-- Commit messages with progress indicators
-- Function/class implementations completed
+**Trigger**: File modifications, commits, time intervals
+**MCP Tool**: `update_task`
 
 ```typescript
-// MCP Tool: update_task
-{
-  taskId: getRelatedTaskId(filePath),
-  status: determineStatus(changeType),
-  progress: calculateProgress(linesChanged, totalLines),
-  notes: `Updated ${fileName}: ${commitMessage}`
+// When user modifies files
+onFileModify(file) {
+  if (file.hasActiveTask) {
+    mcp.call('update_task', {
+      taskId: file.activeTaskId,
+      status: 'in_progress',
+      updatedAt: new Date(),
+      notes: `File modified: ${file.path}`,
+      progress: calculateProgress(file)
+    });
+  }
 }
-```
 
-### Rule 3: Complexity Analysis
-**Trigger**: When working on complex features or refactoring
-**Action**: Use MCP `analyze_complexity` tool
-**Conditions**:
-- Files > 200 lines
-- Multiple class/function definitions
-- Complex logic patterns detected
-
-```typescript
-// MCP Tool: analyze_complexity
-{
-  taskDescription: `Analyze complexity of ${fileName}`,
-  context: `File: ${filePath}, Lines: ${lineCount}, Functions: ${functionCount}`,
-  includeRecommendations: true
-}
-```
-
-### Rule 4: Task Decomposition
-**Trigger**: When encountering large or complex tasks
-**Action**: Use MCP `decompose_task` tool
-**Conditions**:
-- Task estimated > 8 hours
-- Multiple file modifications required
-- Feature spans multiple components
-
-```typescript
-// MCP Tool: decompose_task
-{
-  taskId: getCurrentTaskId(),
-  maxDepth: 3,
-  analysisType: "comprehensive",
-  includeEstimates: true
-}
-```
-
-### Rule 5: Priority Recalculation
-**Trigger**: Daily or when project context changes
-**Action**: Use MCP `calculate_priority` tool
-**Conditions**:
-- Start of work session
-- Deadline changes
-- New dependencies identified
-
-```typescript
-// MCP Tool: calculate_priority
-{
-  taskId: getActiveTaskId(),
-  factors: {
-    urgency: getDeadlineUrgency(),
-    importance: getBusinessValue(),
-    effort: getComplexityScore(),
-    dependencies: getDependencyCount()
+// When user commits changes
+onCommit(commit) {
+  const taskId = extractTaskIdFromCommit(commit.message);
+  if (taskId) {
+    mcp.call('update_task', {
+      taskId: taskId,
+      status: 'in_progress',
+      notes: `Commit: ${commit.message}`,
+      progress: calculateCommitProgress(commit)
+    });
   }
 }
 ```
 
-## 🔄 Workflow Integration Rules
-
-### Rule 6: Project Startup Workflow
-**Trigger**: Opening project or starting work session
-**Actions**:
-1. Get system status
-2. List active tasks
-3. Calculate priorities for pending tasks
+### Rule 3: Complexity Analysis
+**Trigger**: Large files, complex tasks, user request
+**MCP Tool**: `analyze_complexity`
 
 ```typescript
-// Sequence of MCP calls:
-1. get_system_status({ includeMetrics: true })
-2. list_tasks({ status: "in_progress", limit: 10 })
-3. calculate_priority for each active task
+// When opening large files
+onFileOpen(file) {
+  if (file.lineCount > 200) {
+    mcp.call('analyze_complexity', {
+      description: `Analyze complexity of ${file.name}`,
+      context: {
+        fileSize: file.lineCount,
+        filePath: file.path,
+        fileType: file.extension,
+        cyclomaticComplexity: calculateCyclomaticComplexity(file)
+      }
+    });
+  }
+}
+
+// When creating complex tasks
+onTaskCreate(task) {
+  if (task.description.length > 500 || task.estimatedHours > 8) {
+    mcp.call('analyze_complexity', {
+      description: task.description,
+      context: {
+        taskType: task.type,
+        estimatedHours: task.estimatedHours,
+        dependencies: task.dependencies
+      }
+    });
+  }
+}
+```
+
+### Rule 4: Task Decomposition
+**Trigger**: Complex tasks, feature branches, planning sessions
+**MCP Tool**: `decompose_task`
+
+```typescript
+// When creating feature branches
+onBranchCreate(branch) {
+  if (branch.name.startsWith('feature/')) {
+    mcp.call('decompose_task', {
+      description: `Implement ${extractFeatureName(branch.name)}`,
+      complexity: 'high',
+      context: {
+        branchName: branch.name,
+        featureType: detectFeatureType(branch.name),
+        estimatedComplexity: 'high'
+      }
+    });
+  }
+}
+
+// When tasks are marked as complex
+onComplexityAnalysis(result) {
+  if (result.complexity === 'high') {
+    mcp.call('decompose_task', {
+      description: result.description,
+      complexity: result.complexity,
+      context: result.context
+    });
+  }
+}
+```
+
+### Rule 5: Priority Recalculation
+**Trigger**: Task updates, deadlines, dependencies
+**MCP Tool**: `calculate_priority`
+
+```typescript
+// When tasks are updated
+onTaskUpdate(task) {
+  mcp.call('calculate_priority', {
+    urgency: calculateUrgency(task),
+    importance: calculateImportance(task),
+    effort: task.estimatedHours || 1,
+    dependencies: task.dependencies || [],
+    deadline: task.deadline
+  });
+}
+
+// Daily priority recalculation
+onDailyTrigger() {
+  mcp.call('calculate_priority', {
+    recalculateAll: true,
+    context: { trigger: 'daily_recalculation' }
+  });
+}
+```
+
+## 🔄 Workflow Integration Rules (6-9)
+
+### Rule 6: Project Startup Workflow
+**Trigger**: Workspace open, project initialization
+**MCP Tools**: `get_system_status`, `list_tasks`
+
+```typescript
+onWorkspaceOpen(workspace) {
+  // Check system health
+  mcp.call('get_system_status');
+  
+  // Load active tasks
+  mcp.call('list_tasks', {
+    projectId: workspace.name,
+    status: 'in_progress',
+    limit: 10
+  });
+  
+  // Show daily summary
+  showDailySummary();
+}
 ```
 
 ### Rule 7: Feature Development Workflow
-**Trigger**: Starting work on a new feature branch
-**Actions**:
-1. Create main feature task
-2. Decompose into subtasks
-3. Set up task hierarchy
+**Trigger**: Feature branch creation, feature file creation
+**MCP Tools**: `create_task`, `decompose_task`, `analyze_complexity`
 
 ```typescript
-// Workflow sequence:
-1. create_task({ 
-   title: `Feature: ${branchName}`,
-   description: extractFeatureDescription(),
-   priority: "high"
-})
-2. decompose_task({ taskId: newTaskId, maxDepth: 2 })
-3. update_task for each subtask with proper hierarchy
+onFeatureBranchCreate(branch) {
+  const featureName = extractFeatureName(branch.name);
+  
+  // Create main feature task
+  const mainTask = mcp.call('create_task', {
+    title: `Implement ${featureName}`,
+    description: `Feature development: ${branch.name}`,
+    priority: 'high',
+    tags: ['feature', 'development']
+  });
+  
+  // Decompose into subtasks
+  mcp.call('decompose_task', {
+    description: `Implement ${featureName}`,
+    complexity: 'high',
+    context: { featureName, branchName: branch.name }
+  });
+}
 ```
 
 ### Rule 8: Bug Fix Workflow
-**Trigger**: Working on bug fixes
-**Actions**:
-1. Create bug task with high priority
-2. Analyze complexity
-3. Track resolution progress
+**Trigger**: Bug branch creation, error detection
+**MCP Tools**: `create_task`, `update_task`
 
 ```typescript
-// Bug fix workflow:
-1. create_task({
-   title: `Bug Fix: ${issueTitle}`,
-   description: `Fix for issue: ${issueDescription}`,
-   priority: "urgent",
-   tags: ["bug", "hotfix"]
-})
-2. analyze_complexity({ taskDescription: bugDescription })
+onBugBranchCreate(branch) {
+  const bugDescription = extractBugDescription(branch.name);
+  
+  mcp.call('create_task', {
+    title: `Fix: ${bugDescription}`,
+    description: `Bug fix: ${branch.name}`,
+    priority: 'urgent',
+    tags: ['bug', 'fix'],
+    context: { branchName: branch.name, bugType: 'fix' }
+  });
+}
+
+onErrorDetection(error) {
+  mcp.call('create_task', {
+    title: `Fix error: ${error.message}`,
+    description: `Error detected in ${error.file}:${error.line}`,
+    priority: 'high',
+    tags: ['error', 'bug'],
+    context: { error: error.stack, file: error.file }
+  });
+}
 ```
 
 ### Rule 9: Code Review Workflow
-**Trigger**: Creating or reviewing pull requests
-**Actions**:
-1. Update related tasks
-2. Mark tasks as ready for review
-3. Calculate completion metrics
+**Trigger**: Pull request creation, review requests
+**MCP Tools**: `update_task`, `create_task`
 
 ```typescript
-// Code review workflow:
-1. list_tasks({ projectId: currentProject, status: "in_progress" })
-2. update_task({ status: "review", notes: "Ready for code review" })
-3. get_system_status({ includeMetrics: true })
+onPullRequestCreate(pr) {
+  // Update main task status
+  mcp.call('update_task', {
+    taskId: pr.linkedTaskId,
+    status: 'review',
+    notes: `PR created: ${pr.title}`,
+    reviewers: pr.reviewers
+  });
+  
+  // Create review tasks for reviewers
+  pr.reviewers.forEach(reviewer => {
+    mcp.call('create_task', {
+      title: `Review: ${pr.title}`,
+      description: `Code review for PR #${pr.number}`,
+      assignee: reviewer,
+      priority: 'medium',
+      tags: ['review', 'pr']
+    });
+  });
+}
 ```
 
-## 🎯 Context-Aware Rules
+## 🎯 Context-Aware Rules (10-12)
 
 ### Rule 10: File Type Specific Rules
-**Trigger**: Working with specific file types
-**Actions**: Tailored task management based on file type
+**Trigger**: File operations based on file type
+**MCP Tools**: Various based on file type
 
 ```typescript
-// File type mappings:
-{
-  ".tsx|.jsx": { tags: ["frontend", "react"], estimatedHours: 4 },
-  ".ts|.js": { tags: ["backend", "logic"], estimatedHours: 3 },
-  ".css|.scss": { tags: ["styling", "ui"], estimatedHours: 2 },
-  ".test.ts|.spec.ts": { tags: ["testing", "qa"], estimatedHours: 2 },
-  ".md": { tags: ["documentation"], estimatedHours: 1 }
-}
+const fileTypeRules = {
+  '.ts': {
+    onOpen: () => mcp.call('analyze_complexity'),
+    priority: 'high',
+    autoAnalyze: true,
+    tags: ['typescript', 'development']
+  },
+  '.tsx': {
+    onOpen: () => mcp.call('analyze_complexity'),
+    priority: 'high',
+    autoAnalyze: true,
+    tags: ['react', 'frontend', 'typescript']
+  },
+  '.py': {
+    onOpen: () => mcp.call('analyze_complexity'),
+    priority: 'medium',
+    autoAnalyze: true,
+    tags: ['python', 'backend']
+  },
+  '.md': {
+    onOpen: () => {},
+    priority: 'low',
+    autoAnalyze: false,
+    tags: ['documentation']
+  }
+};
 ```
 
 ### Rule 11: Git Integration Rules
-**Trigger**: Git operations (commit, branch, merge)
-**Actions**: Update tasks based on git context
+**Trigger**: Git operations, branch changes
+**MCP Tools**: `update_task`, `create_task`
 
 ```typescript
-// Git-based task updates:
-- Commit: update_task({ progress: calculateFromCommit() })
-- Branch creation: create_task({ title: branchToTaskTitle() })
-- Merge: update_task({ status: "completed" })
-```
-
-### Rule 12: Time-Based Rules
-**Trigger**: Time-based events
-**Actions**: Automatic task management maintenance
-
-```typescript
-// Time-based automation:
-- Daily: calculate_priority for all active tasks
-- Weekly: get_system_status with full metrics
-- End of day: update_task progress for all worked tasks
-```
-
-## 🚀 Automation Rules
-
-### Rule 13: Smart Task Creation
-**Trigger**: Intelligent detection of new work
-**Conditions**:
-- TODO comments added to code
-- New API endpoints created
-- New components scaffolded
-
-```typescript
-// Smart detection patterns:
-- "TODO:" comments → create_task
-- "FIXME:" comments → create_task with "bug" tag
-- "HACK:" comments → create_task with "refactor" tag
-```
-
-### Rule 14: Dependency Tracking
-**Trigger**: Task dependencies detected
-**Actions**: Update task relationships and priorities
-
-```typescript
-// Dependency management:
-1. analyze_complexity({ includeRecommendations: true })
-2. update_task({ dependencies: extractDependencies() })
-3. calculate_priority({ factors: { dependencies: dependencyCount } })
-```
-
-### Rule 15: Progress Tracking
-**Trigger**: Code changes and commits
-**Actions**: Automatic progress calculation
-
-```typescript
-// Progress calculation:
-{
-  progress: (completedSubtasks / totalSubtasks) * 100,
-  timeSpent: calculateTimeFromCommits(),
-  estimatedCompletion: predictCompletionTime()
+onBranchSwitch(fromBranch, toBranch) {
+  // Pause tasks from old branch
+  mcp.call('update_task', {
+    branchName: fromBranch,
+    status: 'paused',
+    notes: `Switched from ${fromBranch} to ${toBranch}`
+  });
+  
+  // Resume tasks for new branch
+  mcp.call('list_tasks', {
+    branchName: toBranch,
+    status: 'paused'
+  }).then(tasks => {
+    tasks.forEach(task => {
+      mcp.call('update_task', {
+        taskId: task.id,
+        status: 'in_progress',
+        notes: `Resumed on branch ${toBranch}`
+      });
+    });
+  });
 }
 ```
 
-## 🔧 Configuration Rules
-
-### Rule 16: MCP Server Health Monitoring
-**Trigger**: Regular intervals or on errors
-**Actions**: Monitor MCP server health
+### Rule 12: Time-Based Maintenance
+**Trigger**: Scheduled intervals, time events
+**MCP Tools**: `get_system_status`, `calculate_priority`
 
 ```typescript
-// Health monitoring:
+// Every 4 hours: recalculate priorities
 setInterval(() => {
-  get_system_status({ includeHealth: true })
-}, 300000); // Every 5 minutes
+  mcp.call('calculate_priority', {
+    recalculateAll: true,
+    context: { trigger: 'scheduled_recalculation' }
+  });
+}, 4 * 60 * 60 * 1000);
+
+// Daily at 9 AM: system health check
+scheduleDaily('09:00', () => {
+  mcp.call('get_system_status');
+  generateDailyReport();
+});
 ```
 
-### Rule 17: Error Handling Rules
-**Trigger**: MCP tool failures
-**Actions**: Graceful degradation and retry logic
+## 🤖 Automation Rules (13-15)
+
+### Rule 13: Smart Task Creation from Comments
+**Trigger**: Special comments, annotations
+**MCP Tool**: `create_task`
 
 ```typescript
-// Error handling:
-try {
-  await mcp.call(toolName, parameters);
-} catch (error) {
-  logError(error);
-  retryWithBackoff(toolName, parameters);
+onCommentCreate(comment) {
+  const patterns = {
+    'TODO:': { priority: 'low', tags: ['todo'] },
+    'FIXME:': { priority: 'medium', tags: ['fix'] },
+    'HACK:': { priority: 'high', tags: ['refactor'] },
+    'BUG:': { priority: 'urgent', tags: ['bug'] },
+    'FEATURE:': { priority: 'medium', tags: ['feature'] }
+  };
+  
+  for (const [pattern, config] of Object.entries(patterns)) {
+    if (comment.text.startsWith(pattern)) {
+      mcp.call('create_task', {
+        title: comment.text.replace(pattern, '').trim(),
+        description: `${pattern} found in ${comment.file}:${comment.line}`,
+        priority: config.priority,
+        tags: config.tags,
+        context: { file: comment.file, line: comment.line }
+      });
+    }
+  }
+}
+```
+
+### Rule 14: Dependency Tracking
+**Trigger**: Import changes, dependency updates
+**MCP Tool**: `update_task`
+
+```typescript
+onImportChange(file, imports) {
+  const affectedTasks = findTasksByFile(file.path);
+  
+  affectedTasks.forEach(task => {
+    mcp.call('update_task', {
+      taskId: task.id,
+      dependencies: [...task.dependencies, ...imports],
+      notes: `Dependencies updated in ${file.path}`,
+      complexity: recalculateComplexity(task, imports)
+    });
+  });
+}
+```
+
+### Rule 15: Progress Tracking
+**Trigger**: File saves, test runs, builds
+**MCP Tool**: `update_task`
+
+```typescript
+onFileSave(file) {
+  const progress = calculateFileProgress(file);
+  const activeTask = getActiveTaskForFile(file);
+  
+  if (activeTask) {
+    mcp.call('update_task', {
+      taskId: activeTask.id,
+      progress: progress,
+      lastActivity: new Date(),
+      notes: `Progress update: ${file.path} saved`
+    });
+  }
+}
+
+onTestRun(results) {
+  const affectedTasks = findTasksByTestFiles(results.files);
+  
+  affectedTasks.forEach(task => {
+    mcp.call('update_task', {
+      taskId: task.id,
+      testStatus: results.passed ? 'passing' : 'failing',
+      notes: `Tests ${results.passed ? 'passed' : 'failed'}: ${results.summary}`
+    });
+  });
+}
+```
+
+## 🔧 System Rules (16-20)
+
+### Rule 16: MCP Server Health Monitoring
+**Trigger**: Regular intervals, system events
+**MCP Tool**: `get_system_status`
+
+```typescript
+// Health check every 5 minutes
+setInterval(() => {
+  mcp.call('get_system_status').then(status => {
+    if (status.health !== 'healthy') {
+      showHealthWarning(status);
+    }
+  }).catch(error => {
+    showMCPConnectionError(error);
+  });
+}, 5 * 60 * 1000);
+```
+
+### Rule 17: Error Handling and Recovery
+**Trigger**: MCP call failures, system errors
+**MCP Tools**: Retry mechanisms
+
+```typescript
+function mcpCallWithRetry(tool, args, maxRetries = 3) {
+  return new Promise((resolve, reject) => {
+    let attempts = 0;
+    
+    function attempt() {
+      attempts++;
+      mcp.call(tool, args)
+        .then(resolve)
+        .catch(error => {
+          if (attempts < maxRetries) {
+            setTimeout(attempt, 1000 * attempts);
+          } else {
+            logError(`MCP call failed after ${maxRetries} attempts`, error);
+            reject(error);
+          }
+        });
+    }
+    
+    attempt();
+  });
 }
 ```
 
 ### Rule 18: Performance Optimization
-**Trigger**: High task volume or slow responses
-**Actions**: Optimize MCP calls and batch operations
+**Trigger**: Performance monitoring, resource usage
+**MCP Tools**: Batched operations
 
 ```typescript
-// Performance optimization:
-- Batch multiple task updates
-- Cache frequently accessed data
-- Use pagination for large task lists
+// Batch multiple MCP calls for efficiency
+class MCPBatcher {
+  private queue: Array<{tool: string, args: any, resolve: Function, reject: Function}> = [];
+  
+  add(tool: string, args: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.queue.push({ tool, args, resolve, reject });
+      this.scheduleFlush();
+    });
+  }
+  
+  private scheduleFlush() {
+    if (this.queue.length >= 5 || !this.flushTimer) {
+      this.flushTimer = setTimeout(() => this.flush(), 100);
+    }
+  }
+  
+  private flush() {
+    const batch = this.queue.splice(0);
+    // Process batch efficiently
+    processBatch(batch);
+  }
+}
 ```
 
-## 📊 Metrics and Analytics Rules
-
-### Rule 19: Development Metrics
-**Trigger**: End of work sessions or daily
-**Actions**: Collect and analyze development metrics
+### Rule 19: Analytics and Metrics
+**Trigger**: Task operations, user actions
+**MCP Tools**: Data collection
 
 ```typescript
-// Metrics collection:
-{
-  tasksCompleted: getCompletedTasksCount(),
-  averageTaskTime: calculateAverageTime(),
-  complexityTrends: analyzeComplexityTrends(),
-  productivityScore: calculateProductivityScore()
+onTaskOperation(operation, task) {
+  collectMetrics({
+    operation: operation,
+    taskId: task.id,
+    timestamp: new Date(),
+    duration: operation.duration,
+    success: operation.success
+  });
+  
+  // Weekly analytics report
+  if (isWeeklyReportTime()) {
+    generateAnalyticsReport();
+  }
 }
 ```
 
 ### Rule 20: Continuous Improvement
-**Trigger**: Weekly or milestone completion
-**Actions**: Analyze patterns and optimize workflows
+**Trigger**: Pattern detection, user feedback
+**MCP Tools**: Learning algorithms
 
 ```typescript
-// Improvement analysis:
-1. get_system_status({ includeMetrics: true, includeAnalytics: true })
-2. analyze_complexity for completed tasks
-3. Update estimation models based on actual vs estimated time
+onPatternDetection(pattern) {
+  if (pattern.confidence > 0.8) {
+    suggestAutomationRule(pattern);
+  }
+  
+  // Learn from user behavior
+  updateLearningModel(pattern);
+}
+
+onUserFeedback(feedback) {
+  if (feedback.type === 'rule_suggestion') {
+    evaluateRuleSuggestion(feedback);
+  }
+}
 ```
-
-## 🎯 Usage Guidelines
-
-### Priority Levels
-- **urgent**: Critical bugs, production issues
-- **high**: Important features, deadlines approaching
-- **medium**: Regular development tasks
-- **low**: Nice-to-have features, documentation
-
-### Tag Categories
-- **Type**: `feature`, `bug`, `refactor`, `test`, `docs`
-- **Area**: `frontend`, `backend`, `api`, `ui`, `database`
-- **Technology**: `react`, `node`, `typescript`, `css`
-- **Status**: `blocked`, `review`, `testing`, `deployed`
-
-### Best Practices
-1. Always provide meaningful task descriptions
-2. Use consistent project IDs across related tasks
-3. Leverage AI decomposition for complex features
-4. Regular priority recalculation for optimal workflow
-5. Monitor system health and performance metrics
 
 ---
 
-**These rules enable seamless integration of intelligent task management into your Cursor IDE development workflow through the AAI System Enhanced MCP server.** 
+**These 20 rules provide comprehensive automatic task management integration between Cursor IDE and your MCP server. Each rule is designed to trigger specific MCP tool calls based on development activities, ensuring intelligent and seamless task management throughout your workflow.** 

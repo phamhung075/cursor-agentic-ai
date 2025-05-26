@@ -27,25 +27,38 @@ alwaysApply: false
   "mcp": {
     "servers": {
       "aai-system-enhanced": {
-        "command": "npm",
-        "args": ["start"],
-        "cwd": ".cursor/rules/agents",
+        "command": "node",
+        "args": ["simple-mcp-server.js"],
+        "cwd": "/Users/admin/Documents/Hung/AI/cursor-agentic-ai/.cursor/rules/agents",
         "env": {
           "AAI_MODE": "mcp",
           "NODE_ENV": "production"
         },
-        "description": "AAI System Enhanced - Intelligent Task Management",
-        "capabilities": {
-          "tools": true,
-          "resources": true,
-          "prompts": true
-        },
-        "autoStart": true,
-        "healthCheck": {
-          "enabled": true,
-          "interval": 300000,
-          "timeout": 5000
-        }
+        "transport": "stdio"
+      }
+    }
+  },
+  "aai": {
+    "mcp": {
+      "enabled": true,
+      "autoConnect": true,
+      "taskManagement": {
+        "autoCreate": true,
+        "autoUpdate": true,
+        "autoAnalyze": true,
+        "autoDecompose": true,
+        "autoPrioritize": true
+      },
+      "workflow": {
+        "automation": true,
+        "gitIntegration": true,
+        "timeBasedTriggers": true,
+        "fileEventTriggers": true
+      },
+      "logging": {
+        "enabled": true,
+        "level": "info",
+        "showInOutput": true
       }
     }
   }
@@ -73,32 +86,47 @@ alwaysApply: false
 
 ### File Event Triggers
 ```typescript
-// Cursor Event Handlers for MCP Integration
-{
-  "cursor.events": {
-    "onFileCreate": {
-      "enabled": true,
-      "rules": ["MCP_TASK_MANAGEMENT_RULES.md#Rule1"],
-      "conditions": {
-        "directories": ["src/", "components/", "pages/", "api/"],
-        "extensions": [".ts", ".tsx", ".js", ".jsx", ".vue", ".py"]
-      }
-    },
-    "onFileModify": {
-      "enabled": true,
-      "rules": ["MCP_TASK_MANAGEMENT_RULES.md#Rule2"],
-      "conditions": {
-        "minLines": 50,
-        "significantChanges": true
-      }
-    },
-    "onFileOpen": {
-      "enabled": true,
-      "rules": ["WORKFLOW_AUTOMATION_RULES.md#Workflow10"],
-      "conditions": {
-        "trackWorkSessions": true,
-        "updateTaskContext": true
-      }
+// Automatic task creation on file operations
+onFileCreate: {
+  trigger: "file.create",
+  condition: "file.extension in ['.ts', '.js', '.tsx', '.jsx', '.py', '.md']",
+  action: "mcp.call",
+  tool: "create_task",
+  args: {
+    title: "Work on ${file.name}",
+    description: "File created: ${file.path}",
+    projectId: "${workspace.name}",
+    priority: "medium",
+    tags: ["file-work", "${file.extension}"]
+  }
+}
+
+// Automatic task updates on file modifications
+onFileModify: {
+  trigger: "file.modify",
+  condition: "file.hasActiveTask",
+  action: "mcp.call",
+  tool: "update_task",
+  args: {
+    taskId: "${file.activeTaskId}",
+    status: "in_progress",
+    updatedAt: "${timestamp}",
+    notes: "File modified: ${file.path}"
+  }
+}
+
+// Complexity analysis for large files
+onFileOpen: {
+  trigger: "file.open",
+  condition: "file.lineCount > 200",
+  action: "mcp.call",
+  tool: "analyze_complexity",
+  args: {
+    description: "Analyze complexity of ${file.name}",
+    context: {
+      fileSize: "${file.lineCount}",
+      filePath: "${file.path}",
+      fileType: "${file.extension}"
     }
   }
 }
@@ -106,71 +134,81 @@ alwaysApply: false
 
 ### Git Event Triggers
 ```typescript
-{
-  "cursor.git": {
-    "onBranchCreate": {
-      "enabled": true,
-      "rules": ["WORKFLOW_AUTOMATION_RULES.md#Workflow1", "WORKFLOW_AUTOMATION_RULES.md#Workflow2"],
-      "patterns": {
-        "feature": ["feature/", "feat/"],
-        "bugfix": ["bug/", "fix/", "hotfix/"],
-        "refactor": ["refactor/", "improve/"]
-      }
-    },
-    "onCommit": {
-      "enabled": true,
-      "rules": ["WORKFLOW_AUTOMATION_RULES.md#Workflow6"],
-      "conditions": {
-        "updateProgress": true,
-        "trackTime": true,
-        "analyzeChanges": true
-      }
-    },
-    "onPullRequest": {
-      "enabled": true,
-      "rules": ["WORKFLOW_AUTOMATION_RULES.md#Workflow7"],
-      "conditions": {
-        "createReviewTasks": true,
-        "updateTaskStatus": true
-      }
-    }
+// Feature branch creation
+onBranchCreate: {
+  trigger: "git.branchCreate",
+  condition: "branch.name.startsWith('feature/')",
+  action: "mcp.call",
+  tool: "create_task",
+  args: {
+    title: "Implement ${branch.featureName}",
+    description: "Feature branch: ${branch.name}",
+    projectId: "${git.repository}",
+    priority: "high",
+    tags: ["feature", "development"]
+  }
+}
+
+// Commit-based task updates
+onCommit: {
+  trigger: "git.commit",
+  condition: "commit.message.includes('task:')",
+  action: "mcp.call",
+  tool: "update_task",
+  args: {
+    taskId: "${commit.extractTaskId}",
+    status: "in_progress",
+    notes: "Commit: ${commit.message}",
+    progress: "${commit.calculateProgress}"
+  }
+}
+
+// Pull request workflow
+onPullRequest: {
+  trigger: "git.pullRequest",
+  condition: "pr.state === 'open'",
+  action: "mcp.call",
+  tool: "update_task",
+  args: {
+    taskId: "${pr.linkedTaskId}",
+    status: "review",
+    notes: "PR created: ${pr.title}",
+    reviewers: "${pr.reviewers}"
   }
 }
 ```
 
 ### Time-Based Triggers
 ```typescript
-{
-  "cursor.schedule": {
-    "dailyStandup": {
-      "enabled": true,
-      "time": "09:00",
-      "rules": ["WORKFLOW_AUTOMATION_RULES.md#Workflow8"],
-      "actions": [
-        "get_system_status",
-        "list_tasks",
-        "calculate_priority",
-        "generateStandupReport"
-      ]
+// Daily standup preparation
+dailyStandup: {
+  trigger: "time.daily",
+  time: "09:00",
+  action: "mcp.call",
+  tool: "get_system_status",
+  followUp: [
+    {
+      tool: "list_tasks",
+      args: { status: "in_progress", limit: 10 }
     },
-    "weeklyPlanning": {
-      "enabled": true,
-      "day": "monday",
-      "time": "10:00",
-      "rules": ["WORKFLOW_AUTOMATION_RULES.md#Workflow9"],
-      "actions": [
-        "get_system_status",
-        "list_tasks",
-        "calculate_priority",
-        "generateSprintPlan"
-      ]
-    },
-    "healthCheck": {
-      "enabled": true,
-      "interval": "5m",
-      "rules": ["MCP_TASK_MANAGEMENT_RULES.md#Rule16"],
-      "actions": ["get_system_status"]
+    {
+      tool: "calculate_priority",
+      args: { recalculateAll: true }
     }
+  ]
+}
+
+// Weekly sprint planning
+weeklyPlanning: {
+  trigger: "time.weekly",
+  day: "monday",
+  time: "10:00",
+  action: "mcp.call",
+  tool: "decompose_task",
+  args: {
+    description: "Weekly sprint planning",
+    complexity: "high",
+    context: { type: "planning", duration: "week" }
   }
 }
 ```
