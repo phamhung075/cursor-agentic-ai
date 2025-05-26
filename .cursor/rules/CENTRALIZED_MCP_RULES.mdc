@@ -1,0 +1,203 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 🎯 Centralized Cursor MCP Task Management Rules Index
+
+**Master index for automatic intelligent task management integration in Cursor IDE**
+
+> **📝 IMPORTANT FOR CURSOR AI**: When modifying any MCP task management content, you MUST update ALL related files listed below to maintain consistency across the rule system.
+
+## 📋 Overview
+
+This is the central index for the complete MCP task management rule system. Each section below links to detailed rule files that work together to provide intelligent task management in Cursor IDE.
+
+## 📁 Rule Files Structure
+
+### 🔧 Core MCP Integration Rules
+**File**: [MCP_TASK_MANAGEMENT_RULES.mdc](.cursor/rules/MCP_TASK_MANAGEMENT_RULES.mdc)
+
+**Summary**: Contains 20 fundamental rules for MCP tool integration and task management
+- **Rules 1-5**: Task Management (Creation, Updates, Complexity, Decomposition, Priority)
+- **Rules 6-9**: Workflow Integration (Startup, Feature Development, Bug Fix, Code Review)
+- **Rules 10-12**: Context-Aware (File Types, Git Integration, Time-Based)
+- **Rules 13-15**: Automation (Smart Creation, Dependency Tracking, Progress)
+- **Rules 16-20**: System (Health Monitoring, Error Handling, Performance, Metrics, Improvement)
+
+**Key MCP Tools Used**: `create_task`, `update_task`, `analyze_complexity`, `decompose_task`, `calculate_priority`, `get_system_status`
+
+**Click to view**: [📖 View Complete MCP Task Management Rules](.cursor/rules/MCP_TASK_MANAGEMENT_RULES.mdc)
+
+---
+
+### 🔄 Workflow Automation Rules
+**File**: [WORKFLOW_AUTOMATION_RULES.mdc](.cursor/rules/WORKFLOW_AUTOMATION_RULES.mdc)
+
+**Summary**: Contains 11 workflow-specific automation rules for development process integration
+- **Workflows 1-4**: Development (Feature Development, Bug Fix, Refactoring, Testing)
+- **Workflow 5**: Documentation Updates
+- **Workflows 6-7**: Git Integration (Commit Updates, Pull Request Workflow)
+- **Workflows 8-9**: Time-Based (Daily Standup, Weekly Planning)
+- **Workflows 10-11**: Context-Aware (File-Based Context, Project Switching)
+
+**Key Features**: Automatic branch detection, commit-based updates, time-scheduled workflows, context switching
+
+**Click to view**: [📖 View Complete Workflow Automation Rules](.cursor/rules/WORKFLOW_AUTOMATION_RULES.mdc)
+
+---
+
+### ⚙️ Cursor MCP Configuration
+**File**: [CURSOR_MCP_CONFIG.mdc](.cursor/rules/CURSOR_MCP_CONFIG.mdc)
+
+**Summary**: Complete Cursor IDE configuration for MCP server integration and rule activation
+- **Core Configuration**: MCP server setup, workspace settings
+- **Event Triggers**: File events, Git events, time-based triggers
+- **Tool Integration**: MCP tool configuration and automation settings
+- **Advanced Settings**: Performance, security, analytics, monitoring
+- **UI Integration**: Command palette, status bar, sidebar integration
+
+**Key Components**: Server configuration, event handlers, tool mappings, performance optimization
+
+**Click to view**: [📖 View Complete Cursor MCP Configuration](.cursor/rules/CURSOR_MCP_CONFIG.mdc)
+
+---
+
+## 🚀 Quick Reference Links
+
+### 📊 Available MCP Tools
+- `create_task` - [Rule 1](.cursor/rules/MCP_TASK_MANAGEMENT_RULES.mdc#rule-1-automatic-task-creation)
+- `update_task` - [Rule 2](.cursor/rules/MCP_TASK_MANAGEMENT_RULES.mdc#rule-2-task-progress-updates)
+- `analyze_complexity` - [Rule 3](.cursor/rules/MCP_TASK_MANAGEMENT_RULES.mdc#rule-3-complexity-analysis)
+- `decompose_task` - [Rule 4](.cursor/rules/MCP_TASK_MANAGEMENT_RULES.mdc#rule-4-task-decomposition)
+- `calculate_priority` - [Rule 5](.cursor/rules/MCP_TASK_MANAGEMENT_RULES.mdc#rule-5-priority-recalculation)
+- `get_system_status` - [Rule 16](.cursor/rules/MCP_TASK_MANAGEMENT_RULES.mdc#rule-16-mcp-server-health-monitoring)
+
+### 🔄 Key Workflows
+- **Feature Development** - [Workflow 1](.cursor/rules/WORKFLOW_AUTOMATION_RULES.mdc#workflow-1-new-feature-development)
+- **Bug Fix Process** - [Workflow 2](.cursor/rules/WORKFLOW_AUTOMATION_RULES.mdc#workflow-2-bug-fix-process)
+- **Daily Standup** - [Workflow 8](.cursor/rules/WORKFLOW_AUTOMATION_RULES.mdc#workflow-8-daily-standup-preparation)
+- **Commit Updates** - [Workflow 6](.cursor/rules/WORKFLOW_AUTOMATION_RULES.mdc#workflow-6-commit-based-task-updates)
+
+### ⚙️ Configuration Sections
+- **MCP Server Setup** - [Core Configuration](.cursor/rules/CURSOR_MCP_CONFIG.mdc#core-mcp-server-configuration)
+- **Event Triggers** - [Automatic Rule Activation](.cursor/rules/CURSOR_MCP_CONFIG.mdc#automatic-rule-activation)
+- **Tool Integration** - [MCP Tool Integration](.cursor/rules/CURSOR_MCP_CONFIG.mdc#mcp-tool-integration)
+
+## 🎯 Rule Activation Summary
+
+### Automatic Triggers
+```typescript
+// File Events → MCP_TASK_MANAGEMENT_RULES.mdc
+onFileCreate() → Rule 1 (Automatic Task Creation)
+onFileModify() → Rule 2 (Task Progress Updates)
+onFileOpen() → Rule 10 (File Type Specific Rules)
+
+// Git Events → WORKFLOW_AUTOMATION_RULES.mdc
+onBranchCreate() → Workflow 1 (Feature Development)
+onCommit() → Workflow 6 (Commit Updates)
+onPullRequest() → Workflow 7 (PR Workflow)
+
+// Time Events → WORKFLOW_AUTOMATION_RULES.mdc
+daily(09:00) → Workflow 8 (Daily Standup)
+weekly(monday, 10:00) → Workflow 9 (Sprint Planning)
+
+// Configuration → CURSOR_MCP_CONFIG.mdc
+All event handlers and tool configurations
+```
+
+## 🔧 Quick Setup Guide
+
+### 1. MCP Server Configuration
+```json
+// From: CURSOR_MCP_CONFIG.mdc
+{
+  "mcp": {
+    "servers": {
+      "aai-system-enhanced": {
+        "command": "npm",
+        "args": ["start"],
+        "cwd": ".cursor/rules/agents",
+        "env": { "AAI_MODE": "mcp" }
+      }
+    }
+  }
+}
+```
+
+### 2. Enable Automatic Rules
+```json
+// From: CURSOR_MCP_CONFIG.mdc
+{
+  "aai.mcp.enabled": true,
+  "aai.taskManagement.autoCreate": true,
+  "aai.taskManagement.autoUpdate": true,
+  "aai.workflow.automation": true
+}
+```
+
+## 📝 File Update Instructions for Cursor AI
+
+> **🚨 CRITICAL**: When modifying MCP task management content, follow these update rules:
+
+### When updating MCP tools or rules:
+1. **Primary Update**: Modify [MCP_TASK_MANAGEMENT_RULES.mdc](.cursor/rules/MCP_TASK_MANAGEMENT_RULES.mdc)
+2. **Workflow Impact**: Check and update [WORKFLOW_AUTOMATION_RULES.mdc](.cursor/rules/WORKFLOW_AUTOMATION_RULES.mdc)
+3. **Configuration Impact**: Update [CURSOR_MCP_CONFIG.mdc](.cursor/rules/CURSOR_MCP_CONFIG.mdc)
+4. **Index Update**: Update this file with new summaries and links
+
+### When updating workflows:
+1. **Primary Update**: Modify [WORKFLOW_AUTOMATION_RULES.mdc](.cursor/rules/WORKFLOW_AUTOMATION_RULES.mdc)
+2. **Rule Dependencies**: Check [MCP_TASK_MANAGEMENT_RULES.mdc](.cursor/rules/MCP_TASK_MANAGEMENT_RULES.mdc) for related rules
+3. **Configuration Update**: Update [CURSOR_MCP_CONFIG.mdc](.cursor/rules/CURSOR_MCP_CONFIG.mdc) event handlers
+4. **Index Update**: Update this file with workflow summaries
+
+### When updating configuration:
+1. **Primary Update**: Modify [CURSOR_MCP_CONFIG.mdc](.cursor/rules/CURSOR_MCP_CONFIG.mdc)
+2. **Rule Validation**: Ensure all rules in [MCP_TASK_MANAGEMENT_RULES.mdc](.cursor/rules/MCP_TASK_MANAGEMENT_RULES.mdc) are supported
+3. **Workflow Validation**: Ensure all workflows in [WORKFLOW_AUTOMATION_RULES.mdc](.cursor/rules/WORKFLOW_AUTOMATION_RULES.mdc) are configured
+4. **Index Update**: Update this file with configuration summaries
+
+### File Consistency Checklist:
+- [ ] All MCP tools referenced consistently across files
+- [ ] All workflow triggers properly configured
+- [ ] All rule numbers and names match
+- [ ] All file links in this index are valid
+- [ ] All configuration examples are current
+
+## 🎯 Usage Examples
+
+### Creating a New Feature
+```bash
+git checkout -b feature/user-authentication
+# → Triggers: Workflow 1 (Feature Development)
+# → Uses: Rule 1 (Task Creation), Rule 4 (Decomposition)
+# → Config: CURSOR_MCP_CONFIG.mdc event handlers
+```
+
+### Working on Complex Code
+```typescript
+// Open file >200 lines
+// → Triggers: Rule 3 (Complexity Analysis)
+// → Uses: analyze_complexity MCP tool
+// → Config: File type mappings in CURSOR_MCP_CONFIG.mdc
+```
+
+### Daily Development Start
+```bash
+# 9:00 AM automatically
+// → Triggers: Workflow 8 (Daily Standup)
+// → Uses: get_system_status, list_tasks, calculate_priority
+// → Config: Time-based triggers in CURSOR_MCP_CONFIG.mdc
+```
+
+## 📚 Related Documentation
+
+- **[AAI System Enhanced README](agents/README.md)** - Main system documentation
+- **[Integration Guide](agents/docs/CURSOR_MCP_INTEGRATION.md)** - Complete setup guide
+- **[Quick Reference](agents/docs/QUICK_REFERENCE.md)** - Fast reference card
+- **[Quick Setup Script](agents/scripts/quick-setup.sh)** - Automated setup
+
+---
+
+**This centralized index provides quick access to all MCP task management rules while maintaining detailed documentation in separate files. When Cursor reads this file, it knows to reference the linked files for complete implementation details.**

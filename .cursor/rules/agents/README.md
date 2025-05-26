@@ -31,6 +31,20 @@ The AAI System Enhanced (v2.0.0) is a comprehensive TypeScript-based AI platform
 
 The AAI System Enhanced now supports the **Model Context Protocol (MCP)**, allowing AI models to directly interact with the task management system.
 
+### **🎯 Quick Cursor IDE Setup**
+
+```bash
+# Quick automated setup for Cursor IDE integration
+./scripts/quick-setup.sh
+```
+
+**Note:** TypeScript build warnings are expected but don't affect MCP functionality.
+
+### **📚 Documentation**
+
+- **[Complete Integration Guide](./docs/CURSOR_MCP_INTEGRATION.md)** - Full setup and usage guide
+- **[Quick Reference Card](./docs/QUICK_REFERENCE.md)** - Fast reference for daily use
+
 ### **MCP Capabilities**
 
 #### 🛠️ **Available Tools**
