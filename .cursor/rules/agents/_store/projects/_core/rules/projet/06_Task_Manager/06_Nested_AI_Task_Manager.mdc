@@ -1,0 +1,162 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 🧠 Nested AI Task Manager 
+
+---
+description: Comprehensive documentation on the Nested AI Task Management system using Taskmaster
+globs: .cursor/rules/agents/src/mcp/**/*.ts, .cursor/rules/agents/src/services/TaskService.ts
+alwaysApply: true
+---
+
+## 🌟 Introduction
+
+The Nested AI Task Manager provides a collaborative, hierarchical task management system that enables multiple AI agents to work together on complex projects. This system is built around the Taskmaster CLI/MCP tools and extends their functionality with real-time synchronization via Server-Sent Events (SSE).
+
+## 🔄 System Architecture
+
+### Core Components
+
+- **Taskmaster CLI/Tools**: The foundation for task creation, management, and execution
+- **MCP Server Integration**: Exposes Taskmaster functionality via MCP tools
+- **SQLite Database**: Stores task data in .cursor/rules/agents/_store/tasks.db
+- **SSE Server**: Enables real-time updates between multiple AI instances
+- **Task Service**: Business logic layer for task management
+- **MCP Tool Handlers**: Connects MCP API to Task Service functionality
+
+### Information Flow
+
+```
+┌───────────────┐     ┌───────────────┐     ┌───────────────┐
+│ AI Instance 1 │     │ AI Instance 2 │     │ AI Instance 3 │
+└───────┬───────┘     └───────┬───────┘     └───────┬───────┘
+        │                     │                     │
+        ▼                     ▼                     ▼
+┌───────────────────────────────────────────────────────────┐
+│                      MCP Tools Layer                      │
+└───────────────────────────┬───────────────────────────────┘
+                            │
+                            ▼
+┌───────────────────────────────────────────────────────────┐
+│                      Task Service                         │
+└───────────────────────────┬───────────────────────────────┘
+                            │
+                ┌───────────┴────────────┐
+                │                        │
+                ▼                        ▼
+┌───────────────────────┐      ┌─────────────────────┐
+│   SQLite Database     │      │     SSE Server      │
+└───────────────────────┘      └─────────┬───────────┘
+                                         │
+                                         ▼
+                               ┌─────────────────────┐
+                               │   All Connected     │
+                               │    AI Instances     │
+                               └─────────────────────┘
+```
+
+## 🛠️ MCP Tools for AI Task Management
+
+The following MCP tools are available for AI task management:
+
+### Core Task Operations
+
+- `get_tasks`: List all tasks with optional filtering
+- `get_task`: Get details for a specific task by ID
+- `next_task`: Determine the next task to work on
+- `add_task`: Create a new task with AI-assisted structuring
+- `update_task`: Update a specific task with new information
+- `update_subtask`: Append implementation details to a subtask
+- `set_task_status`: Change the status of a task
+
+### Task Breakdown & Organization
+
+- `expand_task`: Break down a complex task into subtasks
+- `expand_all`: Break down multiple tasks at once
+- `analyze_project_complexity`: Analyze task complexity
+- `complexity_report`: View task complexity analysis
+- `clear_subtasks`: Remove all subtasks from a parent task
+- `move_task`: Reorganize tasks in the hierarchy
+
+### Task Dependencies
+
+- `add_dependency`: Define task dependencies
+- `remove_dependency`: Remove dependencies between tasks
+- `validate_dependencies`: Check for dependency issues
+- `fix_dependencies`: Automatically repair dependency issues
+
+## 🧠 AI Collaboration Guidelines
+
+### Distributed Task Processing
+
+When multiple AI agents are working together:
+
+1. **Task Ownership**: An AI can "claim" a task by updating its status to "in-progress"
+2. **Real-time Updates**: Changes made by one AI are immediately visible to others
+3. **Conflict Resolution**: The system prevents concurrent modifications to the same task
+4. **Context Sharing**: Implementation details are shared across all AIs
+
+### Recommended AI Workflow
+
+1. Start by checking available tasks with `get_tasks` or `next_task`
+2. Examine task details with `get_task`
+3. Update status to "in-progress" with `set_task_status`
+4. Break down complex tasks with `expand_task` if needed
+5. Implement the task, updating progress with `update_subtask`
+6. When complete, update status to "done" with `set_task_status`
+7. Check for dependent tasks that are now unblocked
+
+## ⚙️ Implementation Details
+
+### Task Data Structure
+
+The task data follows a hierarchical structure as defined in Tasks_JSON_Structure.mdc, with:
+
+- Unique IDs (e.g., "1", "1.2")
+- Title and description
+- Status (pending, in-progress, done, etc.)
+- Dependencies between tasks
+- Priority levels
+- Implementation details
+- Test strategies
+- Nested subtasks
+
+### MCP Server-Side Implementation
+
+The core implementation files include:
+
+- **SSE Server**: `.cursor/rules/agents/src/mcp/SSEServer.ts`
+  - Handles event broadcasting to clients
+  - Manages client connections/disconnections
+  - Implements event throttling and batching
+
+- **Task Service**: `.cursor/rules/agents/src/services/TaskService.ts`
+  - Core business logic for task operations
+  - Database interaction for persistence
+  - Event emission for real-time updates
+
+- **MCP Tool Handlers**: `.cursor/rules/agents/src/mcp/TaskmasterTools.ts`
+  - Exposes Taskmaster functionality as MCP tools
+  - Validates input parameters
+  - Formats responses for AI consumption
+
+## 🔄 Synchronization Mechanism
+
+Tasks are synchronized between AI instances through:
+
+1. **Database Persistence**: All changes are saved to the SQLite database
+2. **Event Broadcasting**: Changes trigger SSE events
+3. **Real-time Updates**: Connected clients receive and process events
+4. **Local State Updates**: AI instances update their context based on events
+
+This ensures all AI instances have a consistent view of tasks, enabling collaborative work without conflicts.
+
+## 📚 Related Documents
+
+- [Taskmaster Command Reference](mdc:.cursor/rules/taskmaster.mdc)
+- [Task Structure Documentation](mdc:.cursor/rules/Tasks_JSON_Structure.mdc)
+- [Development Workflow](mdc:.cursor/rules/dev_workflow.mdc)
+- [Roo Task Workflow](mdc:.cursor/rules/Roo_Task_Workflow.mdc)
+- [Centralized MCP Rules](mdc:.cursor/rules/CENTRALIZED_MCP_RULES.mdc)

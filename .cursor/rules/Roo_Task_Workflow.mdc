@@ -1,0 +1,163 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 🦘 Roo Task Workflow Integration
+
+---
+description: Guidelines for working with tasks across both Roo and Taskmaster systems
+globs: .cursor/rules/agents/src/mcp/**/*.ts, .cursor/rules/agents/src/services/TaskService.ts
+alwaysApply: true
+---
+
+## 🔄 Roo and Taskmaster Integration
+
+This document provides guidance on working with tasks across both the Roo system (MD format) and Taskmaster (JSON format), ensuring seamless collaboration between systems.
+
+## 📋 Task Management Systems Overview
+
+### Taskmaster (Primary System)
+
+- **Format**: JSON-based task storage in `tasks/tasks.json`
+- **Access**: Via MCP tools or CLI commands
+- **Storage**: Local file + SQLite database
+- **Synchronization**: Real-time via SSE server
+- **Strengths**: Rich task hierarchy, dependencies, AI integration
+
+### Roo System (Legacy/Alternative)
+
+- **Format**: Markdown-based task storage in `.roo/` directory
+- **Access**: Direct file access
+- **Storage**: Flat files
+- **Synchronization**: Git-based
+- **Strengths**: Human-readable, version-controlled
+
+## 🔄 Synchronization Process
+
+When working in a project with both systems:
+
+1. **Source of Truth**: Taskmaster's JSON structure is always the source of truth
+2. **Automatic Conversion**: Changes in Taskmaster are automatically propagated to Roo
+3. **One-Way Flow**: Direct edits to Roo files are discouraged as they won't sync back to Taskmaster
+4. **Conflict Resolution**: Taskmaster data always takes precedence in conflicts
+
+```
+┌───────────────┐     ┌────────────────┐     ┌───────────────┐
+│  Taskmaster   │     │  Task Service  │     │  Roo System   │
+│  JSON Tasks   │────▶│ (Conversion)   │────▶│   MD Tasks    │
+└───────────────┘     └────────────────┘     └───────────────┘
+        ▲                                            │
+        │                                            │
+        └────────────────────────────────────────────┘
+                  (Manual edits discouraged)
+```
+
+## 🛠️ Working with Both Systems
+
+### For AI Agents
+
+AI agents should:
+
+1. **Always** use Taskmaster MCP tools for task operations
+2. **Never** directly read from or write to Roo files or .cursor/rules files
+3. Use the MCP task update events to maintain current context
+4. Respect task ownership and status as reflected in Taskmaster
+
+### For Human Users
+
+Human users may:
+
+1. **Preferably** use Taskmaster CLI for task operations
+2. **Optionally** read Roo MD files for a more human-friendly view
+3. Make manual edits to Roo files if necessary, understanding they will be overwritten
+4. Trigger synchronization manually with `task-master generate` if needed
+
+## 🔄 File Conversion Process
+
+The system performs the following conversions:
+
+### Taskmaster (JSON) → Roo (MD)
+
+```javascript
+// Example conversion process (simplified)
+function convertTaskmasterToRoo(taskmasterTask) {
+  let rooContent = `# ${taskmasterTask.title}\n\n`;
+  
+  rooContent += `**Status**: ${taskmasterTask.status}\n`;
+  rooContent += `**Priority**: ${taskmasterTask.priority}\n\n`;
+  
+  if (taskmasterTask.description) {
+    rooContent += `## Description\n\n${taskmasterTask.description}\n\n`;
+  }
+  
+  if (taskmasterTask.details) {
+    rooContent += `## Implementation Details\n\n${taskmasterTask.details}\n\n`;
+  }
+  
+  if (taskmasterTask.subtasks && taskmasterTask.subtasks.length > 0) {
+    rooContent += `## Subtasks\n\n`;
+    for (const subtask of taskmasterTask.subtasks) {
+      rooContent += `- ${subtask.status === 'done' ? '✅' : '⬜'} **${subtask.title}**\n`;
+    }
+  }
+  
+  return rooContent;
+}
+```
+
+## 🚨 Common Issues & Solutions
+
+### Duplicate Files
+
+If both `.cursor/rules` and `.roo` directories contain duplicates:
+
+- **Problem**: Redundant task files in different formats
+- **Solution**: Keep both for now as they serve different systems
+- **Best Practice**: Always update via Taskmaster; treat Roo files as read-only
+
+### Missing Synchronization
+
+If Roo files don't reflect recent Taskmaster changes:
+
+- **Problem**: Automatic synchronization may have failed
+- **Solution**: Run `task-master generate` to manually trigger conversion
+- **Verification**: Check task dates in both systems to confirm sync
+
+### Conflicting Edits
+
+If changes were made to both systems:
+
+- **Problem**: Divergent task information
+- **Solution**: Taskmaster is the source of truth; changes to Roo will be overwritten
+- **Recovery**: Use `task-master update-task` to incorporate any valuable information from Roo
+
+## 📊 System Feature Comparison
+
+| Feature               | Taskmaster (JSON)        | Roo (MD)                |
+|-----------------------|--------------------------|-------------------------|
+| Task Hierarchy        | Full parent/child        | Limited header-based    |
+| Dependencies          | Explicit tracking        | Text references only    |
+| Status Tracking       | Multiple states          | Basic checkboxes        |
+| Priority Management   | Multi-level              | Text indicators         |
+| AI Integration        | Full MCP tool support    | Limited parsing         |
+| Human Readability     | Requires tools           | Direct reading          |
+| Version Control       | Git + database           | Git only                |
+| Real-time Updates     | Yes (SSE)                | No                      |
+| Automation Support    | Full workflow support    | Limited                 |
+
+## 🔄 Future Migration Path
+
+The long-term plan is to fully migrate to Taskmaster while maintaining Roo compatibility:
+
+1. **Current Phase**: Dual-system with one-way sync
+2. **Next Phase**: Improved bidirectional sync with conflict resolution
+3. **Final Phase**: Optional Roo files as display-only views
+
+## 📚 Related Documents
+
+- [Taskmaster Command Reference](mdc:.cursor/rules/taskmaster.mdc)
+- [Task Structure Documentation](mdc:.cursor/rules/Tasks_JSON_Structure.mdc)
+- [Development Workflow](mdc:.cursor/rules/dev_workflow.mdc)
+- [Nested AI Task Manager](mdc:.cursor/rules/agents/_store/projects/_core/rules/projet/06_Task_Manager/06_Nested_AI_Task_Manager.mdc)
+- [Centralized MCP Rules](mdc:.cursor/rules/CENTRALIZED_MCP_RULES.mdc)

@@ -240,6 +240,56 @@ const subtasks = await mcpTool.call('get_subtasks', {
 - **[Integration Guide](mdc:.cursor/rules/agents/docs/CURSOR_MCP_INTEGRATION.md)** - Complete setup guide
 - **[Quick Reference](mdc:.cursor/rules/agents/docs/QUICK_REFERENCE.md)** - Fast reference card
 - **[SSE Server Implementation](mdc:.cursor/rules/agents/src/api/SSEServer.ts)** - MCP Server source code
+- **[Tasks_JSON_Structure.mdc](mdc:.cursor/rules/agents/_store/projects/_core/rules/02__AI-DOCS/TaskManagement/Tasks_JSON_Structure.mdc)** - Document provides a detailed reference for interacting with Taskmaster 
+
+## 🔄 Taskmaster Integration
+
+### Local Task Management with MCP Synchronization
+
+Taskmaster is the primary tool for managing local tasks in the development workflow. All AI agents should use Taskmaster's tools (via MCP) rather than direct file manipulation.
+
+#### Taskmaster MCP Tools
+
+All task operations should be performed using the Taskmaster MCP tools:
+
+```javascript
+// Create a new task
+const newTaskResult = await mcpTool.call('add_task', {
+  prompt: 'Implement feature X with these requirements...',
+  dependencies: '1,2',
+  priority: 'high',
+  research: true
+});
+
+// Get task details
+const taskDetails = await mcpTool.call('get_task', {
+  id: '3.2'
+});
+
+// Update task status
+await mcpTool.call('set_task_status', {
+  id: '3.1',
+  status: 'done'
+});
+```
+
+#### SSE-based Task Synchronization
+
+The MCP server provides real-time task synchronization between AI instances using Server-Sent Events (SSE):
+
+1. Local tasks are managed via Taskmaster MCP tools
+2. Changes are persisted to the local SQLite database (.cursor/rules/agents/_store/tasks.db)
+3. The MCP SSE server broadcasts task changes to all connected clients
+4. Other AI instances receive these updates and sync their local task context
+
+**Key Implementation Files:**
+- SSE Server: `.cursor/rules/agents/src/mcp/SSEServer.ts`
+- Task Service: `.cursor/rules/agents/src/services/TaskService.ts`
+- MCP Tool Handlers: `.cursor/rules/agents/src/mcp/TaskmasterTools.ts`
+
+**IMPORTANT:** Never attempt to read or write task files directly. Always use the appropriate MCP tools to ensure proper synchronization across all AI instances.
+
+## 📚 Related Documentation
 
 ---
 
