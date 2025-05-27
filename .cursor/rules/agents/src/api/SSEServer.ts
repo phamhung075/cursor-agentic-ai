@@ -17,6 +17,7 @@ import { consoleLogger } from '../types/LogTypes';
 import { MCPService } from './services/MCPService';
 import { MCPController } from './controllers/MCPController';
 import { createMCPRouter } from './routes/MCPRouter';
+import { ToolManager } from './tools';
 
 // Load environment variables
 dotenv.config();
@@ -35,15 +36,19 @@ class MCPSSEServer {
 	private isShuttingDown: boolean = false;
 	private mcpService: MCPService;
 	private mcpController: MCPController;
+	private toolManager: ToolManager;
 
 	constructor(port?: number) {
 		if (port) {
 			this.port = port;
 		}
 		
+		// Initialize the tool manager first, so tools are available to the MCPService
+		this.toolManager = new ToolManager(consoleLogger);
+		
 		// Initialize components
 		this.app = express();
-		this.mcpService = new MCPService(consoleLogger);
+		this.mcpService = new MCPService(consoleLogger, this.toolManager);
 		this.mcpController = new MCPController(this.mcpService);
 		
 		this.setupMiddleware();
@@ -142,17 +147,14 @@ class MCPSSEServer {
 				consoleLogger.info('MCP-SSE', `🔧 How to configure the AI Agents Server:`);
 				consoleLogger.info('MCP-SSE', `   1. Server configuration: Edit '.cursor/mcp.json' to set API keys and server options`);
 				consoleLogger.info('MCP-SSE', `   2. Task storage: Data is saved to '.cursor/rules/agents/_store/tasks.db' by default`);
-				consoleLogger.info('MCP-SSE', `\n📂 Important Paths:`);
-				consoleLogger.info('MCP-SSE', `   - Config: .cursor/mcp.json`);
-				consoleLogger.info('MCP-SSE', `   - Rules: .cursor/rules/*.mdc`);
-				consoleLogger.info('MCP-SSE', `   - Storage: .cursor/rules/agents/_store/`);
-				consoleLogger.info('MCP-SSE', `   - Workflows: .cursor/rules/agents/workflows/`);
-				consoleLogger.info('MCP-SSE', `\n🛠️ Environment Variables (can be set in .env file):`);
-				consoleLogger.info('MCP-SSE', `   - STORAGE_TYPE: 'sqlite' (default) or 'memory'`);
-				consoleLogger.info('MCP-SSE', `   - SQLITE_DB_PATH: Path to SQLite database`);
-				consoleLogger.info('MCP-SSE', `   - LOG_LEVEL: 'info' (default), 'debug', 'warn', or 'error'`);
-				consoleLogger.info('MCP-SSE', `\n💡 For more detailed documentation, visit the project README`);
-				consoleLogger.info('MCP-SSE', `📚 === END GUIDE === 📚\n`);
+				consoleLogger.info('MCP-SSE', `   3. Rules directory: Cursor rules are stored in '.cursor/rules/'`);
+				consoleLogger.info('MCP-SSE', `   4. Agent source code: Located in '.cursor/rules/agents/src/'`);
+				consoleLogger.info('MCP-SSE', `   5. Custom tools: Located in '.cursor/rules/agents/src/api/tools/'`);
+
+				// Load tools and display information
+				this.loadAndDisplayTools().then(() => {
+					consoleLogger.info('MCP-SSE', `\n📝 Type 'help' for more information\n`);
+				});
 
 				// Set up periodic cleanup of stale sessions
 				const cleanupInterval = setInterval(() => {
@@ -178,6 +180,28 @@ class MCPSSEServer {
 				resolve();
 			});
 		});
+	}
+
+	/**
+	 * Load all tools and display information about them
+	 */
+	private async loadAndDisplayTools(): Promise<void> {
+		try {
+			// Load all tools
+			const toolsDir = path.join(__dirname, '..', 'tools');
+			const count = await this.toolManager.loadAllTools(toolsDir);
+			
+			consoleLogger.info('MCP-SSE', `\n🧰 === REGISTERED TOOLS === 🧰`);
+			consoleLogger.info('MCP-SSE', `Loaded ${count} tools automatically from the tools directory`);
+			consoleLogger.info('MCP-SSE', `Available tools:`);
+			
+			// List each tool with its name and description
+			this.toolManager.getAllTools().forEach(tool => {
+				consoleLogger.info('MCP-SSE', ` - ${tool.name}: ${tool.description.substring(0, 100)}${tool.description.length > 100 ? '...' : ''}`);
+			});
+		} catch (error) {
+			consoleLogger.error('MCP-SSE', 'Failed to load tools', { error });
+		}
 	}
 
 	private handleProcessTermination(): void {

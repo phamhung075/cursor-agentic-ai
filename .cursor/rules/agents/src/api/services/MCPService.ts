@@ -1,8 +1,10 @@
 import { EventEmitter } from 'events';
 import { randomBytes } from 'crypto';
+import path from 'path';
 import taskStorageFactory from '../../core/tasks/TaskStorageFactory';
 import { TaskModel } from '../../core/database/TaskMapper';
 import { Logger } from '../../types/LogTypes';
+import { ToolManager, ITool } from '../tools';
 
 // MCP Protocol types
 export interface JsonRpcRequest {
@@ -92,103 +94,10 @@ export class MCPService {
   private logger: Logger;
   private sessions: Map<string, SessionData> = new Map();
   private taskStorageInitialized: boolean = false;
+  private toolManager: ToolManager;
 
   // MCP Protocol version
   private readonly protocolVersion = '2024-11-05';
-
-  // MCP tools definition
-  private readonly tools: MCPTool[] = [
-    {
-      name: 'create_task',
-      description: 'Create a new task in the system with comprehensive metadata. Tasks can be nested in a hierarchy and have various properties to describe their nature, priority, and relationships.',
-      inputSchema: {
-        type: 'object',
-        properties: {
-          title: { 
-            type: 'string', 
-            description: 'Task title - should be concise but descriptive (max 100 chars)'
-          },
-          description: { 
-            type: 'string', 
-            description: 'Detailed task description explaining what needs to be done, acceptance criteria, and any relevant context'
-          },
-          type: { 
-            type: 'string', 
-            description: 'Task type categorizing the work (epic, feature, task, bug, subtask, etc.)',
-            enum: ['epic', 'feature', 'task', 'bug', 'subtask', 'documentation', 'testing', 'implementation', 'design', 'research', 'other']
-          },
-          level: { 
-            type: 'number', 
-            description: 'Task hierarchy level (1=Epic, 2=Feature, 3=Task, 4=Subtask, etc.)',
-            minimum: 1,
-            maximum: 5
-          },
-          status: { 
-            type: 'string', 
-            description: 'Current task status in the workflow',
-            enum: ['pending', 'in-progress', 'reviewing', 'blocked', 'completed', 'cancelled']
-          },
-          priority: { 
-            type: 'string', 
-            description: 'Task priority level reflecting importance and urgency',
-            enum: ['low', 'medium', 'high', 'critical']
-          },
-          complexity: { 
-            type: 'string', 
-            description: 'Estimated task complexity affecting effort required',
-            enum: ['low', 'medium', 'high', 'very_complex']
-          },
-          parent: { 
-            type: 'string', 
-            description: 'Parent task ID if this is a subtask or part of a larger feature/epic (null for top-level tasks)'
-          },
-          tags: { 
-            type: 'array', 
-            description: 'List of tags for categorization and filtering',
-            items: {
-              type: 'string'
-            },
-            examples: [['backend', 'database', 'migration'], ['frontend', 'ui', 'component']]
-          },
-          estimatedHours: {
-            type: 'number',
-            description: 'Estimated time to complete the task in hours',
-            minimum: 0
-          },
-          dueDate: {
-            type: 'string',
-            description: 'Due date for task completion in ISO format (YYYY-MM-DDTHH:MM:SS.sssZ)',
-            format: 'date-time'
-          }
-        },
-        required: ['title', 'type', 'level'],
-        examples: [
-          {
-            title: "Implement user authentication",
-            description: "Create the authentication system with login, registration, and password reset functionality",
-            type: "feature",
-            level: 2,
-            status: "pending",
-            priority: "high",
-            complexity: "medium",
-            tags: ["backend", "security", "user-management"]
-          },
-          {
-            title: "Fix navigation menu overflow on mobile",
-            description: "The navigation menu items overflow on mobile devices smaller than 375px width",
-            type: "bug",
-            level: 3,
-            status: "in-progress",
-            priority: "medium",
-            complexity: "low",
-            parent: "feat_001",
-            tags: ["frontend", "responsive", "mobile"]
-          }
-        ]
-      }
-    },
-    // Additional tools would be defined here
-  ];
 
   // MCP resources definition
   private readonly resources: MCPResource[] = [
@@ -235,130 +144,131 @@ export class MCPService {
   // MCP prompts definition
   private readonly prompts: MCPPrompt[] = [
     {
-      name: 'analyze_task',
-      description: 'Analyze a task and provide comprehensive insights including progress assessment, potential issues, recommendations, and dependency analysis. This prompt helps in understanding task status and next steps.',
+      name: 'create_task',
+      description: 'Create a new task',
       arguments: [
-        { 
-          name: 'task_id', 
-          description: 'ID of the task to analyze', 
+        {
+          name: 'title',
+          description: 'Task title',
           required: true,
-          example: 'task_123'
-        },
-        { 
-          name: 'focus', 
-          description: 'Analysis focus area (e.g., "blockers", "dependencies", "resources", "timeline", "general")', 
-          required: false,
-          example: 'blockers'
+          example: 'Implement user authentication'
         },
         {
-          name: 'depth',
-          description: 'Analysis depth (basic, standard, detailed)',
+          name: 'description',
+          description: 'Task description',
           required: false,
-          example: 'detailed'
+          example: 'Set up JWT auth with refresh tokens'
         }
       ],
-      template: `Please analyze the following task with a focus on {{focus}}:
-
-Task ID: {{task.id}}
-Title: {{task.title}}
-Description: {{task.description}}
-Type: {{task.type}}
-Status: {{task.status}}
-Priority: {{task.priority}}
-Progress: {{task.progress}}%
-
-Provide insights on:
-1. Current progress assessment
-2. Potential issues or blockers
-3. Recommendations for next steps
-4. Dependency analysis
-5. Resource requirements
-`
+      template: 'Create a new task titled "{{title}}" with description "{{description}}".'
     },
-    // Additional prompts would be defined here
+    {
+      name: 'decompose_task',
+      description: 'Break down a complex task into subtasks',
+      arguments: [
+        {
+          name: 'task_id',
+          description: 'ID of the task to decompose',
+          required: true,
+          example: 'task_12345'
+        },
+        {
+          name: 'strategy',
+          description: 'Decomposition strategy to use',
+          required: false,
+          example: 'complexity'
+        }
+      ],
+      template: 'Break down task {{task_id}} using the {{strategy}} strategy.'
+    }
   ];
 
-  constructor(logger: Logger) {
+  constructor(logger: Logger, toolManager?: ToolManager) {
     this.logger = logger;
-    this.initializeTaskStorage();
+    
+    // Use the provided toolManager or create a new one
+    this.toolManager = toolManager || new ToolManager(logger);
+    
+    // Initialize tools
+    this.initializeTools();
+    
+    // Initialize task storage
+    this.initializeTaskStorage().catch(error => {
+      this.logger.error('MCP-SERVICE', 'Failed to initialize task storage', { error });
+    });
   }
 
   /**
-   * Initialize task storage
+   * Initialize and load all tools
    */
-  private async initializeTaskStorage(): Promise<void> {
+  private async initializeTools(): Promise<void> {
     try {
-      await taskStorageFactory.initialize({
-        storageType: taskStorageFactory.getStorageType()
-      });
-      this.taskStorageInitialized = true;
-      this.logger.info('MCPService', 'Task storage initialized successfully');
+      // Load tools from the tools directory
+      const toolsDir = path.join(__dirname, '..', 'tools');
+      await this.toolManager.loadAllTools(toolsDir);
+      this.logger.info('MCP-SERVICE', `Loaded ${this.toolManager.getAllTools().length} tools`);
     } catch (error) {
-      this.logger.error('MCPService', 'Failed to initialize task storage', {
-        error: error instanceof Error ? error.message : 'Unknown error'
-      });
+      this.logger.error('MCP-SERVICE', 'Failed to initialize tools', { error });
     }
   }
 
-  /**
-   * Generate a unique session ID
-   */
+  private async initializeTaskStorage(): Promise<void> {
+    if (!this.taskStorageInitialized) {
+      try {
+        await taskStorageFactory.initialize();
+        this.taskStorageInitialized = true;
+        this.logger.info('MCP-SERVICE', 'Task storage initialized');
+      } catch (error) {
+        this.logger.error('MCP-SERVICE', 'Failed to initialize task storage', { error });
+        throw error;
+      }
+    }
+  }
+
   public generateSessionId(): string {
     return randomBytes(16).toString('hex');
   }
 
-  /**
-   * Store session data
-   */
   public storeSession(sessionId: string, data: SessionData): void {
     this.sessions.set(sessionId, data);
+    this.logger.debug('MCP-SERVICE', `Session ${sessionId} stored`);
   }
 
-  /**
-   * Get session data
-   */
   public getSession(sessionId: string): SessionData | undefined {
     return this.sessions.get(sessionId);
   }
 
-  /**
-   * Delete session data
-   */
   public deleteSession(sessionId: string): boolean {
-    return this.sessions.delete(sessionId);
+    const deleted = this.sessions.delete(sessionId);
+    if (deleted) {
+      this.logger.debug('MCP-SERVICE', `Session ${sessionId} deleted`);
+    }
+    return deleted;
   }
 
-  /**
-   * Get all sessions
-   */
   public getAllSessions(): Map<string, SessionData> {
     return this.sessions;
   }
 
-  /**
-   * Get protocol version
-   */
   public getProtocolVersion(): string {
     return this.protocolVersion;
   }
 
   /**
-   * Get MCP tools
+   * Get all tools as MCPTool format
    */
   public getTools(): MCPTool[] {
-    return this.tools;
+    return this.toolManager.getAllTools().map(tool => ({
+      name: tool.name,
+      description: tool.description,
+      inputSchema: tool.inputSchema
+    }));
   }
 
-  /**
-   * Get MCP resources
-   */
   public getResources(): MCPResource[] {
     return this.resources;
   }
 
-  /**
-   * Get MCP prompts
-   */
   public getPrompts(): MCPPrompt[] {
     return this.prompts;
   }
@@ -406,10 +316,10 @@ Provide insights on:
    */
   public async handleToolCall(request: JsonRpcRequest): Promise<JsonRpcResponse> {
     const params = request.params as { name?: string; arguments?: Record<string, unknown> } || {};
-    const toolName = params.name;
+    const toolName = params.name || '';
     const toolArgs = params.arguments || {};
 
-    this.logger.info('MCPService', `Tool call: ${toolName}`, { arguments: toolArgs });
+    this.logger.info('MCP-SERVICE', `Tool call: ${toolName}`, { toolArgs });
 
     const baseResponse: JsonRpcResponse = {
       jsonrpc: '2.0',
@@ -418,86 +328,116 @@ Provide insights on:
 
     // Ensure task storage is initialized
     if (!this.taskStorageInitialized) {
-      return {
-        ...baseResponse,
-        error: {
-          code: -32603,
-          message: 'Task storage service is not initialized'
-        }
-      };
+      try {
+        await this.initializeTaskStorage();
+      } catch (error) {
+        return {
+          ...baseResponse,
+          error: {
+            code: -32603,
+            message: 'Task storage service is not initialized'
+          }
+        };
+      }
     }
 
-    // Get the storage service from the factory
-    const taskStorage = taskStorageFactory.getStorageService();
-
     try {
-      switch (toolName) {
-        case 'create_task':
-          // Extract task fields from arguments
-          const title = toolArgs['title'] as string;
-          const description = toolArgs['description'] as string || '';
-          const type = toolArgs['type'] as string || 'task';
-          const level = Number(toolArgs['level'] || 2);
-          const status = toolArgs['status'] as string || 'pending';
-          const priority = toolArgs['priority'] as string || 'medium';
-          const complexity = toolArgs['complexity'] as string || 'medium';
-          const parent = toolArgs['parent'] as string || null;
-          const tags = toolArgs['tags'] as string[] || [];
-
-          // Create the task
-          const newTask = await taskStorage.createTask({
-            title,
-            description,
-            type,
-            level,
-            status,
-            priority,
-            complexity,
-            parent,
-            tags,
-            progress: 0,
-            aiGenerated: true,
-            aiConfidence: 0.85,
-            children: [],
-            dependencies: [],
-            blockedBy: [],
-            enables: []
-          });
-
-          // Add console log for task creation
-          console.log('\n📝 TASK CREATED:');
-          console.log(`🔹 ID: ${newTask.id}`);
-          console.log(`🔹 Title: ${newTask.title}`);
-          console.log(`🔹 Type: ${newTask.type}`);
-          console.log(`🔹 Priority: ${newTask.priority}`);
-          console.log(`🔹 Status: ${newTask.status}\n`);
-
-          return {
-            ...baseResponse,
-            result: {
-              content: [
-                {
-                  type: 'text',
-                  text: `Task created successfully:\n- Title: ${newTask.title}\n- Description: ${newTask.description}\n- Type: ${newTask.type}\n- Level: ${newTask.level}\n- Status: ${newTask.status}\n- Priority: ${newTask.priority}\n- ID: ${newTask.id}`
-                }
-              ]
-            }
-          };
-
-        // Additional tool handlers would be implemented here
-          
-        default:
-          return {
-            ...baseResponse,
-            error: {
-              code: -32601,
-              message: `Tool not found: ${toolName}`
-            }
-          };
+      // Find the tool with the given name
+      const tool = this.toolManager.getTool(toolName);
+      
+      if (!tool) {
+        return {
+          ...baseResponse,
+          error: {
+            code: -32601,
+            message: `Tool not found: ${toolName}`
+          }
+        };
       }
+      
+      // Execute the tool
+      const result = await this.toolManager.executeTool(toolName, toolArgs);
+
+      // Log the result (if it's a task-related operation)
+      if (result && result.id && result.title) {
+        console.log(`\n📝 TASK ${toolName === 'create_task' ? 'CREATED' : 'UPDATED'}:`);
+        console.log(`🔹 ID: ${result.id}`);
+        console.log(`🔹 Title: ${result.title}`);
+        if (result.type) console.log(`🔹 Type: ${result.type}`);
+        if (result.status) console.log(`🔹 Status: ${result.status}`);
+        if (result.priority) console.log(`🔹 Priority: ${result.priority}`);
+        console.log('');
+      }
+
+      // Format the response
+      let formattedResult;
+      
+      if (result && typeof result === 'object') {
+        // Format object results as text
+        if (toolName === 'create_task' || toolName === 'get_task' || toolName === 'update_task') {
+          formattedResult = {
+            content: [
+              {
+                type: 'text',
+                text: `Task ${toolName === 'create_task' ? 'created' : toolName === 'update_task' ? 'updated' : 'retrieved'} successfully:\n` +
+                      Object.entries(result)
+                        .filter(([key]) => key !== 'children' && key !== 'tags')
+                        .map(([key, value]) => `- ${key}: ${value}`)
+                        .join('\n') +
+                      (result.tags ? `\n- tags: ${JSON.stringify(result.tags)}` : '') +
+                      (result.children ? `\n- children: ${result.children.length} subtask(s)` : '')
+              }
+            ]
+          };
+        } else if (toolName === 'list_tasks') {
+          formattedResult = {
+            content: [
+              {
+                type: 'text',
+                text: `Found ${result.total} tasks (page ${result.page} of ${result.totalPages || 1}):\n\n` +
+                      (result.tasks || []).map((task: any, index: number) => 
+                        `${index + 1}. ${task.title} (${task.id})\n` +
+                        `   Status: ${task.status}, Priority: ${task.priority}, Type: ${task.type}`
+                      ).join('\n\n')
+              }
+            ]
+          };
+        } else {
+          // Generic object formatter
+          formattedResult = {
+            content: [
+              {
+                type: 'text',
+                text: JSON.stringify(result, null, 2)
+              }
+            ]
+          };
+        }
+      } else if (typeof result === 'string') {
+        // Text results
+        formattedResult = {
+          content: [
+            {
+              type: 'text',
+              text: result
+            }
+          ]
+        };
+      } else {
+        // Other types
+        formattedResult = {
+          result
+        };
+      }
+
+      return {
+        ...baseResponse,
+        result: formattedResult
+      };
     } catch (error) {
-      this.logger.error('MCPService', `Error processing tool call: ${toolName}`, {
-        error: error instanceof Error ? error.message : 'Unknown error'
+      this.logger.error('MCP-SERVICE', `Error processing tool call: ${toolName}`, {
+        error: error instanceof Error ? error.message : 'Unknown error',
+        stack: error instanceof Error ? error.stack : undefined
       });
       
       return {
