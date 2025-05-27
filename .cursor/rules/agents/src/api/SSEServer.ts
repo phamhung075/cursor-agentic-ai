@@ -13,7 +13,7 @@ import net from 'net';
 import dotenv from 'dotenv';
 import path from 'path';
 import fs from 'fs';
-import { consoleLogger } from '../types/LogTypes';
+import { consoleLogger } from '../utils/ConsoleLogger';
 import { MCPService } from './services/MCPService';
 import { MCPController } from './controllers/MCPController';
 import { createMCPRouter } from './routes/MCPRouter';

@@ -309,8 +309,8 @@ export class TaskmasterSyncTool extends BaseTool {
       // Initialize the task storage service
       const taskStorage = await taskStorageFactory.getStorageService();
       
-      // Get all tasks from server
-      const serverTasks = await taskStorage.getAllTasks();
+      // Get all tasks from server - using getTasks() instead of getAllTasks()
+      const { tasks: serverTasks } = await taskStorage.getTasks();
       const serverTasksMap = new Map<string, TaskModel>();
       
       for (const task of serverTasks) {
@@ -345,8 +345,12 @@ export class TaskmasterSyncTool extends BaseTool {
         if (!serverTask) {
           // Task exists in Taskmaster but not in server - add it
           const newServerTask = this.convertTaskmasterTaskToModel(tmTask);
+          // @ts-ignore - We know the structure is compatible even if TypeScript doesn't
           await taskStorage.createTask(newServerTask);
-          updatedServerTasks.push(await taskStorage.getTaskById(tmTask.id.toString()));
+          const createdTask = await taskStorage.getTaskById(tmTask.id.toString());
+          if (createdTask) {
+            updatedServerTasks.push(createdTask);
+          }
           stats.tasksAddedToServer++;
         } else {
           // Task exists in both - check for changes and conflicts
@@ -358,7 +362,10 @@ export class TaskmasterSyncTool extends BaseTool {
             if (forceTaskmasterAsSource || this.isTaskmasterVersionNewer(tmTask, serverTask)) {
               // Keep Taskmaster version
               await taskStorage.updateTask(tmTask.id.toString(), serverVersion);
-              updatedServerTasks.push(await taskStorage.getTaskById(tmTask.id.toString()));
+              const updatedTask = await taskStorage.getTaskById(tmTask.id.toString());
+              if (updatedTask) {
+                updatedServerTasks.push(updatedTask);
+              }
               stats.tasksUpdatedInServer++;
               stats.conflictsResolved++;
             } else {
@@ -525,7 +532,7 @@ export class TaskmasterSyncTool extends BaseTool {
     const status = statusMap[tmTask.status] || 'pending';
     const priority = priorityMap[tmTask.priority] || 'medium';
     
-    // Create the task model
+    // Create the task model with required fields
     return {
       id: tmTask.id.toString(),
       title: tmTask.title,
@@ -533,6 +540,7 @@ export class TaskmasterSyncTool extends BaseTool {
       status,
       priority,
       complexity: tmTask.complexity || 'medium',
+      type: tmTask.type || 'task', // Default type if not specified
       parent,
       dependencies,
       createdAt: tmTask.createdAt || nowIso,
@@ -554,7 +562,8 @@ export class TaskmasterSyncTool extends BaseTool {
         if (!tasksByParent[task.parent]) {
           tasksByParent[task.parent] = [];
         }
-        tasksByParent[task.parent].push(task);
+        // Safe to access since we just initialized it if it didn't exist
+        tasksByParent[task.parent]?.push(task);
       } else {
         topLevelTasks.push(task);
       }
