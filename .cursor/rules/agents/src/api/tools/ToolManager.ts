@@ -168,6 +168,7 @@ export class ToolManager {
         // Read all TypeScript files in the directory
         const files = fs.readdirSync(toolsDir)
           .filter(file => file.endsWith('.ts') && 
+                          !file.endsWith('.d.ts') && // Skip declaration files
                           !file.startsWith('ITool') && 
                           !file.startsWith('BaseTool') && 
                           !file.startsWith('ToolManager') && 

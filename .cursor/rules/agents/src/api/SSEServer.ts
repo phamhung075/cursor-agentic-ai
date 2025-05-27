@@ -124,7 +124,7 @@ class MCPSSEServer {
 		// MCP endpoint
 		this.app.post('/mcp', async (req: Request, res: Response) => {
 			try {
-				const result = await this.mcpService.processRequest(req.body);
+				const result = await this.mcpService.handleToolCall(req.body);
 				res.json(result);
 			} catch (error) {
 				consoleLogger.error('MCP-SSE', `Error processing MCP request: ${error}`, { error });
@@ -199,91 +199,53 @@ class MCPSSEServer {
 			throw new Error('Cannot start server during shutdown');
 		}
 
-		const available = await this.isPortAvailable(this.port);
-		if (!available) {
-			const error = new Error(`Port ${this.port} is already in use!`);
-			consoleLogger.error('MCP-SSE', error.message, {
-				port: this.port,
-				suggestion: `Try: lsof -i :${this.port} | grep LISTEN; kill -9 <PID>`
-			});
-			throw error;
+		// Check if port is available
+		const portAvailable = await this.isPortAvailable(this.port);
+		if (!portAvailable) {
+			consoleLogger.warn('MCP-SSE', `Port ${this.port} is not available, trying to find an available port...`);
+			// Try to find an available port
+			for (let port = this.port + 1; port < this.port + 100; port++) {
+				const available = await this.isPortAvailable(port);
+				if (available) {
+					this.port = port;
+					consoleLogger.info('MCP-SSE', `Found available port: ${this.port}`);
+					break;
+				}
+			}
 		}
 
+		// Load tools
+		await this.loadAndDisplayTools();
+
+		// Initialize Taskmaster sync service
+		await this.initializeTaskmasterSync();
+
+		// Start the server
 		return new Promise((resolve) => {
-			this.server = http.createServer(this.app);
-
-			this.server.on('error', (err: Error) => {
-				consoleLogger.error('MCP-SSE', `Server error`, { error: err.message });
-				this.stop().catch(stopErr => {
-					consoleLogger.error('MCP-SSE', 'Error during stop after server error', { error: stopErr });
-				});
-			});
-
-			this.server.listen(this.port, async () => {
+			this.server.listen(this.port, () => {
 				const localIPs = this.getLocalIPs();
-
-				consoleLogger.info('MCP-SSE', `🚀 MCP Inspector v0.13.0 Compatible SSE Server running on port ${this.port}`);
-				consoleLogger.info('MCP-SSE', `🔗 SSE Endpoint: http://localhost:${this.port}/sse`);
-				consoleLogger.info('MCP-SSE', `📨 Message Endpoint: http://localhost:${this.port}/sse/messages`);
-				consoleLogger.info('MCP-SSE', `🏥 Health Check: http://localhost:${this.port}/health`);
-
-				if (localIPs.length > 0) {
-					consoleLogger.info('MCP-SSE', `🌐 Network access: ${localIPs.map(ip => `http://${ip}:${this.port}/sse`).join(', ')}`);
-				}
-
-				consoleLogger.info('MCP-SSE', `📋 To connect with MCP Inspector:`);
-				consoleLogger.info('MCP-SSE', `   npx @modelcontextprotocol/inspector`);
-				consoleLogger.info('MCP-SSE', `   Then connect to: http://localhost:${this.port}/sse`);
-
-				// Display configuration guide
-				consoleLogger.info('MCP-SSE', `\n📚 === CONFIGURATION GUIDE === 📚`);
-				consoleLogger.info('MCP-SSE', `🔧 How to configure the AI Agents Server:`);
-				consoleLogger.info('MCP-SSE', `   1. Server configuration: Edit '.cursor/mcp.json' to set API keys and server options`);
-				consoleLogger.info('MCP-SSE', `   2. Task storage: Data is saved to '.cursor/rules/agents/_store/tasks.db' by default`);
-				consoleLogger.info('MCP-SSE', `   3. Rules directory: Cursor rules are stored in '.cursor/rules/'`);
-				consoleLogger.info('MCP-SSE', `   4. Agent source code: Located in '.cursor/rules/agents/src/'`);
-				consoleLogger.info('MCP-SSE', `   5. Custom tools: Located in '.cursor/rules/agents/src/api/tools/'`);
-
-				// Load tools and display information
-				this.loadAndDisplayTools().then(() => {
-					consoleLogger.info('MCP-SSE', `\n📝 Type 'help' for more information\n`);
+				
+				consoleLogger.info('MCP-SSE', `
+🚀 === MCP Server v1.0.0 Started === 🚀
+🌍 Server listening on:
+   - http://localhost:${this.port}
+   - http://127.0.0.1:${this.port}`);
+				
+				localIPs.forEach(ip => {
+					consoleLogger.info('MCP-SSE', `   - http://${ip}:${this.port}`);
 				});
-
-				// Set up periodic cleanup of stale sessions
-				const cleanupInterval = setInterval(() => {
-					const now = new Date();
-					const staleTimeout = 5 * 60 * 1000; // 5 minutes
-					const sessions = this.mcpService.getAllSessions();
-
-					for (const [sessionId, session] of sessions.entries()) {
-						if (now.getTime() - session.createdAt.getTime() > staleTimeout && !session.initialized) {
-							consoleLogger.warn('MCP-SSE', `Cleaning up stale session: ${sessionId}`);
-							this.mcpService.deleteSession(sessionId);
-						}
-					}
-				}, 60000); // Check every minute
-
-				this.intervalHandlers.push(cleanupInterval);
-
-				// Register cleanup handlers
-				process.on('SIGINT', this.handleProcessTermination.bind(this));
-				process.on('SIGTERM', this.handleProcessTermination.bind(this));
-				process.on('SIGQUIT', this.handleProcessTermination.bind(this));
-
-				// Initialize the task storage factory before starting Taskmaster sync
-				try {
-					// Initialize the task storage with default options
-					await taskStorageFactory.initialize();
-					consoleLogger.info('MCP-SSE', '💾 Task storage initialized successfully');
-					
-					// Initialize and start the Taskmaster sync service
-					await this.initializeTaskmasterSync();
-					
-					resolve();
-				} catch (error) {
-					consoleLogger.error('MCP-SSE', 'Failed to initialize task storage', { error });
-					resolve();
-				}
+				
+				consoleLogger.info('MCP-SSE', `
+🔌 Available endpoints:
+   - /mcp - MCP JSON-RPC endpoint
+   - /events - Server-sent events endpoint
+   - /health - Health check endpoint
+				`);
+				
+				// Register process termination handlers
+				this.handleProcessTermination();
+				
+				resolve();
 			});
 		});
 	}
@@ -369,27 +331,29 @@ class MCPSSEServer {
 	 */
 	private setupEventListeners(): void {
 		// Listen for Taskmaster sync events
-		this.taskmasterSyncService.on('syncCompleted', (result) => {
-			if (result.syncedFromTaskmaster > 0) {
-				consoleLogger.info('MCP-SSE', `Taskmaster sync completed: ${result.syncedFromTaskmaster} tasks synced from Taskmaster`);
-				
-				// Instead of trying to broadcast directly, trigger a task update event
-				// that the SynchronizationService will handle
-				this.taskManager.emit('tasksUpdated', {
-					source: 'taskmaster',
-					count: result.syncedFromTaskmaster,
-					details: {
-						syncedFromTaskmaster: result.syncedFromTaskmaster,
-						syncedToTaskmaster: result.syncedToTaskmaster,
-						conflicts: result.conflicts || 0
-					}
-				});
-			}
-		});
+		if (this.taskmasterSyncService) {
+			this.taskmasterSyncService.on('syncCompleted', (result) => {
+				if (result.syncedFromTaskmaster > 0) {
+					consoleLogger.info('MCP-SSE', `Taskmaster sync completed: ${result.syncedFromTaskmaster} tasks synced from Taskmaster`);
+					
+					// Instead of trying to broadcast directly, trigger a task update event
+					// that the SynchronizationService will handle
+					this.taskManager.emit('tasksUpdated', {
+						source: 'taskmaster',
+						count: result.syncedFromTaskmaster,
+						details: {
+							syncedFromTaskmaster: result.syncedFromTaskmaster,
+							syncedToTaskmaster: result.syncedToTaskmaster,
+							conflicts: result.conflicts || 0
+						}
+					});
+				}
+			});
 
-		this.taskmasterSyncService.on('syncError', (error) => {
-			consoleLogger.error('MCP-SSE', 'Taskmaster sync error', { error });
-		});
+			this.taskmasterSyncService.on('syncError', (error) => {
+				consoleLogger.error('MCP-SSE', 'Taskmaster sync error', { error });
+			});
+		}
 	}
 
 	/**

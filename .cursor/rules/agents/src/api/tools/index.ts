@@ -4,10 +4,10 @@
  * Exports all tools-related interfaces, classes, and implementations
  */
 
-// Export interfaces
-export * from './ITool';
+// Export interface
+export type { ITool } from './ITool';
 
-// Export base classes
+// Export base class
 export { BaseTool } from './BaseTool';
 
 // Export tool manager
@@ -24,20 +24,3 @@ export { TaskHierarchyTool } from './TaskHierarchyTool';
 export { DecomposeTaskTool } from './DecomposeTaskTool';
 export { TaskmasterSyncTool } from './TaskmasterSyncTool';
 // Additional tools will be added here as they are implemented 
-
-export {
-  BaseTool,
-  ITool,
-  ToolManager,
-  
-  // Task-related tools
-  CreateTaskTool,
-  GetTaskTool,
-  ListTasksTool,
-  UpdateTaskTool,
-  DeleteTaskTool,
-  BulkUpdateTaskTool,
-  TaskHierarchyTool,
-  DecomposeTaskTool,
-  TaskmasterSyncTool
-}; 
