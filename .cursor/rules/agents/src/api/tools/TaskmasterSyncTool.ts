@@ -545,7 +545,8 @@ export class TaskmasterSyncTool extends BaseTool {
       dependencies,
       createdAt: tmTask.createdAt || nowIso,
       updatedAt: tmTask.updatedAt || nowIso,
-      tags: tmTask.tags || []
+      tags: tmTask.tags || [],
+      level: idParts.length // Add the level field based on ID depth
     };
   }
 
