@@ -1,0 +1,48 @@
+name: react
+description: React best practices and standards
+version: 1.0.0
+extends:
+  - typescript
+templates:
+  - default
+
+rules:
+  react-components:
+    description: React component patterns and best practices
+    globs: ["src/**/*.tsx", "src/components/**/*.ts"]
+    alwaysApply: true
+    content:
+      Component Structure:
+        - Use functional components with hooks instead of class components
+        - Keep components small and focused on a single responsibility
+        - Extract complex logic into custom hooks
+      Props:
+        - Use TypeScript interfaces to define component props
+        - Provide default props when applicable
+        - Destructure props in function parameters
+      State Management:
+        - Use useState for simple local state
+        - Use useReducer for complex state logic
+        - Consider context for shared state between components
+      Examples:
+        - "```tsx\n// ✅ Good\ninterface UserCardProps {\n  user: User;\n  onEdit?: (id: string) => void;\n}\n\nconst UserCard: React.FC<UserCardProps> = ({ user, onEdit }) => {\n  return (\n    <div className=\"user-card\">\n      <h3>{user.name}</h3>\n      {onEdit && <button onClick={() => onEdit(user.id)}>Edit</button>}\n    </div>\n  );\n};\n```"
+
+  react-hooks:
+    description: React hooks usage patterns
+    globs: ["src/**/*.tsx", "src/**/*.ts"]
+    alwaysApply: false
+    content:
+      useEffect:
+        - Always include a dependency array
+        - Keep effects focused on a single concern
+        - Use cleanup functions to prevent memory leaks
+      Custom Hooks:
+        - Start custom hook names with 'use'
+        - Extract reusable logic into custom hooks
+        - Keep custom hooks focused on a specific concern
+      Rules:
+        - Follow React's rules of hooks consistently
+        - Don't call hooks conditionally
+        - Only call hooks from React components or custom hooks
+      Examples:
+        - "```tsx\n// ✅ Good\nconst useUserData = (userId: string) => {\n  const [user, setUser] = useState<User | null>(null);\n  const [loading, setLoading] = useState(true);\n  const [error, setError] = useState<Error | null>(null);\n\n  useEffect(() => {\n    let isMounted = true;\n    const fetchUser = async () => {\n      try {\n        setLoading(true);\n        const data = await api.getUser(userId);\n        if (isMounted) setUser(data);\n      } catch (err) {\n        if (isMounted) setError(err as Error);\n      } finally {\n        if (isMounted) setLoading(false);\n      }\n    };\n    \n    fetchUser();\n    return () => { isMounted = false; };\n  }, [userId]);\n\n  return { user, loading, error };\n};\n```" 

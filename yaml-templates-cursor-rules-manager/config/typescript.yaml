@@ -1,0 +1,42 @@
+name: typescript
+description: TypeScript coding standards and best practices
+version: 1.0.0
+templates:
+  - default
+
+rules:
+  typescript:
+    description: TypeScript coding standards and best practices
+    globs: ["src/**/*.ts", "src/**/*.tsx"]
+    alwaysApply: true
+    content:
+      Main Standards:
+        - Use TypeScript strict mode with noImplicitAny enabled
+        - Prefer interfaces for object shapes and types for unions/primitives
+        - Use explicit return types for functions with external API
+      Naming Conventions:
+        - Use PascalCase for types, interfaces, and classes
+        - Use camelCase for variables, functions, and methods
+        - Use UPPER_CASE for constants
+      Error Handling:
+        - Use try/catch for async operations
+        - Prefer discriminated unions for error handling
+        - Create custom error classes for different error categories
+      Examples:
+        - "```typescript\n// ✅ Good\ninterface User {\n  id: string;\n  name: string;\n  email?: string;\n}\n\n// ❌ Avoid\ntype User = {\n  id: string,\n  name: string,\n  email?: string\n}\n```"
+
+  async-patterns:
+    description: Asynchronous programming patterns in TypeScript
+    globs: ["src/**/*.ts", "src/**/*.tsx"]
+    alwaysApply: false
+    content:
+      Promises:
+        - Always use async/await over promise chains when possible
+        - Avoid mixing async/await with .then() in the same function
+        - Use Promise.all() for parallel execution
+      Error Handling:
+        - Always add proper error handling with try/catch
+        - Create typed error responses
+        - Use finally for cleanup operations
+      Examples:
+        - "```typescript\n// ✅ Good\nasync function fetchUsers() {\n  try {\n    const response = await api.get('/users');\n    return response.data;\n  } catch (error) {\n    logger.error('Failed to fetch users', error);\n    throw new ApiError('Failed to fetch users');\n  }\n}\n```" 

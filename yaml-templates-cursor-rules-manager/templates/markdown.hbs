@@ -1,0 +1,35 @@
+---
+description: {{rule.description}}
+{{#if rule.globs}}
+globs: {{#each rule.globs}}{{#unless @first}}, {{/unless}}{{this}}{{/each}}
+{{/if}}
+{{#if rule.alwaysApply}}
+alwaysApply: {{rule.alwaysApply}}
+{{/if}}
+---
+
+# {{config.name}}: {{@key}}
+
+{{rule.description}}
+
+{{#if rule.content}}
+{{#if (isString rule.content)}}
+{{{rule.content}}}
+{{else}}
+{{#each rule.content as |section sectionName|}}
+## {{sectionName}}
+
+{{#if (isString section)}}
+{{section}}
+{{else}}
+{{#each section as |item|}}
+- {{item}}
+{{/each}}
+{{/if}}
+
+{{/each}}
+{{/if}}
+{{/if}}
+
+---
+*Generated from {{config.name}} v{{config.version}}* 

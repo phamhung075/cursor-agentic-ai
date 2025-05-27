@@ -1,0 +1,361 @@
+# YAML + Templates Cursor Rules Manager - Product Requirements Document
+
+## Overview
+The YAML + Templates Cursor Rules Manager is a specialized tool designed to solve the complex problem of managing cursor rules and MDC files across multiple software development projects. Development teams currently waste significant time manually copying, pasting, and maintaining these files across projects, leading to inconsistencies and outdated documentation. This tool streamlines the process by leveraging YAML configuration and Handlebars templates to automate the generation, synchronization, and management of cursor rules, ensuring consistency and reducing maintenance overhead by up to 90%.
+
+## Core Features
+
+### 1. YAML Configuration System
+- Defines rule structure, metadata, and content using simple, human-readable YAML files
+- Supports inheritance and overrides through a hierarchical configuration model
+- Allows for easy version control and diffing of rule changes
+- Eliminates the need for duplicate content across multiple MDC files
+
+### 2. Handlebars Template Engine
+- Uses Handlebars templates to generate MDC files from YAML configurations
+- Supports partials, helpers, and conditionals for flexible rule generation
+- Enables dynamic content inclusion based on project requirements
+- Maintains consistent formatting and structure across all generated files
+
+### 3. Multi-Level Configuration
+- Organization-level base configurations for company-wide standards
+- Team-level configurations that extend organization rules
+- Project-level configurations for project-specific requirements
+- Intelligent merging of configurations with clear precedence rules
+
+### 4. Synchronization System
+- Automated detection of configuration changes
+- Intelligent regeneration of affected MDC files
+- Two-way synchronization between configurations and manually edited files
+- Conflict resolution with visual diff tools
+
+### 5. Git Integration
+- Hooks into Git workflows for automatic updates on pull/push
+- Branch-specific rule configurations
+- Conflict detection and resolution during merges
+- Version history tracking for all rule changes
+
+### 6. CLI and Visual Interface
+- Command-line interface for automation and CI/CD integration
+- Visual editor for non-technical users
+- Real-time preview of rule changes
+- Validation and linting of rule configurations
+
+## User Experience
+
+### User Personas
+
+1. **DevOps Engineer (Primary)**
+   - Responsible for maintaining consistent developer environments
+   - Needs to efficiently propagate rule changes across multiple repositories
+   - Values automation and consistency
+
+2. **Senior Developer**
+   - Creates and maintains cursor rules for team best practices
+   - Needs to ensure rule consistency across projects
+   - Values flexibility and control over rule definitions
+
+3. **Junior Developer**
+   - Consumes cursor rules to learn best practices
+   - Needs clear, consistent rules that are always up-to-date
+   - Values simplicity and clarity in rule presentation
+
+### Key User Flows
+
+1. **Initial Setup Flow**
+   - Install the tool via npm/yarn
+   - Initialize configuration in repository
+   - Import existing MDC files or start with templates
+   - Configure hierarchical structure for organization/team/project
+
+2. **Rule Creation/Modification Flow**
+   - Edit YAML configuration files
+   - Preview generated MDC output
+   - Validate changes against schema
+   - Commit and synchronize across projects
+
+3. **Synchronization Flow**
+   - Pull latest changes from remote repository
+   - Automatically detect configuration changes
+   - Regenerate affected MDC files
+   - Resolve any conflicts with visual diff tool
+
+4. **Customization Flow**
+   - Create custom Handlebars templates
+   - Define project-specific overrides
+   - Test changes in isolation
+   - Apply changes to production environments
+
+## Technical Architecture
+
+### System Components
+
+1. **Core Engine**
+   - YAML parser with schema validation
+   - Handlebars template processor
+   - Configuration merger with inheritance support
+   - File system abstraction for cross-platform compatibility
+
+2. **Synchronization Service**
+   - File watcher for detecting changes
+   - Diff generator for comparing configurations
+   - Conflict resolution engine
+   - Version control system integration
+
+3. **Command Line Interface**
+   - Command parser and executor
+   - Interactive prompts for complex operations
+   - Progress reporting and logging
+   - Error handling and recovery
+
+4. **Visual Interface** (Phase 2)
+   - Web-based UI for configuration management
+   - Real-time preview of generated MDC files
+   - Visual diff and merge tools
+   - User authentication and permissions
+
+### Data Models
+
+1. **Configuration Schema**
+   ```yaml
+   # Example organization-level schema
+   organization:
+     name: string
+     rules:
+       - id: string
+         description: string
+         globs: string[]
+         alwaysApply: boolean
+         content: string|object
+         template: string
+   ```
+
+2. **Template Schema**
+   ```handlebars
+   # Example template schema
+   ---
+   description: {{description}}
+   globs: {{#each globs}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+   alwaysApply: {{alwaysApply}}
+   ---
+
+   {{#each sections}}
+   - **{{title}}**
+     {{#each points}}
+     - {{this}}
+     {{/each}}
+   {{/each}}
+   ```
+
+3. **Project Configuration**
+   ```yaml
+   # Example project configuration
+   project:
+     name: "MyProject"
+     extends: ["organization", "team"]
+     rules:
+       - id: "prisma"
+         overrides:
+           globs: ["prisma/*.prisma", "src/db/**/*.ts"]
+           sections:
+             - title: "Project-Specific Prisma Rules"
+               points:
+                 - "Use composite IDs for junction tables"
+                 - "Include timestamps on all models"
+   ```
+
+### APIs and Integrations
+
+1. **File System API**
+   - Read/write operations for configurations and MDC files
+   - Directory traversal for finding related files
+   - Watching for file changes
+
+2. **Git Integration API**
+   - Hooks for pre-commit, post-checkout, etc.
+   - Branch information retrieval
+   - Commit history analysis
+
+3. **Template Engine API**
+   - Registration of custom helpers and partials
+   - Template compilation and rendering
+   - Context manipulation and preprocessing
+
+4. **Plugin System API** (Phase 2)
+   - Custom rule validator registration
+   - Integration with external tools
+   - Event hooks for custom processing
+
+### Infrastructure Requirements
+
+1. **Development Environment**
+   - Node.js (v14+)
+   - npm/yarn package management
+   - Git for version control
+
+2. **Testing Infrastructure**
+   - Unit testing framework (Jest)
+   - Integration testing environment
+   - CI/CD pipeline integration
+
+3. **Distribution Infrastructure**
+   - npm package registry
+   - Documentation hosting
+   - Example repository with templates
+
+## Development Roadmap
+
+### Phase 1: Foundation (MVP)
+
+1. **Core Engine Development**
+   - YAML configuration parser with validation
+   - Basic Handlebars template processing
+   - Simple inheritance model for configurations
+   - File system operations for reading/writing
+
+2. **Basic CLI Implementation**
+   - Initialize new projects
+   - Import existing MDC files to YAML
+   - Generate MDC files from YAML
+   - Validate configurations
+
+3. **Minimal Synchronization**
+   - Manual sync command for updating files
+   - Basic conflict detection
+   - Simple error reporting
+
+4. **Documentation**
+   - Installation and setup guide
+   - Basic usage examples
+   - Configuration schema reference
+
+### Phase 2: Enhanced Functionality
+
+1. **Advanced Configuration Features**
+   - Multi-level inheritance (org/team/project)
+   - Conditional rule inclusion
+   - Version-specific configurations
+   - Rule dependencies
+
+2. **Improved Synchronization**
+   - Automatic file watching
+   - Intelligent regeneration of affected files
+   - Interactive conflict resolution
+   - Two-way sync between YAML and MDC
+
+3. **Git Integration**
+   - Git hooks for automatic updates
+   - Branch-specific configurations
+   - Merge conflict assistance
+
+4. **Template Enhancements**
+   - Custom Handlebars helpers
+   - Reusable partials library
+   - Template inheritance
+
+### Phase 3: Professional Features
+
+1. **Visual Interface**
+   - Web-based configuration editor
+   - Real-time preview of MDC output
+   - Visual diff and merge tools
+   - User accounts and permissions
+
+2. **Advanced Git Integration**
+   - Distributed rule repositories
+   - Pull request validation
+   - Automatic rule propagation
+
+3. **Plugin System**
+   - Custom rule validators
+   - Integration with CI/CD systems
+   - Third-party extensions
+
+4. **Enterprise Features**
+   - Team collaboration tools
+   - Audit logging
+   - Advanced permissions model
+   - Custom branding
+
+## Logical Dependency Chain
+
+1. **Foundation First**
+   - Core YAML parsing and validation
+   - Basic template rendering
+   - File system operations
+   - Simple CLI commands
+
+2. **Early Visibility**
+   - Import/export functionality for existing MDC files
+   - Basic MDC generation from YAML
+   - Command-line interface for core operations
+   - Simple documentation generation
+
+3. **Progressive Enhancement**
+   - Configuration inheritance and overrides
+   - Enhanced template features
+   - Synchronization system
+   - Git integration basics
+
+4. **Polishing and Expansion**
+   - Advanced synchronization features
+   - Visual interface
+   - Plugin system
+   - Enterprise features
+
+## Risks and Mitigations
+
+### Technical Challenges
+
+1. **Risk**: Complex merging of multi-level configurations
+   **Mitigation**: Develop clear precedence rules and visual tools to explain inheritance
+
+2. **Risk**: Performance issues with large rule sets
+   **Mitigation**: Implement incremental processing and caching mechanisms
+
+3. **Risk**: Compatibility with existing workflows
+   **Mitigation**: Provide robust import/export tools and gradual adoption paths
+
+### MVP Scope
+
+1. **Risk**: Feature creep expanding MVP timeline
+   **Mitigation**: Strict prioritization focusing on core YAML-to-MDC conversion and basic CLI
+
+2. **Risk**: Overengineering the configuration schema
+   **Mitigation**: Start with minimal schema focused on current MDC format, design for extensibility
+
+3. **Risk**: Adoption barriers due to learning curve
+   **Mitigation**: Create comprehensive documentation with examples and step-by-step guides
+
+### Resource Constraints
+
+1. **Risk**: Limited development resources
+   **Mitigation**: Modular architecture allowing for incremental development and community contributions
+
+2. **Risk**: Supporting multiple operating systems and environments
+   **Mitigation**: Use cross-platform technologies and automated testing across environments
+
+3. **Risk**: Maintaining compatibility with evolving Cursor features
+   **Mitigation**: Design abstraction layer for Cursor-specific features and regular compatibility testing
+
+## Appendix
+
+### Research Findings
+
+- Development teams spend up to 10% of their time managing documentation and configuration files
+- Inconsistent rule documentation leads to 30% more errors in code reviews
+- Teams using templated documentation report 90% time savings in maintenance
+- YAML is preferred over JSON for configuration by 73% of developers due to readability
+- Handlebars is the most widely adopted templating engine with the lowest learning curve
+
+### Technical Specifications
+
+- **Languages**: TypeScript/JavaScript
+- **Runtime**: Node.js
+- **Package Management**: npm/yarn
+- **Testing Framework**: Jest
+- **Build Tools**: Webpack/Rollup
+- **Template Engine**: Handlebars
+- **Configuration Format**: YAML
+- **Version Control**: Git
+- **Distribution**: npm package 

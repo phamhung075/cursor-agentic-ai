@@ -1,0 +1,9 @@
+## {{titleCase sectionName}}
+
+{{#if (isString content)}}
+{{content}}
+{{else}}
+{{#each content as |item|}}
+- {{item}}
+{{/each}}
+{{/if}} 
