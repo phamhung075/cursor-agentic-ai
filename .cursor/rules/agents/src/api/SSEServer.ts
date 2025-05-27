@@ -18,6 +18,9 @@ import { MCPService } from './services/MCPService';
 import { MCPController } from './controllers/MCPController';
 import { createMCPRouter } from './routes/MCPRouter';
 import { ToolManager } from './tools';
+import { TaskmasterSyncService } from '../core/tasks/TaskmasterSyncService';
+import { TaskManager } from '../core/tasks/TaskManager';
+import { SynchronizationService } from '../core/tasks/SynchronizationService';
 
 // Load environment variables
 dotenv.config();
@@ -37,22 +40,29 @@ class MCPSSEServer {
 	private mcpService: MCPService;
 	private mcpController: MCPController;
 	private toolManager: ToolManager;
+	private taskmasterSyncService: TaskmasterSyncService;
+	private taskManager: TaskManager;
+	private synchronizationService: SynchronizationService;
 
 	constructor(port?: number) {
-		if (port) {
-			this.port = port;
-		}
-		
-		// Initialize the tool manager first, so tools are available to the MCPService
-		this.toolManager = new ToolManager(consoleLogger);
-		
-		// Initialize components
+		this.port = port || 3233;
 		this.app = express();
+		this.taskManager = new TaskManager();
+		this.synchronizationService = new SynchronizationService(this.taskManager);
+		this.toolManager = new ToolManager(consoleLogger);
 		this.mcpService = new MCPService(consoleLogger, this.toolManager);
 		this.mcpController = new MCPController(this.mcpService);
+		this.taskmasterSyncService = new TaskmasterSyncService({
+			logger: consoleLogger,
+			syncInterval: 30000 // Sync every 30 seconds
+		});
 		
 		this.setupMiddleware();
 		this.setupRoutes();
+		this.setupEventListeners();
+		
+		this.server = http.createServer(this.app);
+		consoleLogger.info('MCP-SSE', `Server created on port: ${this.port}`);
 	}
 
 	private setupMiddleware(): void {
@@ -177,6 +187,13 @@ class MCPSSEServer {
 				process.on('SIGTERM', this.handleProcessTermination.bind(this));
 				process.on('SIGQUIT', this.handleProcessTermination.bind(this));
 
+				// Start the Taskmaster sync service
+				this.taskmasterSyncService.start().then(() => {
+					consoleLogger.info('MCP-SSE', '🔄 Taskmaster sync service started successfully');
+				}).catch(error => {
+					consoleLogger.error('MCP-SSE', 'Failed to start Taskmaster sync service', { error });
+				});
+
 				resolve();
 			});
 		});
@@ -229,6 +246,10 @@ class MCPSSEServer {
 		process.removeListener('SIGTERM', this.handleProcessTermination);
 		process.removeListener('SIGQUIT', this.handleProcessTermination);
 
+		// Stop the Taskmaster sync service
+		this.taskmasterSyncService.stop();
+		consoleLogger.info('MCP-SSE', '🔄 Taskmaster sync service stopped');
+
 		return new Promise((resolve, reject) => {
 			// Notify all sessions we're shutting down
 			const sessions = this.mcpService.getAllSessions();
@@ -272,6 +293,34 @@ class MCPSSEServer {
 				this.isShuttingDown = false;
 				resolve();
 			}
+		});
+	}
+
+	/**
+	 * Set up event listeners
+	 */
+	private setupEventListeners(): void {
+		// Listen for Taskmaster sync events
+		this.taskmasterSyncService.on('syncCompleted', (result) => {
+			if (result.syncedFromTaskmaster > 0) {
+				consoleLogger.info('MCP-SSE', `Taskmaster sync completed: ${result.syncedFromTaskmaster} tasks synced from Taskmaster`);
+				
+				// Instead of trying to broadcast directly, trigger a task update event
+				// that the SynchronizationService will handle
+				this.taskManager.emit('tasksUpdated', {
+					source: 'taskmaster',
+					count: result.syncedFromTaskmaster,
+					details: {
+						syncedFromTaskmaster: result.syncedFromTaskmaster,
+						syncedToTaskmaster: result.syncedToTaskmaster,
+						conflicts: result.conflicts || 0
+					}
+				});
+			}
+		});
+
+		this.taskmasterSyncService.on('syncError', (error) => {
+			consoleLogger.error('MCP-SSE', 'Taskmaster sync error', { error });
 		});
 	}
 }

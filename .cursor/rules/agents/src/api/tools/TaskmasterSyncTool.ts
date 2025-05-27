@@ -7,6 +7,7 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import * as fs from 'fs/promises';
 import * as path from 'path';
+import * as os from 'os';
 
 const execAsync = promisify(exec);
 
@@ -35,6 +36,14 @@ export class TaskmasterSyncTool extends BaseTool {
         force: {
           type: 'boolean',
           description: 'Whether to force overwriting existing tasks even if there are conflicts'
+        },
+        forceTaskmasterAsSource: {
+          type: 'boolean',
+          description: 'Whether to force Taskmaster as the source of truth'
+        },
+        syncTimeout: {
+          type: 'number',
+          description: 'The timeout for bidirectional sync'
         }
       },
       required: ['direction'],
@@ -50,59 +59,36 @@ export class TaskmasterSyncTool extends BaseTool {
   }
 
   /**
-   * Implementation of the taskmaster sync functionality
-   * @param params The parameters for syncing tasks
-   * @returns The result of the sync operation
+   * Execute the tool
    */
   protected async executeImpl(params: Record<string, any>): Promise<any> {
     try {
-      // Get parameters
-      const direction = params['direction'] as 'from_taskmaster' | 'to_taskmaster' | 'bidirectional';
-      const taskmasterFile = params['taskmasterFile'] as string || 'tasks/tasks.json';
-      const force = params['force'] as boolean || false;
+      const direction = params['direction'] || 'bidirectional';
+      const taskmasterFile = params['taskmasterFile'];
+      const forceTaskmasterAsSource = params['forceTaskmasterAsSource'] === true || false;
 
-      // Validate Taskmaster file exists
-      const taskmasterFilePath = path.isAbsolute(taskmasterFile) 
-        ? taskmasterFile 
-        : path.join(process.cwd(), taskmasterFile);
-      
-      try {
-        await fs.access(taskmasterFilePath);
-      } catch (error) {
-        throw new Error(`Taskmaster file not found at: ${taskmasterFilePath}`);
-      }
+      const taskStorage = taskStorageFactory.getTaskStorage();
 
-      // Get the task storage
-      const taskStorage = await taskStorageFactory.getStorageService();
-
-      // Execute the appropriate sync operation based on direction
-      let result;
+      // Perform the requested sync operation
       switch (direction) {
         case 'from_taskmaster':
-          result = await this.syncFromTaskmaster(taskmasterFilePath, taskStorage, force);
-          break;
+          return await this.syncFromTaskmaster(taskmasterFile, taskStorage, forceTaskmasterAsSource);
+          
         case 'to_taskmaster':
-          result = await this.syncToTaskmaster(taskmasterFilePath, taskStorage, force);
-          break;
+          return await this.syncToTaskmaster(taskmasterFile, taskStorage, forceTaskmasterAsSource);
+          
         case 'bidirectional':
-          result = await this.bidirectionalSync(taskmasterFilePath, taskStorage, force);
-          break;
+          return await this.bidirectionalSync({
+            taskmasterFile,
+            forceTaskmasterAsSource,
+            syncTimeout: params['syncTimeout'] || 30000
+          });
+          
         default:
-          throw new Error(`Invalid direction: ${direction}`);
+          throw new Error(`Invalid sync direction: ${direction}. Must be one of: from_taskmaster, to_taskmaster, bidirectional`);
       }
-
-      return {
-        success: true,
-        direction,
-        result
-      };
     } catch (error) {
-      this.logger.error('TASKMASTER-SYNC', 'Failed to sync with Taskmaster', {
-        direction: params['direction'],
-        taskmasterFile: params['taskmasterFile'],
-        force: params['force'],
-        error
-      });
+      this.logger.error('TASKMASTER-SYNC', 'Failed to execute sync operation', { error });
       throw error;
     }
   }
@@ -292,35 +278,185 @@ export class TaskmasterSyncTool extends BaseTool {
   }
 
   /**
-   * Perform bidirectional sync between server and Taskmaster
+   * Bidirectional sync between Taskmaster and the server
    */
   private async bidirectionalSync(
-    taskmasterFilePath: string, 
-    taskStorage: any, 
-    force: boolean
+    params: { 
+      taskmasterFile?: string;
+      forceTaskmasterAsSource?: boolean;
+      syncTimeout?: number;
+    }
   ): Promise<any> {
+    const { taskmasterFile, forceTaskmasterAsSource = false, syncTimeout = 30000 } = params;
+    
+    // Create a sync lock file to prevent concurrent syncs
+    const lockFile = path.join(os.tmpdir(), 'taskmaster-sync.lock');
+    
     try {
-      // First sync from Taskmaster to server
-      const fromTaskmasterResult = await this.syncFromTaskmaster(
-        taskmasterFilePath, 
-        taskStorage, 
-        force
-      );
+      // Check if sync is already running
+      try {
+        await fs.access(lockFile);
+        // If we can access the lock file, check if it's stale
+        const lockStat = await fs.stat(lockFile);
+        const lockTime = new Date(lockStat.mtime);
+        const now = new Date();
+        const lockAgeMs = now.getTime() - lockTime.getTime();
+        
+        // If lock is older than the timeout, consider it stale
+        if (lockAgeMs < syncTimeout) {
+          return {
+            success: false,
+            error: 'Sync already in progress. Try again later.',
+            syncedTasks: 0,
+            syncedToTaskmaster: 0
+          };
+        }
+        
+        // Lock is stale, remove it
+        await fs.unlink(lockFile);
+      } catch (err) {
+        // Lock file doesn't exist, which is good
+      }
       
-      // Then sync from server to Taskmaster
-      const toTaskmasterResult = await this.syncToTaskmaster(
-        taskmasterFilePath, 
-        taskStorage, 
-        force
-      );
+      // Create a new lock file
+      await fs.writeFile(lockFile, new Date().toISOString());
       
-      return {
-        fromTaskmaster: fromTaskmasterResult,
-        toTaskmaster: toTaskmasterResult
+      // Get tasks from Taskmaster
+      const taskmasterTasks = await this.getTaskmasterTasks(taskmasterFile);
+      
+      // Get tasks from server
+      const taskStorage = taskStorageFactory.getTaskStorage();
+      const serverTasks = await taskStorage.getAllTasks();
+      
+      // Track sync statistics
+      const stats = {
+        tasksAddedToServer: 0,
+        tasksUpdatedInServer: 0,
+        tasksAddedToTaskmaster: 0,
+        tasksUpdatedInTaskmaster: 0,
+        conflicts: 0,
+        conflictsResolvedToTaskmaster: 0,
+        conflictsResolvedToServer: 0
       };
-    } catch (error) {
-      this.logger.error('TASKMASTER-SYNC', 'Failed to perform bidirectional sync', { error });
-      throw error;
+      
+      // Create a map of server tasks by ID for quick lookup
+      const serverTasksMap = new Map<string, TaskModel>();
+      serverTasks.forEach(task => {
+        serverTasksMap.set(task.id, task);
+      });
+      
+      // Convert Taskmaster tasks to task models for comparison
+      const tmTaskModels = taskmasterTasks.map(tmTask => {
+        return this.convertTaskmasterTaskToModel(tmTask);
+      });
+      
+      // Create a map of Taskmaster tasks by ID for quick lookup
+      const tmTasksMap = new Map<string, any>();
+      taskmasterTasks.forEach(task => {
+        tmTasksMap.set(task.id.toString(), task);
+      });
+      
+      // Process tasks from Taskmaster to server
+      for (const tmTaskModel of tmTaskModels) {
+        if (!tmTaskModel.id) continue;
+        
+        const serverTask = serverTasksMap.get(tmTaskModel.id);
+        
+        if (!serverTask) {
+          // Task exists in Taskmaster but not in server - add it
+          try {
+            await taskStorage.createTask(tmTaskModel as TaskModel);
+            stats.tasksAddedToServer++;
+          } catch (err) {
+            this.logger.error('Error adding task from Taskmaster to server', { error: err, taskId: tmTaskModel.id });
+          }
+        } else {
+          // Task exists in both systems - check for conflicts
+          const hasConflict = this.hasChanges(serverTask, tmTaskModel);
+          
+          if (hasConflict) {
+            stats.conflicts++;
+            
+            // Determine which version to keep
+            let useTaskmaster = forceTaskmasterAsSource || 
+                               this.isTaskmasterVersionNewer(tmTasksMap.get(tmTaskModel.id), serverTask);
+            
+            if (useTaskmaster) {
+              // Update server with Taskmaster version
+              try {
+                await taskStorage.updateTask(tmTaskModel.id, tmTaskModel);
+                stats.tasksUpdatedInServer++;
+                stats.conflictsResolvedToTaskmaster++;
+              } catch (err) {
+                this.logger.error('Error updating server task from Taskmaster', { error: err, taskId: tmTaskModel.id });
+              }
+            } else {
+              stats.conflictsResolvedToServer++;
+              // Server version will be used when updating Taskmaster later
+            }
+          }
+        }
+      }
+      
+      // Only push changes to Taskmaster if we're not forcing it as the source
+      // In force mode, we only sync one way: Taskmaster -> Server
+      if (!forceTaskmasterAsSource) {
+        // Convert server tasks to Taskmaster format
+        const updatedServerTasksInTmFormat = await this.convertServerTasksToTaskmaster(serverTasks);
+        
+        // Process server tasks to Taskmaster
+        for (const serverTaskInTmFormat of updatedServerTasksInTmFormat) {
+          const tmTask = tmTasksMap.get(serverTaskInTmFormat.id);
+          
+          if (!tmTask) {
+            // Task exists in server but not in Taskmaster - add it
+            taskmasterTasks.push(serverTaskInTmFormat);
+            stats.tasksAddedToTaskmaster++;
+          } else {
+            // Task exists in both - check if server version was chosen for conflict
+            const serverTask = serverTasksMap.get(serverTaskInTmFormat.id);
+            const hasConflict = this.hasChanges(serverTask!, this.convertTaskmasterTaskToModel(tmTask));
+            
+            if (hasConflict && !forceTaskmasterAsSource && 
+                !this.isTaskmasterVersionNewer(tmTask, serverTask)) {
+              // Update Taskmaster with server version
+              // Replace the task in the taskmasterTasks array
+              const index = taskmasterTasks.findIndex(t => t.id.toString() === serverTaskInTmFormat.id.toString());
+              if (index !== -1) {
+                taskmasterTasks[index] = serverTaskInTmFormat;
+                stats.tasksUpdatedInTaskmaster++;
+              }
+            }
+          }
+        }
+        
+        // Write updated tasks to Taskmaster file
+        await this.writeTaskmasterTasks(taskmasterTasks, taskmasterFile);
+      }
+      
+      // Remove the lock file
+      await fs.unlink(lockFile);
+      
+      // Return the result
+      return {
+        success: true,
+        syncedFromTaskmaster: stats.tasksAddedToServer + stats.tasksUpdatedInServer,
+        syncedToTaskmaster: stats.tasksAddedToTaskmaster + stats.tasksUpdatedInTaskmaster,
+        conflicts: stats.conflicts,
+        resolvedToTaskmaster: stats.conflictsResolvedToTaskmaster,
+        resolvedToServer: stats.conflictsResolvedToServer,
+        details: stats
+      };
+      
+    } catch (err) {
+      // Ensure lock file is removed even if there's an error
+      try {
+        await fs.unlink(lockFile);
+      } catch (unlinkErr) {
+        // Ignore error removing lock file
+      }
+      
+      throw err;
     }
   }
 
@@ -343,22 +479,35 @@ export class TaskmasterSyncTool extends BaseTool {
       ? idParts.slice(0, -1).join('.') 
       : null;
     
-    // Map status
+    // Enhanced comprehensive status mapping
     const statusMap: Record<string, string> = {
       'pending': 'pending',
       'in-progress': 'in_progress',
       'done': 'completed',
+      'completed': 'completed',
       'deferred': 'deferred',
       'blocked': 'blocked',
-      'review': 'review'
+      'review': 'review',
+      'cancelled': 'cancelled',
+      'on_hold': 'on_hold',
+      'in_review': 'review',
+      'approved': 'completed',
+      'rejected': 'blocked',
+      'backlog': 'pending'
     };
     
-    // Map priority
+    // Enhanced comprehensive priority mapping
     const priorityMap: Record<string, string> = {
       'high': 'high',
       'medium': 'medium',
       'low': 'low',
-      'critical': 'critical'
+      'critical': 'critical',
+      'urgent': 'high',
+      'normal': 'medium',
+      'trivial': 'low',
+      'blocker': 'critical',
+      'major': 'high',
+      'minor': 'low'
     };
     
     // Create the task model
@@ -416,17 +565,19 @@ export class TaskmasterSyncTool extends BaseTool {
     
     // Convert tasks recursively
     const convertTask = (task: TaskModel): any => {
-      // Map status
+      // Enhanced status mapping from server to Taskmaster
       const statusMap: Record<string, string> = {
         'pending': 'pending',
         'in_progress': 'in-progress',
         'completed': 'done',
         'deferred': 'deferred',
         'blocked': 'blocked',
-        'review': 'review'
+        'review': 'review',
+        'cancelled': 'cancelled',
+        'on_hold': 'on_hold'
       };
       
-      // Map priority
+      // Enhanced priority mapping from server to Taskmaster
       const priorityMap: Record<string, string> = {
         'high': 'high',
         'medium': 'medium',
@@ -439,9 +590,9 @@ export class TaskmasterSyncTool extends BaseTool {
         id: task.id,
         title: task.title,
         description: task.description || '',
-        status: statusMap[task.status] || 'pending',
+        status: statusMap[task.status || 'pending'] || 'pending',
         dependencies: task.dependencies || [],
-        priority: priorityMap[task.priority] || 'medium'
+        priority: priorityMap[task.priority || 'medium'] || 'medium'
       };
       
       // Add details and testStrategy if available in metadata
@@ -450,11 +601,11 @@ export class TaskmasterSyncTool extends BaseTool {
           ? JSON.parse(task.metadata)
           : task.metadata || {};
           
-        if (metadata && metadata.details) {
+        if (metadata && typeof metadata === 'object' && metadata.details) {
           tmTask.details = metadata.details;
         }
         
-        if (metadata && metadata.testStrategy) {
+        if (metadata && typeof metadata === 'object' && metadata.testStrategy) {
           tmTask.testStrategy = metadata.testStrategy;
         }
       }
@@ -473,27 +624,87 @@ export class TaskmasterSyncTool extends BaseTool {
   }
 
   /**
-   * Check if a task has changes compared to another
+   * Check if the Taskmaster version of a task is newer than the server version
+   * @param tmTask Taskmaster task
+   * @param serverTask Server task
+   * @returns true if Taskmaster version is newer
    */
-  private hasChanges(existingTask: TaskModel, newTask: Partial<TaskModel>): boolean {
-    // Check basic properties
-    if (existingTask.title !== newTask.title) return true;
-    if (existingTask.description !== newTask.description) return true;
-    if (existingTask.status !== newTask.status) return true;
-    if (existingTask.priority !== newTask.priority) return true;
+  private isTaskmasterVersionNewer(tmTask: any, serverTask: any): boolean {
+    // If the Taskmaster task has an updatedAt field, use it for comparison
+    if (tmTask.updatedAt) {
+      const tmUpdatedAt = new Date(tmTask.updatedAt);
+      const serverUpdatedAt = new Date(serverTask.updatedAt || 0);
+      return tmUpdatedAt > serverUpdatedAt;
+    }
     
-    // Check metadata
-    const existingMetadata = typeof existingTask.metadata === 'string'
-      ? JSON.parse(existingTask.metadata)
-      : existingTask.metadata || {};
-      
-    const newMetadata = typeof newTask.metadata === 'string'
-      ? JSON.parse(newTask.metadata as string)
-      : newTask.metadata || {};
-      
-    if (existingMetadata.details !== newMetadata.details) return true;
-    if (existingMetadata.testStrategy !== newMetadata.testStrategy) return true;
+    // If no updatedAt field, assume Taskmaster is the source of truth
+    return true;
+  }
+
+  /**
+   * Determine if a server task has changes compared to the task model
+   */
+  private hasChanges(existingTask: any, taskModel: Partial<TaskModel>): boolean {
+    // Basic change detection - check key fields
+    return (
+      existingTask.title !== taskModel.title ||
+      existingTask.description !== taskModel.description ||
+      existingTask.status !== taskModel.status ||
+      existingTask.priority !== taskModel.priority ||
+      // Check dependencies (simple length check for basic detection)
+      (existingTask.dependencies?.length || 0) !== (taskModel.dependencies?.length || 0)
+    );
+  }
+
+  /**
+   * Get tasks from Taskmaster tasks.json file
+   * @param taskmasterFile Optional file path (defaults to tasks/tasks.json)
+   * @returns Array of Taskmaster tasks
+   */
+  private async getTaskmasterTasks(taskmasterFile?: string): Promise<any[]> {
+    // Default to tasks/tasks.json if no file provided
+    const filePath = taskmasterFile 
+      ? (path.isAbsolute(taskmasterFile) ? taskmasterFile : path.join(process.cwd(), taskmasterFile))
+      : path.join(process.cwd(), 'tasks', 'tasks.json');
     
-    return false;
+    try {
+      // Check if file exists
+      await fs.access(filePath);
+      
+      // Read and parse the file
+      const fileContent = await fs.readFile(filePath, 'utf-8');
+      const tasksData = JSON.parse(fileContent);
+      
+      // Return the tasks array
+      return Array.isArray(tasksData) ? tasksData : [];
+    } catch (err) {
+      this.logger.error('TASKMASTER-SYNC', `Failed to read Taskmaster tasks from ${filePath}`, { error: err });
+      // Return empty array if file doesn't exist or can't be parsed
+      return [];
+    }
+  }
+  
+  /**
+   * Write tasks to Taskmaster tasks.json file
+   * @param tasks Tasks to write
+   * @param taskmasterFile Optional file path (defaults to tasks/tasks.json)
+   */
+  private async writeTaskmasterTasks(tasks: any[], taskmasterFile?: string): Promise<void> {
+    // Default to tasks/tasks.json if no file provided
+    const filePath = taskmasterFile 
+      ? (path.isAbsolute(taskmasterFile) ? taskmasterFile : path.join(process.cwd(), taskmasterFile))
+      : path.join(process.cwd(), 'tasks', 'tasks.json');
+    
+    try {
+      // Create directory if it doesn't exist
+      const dir = path.dirname(filePath);
+      await fs.mkdir(dir, { recursive: true });
+      
+      // Write the tasks to file
+      await fs.writeFile(filePath, JSON.stringify(tasks, null, 2), 'utf-8');
+    } catch (err) {
+      this.logger.error('TASKMASTER-SYNC', `Failed to write Taskmaster tasks to ${filePath}`, { error: err });
+      throw err;
+    }
   }
 } 
