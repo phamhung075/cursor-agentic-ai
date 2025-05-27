@@ -1,0 +1,861 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# System Architecture: YAML + Templates Cursor Rules Manager
+
+## 1. Architecture Overview
+
+### 1.1 Architecture Pattern
+
+The YAML + Templates Cursor Rules Manager follows a **modular command-line application architecture** with clear separation of concerns:
+
+- **Data Layer**: YAML configuration files containing structured rule data
+- **Presentation Layer**: Handlebars templates for rendering rule files
+- **Business Logic Layer**: Build system that processes configuration through templates
+- **Interface Layer**: CLI for user interaction and command processing
+
+This architecture supports the key design principles:
+
+- **Separation of Data and Presentation**: Configuration data (YAML) is completely separate from presentation (templates)
+- **Modular Components**: Each system component has a single responsibility
+- **Extensibility**: The system can be extended with new template types, configuration options, and output formats
+- **Configuration over Code**: Business logic is driven by configuration, not hardcoded rules
+
+### 1.2 System Components
+
+![System Architecture Diagram]
+
+#### 1.2.1 Configuration Manager
+
+**Responsibility**: Manages all aspects of loading, validating, and merging configuration data
+
+**Key Functions**:
+- Load YAML configuration files from multiple levels (organization, team, project)
+- Validate configuration against JSON schema
+- Apply inheritance rules to merge configuration (project overrides team overrides organization)
+- Provide a unified configuration context for template rendering
+- Handle configuration file creation and updates
+
+**Internal Structure**:
+- ConfigLoader: Reads YAML files from disk
+- ConfigValidator: Validates against schema
+- ConfigMerger: Applies inheritance rules
+- ConfigContext: Provides unified access to configuration
+
+#### 1.2.2 Template Engine
+
+**Responsibility**: Manages loading, compiling, and rendering templates
+
+**Key Functions**:
+- Load Handlebars templates from template directories
+- Register partials for template composition
+- Register helpers for advanced template logic
+- Compile templates for performance
+- Render templates with configuration context
+
+**Internal Structure**:
+- TemplateLoader: Loads template files from disk
+- PartialRegistry: Manages template partials
+- HelperRegistry: Manages template helpers
+- TemplateCompiler: Compiles templates for performance
+- TemplateRenderer: Renders templates with context
+
+#### 1.2.3 Build System
+
+**Responsibility**: Orchestrates the process of generating output files
+
+**Key Functions**:
+- Determine build targets based on configuration
+- Coordinate Configuration Manager and Template Engine
+- Manage output file creation
+- Handle incremental builds and caching
+- Report build results
+
+**Internal Structure**:
+- BuildPlanner: Determines what needs to be built
+- BuildOrchestrator: Coordinates the build process
+- OutputManager: Handles file writing
+- BuildReporter: Reports build results
+
+#### 1.2.4 CLI Interface
+
+**Responsibility**: Provides command-line interface for all operations
+
+**Key Functions**:
+- Parse command-line arguments
+- Implement command handlers
+- Display progress and results
+- Implement interactive wizards
+- Handle error reporting
+
+**Internal Structure**:
+- CommandParser: Parses command-line arguments
+- CommandRegistry: Registers command handlers
+- UIManager: Handles user interaction
+- WizardManager: Implements interactive wizards
+- ErrorReporter: Formats and displays errors
+
+#### 1.2.5 File System Manager
+
+**Responsibility**: Handles all file system operations
+
+**Key Functions**:
+- Read and write configuration and template files
+- Create directory structures
+- Watch for file changes
+- Handle path resolution
+
+**Internal Structure**:
+- FileReader: Reads files from disk
+- FileWriter: Writes files to disk
+- DirectoryManager: Creates and manages directories
+- FileWatcher: Watches for file changes
+- PathResolver: Resolves relative and absolute paths
+
+### 1.3 Component Interactions
+
+#### Build Process Flow
+
+1. **Command Initiation**:
+   - User runs a command via CLI Interface
+   - CommandParser parses arguments
+   - CommandRegistry routes to appropriate handler
+
+2. **Configuration Loading**:
+   - Configuration Manager loads relevant configuration files
+   - ConfigValidator validates configuration
+   - ConfigMerger applies inheritance rules
+   - ConfigContext provides unified configuration
+
+3. **Template Processing**:
+   - Template Engine loads templates and partials
+   - TemplateCompiler compiles templates
+   - HelperRegistry registers helpers
+
+4. **Build Execution**:
+   - BuildPlanner determines build targets
+   - BuildOrchestrator coordinates the process
+   - TemplateRenderer renders templates with configuration
+   - OutputManager writes files to disk
+
+5. **Result Reporting**:
+   - BuildReporter collects build results
+   - ErrorReporter formats any errors
+   - UIManager displays results to the user
+
+#### Watch Mode Flow
+
+1. **Watch Initiation**:
+   - User starts watch mode via CLI Interface
+   - FileWatcher starts monitoring configuration and template files
+
+2. **Change Detection**:
+   - FileWatcher detects file changes
+   - BuildPlanner determines affected targets
+   - Build process executes for affected targets only
+
+3. **Continuous Reporting**:
+   - BuildReporter provides real-time feedback
+   - UIManager displays updates in the terminal
+
+### 1.4 Data Flow Architecture
+
+#### Configuration Data Flow
+
+```
+Organization YAML -> ConfigLoader
+Team YAML -> ConfigLoader
+Project YAML -> ConfigLoader
+                        |
+                        v
+                   ConfigValidator
+                        |
+                        v
+                   ConfigMerger
+                        |
+                        v
+                   ConfigContext -> TemplateRenderer
+```
+
+#### Template Data Flow
+
+```
+Template Files -> TemplateLoader
+Partial Files -> PartialRegistry
+                        |
+                        v
+                   TemplateCompiler
+                        |
+                        v
+                   TemplateRenderer <- ConfigContext
+                        |
+                        v
+                   OutputManager -> Generated Files
+```
+
+#### Command Flow
+
+```
+User Input -> CommandParser -> CommandRegistry -> Command Handler
+                                                       |
+                                    +------------------+------------------+
+                                    v                  v                  v
+                            Configuration Manager  Template Engine    Build System
+                                    |                  |                  |
+                                    +------------------+------------------+
+                                                       |
+                                                       v
+                                                 OutputManager
+                                                       |
+                                                       v
+                                                 UIManager -> User Output
+```
+
+## 2. Technology Stack
+
+### 2.1 Core Technologies
+
+#### Runtime Environment
+
+**Node.js (LTS Version)**
+- Justification: Cross-platform compatibility, strong ecosystem, excellent for CLI tools
+- Version: 18.x LTS (or latest LTS at implementation time)
+- Key Features Used: ES Modules, async/await, file system APIs
+
+#### Programming Language
+
+**TypeScript**
+- Justification: Type safety, better tooling, enhanced maintainability
+- Version: 5.x (or latest at implementation time)
+- Configuration: Strict mode enabled for maximum type safety
+- Key Features Used: Interfaces, type definitions, generics, decorators
+
+#### Package Manager
+
+**npm**
+- Justification: Ubiquitous, well-understood by target users
+- Alternative: yarn if workspaces are needed for monorepo structure
+
+### 2.2 Key Dependencies
+
+#### Configuration Management
+
+**js-yaml**
+- Purpose: YAML parsing and serialization
+- Justification: Mature, well-maintained, complete YAML support
+- Key Features Used: Schema validation, type coercion, comment preservation
+
+**ajv**
+- Purpose: JSON Schema validation
+- Justification: Fast, compliant JSON Schema validator
+- Key Features Used: Custom error messages, keyword extensions
+
+#### Template Processing
+
+**Handlebars**
+- Purpose: Template rendering
+- Justification: Logic-less templates, partials support, custom helpers
+- Key Features Used: Partials, helpers, conditional blocks, iterators
+
+#### Command Line Interface
+
+**Commander.js**
+- Purpose: Command-line argument parsing and routing
+- Justification: Feature-rich, well-maintained, excellent documentation
+- Key Features Used: Command registration, option parsing, help generation
+
+**Inquirer.js**
+- Purpose: Interactive command-line interfaces
+- Justification: Rich interactive prompts, good user experience
+- Key Features Used: Input prompts, selections, confirmations
+
+#### File System Operations
+
+**fs-extra**
+- Purpose: Enhanced file system operations
+- Justification: Extends Node.js fs with useful utilities
+- Key Features Used: Recursive directory creation, file copying, atomic writes
+
+**chokidar**
+- Purpose: File watching
+- Justification: Reliable, cross-platform file watching
+- Key Features Used: Watch directories, debounced events
+
+#### Development Tools
+
+**Jest**
+- Purpose: Testing framework
+- Justification: Complete testing solution, good TypeScript support
+- Key Features Used: Unit tests, mocking, coverage reporting
+
+**ESLint**
+- Purpose: Code quality and style enforcement
+- Justification: Customizable, TypeScript support, plugin ecosystem
+- Key Features Used: TypeScript rules, auto-fixing
+
+**Prettier**
+- Purpose: Code formatting
+- Justification: Opinionated formatting, reduces style debates
+- Key Features Used: Automatic formatting
+
+### 2.3 Development Tools
+
+#### Build Tools
+
+**TypeScript Compiler (tsc)**
+- Purpose: Transpile TypeScript to JavaScript
+- Configuration: Strict mode, ESM output, Node.js target
+
+**ts-node**
+- Purpose: Run TypeScript directly during development
+- Justification: Faster development iteration
+
+#### Testing Tools
+
+**Jest**
+- Purpose: Unit and integration testing
+- Configuration: TypeScript support, coverage reporting
+
+**mock-fs**
+- Purpose: File system mocking for tests
+- Justification: Test file operations without actual file system
+
+#### Code Quality Tools
+
+**ESLint**
+- Purpose: Static code analysis
+- Configuration: TypeScript rules, Prettier integration
+
+**Prettier**
+- Purpose: Code formatting
+- Configuration: Industry-standard settings
+
+#### Continuous Integration
+
+**GitHub Actions**
+- Purpose: Automated testing and builds
+- Configuration: Test on multiple Node.js versions, platforms
+
+#### Documentation
+
+**TypeDoc**
+- Purpose: API documentation generation
+- Configuration: Generate from TypeScript comments
+
+## 3. System Integration and Data Flow
+
+### 3.1 External Integrations
+
+#### Git Integration
+
+**Purpose**: Version control integration for configuration and templates
+
+**Integration Points**:
+- Git hooks for automatic builds on commit/push
+- Support for .gitignore in project configuration
+- Commit message templates for changes
+
+**Data Flow**:
+1. User commits changes to configuration or templates
+2. Git pre-commit hook triggers validation
+3. Git post-commit hook triggers build
+4. Generated files are included in commit
+
+#### Node.js Package Ecosystem
+
+**Purpose**: Dependency management and distribution
+
+**Integration Points**:
+- npm package for global installation
+- Package.json for dependency management
+- npm scripts for common operations
+
+**Data Flow**:
+1. User installs package via npm
+2. npm resolves dependencies
+3. npm executes installation scripts
+4. CLI commands become available globally
+
+### 3.2 Internal Data Flow
+
+#### Configuration Data Flow
+
+1. **Loading Phase**
+   - YAML files are read from disk
+   - Parsed into JavaScript objects
+   - Validated against schema
+
+2. **Inheritance Phase**
+   - Organization configuration forms base
+   - Team configuration overrides organization defaults
+   - Project configuration overrides team and organization
+
+3. **Context Creation Phase**
+   - Final merged configuration becomes context
+   - Helper functions and computed values added
+   - Made available to template engine
+
+#### Template Data Flow
+
+1. **Loading Phase**
+   - Template files read from disk
+   - Partials registered with Handlebars
+   - Helpers registered with Handlebars
+
+2. **Compilation Phase**
+   - Templates compiled for performance
+   - Cached for subsequent renders
+
+3. **Rendering Phase**
+   - Configuration context passed to templates
+   - Templates rendered to string output
+   - Output formatted according to target format
+
+4. **Output Phase**
+   - Output directories created if needed
+   - Files written to disk
+   - File permissions set appropriately
+
+### 3.3 Error Handling and Recovery
+
+#### Validation Errors
+
+1. **Early Detection**
+   - Configuration validation before processing
+   - Template validation before rendering
+   - Command validation before execution
+
+2. **Detailed Reporting**
+   - Specific error location (file, line, column)
+   - Context-specific error messages
+   - Suggested solutions where possible
+
+3. **Graceful Degradation**
+   - Partial builds when possible
+   - Skip failed items rather than aborting entire build
+   - Maintain previous output on failure
+
+#### Runtime Errors
+
+1. **Error Categorization**
+   - User errors (invalid input, configuration)
+   - System errors (file system, permissions)
+   - Unexpected errors (bugs, edge cases)
+
+2. **Recovery Strategies**
+   - Automatic retry for transient errors
+   - Fallbacks for missing files
+   - Default values for missing configuration
+
+3. **Error Logging**
+   - Detailed error logs for debugging
+   - Error codes for documentation reference
+   - Stack traces in developer mode
+
+### 3.4 Performance Optimization
+
+#### Build Performance
+
+1. **Incremental Builds**
+   - Track file modification times
+   - Only rebuild affected outputs
+   - Cache parsed configuration and compiled templates
+
+2. **Parallel Processing**
+   - Process multiple projects concurrently
+   - Use worker threads for CPU-intensive tasks
+   - Batch file operations where possible
+
+3. **Resource Management**
+   - Limit memory usage during large builds
+   - Release resources after use
+   - Monitor and report performance metrics
+
+#### Watch Mode Optimization
+
+1. **Change Detection**
+   - Debounce file change events
+   - Batch related changes
+   - Determine minimal rebuild scope
+
+2. **Resource Efficiency**
+   - Low CPU usage during idle periods
+   - Efficient file watching (directory-based)
+   - Release unused resources during idle
+
+## 4. Implementation Guidelines
+
+### 4.1 Code Organization
+
+#### Directory Structure
+
+```
+src/
+├── cli/               # Command-line interface
+│   ├── commands/      # Command implementations
+│   ├── ui/            # User interaction helpers
+│   └── index.ts       # CLI entry point
+├── config/            # Configuration management
+│   ├── loader.ts      # YAML loading
+│   ├── validator.ts   # Schema validation
+│   ├── merger.ts      # Configuration merging
+│   └── index.ts       # Configuration API
+├── template/          # Template processing
+│   ├── loader.ts      # Template loading
+│   ├── helpers/       # Handlebars helpers
+│   ├── compiler.ts    # Template compilation
+│   └── index.ts       # Template API
+├── build/             # Build system
+│   ├── planner.ts     # Build planning
+│   ├── executor.ts    # Build execution
+│   ├── reporter.ts    # Build reporting
+│   └── index.ts       # Build API
+├── fs/                # File system operations
+│   ├── reader.ts      # File reading
+│   ├── writer.ts      # File writing
+│   ├── watcher.ts     # File watching
+│   └── index.ts       # File system API
+├── utils/             # Shared utilities
+│   ├── logger.ts      # Logging
+│   ├── errors.ts      # Error handling
+│   └── index.ts       # Utility API
+└── index.ts           # Main entry point
+```
+
+#### Module Structure
+
+Each module should follow a consistent pattern:
+
+1. **Interface Definitions**
+   - Clear interfaces for all public APIs
+   - Type definitions for data structures
+   - Exported type definitions for consumers
+
+2. **Implementation Classes**
+   - Implementation of interfaces
+   - Private methods for internal use
+   - Documentation comments for public methods
+
+3. **Factory Functions**
+   - Create and configure instances
+   - Handle dependency injection
+   - Provide sensible defaults
+
+4. **Module API**
+   - Export public interfaces and factory functions
+   - Re-export needed types
+   - Default export for primary functionality
+
+### 4.2 Coding Standards
+
+#### TypeScript Guidelines
+
+1. **Type Safety**
+   - Use strict mode
+   - Avoid `any` type
+   - Use interfaces for object shapes
+   - Use generics for reusable code
+
+2. **Error Handling**
+   - Use custom error classes
+   - Provide context in error messages
+   - Handle all promise rejections
+   - Use async/await with try/catch
+
+3. **Documentation**
+   - JSDoc comments for all public APIs
+   - Include parameter and return type documentation
+   - Example usage where appropriate
+   - Notes on edge cases or limitations
+
+#### Testing Guidelines
+
+1. **Unit Testing**
+   - Test each module in isolation
+   - Mock dependencies
+   - Test both success and failure paths
+   - Aim for >90% code coverage
+
+2. **Integration Testing**
+   - Test interaction between modules
+   - Test file system operations with mock-fs
+   - Test CLI commands end-to-end
+   - Test with real-world examples
+
+3. **Performance Testing**
+   - Benchmark critical operations
+   - Test with large datasets
+   - Test watch mode responsiveness
+   - Test memory usage under load
+
+### 4.3 Error Handling Strategy
+
+1. **Error Classes**
+   - `ConfigurationError`: For configuration issues
+   - `TemplateError`: For template rendering issues
+   - `BuildError`: For build process issues
+   - `FileSystemError`: For file system issues
+   - `UserInputError`: For invalid user input
+
+2. **Error Reporting**
+   - Include error code
+   - Include file path and line number where applicable
+   - Provide suggested solution
+   - Include debug information in verbose mode
+
+3. **Recovery Strategy**
+   - Define fallbacks for critical operations
+   - Implement retry logic for transient errors
+   - Preserve previous state on failure
+   - Provide clear path to resolution
+
+### 4.4 Logging Strategy
+
+1. **Log Levels**
+   - `error`: Critical errors that prevent operation
+   - `warn`: Non-critical issues that might need attention
+   - `info`: Important operations and status updates
+   - `debug`: Detailed information for troubleshooting
+   - `trace`: Very detailed information for development
+
+2. **Log Output**
+   - Standard output/error for user-facing logs
+   - File-based logging for debugging
+   - Structured logging for machine consumption
+   - Color-coded output for terminal
+
+3. **Log Content**
+   - Timestamp
+   - Log level
+   - Module/component
+   - Message
+   - Context data (when applicable)
+   - Error details (when applicable)
+
+## 5. Scalability and Extensibility
+
+### 5.1 Scalability Considerations
+
+1. **Large Configuration Sets**
+   - Efficient YAML parsing
+   - Incremental processing
+   - Memory-efficient data structures
+   - Configuration caching
+
+2. **Many Projects**
+   - Parallel processing
+   - Efficient file watching
+   - Batched file operations
+   - Progress reporting for large operations
+
+3. **Complex Templates**
+   - Template compilation and caching
+   - Partial optimization
+   - Helper optimization
+   - Incremental rendering
+
+### 5.2 Extensibility Points
+
+1. **Custom Template Helpers**
+   - Plugin API for custom helpers
+   - Helper discovery and registration
+   - Documentation for helper development
+
+2. **Output Format Plugins**
+   - Plugin API for custom output formats
+   - Format discovery and registration
+   - Documentation for format development
+
+3. **Custom Commands**
+   - Plugin API for custom commands
+   - Command discovery and registration
+   - Documentation for command development
+
+4. **Configuration Schema Extensions**
+   - Schema extension points
+   - Validation for extended schema
+   - Documentation for schema extensions
+
+### 5.3 Future Enhancements
+
+1. **Remote Configuration**
+   - Support for remote configuration repositories
+   - Authentication and authorization
+   - Caching and synchronization
+
+2. **Team Collaboration**
+   - Conflict resolution for multi-user edits
+   - Approval workflows for changes
+   - Change history and audit logs
+
+3. **Integration Ecosystem**
+   - IDE plugins for direct integration
+   - CI/CD system plugins
+   - Third-party service integrations
+
+4. **Enterprise Features**
+   - Role-based access control
+   - Compliance reporting
+   - Advanced analytics and reporting
+
+## 6. Security Considerations
+
+### 6.1 Configuration Security
+
+1. **Sensitive Data Handling**
+   - Support for environment variables
+   - Secrets not stored in configuration
+   - Warning for sensitive data in configuration
+
+2. **File Permissions**
+   - Appropriate file permissions for outputs
+   - Protection against accidental overwrites
+   - Safe handling of temporary files
+
+3. **Input Validation**
+   - Strict validation of all user input
+   - Protection against path traversal
+   - Protection against template injection
+
+### 6.2 Dependency Security
+
+1. **Dependency Management**
+   - Regular security audits (npm audit)
+   - Pinned dependency versions
+   - Minimal dependency footprint
+
+2. **Code Quality**
+   - Static analysis for security issues
+   - Peer review for security concerns
+   - Secure coding practices
+
+3. **Update Process**
+   - Regular updates for security patches
+   - Automated security testing
+   - Responsible disclosure process
+
+## 7. Documentation Requirements
+
+### 7.1 Code Documentation
+
+1. **API Documentation**
+   - JSDoc comments for all public APIs
+   - Type definitions
+   - Example usage
+   - Edge cases and limitations
+
+2. **Internal Documentation**
+   - Architecture documentation
+   - Module interactions
+   - Design decisions
+   - Performance considerations
+
+3. **Documentation Generation**
+   - TypeDoc for API documentation
+   - Markdown for architecture documentation
+   - Integration with GitHub Pages
+
+### 7.2 User Documentation
+
+1. **Getting Started Guide**
+   - Installation instructions
+   - Basic usage examples
+   - Quick wins for new users
+
+2. **Command Reference**
+   - All commands and options
+   - Example usage
+   - Related commands
+
+3. **Configuration Reference**
+   - Schema documentation
+   - Configuration options
+   - Default values
+   - Examples
+
+4. **Template Reference**
+   - Template syntax
+   - Available helpers
+   - Partial usage
+   - Examples
+
+5. **Troubleshooting Guide**
+   - Common errors and solutions
+   - Debugging techniques
+   - Support resources
+
+### 7.3 Maintenance Documentation
+
+1. **Contribution Guide**
+   - Development setup
+   - Coding standards
+   - Pull request process
+   - Testing requirements
+
+2. **Release Process**
+   - Version numbering
+   - Release checklist
+   - Changelog maintenance
+   - Backward compatibility
+
+3. **Security Policy**
+   - Vulnerability reporting
+   - Security update process
+   - Security best practices
+
+## 8. Implementation Roadmap
+
+### 8.1 Minimum Viable Product (MVP)
+
+#### Phase 1: Core Framework
+- Basic configuration loading
+- Simple template rendering
+- File output
+- CLI structure
+
+#### Phase 2: Basic Functionality
+- Configuration validation
+- Template helpers
+- Basic build system
+- Init and build commands
+
+#### Phase 3: MVP Features
+- Project configuration
+- Simple template customization
+- Documentation
+- Error handling
+
+### 8.2 Post-MVP Enhancements
+
+#### Phase 4: Enhanced Features
+- Multi-level configuration
+- Watch mode
+- Setup wizards
+- Multiple output formats
+
+#### Phase 5: Integration and Automation
+- Git integration
+- CI/CD integration
+- Advanced template features
+- Performance optimization
+
+#### Phase 6: Enterprise Features
+- Team collaboration
+- Role-based access
+- Advanced reporting
+- Compliance features
+
+## 9. Conclusion
+
+This system architecture document provides a comprehensive blueprint for implementing the YAML + Templates Cursor Rules Manager. The modular design with clear separation of concerns ensures the system will be maintainable, extensible, and performant.
+
+Key architectural decisions include:
+- Using TypeScript for type safety and maintainability
+- Modular architecture with single-responsibility components
+- Clear separation of configuration data and templates
+- Extensibility points for future enhancements
+- Comprehensive error handling and reporting
+
+Implementation should follow the guidelines and standards outlined in this document to ensure consistency and quality.

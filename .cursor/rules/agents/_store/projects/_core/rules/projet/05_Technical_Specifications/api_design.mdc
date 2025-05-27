@@ -1,0 +1,874 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# API Design: YAML + Templates Cursor Rules Manager
+
+## 1. API Overview
+
+The YAML + Templates Cursor Rules Manager provides both a Command Line Interface (CLI) API and a programmatic Node.js API for managing cursor rules across multiple projects. This document outlines the design of both APIs, focusing on their structure, functionality, and usage patterns.
+
+### 1.1 API Design Goals
+
+The APIs are designed with the following goals:
+
+- **Usability**: Simple, intuitive interfaces for common operations
+- **Consistency**: Predictable behavior and naming conventions
+- **Extensibility**: Easy to extend with new features and capabilities
+- **Documentation**: Comprehensive documentation for all API features
+- **Error Handling**: Clear, actionable error messages and recovery options
+
+### 1.2 API Types
+
+The system provides two primary API types:
+
+1. **CLI API**: Command-line interface for users
+2. **Node.js API**: Programmatic interface for integration with other systems
+
+Both APIs provide access to the same core functionality but are optimized for their respective use cases.
+
+## 2. CLI API
+
+### 2.1 Command Structure
+
+The CLI follows a command-subcommand structure with options:
+
+```
+cursor-rules-manager <command> [subcommand] [options]
+```
+
+Commands are grouped by functionality:
+
+- **Project Management**: Commands for managing projects
+- **Build Operations**: Commands for building and generating files
+- **Configuration Management**: Commands for managing configuration
+- **Template Management**: Commands for managing templates
+- **Utility Commands**: Miscellaneous utility commands
+
+### 2.2 Core Commands
+
+#### 2.2.1 Project Commands
+
+```bash
+# Initialize a new project
+cursor-rules-manager init [options]
+
+# Options:
+#   --name <name>            Project name
+#   --type <type>            Project type (web_application, api_service, etc.)
+#   --frameworks <list>      Comma-separated list of frameworks
+#   --team <team>            Team name
+#   --output-dir <dir>       Output directory for generated files
+#   --template <template>    Template to use
+#   -y, --yes                Skip confirmation prompts
+```
+
+```bash
+# Create a new project configuration
+cursor-rules-manager create project [options]
+
+# Options:
+#   --name <name>            Project name (required)
+#   --type <type>            Project type
+#   --frameworks <list>      Comma-separated list of frameworks
+#   --team <team>            Team name
+#   --template <template>    Template to use
+#   -y, --yes                Skip confirmation prompts
+```
+
+```bash
+# List projects
+cursor-rules-manager list projects [options]
+
+# Options:
+#   --team <team>            Filter by team
+#   --type <type>            Filter by project type
+#   --framework <framework>  Filter by framework
+#   --format <format>        Output format (table, json, yaml)
+```
+
+#### 2.2.2 Build Commands
+
+```bash
+# Build all projects
+cursor-rules-manager build [options]
+
+# Options:
+#   --project <project>      Build specific project
+#   --team <team>            Build projects for team
+#   --output-dir <dir>       Output directory
+#   --format <format>        Output format(s) (.cursor/rules, mdc, html)
+#   --verbose                Verbose output
+#   --dry-run                Show what would be built without building
+```
+
+```bash
+# Watch for changes and rebuild
+cursor-rules-manager watch [options]
+
+# Options:
+#   --project <project>      Watch specific project
+#   --team <team>            Watch projects for team
+#   --output-dir <dir>       Output directory
+#   --format <format>        Output format(s)
+#   --verbose                Verbose output
+```
+
+#### 2.2.3 Configuration Commands
+
+```bash
+# Validate configuration
+cursor-rules-manager validate [options]
+
+# Options:
+#   --project <project>      Validate specific project
+#   --team <team>            Validate team configuration
+#   --fix                    Fix minor issues automatically
+#   --verbose                Verbose output
+```
+
+```bash
+# Export configuration
+cursor-rules-manager export [options]
+
+# Options:
+#   --project <project>      Export specific project
+#   --team <team>            Export team configuration
+#   --output <file>          Output file
+#   --format <format>        Output format (yaml, json)
+```
+
+#### 2.2.4 Template Commands
+
+```bash
+# List available templates
+cursor-rules-manager list templates [options]
+
+# Options:
+#   --format <format>        Output format (table, json, yaml)
+```
+
+```bash
+# Create a new template
+cursor-rules-manager create template [options]
+
+# Options:
+#   --name <name>            Template name (required)
+#   --base <template>        Base template to extend
+#   --description <text>     Template description
+```
+
+#### 2.2.5 Utility Commands
+
+```bash
+# Show help
+cursor-rules-manager help [command]
+
+# Show version
+cursor-rules-manager version
+
+# Generate shell completion
+cursor-rules-manager completion [bash|zsh|fish]
+```
+
+### 2.3 Command Aliases
+
+For convenience, common commands have shorter aliases:
+
+```bash
+# Aliases for common commands
+crm init                # Alias for cursor-rules-manager init
+crm build               # Alias for cursor-rules-manager build
+crm watch               # Alias for cursor-rules-manager watch
+```
+
+### 2.4 Interactive Commands
+
+Some commands provide interactive prompts for better user experience:
+
+```bash
+# Interactive project creation
+cursor-rules-manager init
+
+# Prompts:
+# - Project name:
+# - Project type: [web_application, api_service, ...]
+# - Frameworks: [React, Vue, Angular, ...]
+# - Team: [team1, team2, ...]
+# - Output formats: [.cursor/rules, mdc, html]
+```
+
+### 2.5 Output Formats
+
+Commands support different output formats:
+
+- **Human-readable**: Default format with color and formatting
+- **JSON**: Structured output for programmatic consumption
+- **YAML**: Alternative structured output
+- **Table**: Tabular output for lists
+- **Minimal**: Minimal output for scripting
+
+```bash
+# Example of format selection
+cursor-rules-manager list projects --format json
+```
+
+### 2.6 Error Handling
+
+CLI commands provide consistent error handling:
+
+- **Exit Codes**: Non-zero exit codes for errors
+- **Error Messages**: Clear, actionable error messages
+- **Verbose Mode**: Detailed error information with `--verbose`
+- **Quiet Mode**: Minimal output with `--quiet`
+
+```bash
+# Example error handling in shell script
+if ! cursor-rules-manager build --project my-project; then
+  echo "Build failed!"
+  exit 1
+fi
+```
+
+## 3. Node.js API
+
+### 3.1 Module Structure
+
+The Node.js API is organized into focused modules:
+
+```typescript
+// Main module exports
+import { 
+  Project,
+  Config,
+  Template,
+  Builder,
+  FileSystem
+} from 'cursor-rules-manager';
+```
+
+Each module provides a specific area of functionality:
+
+- **Project**: Project management
+- **Config**: Configuration handling
+- **Template**: Template handling
+- **Builder**: Build operations
+- **FileSystem**: File system operations
+
+### 3.2 Project API
+
+```typescript
+import { Project } from 'cursor-rules-manager';
+
+// Create a new project
+const project = await Project.create({
+  name: 'my-project',
+  type: 'web_application',
+  frameworks: ['react', 'typescript'],
+  team: 'frontend-team',
+});
+
+// Get an existing project
+const existingProject = await Project.get('my-project');
+
+// List projects
+const projects = await Project.list({
+  team: 'frontend-team',
+  framework: 'react',
+});
+
+// Update a project
+await existingProject.update({
+  frameworks: ['react', 'typescript', 'tailwind'],
+});
+
+// Delete a project
+await existingProject.delete();
+```
+
+### 3.3 Configuration API
+
+```typescript
+import { Config } from 'cursor-rules-manager';
+
+// Load configuration
+const config = await Config.load('my-project');
+
+// Validate configuration
+const validationResult = await config.validate();
+if (!validationResult.valid) {
+  console.error('Validation errors:', validationResult.errors);
+}
+
+// Get merged configuration (project + team + organization)
+const mergedConfig = await config.getMerged();
+
+// Update configuration
+await config.update({
+  settings: {
+    strict_mode: true,
+  },
+});
+
+// Export configuration
+await config.export('config.yaml', 'yaml');
+```
+
+### 3.4 Template API
+
+```typescript
+import { Template } from 'cursor-rules-manager';
+
+// List available templates
+const templates = await Template.list();
+
+// Get a template
+const template = await Template.get('default');
+
+// Create a new template
+const newTemplate = await Template.create({
+  name: 'custom-template',
+  base: 'default',
+  description: 'My custom template',
+});
+
+// Render a template with configuration
+const renderedContent = await template.render(config);
+
+// Save rendered content to file
+await template.renderToFile(config, 'output/rules.mdc');
+```
+
+### 3.5 Builder API
+
+```typescript
+import { Builder } from 'cursor-rules-manager';
+
+// Create a builder
+const builder = new Builder({
+  outputDir: 'output',
+  formats: ['.cursor/rules', 'mdc'],
+});
+
+// Build a specific project
+await builder.buildProject('my-project');
+
+// Build all projects
+await builder.buildAll();
+
+// Build projects for a team
+await builder.buildTeam('frontend-team');
+
+// Watch for changes and rebuild
+const watcher = await builder.watch({
+  project: 'my-project',
+});
+
+// Stop watching
+await watcher.stop();
+```
+
+### 3.6 File System API
+
+```typescript
+import { FileSystem } from 'cursor-rules-manager';
+
+// Create a file system handler
+const fs = new FileSystem({
+  baseDir: process.cwd(),
+});
+
+// Read a file
+const content = await fs.readFile('config/project.yaml');
+
+// Write a file
+await fs.writeFile('output/rules.mdc', content);
+
+// Watch for changes
+const watcher = await fs.watch('config', (event, file) => {
+  console.log(`${file} changed`);
+});
+
+// Stop watching
+await watcher.stop();
+```
+
+### 3.7 Event System
+
+The API includes an event system for monitoring operations:
+
+```typescript
+import { Builder, Events } from 'cursor-rules-manager';
+
+const builder = new Builder();
+
+// Listen for build events
+builder.on(Events.BUILD_STARTED, (project) => {
+  console.log(`Build started for ${project.name}`);
+});
+
+builder.on(Events.BUILD_COMPLETED, (project, result) => {
+  console.log(`Build completed for ${project.name}`);
+});
+
+builder.on(Events.BUILD_ERROR, (project, error) => {
+  console.error(`Build error for ${project.name}:`, error);
+});
+```
+
+### 3.8 Error Handling
+
+The API uses a consistent error handling approach:
+
+```typescript
+import { Builder, CursorRulesError } from 'cursor-rules-manager';
+
+try {
+  const builder = new Builder();
+  await builder.buildProject('my-project');
+} catch (error) {
+  if (error instanceof CursorRulesError) {
+    // Handle known error types
+    console.error(`Error: ${error.message}`);
+    console.error(`Error code: ${error.code}`);
+    console.error(`Error context:`, error.context);
+  } else {
+    // Handle unexpected errors
+    console.error('Unexpected error:', error);
+  }
+}
+```
+
+### 3.9 Logging
+
+The API provides a configurable logging system:
+
+```typescript
+import { Logger } from 'cursor-rules-manager';
+
+// Configure logger
+Logger.configure({
+  level: 'info',        // 'error', 'warn', 'info', 'debug', 'trace'
+  format: 'json',       // 'text', 'json'
+  destination: 'file',  // 'console', 'file'
+  file: 'logs/app.log', // For file destination
+});
+
+// Use logger
+Logger.info('Building project', { project: 'my-project' });
+Logger.error('Build failed', { project: 'my-project', error: 'File not found' });
+
+// Get a scoped logger
+const projectLogger = Logger.scope('project');
+projectLogger.info('Project created', { name: 'my-project' });
+```
+
+## 4. API Integration Patterns
+
+### 4.1 Git Integration
+
+The system can integrate with Git for version control:
+
+```typescript
+import { GitIntegration } from 'cursor-rules-manager';
+
+// Create Git integration
+const git = new GitIntegration({
+  repoPath: process.cwd(),
+});
+
+// Add Git hooks
+await git.setupHooks({
+  preBuild: true,       // Run before build
+  postBuild: true,      // Run after build
+  commitMessage: true,  // Add commit message template
+});
+
+// Generate commit message
+const message = await git.generateCommitMessage({
+  project: 'my-project',
+  action: 'update',
+});
+```
+
+### 4.2 CI/CD Integration
+
+The system can be integrated into CI/CD pipelines:
+
+```typescript
+import { Builder } from 'cursor-rules-manager';
+
+// In CI environment
+const builder = new Builder({
+  ci: true,                 // CI mode
+  outputDir: 'dist',        // Output directory
+  failOnError: true,        // Fail on any error
+  reportPath: 'report.json' // Generate report
+});
+
+// Build all projects
+await builder.buildAll();
+```
+
+### 4.3 Editor Integration
+
+The system can be integrated with code editors:
+
+```typescript
+import { Project, Config } from 'cursor-rules-manager';
+
+// Editor extension API
+async function getProjectConfig(filePath) {
+  // Determine project from file path
+  const projectName = Project.findProjectForFile(filePath);
+  
+  // Get project configuration
+  const project = await Project.get(projectName);
+  const config = await Config.load(projectName);
+  
+  // Return editor-specific configuration
+  return {
+    rules: config.getRules(),
+    lintConfig: config.getLintConfig(),
+    editorSettings: config.getEditorSettings(),
+  };
+}
+```
+
+## 5. API Versioning and Evolution
+
+### 5.1 Versioning Strategy
+
+The API follows semantic versioning:
+
+- **Major version**: Breaking changes
+- **Minor version**: New features, non-breaking
+- **Patch version**: Bug fixes, non-breaking
+
+### 5.2 Deprecation Policy
+
+For API changes:
+
+1. **Deprecation Warning**: Features are marked as deprecated before removal
+2. **Deprecation Period**: Deprecated features remain for at least one major version
+3. **Migration Path**: Documentation provides clear migration path
+
+```typescript
+// Example of deprecated API
+/**
+ * @deprecated Use Project.create() instead. Will be removed in v3.0.0.
+ */
+export function createProject(options) {
+  console.warn('createProject is deprecated. Use Project.create() instead.');
+  return Project.create(options);
+}
+```
+
+### 5.3 API Documentation
+
+API documentation is generated from code comments:
+
+```typescript
+/**
+ * Creates a new project configuration.
+ * 
+ * @param options - Project creation options
+ * @param options.name - Project name
+ * @param options.type - Project type
+ * @param options.frameworks - List of frameworks
+ * @param options.team - Team name
+ * @returns The created project
+ * @throws {ValidationError} If validation fails
+ * @throws {DuplicateError} If project already exists
+ * @example
+ * ```ts
+ * const project = await Project.create({
+ *   name: 'my-project',
+ *   type: 'web_application',
+ *   frameworks: ['react', 'typescript'],
+ *   team: 'frontend-team',
+ * });
+ * ```
+ */
+static async create(options: ProjectOptions): Promise<Project> {
+  // Implementation
+}
+```
+
+## 6. Security Considerations
+
+### 6.1 File System Access
+
+The API includes security measures for file system access:
+
+```typescript
+import { FileSystem, SecurityPolicy } from 'cursor-rules-manager';
+
+// Create file system with security policy
+const fs = new FileSystem({
+  baseDir: process.cwd(),
+  security: new SecurityPolicy({
+    allowedPaths: ['config', 'templates', 'output'],
+    disallowedPatterns: ['**/.git/**', '**/node_modules/**'],
+    maxFileSize: 1024 * 1024, // 1MB
+  }),
+});
+
+// Attempts to access files outside allowed paths will fail
+try {
+  await fs.readFile('/etc/passwd');
+} catch (error) {
+  console.error('Security error:', error.message);
+}
+```
+
+### 6.2 Template Security
+
+The API includes protection against template injection:
+
+```typescript
+import { Template, TemplateSecurity } from 'cursor-rules-manager';
+
+// Create template with security policy
+const template = await Template.get('default', {
+  security: new TemplateSecurity({
+    allowedHelpers: ['if', 'each', 'with'],
+    disallowedHelpers: ['eval', 'execute'],
+    escapingEnabled: true,
+  }),
+});
+
+// Attempts to use disallowed helpers will fail
+try {
+  await template.render(config);
+} catch (error) {
+  console.error('Template security error:', error.message);
+}
+```
+
+### 6.3 API Authentication
+
+For server deployments, the API supports authentication:
+
+```typescript
+import { Server, AuthProvider } from 'cursor-rules-manager/server';
+
+// Create authentication provider
+const auth = new AuthProvider({
+  type: 'jwt',
+  secret: process.env.JWT_SECRET,
+  expiresIn: '1h',
+});
+
+// Create server with authentication
+const server = new Server({
+  auth,
+  port: 3000,
+});
+
+// Start server
+await server.start();
+```
+
+## 7. API Implementation Details
+
+### 7.1 Dependency Injection
+
+The API uses dependency injection for better testability:
+
+```typescript
+import { 
+  Project, 
+  Config, 
+  FileSystem, 
+  Template, 
+  Container 
+} from 'cursor-rules-manager';
+
+// Create container with custom implementations
+const container = new Container();
+container.register('fileSystem', new MockFileSystem());
+container.register('config', new MockConfig());
+
+// Create project with custom dependencies
+const project = new Project({
+  name: 'my-project',
+  container,
+});
+```
+
+### 7.2 Middleware System
+
+The CLI API supports middleware for extending functionality:
+
+```typescript
+import { CLI, Middleware } from 'cursor-rules-manager/cli';
+
+// Create custom middleware
+const loggingMiddleware: Middleware = (next) => async (argv) => {
+  console.log(`Running command: ${argv._[0]}`);
+  const result = await next(argv);
+  console.log(`Command completed: ${argv._[0]}`);
+  return result;
+};
+
+// Create CLI with middleware
+const cli = new CLI({
+  middleware: [loggingMiddleware],
+});
+
+// Run CLI
+await cli.run(process.argv.slice(2));
+```
+
+### 7.3 Plugin System
+
+The API supports plugins for extending functionality:
+
+```typescript
+import { 
+  Builder, 
+  Plugin, 
+  PluginContext 
+} from 'cursor-rules-manager';
+
+// Create custom plugin
+class NotificationPlugin implements Plugin {
+  constructor(private options: { url: string }) {}
+
+  async apply(context: PluginContext) {
+    context.builder.on('buildCompleted', async (project) => {
+      // Send notification
+      await fetch(this.options.url, {
+        method: 'POST',
+        body: JSON.stringify({
+          project: project.name,
+          status: 'completed',
+        }),
+      });
+    });
+  }
+}
+
+// Use plugin
+const builder = new Builder({
+  plugins: [
+    new NotificationPlugin({ url: 'https://example.com/notify' }),
+  ],
+});
+```
+
+## 8. API Testing
+
+### 8.1 Unit Testing
+
+The API is designed for comprehensive unit testing:
+
+```typescript
+import { Project } from 'cursor-rules-manager';
+import { MockFileSystem } from 'cursor-rules-manager/testing';
+
+describe('Project', () => {
+  let mockFs: MockFileSystem;
+  
+  beforeEach(() => {
+    mockFs = new MockFileSystem({
+      'config/projects/my-project.yaml': `
+        project:
+          name: my-project
+          type: web_application
+      `,
+    });
+  });
+  
+  it('should load a project', async () => {
+    const project = await Project.get('my-project', { fileSystem: mockFs });
+    expect(project.name).toBe('my-project');
+    expect(project.type).toBe('web_application');
+  });
+});
+```
+
+### 8.2 Integration Testing
+
+The API provides utilities for integration testing:
+
+```typescript
+import { TestEnvironment } from 'cursor-rules-manager/testing';
+
+describe('Builder Integration', () => {
+  let env: TestEnvironment;
+  
+  beforeEach(async () => {
+    // Create test environment with sample files
+    env = await TestEnvironment.create({
+      files: {
+        'config/projects/my-project.yaml': `
+          project:
+            name: my-project
+            type: web_application
+        `,
+        'templates/.cursor/rules/default.hbs': `# {{project.name}} Rules`,
+      },
+    });
+  });
+  
+  afterEach(async () => {
+    await env.cleanup();
+  });
+  
+  it('should build a project', async () => {
+    // Run build command
+    await env.cli.run(['build', '--project', 'my-project']);
+    
+    // Check output
+    const output = await env.readFile('output/.cursor/rules/my-project.mdc');
+    expect(output).toContain('# my-project Rules');
+  });
+});
+```
+
+## 9. CLI API Reference
+
+| Command | Subcommand | Options | Description |
+|---------|------------|---------|-------------|
+| `init` | - | `--name`, `--type`, `--frameworks`, `--team`, `--output-dir`, `--template`, `-y/--yes` | Initialize a new project |
+| `create` | `project` | `--name`, `--type`, `--frameworks`, `--team`, `--template`, `-y/--yes` | Create a new project configuration |
+| `create` | `template` | `--name`, `--base`, `--description` | Create a new template |
+| `list` | `projects` | `--team`, `--type`, `--framework`, `--format` | List projects |
+| `list` | `templates` | `--format` | List available templates |
+| `build` | - | `--project`, `--team`, `--output-dir`, `--format`, `--verbose`, `--dry-run` | Build all projects |
+| `watch` | - | `--project`, `--team`, `--output-dir`, `--format`, `--verbose` | Watch for changes and rebuild |
+| `validate` | - | `--project`, `--team`, `--fix`, `--verbose` | Validate configuration |
+| `export` | - | `--project`, `--team`, `--output`, `--format` | Export configuration |
+| `help` | `[command]` | - | Show help |
+| `version` | - | - | Show version |
+| `completion` | `[shell]` | - | Generate shell completion |
+
+## 10. Node.js API Reference
+
+| Module | Class | Methods | Description |
+|--------|-------|---------|-------------|
+| `Project` | `Project` | `create()`, `get()`, `list()`, `update()`, `delete()` | Project management |
+| `Config` | `Config` | `load()`, `validate()`, `getMerged()`, `update()`, `export()` | Configuration handling |
+| `Template` | `Template` | `list()`, `get()`, `create()`, `render()`, `renderToFile()` | Template handling |
+| `Builder` | `Builder` | `buildProject()`, `buildAll()`, `buildTeam()`, `watch()` | Build operations |
+| `FileSystem` | `FileSystem` | `readFile()`, `writeFile()`, `watch()` | File system operations |
+| `Logger` | `Logger` | `configure()`, `info()`, `error()`, `scope()` | Logging system |
+| `GitIntegration` | `GitIntegration` | `setupHooks()`, `generateCommitMessage()` | Git integration |
+| `Server` | `Server` | `start()`, `stop()` | API server |
+
+## 11. Conclusion
+
+The YAML + Templates Cursor Rules Manager provides both a comprehensive CLI API for users and a flexible Node.js API for integrations. Both APIs provide access to the same core functionality but are optimized for their respective use cases.
+
+Key API design decisions include:
+
+- **Modular Design**: Focused modules with single responsibilities
+- **Consistent Patterns**: Similar patterns across CLI and Node.js APIs
+- **Extensibility**: Plugin system and middleware for extensions
+- **Security**: Robust security measures for file access and template rendering
+- **Testing**: Comprehensive testing utilities for unit and integration tests
+
+Implementation should follow the guidelines and standards outlined in this document to ensure consistency and quality across both APIs.
