@@ -264,6 +264,49 @@ export class TaskmasterSyncTool extends BaseTool {
   }
 
   /**
+   * Validates that task references (parent and dependencies) exist in the database
+   * This helps prevent foreign key constraint failures
+   * @param task The task to validate
+   * @param existingIds Set of task IDs that already exist in the database
+   * @returns Object containing validation result and any issues found
+   */
+  private validateTaskReferences(task: Partial<TaskModel>, existingIds: Set<string>): { 
+    isValid: boolean;
+    missingParent?: string | undefined;
+    missingDependencies?: string[] | undefined;
+  } {
+    const result: { 
+      isValid: boolean;
+      missingParent?: string;
+      missingDependencies?: string[];
+    } = {
+      isValid: true
+    };
+    
+    // Check if parent exists
+    if (task.parent && !existingIds.has(task.parent)) {
+      result.isValid = false;
+      result.missingParent = task.parent;
+    }
+    
+    // Check if dependencies exist
+    if (task.dependencies && task.dependencies.length > 0) {
+      const missing: string[] = [];
+      for (const dep of task.dependencies) {
+        if (!existingIds.has(dep)) {
+          missing.push(dep);
+          result.isValid = false;
+        }
+      }
+      if (missing.length > 0) {
+        result.missingDependencies = missing;
+      }
+    }
+    
+    return result;
+  }
+
+  /**
    * Bidirectional sync between Taskmaster and the server
    */
   private async bidirectionalSync(
@@ -333,50 +376,130 @@ export class TaskmasterSyncTool extends BaseTool {
         tasksUpdatedInTaskmaster: 0,
         conflictsResolved: 0,
         tasksUnchanged: 0,
-        tasksTotal: Math.max(serverTasks.length, taskmasterTasks.length)
+        tasksTotal: Math.max(serverTasks.length, taskmasterTasks.length),
+        tasksFailed: 0,
+        tasksSkippedDueToMissingReferences: 0
       };
       
-      // First, update server tasks from Taskmaster
-      const updatedServerTasks: TaskModel[] = [];
+      // First, convert all Taskmaster tasks to server model format and organize by level
+      const tasksByLevel = new Map<number, Partial<TaskModel>[]>();
+      const taskUpdatesByLevel = new Map<number, { taskId: string, data: Partial<TaskModel> }[]>();
+      const failedTasks: { task: Partial<TaskModel>, error: any }[] = [];
+      const skippedTasks: { task: Partial<TaskModel>, reason: string }[] = [];
       
       for (const tmTask of taskmasterTasks) {
         const serverTask = serverTasksMap.get(tmTask.id.toString());
+        const serverVersion = this.convertTaskmasterTaskToModel(tmTask);
+        const level = serverVersion.level || 1; // Default to level 1 if not set
         
         if (!serverTask) {
           // Task exists in Taskmaster but not in server - add it
-          const newServerTask = this.convertTaskmasterTaskToModel(tmTask);
-          // @ts-ignore - We know the structure is compatible even if TypeScript doesn't
-          await taskStorage.createTask(newServerTask);
-          const createdTask = await taskStorage.getTaskById(tmTask.id.toString());
-          if (createdTask) {
-            updatedServerTasks.push(createdTask);
+          // Group by level for ordered processing
+          if (!tasksByLevel.has(level)) {
+            tasksByLevel.set(level, []);
           }
-          stats.tasksAddedToServer++;
+          tasksByLevel.get(level)?.push(serverVersion);
         } else {
           // Task exists in both - check for changes and conflicts
-          const serverVersion = this.convertTaskmasterTaskToModel(tmTask);
           const hasConflict = this.hasChanges(serverTask, serverVersion);
           
           if (hasConflict) {
             // Determine which version to keep
             if (forceTaskmasterAsSource || this.isTaskmasterVersionNewer(tmTask, serverTask)) {
-              // Keep Taskmaster version
-              await taskStorage.updateTask(tmTask.id.toString(), serverVersion);
-              const updatedTask = await taskStorage.getTaskById(tmTask.id.toString());
-              if (updatedTask) {
-                updatedServerTasks.push(updatedTask);
+              // Keep Taskmaster version - group updates by level
+              if (!taskUpdatesByLevel.has(level)) {
+                taskUpdatesByLevel.set(level, []);
               }
-              stats.tasksUpdatedInServer++;
+              taskUpdatesByLevel.get(level)?.push({
+                taskId: tmTask.id.toString(),
+                data: serverVersion
+              });
               stats.conflictsResolved++;
-            } else {
-              // Keep server version
-              updatedServerTasks.push(serverTask);
             }
           } else {
             // No conflict
-            updatedServerTasks.push(serverTask);
             stats.tasksUnchanged++;
           }
+        }
+      }
+      
+      // Process creates by level to ensure parent tasks exist before children
+      const updatedServerTasks: TaskModel[] = [];
+      const existingIds = new Set<string>(serverTasks.map(t => t.id)); // Start with existing server task IDs
+      const levels = Array.from(tasksByLevel.keys()).sort((a, b) => a - b);
+      
+      for (const level of levels) {
+        const tasksToCreate = tasksByLevel.get(level) || [];
+        
+        for (const task of tasksToCreate) {
+          // Validate task references before attempting to create
+          const validation = this.validateTaskReferences(task, existingIds);
+          
+          if (!validation.isValid) {
+            // Skip tasks with missing references
+            const reason = [];
+            if (validation.missingParent) {
+              reason.push(`Parent task ${validation.missingParent} not found`);
+            }
+            if (validation.missingDependencies && validation.missingDependencies.length > 0) {
+              reason.push(`Dependencies not found: ${validation.missingDependencies.join(', ')}`);
+            }
+            
+            this.logger.warn('TaskmasterSyncTool', `Skipping task ${task.id} due to missing references`, { 
+              task, 
+              validation 
+            });
+            
+            skippedTasks.push({ 
+              task, 
+              reason: reason.join('; ') 
+            });
+            
+            stats.tasksSkippedDueToMissingReferences++;
+            continue;
+          }
+          
+          try {
+            // @ts-ignore - We know the structure is compatible even if TypeScript doesn't
+            await taskStorage.createTask(task);
+            const createdTask = await taskStorage.getTaskById(task.id!);
+            if (createdTask) {
+              updatedServerTasks.push(createdTask);
+              existingIds.add(task.id!); // Add to existing IDs for subsequent validation
+              stats.tasksAddedToServer++;
+            }
+          } catch (error) {
+            // Log and collect failed tasks
+            this.logger.error('TaskmasterSyncTool', `Failed to create task ${task.id}: ${error}`, { task, error });
+            failedTasks.push({ task, error });
+            stats.tasksFailed++;
+          }
+        }
+      }
+      
+      // Process updates by level
+      for (const level of Array.from(taskUpdatesByLevel.keys()).sort((a, b) => a - b)) {
+        const updates = taskUpdatesByLevel.get(level) || [];
+        
+        for (const { taskId, data } of updates) {
+          try {
+            await taskStorage.updateTask(taskId, data);
+            const updatedTask = await taskStorage.getTaskById(taskId);
+            if (updatedTask) {
+              updatedServerTasks.push(updatedTask);
+              stats.tasksUpdatedInServer++;
+            }
+          } catch (error) {
+            this.logger.error('TaskmasterSyncTool', `Failed to update task ${taskId}: ${error}`, { taskId, data, error });
+            stats.tasksFailed++;
+          }
+        }
+      }
+      
+      // Add existing server tasks to the updated list
+      for (const serverTask of serverTasks) {
+        if (!updatedServerTasks.some(t => t.id === serverTask.id)) {
+          updatedServerTasks.push(serverTask);
         }
       }
       
@@ -416,9 +539,13 @@ export class TaskmasterSyncTool extends BaseTool {
       await fs.unlink(lockFile);
       
       return {
-        success: true,
-        message: `Bidirectional sync completed successfully`,
-        stats
+        success: stats.tasksFailed === 0,
+        message: stats.tasksFailed > 0 
+          ? `Bidirectional sync completed with ${stats.tasksFailed} failed tasks` 
+          : `Bidirectional sync completed successfully`,
+        stats,
+        failedTasks: failedTasks.length > 0 ? failedTasks.map(f => ({ id: f.task.id, error: f.error.message })) : undefined,
+        skippedTasks: skippedTasks.length > 0 ? skippedTasks : undefined
       };
     } catch (error) {
       this.logger.error('TaskmasterSyncTool', `Error in bidirectional sync: ${error}`, { error });

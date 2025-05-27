@@ -15,67 +15,69 @@ The core tool for synchronizing tasks between the server and Taskmaster has been
 - **Comprehensive status and priority mapping** between systems
 - **Smart conflict resolution** based on update timestamps
 - **Level field computation** based on task hierarchy depth (fixes the `NOT NULL constraint failed: tasks.level` error)
-- **Support for forcing Taskmaster as source of truth** in conflicts
+- **Support for forcing Taskmaster as source of truth** when conflicts arise
 - **Sync lock mechanism** to prevent concurrent syncs
-- **Error handling and retry logic**
+- **Hierarchical task processing** to ensure parent tasks exist before their children (fixes the `FOREIGN KEY constraint failed` error)
+- **Task reference validation** to prevent creation of tasks with missing parent or dependency references
+- **Improved error handling** with detailed error reporting and statistics
 
 ### 2. TaskmasterSyncService
 
 A new service that provides:
 
-- **Automatic periodic synchronization** based on configurable intervals
-- **File watching** for changes to the Taskmaster tasks file
+- **Automatic periodic synchronization** between systems
+- **File change watching** for the Taskmaster tasks file
 - **Event broadcasting** when tasks are updated from Taskmaster
 - **Retry mechanism** for failed synchronization attempts
-- **Forced sync capability** for immediate synchronization
+- **Error recovery** with configurable backoff strategy
 
 ### 3. SynchronizationService
 
-A service that provides:
+A service for broadcasting task changes:
 
-- **Event broadcasting** for task changes
-- **Handling of Taskmaster-initiated changes**
-- **Communication bridge** between different components
+- **Event-driven architecture** for real-time updates
+- **Task change notifications** for various operations (create, update, delete)
+- **Integration with both the server and Taskmaster** event systems
 
-## Fixed Issues
+## Implemented Fixes
 
-### Level Field Error
+1. **Fixed the "NOT NULL constraint failed: tasks.level" error**:
+   - Added level computation based on task ID structure (number of segments in the ID)
+   - Ensured level is always set when creating tasks from Taskmaster
 
-The system previously failed with a `NOT NULL constraint failed: tasks.level` error because:
+2. **Fixed the "FOREIGN KEY constraint failed" error**:
+   - Modified bidirectionalSync to process tasks in hierarchical order (parents before children)
+   - Added task reference validation to prevent creating tasks with missing parent or dependency references
+   - Added tracking of existing IDs to ensure references can be validated properly
+   - Implemented skipping of tasks with missing references instead of aborting the entire sync
 
-1. The database schema required a `level` field for tasks
-2. The `convertTaskmasterTaskToModel` method didn't include this field
-
-**Fix:** Added computation of the `level` field based on the task's ID structure:
-- Level is determined by counting the dot separators in the task ID + 1
-- For example:
-  - "1" → level 1 (top-level task)
-  - "1.2" → level 2 (subtask)
-  - "1.2.3" → level 3 (sub-subtask)
-
-### Other Improvements
-
-1. **TaskStorageFactory Usage:** Fixed the method call from `getAllTasks()` to `getTasks()`
-2. **Null Checks:** Added proper null checks throughout the code
-3. **Type Handling:** Improved type handling with proper TypeScript annotations
-4. **Event Integration:** Better integration with the server's event system
-
-## Testing
-
-A test script (`test-fix.js`) has been provided to verify the level field fix. It:
-
-1. Creates a sample `tasks.json` with hierarchical tasks
-2. Sets up a structure with different nesting levels
-3. Allows testing of the sync functionality with the fix in place
+3. **Fixed method call errors**:
+   - Updated calls from `getAllTasks()` to `getTasks()`
+   - Fixed usage of `taskStorageFactory.getStorageService()` instead of `getTaskStorage()`
+   - Added proper null checks throughout the code
 
 ## Usage
 
-The TaskmasterSyncService is automatically initialized when the server starts. It:
+The synchronization can be triggered through:
 
-1. Loads tasks from Taskmaster's `tasks.json` file
-2. Converts them to the server's task model format (with correct level field)
-3. Synchronizes in both directions when changes occur
-4. Handles conflicts by using timestamps to determine the most recent version
+1. **Manual synchronization** using the `sync_taskmaster` tool:
+   ```
+   // Example: Bidirectional sync with Taskmaster as source of truth
+   const result = await executeFunction('sync_taskmaster', {
+     direction: 'bidirectional',
+     forceTaskmasterAsSource: true
+   });
+   ```
+
+2. **Automatic synchronization** through the TaskmasterSyncService, which is initialized in the SSEServer.
+
+## Benefits
+
+- **Single source of truth**: Taskmaster is established as the authoritative source for task data.
+- **Real-time updates**: Changes in Taskmaster are quickly reflected in the server.
+- **Conflict resolution**: Smart handling of conflicts based on timestamps or explicit priority.
+- **Error resilience**: Robust error handling and recovery mechanisms.
+- **Hierarchical integrity**: Ensures parent-child relationships are maintained correctly.
 
 ## Configuration
 
