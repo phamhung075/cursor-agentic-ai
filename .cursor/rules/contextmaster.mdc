@@ -1,0 +1,207 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Taskmaster Context Management Rules
+
+## Overview
+When working with Taskmaster tasks in Cursor, automatically create and maintain context files to handle the 25 tool call limit efficiently.
+
+## Context File Structure
+
+### Location
+- Context files: `contexts/context_XXX.txt` (where XXX matches task number from `tasks/task_XXX.txt`)
+- Always create the `contexts/` directory if it doesn't exist
+
+### Naming Convention
+- Task file: `tasks/task_015.txt` → Context file: `contexts/context_015.txt`
+- Task file: `tasks/task_003.txt` → Context file: `contexts/context_003.txt`
+
+## Auto Context Creation Rules
+
+### When to Create/Update Context
+1. **Start of task work** - Create initial context entry
+2. **Every 5-7 tool calls** - Update context with progress
+3. **Before hitting 25 tool call limit** - Final comprehensive update
+4. **After significant milestones** - Code completion, file creation, major decisions
+5. **When encountering problems** - Document issues and solutions
+
+### Context Content Structure
+
+```
+# Context for Task XXX - [Task Title]
+**Last Updated:** [Timestamp]
+**Session:** [Session number if multiple sessions]
+**Tool Calls Used:** X/25
+
+## Current Status
+- **Phase:** [Analysis/Planning/Implementation/Testing/Complete]
+- **Progress:** [X%] - Brief description of current state
+- **Next Action:** [What needs to be done next]
+
+## What I Did
+### Session [N] - [Date/Time]
+- [Chronological list of actions taken]
+- [Files created/modified]
+- [Commands executed]
+- [Decisions made]
+
+## Code Created/Modified
+### Files Created:
+- `path/to/file1.ts` - [Brief description of purpose]
+- `path/to/file2.html` - [Brief description of purpose]
+
+### Files Modified:
+- `path/to/existing-file.ts` - [What was changed and why]
+
+### Key Code Snippets:
+```typescript
+// Brief context about this code
+[Important code that needs to be remembered]
+```
+
+## Technical Decisions Made
+- **Framework/Library Choices:** [e.g., Angular v19, Tailwind v4.0]
+- **Architecture Decisions:** [Component structure, service patterns]
+- **Implementation Approach:** [Why chosen over alternatives]
+
+## Problems Encountered & Solutions
+- **Problem:** [Description]
+  - **Solution:** [How it was resolved]
+  - **Impact:** [What changed as a result]
+
+## Dependencies & Integration
+- **Related Tasks:** [List of dependent/blocking tasks]
+- **External Dependencies:** [NPM packages, APIs, services]
+- **Integration Points:** [How this connects to other parts]
+
+## Testing Strategy
+- **Test Files:** [Location and purpose]
+- **Test Cases:** [Key scenarios covered]
+- **Manual Testing:** [Steps performed]
+
+## Next Steps Priority
+1. [Immediate next action]
+2. [Secondary priority]
+3. [Future considerations]
+
+## Notes for Continuation
+- **Current Focus:** [What the AI should focus on when resuming]
+- **Context to Remember:** [Important background info]
+- **Avoid:** [Things not to do/repeat]
+```
+
+## Implementation Rules for AI
+
+### Rule 1: Context Initialization
+When starting work on a task:
+```
+1. Check if contexts/context_XXX.txt exists
+2. If exists: Read and understand current context
+3. If not exists: Create initial context entry
+4. Update "Current Status" and "Next Action"
+```
+
+### Rule 2: Progressive Context Updates
+Every 5-7 tool calls:
+```
+1. Update "What I Did" section with recent actions
+2. Add any new files to "Code Created/Modified"
+3. Update "Tool Calls Used" counter
+4. Refresh "Next Action" if changed
+```
+
+### Rule 3: Pre-Limit Context Save
+At tool call 20-22:
+```
+1. Comprehensive update of all sections
+2. Detailed "Next Steps Priority" list
+3. Clear "Notes for Continuation" for smooth handoff
+4. Save current code state and file locations
+```
+
+### Rule 4: Session Resumption
+When resuming work (new conversation):
+```
+1. ALWAYS read the corresponding context file first
+2. Use context to understand current state
+3. Continue from "Next Action" or "Next Steps Priority"
+4. Start new session section in "What I Did"
+```
+
+## Context Quality Standards
+
+### Essential Information
+- **File paths must be complete and accurate**
+- **Code snippets must include relevant context**
+- **Decisions must include reasoning**
+- **Next steps must be actionable and specific**
+
+### Avoid in Context
+- Full code dumps (use snippets with purpose)
+- Redundant information
+- Temporary debugging info
+- Outdated status information
+
+## Cursor Integration
+
+### Before Reaching Limit
+When approaching 25 tool calls:
+```
+"I'm approaching the tool call limit. Let me update the context file with current progress and next steps for seamless continuation."
+```
+
+### Resuming Work
+When starting new session:
+```
+"I'll check the context file for this task to understand where we left off and continue efficiently."
+```
+
+### Context File Commands
+- Create context: Touch and initialize context file
+- Update context: Append new section with timestamp
+- Read context: Review current state before proceeding
+
+## Integration with Your Preferences
+
+### TypeScript Standards
+- All context references to code must specify TypeScript types
+- Never reference 'any' types in context
+- Include interface/type definitions in code snippets
+
+### Angular v19 Context
+- Context should specify Angular version and features used
+- Reference new control flow syntax (@if, @for) when applicable
+- Note Tailwind v4.0 usage in component contexts
+
+### Testing Context (Jest)
+- Always include test file locations
+- Reference `import { expect } from "@jest/globals";` usage
+- Document test coverage decisions
+
+## Folder Structure
+```
+project/
+├── tasks/
+│   ├── task_001.txt
+│   ├── task_015.txt
+│   └── task_042.txt
+├── contexts/
+│   ├── context_001.txt
+│   ├── context_015.txt
+│   └── context_042.txt
+└── [project files]
+```
+
+## Context Validation Checklist
+
+Before ending a session, verify context contains:
+- [ ] Current status and progress percentage
+- [ ] All files created/modified with paths
+- [ ] Key decisions with reasoning
+- [ ] Next actionable steps
+- [ ] Tool call count
+- [ ] Any blocking issues or dependencies
+
+This system ensures smooth handoffs between sessions and maximizes productivity despite Cursor's tool call limitations.

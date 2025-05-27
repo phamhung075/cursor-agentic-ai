@@ -1,0 +1,79 @@
+name: team-config
+level: team
+extends:
+  - organization-config
+
+# Team-specific rules that override or extend organization rules
+rules:
+  # Override the organization code-formatting rule
+  code-formatting:
+    description: "Team-specific code formatting standards"
+    globs: ["**/*.{ts,js,tsx,jsx}"]
+    alwaysApply: true
+    content:
+      # Override max_line_length
+      max_line_length: 120
+      # Add new property
+      trailing_semicolons: true
+      # Keep other properties from organization (indentation, quote_style, trailing_comma)
+
+  # Add a new team-specific rule
+  typescript-standards:
+    description: "TypeScript-specific standards for the team"
+    globs: ["**/*.ts", "**/*.tsx"]
+    alwaysApply: true
+    content:
+      strict_null_checks: true
+      no_any: true
+      prefer_interfaces: false
+      explicit_return_types: true
+
+  # Extend the organization git-practices rule
+  git-practices:
+    description: "Team-specific Git workflow practices"
+    globs: ["**/README.md", "**/*.md"]
+    alwaysApply: true  # Override to always apply
+    content:
+      # Override with a special directive
+      branch_naming:
+        strategy: replace
+        value: "team/{feature}-{description}"
+      # Add a new property
+      rebase_required: true
+
+# Team-specific templates
+templates:
+  - name: "team-rule-template"
+    description: "Team-specific template for generating rule MDC files"
+    path: "../templates/team-rule-template.hbs"
+  
+  # Override organization readme-template
+  - name: "readme-template"
+    description: "Team-specific template for generating README files"
+    path: "../templates/team-readme-template.hbs"
+
+# Team-specific defaults that override organization defaults
+defaults:
+  repository:
+    structure:
+      # Add a new directory
+      assets: "Static assets and resources"
+      # Keep other directories from organization
+  
+  # Override documentation with a special directive
+  documentation:
+    required_sections:
+      strategy: extend
+      value:
+        - "Troubleshooting" 
+        - "FAQ"
+        # This will be added to the organization's sections
+
+  # Team-specific configurations
+  team:
+    code_review:
+      required_approvals: 2
+      automatic_assignment: true
+    deployment:
+      environment: "staging"
+      automatic: true 

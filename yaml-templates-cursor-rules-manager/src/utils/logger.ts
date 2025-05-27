@@ -8,6 +8,24 @@ export type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'success' | 'none';
 /**
  * Simple logger utility
  */
+export const logger = {
+  debug: (message: string, ...args: any[]) => {
+    console.debug(`[DEBUG] ${message}`, ...args);
+  },
+  info: (message: string, ...args: any[]) => {
+    console.info(`[INFO] ${message}`, ...args);
+  },
+  warn: (message: string, ...args: any[]) => {
+    console.warn(`[WARN] ${message}`, ...args);
+  },
+  error: (message: string, ...args: any[]) => {
+    console.error(`[ERROR] ${message}`, ...args);
+  }
+};
+
+/**
+ * Simple logger utility
+ */
 class Logger {
   private level: LogLevel = 'info';
 
@@ -101,4 +119,4 @@ class Logger {
   }
 }
 
-export const logger = new Logger(); 
+export const loggerInstance = new Logger(); 

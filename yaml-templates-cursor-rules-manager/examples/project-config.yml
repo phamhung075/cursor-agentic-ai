@@ -1,0 +1,76 @@
+name: project-config
+level: project
+extends:
+  - team-config
+
+# Project-specific rules that override or extend team and organization rules
+rules:
+  # Override the team/organization code-formatting rule
+  code-formatting:
+    description: "Project-specific code formatting standards"
+    globs: ["**/*.{ts,js,tsx,jsx}"]
+    alwaysApply: true
+    content:
+      # Override indentation
+      indentation: 4
+      # Override quote_style
+      quote_style: "double"
+      # Reference another config value
+      max_line_length: ${config:team-config.rules.code-formatting.content.max_line_length}
+      # Keep other properties
+
+  # Project-specific modification to typescript-standards
+  typescript-standards:
+    description: "Project-specific TypeScript standards"
+    content:
+      # Override no_any
+      no_any: false
+      # Add new property
+      experimental_decorators: true
+      # Keep other properties
+
+  # Project-specific rule
+  react-standards:
+    description: "React-specific standards for this project"
+    globs: ["**/*.tsx", "**/*.jsx"]
+    alwaysApply: true
+    content:
+      function_components: true
+      hooks_preferred: true
+      prop_types: false
+      state_management: "context-api"
+
+# Project-specific templates
+templates:
+  # Add a project-specific template
+  - name: "project-component-template"
+    description: "Template for generating React components"
+    path: "../templates/project-component-template.hbs"
+
+# Project-specific defaults
+defaults:
+  # Override repository structure with a complete replacement
+  repository:
+    structure:
+      strategy: replace
+      value:
+        src: "Source code"
+        components: "React components"
+        hooks: "React hooks"
+        utils: "Utility functions"
+        tests: "Test files"
+        assets: "Static assets"
+        styles: "CSS/SCSS files"
+  
+  # Project-specific configuration
+  project:
+    name: "example-project"
+    version: "1.0.0"
+    description: "An example project demonstrating configuration inheritance"
+    deployment:
+      environment: "production"
+      url: "https://example.com"
+    features:
+      dark_mode: true
+      localization: true
+      analytics: true 

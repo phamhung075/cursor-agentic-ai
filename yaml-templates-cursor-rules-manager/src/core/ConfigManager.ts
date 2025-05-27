@@ -1,257 +1,185 @@
-import { existsSync, mkdirSync, readdirSync, readFileSync } from 'fs';
-import { join, resolve } from 'path';
-import { YamlParser, ParsedYaml } from './YamlParser';
+import * as yaml from 'js-yaml';
+import * as fs from 'fs';
+import * as path from 'path';
 import { logger } from '../utils/logger';
-import { configSchema, validateConfig } from '../utils/schemaValidation';
 
 /**
- * Configuration levels
+ * Configuration levels in order of increasing specificity
  */
 export enum ConfigLevel {
   Organization = 'organization',
   Team = 'team',
-  Project = 'project',
+  Project = 'project'
 }
 
 /**
- * Configuration file schema
+ * Configuration file interface
  */
 export interface ConfigFile {
-  name: string;
-  description?: string;
-  version?: string;
-  templates?: string[];
-  rules?: Record<string, RuleDefinition>;
-  extends?: string[];
-  level?: ConfigLevel;
+  name?: string;             // Unique identifier for the configuration
+  level?: ConfigLevel;       // Level in the hierarchy
+  extends?: string[];        // Names of other configurations this one extends
+  content: Record<string, any>; // The actual configuration content
+  filepath?: string;         // Path to the original file
 }
 
 /**
- * Rule definition schema
+ * Configuration reference interface for resolving cross-references
  */
-export interface RuleDefinition {
-  description: string;
-  globs?: string[];
-  alwaysApply?: boolean;
-  content: string | Record<string, any>;
-  template?: string;
+export interface ConfigReference {
+  configName: string;        // Name of the referenced configuration
+  path: string[];            // Path to the referenced property
 }
 
 /**
- * ConfigManager class for managing YAML configurations
+ * Manager for loading and accessing configuration files
  */
 export class ConfigManager {
-  private configDir: string;
   private configs: Map<string, ConfigFile> = new Map();
-  private mergedConfigs: Map<string, ConfigFile> = new Map();
-  private references: Map<string, any> = new Map();
-  private loadErrors: Map<string, string[]> = new Map();
+  private configDir: string;
 
   /**
-   * Create a new ConfigManager instance
+   * Create a new ConfigManager
    * @param configDir - Directory containing configuration files
    */
   constructor(configDir: string) {
-    this.configDir = resolve(configDir);
-    
-    if (!existsSync(this.configDir)) {
-      logger.info(`Config directory not found, creating: ${this.configDir}`);
-      mkdirSync(this.configDir, { recursive: true });
-    }
+    this.configDir = configDir;
   }
 
   /**
-   * Load all configuration files from the config directory
+   * Load all configuration files from the configured directory
    */
-  public loadConfigurations(): void {
-    try {
-      // Get all YAML files in the config directory
-      const files = readdirSync(this.configDir).filter(file => 
-        file.endsWith('.yaml') || file.endsWith('.yml')
-      );
+  public loadAllConfigs(): void {
+    if (!fs.existsSync(this.configDir)) {
+      logger.warn(`Config directory ${this.configDir} does not exist`);
+      return;
+    }
 
-      logger.info(`Found ${files.length} configuration files in ${this.configDir}`);
+    const files = fs.readdirSync(this.configDir)
+      .filter(file => file.endsWith('.yml') || file.endsWith('.yaml'));
 
-      // Parse each configuration file
-      for (const file of files) {
-        const filePath = join(this.configDir, file);
-        try {
-          // Parse with reference resolution
-          const parsed = YamlParser.parseFileWithReferences<ConfigFile>(filePath);
-          const config = parsed.data;
-          
-          // Add references to the global references map
-          parsed.references.forEach((value, key) => {
-            this.references.set(key, value);
-          });
-          
-          // Validate the configuration
-          const errors = validateConfig(config);
-          if (errors.length > 0) {
-            this.loadErrors.set(file, errors);
-            logger.warn(`Configuration file validation errors in ${file}:`);
-            errors.forEach(error => logger.warn(`  - ${error}`));
-            continue;
-          }
-          
-          if (!config.name) {
-            logger.warn(`Configuration file is missing 'name' field: ${filePath}`);
-            continue;
-          }
-
+    for (const file of files) {
+      try {
+        const filepath = path.join(this.configDir, file);
+        const config = this.loadConfigFile(filepath);
+        if (config && config.name) {
           this.configs.set(config.name, config);
-          logger.debug(`Loaded configuration: ${config.name}`);
-        } catch (error) {
-          logger.error(`Failed to load configuration file: ${filePath}`, error as Error);
-          this.loadErrors.set(file, [(error as Error).message]);
         }
+      } catch (error) {
+        logger.error(`Error loading config file ${file}:`, error);
       }
-
-      // Merge configurations based on 'extends' field
-      this.mergeConfigurations();
-    } catch (error) {
-      logger.error('Failed to load configurations', error as Error);
-      throw error;
     }
   }
 
   /**
-   * Get validation errors for configurations
-   * @returns Map of file names to error arrays
+   * Load a specific configuration file
+   * @param filepath - Path to the configuration file
+   * @returns The loaded configuration
    */
-  public getValidationErrors(): Map<string, string[]> {
-    return new Map(this.loadErrors);
-  }
-
-  /**
-   * Merge configurations based on the 'extends' field
-   */
-  private mergeConfigurations(): void {
-    for (const [name, config] of this.configs) {
-      if (!config.extends || config.extends.length === 0) {
-        // No extends, just use the config as is
-        this.mergedConfigs.set(name, { ...config });
-        continue;
-      }
-
-      // Start with base config
-      const mergedConfig: ConfigFile = { ...config };
+  public loadConfigFile(filepath: string): ConfigFile | null {
+    try {
+      const content = fs.readFileSync(filepath, 'utf8');
+      const parsed = yaml.load(content) as Record<string, any>;
       
-      // Process extends in order (later ones override earlier ones)
-      for (const extendName of config.extends) {
-        const extendConfig = this.configs.get(extendName);
-        if (!extendConfig) {
-          logger.warn(`Configuration '${name}' extends non-existent config '${extendName}'`);
-          continue;
-        }
-
-        // Merge rules
-        if (extendConfig.rules) {
-          if (!mergedConfig.rules) {
-            mergedConfig.rules = {};
-          }
-          
-          // First, copy all rules from the extended config
-          for (const [ruleName, rule] of Object.entries(extendConfig.rules)) {
-            // Only add if not already present in the current config
-            if (!mergedConfig.rules[ruleName]) {
-              mergedConfig.rules[ruleName] = { ...rule };
-            }
-          }
-          
-          // Then, overlay with the current config's rules
-          for (const [ruleName, rule] of Object.entries(config.rules || {})) {
-            mergedConfig.rules[ruleName] = { ...rule };
-          }
-        }
-
-        // Merge templates
-        if (extendConfig.templates) {
-          if (!mergedConfig.templates) {
-            mergedConfig.templates = [];
-          }
-          
-          // Add templates from the extended config that don't already exist
-          for (const template of extendConfig.templates) {
-            if (!mergedConfig.templates.includes(template)) {
-              mergedConfig.templates.push(template);
-            }
-          }
-        }
-      }
-
-      this.mergedConfigs.set(name, mergedConfig);
-      logger.debug(`Merged configuration: ${name}`);
-    }
-  }
-
-  /**
-   * Resolve references in all configurations
-   */
-  public resolveReferences(): void {
-    for (const [name, config] of this.mergedConfigs) {
-      const resolvedConfig = YamlParser.resolveReferences(config, this.references);
-      this.mergedConfigs.set(name, resolvedConfig);
+      // Extract metadata
+      const name = parsed.name;
+      const level = parsed.level as ConfigLevel;
+      const extends_ = parsed.extends || [];
+      
+      // Remove metadata from content
+      const { name: _, level: __, extends: ___, ...configContent } = parsed;
+      
+      return {
+        name,
+        level,
+        extends: Array.isArray(extends_) ? extends_ : [extends_],
+        content: configContent,
+        filepath
+      };
+    } catch (error) {
+      logger.error(`Error parsing config file ${filepath}:`, error);
+      return null;
     }
   }
 
   /**
    * Get a configuration by name
    * @param name - Configuration name
-   * @returns Configuration file or undefined if not found
+   * @returns The configuration or undefined if not found
    */
   public getConfig(name: string): ConfigFile | undefined {
-    return this.mergedConfigs.get(name);
+    return this.configs.get(name);
   }
 
   /**
-   * Get all configuration names
-   * @returns Array of configuration names
-   */
-  public getConfigNames(): string[] {
-    return Array.from(this.mergedConfigs.keys());
-  }
-
-  /**
-   * Get all configurations
-   * @returns Map of configurations
+   * Get all loaded configurations
+   * @returns Map of configurations by name
    */
   public getAllConfigs(): Map<string, ConfigFile> {
-    return new Map(this.mergedConfigs);
+    return this.configs;
   }
 
   /**
-   * Get all raw (unmerged) configurations
-   * @returns Map of raw configurations
+   * Add or update a configuration
+   * @param config - Configuration to add or update
    */
-  public getRawConfigs(): Map<string, ConfigFile> {
-    return new Map(this.configs);
-  }
-
-  /**
-   * Save a configuration to a file
-   * @param config - Configuration to save
-   */
-  public saveConfig(config: ConfigFile): void {
+  public setConfig(config: ConfigFile): void {
     if (!config.name) {
       throw new Error('Configuration must have a name');
     }
+    this.configs.set(config.name, config);
+  }
 
-    // Validate the configuration
-    const errors = validateConfig(config);
-    if (errors.length > 0) {
-      throw new Error(`Configuration validation errors:\n${errors.join('\n')}`);
+  /**
+   * Check if a configuration exists
+   * @param name - Configuration name
+   * @returns Whether the configuration exists
+   */
+  public hasConfig(name: string): boolean {
+    return this.configs.has(name);
+  }
+
+  /**
+   * Save a configuration to disk
+   * @param name - Configuration name
+   * @param overwrite - Whether to overwrite existing files
+   * @returns Path to the saved file
+   */
+  public saveConfig(name: string, overwrite = false): string | null {
+    const config = this.configs.get(name);
+    if (!config) {
+      logger.error(`Config ${name} not found`);
+      return null;
     }
 
-    const filePath = join(this.configDir, `${config.name}.yaml`);
-    YamlParser.saveToFile(config, filePath);
-    
-    // Update internal maps
-    this.configs.set(config.name, { ...config });
-    
-    // Re-merge configurations
-    this.mergeConfigurations();
-    
-    logger.info(`Saved configuration: ${config.name}`);
+    let filepath = config.filepath;
+    if (!filepath) {
+      // Create a default filepath if none exists
+      filepath = path.join(this.configDir, `${name}.yml`);
+      config.filepath = filepath;
+    }
+
+    if (!overwrite && fs.existsSync(filepath)) {
+      logger.error(`File ${filepath} already exists and overwrite=false`);
+      return null;
+    }
+
+    // Prepare the content to save
+    const content = {
+      name: config.name,
+      level: config.level,
+      extends: config.extends && config.extends.length > 0 ? config.extends : undefined,
+      ...config.content
+    };
+
+    // Ensure the directory exists
+    const dir = path.dirname(filepath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+
+    // Save the file
+    fs.writeFileSync(filepath, yaml.dump(content));
+    return filepath;
   }
 } 

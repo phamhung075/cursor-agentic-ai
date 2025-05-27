@@ -206,4 +206,16 @@ program.parse();
 // If no arguments, show help
 if (!process.argv.slice(2).length) {
   program.outputHelp();
-} 
+}
+
+// Export core classes
+export { ConfigurationInheritanceSystem, ConfigInheritanceOptions } from './core/ConfigurationInheritanceSystem';
+export { ConfigManager, ConfigFile, ConfigLevel, ConfigReference } from './core/ConfigManager';
+export { InheritanceModel, MergeStrategy, OverrideDirective } from './core/InheritanceModel';
+export { ConfigurationMerger } from './core/ConfigurationMerger';
+export { ReferenceResolver } from './core/ReferenceResolver';
+export { ConflictResolver, ConflictType, ResolutionStrategy, ConfigConflict, ConflictResolutionFn } from './core/ConflictResolver';
+export { ValidationLayer, ValidationError, ValidationResult, SchemaValidator } from './core/ValidationLayer';
+
+// Export utils
+export { logger } from './utils/logger'; 
