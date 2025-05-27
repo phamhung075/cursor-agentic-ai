@@ -585,9 +585,18 @@ export class TaskmasterSyncTool extends BaseTool {
       const tasksData = JSON.parse(fileContent);
       
       // Return the tasks array or empty array if not found
-      return Array.isArray(tasksData) ? tasksData : [];
+      // Handle both formats: direct array or { tasks: [...] }
+      if (Array.isArray(tasksData)) {
+        return tasksData;
+      } else if (tasksData && Array.isArray(tasksData.tasks)) {
+        return tasksData.tasks;
+      } else {
+        this.logger.warn('TaskmasterSyncTool', `Invalid tasks format in ${filePath}`, { tasksData });
+        return [];
+      }
     } catch (error) {
       // If file doesn't exist or can't be read, return empty array
+      this.logger.error('TaskmasterSyncTool', `Error reading tasks file: ${error}`, { error, filePath });
       return [];
     }
   }
@@ -607,8 +616,9 @@ export class TaskmasterSyncTool extends BaseTool {
     const targetDir = path.dirname(filePath);
     await fs.mkdir(targetDir, { recursive: true });
     
-    // Write tasks to file
-    await fs.writeFile(filePath, JSON.stringify(tasks, null, 2), 'utf-8');
+    // Write tasks to file in the { tasks: [...] } format
+    const tasksObject = { tasks };
+    await fs.writeFile(filePath, JSON.stringify(tasksObject, null, 2), 'utf-8');
   }
 
   /**
