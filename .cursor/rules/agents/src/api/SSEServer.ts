@@ -21,6 +21,7 @@ import { ToolManager } from './tools';
 import { TaskmasterSyncService } from '../core/tasks/TaskmasterSyncService';
 import { TaskManager } from '../core/tasks/TaskManager';
 import { SynchronizationService } from '../core/tasks/SynchronizationService';
+import taskStorageFactory from '../core/tasks/TaskStorageFactory';
 
 // Load environment variables
 dotenv.config();
@@ -136,7 +137,7 @@ class MCPSSEServer {
 				});
 			});
 
-			this.server.listen(this.port, () => {
+			this.server.listen(this.port, async () => {
 				const localIPs = this.getLocalIPs();
 
 				consoleLogger.info('MCP-SSE', `🚀 MCP Inspector v0.13.0 Compatible SSE Server running on port ${this.port}`);
@@ -187,12 +188,18 @@ class MCPSSEServer {
 				process.on('SIGTERM', this.handleProcessTermination.bind(this));
 				process.on('SIGQUIT', this.handleProcessTermination.bind(this));
 
-				// Start the Taskmaster sync service
-				this.taskmasterSyncService.start().then(() => {
+				// Initialize the task storage factory before starting Taskmaster sync
+				try {
+					// Initialize the task storage with default options
+					await taskStorageFactory.initialize();
+					consoleLogger.info('MCP-SSE', '💾 Task storage initialized successfully');
+					
+					// Start the Taskmaster sync service
+					await this.taskmasterSyncService.start();
 					consoleLogger.info('MCP-SSE', '🔄 Taskmaster sync service started successfully');
-				}).catch(error => {
-					consoleLogger.error('MCP-SSE', 'Failed to start Taskmaster sync service', { error });
-				});
+				} catch (error) {
+					consoleLogger.error('MCP-SSE', 'Failed to initialize task storage or start Taskmaster sync service', { error });
+				}
 
 				resolve();
 			});
