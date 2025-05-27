@@ -22,4 +22,5 @@ export { DeleteTaskTool } from './DeleteTaskTool';
 export { BulkUpdateTaskTool } from './BulkUpdateTaskTool';
 export { TaskHierarchyTool } from './TaskHierarchyTool';
 export { DecomposeTaskTool } from './DecomposeTaskTool';
+export { TaskmasterSyncTool } from './TaskmasterSyncTool';
 // Additional tools will be added here as they are implemented 

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { BaseTool } from './BaseTool';
-import { ITool, IToolSchema } from './ITool';
+import { ITool } from './ITool';
 import { Logger } from '../../types/LogTypes';
 import { 
   CreateTaskTool, 
@@ -11,7 +11,8 @@ import {
   DeleteTaskTool,
   BulkUpdateTaskTool,
   TaskHierarchyTool,
-  DecomposeTaskTool
+  DecomposeTaskTool,
+  TaskmasterSyncTool
 } from './index';
 
 /**
@@ -102,6 +103,7 @@ export class ToolManager {
       this.registerToolClass(BulkUpdateTaskTool);
       this.registerToolClass(TaskHierarchyTool);
       this.registerToolClass(DecomposeTaskTool);
+      this.registerToolClass(TaskmasterSyncTool);
 
       // If we have a tools directory, try to load additional tools from there
       if (toolsDir && fs.existsSync(toolsDir)) {
