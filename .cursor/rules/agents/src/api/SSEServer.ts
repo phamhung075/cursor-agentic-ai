@@ -137,6 +137,23 @@ class MCPSSEServer {
 				consoleLogger.info('MCP-SSE', `   npx @modelcontextprotocol/inspector`);
 				consoleLogger.info('MCP-SSE', `   Then connect to: http://localhost:${this.port}/sse`);
 
+				// Display configuration guide
+				consoleLogger.info('MCP-SSE', `\n📚 === CONFIGURATION GUIDE === 📚`);
+				consoleLogger.info('MCP-SSE', `🔧 How to configure the AI Agents Server:`);
+				consoleLogger.info('MCP-SSE', `   1. Server configuration: Edit '.cursor/mcp.json' to set API keys and server options`);
+				consoleLogger.info('MCP-SSE', `   2. Task storage: Data is saved to '.cursor/rules/agents/_store/tasks.db' by default`);
+				consoleLogger.info('MCP-SSE', `\n📂 Important Paths:`);
+				consoleLogger.info('MCP-SSE', `   - Config: .cursor/mcp.json`);
+				consoleLogger.info('MCP-SSE', `   - Rules: .cursor/rules/*.mdc`);
+				consoleLogger.info('MCP-SSE', `   - Storage: .cursor/rules/agents/_store/`);
+				consoleLogger.info('MCP-SSE', `   - Workflows: .cursor/rules/agents/workflows/`);
+				consoleLogger.info('MCP-SSE', `\n🛠️ Environment Variables (can be set in .env file):`);
+				consoleLogger.info('MCP-SSE', `   - STORAGE_TYPE: 'sqlite' (default) or 'memory'`);
+				consoleLogger.info('MCP-SSE', `   - SQLITE_DB_PATH: Path to SQLite database`);
+				consoleLogger.info('MCP-SSE', `   - LOG_LEVEL: 'info' (default), 'debug', 'warn', or 'error'`);
+				consoleLogger.info('MCP-SSE', `\n💡 For more detailed documentation, visit the project README`);
+				consoleLogger.info('MCP-SSE', `📚 === END GUIDE === 📚\n`);
+
 				// Set up periodic cleanup of stale sessions
 				const cleanupInterval = setInterval(() => {
 					const now = new Date();
