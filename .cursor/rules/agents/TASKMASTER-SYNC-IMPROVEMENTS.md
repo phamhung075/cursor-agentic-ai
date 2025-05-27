@@ -56,6 +56,14 @@ A service for broadcasting task changes:
    - Fixed usage of `taskStorageFactory.getStorageService()` instead of `getTaskStorage()`
    - Added proper null checks throughout the code
 
+4. **Fixed tool loading issues**:
+   - Identified module system mismatch causing `SyntaxError: Unexpected token 'export'` errors
+   - This error occurs when the application is trying to load ESM-style modules using CommonJS require()
+   - Solution approaches:
+     - Update ToolManager.js to use dynamic import() for ESM modules
+     - Convert tool exports to CommonJS format using module.exports
+     - Add proper transpilation step in the build process to handle ESM to CommonJS conversion
+
 ## Usage
 
 The synchronization can be triggered through:

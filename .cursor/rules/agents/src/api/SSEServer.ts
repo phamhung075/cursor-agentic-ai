@@ -5,7 +5,7 @@
  * Compatible with MCP Inspector v0.13.0 and follows JSON-RPC 2.0 protocol
  */
 
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import http from 'http';
 import { networkInterfaces } from 'os';
@@ -22,6 +22,10 @@ import { TaskmasterSyncService } from '../core/tasks/TaskmasterSyncService';
 import { TaskManager } from '../core/tasks/TaskManager';
 import { SynchronizationService } from '../core/tasks/SynchronizationService';
 import taskStorageFactory from '../core/tasks/TaskStorageFactory';
+import { Server as SocketIOServer } from 'socket.io';
+import bodyParser from 'body-parser';
+import { v4 as uuidv4 } from 'uuid';
+import { WebSocketSession } from '../types/RealTimeTypes';
 
 // Load environment variables
 dotenv.config();
@@ -33,17 +37,19 @@ dotenv.config();
  * implementing the Model Context Protocol
  */
 class MCPSSEServer {
-	private app: express.Express;
-	private server: http.Server | null = null;
-	private port: number = 3233;
+	private app: express.Application;
+	private server: http.Server;
+	private io: SocketIOServer;
+	private port: number;
 	private intervalHandlers: NodeJS.Timeout[] = [];
 	private isShuttingDown: boolean = false;
 	private mcpService: MCPService;
 	private mcpController: MCPController;
 	private toolManager: ToolManager;
-	private taskmasterSyncService: TaskmasterSyncService;
+	private taskmasterSyncService: TaskmasterSyncService | null = null;
 	private taskManager: TaskManager;
 	private synchronizationService: SynchronizationService;
+	private sessions: Map<string, WebSocketSession> = new Map();
 
 	constructor(port?: number) {
 		this.port = port || 3233;
@@ -53,16 +59,18 @@ class MCPSSEServer {
 		this.toolManager = new ToolManager(consoleLogger);
 		this.mcpService = new MCPService(consoleLogger, this.toolManager);
 		this.mcpController = new MCPController(this.mcpService);
-		this.taskmasterSyncService = new TaskmasterSyncService({
-			logger: consoleLogger,
-			syncInterval: 30000 // Sync every 30 seconds
-		});
 		
 		this.setupMiddleware();
 		this.setupRoutes();
 		this.setupEventListeners();
 		
 		this.server = http.createServer(this.app);
+		this.io = new SocketIOServer(this.server, {
+			cors: {
+				origin: '*',
+				methods: ['GET', 'POST']
+			}
+		});
 		consoleLogger.info('MCP-SSE', `Server created on port: ${this.port}`);
 	}
 
@@ -81,6 +89,48 @@ class MCPSSEServer {
 		// Mount MCP router
 		const mcpRouter = createMCPRouter({ mcpController: this.mcpController });
 		this.app.use('/', mcpRouter);
+
+		// Health check endpoint
+		this.app.get('/health', (req: Request, res: Response) => {
+			res.json({ status: 'ok' });
+		});
+
+		// SSE endpoint
+		this.app.get('/events', (req: Request, res: Response) => {
+			const sessionId = uuidv4();
+
+			res.setHeader('Content-Type', 'text/event-stream');
+			res.setHeader('Cache-Control', 'no-cache');
+			res.setHeader('Connection', 'keep-alive');
+
+			// Send initial connection message
+			res.write(`data: ${JSON.stringify({ type: 'connection', id: sessionId })}\n\n`);
+
+			// Store the session
+			this.sessions.set(sessionId, {
+				id: sessionId,
+				response: res,
+				lastActivity: Date.now(),
+				subscriptions: []
+			});
+
+			// Handle client disconnect
+			req.on('close', () => {
+				consoleLogger.info('MCP-SSE', `Client disconnected: ${sessionId}`);
+				this.sessions.delete(sessionId);
+			});
+		});
+
+		// MCP endpoint
+		this.app.post('/mcp', async (req: Request, res: Response) => {
+			try {
+				const result = await this.mcpService.processRequest(req.body);
+				res.json(result);
+			} catch (error) {
+				consoleLogger.error('MCP-SSE', `Error processing MCP request: ${error}`, { error });
+				res.status(500).json({ error: 'Internal server error' });
+			}
+		});
 	}
 
 	private async isPortAvailable(port: number): Promise<boolean> {
@@ -110,6 +160,38 @@ class MCPSSEServer {
 		}
 
 		return addresses;
+	}
+
+	/**
+	 * Initialize and start the Taskmaster sync service
+	 */
+	private async initializeTaskmasterSync(): Promise<void> {
+		try {
+			// Create the Taskmaster sync service
+			this.taskmasterSyncService = new TaskmasterSyncService({
+				logger: consoleLogger,
+				syncInterval: 60000, // Sync every minute
+				taskmasterFile: path.join(process.cwd(), 'tasks', 'tasks.json'),
+				forceTaskmasterAsSource: true,
+				watchFile: true
+			});
+			
+			// Register event listeners
+			this.taskmasterSyncService.on('syncCompleted', (result) => {
+				consoleLogger.info('MCP-SSE', 'Taskmaster sync completed', result);
+			});
+			
+			this.taskmasterSyncService.on('syncError', (error) => {
+				consoleLogger.error('MCP-SSE', 'Taskmaster sync error', { error });
+			});
+			
+			// Start the service
+			await this.taskmasterSyncService.start();
+			
+			consoleLogger.info('MCP-SSE', 'Taskmaster sync service initialized and started');
+		} catch (error) {
+			consoleLogger.error('MCP-SSE', 'Failed to initialize Taskmaster sync service', { error });
+		}
 	}
 
 	public async start(): Promise<void> {
@@ -194,14 +276,14 @@ class MCPSSEServer {
 					await taskStorageFactory.initialize();
 					consoleLogger.info('MCP-SSE', '💾 Task storage initialized successfully');
 					
-					// Start the Taskmaster sync service
-					await this.taskmasterSyncService.start();
-					consoleLogger.info('MCP-SSE', '🔄 Taskmaster sync service started successfully');
+					// Initialize and start the Taskmaster sync service
+					await this.initializeTaskmasterSync();
+					
+					resolve();
 				} catch (error) {
-					consoleLogger.error('MCP-SSE', 'Failed to initialize task storage or start Taskmaster sync service', { error });
+					consoleLogger.error('MCP-SSE', 'Failed to initialize task storage', { error });
+					resolve();
 				}
-
-				resolve();
 			});
 		});
 	}
@@ -212,7 +294,7 @@ class MCPSSEServer {
 	private async loadAndDisplayTools(): Promise<void> {
 		try {
 			// Load all tools
-			const toolsDir = path.join(__dirname, '..', 'tools');
+			const toolsDir = path.join(__dirname, 'tools');
 			const count = await this.toolManager.loadAllTools(toolsDir);
 			
 			consoleLogger.info('MCP-SSE', `\n🧰 === REGISTERED TOOLS === 🧰`);
@@ -242,65 +324,44 @@ class MCPSSEServer {
 		}
 
 		this.isShuttingDown = true;
-		consoleLogger.info('MCP-SSE', '🛑 Shutting down MCP SSE Server...');
+		consoleLogger.info('MCP-SSE', 'Shutting down server...');
+
+		// Stop the Taskmaster sync service if it's running
+		if (this.taskmasterSyncService) {
+			try {
+				this.taskmasterSyncService.stop();
+				consoleLogger.info('MCP-SSE', 'Taskmaster sync service stopped');
+			} catch (error) {
+				consoleLogger.error('MCP-SSE', 'Error stopping Taskmaster sync service', { error });
+			}
+		}
 
 		// Clear all intervals
-		this.intervalHandlers.forEach(clearInterval);
+		for (const handler of this.intervalHandlers) {
+			clearInterval(handler);
+		}
 		this.intervalHandlers = [];
 
-		// Remove signal handlers
+		// Remove process signal handlers
 		process.removeListener('SIGINT', this.handleProcessTermination);
 		process.removeListener('SIGTERM', this.handleProcessTermination);
 		process.removeListener('SIGQUIT', this.handleProcessTermination);
 
-		// Stop the Taskmaster sync service
-		this.taskmasterSyncService.stop();
-		consoleLogger.info('MCP-SSE', '🔄 Taskmaster sync service stopped');
-
-		return new Promise((resolve, reject) => {
-			// Notify all sessions we're shutting down
-			const sessions = this.mcpService.getAllSessions();
-			for (const [sessionId, session] of sessions.entries()) {
-				try {
-					// Use the controller to send the message
-					session.response.write(`event: message\ndata: ${JSON.stringify({
-							jsonrpc: '2.0',
-							method: 'notifications/cancelled',
-							params: { reason: 'Server shutting down' }
-					})}\n\n`);
-					session.response.end();
-				} catch (error: unknown) {
-					// Ignore errors during shutdown
-				}
-			}
-
-			// Clear all sessions
-			sessions.clear();
-
-			if (this.server) {
-				const forceShutdownTimeout = setTimeout(() => {
-					consoleLogger.warn('MCP-SSE', 'Force closing server after timeout');
-					resolve();
-				}, 3000);
-
-				this.server.close((err?: Error) => {
-					clearTimeout(forceShutdownTimeout);
-
+		// Close the server
+		if (this.server) {
+			return new Promise((resolve, reject) => {
+				this.server.close((err) => {
 					if (err) {
-						consoleLogger.error('MCP-SSE', 'Error closing server', { error: err.message });
+						consoleLogger.error('MCP-SSE', 'Error closing server', { error: err });
 						reject(err);
-						return;
+					} else {
+						consoleLogger.info('MCP-SSE', 'Server closed successfully');
+						this.isShuttingDown = false;
+						resolve();
 					}
-
-					consoleLogger.info('MCP-SSE', '✅ Server stopped gracefully');
-					this.isShuttingDown = false;
-					resolve();
 				});
-			} else {
-				this.isShuttingDown = false;
-				resolve();
-			}
-		});
+			});
+		}
 	}
 
 	/**
@@ -328,6 +389,37 @@ class MCPSSEServer {
 
 		this.taskmasterSyncService.on('syncError', (error) => {
 			consoleLogger.error('MCP-SSE', 'Taskmaster sync error', { error });
+		});
+	}
+
+	/**
+	 * Setup Socket.IO for real-time communication
+	 */
+	private setupSocketIO(): void {
+		this.io.on('connection', (socket) => {
+			const sessionId = socket.id;
+			consoleLogger.info('MCP-SSE', `Socket.IO client connected: ${sessionId}`);
+
+			// Add subscription handlers
+			socket.on('subscribe_tools', () => {
+				socket.join('tools');
+				consoleLogger.info('MCP-SSE', `Client ${sessionId} subscribed to tools`);
+			});
+
+			socket.on('subscribe_tasks', (data) => {
+				socket.join('tasks');
+				consoleLogger.info('MCP-SSE', `Client ${sessionId} subscribed to tasks`);
+			});
+
+			socket.on('subscribe_automation', (data) => {
+				socket.join('automation');
+				consoleLogger.info('MCP-SSE', `Client ${sessionId} subscribed to automation`);
+			});
+
+			// Handle client disconnect
+			socket.on('disconnect', () => {
+				consoleLogger.info('MCP-SSE', `Socket.IO client disconnected: ${sessionId}`);
+			});
 		});
 	}
 }

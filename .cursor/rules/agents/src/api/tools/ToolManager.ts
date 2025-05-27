@@ -88,6 +88,64 @@ export class ToolManager {
   }
 
   /**
+   * Safely try to load a module, handling both ESM and CommonJS formats
+   * @param toolPath Path to the tool file
+   * @returns The loaded module
+   */
+  private async safeImportModule(toolPath: string): Promise<any> {
+    try {
+      // First try ESM dynamic import
+      return await import(toolPath);
+    } catch (esmError) {
+      try {
+        // If ESM fails, try CommonJS require
+        // @ts-ignore - Using require dynamically
+        return require(toolPath);
+      } catch (cjsError) {
+        // Convert the .ts extension to .js for compiled files
+        const jsPath = toolPath.replace(/\.ts$/, '.js');
+        try {
+          // Try ESM with .js extension
+          return await import(jsPath);
+        } catch (jsEsmError) {
+          try {
+            // Try CommonJS with .js extension
+            // @ts-ignore - Using require dynamically
+            return require(jsPath);
+          } catch (jsCjsError) {
+            // If all attempts fail, throw the original error
+            throw esmError;
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Extract tool classes from a module
+   * @param module The loaded module
+   * @returns Array of tool classes found in the module
+   */
+  private extractToolClasses(module: any): any[] {
+    const toolClasses: any[] = [];
+    
+    // Handle CommonJS default export
+    if (module.default && typeof module.default === 'function' && 
+        module.default.prototype instanceof BaseTool) {
+      toolClasses.push(module.default);
+    }
+    
+    // Handle ESM named exports and CommonJS exports
+    Object.values(module).forEach(item => {
+      if (typeof item === 'function' && item.prototype instanceof BaseTool) {
+        toolClasses.push(item);
+      }
+    });
+    
+    return toolClasses;
+  }
+
+  /**
    * Load all tools from the tools directory
    * @param toolsDir Optional path to the tools directory. If not provided, uses the current directory.
    * @returns The number of tools loaded
@@ -109,7 +167,11 @@ export class ToolManager {
       if (toolsDir && fs.existsSync(toolsDir)) {
         // Read all TypeScript files in the directory
         const files = fs.readdirSync(toolsDir)
-          .filter(file => file.endsWith('.ts') && !file.startsWith('ITool') && !file.startsWith('BaseTool') && !file.startsWith('ToolManager') && !file.startsWith('index'));
+          .filter(file => file.endsWith('.ts') && 
+                          !file.startsWith('ITool') && 
+                          !file.startsWith('BaseTool') && 
+                          !file.startsWith('ToolManager') && 
+                          !file.startsWith('index'));
 
         this.logger.info('TOOL-MANAGER', `Found ${files.length} potential tool files`);
 
@@ -117,21 +179,28 @@ export class ToolManager {
         for (const file of files) {
           try {
             // Skip the ones we've already registered manually
-            if (['CreateTaskTool.ts', 'GetTaskTool.ts', 'ListTasksTool.ts', 'UpdateTaskTool.ts', 'DeleteTaskTool.ts', 'BulkUpdateTaskTool.ts', 'TaskHierarchyTool.ts', 'DecomposeTaskTool.ts'].includes(file)) {
+            if (['CreateTaskTool.ts', 'GetTaskTool.ts', 'ListTasksTool.ts', 
+                 'UpdateTaskTool.ts', 'DeleteTaskTool.ts', 'BulkUpdateTaskTool.ts', 
+                 'TaskHierarchyTool.ts', 'DecomposeTaskTool.ts', 'TaskmasterSyncTool.ts'].includes(file)) {
               this.logger.debug('TOOL-MANAGER', `Skipping ${file} as it's already registered manually`);
               continue;
             }
 
             const toolPath = path.join(toolsDir, file);
-            const module = await import(toolPath);
-            const exportedItems = Object.values(module);
             
-            // Find any exported classes that extend BaseTool
-            for (const item of exportedItems) {
-              if (typeof item === 'function' && item.prototype instanceof BaseTool) {
-                await this.registerToolClass(item);
-                this.logger.info('TOOL-MANAGER', `Registered tool from ${file}`);
+            // Use our enhanced module loading function
+            const module = await this.safeImportModule(toolPath);
+            
+            // Extract and register tool classes
+            const toolClasses = this.extractToolClasses(module);
+            
+            if (toolClasses.length > 0) {
+              for (const ToolClass of toolClasses) {
+                await this.registerToolClass(ToolClass);
               }
+              this.logger.info('TOOL-MANAGER', `Registered ${toolClasses.length} tools from ${file}`);
+            } else {
+              this.logger.warn('TOOL-MANAGER', `No tool classes found in ${file}`);
             }
           } catch (error) {
             this.logger.error('TOOL-MANAGER', `Failed to load tool from ${file}`, { error });

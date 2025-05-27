@@ -56,6 +56,16 @@ export interface RealTimeEventMetadata {
 }
 
 /**
+ * SSE Session interface
+ */
+export interface WebSocketSession {
+  id: string;
+  response: any; // Express response object
+  lastActivity: number;
+  subscriptions: string[];
+}
+
+/**
  * Task-related real-time events
  */
 export interface TaskCreatedEvent extends RealTimeEvent {

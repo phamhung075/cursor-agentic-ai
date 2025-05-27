@@ -24,3 +24,20 @@ export { TaskHierarchyTool } from './TaskHierarchyTool';
 export { DecomposeTaskTool } from './DecomposeTaskTool';
 export { TaskmasterSyncTool } from './TaskmasterSyncTool';
 // Additional tools will be added here as they are implemented 
+
+export {
+  BaseTool,
+  ITool,
+  ToolManager,
+  
+  // Task-related tools
+  CreateTaskTool,
+  GetTaskTool,
+  ListTasksTool,
+  UpdateTaskTool,
+  DeleteTaskTool,
+  BulkUpdateTaskTool,
+  TaskHierarchyTool,
+  DecomposeTaskTool,
+  TaskmasterSyncTool
+}; 
