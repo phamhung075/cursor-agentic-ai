@@ -8,7 +8,7 @@
     },
     "research": {
       "provider": "openai",
-      "modelId": "gpt-4o-mini-search-preview",
+      "modelId": "gpt-4o-mini-search-preview", 
       "maxTokens": 8700,
       "temperature": 0.1
     },
@@ -24,7 +24,6 @@
     "debug": false,
     "defaultSubtasks": 5,
     "defaultPriority": "medium",
-    "projectName": "Task Management System",
-    "ollamaBaseURL": "http://localhost:11434/api"
+    "projectName": "Task Management System"
   }
 }
