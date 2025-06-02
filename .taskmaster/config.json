@@ -1,0 +1,29 @@
+{
+  "models": {
+    "main": {
+      "provider": "none",
+      "modelId": "openai/gpt-4o-mini",
+      "maxTokens": 12000,
+      "temperature": 0.2
+    },
+    "research": {
+      "provider": "none",
+      "modelId": "openai/gpt-4o-mini",
+      "maxTokens": 8700,
+      "temperature": 0.1
+    },
+    "fallback": {
+      "provider": "none",
+      "modelId": "openai/gpt-4o-mini",
+      "maxTokens": 8192,
+      "temperature": 0.1
+    }
+  },
+  "global": {
+    "logLevel": "info",
+    "debug": false,
+    "defaultSubtasks": 5,
+    "defaultPriority": "medium",
+    "projectName": "Task Management System"
+  }
+}

@@ -1,9 +1,0 @@
-{
-  "schema": "./src/core/database/schema.ts",
-  "out": "./drizzle",
-  "dialect": "sqlite",
-  "driver": "better-sqlite3",
-  "dbCredentials": {
-    "url": "./data/tasks.db"
-  }
-} 

@@ -1,0 +1,278 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# ✅ **1. General Structure & Naming Rules**
+
+### 📁 Folder & File Structure
+
+* All context files for AI go into the `contexts/` directory.
+* All task files for AI go into the `tasks/` directory.
+
+### 🧾 File Naming Convention
+
+| Task File            | Corresponding Context File |
+| -------------------- | -------------------------- |
+| `tasks/task_015.txt` | `contexts/context_015.txt` |
+| `tasks/task_003.txt` | `contexts/context_003.txt` |
+
+---
+
+# ⚙️ **2. When to Create or Update Context Files**
+
+### 📌 Auto Context Triggers
+
+Create or update context files at the following times:
+
+1. **Start of task work**
+2. **Every 5–7 tool calls**
+3. **Before reaching 25 tool call limit**
+4. **After major milestones** (e.g., file creation, key decisions)
+5. **When facing issues** (document problem and solution)
+
+---
+
+# 🧱 **3. Context File Format**
+
+### 🎯 Top-Level Format
+
+```
+# Context for Task XXX - [Task Title]
+**Last Updated:** [Timestamp]
+**Session:** [Session number if applicable]
+**Tool Calls Used:** X/25
+```
+
+### 🔄 Sections Explained
+
+#### ✅ Current Status
+
+* **Phase:** (Analysis / Planning / Implementation / Testing / Complete)
+* **Progress:** \[X%] – short summary
+* **Next Action:** What comes next
+
+---
+
+#### 📖 What I Did
+
+##### Format per session:
+
+```
+### Session [N] - [Date/Time]
+- Actions taken
+- Files created/modified
+- Commands run
+- Decisions made
+```
+
+---
+
+#### 🧑‍💻 Code Created/Modified
+
+**Files Created:**
+
+```
+- `path/to/file.ts` - Description
+```
+
+**Files Modified:**
+
+```
+- `path/to/modified-file.ts` - What was changed and why
+```
+
+**Key Code Snippets:**
+
+```typescript
+// Description
+[Important snippet]
+```
+
+---
+
+#### 🧠 Technical Decisions Made
+
+* **Frameworks/Libraries:** e.g., Angular v19, Tailwind v4
+* **Architecture Choices:** e.g., Component/service structure
+* **Reasoning:** Why this approach was chosen
+
+---
+
+#### 🛠️ Problems Encountered & Solutions
+
+```
+- Problem: [Description]
+  - Solution: [How it was fixed]
+  - Impact: [What changed]
+```
+
+---
+
+#### 🔗 Dependencies & Integration
+
+* **Related Tasks:** Dependencies or blockers
+* **External Dependencies:** NPM packages, APIs, etc.
+* **Integration Points:** Connected modules/systems
+
+---
+
+#### ✅ Testing Strategy
+
+* **Test Files:** Path and purpose
+* **Test Cases:** Key logic covered
+* **Manual Testing:** Steps performed
+
+---
+
+#### 📋 Next Steps Priority
+
+1. Immediate next step
+2. Secondary step
+3. Future ideas
+
+---
+
+#### 🧭 Notes for Continuation
+
+* **Current Focus:** What AI should resume
+* **Context to Remember:** Key info
+* **Avoid:** Pitfalls or non-goals
+
+---
+
+# 📐 **4. Context Management Rules for AI**
+
+## 🧩 Rule 1: Context Initialization
+
+When beginning work:
+
+```
+- Check if context file exists.
+  - If yes → read and use.
+  - If no → create new.
+- Always update "Current Status" and "Next Action".
+```
+
+---
+
+## 🔁 Rule 2: Progressive Updates
+
+Every **5–7 tool calls**:
+
+```
+- Update “What I Did” with new actions.
+- Add created/modified files.
+- Update “Tool Calls Used”.
+- Refresh “Next Action” if changed.
+```
+
+---
+
+## 🚨 Rule 3: Near Tool Call Limit
+
+At **tool call 20–22**:
+
+```
+- Do a full update of all sections.
+- Write a complete "Next Steps Priority".
+- Fill in "Notes for Continuation".
+```
+
+Message to user:
+
+> “I'm approaching the tool call limit. Let me update the context file with current progress and next steps for seamless continuation.”
+
+---
+
+## 🔁 Rule 4: Resuming a Session
+
+When re-opening a task:
+
+```
+- Always read the matching context file.
+- Understand current progress and "Next Action".
+- Start a new session block in “What I Did”.
+```
+
+Message to user:
+
+> “I'll check the context file for this task to understand where we left off and continue efficiently.”
+
+---
+
+# 🧪 **5. Context Quality Standards**
+
+### ✅ Must Contain:
+
+* Accurate file paths
+* Focused, purposeful code snippets
+* Decision reasoning
+* Clear, actionable next steps
+* Tool call count
+
+### 🚫 Avoid:
+
+* Full code dumps
+* Outdated progress
+* Temporary debug info
+* Redundancy
+
+---
+
+# 💡 **6. Roo Code Integration Practices**
+
+## 📎 Before Tool Call Limit:
+
+> *“I'm approaching the tool call limit. Let me update the context file…”*
+
+## 🔄 When Resuming:
+
+> *“Let me read the context file for this task first…”*
+
+## 💻 Context Commands:
+
+* `Create context:` Touch and initialize file
+* `Update context:` Append session updates
+* `Read context:` Review before continuing
+
+---
+
+# 🧰 **7. Technology-Specific Notes**
+
+### TypeScript:
+
+* Always specify types.
+* Avoid `any`.
+* Include `interface` or `type` definitions.
+
+### Angular v19:
+
+* Note new control flow syntax (`@if`, `@for`)
+* Include Tailwind v4.0 where used.
+
+### Jest Testing:
+
+* Include `import { expect } from "@jest/globals";`
+* Mention test files and cases
+* Explain test coverage choices
+
+---
+
+# 🗂️ **8. Example Project Folder Layout**
+
+```
+root/
+├── tasks/
+│   ├── task_001.txt
+│   └── task_015.txt
+├── contexts/
+│   ├── context_001.txt
+│   └── context_015.txt
+└── [other files]
+```
+
+---
+
+Let me know if you’d like this as a PDF/Markdown or if you'd like automation support for generating these files.
