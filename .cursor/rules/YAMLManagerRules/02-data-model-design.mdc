@@ -1,0 +1,1141 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Data Model & Storage Design
+## Cursor Rules Management System
+
+---
+
+## Document Information
+
+| Field | Value |
+|-------|-------|
+| **Document Version** | 1.0 |
+| **Date** | June 2, 2025 |
+| **Related Documents** | System Architecture Overview, API Specifications |
+
+---
+
+# 1. Data Architecture Overview
+
+**Database Technology**: **File-based Storage** with **In-Memory Caching**
+- **Primary Storage**: YAML files for rules, JSON for configurations
+- **Caching Layer**: Memory-based caching with optional Redis integration
+- **Rationale**: Developer-friendly, version-controllable, no external dependencies
+
+## 1.1 Data Storage Strategy
+
+### File-Based Storage Benefits
+- **Version Control**: Rules can be versioned with Git
+- **Developer Friendly**: Human-readable YAML/JSON formats
+- **No Dependencies**: No external database required
+- **Portability**: Easy to backup, migrate, and distribute
+- **Offline Support**: Works without network connectivity
+
+### Caching Strategy
+- **L1 Cache**: In-memory for frequently accessed data
+- **L2 Cache**: Optional Redis for distributed scenarios
+- **Cache Invalidation**: File system watcher-based invalidation
+- **Cache Warming**: Preload frequently used rules
+
+# 2. Data Model Specifications
+
+## 2.1 Rule Definition Schema
+
+```yaml
+# Core Rule Entity Structure
+Rule:
+  type: object
+  required: [metadata, conditions, cursor_rules]
+  properties:
+    metadata:
+      type: object
+      required: [id, name, version, category]
+      properties:
+        id:
+          type: string
+          pattern: "^[a-z0-9-]+$"
+          description: "Unique rule identifier"
+        name:
+          type: string
+          maxLength: 100
+          description: "Human-readable rule name"
+        description:
+          type: string
+          maxLength: 500
+          description: "Rule description and purpose"
+        version:
+          type: string
+          pattern: "^\\d+\\.\\d+\\.\\d+$"
+          description: "Semantic version"
+        category:
+          type: string
+          enum: [base, technology, domain, phase, enhancement]
+          description: "Rule category"
+        subcategory:
+          type: string
+          description: "Rule subcategory"
+        tags:
+          type: array
+          items:
+            type: string
+          description: "Searchable tags"
+        author:
+          type: string
+          description: "Rule author"
+        created:
+          type: string
+          format: date-time
+          description: "Creation timestamp"
+        updated:
+          type: string
+          format: date-time
+          description: "Last update timestamp"
+
+    conditions:
+      type: object
+      description: "Conditions for rule applicability"
+      properties:
+        phase:
+          type: array
+          items:
+            type: string
+            enum: [conception, research, setup, development, testing, deployment, maintenance, scaling]
+        technologies:
+          type: array
+          items:
+            type: string
+        files_present:
+          type: array
+          items:
+            type: string
+        files_absent:
+          type: array
+          items:
+            type: string
+        dependencies:
+          type: array
+          items:
+            type: string
+        dev_dependencies:
+          type: array
+          items:
+            type: string
+        patterns:
+          type: array
+          items:
+            type: string
+        project_type:
+          type: array
+          items:
+            type: string
+        domain:
+          type: array
+          items:
+            type: string
+        scale:
+          type: array
+          items:
+            type: string
+        team_size:
+          type: array
+          items:
+            type: string
+        custom_conditions:
+          type: object
+          description: "Custom condition evaluators"
+
+    compatibility:
+      type: object
+      description: "Rule compatibility matrix"
+      properties:
+        conflicts_with:
+          type: array
+          items:
+            type: string
+          description: "Rules that conflict with this rule"
+        requires:
+          type: array
+          items:
+            type: string
+          description: "Dependencies required by this rule"
+        enhances:
+          type: array
+          items:
+            type: string
+          description: "Rules enhanced by this rule"
+        replaces:
+          type: array
+          items:
+            type: string
+          description: "Rules replaced by this rule"
+        incompatible_with:
+          type: array
+          items:
+            type: string
+          description: "Rules incompatible with this rule"
+
+    cursor_rules:
+      type: object
+      description: "Cursor IDE configuration"
+      properties:
+        language_preferences:
+          type: object
+          description: "Language-specific preferences"
+        code_patterns:
+          type: object
+          description: "Code generation patterns"
+        code_suggestions:
+          type: array
+          items:
+            type: object
+            properties:
+              pattern:
+                type: string
+              suggestion:
+                type: string
+              template:
+                type: string
+        security_rules:
+          type: object
+          description: "Security-related rules"
+        performance_rules:
+          type: object
+          description: "Performance optimization rules"
+        testing_rules:
+          type: object
+          description: "Testing-related rules"
+
+    dependencies:
+      type: array
+      items:
+        type: object
+        required: [name, version, purpose]
+        properties:
+          name:
+            type: string
+            description: "Package name"
+          version:
+            type: string
+            description: "Version constraint"
+          purpose:
+            type: string
+            description: "Dependency purpose"
+          optional:
+            type: boolean
+            default: false
+            description: "Whether dependency is optional"
+
+    environment_variables:
+      type: object
+      properties:
+        required:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              example:
+                type: string
+              validation:
+                type: string
+        optional:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              default:
+                type: string
+
+    file_structure:
+      type: object
+      description: "File and directory structure"
+      properties:
+        create_files:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              template:
+                type: string
+              description:
+                type: string
+              overwrite:
+                type: boolean
+                default: false
+        create_directories:
+          type: array
+          items:
+            type: string
+        modify_files:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              modifications:
+                type: array
+                items:
+                  type: object
+
+    priority:
+      type: integer
+      minimum: 1
+      maximum: 1000
+      description: "Rule priority (higher = more important)"
+
+    weight:
+      type: number
+      minimum: 0
+      maximum: 1
+      description: "Rule weight in composition (0-1)"
+
+    confidence:
+      type: number
+      minimum: 0
+      maximum: 1
+      description: "Confidence in rule applicability (0-1)"
+```
+
+## 2.2 Project Context Schema
+
+```typescript
+interface ProjectContext {
+  // Project Identification
+  projectId: string;
+  projectPath: string;
+  projectName: string;
+
+  // Multi-dimensional Classification
+  developmentPhase: DevelopmentPhase;
+  technologies: Technology[];
+  projectDomain: ProjectDomain;
+  projectScale: ProjectScale;
+  teamStructure: TeamStructure;
+  methodology: DevelopmentMethodology;
+
+  // Analysis Results
+  fileSystem: {
+    totalFiles: number;
+    directories: string[];
+    fileTypes: Record<string, number>;
+    structurePattern: string;
+    indicators: {
+      hasSource: boolean;
+      hasTests: boolean;
+      hasDocs: boolean;
+      hasConfig: boolean;
+      hasDeployment: boolean;
+    };
+  };
+
+  dependencies: {
+    production: Record<string, string>;
+    development: Record<string, string>;
+    peer: Record<string, string>;
+    optional: Record<string, string>;
+    detectedFrameworks: DetectedFramework[];
+    detectedTools: DetectedTool[];
+  };
+
+  codePatterns: {
+    type: string;
+    confidence: number;
+    file: string;
+    indicators: string[];
+    metadata?: any;
+  }[];
+
+  configurations: {
+    type: string;
+    file: string;
+    content: any;
+    analysis: any;
+  }[];
+
+  gitInfo: {
+    hasGit: boolean;
+    currentBranch?: string;
+    branches?: string[];
+    remotes?: string[];
+    commitCount?: number;
+    lastCommit?: Date;
+  };
+
+  // Detection Metadata
+  detectionTimestamp: number;
+  analysisVersion: string;
+  confidence: number;
+  cacheKey: string;
+}
+```
+
+## 2.3 Composed Rule Set Schema
+
+```typescript
+interface ComposedRuleSet {
+  // Identification
+  id: string;
+  name: string;
+  version: string;
+
+  // Context Information
+  projectContext: ProjectContext;
+  contextHash: string;
+
+  // Rule Composition
+  appliedRules: AppliedRule[];
+  compositionLayers: CompositionLayer[];
+
+  // Final Configuration
+  finalConfiguration: {
+    cursorRules: CursorConfiguration;
+    dependencies: Dependency[];
+    environmentVariables: EnvironmentVariable[];
+    fileStructure: FileStructure;
+    codePatterns: CodePattern[];
+  };
+
+  // Composition Metadata
+  compositionStrategy: string;
+  conflictsResolved: ResolvedConflict[];
+  warnings: CompositionWarning[];
+  performance: {
+    detectionTime: number;
+    compositionTime: number;
+    totalTime: number;
+    memoryUsage: number;
+  };
+
+  // Generation Metadata
+  generatedAt: Date;
+  generatedBy: string;
+  autoGenerated: boolean;
+  validUntil?: Date;
+}
+
+interface AppliedRule {
+  ruleId: string;
+  ruleName: string;
+  ruleVersion: string;
+  layer: string;
+  priority: number;
+  weight: number;
+  matchScore: number;
+  matchReasons: string[];
+  appliedConditions: string[];
+  conflicts: string[];
+  enhancements: string[];
+}
+```
+
+# 3. File System Structure
+
+## 3.1 Directory Organization
+
+```
+data/
+├── rules-library/                 # Rule library storage
+│   ├── base-rules/               # Foundation rules
+│   │   ├── nodejs/               # Node.js specific rules
+│   │   │   ├── nodejs-base.yaml
+│   │   │   ├── nodejs-express.yaml
+│   │   │   └── nodejs-typescript.yaml
+│   │   ├── react/                # React specific rules
+│   │   │   ├── react-base.yaml
+│   │   │   ├── react-typescript.yaml
+│   │   │   └── react-hooks.yaml
+│   │   ├── typescript/           # TypeScript specific rules
+│   │   │   ├── typescript-strict.yaml
+│   │   │   ├── typescript-module.yaml
+│   │   │   └── typescript-decorators.yaml
+│   │   └── python/               # Python specific rules
+│   │       ├── python-base.yaml
+│   │       ├── python-django.yaml
+│   │       └── python-fastapi.yaml
+│   │
+│   ├── phase-rules/              # Development phase rules
+│   │   ├── conception/           # Conception phase rules
+│   │   │   ├── planning.yaml
+│   │   │   └── research.yaml
+│   │   ├── development/          # Development phase rules
+│   │   │   ├── coding-standards.yaml
+│   │   │   ├── debugging.yaml
+│   │   │   └── collaboration.yaml
+│   │   ├── testing/              # Testing phase rules
+│   │   │   ├── unit-testing.yaml
+│   │   │   ├── integration-testing.yaml
+│   │   │   └── e2e-testing.yaml
+│   │   └── deployment/           # Deployment phase rules
+│   │       ├── ci-cd.yaml
+│   │       ├── monitoring.yaml
+│   │       └── security.yaml
+│   │
+│   ├── domain-rules/             # Domain-specific rules
+│   │   ├── ecommerce/            # E-commerce rules
+│   │   │   ├── payment-systems.yaml
+│   │   │   ├── inventory-management.yaml
+│   │   │   └── user-authentication.yaml
+│   │   ├── fintech/              # Fintech rules
+│   │   │   ├── compliance.yaml
+│   │   │   ├── security-standards.yaml
+│   │   │   └── data-protection.yaml
+│   │   └── healthcare/           # Healthcare rules
+│   │       ├── hipaa-compliance.yaml
+│   │       ├── data-security.yaml
+│   │       └── audit-trails.yaml
+│   │
+│   ├── composite-rules/          # Complex combined rules
+│   │   ├── full-stack/           # Full-stack combinations
+│   │   │   ├── mern-stack.yaml
+│   │   │   ├── mean-stack.yaml
+│   │   │   └── jamstack.yaml
+│   │   ├── microservices/        # Microservices patterns
+│   │   │   ├── service-mesh.yaml
+│   │   │   ├── api-gateway.yaml
+│   │   │   └── event-sourcing.yaml
+│   │   └── enterprise/           # Enterprise patterns
+│   │       ├── enterprise-security.yaml
+│   │       ├── scalability.yaml
+│   │       └── monitoring.yaml
+│   │
+│   └── schemas/                  # JSON schemas for validation
+│       ├── rule-schema.json
+│       ├── context-schema.json
+│       └── composition-schema.json
+│
+├── cache/                        # Caching storage
+│   ├── context-cache/            # Context detection cache
+│   │   ├── [project-hash].json
+│   │   └── index.json
+│   ├── rule-cache/               # Rule processing cache
+│   │   ├── compatible-rules/
+│   │   └── validated-rules/
+│   └── composition-cache/        # Composition result cache
+│       ├── [composition-hash].json
+│       └── index.json
+│
+└── config/                       # Configuration storage
+    ├── user-settings.json
+    ├── default-config.json
+    └── analyzer-configs/
+        ├── file-system-analyzer.json
+        ├── dependency-analyzer.json
+        └── pattern-analyzer.json
+```
+
+## 3.2 Example Rule File Structure
+
+### Base Rule Example (nodejs-base.yaml)
+
+```yaml
+metadata:
+  id: "nodejs-base"
+  name: "Node.js Base Configuration"
+  description: "Fundamental Node.js development rules and best practices"
+  version: "1.0.0"
+  category: "base"
+  subcategory: "runtime"
+  tags: ["nodejs", "javascript", "backend", "server"]
+  author: "cursor-rules-team"
+  created: "2024-06-01T00:00:00Z"
+  updated: "2024-06-02T10:30:00Z"
+
+conditions:
+  files_present:
+    - "package.json"
+  dependencies:
+    - "node"
+  project_type:
+    - "backend"
+    - "fullstack"
+  technologies:
+    - "nodejs"
+
+compatibility:
+  enhances:
+    - "javascript-base"
+    - "npm-scripts"
+  conflicts_with: []
+  requires: []
+
+cursor_rules:
+  language_preferences:
+    javascript:
+      strict: true
+      style: "standard"
+      version: "ES2022"
+
+  code_patterns:
+    async_patterns:
+      prefer: "async/await"
+      avoid: "callback_hell"
+
+    error_handling:
+      pattern: "try-catch"
+      logging: "winston"
+
+    module_system:
+      type: "commonjs"
+      imports: "require"
+
+  code_suggestions:
+    - pattern: "console.log"
+      suggestion: "Use proper logging with winston"
+      template: "logger.info('${message}')"
+
+    - pattern: "process.exit"
+      suggestion: "Graceful shutdown handling"
+      template: "process.on('SIGTERM', gracefulShutdown)"
+
+  security_rules:
+    environment_variables:
+      required: true
+      validation: "strict"
+
+    dependency_audit:
+      enabled: true
+      level: "moderate"
+
+  performance_rules:
+    memory_monitoring:
+      enabled: true
+      threshold: "512MB"
+
+    cpu_profiling:
+      enabled: false
+      development_only: true
+
+  testing_rules:
+    framework: "jest"
+    coverage_threshold: 80
+    test_patterns:
+      - "**/*.test.js"
+      - "**/*.spec.js"
+
+dependencies:
+  - name: "winston"
+    version: "^3.8.0"
+    purpose: "Logging framework"
+    optional: false
+
+  - name: "dotenv"
+    version: "^16.0.0"
+    purpose: "Environment variable management"
+    optional: false
+
+environment_variables:
+  required:
+    - name: "NODE_ENV"
+      description: "Runtime environment"
+      example: "development"
+      validation: "^(development|staging|production)$"
+
+  optional:
+    - name: "PORT"
+      description: "Server port"
+      default: "3000"
+
+file_structure:
+  create_directories:
+    - "src"
+    - "tests"
+    - "docs"
+    - "config"
+
+  create_files:
+    - path: ".env.example"
+      template: "node_env_template"
+      description: "Environment variables template"
+
+    - path: ".gitignore"
+      template: "node_gitignore"
+      description: "Git ignore patterns for Node.js"
+
+    - path: "src/index.js"
+      template: "node_main_entry"
+      description: "Main application entry point"
+
+priority: 100
+weight: 1.0
+confidence: 0.95
+```
+
+### Technology-Specific Rule (react-typescript.yaml)
+
+```yaml
+metadata:
+  id: "react-typescript"
+  name: "React with TypeScript"
+  description: "React development with TypeScript best practices"
+  version: "2.1.0"
+  category: "technology"
+  subcategory: "frontend"
+  tags: ["react", "typescript", "frontend", "jsx", "tsx"]
+  author: "cursor-rules-team"
+  created: "2024-05-15T00:00:00Z"
+  updated: "2024-06-02T14:20:00Z"
+
+conditions:
+  files_present:
+    - "package.json"
+    - "tsconfig.json"
+  dependencies:
+    - "react"
+    - "typescript"
+  technologies:
+    - "react"
+    - "typescript"
+  project_type:
+    - "frontend"
+    - "fullstack"
+
+compatibility:
+  requires:
+    - "typescript-base"
+    - "react-base"
+  enhances:
+    - "react-hooks"
+    - "typescript-strict"
+  conflicts_with:
+    - "javascript-loose"
+
+cursor_rules:
+  language_preferences:
+    typescript:
+      strict: true
+      jsx: "react-jsx"
+      target: "ES2020"
+      module: "esnext"
+      moduleResolution: "node"
+
+    tsx:
+      componentStyle: "functional"
+      hookUsage: "preferred"
+      propTypes: "typescript-interfaces"
+
+  code_patterns:
+    component_definition:
+      style: "arrow-function"
+      export: "default"
+      props: "interface"
+
+    state_management:
+      hooks: ["useState", "useEffect", "useCallback", "useMemo"]
+      context: "createContext"
+
+    styling:
+      method: "css-modules"
+      naming: "camelCase"
+
+  code_suggestions:
+    - pattern: "React.FC"
+      suggestion: "Use direct function components"
+      template: "const ${ComponentName} = (props: ${PropsType}) => {"
+
+    - pattern: "any"
+      suggestion: "Use specific types instead of any"
+      template: "// Define proper interface instead of any"
+
+    - pattern: "useEffect(() => {}, [])"
+      suggestion: "Add dependency array carefully"
+      template: "useEffect(() => {\n  // effect code\n}, [/* dependencies */])"
+
+  security_rules:
+    xss_prevention:
+      dangerouslySetInnerHTML: "warn"
+      user_input_sanitization: "required"
+
+    dependency_scanning:
+      react_versions: "latest-stable"
+      vulnerable_packages: "block"
+
+  performance_rules:
+    bundle_analysis:
+      enabled: true
+      size_limit: "500KB"
+
+    component_optimization:
+      memo_usage: "conditional"
+      lazy_loading: "recommended"
+
+    rendering:
+      avoid_inline_objects: true
+      optimize_rerenders: true
+
+  testing_rules:
+    framework: "react-testing-library"
+    coverage_threshold: 85
+    test_patterns:
+      - "**/*.test.tsx"
+      - "**/*.test.ts"
+    component_testing:
+      render_testing: "required"
+      user_interaction: "recommended"
+      accessibility: "required"
+
+dependencies:
+  - name: "@types/react"
+    version: "^18.0.0"
+    purpose: "React TypeScript definitions"
+    optional: false
+
+  - name: "@types/react-dom"
+    version: "^18.0.0"
+    purpose: "React DOM TypeScript definitions"
+    optional: false
+
+  - name: "@testing-library/react"
+    version: "^13.0.0"
+    purpose: "React component testing utilities"
+    optional: true
+
+file_structure:
+  create_directories:
+    - "src/components"
+    - "src/hooks"
+    - "src/types"
+    - "src/utils"
+    - "src/assets"
+    - "tests/components"
+
+  create_files:
+    - path: "src/types/index.ts"
+      template: "react_types_index"
+      description: "Central type definitions"
+
+    - path: "src/components/App.tsx"
+      template: "react_app_component"
+      description: "Main App component"
+
+    - path: "tests/setup.ts"
+      template: "react_test_setup"
+      description: "Test environment setup"
+
+priority: 200
+weight: 0.9
+confidence: 0.92
+```
+
+# 4. Caching Implementation
+
+## 4.1 Cache Architecture
+
+```typescript
+// Cache Manager Implementation
+class CacheManager {
+  private readonly memoryCache: Map<string, CacheEntry>;
+  private readonly redisClient?: RedisClient;
+  private readonly config: CacheConfig;
+
+  constructor(config: CacheConfig) {
+    this.memoryCache = new Map();
+    this.config = config;
+
+    if (config.redis.enabled) {
+      this.redisClient = new RedisClient(config.redis);
+    }
+  }
+
+  /**
+   * Get cached value with fallback
+   */
+  async get<T>(key: string): Promise<T | null> {
+    // Try L1 cache first (memory)
+    const memoryEntry = this.memoryCache.get(key);
+    if (memoryEntry && !this.isExpired(memoryEntry)) {
+      return memoryEntry.value as T;
+    }
+
+    // Try L2 cache (Redis) if available
+    if (this.redisClient) {
+      const redisValue = await this.redisClient.get(key);
+      if (redisValue) {
+        const parsed = JSON.parse(redisValue) as T;
+
+        // Store in L1 cache
+        this.setMemoryCache(key, parsed);
+
+        return parsed;
+      }
+    }
+
+    return null;
+  }
+
+  /**
+   * Set value in cache
+   */
+  async set<T>(key: string, value: T, ttl?: number): Promise<void> {
+    const expiry = ttl || this.config.defaultTTL;
+
+    // Set in L1 cache
+    this.setMemoryCache(key, value, expiry);
+
+    // Set in L2 cache if available
+    if (this.redisClient) {
+      await this.redisClient.setex(key, expiry / 1000, JSON.stringify(value));
+    }
+  }
+
+  /**
+   * Generate intelligent cache keys
+   */
+  generateContextKey(projectPath: string, options: DetectionOptions): string {
+    const pathHash = this.hashString(projectPath);
+    const optionsHash = this.hashString(JSON.stringify(options));
+
+    // Include file modification times for cache invalidation
+    const fileStats = this.getRelevantFileStats(projectPath);
+    const statsHash = this.hashString(JSON.stringify(fileStats));
+
+    return `context:${pathHash}:${optionsHash}:${statsHash}`;
+  }
+
+  generateRuleKey(ruleId: string, version: string): string {
+    return `rule:${ruleId}:${version}`;
+  }
+
+  generateCompositionKey(ruleIds: string[], contextHash: string): string {
+    const ruleHash = this.hashString(ruleIds.sort().join(','));
+    return `composition:${ruleHash}:${contextHash}`;
+  }
+}
+
+interface CacheEntry {
+  value: any;
+  timestamp: number;
+  ttl: number;
+  accessCount: number;
+  lastAccessed: number;
+}
+
+interface CacheConfig {
+  enabled: boolean;
+  defaultTTL: number; // milliseconds
+  maxMemorySize: number; // bytes
+  cleanupInterval: number; // milliseconds
+
+  redis: {
+    enabled: boolean;
+    host: string;
+    port: number;
+    password?: string;
+    db: number;
+  };
+}
+```
+
+## 4.2 Cache Invalidation Strategy
+
+```typescript
+// File System Watcher for Cache Invalidation
+class CacheInvalidationManager {
+  private readonly cacheManager: CacheManager;
+  private readonly watchers: Map<string, FSWatcher>;
+  private readonly debounceTimers: Map<string, NodeJS.Timeout>;
+
+  constructor(cacheManager: CacheManager) {
+    this.cacheManager = cacheManager;
+    this.watchers = new Map();
+    this.debounceTimers = new Map();
+  }
+
+  /**
+   * Start watching project for changes
+   */
+  watchProject(projectPath: string): void {
+    if (this.watchers.has(projectPath)) {
+      return; // Already watching
+    }
+
+    const watcher = chokidar.watch(projectPath, {
+      ignored: [
+        '**/node_modules/**',
+        '**/.git/**',
+        '**/dist/**',
+        '**/build/**',
+        '**/.cache/**'
+      ],
+      ignoreInitial: true,
+      persistent: true
+    });
+
+    watcher.on('all', (event, path) => {
+      this.handleFileChange(projectPath, event, path);
+    });
+
+    this.watchers.set(projectPath, watcher);
+  }
+
+  /**
+   * Handle file system changes with debouncing
+   */
+  private handleFileChange(projectPath: string, event: string, filePath: string): void {
+    const debounceKey = `${projectPath}:${event}`;
+
+    // Clear existing timer
+    if (this.debounceTimers.has(debounceKey)) {
+      clearTimeout(this.debounceTimers.get(debounceKey)!);
+    }
+
+    // Set new timer
+    const timer = setTimeout(() => {
+      this.invalidateProjectCache(projectPath, filePath);
+      this.debounceTimers.delete(debounceKey);
+    }, 2000); // 2 second debounce
+
+    this.debounceTimers.set(debounceKey, timer);
+  }
+
+  /**
+   * Invalidate relevant cache entries for project
+   */
+  private async invalidateProjectCache(projectPath: string, changedFile: string): Promise<void> {
+    const patterns = [
+      `context:*${this.hashPath(projectPath)}*`,
+      `composition:*${this.hashPath(projectPath)}*`
+    ];
+
+    // Invalidate pattern-matched cache entries
+    for (const pattern of patterns) {
+      await this.cacheManager.invalidatePattern(pattern);
+    }
+
+    // Specific invalidations based on file type
+    if (changedFile.endsWith('package.json')) {
+      await this.invalidateDependencyCache(projectPath);
+    }
+
+    if (changedFile.endsWith('.env')) {
+      await this.invalidateEnvironmentCache(projectPath);
+    }
+
+    console.log(`Cache invalidated for ${projectPath} due to change in ${changedFile}`);
+  }
+}
+```
+
+# 5. Data Validation & Integrity
+
+## 5.1 Schema Validation
+
+```typescript
+// Schema Validator
+class SchemaValidator {
+  private readonly ajv: Ajv;
+  private readonly schemas: Map<string, ValidateFunction>;
+
+  constructor() {
+    this.ajv = new Ajv({
+      allErrors: true,
+      validateFormats: true,
+      strict: false
+    });
+
+    this.schemas = new Map();
+    this.loadSchemas();
+  }
+
+  /**
+   * Validate rule against schema
+   */
+  validateRule(rule: any): ValidationResult {
+    const validator = this.schemas.get('rule');
+    if (!validator) {
+      throw new Error('Rule schema not loaded');
+    }
+
+    const valid = validator(rule);
+
+    return {
+      valid,
+      errors: valid ? [] : validator.errors || [],
+      warnings: this.checkWarnings(rule)
+    };
+  }
+
+  /**
+   * Validate project context
+   */
+  validateContext(context: any): ValidationResult {
+    const validator = this.schemas.get('context');
+    if (!validator) {
+      throw new Error('Context schema not loaded');
+    }
+
+    const valid = validator(context);
+
+    return {
+      valid,
+      errors: valid ? [] : validator.errors || [],
+      warnings: []
+    };
+  }
+
+  private checkWarnings(rule: any): ValidationWarning[] {
+    const warnings: ValidationWarning[] = [];
+
+    // Check for common issues
+    if (!rule.metadata?.description || rule.metadata.description.length < 20) {
+      warnings.push({
+        field: 'metadata.description',
+        message: 'Description should be more descriptive (>20 characters)',
+        severity: 'WARNING'
+      });
+    }
+
+    if (rule.priority > 900) {
+      warnings.push({
+        field: 'priority',
+        message: 'Very high priority values should be used sparingly',
+        severity: 'INFO'
+      });
+    }
+
+    if (!rule.compatibility) {
+      warnings.push({
+        field: 'compatibility',
+        message: 'Consider defining compatibility relationships',
+        severity: 'INFO'
+      });
+    }
+
+    return warnings;
+  }
+}
+
+interface ValidationResult {
+  valid: boolean;
+  errors: ErrorObject[];
+  warnings: ValidationWarning[];
+}
+
+interface ValidationWarning {
+  field: string;
+  message: string;
+  severity: 'INFO' | 'WARNING' | 'ERROR';
+}
+```
+
+---
+
+## Related Documents
+
+- **[System Architecture Overview](.cursor/rules/YAMLManagerRules/01-architecture-overview.mdc)**: Core system architecture and design patterns
+- **[API Specifications](.cursor/rules/YAMLManagerRules/03-api-specifications.mdc)**: API design for data access and manipulation
+- **[Security & Compliance](.cursor/rules/YAMLManagerRules/04-security-compliance.mdc)**: Data security and privacy considerations
+- **[Development & Deployment](.cursor/rules/YAMLManagerRules/05-development-deployment.mdc)**: Database deployment and migration strategies
+- **[Testing & QA](.cursor/rules/YAMLManagerRules/06-testing-qa.mdc)**: Data validation and integrity testing

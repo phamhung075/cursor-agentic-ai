@@ -1,0 +1,1070 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Security & Compliance
+## Cursor Rules Management System
+
+---
+
+## Document Information
+
+| Field | Value |
+|-------|-------|
+| **Document Version** | 1.0 |
+| **Date** | June 2, 2025 |
+| **Related Documents** | System Architecture Overview, API Specifications |
+
+---
+
+# 1. Security Architecture Overview
+
+**Security Model**: **Defense in Depth** with **Zero Trust Principles**
+- **Input Validation**: All inputs validated and sanitized
+- **Sandboxed Execution**: Rule execution in isolated environment
+- **Minimal Privileges**: Least privilege access patterns
+- **Secure Storage**: Encrypted sensitive data at rest
+
+## 1.1 Security Principles
+
+### Core Security Principles
+- **Zero Trust**: Never trust, always verify
+- **Least Privilege**: Minimum required access
+- **Defense in Depth**: Multiple security layers
+- **Fail Secure**: Secure defaults and failure modes
+- **Privacy by Design**: Data protection built-in
+
+### Threat Model
+- **Code Injection**: Malicious rule content
+- **Path Traversal**: Unauthorized file access
+- **Data Exfiltration**: Sensitive information leakage
+- **Privilege Escalation**: Unauthorized permission elevation
+- **Supply Chain**: Compromised dependencies or rules
+
+# 2. Authentication & Authorization
+
+## 2.1 Local Security Model
+
+```typescript
+// Security Manager
+class SecurityManager {
+  private readonly encryptionKey: string;
+  private readonly allowedPaths: Set<string>;
+
+  constructor() {
+    this.encryptionKey = this.generateEncryptionKey();
+    this.allowedPaths = new Set();
+  }
+
+  /**
+   * Validate project path access
+   * @param projectPath - Path to validate
+   * @returns Access validation result
+   */
+  validatePathAccess(projectPath: string): SecurityValidation {
+    // Normalize path
+    const normalizedPath = path.resolve(projectPath);
+
+    // Check for path traversal attacks
+    if (this.containsPathTraversal(normalizedPath)) {
+      return {
+        allowed: false,
+        reason: 'Path traversal detected',
+        riskLevel: 'HIGH'
+      };
+    }
+
+    // Check against allowed paths
+    if (!this.isPathAllowed(normalizedPath)) {
+      return {
+        allowed: false,
+        reason: 'Path not in allowed list',
+        riskLevel: 'MEDIUM'
+      };
+    }
+
+    // Check file system permissions
+    if (!this.hasRequiredPermissions(normalizedPath)) {
+      return {
+        allowed: false,
+        reason: 'Insufficient file system permissions',
+        riskLevel: 'LOW'
+      };
+    }
+
+    return {
+      allowed: true,
+      reason: 'Access validated',
+      riskLevel: 'NONE'
+    };
+  }
+
+  /**
+   * Sanitize rule content for safe execution
+   * @param rule - Rule to sanitize
+   * @returns Sanitized rule
+   */
+  sanitizeRule(rule: Rule): SanitizedRule {
+    return {
+      ...rule,
+      cursor_rules: this.sanitizeCursorRules(rule.cursor_rules),
+      file_structure: this.sanitizeFileStructure(rule.file_structure),
+      dependencies: this.sanitizeDependencies(rule.dependencies)
+    };
+  }
+
+  private sanitizeCursorRules(cursorRules: any): any {
+    // Remove potentially dangerous configurations
+    const sanitized = { ...cursorRules };
+
+    // Block execution of arbitrary code
+    delete sanitized.exec;
+    delete sanitized.eval;
+    delete sanitized.require;
+
+    // Sanitize script content
+    if (sanitized.code_patterns) {
+      Object.keys(sanitized.code_patterns).forEach(key => {
+        sanitized.code_patterns[key] = this.sanitizeCode(sanitized.code_patterns[key]);
+      });
+    }
+
+    return sanitized;
+  }
+
+  private sanitizeCode(code: string): string {
+    // Remove dangerous patterns
+    const dangerousPatterns = [
+      /require\s*\(\s*['"]fs['"]\s*\)/g,
+      /require\s*\(\s*['"]child_process['"]\s*\)/g,
+      /eval\s*\(/g,
+      /Function\s*\(/g,
+      /process\.exit/g,
+      /process\.env/g
+    ];
+
+    let sanitized = code;
+    dangerousPatterns.forEach(pattern => {
+      sanitized = sanitized.replace(pattern, '/* REMOVED FOR SECURITY */');
+    });
+
+    return sanitized;
+  }
+}
+
+// Security Validation Result
+interface SecurityValidation {
+  allowed: boolean;
+  reason: string;
+  riskLevel: 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+  recommendations?: string[];
+}
+```
+
+## 2.2 Rule Validation & Sanitization
+
+```typescript
+// Rule Security Validator
+class RuleSecurityValidator {
+  private readonly trustedSources: Set<string>;
+  private readonly securityPolicies: SecurityPolicy[];
+
+  /**
+   * Validate rule security before execution
+   * @param rule - Rule to validate
+   * @returns Security validation result
+   */
+  async validateRuleSecurity(rule: Rule): Promise<SecurityValidationResult> {
+    const validations: SecurityCheck[] = [];
+
+    // Check rule source
+    validations.push(await this.validateRuleSource(rule));
+
+    // Validate rule content
+    validations.push(await this.validateRuleContent(rule));
+
+    // Check dependencies
+    validations.push(await this.validateDependencies(rule));
+
+    // Validate file operations
+    validations.push(await this.validateFileOperations(rule));
+
+    // Check for malicious patterns
+    validations.push(await this.scanForMaliciousPatterns(rule));
+
+    return this.aggregateValidationResults(validations);
+  }
+
+  private async validateRuleSource(rule: Rule): Promise<SecurityCheck> {
+    const isTrusted = this.trustedSources.has(rule.metadata.author);
+    const hasValidSignature = await this.verifyRuleSignature(rule);
+
+    return {
+      checkType: 'source_validation',
+      passed: isTrusted || hasValidSignature,
+      riskLevel: isTrusted ? 'NONE' : 'MEDIUM',
+      message: isTrusted
+        ? 'Rule from trusted source'
+        : 'Rule from untrusted source',
+      recommendations: isTrusted
+        ? []
+        : ['Verify rule content manually', 'Consider adding author to trusted sources']
+    };
+  }
+
+  private async validateRuleContent(rule: Rule): Promise<SecurityCheck> {
+    const riskyPatterns = [
+      { pattern: /require\s*\(\s*['"].*['"]\s*\)/, risk: 'MEDIUM', message: 'Dynamic require detected' },
+      { pattern: /eval\s*\(/, risk: 'HIGH', message: 'Code evaluation detected' },
+      { pattern: /process\.exit/, risk: 'MEDIUM', message: 'Process termination detected' },
+      { pattern: /fs\.writeFile|fs\.readFile/, risk: 'LOW', message: 'File system access detected' },
+      { pattern: /child_process/, risk: 'HIGH', message: 'Child process execution detected' },
+      { pattern: /http\.request|fetch/, risk: 'MEDIUM', message: 'Network request detected' }
+    ];
+
+    const ruleContent = JSON.stringify(rule.cursor_rules);
+    const detectedRisks = riskyPatterns.filter(p => p.pattern.test(ruleContent));
+
+    const maxRisk = detectedRisks.reduce((max, risk) => {
+      const levels = ['NONE', 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
+      return levels.indexOf(risk.risk) > levels.indexOf(max) ? risk.risk : max;
+    }, 'NONE');
+
+    return {
+      checkType: 'content_validation',
+      passed: detectedRisks.length === 0,
+      riskLevel: maxRisk as RiskLevel,
+      message: detectedRisks.length === 0
+        ? 'No risky patterns detected'
+        : `${detectedRisks.length} risky patterns detected`,
+      details: detectedRisks.map(r => r.message),
+      recommendations: detectedRisks.length > 0
+        ? ['Review rule content carefully', 'Consider sandboxed execution']
+        : []
+    };
+  }
+
+  private async validateDependencies(rule: Rule): Promise<SecurityCheck> {
+    if (!rule.dependencies || rule.dependencies.length === 0) {
+      return {
+        checkType: 'dependency_validation',
+        passed: true,
+        riskLevel: 'NONE',
+        message: 'No dependencies to validate'
+      };
+    }
+
+    const vulnerabilities: DependencyVulnerability[] = [];
+
+    for (const dep of rule.dependencies) {
+      const vulns = await this.checkDependencyVulnerabilities(dep);
+      vulnerabilities.push(...vulns);
+    }
+
+    const criticalVulns = vulnerabilities.filter(v => v.severity === 'CRITICAL');
+    const highVulns = vulnerabilities.filter(v => v.severity === 'HIGH');
+
+    let riskLevel: RiskLevel = 'NONE';
+    if (criticalVulns.length > 0) riskLevel = 'CRITICAL';
+    else if (highVulns.length > 0) riskLevel = 'HIGH';
+    else if (vulnerabilities.length > 0) riskLevel = 'MEDIUM';
+
+    return {
+      checkType: 'dependency_validation',
+      passed: vulnerabilities.length === 0,
+      riskLevel,
+      message: vulnerabilities.length === 0
+        ? 'All dependencies are secure'
+        : `${vulnerabilities.length} vulnerabilities found`,
+      details: vulnerabilities.map(v => `${v.package}: ${v.description}`),
+      recommendations: vulnerabilities.length > 0
+        ? ['Update vulnerable dependencies', 'Consider alternative packages']
+        : []
+    };
+  }
+}
+
+// Security Policy Definition
+interface SecurityPolicy {
+  id: string;
+  name: string;
+  description: string;
+  level: 'STRICT' | 'STANDARD' | 'PERMISSIVE';
+  rules: SecurityRule[];
+}
+
+interface SecurityRule {
+  type: 'BLOCK' | 'WARN' | 'AUDIT';
+  pattern: RegExp;
+  message: string;
+  exceptions?: string[];
+}
+
+// Default Security Policies
+export const DEFAULT_SECURITY_POLICIES: SecurityPolicy[] = [
+  {
+    id: 'default-strict',
+    name: 'Default Strict Policy',
+    description: 'Strict security policy for production environments',
+    level: 'STRICT',
+    rules: [
+      {
+        type: 'BLOCK',
+        pattern: /eval\s*\(/,
+        message: 'Code evaluation is not allowed'
+      },
+      {
+        type: 'BLOCK',
+        pattern: /child_process/,
+        message: 'Child process execution is not allowed'
+      },
+      {
+        type: 'WARN',
+        pattern: /require\s*\(\s*['"].*['"]\s*\)/,
+        message: 'Dynamic require detected - review carefully'
+      },
+      {
+        type: 'AUDIT',
+        pattern: /fs\./,
+        message: 'File system access detected'
+      }
+    ]
+  }
+];
+```
+
+# 3. Data Protection & Privacy
+
+## 3.1 Data Classification & Handling
+
+```typescript
+// Data Classification System
+enum DataClassification {
+  PUBLIC = 'PUBLIC',           // Publicly available information
+  INTERNAL = 'INTERNAL',       // Internal project information
+  CONFIDENTIAL = 'CONFIDENTIAL', // Sensitive project data
+  RESTRICTED = 'RESTRICTED'    // Highly sensitive data
+}
+
+interface DataHandlingPolicy {
+  classification: DataClassification;
+  encryption: {
+    atRest: boolean;
+    inTransit: boolean;
+    algorithm: string;
+  };
+  storage: {
+    location: 'LOCAL' | 'MEMORY' | 'CACHE';
+    retention: number; // days
+    backup: boolean;
+  };
+  access: {
+    authentication: boolean;
+    authorization: boolean;
+    audit: boolean;
+  };
+}
+
+// Data Handling Policies
+const DATA_HANDLING_POLICIES: Record<DataClassification, DataHandlingPolicy> = {
+  [DataClassification.PUBLIC]: {
+    classification: DataClassification.PUBLIC,
+    encryption: { atRest: false, inTransit: false, algorithm: 'none' },
+    storage: { location: 'LOCAL', retention: 365, backup: true },
+    access: { authentication: false, authorization: false, audit: false }
+  },
+
+  [DataClassification.INTERNAL]: {
+    classification: DataClassification.INTERNAL,
+    encryption: { atRest: true, inTransit: true, algorithm: 'AES-256' },
+    storage: { location: 'LOCAL', retention: 90, backup: true },
+    access: { authentication: true, authorization: true, audit: true }
+  },
+
+  [DataClassification.CONFIDENTIAL]: {
+    classification: DataClassification.CONFIDENTIAL,
+    encryption: { atRest: true, inTransit: true, algorithm: 'AES-256' },
+    storage: { location: 'MEMORY', retention: 30, backup: false },
+    access: { authentication: true, authorization: true, audit: true }
+  },
+
+  [DataClassification.RESTRICTED]: {
+    classification: DataClassification.RESTRICTED,
+    encryption: { atRest: true, inTransit: true, algorithm: 'AES-256' },
+    storage: { location: 'MEMORY', retention: 1, backup: false },
+    access: { authentication: true, authorization: true, audit: true }
+  }
+};
+
+// Data Processor
+class DataProcessor {
+  private readonly encryptionService: EncryptionService;
+  private readonly auditLogger: AuditLogger;
+
+  /**
+   * Process data according to classification
+   * @param data - Data to process
+   * @param classification - Data classification
+   * @returns Processed data
+   */
+  async processData(data: any, classification: DataClassification): Promise<ProcessedData> {
+    const policy = DATA_HANDLING_POLICIES[classification];
+
+    // Apply encryption if required
+    let processedData = data;
+    if (policy.encryption.atRest) {
+      processedData = await this.encryptionService.encrypt(data, policy.encryption.algorithm);
+    }
+
+    // Log access if required
+    if (policy.access.audit) {
+      await this.auditLogger.logDataAccess({
+        classification,
+        action: 'PROCESS',
+        timestamp: new Date(),
+        dataSize: JSON.stringify(data).length
+      });
+    }
+
+    return {
+      data: processedData,
+      metadata: {
+        classification,
+        encrypted: policy.encryption.atRest,
+        processedAt: new Date(),
+        expiresAt: new Date(Date.now() + policy.storage.retention * 24 * 60 * 60 * 1000)
+      }
+    };
+  }
+
+  /**
+   * Classify project data automatically
+   * @param projectData - Project data to classify
+   * @returns Data classification
+   */
+  classifyProjectData(projectData: any): DataClassification {
+    // Check for sensitive patterns
+    const dataString = JSON.stringify(projectData).toLowerCase();
+
+    // Restricted data patterns
+    const restrictedPatterns = [
+      /password/,
+      /secret/,
+      /private.*key/,
+      /api.*key/,
+      /token/,
+      /credential/
+    ];
+
+    if (restrictedPatterns.some(pattern => pattern.test(dataString))) {
+      return DataClassification.RESTRICTED;
+    }
+
+    // Confidential data patterns
+    const confidentialPatterns = [
+      /database.*url/,
+      /connection.*string/,
+      /smtp/,
+      /oauth/
+    ];
+
+    if (confidentialPatterns.some(pattern => pattern.test(dataString))) {
+      return DataClassification.CONFIDENTIAL;
+    }
+
+    // Internal data (default for project data)
+    return DataClassification.INTERNAL;
+  }
+}
+```
+
+## 3.2 Privacy Compliance (GDPR/CCPA)
+
+```typescript
+// Privacy Compliance Manager
+class PrivacyComplianceManager {
+  private readonly dataInventory: Map<string, DataInventoryEntry>;
+  private readonly consentManager: ConsentManager;
+
+  /**
+   * Ensure GDPR compliance for data processing
+   * @param processingActivity - Data processing activity
+   * @returns Compliance status
+   */
+  async ensureGDPRCompliance(
+    processingActivity: DataProcessingActivity
+  ): Promise<ComplianceStatus> {
+    const checks: ComplianceCheck[] = [];
+
+    // Check lawful basis
+    checks.push(await this.validateLawfulBasis(processingActivity));
+
+    // Check data minimization
+    checks.push(await this.validateDataMinimization(processingActivity));
+
+    // Check purpose limitation
+    checks.push(await this.validatePurposeLimitation(processingActivity));
+
+    // Check storage limitation
+    checks.push(await this.validateStorageLimitation(processingActivity));
+
+    // Check data subject rights
+    checks.push(await this.validateDataSubjectRights(processingActivity));
+
+    return this.aggregateComplianceChecks(checks);
+  }
+
+  /**
+   * Handle data subject rights requests
+   * @param request - Data subject request
+   * @returns Request handling result
+   */
+  async handleDataSubjectRequest(
+    request: DataSubjectRequest
+  ): Promise<DataSubjectResponse> {
+    switch (request.type) {
+      case 'ACCESS':
+        return this.handleAccessRequest(request);
+      case 'RECTIFICATION':
+        return this.handleRectificationRequest(request);
+      case 'ERASURE':
+        return this.handleErasureRequest(request);
+      case 'PORTABILITY':
+        return this.handlePortabilityRequest(request);
+      case 'RESTRICTION':
+        return this.handleRestrictionRequest(request);
+      case 'OBJECTION':
+        return this.handleObjectionRequest(request);
+      default:
+        throw new Error(`Unsupported request type: ${request.type}`);
+    }
+  }
+
+  private async handleErasureRequest(
+    request: DataSubjectRequest
+  ): Promise<DataSubjectResponse> {
+    // Identify all data related to the subject
+    const relatedData = await this.findDataBySubject(request.subjectId);
+
+    // Check if erasure is legally possible
+    const legalObligations = await this.checkLegalObligations(relatedData);
+    if (legalObligations.preventErasure) {
+      return {
+        success: false,
+        reason: 'Erasure prevented by legal obligations',
+        details: legalObligations.reasons
+      };
+    }
+
+    // Perform erasure
+    const erasureResults = await Promise.all(
+      relatedData.map(data => this.eraseData(data))
+    );
+
+    // Log erasure for audit
+    await this.auditLogger.logDataErasure({
+      subjectId: request.subjectId,
+      dataTypes: relatedData.map(d => d.type),
+      timestamp: new Date(),
+      requestId: request.id
+    });
+
+    return {
+      success: true,
+      message: 'Data successfully erased',
+      erasedItems: erasureResults.filter(r => r.success).length,
+      retainedItems: erasureResults.filter(r => !r.success).length
+    };
+  }
+}
+
+// Privacy Impact Assessment
+interface PrivacyImpactAssessment {
+  id: string;
+  projectId: string;
+  conductedBy: string;
+  conductedAt: Date;
+
+  dataProcessing: {
+    personalDataTypes: string[];
+    specialCategories: string[];
+    dataVolume: 'LOW' | 'MEDIUM' | 'HIGH';
+    retentionPeriod: number;
+  };
+
+  riskAssessment: {
+    identifiedRisks: PrivacyRisk[];
+    riskLevel: 'LOW' | 'MEDIUM' | 'HIGH';
+    mitigationMeasures: MitigationMeasure[];
+  };
+
+  complianceStatus: {
+    gdprCompliant: boolean;
+    ccpaCompliant: boolean;
+    otherRegulations: string[];
+  };
+
+  approvals: {
+    dpoApproval: boolean;
+    managementApproval: boolean;
+    approvedAt?: Date;
+    approvedBy?: string;
+  };
+}
+```
+
+# 4. Audit Logging & Monitoring
+
+## 4.1 Comprehensive Audit System
+
+```typescript
+// Comprehensive Audit Logger
+class AuditLogger {
+  private readonly logStream: LogStream;
+  private readonly encryptionService: EncryptionService;
+
+  /**
+   * Log security event
+   * @param event - Security event to log
+   */
+  async logSecurityEvent(event: SecurityEvent): Promise<void> {
+    const auditEntry: AuditEntry = {
+      id: generateUUID(),
+      timestamp: new Date(),
+      category: 'SECURITY',
+      severity: event.severity,
+      event: event.type,
+      description: event.description,
+      metadata: {
+        source: event.source,
+        userId: event.userId,
+        projectPath: event.projectPath,
+        riskLevel: event.riskLevel,
+        mitigated: event.mitigated
+      },
+      hash: await this.generateEventHash(event)
+    };
+
+    await this.writeAuditEntry(auditEntry);
+  }
+
+  /**
+   * Log data access event
+   * @param access - Data access event
+   */
+  async logDataAccess(access: DataAccessEvent): Promise<void> {
+    const auditEntry: AuditEntry = {
+      id: generateUUID(),
+      timestamp: new Date(),
+      category: 'DATA_ACCESS',
+      severity: 'INFO',
+      event: access.action,
+      description: `Data access: ${access.action} on ${access.dataType}`,
+      metadata: {
+        dataType: access.dataType,
+        dataClassification: access.classification,
+        userId: access.userId,
+        projectPath: access.projectPath,
+        dataSize: access.dataSize,
+        purpose: access.purpose
+      },
+      hash: await this.generateEventHash(access)
+    };
+
+    await this.writeAuditEntry(auditEntry);
+  }
+
+  /**
+   * Log rule application event
+   * @param application - Rule application event
+   */
+  async logRuleApplication(application: RuleApplicationEvent): Promise<void> {
+    const auditEntry: AuditEntry = {
+      id: generateUUID(),
+      timestamp: new Date(),
+      category: 'RULE_APPLICATION',
+      severity: 'INFO',
+      event: 'RULE_APPLIED',
+      description: `Applied ${application.rulesApplied.length} rules to project`,
+      metadata: {
+        projectPath: application.projectPath,
+        rulesApplied: application.rulesApplied,
+        conflictsResolved: application.conflictsResolved,
+        applicationTime: application.applicationTime,
+        success: application.success
+      },
+      hash: await this.generateEventHash(application)
+    };
+
+    await this.writeAuditEntry(auditEntry);
+  }
+
+  private async writeAuditEntry(entry: AuditEntry): Promise<void> {
+    // Encrypt sensitive data
+    const encryptedEntry = await this.encryptionService.encrypt(
+      entry,
+      'AES-256'
+    );
+
+    // Write to audit log
+    await this.logStream.write(encryptedEntry);
+
+    // Send to monitoring system if critical
+    if (entry.severity === 'CRITICAL' || entry.severity === 'HIGH') {
+      await this.sendToMonitoring(entry);
+    }
+  }
+
+  /**
+   * Generate audit report
+   * @param criteria - Report criteria
+   * @returns Audit report
+   */
+  async generateAuditReport(criteria: AuditReportCriteria): Promise<AuditReport> {
+    const entries = await this.queryAuditEntries(criteria);
+
+    return {
+      id: generateUUID(),
+      generatedAt: new Date(),
+      criteria,
+      summary: {
+        totalEvents: entries.length,
+        securityEvents: entries.filter(e => e.category === 'SECURITY').length,
+        dataAccessEvents: entries.filter(e => e.category === 'DATA_ACCESS').length,
+        criticalEvents: entries.filter(e => e.severity === 'CRITICAL').length
+      },
+      events: entries,
+      recommendations: this.generateSecurityRecommendations(entries)
+    };
+  }
+}
+```
+
+## 4.2 Security Monitoring
+
+```typescript
+// Security Monitoring System
+class SecurityMonitor {
+  private readonly alertManager: AlertManager;
+  private readonly metricsCollector: MetricsCollector;
+
+  /**
+   * Monitor for security threats
+   */
+  async startMonitoring(): Promise<void> {
+    // Monitor for suspicious patterns
+    this.monitorSuspiciousPatterns();
+
+    // Monitor resource usage
+    this.monitorResourceUsage();
+
+    // Monitor access patterns
+    this.monitorAccessPatterns();
+
+    // Monitor data integrity
+    this.monitorDataIntegrity();
+  }
+
+  private async monitorSuspiciousPatterns(): Promise<void> {
+    const suspiciousPatterns = [
+      {
+        name: 'Multiple failed validations',
+        pattern: (events: AuditEntry[]) =>
+          events.filter(e =>
+            e.category === 'SECURITY' &&
+            e.event === 'VALIDATION_FAILED'
+          ).length > 5,
+        severity: 'HIGH'
+      },
+      {
+        name: 'Unusual file access patterns',
+        pattern: (events: AuditEntry[]) =>
+          events.filter(e =>
+            e.category === 'DATA_ACCESS' &&
+            e.metadata.dataClassification === 'RESTRICTED'
+          ).length > 10,
+        severity: 'MEDIUM'
+      }
+    ];
+
+    setInterval(async () => {
+      const recentEvents = await this.getRecentAuditEvents(300000); // 5 minutes
+
+      for (const pattern of suspiciousPatterns) {
+        if (pattern.pattern(recentEvents)) {
+          await this.alertManager.sendAlert({
+            type: 'SECURITY_THREAT',
+            severity: pattern.severity,
+            message: `Suspicious pattern detected: ${pattern.name}`,
+            timestamp: new Date(),
+            metadata: { pattern: pattern.name, eventCount: recentEvents.length }
+          });
+        }
+      }
+    }, 60000); // Check every minute
+  }
+}
+```
+
+# 5. Encryption & Key Management
+
+## 5.1 Encryption Implementation
+
+```typescript
+// Encryption Service
+class EncryptionService {
+  private readonly masterKey: Buffer;
+  private readonly algorithm = 'aes-256-gcm';
+
+  constructor(masterKey?: string) {
+    this.masterKey = masterKey
+      ? Buffer.from(masterKey, 'hex')
+      : this.generateMasterKey();
+  }
+
+  /**
+   * Encrypt data with AES-256-GCM
+   * @param data - Data to encrypt
+   * @param additionalData - Additional authenticated data
+   * @returns Encrypted data with IV and auth tag
+   */
+  async encrypt(data: any, additionalData?: string): Promise<EncryptedData> {
+    const iv = crypto.randomBytes(16);
+    const cipher = crypto.createCipher(this.algorithm, this.masterKey);
+
+    if (additionalData) {
+      cipher.setAAD(Buffer.from(additionalData));
+    }
+
+    const dataString = typeof data === 'string' ? data : JSON.stringify(data);
+
+    let encrypted = cipher.update(dataString, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+
+    const authTag = cipher.getAuthTag();
+
+    return {
+      data: encrypted,
+      iv: iv.toString('hex'),
+      authTag: authTag.toString('hex'),
+      algorithm: this.algorithm
+    };
+  }
+
+  /**
+   * Decrypt data
+   * @param encryptedData - Encrypted data object
+   * @param additionalData - Additional authenticated data
+   * @returns Decrypted data
+   */
+  async decrypt(encryptedData: EncryptedData, additionalData?: string): Promise<any> {
+    const iv = Buffer.from(encryptedData.iv, 'hex');
+    const authTag = Buffer.from(encryptedData.authTag, 'hex');
+
+    const decipher = crypto.createDecipher(this.algorithm, this.masterKey);
+    decipher.setAuthTag(authTag);
+
+    if (additionalData) {
+      decipher.setAAD(Buffer.from(additionalData));
+    }
+
+    let decrypted = decipher.update(encryptedData.data, 'hex', 'utf8');
+    decrypted += decipher.final('utf8');
+
+    try {
+      return JSON.parse(decrypted);
+    } catch {
+      return decrypted;
+    }
+  }
+
+  private generateMasterKey(): Buffer {
+    return crypto.randomBytes(32);
+  }
+}
+
+interface EncryptedData {
+  data: string;
+  iv: string;
+  authTag: string;
+  algorithm: string;
+}
+```
+
+## 5.2 Key Management
+
+```typescript
+// Key Management System
+class KeyManager {
+  private readonly keys: Map<string, KeyEntry>;
+  private readonly keyRotationInterval = 90 * 24 * 60 * 60 * 1000; // 90 days
+
+  constructor() {
+    this.keys = new Map();
+    this.startKeyRotation();
+  }
+
+  /**
+   * Generate new encryption key
+   * @param keyId - Key identifier
+   * @param purpose - Key purpose
+   * @returns Generated key
+   */
+  generateKey(keyId: string, purpose: KeyPurpose): CryptoKey {
+    const key = crypto.randomBytes(32);
+
+    const keyEntry: KeyEntry = {
+      id: keyId,
+      key,
+      purpose,
+      createdAt: new Date(),
+      expiresAt: new Date(Date.now() + this.keyRotationInterval),
+      status: 'ACTIVE'
+    };
+
+    this.keys.set(keyId, keyEntry);
+
+    return key;
+  }
+
+  /**
+   * Rotate encryption keys
+   */
+  private async rotateKeys(): Promise<void> {
+    const now = new Date();
+
+    for (const [keyId, keyEntry] of this.keys) {
+      if (keyEntry.expiresAt <= now && keyEntry.status === 'ACTIVE') {
+        // Mark old key as deprecated
+        keyEntry.status = 'DEPRECATED';
+
+        // Generate new key
+        const newKeyId = `${keyId}_${Date.now()}`;
+        this.generateKey(newKeyId, keyEntry.purpose);
+
+        console.log(`Key rotated: ${keyId} -> ${newKeyId}`);
+      }
+    }
+  }
+
+  private startKeyRotation(): void {
+    setInterval(() => {
+      this.rotateKeys();
+    }, 24 * 60 * 60 * 1000); // Check daily
+  }
+}
+
+interface KeyEntry {
+  id: string;
+  key: Buffer;
+  purpose: KeyPurpose;
+  createdAt: Date;
+  expiresAt: Date;
+  status: 'ACTIVE' | 'DEPRECATED' | 'REVOKED';
+}
+
+enum KeyPurpose {
+  DATA_ENCRYPTION = 'DATA_ENCRYPTION',
+  AUDIT_LOG_ENCRYPTION = 'AUDIT_LOG_ENCRYPTION',
+  SESSION_ENCRYPTION = 'SESSION_ENCRYPTION'
+}
+```
+
+# 6. Compliance Standards
+
+## 6.1 Security Compliance Framework
+
+### ISO 27001 Compliance
+- **Information Security Management System (ISMS)**
+- **Risk Assessment and Treatment**
+- **Security Controls Implementation**
+- **Continuous Monitoring and Improvement**
+
+### SOC 2 Type II Compliance
+- **Security**: Protects against unauthorized access
+- **Availability**: System availability and performance
+- **Processing Integrity**: Complete and accurate processing
+- **Confidentiality**: Information designated as confidential
+- **Privacy**: Personal information collection and usage
+
+### NIST Cybersecurity Framework
+- **Identify**: Asset management and risk assessment
+- **Protect**: Protective technology and processes
+- **Detect**: Continuous monitoring and detection
+- **Respond**: Incident response and communications
+- **Recover**: Recovery planning and improvements
+
+## 6.2 Compliance Monitoring
+
+```typescript
+// Compliance Monitor
+class ComplianceMonitor {
+  private readonly complianceChecks: Map<string, ComplianceCheck>;
+
+  /**
+   * Run compliance assessment
+   * @param framework - Compliance framework to assess
+   * @returns Compliance assessment result
+   */
+  async runComplianceAssessment(framework: ComplianceFramework): Promise<ComplianceAssessment> {
+    const checks = this.getFrameworkChecks(framework);
+    const results: ComplianceCheckResult[] = [];
+
+    for (const check of checks) {
+      const result = await this.executeComplianceCheck(check);
+      results.push(result);
+    }
+
+    return {
+      framework,
+      assessmentDate: new Date(),
+      overallStatus: this.calculateOverallStatus(results),
+      checks: results,
+      recommendations: this.generateRecommendations(results)
+    };
+  }
+
+  private async executeComplianceCheck(check: ComplianceCheck): Promise<ComplianceCheckResult> {
+    try {
+      const result = await check.execute();
+
+      return {
+        checkId: check.id,
+        name: check.name,
+        status: result.passed ? 'COMPLIANT' : 'NON_COMPLIANT',
+        score: result.score,
+        evidence: result.evidence,
+        gaps: result.gaps,
+        recommendations: result.recommendations
+      };
+    } catch (error) {
+      return {
+        checkId: check.id,
+        name: check.name,
+        status: 'ERROR',
+        score: 0,
+        error: error.message
+      };
+    }
+  }
+}
+
+interface ComplianceAssessment {
+  framework: ComplianceFramework;
+  assessmentDate: Date;
+  overallStatus: 'COMPLIANT' | 'PARTIALLY_COMPLIANT' | 'NON_COMPLIANT';
+  checks: ComplianceCheckResult[];
+  recommendations: ComplianceRecommendation[];
+}
+```
+
+---
+
+## Related Documents
+
+- **[System Architecture Overview](.cursor/rules/YAMLManagerRules/01-architecture-overview.mdc)**: Security integration with system architecture
+- **[Data Model Design](.cursor/rules/YAMLManagerRules/02-data-model-design.mdc)**: Data protection and encryption requirements
+- **[API Specifications](.cursor/rules/YAMLManagerRules/03-api-specifications.mdc)**: API security and authentication mechanisms
+- **[Development & Deployment](.cursor/rules/YAMLManagerRules/05-development-deployment.mdc)**: Secure deployment practices
+- **[Testing & QA](.cursor/rules/YAMLManagerRules/06-testing-qa.mdc)**: Security testing and vulnerability assessment

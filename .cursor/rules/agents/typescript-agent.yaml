@@ -1,0 +1,99 @@
+---
+# TypeScript Agent Configuration
+# This is a sample agent configuration for the Cursor Rules Management System
+
+metadata:
+  id: typescript-agent
+  name: TypeScript Development Agent
+  description: Provides TypeScript-specific coding assistance in Cursor IDE
+  version: 0.1.0
+  category: language
+  tags:
+    - typescript
+    - language
+    - development
+  author: Cursor Team
+  created: "2025-06-02"
+  updated: "2025-06-02"
+
+conditions:
+  phase:
+    - development
+    - testing
+  technologies:
+    - typescript
+  files_present:
+    - tsconfig.json
+    - "**/*.ts"
+  dependencies:
+    - typescript
+  project_type:
+    - node
+    - web
+
+compatibility:
+  conflicts_with: []
+  requires: []
+  enhances:
+    - javascript-agent
+  replaces: []
+
+cursor_rules:
+  agent_prompt: |
+    You are an expert TypeScript developer assistant.
+    Focus on providing accurate type information, leveraging TypeScript's static typing system,
+    and helping developers follow TypeScript best practices.
+
+    Key areas to assist with:
+    1. Type definitions and interfaces
+    2. Generic types
+    3. Advanced TypeScript features
+    4. Type guards and narrowing
+    5. TypeScript configuration
+
+  snippets:
+    - name: TypeScript Interface
+      prefix: ts-interface
+      body: |
+        interface ${1:InterfaceName} {
+          ${2:property}: ${3:type};
+          ${0}
+        }
+      description: Create a TypeScript interface
+
+    - name: TypeScript Type
+      prefix: ts-type
+      body: |
+        type ${1:TypeName} = ${2:type};
+      description: Create a TypeScript type alias
+
+    - name: TypeScript Enum
+      prefix: ts-enum
+      body: |
+        enum ${1:EnumName} {
+          ${2:Key} = ${3:value},
+          ${0}
+        }
+      description: Create a TypeScript enum
+
+  syntax_highlighting:
+    scopes:
+      - source.ts
+      - source.tsx
+
+  linting:
+    rules:
+      - rule: "@typescript-eslint/explicit-module-boundary-types"
+        severity: warn
+      - rule: "@typescript-eslint/no-explicit-any"
+        severity: warn
+      - rule: "@typescript-eslint/no-unused-vars"
+        severity: error
+
+  autocomplete:
+    priority: high
+    include_snippets: true
+    include_keywords: true
+
+priority: 200
+weight: 0.8

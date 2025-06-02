@@ -1,0 +1,1195 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# API Specifications
+## Cursor Rules Management System
+
+---
+
+## Document Information
+
+| Field | Value |
+|-------|-------|
+| **Document Version** | 1.0 |
+| **Date** | June 2, 2025 |
+| **Related Documents** | System Architecture Overview, Data Model Design |
+
+---
+
+# 1. API Design Overview
+
+**API Design Pattern**: **Command-Query Responsibility Segregation (CQRS)**
+- **Commands**: Modify system state (detect, compose, apply rules)
+- **Queries**: Retrieve system state (list rules, get context, analyze project)
+- **Event-Driven**: Asynchronous processing with event notifications
+
+## 1.1 API Architecture Principles
+
+### Design Principles
+- **RESTful Design**: Standard HTTP methods and status codes
+- **Resource-Oriented**: Clear resource hierarchy and relationships
+- **Stateless**: No server-side session state
+- **Cacheable**: Appropriate cache headers and ETags
+- **Self-Documenting**: Comprehensive OpenAPI specification
+
+### Error Handling Strategy
+- **Consistent Format**: Standardized error response structure
+- **Meaningful Messages**: Clear, actionable error descriptions
+- **Appropriate Codes**: Proper HTTP status code usage
+- **Error Context**: Additional context for debugging
+
+# 2. Internal API Specifications
+
+## 2.1 Context Detection API
+
+### Service Interface
+
+```typescript
+interface ContextDetectionService {
+  /**
+   * Detect project context for a given path
+   * @param projectPath - Absolute path to project
+   * @param options - Detection options
+   * @returns Promise resolving to project context
+   */
+  detectContext(
+    projectPath: string,
+    options?: DetectionOptions
+  ): Promise<ProjectContext>;
+
+  /**
+   * Get cached context if available
+   * @param projectPath - Absolute path to project
+   * @returns Cached context or null
+   */
+  getCachedContext(projectPath: string): ProjectContext | null;
+
+  /**
+   * Invalidate context cache for project
+   * @param projectPath - Absolute path to project
+   */
+  invalidateCache(projectPath: string): void;
+
+  /**
+   * Register custom analyzer
+   * @param analyzer - Custom analyzer implementation
+   */
+  registerAnalyzer(analyzer: ContextAnalyzer): void;
+
+  /**
+   * Get available analyzers
+   * @returns List of registered analyzers
+   */
+  getAnalyzers(): ContextAnalyzer[];
+}
+
+// Detection Options
+interface DetectionOptions {
+  // Cache behavior
+  useCache?: boolean;
+  cacheTimeout?: number;
+
+  // Analysis depth
+  analysisDepth?: 'shallow' | 'medium' | 'deep';
+  maxFiles?: number;
+
+  // Analyzer selection
+  enabledAnalyzers?: string[];
+  disabledAnalyzers?: string[];
+
+  // Performance
+  timeout?: number;
+  concurrent?: boolean;
+
+  // Output format
+  includeDebugInfo?: boolean;
+  verboseOutput?: boolean;
+}
+```
+
+### REST Endpoints
+
+#### POST /api/v1/context/detect
+
+**Description**: Detect project context and return analysis results
+
+**Request Body**:
+```json
+{
+  "projectPath": "/path/to/project",
+  "options": {
+    "useCache": true,
+    "analysisDepth": "medium",
+    "includeDebugInfo": false,
+    "enabledAnalyzers": ["file-system", "dependency", "pattern"],
+    "timeout": 30000
+  }
+}
+```
+
+**Response (200 - Success)**:
+```json
+{
+  "success": true,
+  "data": {
+    "projectId": "proj_abc123",
+    "projectPath": "/path/to/project",
+    "projectName": "my-awesome-project",
+    "developmentPhase": "development",
+    "technologies": ["react", "typescript", "nodejs"],
+    "projectDomain": "ecommerce",
+    "projectScale": "medium",
+    "confidence": 0.95,
+    "detectionTimestamp": 1704067200000,
+    "fileSystem": {
+      "totalFiles": 156,
+      "directories": ["src", "tests", "docs"],
+      "fileTypes": {
+        ".ts": 45,
+        ".tsx": 32,
+        ".js": 12,
+        ".json": 8
+      },
+      "structurePattern": "standard-frontend",
+      "indicators": {
+        "hasSource": true,
+        "hasTests": true,
+        "hasDocs": true,
+        "hasConfig": true,
+        "hasDeployment": false
+      }
+    },
+    "dependencies": {
+      "production": {
+        "react": "^18.2.0",
+        "typescript": "^4.9.0"
+      },
+      "development": {
+        "@types/react": "^18.0.0",
+        "jest": "^29.0.0"
+      },
+      "detectedFrameworks": [
+        {
+          "name": "react",
+          "version": "18.2.0",
+          "confidence": 0.98
+        }
+      ]
+    },
+    "codePatterns": [
+      {
+        "type": "react-component",
+        "confidence": 0.92,
+        "file": "src/App.tsx",
+        "indicators": ["jsx-syntax", "react-hooks"]
+      }
+    ]
+  },
+  "metadata": {
+    "detectionTime": 1.234,
+    "cacheUsed": true,
+    "analyzersUsed": ["file-system", "dependency", "pattern"],
+    "analysisDepth": "medium"
+  }
+}
+```
+
+**Error Responses**:
+- `400 Bad Request`: Invalid project path or options
+- `404 Not Found`: Project path does not exist
+- `408 Request Timeout`: Detection timed out
+- `500 Internal Server Error`: Detection failed
+
+#### GET /api/v1/context/cached/{projectId}
+
+**Description**: Retrieve cached context for a project
+
+**Parameters**:
+- `projectId` (path): Project identifier
+
+**Response (200 - Success)**:
+```json
+{
+  "success": true,
+  "data": {
+    // Same structure as detect endpoint
+  },
+  "metadata": {
+    "cacheHit": true,
+    "cachedAt": 1704067100000,
+    "expiresAt": 1704067400000
+  }
+}
+```
+
+#### DELETE /api/v1/context/cache/{projectId}
+
+**Description**: Invalidate cached context for a project
+
+**Response (204 - No Content)**: Cache invalidated successfully
+
+## 2.2 Rule Management API
+
+### Service Interface
+
+```typescript
+interface RuleManagementService {
+  /**
+   * Get all available rules
+   * @param filters - Optional filters
+   * @returns Promise resolving to rule list
+   */
+  getRules(filters?: RuleFilters): Promise<Rule[]>;
+
+  /**
+   * Get rule by ID
+   * @param ruleId - Rule identifier
+   * @returns Promise resolving to rule or null
+   */
+  getRule(ruleId: string): Promise<Rule | null>;
+
+  /**
+   * Find compatible rules for context
+   * @param context - Project context
+   * @param options - Selection options
+   * @returns Promise resolving to compatible rules
+   */
+  findCompatibleRules(
+    context: ProjectContext,
+    options?: RuleSelectionOptions
+  ): Promise<CompatibleRule[]>;
+
+  /**
+   * Validate rule definition
+   * @param rule - Rule to validate
+   * @returns Validation result
+   */
+  validateRule(rule: Rule): ValidationResult;
+
+  /**
+   * Add custom rule
+   * @param rule - Rule definition
+   * @returns Promise resolving to added rule
+   */
+  addRule(rule: Rule): Promise<Rule>;
+}
+
+// Rule Filters
+interface RuleFilters {
+  category?: string[];
+  tags?: string[];
+  phase?: string[];
+  technology?: string[];
+  domain?: string[];
+  author?: string;
+  minPriority?: number;
+  maxPriority?: number;
+  searchQuery?: string;
+}
+
+// Compatible Rule Result
+interface CompatibleRule {
+  rule: Rule;
+  matchScore: number;
+  confidence: number;
+  matchReasons: string[];
+  conflicts: string[];
+  enhancements: string[];
+}
+```
+
+### REST Endpoints
+
+#### GET /api/v1/rules
+
+**Description**: List available rules with optional filtering
+
+**Query Parameters**:
+- `category[]`: Rule categories to filter by
+- `tags[]`: Tags to filter by
+- `technology[]`: Technologies to filter by
+- `search`: Search query for rule names/descriptions
+- `limit`: Maximum number of results (default: 100)
+- `offset`: Pagination offset (default: 0)
+
+**Response (200 - Success)**:
+```json
+{
+  "success": true,
+  "data": {
+    "rules": [
+      {
+        "metadata": {
+          "id": "nodejs-auth-jwt",
+          "name": "Node.js JWT Authentication",
+          "version": "1.2.0",
+          "category": "authentication",
+          "tags": ["nodejs", "jwt", "auth", "security"]
+        },
+        "conditions": {
+          "technologies": ["nodejs"],
+          "dependencies": ["jsonwebtoken"]
+        },
+        "cursor_rules": {
+          "security_rules": {
+            "jwt_handling": {
+              "secret_management": "environment_variable",
+              "token_expiration": "recommended",
+              "refresh_tokens": "optional"
+            }
+          }
+        },
+        "priority": 150,
+        "confidence": 0.89
+      }
+    ],
+    "pagination": {
+      "total": 245,
+      "limit": 100,
+      "offset": 0,
+      "hasMore": true
+    }
+  }
+}
+```
+
+#### GET /api/v1/rules/{ruleId}
+
+**Description**: Get specific rule by ID
+
+**Parameters**:
+- `ruleId` (path): Rule identifier
+
+**Response (200 - Success)**:
+```json
+{
+  "success": true,
+  "data": {
+    // Complete rule object
+  }
+}
+```
+
+#### POST /api/v1/rules/find-compatible
+
+**Description**: Find rules compatible with project context
+
+**Request Body**:
+```json
+{
+  "context": {
+    "projectPath": "/path/to/project",
+    "developmentPhase": "development",
+    "technologies": ["react", "nodejs"],
+    "dependencies": {
+      "production": {
+        "react": "^18.0.0",
+        "express": "^4.18.0"
+      }
+    }
+  },
+  "options": {
+    "includeOptional": false,
+    "maxRules": 10,
+    "minConfidence": 0.7,
+    "preferredCategories": ["base", "technology"]
+  }
+}
+```
+
+**Response (200 - Success)**:
+```json
+{
+  "success": true,
+  "data": {
+    "compatibleRules": [
+      {
+        "rule": {
+          "metadata": {
+            "id": "react-typescript",
+            "name": "React with TypeScript"
+          }
+        },
+        "matchScore": 0.92,
+        "confidence": 0.88,
+        "matchReasons": [
+          "React patterns detected",
+          "TypeScript configuration found"
+        ],
+        "conflicts": [],
+        "enhancements": ["typescript-strict"]
+      }
+    ],
+    "analysis": {
+      "totalRulesEvaluated": 245,
+      "compatibleRulesFound": 8,
+      "averageMatchScore": 0.76,
+      "evaluationTime": 0.156
+    }
+  }
+}
+```
+
+#### POST /api/v1/rules/validate
+
+**Description**: Validate rule definition
+
+**Request Body**:
+```json
+{
+  "rule": {
+    // Rule object to validate
+  }
+}
+```
+
+**Response (200 - Success)**:
+```json
+{
+  "success": true,
+  "data": {
+    "valid": true,
+    "errors": [],
+    "warnings": [
+      {
+        "field": "metadata.description",
+        "message": "Description could be more detailed",
+        "severity": "INFO"
+      }
+    ]
+  }
+}
+```
+
+## 2.3 Rule Composition API
+
+### Service Interface
+
+```typescript
+interface RuleCompositionService {
+  /**
+   * Compose rules into unified rule set
+   * @param rules - Rules to compose
+   * @param context - Project context
+   * @param options - Composition options
+   * @returns Promise resolving to composed rule set
+   */
+  composeRules(
+    rules: Rule[],
+    context: ProjectContext,
+    options?: CompositionOptions
+  ): Promise<ComposedRuleSet>;
+
+  /**
+   * Detect conflicts between rules
+   * @param rules - Rules to analyze
+   * @returns Promise resolving to detected conflicts
+   */
+  detectConflicts(rules: Rule[]): Promise<RuleConflict[]>;
+
+  /**
+   * Preview composition result
+   * @param rules - Rules to preview
+   * @param context - Project context
+   * @returns Promise resolving to composition preview
+   */
+  previewComposition(
+    rules: Rule[],
+    context: ProjectContext
+  ): Promise<CompositionPreview>;
+}
+
+// Composition Options
+interface CompositionOptions {
+  strategy?: 'layered' | 'intelligent' | 'template' | 'conditional';
+  conflictResolution?: 'priority' | 'context' | 'merge' | 'manual';
+  optimization?: boolean;
+  includeDebugInfo?: boolean;
+  dryRun?: boolean;
+}
+
+// Composition Preview
+interface CompositionPreview {
+  finalConfiguration: any;
+  appliedRules: string[];
+  conflicts: RuleConflict[];
+  warnings: string[];
+  estimatedFiles: string[];
+  dependencies: string[];
+}
+```
+
+### REST Endpoints
+
+#### POST /api/v1/composition/compose
+
+**Description**: Compose multiple rules into a unified rule set
+
+**Request Body**:
+```json
+{
+  "rules": [
+    { "id": "nodejs-base" },
+    { "id": "react-typescript" },
+    { "id": "jwt-authentication" }
+  ],
+  "context": {
+    "projectPath": "/path/to/project",
+    "developmentPhase": "development",
+    "technologies": ["react", "nodejs", "typescript"]
+  },
+  "options": {
+    "strategy": "intelligent",
+    "conflictResolution": "priority",
+    "optimization": true,
+    "includeDebugInfo": false
+  }
+}
+```
+
+**Response (200 - Success)**:
+```json
+{
+  "success": true,
+  "data": {
+    "composedRuleSet": {
+      "id": "comp_abc123",
+      "name": "React TypeScript with JWT Auth",
+      "version": "1.0.0",
+      "appliedRules": [
+        {
+          "ruleId": "nodejs-base",
+          "ruleName": "Node.js Base Configuration",
+          "ruleVersion": "1.0.0",
+          "layer": "base",
+          "priority": 100,
+          "weight": 1.0,
+          "matchScore": 0.95,
+          "matchReasons": ["Node.js project detected"]
+        },
+        {
+          "ruleId": "react-typescript",
+          "ruleName": "React with TypeScript",
+          "ruleVersion": "2.1.0",
+          "layer": "technology",
+          "priority": 200,
+          "weight": 0.9,
+          "matchScore": 0.92,
+          "matchReasons": ["React and TypeScript detected"]
+        }
+      ],
+      "finalConfiguration": {
+        "cursorRules": {
+          "language_preferences": {
+            "typescript": {
+              "strict": true,
+              "jsx": "react-jsx"
+            }
+          }
+        },
+        "dependencies": [
+          {
+            "name": "react",
+            "version": "^18.0.0",
+            "purpose": "Frontend framework"
+          }
+        ],
+        "fileStructure": {
+          "create_directories": ["src", "tests"],
+          "create_files": [
+            {
+              "path": "src/App.tsx",
+              "template": "react_app_component"
+            }
+          ]
+        }
+      },
+      "conflictsResolved": [
+        {
+          "type": "setting_override",
+          "conflictingRules": ["typescript-loose", "typescript-strict"],
+          "resolution": "priority_based",
+          "winner": "typescript-strict",
+          "reason": "Higher priority rule"
+        }
+      ],
+      "warnings": []
+    }
+  },
+  "metadata": {
+    "compositionTime": 0.234,
+    "rulesProcessed": 3,
+    "conflictsResolved": 1,
+    "optimizationsApplied": 2,
+    "strategy": "intelligent"
+  }
+}
+```
+
+#### POST /api/v1/composition/preview
+
+**Description**: Preview composition result without applying
+
+**Request Body**: Same as compose endpoint
+
+**Response (200 - Success)**:
+```json
+{
+  "success": true,
+  "data": {
+    "preview": {
+      "finalConfiguration": {
+        // Preview of final configuration
+      },
+      "appliedRules": ["nodejs-base", "react-typescript"],
+      "conflicts": [
+        {
+          "type": "dependency_conflict",
+          "rules": ["rule-a", "rule-b"],
+          "description": "Conflicting React versions"
+        }
+      ],
+      "warnings": [
+        "TypeScript strict mode will be enabled"
+      ],
+      "estimatedFiles": [
+        "src/App.tsx",
+        "tsconfig.json",
+        ".gitignore"
+      ],
+      "dependencies": [
+        "react@^18.0.0",
+        "typescript@^4.9.0"
+      ]
+    }
+  }
+}
+```
+
+#### POST /api/v1/composition/conflicts
+
+**Description**: Detect conflicts between rules
+
+**Request Body**:
+```json
+{
+  "rules": [
+    { "id": "javascript-loose" },
+    { "id": "typescript-strict" }
+  ]
+}
+```
+
+**Response (200 - Success)**:
+```json
+{
+  "success": true,
+  "data": {
+    "conflicts": [
+      {
+        "type": "configuration_conflict",
+        "severity": "high",
+        "rules": ["javascript-loose", "typescript-strict"],
+        "description": "Conflicting strictness settings",
+        "suggestions": [
+          "Use typescript-strict for TypeScript projects",
+          "Remove javascript-loose when using TypeScript"
+        ]
+      }
+    ]
+  }
+}
+```
+
+## 2.4 Integration API
+
+### Service Interface
+
+```typescript
+interface IntegrationService {
+  /**
+   * Apply composed rule set to target system
+   * @param ruleSet - Composed rule set
+   * @param target - Integration target
+   * @param options - Application options
+   * @returns Promise resolving to application result
+   */
+  applyRuleSet(
+    ruleSet: ComposedRuleSet,
+    target: IntegrationTarget,
+    options?: ApplicationOptions
+  ): Promise<ApplicationResult>;
+
+  /**
+   * Generate files from rule set
+   * @param ruleSet - Composed rule set
+   * @param outputPath - Output directory
+   * @param options - Generation options
+   * @returns Promise resolving to generated files
+   */
+  generateFiles(
+    ruleSet: ComposedRuleSet,
+    outputPath: string,
+    options?: GenerationOptions
+  ): Promise<GeneratedFiles>;
+}
+
+// Integration Target
+interface IntegrationTarget {
+  type: 'cursor' | 'vscode' | 'file-system' | 'custom';
+  path: string;
+  configuration?: any;
+}
+
+// Application Options
+interface ApplicationOptions {
+  backupExisting?: boolean;
+  mergeWithExisting?: boolean;
+  dryRun?: boolean;
+  forceOverwrite?: boolean;
+  excludeFiles?: string[];
+}
+```
+
+### REST Endpoints
+
+#### POST /api/v1/integration/apply
+
+**Description**: Apply composed rule set to target system
+
+**Request Body**:
+```json
+{
+  "ruleSet": {
+    "id": "comp_abc123",
+    "finalConfiguration": {
+      // Complete composed configuration
+    }
+  },
+  "target": {
+    "type": "cursor",
+    "path": "/path/to/project",
+    "configuration": {
+      "rulesPath": ".cursor/rules"
+    }
+  },
+  "options": {
+    "backupExisting": true,
+    "mergeWithExisting": false,
+    "dryRun": false,
+    "forceOverwrite": false
+  }
+}
+```
+
+**Response (200 - Success)**:
+```json
+{
+  "success": true,
+  "data": {
+    "applicationResult": {
+      "success": true,
+      "appliedFiles": [
+        ".cursor/rules/main.json",
+        ".cursor/rules/typescript.json",
+        ".cursor/rules/react.json"
+      ],
+      "skippedFiles": [],
+      "errors": [],
+      "backupPath": "/path/to/project/.cursor/backup/2024-06-02-10-30-00",
+      "rollbackPossible": true
+    }
+  },
+  "metadata": {
+    "applicationTime": 0.156,
+    "filesGenerated": 3,
+    "totalSize": "12.5KB",
+    "target": "cursor"
+  }
+}
+```
+
+#### POST /api/v1/integration/generate
+
+**Description**: Generate files from rule set without applying
+
+**Request Body**:
+```json
+{
+  "ruleSet": {
+    "id": "comp_abc123",
+    "finalConfiguration": {
+      // Configuration object
+    }
+  },
+  "outputPath": "/tmp/generated-rules",
+  "options": {
+    "format": "json",
+    "includeMetadata": true,
+    "prettyPrint": true
+  }
+}
+```
+
+**Response (200 - Success)**:
+```json
+{
+  "success": true,
+  "data": {
+    "generatedFiles": [
+      {
+        "path": "/tmp/generated-rules/main.json",
+        "size": 2048,
+        "type": "configuration"
+      },
+      {
+        "path": "/tmp/generated-rules/metadata.json",
+        "size": 512,
+        "type": "metadata"
+      }
+    ],
+    "totalSize": 2560,
+    "format": "json"
+  }
+}
+```
+
+# 3. External Integration Specifications
+
+## 3.1 Cursor IDE Integration
+
+### File-Based Configuration
+
+The Cursor IDE integration works by generating configuration files in the `.cursor/rules/` directory:
+
+```typescript
+// Cursor Integration Adapter
+class CursorIntegrationAdapter implements Integration {
+  id = 'cursor-ide';
+  name = 'Cursor IDE Integration';
+  version = '1.0.0';
+  targetType = 'cursor' as const;
+
+  async apply(
+    ruleSet: ComposedRuleSet,
+    target: IntegrationTarget
+  ): Promise<void> {
+    const cursorRulesPath = path.join(target.path, '.cursor', 'rules');
+
+    // Ensure directory exists
+    await fs.ensureDir(cursorRulesPath);
+
+    // Generate main configuration
+    const mainConfig = this.generateMainConfig(ruleSet);
+    await fs.writeJSON(
+      path.join(cursorRulesPath, 'main.json'),
+      mainConfig,
+      { spaces: 2 }
+    );
+
+    // Generate phase-specific configuration
+    const phaseConfig = this.generatePhaseConfig(ruleSet);
+    await fs.writeJSON(
+      path.join(cursorRulesPath, 'phase.json'),
+      phaseConfig,
+      { spaces: 2 }
+    );
+
+    // Generate technology-specific configuration
+    const techConfig = this.generateTechnologyConfig(ruleSet);
+    await fs.writeJSON(
+      path.join(cursorRulesPath, 'technology.json'),
+      techConfig,
+      { spaces: 2 }
+    );
+
+    // Generate metadata
+    const metadata = this.generateMetadata(ruleSet);
+    await fs.writeJSON(
+      path.join(cursorRulesPath, 'metadata.json'),
+      metadata,
+      { spaces: 2 }
+    );
+  }
+
+  private generateMainConfig(ruleSet: ComposedRuleSet): CursorMainConfig {
+    return {
+      version: '1.0',
+      generatedAt: new Date().toISOString(),
+      generatedBy: 'cursor-rules-engine',
+
+      // Language preferences
+      languagePreferences: this.extractLanguagePreferences(ruleSet),
+
+      // Code generation settings
+      codeGeneration: this.extractCodeGeneration(ruleSet),
+
+      // Security settings
+      security: this.extractSecuritySettings(ruleSet),
+
+      // Performance settings
+      performance: this.extractPerformanceSettings(ruleSet),
+
+      // Testing settings
+      testing: this.extractTestingSettings(ruleSet)
+    };
+  }
+}
+```
+
+### Cursor Configuration Schema
+
+```typescript
+interface CursorMainConfig {
+  version: string;
+  generatedAt: string;
+  generatedBy: string;
+
+  languagePreferences: {
+    [language: string]: {
+      strict?: boolean;
+      preferences?: Record<string, any>;
+      formatting?: Record<string, any>;
+      linting?: Record<string, any>;
+    };
+  };
+
+  codeGeneration: {
+    templates: Record<string, string>;
+    patterns: Record<string, string>;
+    suggestions: Array<{
+      trigger: string;
+      template: string;
+      description: string;
+    }>;
+  };
+
+  security: {
+    rules: string[];
+    scanning: {
+      enabled: boolean;
+      level: 'basic' | 'standard' | 'strict';
+    };
+    dependencies: {
+      auditEnabled: boolean;
+      allowUnsafe: boolean;
+    };
+  };
+
+  performance: {
+    optimization: {
+      enabled: boolean;
+      level: 'basic' | 'standard' | 'aggressive';
+    };
+    monitoring: {
+      enabled: boolean;
+      metrics: string[];
+    };
+  };
+
+  testing: {
+    framework: string;
+    coverage: {
+      enabled: boolean;
+      threshold: number;
+    };
+    automation: {
+      onSave: boolean;
+      onCommit: boolean;
+    };
+  };
+}
+```
+
+## 3.2 VS Code Extension Integration
+
+### Extension API Integration
+
+```typescript
+// VS Code Extension Main Module
+export function activate(context: vscode.ExtensionContext) {
+  const ruleEngine = new CursorRulesEngine();
+
+  // Register commands
+  const commands = [
+    vscode.commands.registerCommand(
+      'cursor-rules.detectAndLoad',
+      async () => {
+        try {
+          const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
+          if (!workspaceFolder) {
+            vscode.window.showErrorMessage('No workspace folder found');
+            return;
+          }
+
+          // Show progress
+          await vscode.window.withProgress({
+            location: vscode.ProgressLocation.Notification,
+            title: 'Detecting project context...',
+            cancellable: false
+          }, async (progress) => {
+            // Detect context
+            progress.report({ increment: 20, message: 'Analyzing project structure...' });
+            const context = await ruleEngine.detectContext(workspaceFolder.uri.fsPath);
+
+            // Find compatible rules
+            progress.report({ increment: 40, message: 'Finding compatible rules...' });
+            const compatibleRules = await ruleEngine.findCompatibleRules(context);
+
+            // Compose rules
+            progress.report({ increment: 60, message: 'Composing rule set...' });
+            const composedRuleSet = await ruleEngine.composeRules(compatibleRules, context);
+
+            // Apply to Cursor
+            progress.report({ increment: 80, message: 'Applying rules to Cursor...' });
+            await ruleEngine.applyRuleSet(composedRuleSet, {
+              type: 'cursor',
+              path: workspaceFolder.uri.fsPath
+            });
+
+            progress.report({ increment: 100, message: 'Complete!' });
+          });
+
+          vscode.window.showInformationMessage(
+            'Cursor rules have been updated successfully!'
+          );
+
+        } catch (error) {
+          vscode.window.showErrorMessage(
+            `Failed to update Cursor rules: ${error.message}`
+          );
+        }
+      }
+    )
+  ];
+
+  context.subscriptions.push(...commands);
+}
+```
+
+## 3.3 CLI Integration
+
+### Command-Line Interface
+
+```typescript
+// CLI Command Definitions
+export const commands: CommandDefinition[] = [
+  {
+    name: 'detect',
+    description: 'Detect project context and load compatible rules',
+    options: [
+      { name: 'path', alias: 'p', type: 'string', defaultValue: process.cwd() },
+      { name: 'output', alias: 'o', type: 'string', defaultValue: 'text' },
+      { name: 'verbose', alias: 'v', type: 'boolean', defaultValue: false },
+      { name: 'cache', type: 'boolean', defaultValue: true },
+      { name: 'apply', alias: 'a', type: 'boolean', defaultValue: true }
+    ],
+    handler: async (options: DetectOptions) => {
+      const spinner = ora('Detecting project context...').start();
+
+      try {
+        const ruleEngine = new CursorRulesEngine();
+
+        // Detect context
+        spinner.text = 'Analyzing project structure...';
+        const context = await ruleEngine.detectContext(options.path, {
+          useCache: options.cache,
+          includeDebugInfo: options.verbose
+        });
+
+        // Find compatible rules
+        spinner.text = 'Finding compatible rules...';
+        const compatibleRules = await ruleEngine.findCompatibleRules(context);
+
+        // Compose rules
+        spinner.text = 'Composing rule set...';
+        const composedRuleSet = await ruleEngine.composeRules(compatibleRules, context);
+
+        // Apply rules if requested
+        if (options.apply) {
+          spinner.text = 'Applying rules to Cursor...';
+          await ruleEngine.applyRuleSet(composedRuleSet, {
+            type: 'cursor',
+            path: options.path
+          });
+        }
+
+        spinner.succeed('Project analysis complete!');
+
+        // Output results
+        await outputResults(composedRuleSet, options.output, options.verbose);
+
+      } catch (error) {
+        spinner.fail(`Detection failed: ${error.message}`);
+        process.exit(1);
+      }
+    }
+  }
+];
+```
+
+# 4. Error Handling & Status Codes
+
+## 4.1 Standard Error Response Format
+
+```typescript
+interface ErrorResponse {
+  success: false;
+  error: {
+    code: string;
+    message: string;
+    details?: any;
+    timestamp: string;
+    requestId: string;
+  };
+  metadata?: {
+    [key: string]: any;
+  };
+}
+```
+
+## 4.2 HTTP Status Code Usage
+
+| Status Code | Usage |
+|-------------|--------|
+| `200 OK` | Successful operation |
+| `201 Created` | Resource created successfully |
+| `204 No Content` | Successful operation with no response body |
+| `400 Bad Request` | Invalid request parameters or body |
+| `401 Unauthorized` | Authentication required |
+| `403 Forbidden` | Insufficient permissions |
+| `404 Not Found` | Resource not found |
+| `408 Request Timeout` | Operation timed out |
+| `409 Conflict` | Resource conflict (e.g., rule conflicts) |
+| `422 Unprocessable Entity` | Validation errors |
+| `429 Too Many Requests` | Rate limit exceeded |
+| `500 Internal Server Error` | Server error |
+| `502 Bad Gateway` | External service error |
+| `503 Service Unavailable` | Service temporarily unavailable |
+
+## 4.3 Error Code Definitions
+
+| Error Code | Description |
+|------------|-------------|
+| `INVALID_PROJECT_PATH` | Project path is invalid or inaccessible |
+| `CONTEXT_DETECTION_FAILED` | Failed to detect project context |
+| `RULE_NOT_FOUND` | Requested rule does not exist |
+| `RULE_VALIDATION_FAILED` | Rule validation errors |
+| `COMPOSITION_FAILED` | Rule composition failed |
+| `CONFLICT_RESOLUTION_FAILED` | Unable to resolve rule conflicts |
+| `INTEGRATION_FAILED` | Failed to apply rules to target |
+| `FILE_GENERATION_FAILED` | Failed to generate configuration files |
+| `CACHE_ERROR` | Cache operation failed |
+| `TIMEOUT_ERROR` | Operation exceeded time limit |
+
+---
+
+## Related Documents
+
+- **[System Architecture Overview](.cursor/rules/YAMLManagerRules/01-architecture-overview.mdc)**: Core system architecture and component design
+- **[Data Model Design](.cursor/rules/YAMLManagerRules/02-data-model-design.mdc)**: Data structures and schemas used by APIs
+- **[Security & Compliance](.cursor/rules/YAMLManagerRules/04-security-compliance.mdc)**: API security and authentication
+- **[Development & Deployment](.cursor/rules/YAMLManagerRules/05-development-deployment.mdc)**: API deployment and environment setup
+- **[Testing & QA](.cursor/rules/YAMLManagerRules/06-testing-qa.mdc)**: API testing strategies and quality assurance

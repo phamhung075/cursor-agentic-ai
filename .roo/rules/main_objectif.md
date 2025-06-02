@@ -1,6 +1,6 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: false
 ---
-setting up rules in the roo workspace to allow the AI to work automatically and help build the software project
+create Roo Code Rules Management System [readme.md](mdc:.roo/rules/YAMLManagerRules/readme.md)

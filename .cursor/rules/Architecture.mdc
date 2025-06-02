@@ -1,0 +1,4842 @@
+# Technical Architecture & Specifications Document
+## Cursor Rules Management System
+### Universal Development Lifecycle Rule Engine
+
+---
+
+## Document Information
+
+| Field | Value |
+|-------|-------|
+| **Document Version** | 1.0 |
+| **Date** | June 2, 2025 |
+| **Technical Lead** | [To be assigned] |
+| **Architecture Review** | [To be scheduled] |
+| **Status** | Draft |
+| **Related Documents** | PRD v1.0, API Specifications |
+
+---
+
+# 1. System Architecture Overview
+
+## 1.1 Architecture Pattern & Design Philosophy
+
+**Primary Pattern**: **Layered Architecture** with **Plugin-based Extension System**
+- **Separation of Concerns**: Clear boundaries between detection, composition, and integration
+- **Extensibility**: Plugin architecture for adding new rule types and integrations
+- **Scalability**: Horizontal scaling through microservice decomposition (future)
+- **Maintainability**: Modular design with well-defined interfaces
+
+**Architecture Rationale:**
+- **Layered Architecture** provides clear separation between business logic, data access, and presentation
+- **Plugin System** enables community contributions and extensibility
+- **Event-Driven Components** for real-time updates and reactive behavior
+- **Caching Strategy** for performance optimization at multiple levels
+
+## 1.2 High-Level System Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        Cursor Rules Management System                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                              PRESENTATION LAYER                             │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐             │
+│  │   VS Code       │  │   CLI Interface │  │   Web Dashboard │             │
+│  │   Extension     │  │                 │  │   (Future)      │             │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                               API GATEWAY LAYER                             │
+│  ┌─────────────────────────────────────────────────────────────────────────┐ │
+│  │                         Command Controller                              │ │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐    │ │
+│  │  │   Detect    │  │   Compose   │  │   Apply     │  │   Monitor   │    │ │
+│  │  │   Commands  │  │   Commands  │  │   Commands  │  │   Commands  │    │ │
+│  │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘    │ │
+│  └─────────────────────────────────────────────────────────────────────────┘ │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                             BUSINESS LOGIC LAYER                            │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐             │
+│  │   Context       │  │   Rule          │  │   Integration   │             │
+│  │   Detection     │  │   Composition   │  │   Management    │             │
+│  │   Engine        │  │   Engine        │  │   Engine        │             │
+│  │                 │  │                 │  │                 │             │
+│  │ ┌─────────────┐ │  │ ┌─────────────┐ │  │ ┌─────────────┐ │             │
+│  │ │File System  │ │  │ │Conflict     │ │  │ │Cursor       │ │             │
+│  │ │Analyzer     │ │  │ │Resolver     │ │  │ │Integration  │ │             │
+│  │ └─────────────┘ │  │ └─────────────┘ │  │ └─────────────┘ │             │
+│  │ ┌─────────────┐ │  │ ┌─────────────┐ │  │ ┌─────────────┐ │             │
+│  │ │Dependency   │ │  │ │Smart        │ │  │ │File         │ │             │
+│  │ │Analyzer     │ │  │ │Merger       │ │  │ │Generator    │ │             │
+│  │ └─────────────┘ │  │ └─────────────┘ │  │ └─────────────┘ │             │
+│  │ ┌─────────────┐ │  │ ┌─────────────┐ │  │ ┌─────────────┐ │             │
+│  │ │Pattern      │ │  │ │Template     │ │  │ │Change       │ │             │
+│  │ │Detector     │ │  │ │Engine       │ │  │ │Monitor      │ │             │
+│  │ └─────────────┘ │  │ └─────────────┘ │  │ └─────────────┘ │             │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                              DATA ACCESS LAYER                              │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐             │
+│  │   Rule Library  │  │   Context       │  │   Configuration │             │
+│  │   Repository    │  │   Cache         │  │   Store         │             │
+│  │                 │  │                 │  │                 │             │
+│  │ ┌─────────────┐ │  │ ┌─────────────┐ │  │ ┌─────────────┐ │             │
+│  │ │YAML Rule    │ │  │ │Memory       │ │  │ │User         │ │             │
+│  │ │Storage      │ │  │ │Cache        │ │  │ │Settings     │ │             │
+│  │ └─────────────┘ │  │ └─────────────┘ │  │ └─────────────┘ │             │
+│  │ ┌─────────────┐ │  │ ┌─────────────┐ │  │ ┌─────────────┐ │             │
+│  │ │Rule         │ │  │ │Redis        │ │  │ │Project      │ │             │
+│  │ │Validator    │ │  │ │Cache        │ │  │ │State        │ │             │
+│  │ └─────────────┘ │  │ │(Future)     │ │  │ └─────────────┘ │             │
+│  │ ┌─────────────┐ │  │ └─────────────┘ │  │ ┌─────────────┐ │             │
+│  │ │Version      │ │  │ ┌─────────────┐ │  │ │Analytics    │ │             │
+│  │ │Manager      │ │  │ │File System │ │  │ │Store        │ │             │
+│  │ └─────────────┘ │  │ │Cache        │ │  │ └─────────────┘ │             │
+│  └─────────────────┘  │ └─────────────┘ │  └─────────────────┘             │
+│                       └─────────────────┘                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                             INFRASTRUCTURE LAYER                            │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐             │
+│  │   File System   │  │   Event System  │  │   Monitoring    │             │
+│  │   Watchers      │  │                 │  │   & Logging     │             │
+│  │                 │  │ ┌─────────────┐ │  │                 │             │
+│  │ ┌─────────────┐ │  │ │Event        │ │  │ ┌─────────────┐ │             │
+│  │ │Chokidar     │ │  │ │Emitter      │ │  │ │Winston      │ │             │
+│  │ │Watchers     │ │  │ └─────────────┘ │  │ │Logger       │ │             │
+│  │ └─────────────┘ │  │ ┌─────────────┐ │  │ └─────────────┘ │             │
+│  │ ┌─────────────┐ │  │ │Event        │ │  │ ┌─────────────┐ │             │
+│  │ │Debouncing   │ │  │ │Handlers     │ │  │ │Performance  │ │             │
+│  │ │Logic        │ │  │ └─────────────┘ │  │ │Metrics      │ │             │
+│  │ └─────────────┘ │  └─────────────────┘  │ └─────────────┘ │             │
+│  └─────────────────┘                       └─────────────────┘             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+## 1.3 Core Component Specifications
+
+### 1.3.1 Context Detection Engine
+**Purpose**: Multi-dimensional project analysis and context extraction
+**Architecture**: Plugin-based analyzer system with configurable detectors
+
+**Component Structure**:
+```typescript
+interface ContextDetectionEngine {
+  // Core Detection Interface
+  detectContext(projectPath: string): Promise<ProjectContext>;
+
+  // Analyzer Management
+  registerAnalyzer(analyzer: ContextAnalyzer): void;
+  unregisterAnalyzer(analyzerId: string): void;
+
+  // Cache Management
+  getCachedContext(projectPath: string): ProjectContext | null;
+  invalidateCache(projectPath: string): void;
+
+  // Configuration
+  configure(config: DetectionConfig): void;
+}
+
+// Analyzer Plugin Interface
+interface ContextAnalyzer {
+  id: string;
+  name: string;
+  version: string;
+  priority: number;
+
+  canAnalyze(projectPath: string): Promise<boolean>;
+  analyze(projectPath: string): Promise<AnalysisResult>;
+
+  // Configuration
+  getDefaultConfig(): AnalyzerConfig;
+  configure(config: AnalyzerConfig): void;
+}
+```
+
+**Built-in Analyzers**:
+- **FileSystemAnalyzer**: Directory structure and file pattern analysis
+- **DependencyAnalyzer**: Package.json and dependency analysis
+- **CodePatternAnalyzer**: Code pattern and framework detection
+- **ConfigurationAnalyzer**: Configuration file analysis
+- **GitAnalyzer**: Git repository and branch analysis
+- **DocumentationAnalyzer**: README and documentation analysis
+
+### 1.3.2 Rule Composition Engine
+**Purpose**: Intelligent rule merging and conflict resolution
+**Architecture**: Strategy-based composition with pluggable conflict resolvers
+
+**Component Structure**:
+```typescript
+interface RuleCompositionEngine {
+  // Core Composition
+  composeRules(rules: Rule[], context: ProjectContext): Promise<ComposedRuleSet>;
+
+  // Strategy Management
+  setCompositionStrategy(strategy: CompositionStrategy): void;
+  addConflictResolver(resolver: ConflictResolver): void;
+
+  // Rule Processing
+  validateRules(rules: Rule[]): ValidationResult;
+  optimizeRuleSet(ruleSet: ComposedRuleSet): ComposedRuleSet;
+
+  // Dependency Management
+  resolveDependencies(rules: Rule[]): Rule[];
+  detectConflicts(rules: Rule[]): RuleConflict[];
+}
+
+// Composition Strategy Interface
+interface CompositionStrategy {
+  name: string;
+  description: string;
+
+  merge(rules: Rule[], context: ProjectContext): Promise<ComposedRule>;
+  canHandle(rules: Rule[]): boolean;
+  getPriority(): number;
+}
+```
+
+**Composition Strategies**:
+- **LayeredCompositionStrategy**: Priority-based layered merging
+- **IntelligentMergeStrategy**: Context-aware intelligent merging
+- **TemplateBasedStrategy**: Template-driven composition
+- **ConditionalMergeStrategy**: Condition-based selective merging
+
+### 1.3.3 Integration Management Engine
+**Purpose**: Cursor IDE integration and external system communication
+**Architecture**: Adapter pattern with configurable integrations
+
+**Component Structure**:
+```typescript
+interface IntegrationEngine {
+  // Core Integration
+  applyRules(ruleSet: ComposedRuleSet, target: IntegrationTarget): Promise<void>;
+
+  // Integration Management
+  registerIntegration(integration: Integration): void;
+  getAvailableIntegrations(): Integration[];
+
+  // File Generation
+  generateFiles(ruleSet: ComposedRuleSet, outputPath: string): Promise<GeneratedFiles>;
+
+  // Change Monitoring
+  startMonitoring(projectPath: string): void;
+  stopMonitoring(projectPath: string): void;
+}
+
+// Integration Adapter Interface
+interface Integration {
+  id: string;
+  name: string;
+  version: string;
+  targetType: IntegrationType;
+
+  canIntegrate(target: IntegrationTarget): boolean;
+  apply(ruleSet: ComposedRuleSet, target: IntegrationTarget): Promise<void>;
+
+  // Configuration
+  getRequiredConfig(): ConfigSchema;
+  validate(config: any): ValidationResult;
+}
+```
+
+---
+
+# 2. Database Design & Data Model
+
+## 2.1 Data Architecture Overview
+
+**Database Technology**: **File-based Storage** with **In-Memory Caching**
+- **Primary Storage**: YAML files for rules, JSON for configurations
+- **Caching Layer**: Memory-based caching with optional Redis integration
+- **Rationale**: Developer-friendly, version-controllable, no external dependencies
+
+## 2.2 Data Model Specifications
+
+### 2.2.1 Rule Definition Schema
+
+```yaml
+# Core Rule Entity Structure
+Rule:
+  type: object
+  required: [metadata, conditions, cursor_rules]
+  properties:
+    metadata:
+      type: object
+      required: [id, name, version, category]
+      properties:
+        id:
+          type: string
+          pattern: "^[a-z0-9-]+$"
+          description: "Unique rule identifier"
+        name:
+          type: string
+          maxLength: 100
+          description: "Human-readable rule name"
+        description:
+          type: string
+          maxLength: 500
+          description: "Rule description and purpose"
+        version:
+          type: string
+          pattern: "^\\d+\\.\\d+\\.\\d+$"
+          description: "Semantic version"
+        category:
+          type: string
+          enum: [base, technology, domain, phase, enhancement]
+          description: "Rule category"
+        subcategory:
+          type: string
+          description: "Rule subcategory"
+        tags:
+          type: array
+          items:
+            type: string
+          description: "Searchable tags"
+        author:
+          type: string
+          description: "Rule author"
+        created:
+          type: string
+          format: date-time
+          description: "Creation timestamp"
+        updated:
+          type: string
+          format: date-time
+          description: "Last update timestamp"
+
+    conditions:
+      type: object
+      description: "Conditions for rule applicability"
+      properties:
+        phase:
+          type: array
+          items:
+            type: string
+            enum: [conception, research, setup, development, testing, deployment, maintenance, scaling]
+        technologies:
+          type: array
+          items:
+            type: string
+        files_present:
+          type: array
+          items:
+            type: string
+        files_absent:
+          type: array
+          items:
+            type: string
+        dependencies:
+          type: array
+          items:
+            type: string
+        dev_dependencies:
+          type: array
+          items:
+            type: string
+        patterns:
+          type: array
+          items:
+            type: string
+        project_type:
+          type: array
+          items:
+            type: string
+        domain:
+          type: array
+          items:
+            type: string
+        scale:
+          type: array
+          items:
+            type: string
+        team_size:
+          type: array
+          items:
+            type: string
+        custom_conditions:
+          type: object
+          description: "Custom condition evaluators"
+
+    compatibility:
+      type: object
+      description: "Rule compatibility matrix"
+      properties:
+        conflicts_with:
+          type: array
+          items:
+            type: string
+          description: "Rules that conflict with this rule"
+        requires:
+          type: array
+          items:
+            type: string
+          description: "Dependencies required by this rule"
+        enhances:
+          type: array
+          items:
+            type: string
+          description: "Rules enhanced by this rule"
+        replaces:
+          type: array
+          items:
+            type: string
+          description: "Rules replaced by this rule"
+        incompatible_with:
+          type: array
+          items:
+            type: string
+          description: "Rules incompatible with this rule"
+
+    cursor_rules:
+      type: object
+      description: "Cursor IDE configuration"
+      properties:
+        language_preferences:
+          type: object
+          description: "Language-specific preferences"
+        code_patterns:
+          type: object
+          description: "Code generation patterns"
+        code_suggestions:
+          type: array
+          items:
+            type: object
+            properties:
+              pattern:
+                type: string
+              suggestion:
+                type: string
+              template:
+                type: string
+        security_rules:
+          type: object
+          description: "Security-related rules"
+        performance_rules:
+          type: object
+          description: "Performance optimization rules"
+        testing_rules:
+          type: object
+          description: "Testing-related rules"
+
+    dependencies:
+      type: array
+      items:
+        type: object
+        required: [name, version, purpose]
+        properties:
+          name:
+            type: string
+            description: "Package name"
+          version:
+            type: string
+            description: "Version constraint"
+          purpose:
+            type: string
+            description: "Dependency purpose"
+          optional:
+            type: boolean
+            default: false
+            description: "Whether dependency is optional"
+
+    environment_variables:
+      type: object
+      properties:
+        required:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              example:
+                type: string
+              validation:
+                type: string
+        optional:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              default:
+                type: string
+
+    file_structure:
+      type: object
+      description: "File and directory structure"
+      properties:
+        create_files:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              template:
+                type: string
+              description:
+                type: string
+              overwrite:
+                type: boolean
+                default: false
+        create_directories:
+          type: array
+          items:
+            type: string
+        modify_files:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              modifications:
+                type: array
+                items:
+                  type: object
+
+    priority:
+      type: integer
+      minimum: 1
+      maximum: 1000
+      description: "Rule priority (higher = more important)"
+
+    weight:
+      type: number
+      minimum: 0
+      maximum: 1
+      description: "Rule weight in composition (0-1)"
+
+    confidence:
+      type: number
+      minimum: 0
+      maximum: 1
+      description: "Confidence in rule applicability (0-1)"
+```
+
+### 2.2.2 Project Context Schema
+
+```typescript
+interface ProjectContext {
+  // Project Identification
+  projectId: string;
+  projectPath: string;
+  projectName: string;
+
+  // Multi-dimensional Classification
+  developmentPhase: DevelopmentPhase;
+  technologies: Technology[];
+  projectDomain: ProjectDomain;
+  projectScale: ProjectScale;
+  teamStructure: TeamStructure;
+  methodology: DevelopmentMethodology;
+
+  // Analysis Results
+  fileSystem: {
+    totalFiles: number;
+    directories: string[];
+    fileTypes: Record<string, number>;
+    structurePattern: string;
+    indicators: {
+      hasSource: boolean;
+      hasTests: boolean;
+      hasDocs: boolean;
+      hasConfig: boolean;
+      hasDeployment: boolean;
+    };
+  };
+
+  dependencies: {
+    production: Record<string, string>;
+    development: Record<string, string>;
+    peer: Record<string, string>;
+    optional: Record<string, string>;
+    detectedFrameworks: DetectedFramework[];
+    detectedTools: DetectedTool[];
+  };
+
+  codePatterns: {
+    type: string;
+    confidence: number;
+    file: string;
+    indicators: string[];
+    metadata?: any;
+  }[];
+
+  configurations: {
+    type: string;
+    file: string;
+    content: any;
+    analysis: any;
+  }[];
+
+  gitInfo: {
+    hasGit: boolean;
+    currentBranch?: string;
+    branches?: string[];
+    remotes?: string[];
+    commitCount?: number;
+    lastCommit?: Date;
+  };
+
+  // Detection Metadata
+  detectionTimestamp: number;
+  analysisVersion: string;
+  confidence: number;
+  cacheKey: string;
+}
+```
+
+### 2.2.3 Composed Rule Set Schema
+
+```typescript
+interface ComposedRuleSet {
+  // Identification
+  id: string;
+  name: string;
+  version: string;
+
+  // Context Information
+  projectContext: ProjectContext;
+  contextHash: string;
+
+  // Rule Composition
+  appliedRules: AppliedRule[];
+  compositionLayers: CompositionLayer[];
+
+  // Final Configuration
+  finalConfiguration: {
+    cursorRules: CursorConfiguration;
+    dependencies: Dependency[];
+    environmentVariables: EnvironmentVariable[];
+    fileStructure: FileStructure;
+    codePatterns: CodePattern[];
+  };
+
+  // Composition Metadata
+  compositionStrategy: string;
+  conflictsResolved: ResolvedConflict[];
+  warnings: CompositionWarning[];
+  performance: {
+    detectionTime: number;
+    compositionTime: number;
+    totalTime: number;
+    memoryUsage: number;
+  };
+
+  // Generation Metadata
+  generatedAt: Date;
+  generatedBy: string;
+  autoGenerated: boolean;
+  validUntil?: Date;
+}
+
+interface AppliedRule {
+  ruleId: string;
+  ruleName: string;
+  ruleVersion: string;
+  layer: string;
+  priority: number;
+  weight: number;
+  matchScore: number;
+  matchReasons: string[];
+  appliedConditions: string[];
+  conflicts: string[];
+  enhancements: string[];
+}
+```
+
+## 2.3 File System Structure
+
+```
+cursor-rules-engine/
+├── core/                           # Core engine components
+│   ├── detection/                  # Context detection engine
+│   │   ├── analyzers/             # Individual analyzers
+│   │   │   ├── file-system-analyzer.ts
+│   │   │   ├── dependency-analyzer.ts
+│   │   │   ├── pattern-analyzer.ts
+│   │   │   ├── configuration-analyzer.ts
+│   │   │   └── git-analyzer.ts
+│   │   ├── context-detector.ts    # Main detection coordinator
+│   │   └── analyzer-registry.ts   # Analyzer plugin registry
+│   │
+│   ├── composition/               # Rule composition engine
+│   │   ├── strategies/           # Composition strategies
+│   │   │   ├── layered-composition.ts
+│   │   │   ├── intelligent-merge.ts
+│   │   │   ├── template-based.ts
+│   │   │   └── conditional-merge.ts
+│   │   ├── resolvers/           # Conflict resolvers
+│   │   │   ├── priority-resolver.ts
+│   │   │   ├── context-resolver.ts
+│   │   │   └── merge-resolver.ts
+│   │   ├── rule-composer.ts     # Main composition coordinator
+│   │   ├── conflict-detector.ts # Conflict detection
+│   │   └── smart-merger.ts      # Intelligent merging logic
+│   │
+│   ├── integration/             # Integration management
+│   │   ├── adapters/           # Integration adapters
+│   │   │   ├── cursor-adapter.ts
+│   │   │   ├── vscode-adapter.ts
+│   │   │   └── cli-adapter.ts
+│   │   ├── generators/         # File generators
+│   │   │   ├── config-generator.ts
+│   │   │   ├── template-generator.ts
+│   │   │   └── structure-generator.ts
+│   │   ├── integration-engine.ts # Main integration coordinator
+│   │   └── file-monitor.ts      # File change monitoring
+│   │
+│   └── shared/                  # Shared utilities
+│       ├── types.ts            # TypeScript type definitions
+│       ├── constants.ts        # System constants
+│       ├── utils.ts           # Utility functions
+│       ├── logger.ts          # Logging system
+│       ├── cache.ts           # Caching implementation
+│       └── validation.ts      # Schema validation
+│
+├── data/                       # Data storage layer
+│   ├── rules-library/         # Rule library storage
+│   │   ├── base-rules/       # Foundation rules
+│   │   │   ├── nodejs/       # Node.js specific rules
+│   │   │   ├── react/        # React specific rules
+│   │   │   ├── typescript/   # TypeScript specific rules
+│   │   │   └── ...
+│   │   ├── phase-rules/      # Development phase rules
+│   │   │   ├── conception/   # Conception phase rules
+│   │   │   ├── development/  # Development phase rules
+│   │   │   ├── testing/      # Testing phase rules
+│   │   │   └── ...
+│   │   ├── domain-rules/     # Domain-specific rules
+│   │   │   ├── ecommerce/    # E-commerce rules
+│   │   │   ├── fintech/      # Fintech rules
+│   │   │   └── ...
+│   │   ├── composite-rules/  # Complex combined rules
+│   │   │   ├── full-stack/   # Full-stack combinations
+│   │   │   ├── microservices/# Microservices patterns
+│   │   │   └── ...
+│   │   └── schemas/          # JSON schemas for validation
+│   │       ├── rule-schema.json
+│   │       ├── context-schema.json
+│   │       └── composition-schema.json
+│   │
+│   ├── cache/                # Caching storage
+│   │   ├── context-cache/    # Context detection cache
+│   │   ├── rule-cache/       # Rule processing cache
+│   │   └── composition-cache/# Composition result cache
+│   │
+│   └── config/               # Configuration storage
+│       ├── user-settings.json
+│       ├── default-config.json
+│       └── analyzer-configs/
+│
+├── interfaces/               # External interfaces
+│   ├── vscode-extension/    # VS Code extension
+│   │   ├── src/
+│   │   │   ├── extension.ts
+│   │   │   ├── commands/
+│   │   │   ├── providers/
+│   │   │   └── webviews/
+│   │   ├── package.json
+│   │   └── webpack.config.js
+│   │
+│   ├── cli/                 # Command line interface
+│   │   ├── src/
+│   │   │   ├── index.ts
+│   │   │   ├── commands/
+│   │   │   ├── utils/
+│   │   │   └── interactive/
+│   │   └── package.json
+│   │
+│   └── web-dashboard/       # Web dashboard (future)
+│       └── [To be implemented]
+│
+├── tests/                   # Testing infrastructure
+│   ├── unit/               # Unit tests
+│   ├── integration/        # Integration tests
+│   ├── e2e/               # End-to-end tests
+│   ├── fixtures/          # Test fixtures
+│   └── performance/       # Performance tests
+│
+├── docs/                   # Documentation
+│   ├── architecture/      # Architecture documentation
+│   ├── api/              # API documentation
+│   ├── user-guide/       # User guides
+│   └── development/      # Development guides
+│
+└── deployment/            # Deployment configuration
+    ├── docker/           # Docker configurations
+    ├── ci-cd/           # CI/CD pipeline configurations
+    └── scripts/         # Deployment scripts
+```
+
+---
+
+# 3. API Design & Integration Specifications
+
+## 3.1 Core API Architecture
+
+**API Design Pattern**: **Command-Query Responsibility Segregation (CQRS)**
+- **Commands**: Modify system state (detect, compose, apply rules)
+- **Queries**: Retrieve system state (list rules, get context, analyze project)
+- **Event-Driven**: Asynchronous processing with event notifications
+
+## 3.2 Internal API Specifications
+
+### 3.2.1 Context Detection API
+
+```typescript
+// Context Detection Service Interface
+interface ContextDetectionService {
+  /**
+   * Detect project context for a given path
+   * @param projectPath - Absolute path to project
+   * @param options - Detection options
+   * @returns Promise resolving to project context
+   */
+  detectContext(
+    projectPath: string,
+    options?: DetectionOptions
+  ): Promise<ProjectContext>;
+
+  /**
+   * Get cached context if available
+   * @param projectPath - Absolute path to project
+   * @returns Cached context or null
+   */
+  getCachedContext(projectPath: string): ProjectContext | null;
+
+  /**
+   * Invalidate context cache for project
+   * @param projectPath - Absolute path to project
+   */
+  invalidateCache(projectPath: string): void;
+
+  /**
+   * Register custom analyzer
+   * @param analyzer - Custom analyzer implementation
+   */
+  registerAnalyzer(analyzer: ContextAnalyzer): void;
+
+  /**
+   * Get available analyzers
+   * @returns List of registered analyzers
+   */
+  getAnalyzers(): ContextAnalyzer[];
+}
+
+// Detection Options
+interface DetectionOptions {
+  // Cache behavior
+  useCache?: boolean;
+  cacheTimeout?: number;
+
+  // Analysis depth
+  analysisDepth?: 'shallow' | 'medium' | 'deep';
+  maxFiles?: number;
+
+  // Analyzer selection
+  enabledAnalyzers?: string[];
+  disabledAnalyzers?: string[];
+
+  // Performance
+  timeout?: number;
+  concurrent?: boolean;
+
+  // Output format
+  includeDebugInfo?: boolean;
+  verboseOutput?: boolean;
+}
+
+// API Endpoint Specifications
+/**
+ * POST /api/v1/context/detect
+ *
+ * Request Body:
+ * {
+ *   "projectPath": "/path/to/project",
+ *   "options": {
+ *     "useCache": true,
+ *     "analysisDepth": "medium",
+ *     "includeDebugInfo": false
+ *   }
+ * }
+ *
+ * Response (200):
+ * {
+ *   "success": true,
+ *   "data": {
+ *     "projectId": "proj_abc123",
+ *     "projectPath": "/path/to/project",
+ *     "developmentPhase": "development",
+ *     "technologies": ["react", "typescript", "nodejs"],
+ *     "projectDomain": "ecommerce",
+ *     "confidence": 0.95,
+ *     "detectionTimestamp": 1704067200000,
+ *     "fileSystem": { ... },
+ *     "dependencies": { ... },
+ *     "codePatterns": [ ... ]
+ *   },
+ *   "metadata": {
+ *     "detectionTime": 1.234,
+ *     "cacheUsed": true,
+ *     "analyzersUsed": ["file-system", "dependency", "pattern"]
+ *   }
+ * }
+ *
+ * Error Responses:
+ * 400: Bad Request - Invalid project path or options
+ * 404: Not Found - Project path does not exist
+ * 500: Internal Server Error - Detection failed
+ * 408: Request Timeout - Detection timed out
+ */
+```
+
+### 3.2.2 Rule Management API
+
+```typescript
+// Rule Management Service Interface
+interface RuleManagementService {
+  /**
+   * Get all available rules
+   * @param filters - Optional filters
+   * @returns Promise resolving to rule list
+   */
+  getRules(filters?: RuleFilters): Promise<Rule[]>;
+
+  /**
+   * Get rule by ID
+   * @param ruleId - Rule identifier
+   * @returns Promise resolving to rule or null
+   */
+  getRule(ruleId: string): Promise<Rule | null>;
+
+  /**
+   * Find compatible rules for context
+   * @param context - Project context
+   * @param options - Selection options
+   * @returns Promise resolving to compatible rules
+   */
+  findCompatibleRules(
+    context: ProjectContext,
+    options?: RuleSelectionOptions
+  ): Promise<CompatibleRule[]>;
+
+  /**
+   * Validate rule definition
+   * @param rule - Rule to validate
+   * @returns Validation result
+   */
+  validateRule(rule: Rule): ValidationResult;
+
+  /**
+   * Add custom rule
+   * @param rule - Rule definition
+   * @returns Promise resolving to added rule
+   */
+  addRule(rule: Rule): Promise<Rule>;
+
+  /**
+   * Update existing rule
+   * @param ruleId - Rule identifier
+   * @param updates - Rule updates
+   * @returns Promise resolving to updated rule
+   */
+  updateRule(ruleId: string, updates: Partial<Rule>): Promise<Rule>;
+
+  /**
+   * Remove rule
+   * @param ruleId - Rule identifier
+   * @returns Promise resolving to success status
+   */
+  removeRule(ruleId: string): Promise<boolean>;
+}
+
+// Rule Filters
+interface RuleFilters {
+  category?: string[];
+  tags?: string[];
+  phase?: string[];
+  technology?: string[];
+  domain?: string[];
+  author?: string;
+  minPriority?: number;
+  maxPriority?: number;
+  searchQuery?: string;
+}
+
+// Rule Selection Options
+interface RuleSelectionOptions {
+  includeOptional?: boolean;
+  maxRules?: number;
+  minConfidence?: number;
+  preferredCategories?: string[];
+  excludeConflicting?: boolean;
+}
+
+// Compatible Rule Result
+interface CompatibleRule {
+  rule: Rule;
+  matchScore: number;
+  confidence: number;
+  matchReasons: string[];
+  conflicts: string[];
+  enhancements: string[];
+}
+
+/**
+ * GET /api/v1/rules
+ *
+ * Query Parameters:
+ * - category: string[] (optional)
+ * - tags: string[] (optional)
+ * - phase: string[] (optional)
+ * - technology: string[] (optional)
+ * - search: string (optional)
+ * - limit: number (optional, default: 100)
+ * - offset: number (optional, default: 0)
+ *
+ * Response (200):
+ * {
+ *   "success": true,
+ *   "data": {
+ *     "rules": [
+ *       {
+ *         "metadata": {
+ *           "id": "nodejs-auth-jwt",
+ *           "name": "Node.js JWT Authentication",
+ *           "version": "1.2.0",
+ *           "category": "authentication"
+ *         },
+ *         "conditions": { ... },
+ *         "cursor_rules": { ... }
+ *       }
+ *     ],
+ *     "pagination": {
+ *       "total": 245,
+ *       "limit": 100,
+ *       "offset": 0,
+ *       "hasMore": true
+ *     }
+ *   }
+ * }
+ */
+
+/**
+ * POST /api/v1/rules/find-compatible
+ *
+ * Request Body:
+ * {
+ *   "context": {
+ *     "projectPath": "/path/to/project",
+ *     "developmentPhase": "development",
+ *     "technologies": ["react", "nodejs"],
+ *     "dependencies": { ... }
+ *   },
+ *   "options": {
+ *     "includeOptional": false,
+ *     "maxRules": 10,
+ *     "minConfidence": 0.7
+ *   }
+ * }
+ *
+ * Response (200):
+ * {
+ *   "success": true,
+ *   "data": {
+ *     "compatibleRules": [
+ *       {
+ *         "rule": { ... },
+ *         "matchScore": 0.92,
+ *         "confidence": 0.88,
+ *         "matchReasons": ["React patterns detected", "TypeScript configuration found"],
+ *         "conflicts": [],
+ *         "enhancements": ["typescript-strict"]
+ *       }
+ *     ],
+ *     "analysis": {
+ *       "totalRulesEvaluated": 245,
+ *       "compatibleRulesFound": 8,
+ *       "averageMatchScore": 0.76,
+ *       "evaluationTime": 0.156
+ *     }
+ *   }
+ * }
+ */
+```
+
+### 3.2.3 Rule Composition API
+
+```typescript
+// Rule Composition Service Interface
+interface RuleCompositionService {
+  /**
+   * Compose rules into unified rule set
+   * @param rules - Rules to compose
+   * @param context - Project context
+   * @param options - Composition options
+   * @returns Promise resolving to composed rule set
+   */
+  composeRules(
+    rules: Rule[],
+    context: ProjectContext,
+    options?: CompositionOptions
+  ): Promise<ComposedRuleSet>;
+
+  /**
+   * Detect conflicts between rules
+   * @param rules - Rules to analyze
+   * @returns Promise resolving to detected conflicts
+   */
+  detectConflicts(rules: Rule[]): Promise<RuleConflict[]>;
+
+  /**
+   * Resolve specific conflict
+   * @param conflict - Conflict to resolve
+   * @param strategy - Resolution strategy
+   * @returns Promise resolving to resolution result
+   */
+  resolveConflict(
+    conflict: RuleConflict,
+    strategy: ResolutionStrategy
+  ): Promise<ConflictResolution>;
+
+  /**
+   * Optimize composed rule set
+   * @param ruleSet - Rule set to optimize
+   * @returns Promise resolving to optimized rule set
+   */
+  optimizeRuleSet(ruleSet: ComposedRuleSet): Promise<ComposedRuleSet>;
+
+  /**
+   * Preview composition result
+   * @param rules - Rules to preview
+   * @param context - Project context
+   * @returns Promise resolving to composition preview
+   */
+  previewComposition(
+    rules: Rule[],
+    context: ProjectContext
+  ): Promise<CompositionPreview>;
+}
+
+// Composition Options
+interface CompositionOptions {
+  strategy?: 'layered' | 'intelligent' | 'template' | 'conditional';
+  conflictResolution?: 'priority' | 'context' | 'merge' | 'manual';
+  optimization?: boolean;
+  includeDebugInfo?: boolean;
+  dryRun?: boolean;
+}
+
+// Composition Preview
+interface CompositionPreview {
+  finalConfiguration: any;
+  appliedRules: string[];
+  conflicts: RuleConflict[];
+  warnings: string[];
+  estimatedFiles: string[];
+  dependencies: string[];
+}
+
+/**
+ * POST /api/v1/composition/compose
+ *
+ * Request Body:
+ * {
+ *   "rules": [
+ *     { "id": "nodejs-base" },
+ *     { "id": "react-typescript" },
+ *     { "id": "jwt-authentication" }
+ *   ],
+ *   "context": {
+ *     "projectPath": "/path/to/project",
+ *     "developmentPhase": "development",
+ *     "technologies": ["react", "nodejs", "typescript"]
+ *   },
+ *   "options": {
+ *     "strategy": "intelligent",
+ *     "conflictResolution": "priority",
+ *     "optimization": true
+ *   }
+ * }
+ *
+ * Response (200):
+ * {
+ *   "success": true,
+ *   "data": {
+ *     "composedRuleSet": {
+ *       "id": "comp_abc123",
+ *       "name": "React TypeScript with JWT Auth",
+ *       "appliedRules": [
+ *         {
+ *           "ruleId": "nodejs-base",
+ *           "layer": "base",
+ *           "priority": 100,
+ *           "matchScore": 0.95
+ *         }
+ *       ],
+ *       "finalConfiguration": {
+ *         "cursorRules": { ... },
+ *         "dependencies": [ ... ],
+ *         "fileStructure": { ... }
+ *       },
+ *       "conflictsResolved": [
+ *         {
+ *           "type": "setting_override",
+ *           "conflictingRules": ["rule1", "rule2"],
+ *           "resolution": "priority_based",
+ *           "winner": "rule1"
+ *         }
+ *       ]
+ *     }
+ *   },
+ *   "metadata": {
+ *     "compositionTime": 0.234,
+ *     "rulesProcessed": 3,
+ *     "conflictsResolved": 1,
+ *     "optimizationsApplied": 2
+ *   }
+ * }
+ */
+```
+
+### 3.2.4 Integration API
+
+```typescript
+// Integration Service Interface
+interface IntegrationService {
+  /**
+   * Apply composed rule set to target system
+   * @param ruleSet - Composed rule set
+   * @param target - Integration target
+   * @param options - Application options
+   * @returns Promise resolving to application result
+   */
+  applyRuleSet(
+    ruleSet: ComposedRuleSet,
+    target: IntegrationTarget,
+    options?: ApplicationOptions
+  ): Promise<ApplicationResult>;
+
+  /**
+   * Generate files from rule set
+   * @param ruleSet - Composed rule set
+   * @param outputPath - Output directory
+   * @param options - Generation options
+   * @returns Promise resolving to generated files
+   */
+  generateFiles(
+    ruleSet: ComposedRuleSet,
+    outputPath: string,
+    options?: GenerationOptions
+  ): Promise<GeneratedFiles>;
+
+  /**
+   * Monitor project for changes
+   * @param projectPath - Project to monitor
+   * @param callback - Change callback
+   * @returns Promise resolving to monitor handle
+   */
+  startMonitoring(
+    projectPath: string,
+    callback: ChangeCallback
+  ): Promise<MonitorHandle>;
+
+  /**
+   * Stop monitoring project
+   * @param handle - Monitor handle
+   * @returns Promise resolving to success status
+   */
+  stopMonitoring(handle: MonitorHandle): Promise<boolean>;
+}
+
+// Integration Target
+interface IntegrationTarget {
+  type: 'cursor' | 'vscode' | 'file-system' | 'custom';
+  path: string;
+  configuration?: any;
+}
+
+// Application Options
+interface ApplicationOptions {
+  backupExisting?: boolean;
+  mergeWithExisting?: boolean;
+  dryRun?: boolean;
+  forceOverwrite?: boolean;
+  excludeFiles?: string[];
+}
+
+// Application Result
+interface ApplicationResult {
+  success: boolean;
+  appliedFiles: string[];
+  skippedFiles: string[];
+  errors: ApplicationError[];
+  backupPath?: string;
+  rollbackPossible: boolean;
+}
+
+/**
+ * POST /api/v1/integration/apply
+ *
+ * Request Body:
+ * {
+ *   "ruleSet": {
+ *     "id": "comp_abc123",
+ *     "finalConfiguration": { ... }
+ *   },
+ *   "target": {
+ *     "type": "cursor",
+ *     "path": "/path/to/project"
+ *   },
+ *   "options": {
+ *     "backupExisting": true,
+ *     "mergeWithExisting": false,
+ *     "dryRun": false
+ *   }
+ * }
+ *
+ * Response (200):
+ * {
+ *   "success": true,
+ *   "data": {
+ *     "applicationResult": {
+ *       "success": true,
+ *       "appliedFiles": [
+ *         ".cursor/rules/main.json",
+ *         ".cursor/rules/typescript.json",
+ *         ".cursor/rules/react.json"
+ *       ],
+ *       "skippedFiles": [],
+ *       "backupPath": "/path/to/project/.cursor/backup/2024-06-02-10-30-00",
+ *       "rollbackPossible": true
+ *     }
+ *   },
+ *   "metadata": {
+ *     "applicationTime": 0.156,
+ *     "filesGenerated": 3,
+ *     "totalSize": "12.5KB"
+ *   }
+ * }
+ */
+```
+
+## 3.3 External Integration Specifications
+
+### 3.3.1 Cursor IDE Integration
+
+**Integration Method**: File-based configuration generation
+**Target Location**: `.cursor/rules/` directory
+
+```typescript
+// Cursor Integration Adapter
+class CursorIntegrationAdapter implements Integration {
+  id = 'cursor-ide';
+  name = 'Cursor IDE Integration';
+  version = '1.0.0';
+  targetType = 'cursor' as const;
+
+  async apply(
+    ruleSet: ComposedRuleSet,
+    target: IntegrationTarget
+  ): Promise<void> {
+    const cursorRulesPath = path.join(target.path, '.cursor', 'rules');
+
+    // Ensure directory exists
+    await fs.ensureDir(cursorRulesPath);
+
+    // Generate main configuration
+    const mainConfig = this.generateMainConfig(ruleSet);
+    await fs.writeJSON(
+      path.join(cursorRulesPath, 'main.json'),
+      mainConfig,
+      { spaces: 2 }
+    );
+
+    // Generate phase-specific configuration
+    const phaseConfig = this.generatePhaseConfig(ruleSet);
+    await fs.writeJSON(
+      path.join(cursorRulesPath, 'phase.json'),
+      phaseConfig,
+      { spaces: 2 }
+    );
+
+    // Generate technology-specific configuration
+    const techConfig = this.generateTechnologyConfig(ruleSet);
+    await fs.writeJSON(
+      path.join(cursorRulesPath, 'technology.json'),
+      techConfig,
+      { spaces: 2 }
+    );
+
+    // Generate metadata
+    const metadata = this.generateMetadata(ruleSet);
+    await fs.writeJSON(
+      path.join(cursorRulesPath, 'metadata.json'),
+      metadata,
+      { spaces: 2 }
+    );
+  }
+
+  private generateMainConfig(ruleSet: ComposedRuleSet): CursorMainConfig {
+    return {
+      version: '1.0',
+      generatedAt: new Date().toISOString(),
+      generatedBy: 'cursor-rules-engine',
+
+      // Language preferences
+      languagePreferences: this.extractLanguagePreferences(ruleSet),
+
+      // Code generation settings
+      codeGeneration: this.extractCodeGeneration(ruleSet),
+
+      // Security settings
+      security: this.extractSecuritySettings(ruleSet),
+
+      // Performance settings
+      performance: this.extractPerformanceSettings(ruleSet),
+
+      // Testing settings
+      testing: this.extractTestingSettings(ruleSet)
+    };
+  }
+}
+
+// Cursor Configuration Schemas
+interface CursorMainConfig {
+  version: string;
+  generatedAt: string;
+  generatedBy: string;
+
+  languagePreferences: {
+    [language: string]: {
+      strict?: boolean;
+      preferences?: Record<string, any>;
+      formatting?: Record<string, any>;
+      linting?: Record<string, any>;
+    };
+  };
+
+  codeGeneration: {
+    templates: Record<string, string>;
+    patterns: Record<string, string>;
+    suggestions: Array<{
+      trigger: string;
+      template: string;
+      description: string;
+    }>;
+  };
+
+  security: {
+    rules: string[];
+    scanning: {
+      enabled: boolean;
+      level: 'basic' | 'standard' | 'strict';
+    };
+    dependencies: {
+      auditEnabled: boolean;
+      allowUnsafe: boolean;
+    };
+  };
+
+  performance: {
+    optimization: {
+      enabled: boolean;
+      level: 'basic' | 'standard' | 'aggressive';
+    };
+    monitoring: {
+      enabled: boolean;
+      metrics: string[];
+    };
+  };
+
+  testing: {
+    framework: string;
+    coverage: {
+      enabled: boolean;
+      threshold: number;
+    };
+    automation: {
+      onSave: boolean;
+      onCommit: boolean;
+    };
+  };
+}
+```
+
+### 3.3.2 VS Code Extension Integration
+
+**Integration Method**: Extension API and command execution
+**Communication**: IPC and shared file system
+
+```typescript
+// VS Code Extension Main Module
+export function activate(context: vscode.ExtensionContext) {
+  const ruleEngine = new CursorRulesEngine();
+
+  // Register commands
+  const commands = [
+    vscode.commands.registerCommand(
+      'cursor-rules.detectAndLoad',
+      async () => {
+        try {
+          const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
+          if (!workspaceFolder) {
+            vscode.window.showErrorMessage('No workspace folder found');
+            return;
+          }
+
+          // Show progress
+          await vscode.window.withProgress({
+            location: vscode.ProgressLocation.Notification,
+            title: 'Detecting project context...',
+            cancellable: false
+          }, async (progress) => {
+            // Detect context
+            progress.report({ increment: 20, message: 'Analyzing project structure...' });
+            const context = await ruleEngine.detectContext(workspaceFolder.uri.fsPath);
+
+            // Find compatible rules
+            progress.report({ increment: 40, message: 'Finding compatible rules...' });
+            const compatibleRules = await ruleEngine.findCompatibleRules(context);
+
+            // Compose rules
+            progress.report({ increment: 60, message: 'Composing rule set...' });
+            const composedRuleSet = await ruleEngine.composeRules(compatibleRules, context);
+
+            // Apply to Cursor
+            progress.report({ increment: 80, message: 'Applying rules to Cursor...' });
+            await ruleEngine.applyRuleSet(composedRuleSet, {
+              type: 'cursor',
+              path: workspaceFolder.uri.fsPath
+            });
+
+            progress.report({ increment: 100, message: 'Complete!' });
+          });
+
+          vscode.window.showInformationMessage(
+            'Cursor rules have been updated successfully!'
+          );
+
+        } catch (error) {
+          vscode.window.showErrorMessage(
+            `Failed to update Cursor rules: ${error.message}`
+          );
+        }
+      }
+    ),
+
+    vscode.commands.registerCommand(
+      'cursor-rules.analyzeContext',
+      async () => {
+        const workspaceFolder = vscode.workspace.workspaceFolders?.[0];
+        if (!workspaceFolder) return;
+
+        const context = await ruleEngine.detectContext(workspaceFolder.uri.fsPath);
+
+        // Create webview panel
+        const panel = vscode.window.createWebviewPanel(
+          'contextAnalysis',
+          'Project Context Analysis',
+          vscode.ViewColumn.One,
+          {
+            enableScripts: true,
+            localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'media'))]
+          }
+        );
+
+        panel.webview.html = generateContextAnalysisHTML(context);
+      }
+    )
+  ];
+
+  context.subscriptions.push(...commands);
+
+  // File system watcher
+  const watcher = vscode.workspace.createFileSystemWatcher(
+    '**/{package.json,tsconfig.json,.env*,src/**}'
+  );
+
+  watcher.onDidChange(async (uri) => {
+    // Debounce changes
+    clearTimeout(changeTimeout);
+    changeTimeout = setTimeout(async () => {
+      const workspaceFolder = vscode.workspace.getWorkspaceFolder(uri);
+      if (workspaceFolder) {
+        await ruleEngine.invalidateCache(workspaceFolder.uri.fsPath);
+        // Optionally trigger automatic re-detection
+        if (vscode.workspace.getConfiguration('cursor-rules').get('autoDetect')) {
+          vscode.commands.executeCommand('cursor-rules.detectAndLoad');
+        }
+      }
+    }, 2000);
+  });
+
+  context.subscriptions.push(watcher);
+}
+```
+
+### 3.3.3 CLI Integration
+
+**Integration Method**: Command-line interface with stdio communication
+**Output Format**: JSON, YAML, or formatted text
+
+```typescript
+// CLI Command Definitions
+export const commands: CommandDefinition[] = [
+  {
+    name: 'detect',
+    description: 'Detect project context and load compatible rules',
+    options: [
+      { name: 'path', alias: 'p', type: 'string', defaultValue: process.cwd() },
+      { name: 'output', alias: 'o', type: 'string', defaultValue: 'text' },
+      { name: 'verbose', alias: 'v', type: 'boolean', defaultValue: false },
+      { name: 'cache', type: 'boolean', defaultValue: true },
+      { name: 'apply', alias: 'a', type: 'boolean', defaultValue: true }
+    ],
+    handler: async (options: DetectOptions) => {
+      const spinner = ora('Detecting project context...').start();
+
+      try {
+        const ruleEngine = new CursorRulesEngine();
+
+        // Detect context
+        spinner.text = 'Analyzing project structure...';
+        const context = await ruleEngine.detectContext(options.path, {
+          useCache: options.cache,
+          includeDebugInfo: options.verbose
+        });
+
+        // Find compatible rules
+        spinner.text = 'Finding compatible rules...';
+        const compatibleRules = await ruleEngine.findCompatibleRules(context);
+
+        // Compose rules
+        spinner.text = 'Composing rule set...';
+        const composedRuleSet = await ruleEngine.composeRules(compatibleRules, context);
+
+        // Apply rules if requested
+        if (options.apply) {
+          spinner.text = 'Applying rules to Cursor...';
+          await ruleEngine.applyRuleSet(composedRuleSet, {
+            type: 'cursor',
+            path: options.path
+          });
+        }
+
+        spinner.succeed('Project analysis complete!');
+
+        // Output results
+        await outputResults(composedRuleSet, options.output, options.verbose);
+
+      } catch (error) {
+        spinner.fail(`Detection failed: ${error.message}`);
+        process.exit(1);
+      }
+    }
+  },
+
+  {
+    name: 'analyze',
+    description: 'Analyze project context without applying rules',
+    options: [
+      { name: 'path', alias: 'p', type: 'string', defaultValue: process.cwd() },
+      { name: 'output', alias: 'o', type: 'string', defaultValue: 'json' },
+      { name: 'detailed', alias: 'd', type: 'boolean', defaultValue: false }
+    ],
+    handler: async (options: AnalyzeOptions) => {
+      const ruleEngine = new CursorRulesEngine();
+      const context = await ruleEngine.detectContext(options.path, {
+        includeDebugInfo: options.detailed
+      });
+
+      await outputContext(context, options.output, options.detailed);
+    }
+  },
+
+  {
+    name: 'list-rules',
+    description: 'List available rules with optional filtering',
+    options: [
+      { name: 'category', alias: 'c', type: 'string[]' },
+      { name: 'technology', alias: 't', type: 'string[]' },
+      { name: 'phase', alias: 'p', type: 'string[]' },
+      { name: 'search', alias: 's', type: 'string' },
+      { name: 'output', alias: 'o', type: 'string', defaultValue: 'table' }
+    ],
+    handler: async (options: ListRulesOptions) => {
+      const ruleEngine = new CursorRulesEngine();
+      const rules = await ruleEngine.getRules({
+        category: options.category,
+        technology: options.technology,
+        phase: options.phase,
+        searchQuery: options.search
+      });
+
+      await outputRules(rules, options.output);
+    }
+  },
+
+  {
+    name: 'watch',
+    description: 'Watch for project changes and auto-update rules',
+    options: [
+      { name: 'path', alias: 'p', type: 'string', defaultValue: process.cwd() },
+      { name: 'debounce', alias: 'd', type: 'number', defaultValue: 2000 }
+    ],
+    handler: async (options: WatchOptions) => {
+      const ruleEngine = new CursorRulesEngine();
+
+      console.log(chalk.blue(`👀 Watching ${options.path} for changes...`));
+      console.log(chalk.gray('Press Ctrl+C to stop'));
+
+      await ruleEngine.startMonitoring(options.path, async (change) => {
+        console.log(chalk.yellow(`🔄 Change detected: ${change.type} - ${change.file}`));
+
+        try {
+          await ruleEngine.invalidateCache(options.path);
+          const context = await ruleEngine.detectContext(options.path);
+          const compatibleRules = await ruleEngine.findCompatibleRules(context);
+          const composedRuleSet = await ruleEngine.composeRules(compatibleRules, context);
+
+          await ruleEngine.applyRuleSet(composedRuleSet, {
+            type: 'cursor',
+            path: options.path
+          });
+
+          console.log(chalk.green(`✅ Rules updated (${composedRuleSet.appliedRules.length} rules applied)`));
+
+        } catch (error) {
+          console.log(chalk.red(`❌ Failed to update rules: ${error.message}`));
+        }
+      });
+    }
+  }
+];
+
+// Output Formatters
+async function outputResults(
+  ruleSet: ComposedRuleSet,
+  format: string,
+  verbose: boolean
+): Promise<void> {
+  switch (format) {
+    case 'json':
+      console.log(JSON.stringify(ruleSet, null, 2));
+      break;
+
+    case 'yaml':
+      console.log(yaml.dump(ruleSet));
+      break;
+
+    case 'text':
+    default:
+      console.log(chalk.green('\n✅ Rules Applied Successfully!\n'));
+
+      console.log(chalk.bold('Applied Rules:'));
+      ruleSet.appliedRules.forEach(rule => {
+        console.log(`  • ${rule.ruleName} (${rule.ruleVersion}) - Score: ${rule.matchScore.toFixed(2)}`);
+      });
+
+      if (ruleSet.conflictsResolved.length > 0) {
+        console.log(chalk.yellow('\nConflicts Resolved:'));
+        ruleSet.conflictsResolved.forEach(conflict => {
+          console.log(`  • ${conflict.type}: ${conflict.resolution}`);
+        });
+      }
+
+      if (verbose) {
+        console.log(chalk.gray('\nGenerated Files:'));
+        // List generated files
+      }
+      break;
+  }
+}
+```
+
+---
+
+# 4. Security & Compliance Specifications
+
+## 4.1 Security Architecture Overview
+
+**Security Model**: **Defense in Depth** with **Zero Trust Principles**
+- **Input Validation**: All inputs validated and sanitized
+- **Sandboxed Execution**: Rule execution in isolated environment
+- **Minimal Privileges**: Least privilege access patterns
+- **Secure Storage**: Encrypted sensitive data at rest
+
+## 4.2 Authentication & Authorization
+
+### 4.2.1 Local Security Model
+
+```typescript
+// Security Manager
+class SecurityManager {
+  private readonly encryptionKey: string;
+  private readonly allowedPaths: Set<string>;
+
+  constructor() {
+    this.encryptionKey = this.generateEncryptionKey();
+    this.allowedPaths = new Set();
+  }
+
+  /**
+   * Validate project path access
+   * @param projectPath - Path to validate
+   * @returns Access validation result
+   */
+  validatePathAccess(projectPath: string): SecurityValidation {
+    // Normalize path
+    const normalizedPath = path.resolve(projectPath);
+
+    // Check for path traversal attacks
+    if (this.containsPathTraversal(normalizedPath)) {
+      return {
+        allowed: false,
+        reason: 'Path traversal detected',
+        riskLevel: 'HIGH'
+      };
+    }
+
+    // Check against allowed paths
+    if (!this.isPathAllowed(normalizedPath)) {
+      return {
+        allowed: false,
+        reason: 'Path not in allowed list',
+        riskLevel: 'MEDIUM'
+      };
+    }
+
+    // Check file system permissions
+    if (!this.hasRequiredPermissions(normalizedPath)) {
+      return {
+        allowed: false,
+        reason: 'Insufficient file system permissions',
+        riskLevel: 'LOW'
+      };
+    }
+
+    return {
+      allowed: true,
+      reason: 'Access validated',
+      riskLevel: 'NONE'
+    };
+  }
+
+  /**
+   * Sanitize rule content for safe execution
+   * @param rule - Rule to sanitize
+   * @returns Sanitized rule
+   */
+  sanitizeRule(rule: Rule): SanitizedRule {
+    return {
+      ...rule,
+      cursor_rules: this.sanitizeCursorRules(rule.cursor_rules),
+      file_structure: this.sanitizeFileStructure(rule.file_structure),
+      dependencies: this.sanitizeDependencies(rule.dependencies)
+    };
+  }
+
+  private sanitizeCursorRules(cursorRules: any): any {
+    // Remove potentially dangerous configurations
+    const sanitized = { ...cursorRules };
+
+    // Block execution of arbitrary code
+    delete sanitized.exec;
+    delete sanitized.eval;
+    delete sanitized.require;
+
+    // Sanitize script content
+    if (sanitized.code_patterns) {
+      Object.keys(sanitized.code_patterns).forEach(key => {
+        sanitized.code_patterns[key] = this.sanitizeCode(sanitized.code_patterns[key]);
+      });
+    }
+
+    return sanitized;
+  }
+
+  private sanitizeCode(code: string): string {
+    // Remove dangerous patterns
+    const dangerousPatterns = [
+      /require\s*\(\s*['"]fs['"]\s*\)/g,
+      /require\s*\(\s*['"]child_process['"]\s*\)/g,
+      /eval\s*\(/g,
+      /Function\s*\(/g,
+      /process\.exit/g,
+      /process\.env/g
+    ];
+
+    let sanitized = code;
+    dangerousPatterns.forEach(pattern => {
+      sanitized = sanitized.replace(pattern, '/* REMOVED FOR SECURITY */');
+    });
+
+    return sanitized;
+  }
+}
+
+// Security Validation Result
+interface SecurityValidation {
+  allowed: boolean;
+  reason: string;
+  riskLevel: 'NONE' | 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+  recommendations?: string[];
+}
+```
+
+### 4.2.2 Rule Validation & Sanitization
+
+```typescript
+// Rule Security Validator
+class RuleSecurityValidator {
+  private readonly trustedSources: Set<string>;
+  private readonly securityPolicies: SecurityPolicy[];
+
+  /**
+   * Validate rule security before execution
+   * @param rule - Rule to validate
+   * @returns Security validation result
+   */
+  async validateRuleSecurity(rule: Rule): Promise<SecurityValidationResult> {
+    const validations: SecurityCheck[] = [];
+
+    // Check rule source
+    validations.push(await this.validateRuleSource(rule));
+
+    // Validate rule content
+    validations.push(await this.validateRuleContent(rule));
+
+    // Check dependencies
+    validations.push(await this.validateDependencies(rule));
+
+    // Validate file operations
+    validations.push(await this.validateFileOperations(rule));
+
+    // Check for malicious patterns
+    validations.push(await this.scanForMaliciousPatterns(rule));
+
+    return this.aggregateValidationResults(validations);
+  }
+
+  private async validateRuleSource(rule: Rule): Promise<SecurityCheck> {
+    const isTrusted = this.trustedSources.has(rule.metadata.author);
+    const hasValidSignature = await this.verifyRuleSignature(rule);
+
+    return {
+      checkType: 'source_validation',
+      passed: isTrusted || hasValidSignature,
+      riskLevel: isTrusted ? 'NONE' : 'MEDIUM',
+      message: isTrusted
+        ? 'Rule from trusted source'
+        : 'Rule from untrusted source',
+      recommendations: isTrusted
+        ? []
+        : ['Verify rule content manually', 'Consider adding author to trusted sources']
+    };
+  }
+
+  private async validateRuleContent(rule: Rule): Promise<SecurityCheck> {
+    const riskyPatterns = [
+      { pattern: /require\s*\(\s*['"].*['"]\s*\)/, risk: 'MEDIUM', message: 'Dynamic require detected' },
+      { pattern: /eval\s*\(/, risk: 'HIGH', message: 'Code evaluation detected' },
+      { pattern: /process\.exit/, risk: 'MEDIUM', message: 'Process termination detected' },
+      { pattern: /fs\.writeFile|fs\.readFile/, risk: 'LOW', message: 'File system access detected' },
+      { pattern: /child_process/, risk: 'HIGH', message: 'Child process execution detected' },
+      { pattern: /http\.request|fetch/, risk: 'MEDIUM', message: 'Network request detected' }
+    ];
+
+    const ruleContent = JSON.stringify(rule.cursor_rules);
+    const detectedRisks = riskyPatterns.filter(p => p.pattern.test(ruleContent));
+
+    const maxRisk = detectedRisks.reduce((max, risk) => {
+      const levels = ['NONE', 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
+      return levels.indexOf(risk.risk) > levels.indexOf(max) ? risk.risk : max;
+    }, 'NONE');
+
+    return {
+      checkType: 'content_validation',
+      passed: detectedRisks.length === 0,
+      riskLevel: maxRisk as RiskLevel,
+      message: detectedRisks.length === 0
+        ? 'No risky patterns detected'
+        : `${detectedRisks.length} risky patterns detected`,
+      details: detectedRisks.map(r => r.message),
+      recommendations: detectedRisks.length > 0
+        ? ['Review rule content carefully', 'Consider sandboxed execution']
+        : []
+    };
+  }
+
+  private async validateDependencies(rule: Rule): Promise<SecurityCheck> {
+    if (!rule.dependencies || rule.dependencies.length === 0) {
+      return {
+        checkType: 'dependency_validation',
+        passed: true,
+        riskLevel: 'NONE',
+        message: 'No dependencies to validate'
+      };
+    }
+
+    const vulnerabilities: DependencyVulnerability[] = [];
+
+    for (const dep of rule.dependencies) {
+      const vulns = await this.checkDependencyVulnerabilities(dep);
+      vulnerabilities.push(...vulns);
+    }
+
+    const criticalVulns = vulnerabilities.filter(v => v.severity === 'CRITICAL');
+    const highVulns = vulnerabilities.filter(v => v.severity === 'HIGH');
+
+    let riskLevel: RiskLevel = 'NONE';
+    if (criticalVulns.length > 0) riskLevel = 'CRITICAL';
+    else if (highVulns.length > 0) riskLevel = 'HIGH';
+    else if (vulnerabilities.length > 0) riskLevel = 'MEDIUM';
+
+    return {
+      checkType: 'dependency_validation',
+      passed: vulnerabilities.length === 0,
+      riskLevel,
+      message: vulnerabilities.length === 0
+        ? 'All dependencies are secure'
+        : `${vulnerabilities.length} vulnerabilities found`,
+      details: vulnerabilities.map(v => `${v.package}: ${v.description}`),
+      recommendations: vulnerabilities.length > 0
+        ? ['Update vulnerable dependencies', 'Consider alternative packages']
+        : []
+    };
+  }
+}
+
+// Security Policy Definition
+interface SecurityPolicy {
+  id: string;
+  name: string;
+  description: string;
+  level: 'STRICT' | 'STANDARD' | 'PERMISSIVE';
+  rules: SecurityRule[];
+}
+
+interface SecurityRule {
+  type: 'BLOCK' | 'WARN' | 'AUDIT';
+  pattern: RegExp;
+  message: string;
+  exceptions?: string[];
+}
+
+// Default Security Policies
+export const DEFAULT_SECURITY_POLICIES: SecurityPolicy[] = [
+  {
+    id: 'default-strict',
+    name: 'Default Strict Policy',
+    description: 'Strict security policy for production environments',
+    level: 'STRICT',
+    rules: [
+      {
+        type: 'BLOCK',
+        pattern: /eval\s*\(/,
+        message: 'Code evaluation is not allowed'
+      },
+      {
+        type: 'BLOCK',
+        pattern: /child_process/,
+        message: 'Child process execution is not allowed'
+      },
+      {
+        type: 'WARN',
+        pattern: /require\s*\(\s*['"].*['"]\s*\)/,
+        message: 'Dynamic require detected - review carefully'
+      },
+      {
+        type: 'AUDIT',
+        pattern: /fs\./,
+        message: 'File system access detected'
+      }
+    ]
+  }
+];
+```
+
+## 4.3 Data Protection & Privacy
+
+### 4.3.1 Data Classification & Handling
+
+```typescript
+// Data Classification System
+enum DataClassification {
+  PUBLIC = 'PUBLIC',           // Publicly available information
+  INTERNAL = 'INTERNAL',       // Internal project information
+  CONFIDENTIAL = 'CONFIDENTIAL', // Sensitive project data
+  RESTRICTED = 'RESTRICTED'    // Highly sensitive data
+}
+
+interface DataHandlingPolicy {
+  classification: DataClassification;
+  encryption: {
+    atRest: boolean;
+    inTransit: boolean;
+    algorithm: string;
+  };
+  storage: {
+    location: 'LOCAL' | 'MEMORY' | 'CACHE';
+    retention: number; // days
+    backup: boolean;
+  };
+  access: {
+    authentication: boolean;
+    authorization: boolean;
+    audit: boolean;
+  };
+}
+
+// Data Handling Policies
+const DATA_HANDLING_POLICIES: Record<DataClassification, DataHandlingPolicy> = {
+  [DataClassification.PUBLIC]: {
+    classification: DataClassification.PUBLIC,
+    encryption: { atRest: false, inTransit: false, algorithm: 'none' },
+    storage: { location: 'LOCAL', retention: 365, backup: true },
+    access: { authentication: false, authorization: false, audit: false }
+  },
+
+  [DataClassification.INTERNAL]: {
+    classification: DataClassification.INTERNAL,
+    encryption: { atRest: true, inTransit: true, algorithm: 'AES-256' },
+    storage: { location: 'LOCAL', retention: 90, backup: true },
+    access: { authentication: true, authorization: true, audit: true }
+  },
+
+  [DataClassification.CONFIDENTIAL]: {
+    classification: DataClassification.CONFIDENTIAL,
+    encryption: { atRest: true, inTransit: true, algorithm: 'AES-256' },
+    storage: { location: 'MEMORY', retention: 30, backup: false },
+    access: { authentication: true, authorization: true, audit: true }
+  },
+
+  [DataClassification.RESTRICTED]: {
+    classification: DataClassification.RESTRICTED,
+    encryption: { atRest: true, inTransit: true, algorithm: 'AES-256' },
+    storage: { location: 'MEMORY', retention: 1, backup: false },
+    access: { authentication: true, authorization: true, audit: true }
+  }
+};
+
+// Data Processor
+class DataProcessor {
+  private readonly encryptionService: EncryptionService;
+  private readonly auditLogger: AuditLogger;
+
+  /**
+   * Process data according to classification
+   * @param data - Data to process
+   * @param classification - Data classification
+   * @returns Processed data
+   */
+  async processData(data: any, classification: DataClassification): Promise<ProcessedData> {
+    const policy = DATA_HANDLING_POLICIES[classification];
+
+    // Apply encryption if required
+    let processedData = data;
+    if (policy.encryption.atRest) {
+      processedData = await this.encryptionService.encrypt(data, policy.encryption.algorithm);
+    }
+
+    // Log access if required
+    if (policy.access.audit) {
+      await this.auditLogger.logDataAccess({
+        classification,
+        action: 'PROCESS',
+        timestamp: new Date(),
+        dataSize: JSON.stringify(data).length
+      });
+    }
+
+    return {
+      data: processedData,
+      metadata: {
+        classification,
+        encrypted: policy.encryption.atRest,
+        processedAt: new Date(),
+        expiresAt: new Date(Date.now() + policy.storage.retention * 24 * 60 * 60 * 1000)
+      }
+    };
+  }
+
+  /**
+   * Classify project data automatically
+   * @param projectData - Project data to classify
+   * @returns Data classification
+   */
+  classifyProjectData(projectData: any): DataClassification {
+    // Check for sensitive patterns
+    const dataString = JSON.stringify(projectData).toLowerCase();
+
+    // Restricted data patterns
+    const restrictedPatterns = [
+      /password/,
+      /secret/,
+      /private.*key/,
+      /api.*key/,
+      /token/,
+      /credential/
+    ];
+
+    if (restrictedPatterns.some(pattern => pattern.test(dataString))) {
+      return DataClassification.RESTRICTED;
+    }
+
+    // Confidential data patterns
+    const confidentialPatterns = [
+      /database.*url/,
+      /connection.*string/,
+      /smtp/,
+      /oauth/
+    ];
+
+    if (confidentialPatterns.some(pattern => pattern.test(dataString))) {
+      return DataClassification.CONFIDENTIAL;
+    }
+
+    // Internal data (default for project data)
+    return DataClassification.INTERNAL;
+  }
+}
+```
+
+### 4.3.2 Privacy Compliance (GDPR/CCPA)
+
+```typescript
+// Privacy Compliance Manager
+class PrivacyComplianceManager {
+  private readonly dataInventory: Map<string, DataInventoryEntry>;
+  private readonly consentManager: ConsentManager;
+
+  /**
+   * Ensure GDPR compliance for data processing
+   * @param processingActivity - Data processing activity
+   * @returns Compliance status
+   */
+  async ensureGDPRCompliance(
+    processingActivity: DataProcessingActivity
+  ): Promise<ComplianceStatus> {
+    const checks: ComplianceCheck[] = [];
+
+    // Check lawful basis
+    checks.push(await this.validateLawfulBasis(processingActivity));
+
+    // Check data minimization
+    checks.push(await this.validateDataMinimization(processingActivity));
+
+    // Check purpose limitation
+    checks.push(await this.validatePurposeLimitation(processingActivity));
+
+    // Check storage limitation
+    checks.push(await this.validateStorageLimitation(processingActivity));
+
+    // Check data subject rights
+    checks.push(await this.validateDataSubjectRights(processingActivity));
+
+    return this.aggregateComplianceChecks(checks);
+  }
+
+  /**
+   * Handle data subject rights requests
+   * @param request - Data subject request
+   * @returns Request handling result
+   */
+  async handleDataSubjectRequest(
+    request: DataSubjectRequest
+  ): Promise<DataSubjectResponse> {
+    switch (request.type) {
+      case 'ACCESS':
+        return this.handleAccessRequest(request);
+      case 'RECTIFICATION':
+        return this.handleRectificationRequest(request);
+      case 'ERASURE':
+        return this.handleErasureRequest(request);
+      case 'PORTABILITY':
+        return this.handlePortabilityRequest(request);
+      case 'RESTRICTION':
+        return this.handleRestrictionRequest(request);
+      case 'OBJECTION':
+        return this.handleObjectionRequest(request);
+      default:
+        throw new Error(`Unsupported request type: ${request.type}`);
+    }
+  }
+
+  private async handleErasureRequest(
+    request: DataSubjectRequest
+  ): Promise<DataSubjectResponse> {
+    // Identify all data related to the subject
+    const relatedData = await this.findDataBySubject(request.subjectId);
+
+    // Check if erasure is legally possible
+    const legalObligations = await this.checkLegalObligations(relatedData);
+    if (legalObligations.preventErasure) {
+      return {
+        success: false,
+        reason: 'Erasure prevented by legal obligations',
+        details: legalObligations.reasons
+      };
+    }
+
+    // Perform erasure
+    const erasureResults = await Promise.all(
+      relatedData.map(data => this.eraseData(data))
+    );
+
+    // Log erasure for audit
+    await this.auditLogger.logDataErasure({
+      subjectId: request.subjectId,
+      dataTypes: relatedData.map(d => d.type),
+      timestamp: new Date(),
+      requestId: request.id
+    });
+
+    return {
+      success: true,
+      message: 'Data successfully erased',
+      erasedItems: erasureResults.filter(r => r.success).length,
+      retainedItems: erasureResults.filter(r => !r.success).length
+    };
+  }
+}
+
+// Privacy Impact Assessment
+interface PrivacyImpactAssessment {
+  id: string;
+  projectId: string;
+  conductedBy: string;
+  conductedAt: Date;
+
+  dataProcessing: {
+    personalDataTypes: string[];
+    specialCategories: string[];
+    dataVolume: 'LOW' | 'MEDIUM' | 'HIGH';
+    retentionPeriod: number;
+  };
+
+  riskAssessment: {
+    identifiedRisks: PrivacyRisk[];
+    riskLevel: 'LOW' | 'MEDIUM' | 'HIGH';
+    mitigationMeasures: MitigationMeasure[];
+  };
+
+  complianceStatus: {
+    gdprCompliant: boolean;
+    ccpaCompliant: boolean;
+    otherRegulations: string[];
+  };
+
+  approvals: {
+    dpoApproval: boolean;
+    managementApproval: boolean;
+    approvedAt?: Date;
+    approvedBy?: string;
+  };
+}
+```
+
+## 4.4 Audit Logging & Monitoring
+
+```typescript
+// Comprehensive Audit Logger
+class AuditLogger {
+  private readonly logStream: LogStream;
+  private readonly encryptionService: EncryptionService;
+
+  /**
+   * Log security event
+   * @param event - Security event to log
+   */
+  async logSecurityEvent(event: SecurityEvent): Promise<void> {
+    const auditEntry: AuditEntry = {
+      id: generateUUID(),
+      timestamp: new Date(),
+      category: 'SECURITY',
+      severity: event.severity,
+      event: event.type,
+      description: event.description,
+      metadata: {
+        source: event.source,
+        userId: event.userId,
+        projectPath: event.projectPath,
+        riskLevel: event.riskLevel,
+        mitigated: event.mitigated
+      },
+      hash: await this.generateEventHash(event)
+    };
+
+    await this.writeAuditEntry(auditEntry);
+  }
+
+  /**
+   * Log data access event
+   * @param access - Data access event
+   */
+  async logDataAccess(access: DataAccessEvent): Promise<void> {
+    const auditEntry: AuditEntry = {
+      id: generateUUID(),
+      timestamp: new Date(),
+      category: 'DATA_ACCESS',
+      severity: 'INFO',
+      event: access.action,
+      description: `Data access: ${access.action} on ${access.dataType}`,
+      metadata: {
+        dataType: access.dataType,
+        dataClassification: access.classification,
+        userId: access.userId,
+        projectPath: access.projectPath,
+        dataSize: access.dataSize,
+        purpose: access.purpose
+      },
+      hash: await this.generateEventHash(access)
+    };
+
+    await this.writeAuditEntry(auditEntry);
+  }
+
+  /**
+   * Log rule application event
+   * @param application - Rule application event
+   */
+  async logRuleApplication(application: RuleApplicationEvent): Promise<void> {
+    const auditEntry: AuditEntry = {
+      id: generateUUID(),
+      timestamp: new Date(),
+      category: 'RULE_APPLICATION',
+      severity: 'INFO',
+      event: 'RULE_APPLIED',
+      description: `Applied ${application.rulesApplied.length} rules to project`,
+      metadata: {
+        projectPath: application.projectPath,
+        rulesApplied: application.rulesApplied,
+        conflictsResolved: application.conflictsResolved,
+        applicationTime: application.applicationTime,
+        success: application.success
+      },
+      hash: await this.generateEventHash(application)
+    };
+
+    await this.writeAuditEntry(auditEntry);
+  }
+
+  private async writeAuditEntry(entry: AuditEntry): Promise<void> {
+    // Encrypt sensitive data
+    const encryptedEntry = await this.encryptionService.encrypt(
+      entry,
+      'AES-256'
+    );
+
+    // Write to audit log
+    await this.logStream.write(encryptedEntry);
+
+    // Send to monitoring system if critical
+    if (entry.severity === 'CRITICAL' || entry.severity === 'HIGH') {
+      await this.sendToMonitoring(entry);
+    }
+  }
+
+  /**
+   * Generate audit report
+   * @param criteria - Report criteria
+   * @returns Audit report
+   */
+  async generateAuditReport(criteria: AuditReportCriteria): Promise<AuditReport> {
+    const entries = await this.queryAuditEntries(criteria);
+
+    return {
+      id: generateUUID(),
+      generatedAt: new Date(),
+      criteria,
+      summary: {
+        totalEvents: entries.length,
+        securityEvents: entries.filter(e => e.category === 'SECURITY').length,
+        dataAccessEvents: entries.filter(e => e.category === 'DATA_ACCESS').length,
+        criticalEvents: entries.filter(e => e.severity === 'CRITICAL').length
+      },
+      events: entries,
+      recommendations: this.generateSecurityRecommendations(entries)
+    };
+  }
+}
+
+// Security Monitoring System
+class SecurityMonitor {
+  private readonly alertManager: AlertManager;
+  private readonly metricsCollector: MetricsCollector;
+
+  /**
+   * Monitor for security threats
+   */
+  async startMonitoring(): Promise<void> {
+    // Monitor for suspicious patterns
+    this.monitorSuspiciousPatterns();
+
+    // Monitor resource usage
+    this.monitorResourceUsage();
+
+    // Monitor access patterns
+    this.monitorAccessPatterns();
+
+    // Monitor data integrity
+    this.monitorDataIntegrity();
+  }
+
+  private async monitorSuspiciousPatterns(): Promise<void> {
+    const suspiciousPatterns = [
+      {
+        name: 'Multiple failed validations',
+        pattern: (events: AuditEntry[]) =>
+          events.filter(e =>
+            e.category === 'SECURITY' &&
+            e.event === 'VALIDATION_FAILED'
+          ).length > 5,
+        severity: 'HIGH'
+      },
+      {
+        name: 'Unusual file access patterns',
+        pattern: (events: AuditEntry[]) =>
+          events.filter(e =>
+            e.category === 'DATA_ACCESS' &&
+            e.metadata.dataClassification === 'RESTRICTED'
+          ).length > 10,
+        severity: 'MEDIUM'
+      }
+    ];
+
+    setInterval(async () => {
+      const recentEvents = await this.getRecentAuditEvents(300000); // 5 minutes
+
+      for (const pattern of suspiciousPatterns) {
+        if (pattern.pattern(recentEvents)) {
+          await this.alertManager.sendAlert({
+            type: 'SECURITY_THREAT',
+            severity: pattern.severity,
+            message: `Suspicious pattern detected: ${pattern.name}`,
+            timestamp: new Date(),
+            metadata: { pattern: pattern.name, eventCount: recentEvents.length }
+          });
+        }
+      }
+    }, 60000); // Check every minute
+  }
+}
+```
+
+---
+
+# 5. Development Environment & Deployment
+
+## 5.1 Development Environment Setup
+
+### 5.1.1 Local Development Configuration
+
+```typescript
+// Development Environment Manager
+class DevelopmentEnvironmentManager {
+  private readonly config: DevelopmentConfig;
+
+  constructor() {
+    this.config = this.loadConfiguration();
+  }
+
+  /**
+   * Initialize development environment
+   */
+  async initializeEnvironment(): Promise<void> {
+    console.log('🚀 Initializing Cursor Rules Engine development environment...');
+
+    // Check prerequisites
+    await this.checkPrerequisites();
+
+    // Setup project structure
+    await this.setupProjectStructure();
+
+    // Install dependencies
+    await this.installDependencies();
+
+    // Configure development tools
+    await this.configureDevelopmentTools();
+
+    // Setup testing environment
+    await this.setupTestingEnvironment();
+
+    // Initialize database/storage
+    await this.initializeStorage();
+
+    console.log('✅ Development environment initialized successfully!');
+  }
+
+  private async checkPrerequisites(): Promise<void> {
+    const prerequisites = [
+      { name: 'Node.js', version: '18.0.0', command: 'node --version' },
+      { name: 'npm', version: '8.0.0', command: 'npm --version' },
+      { name: 'Git', version: '2.30.0', command: 'git --version' },
+      { name: 'VS Code', version: '1.70.0', command: 'code --version' }
+    ];
+
+    for (const prereq of prerequisites) {
+      const installed = await this.checkPrerequisite(prereq);
+      if (!installed) {
+        throw new Error(`${prereq.name} ${prereq.version}+ is required`);
+      }
+    }
+  }
+
+  private async setupProjectStructure(): Promise<void> {
+    const directories = [
+      'src/core/detection',
+      'src/core/composition',
+      'src/core/integration',
+      'src/interfaces/vscode-extension',
+      'src/interfaces/cli',
+      'data/rules-library/base-rules',
+      'data/rules-library/phase-rules',
+      'data/rules-library/domain-rules',
+      'data/cache',
+      'tests/unit',
+      'tests/integration',
+      'tests/e2e',
+      'docs/architecture',
+      'docs/api'
+    ];
+
+    for (const dir of directories) {
+      await fs.ensureDir(dir);
+    }
+  }
+}
+
+// Development Configuration
+interface DevelopmentConfig {
+  environment: 'development' | 'staging' | 'production';
+
+  database: {
+    type: 'file' | 'memory';
+    path: string;
+    cache: {
+      enabled: boolean;
+      ttl: number;
+      maxSize: number;
+    };
+  };
+
+  logging: {
+    level: 'debug' | 'info' | 'warn' | 'error';
+    format: 'json' | 'text';
+    outputs: Array<'console' | 'file' | 'remote'>;
+  };
+
+  security: {
+    enabled: boolean;
+    policies: string[];
+    encryption: {
+      enabled: boolean;
+      algorithm: string;
+    };
+  };
+
+  performance: {
+    monitoring: boolean;
+    profiling: boolean;
+    benchmarking: boolean;
+  };
+
+  debugging: {
+    enabled: boolean;
+    port: number;
+    breakOnErrors: boolean;
+  };
+}
+
+// Default Development Configuration
+export const DEFAULT_DEV_CONFIG: DevelopmentConfig = {
+  environment: 'development',
+
+  database: {
+    type: 'file',
+    path: './data',
+    cache: {
+      enabled: true,
+      ttl: 300000, // 5 minutes
+      maxSize: 100 // MB
+    }
+  },
+
+  logging: {
+    level: 'debug',
+    format: 'text',
+    outputs: ['console', 'file']
+  },
+
+  security: {
+    enabled: true,
+    policies: ['default-strict'],
+    encryption: {
+      enabled: false, // Disabled in development
+      algorithm: 'AES-256'
+    }
+  },
+
+  performance: {
+    monitoring: true,
+    profiling: false,
+    benchmarking: false
+  },
+
+  debugging: {
+    enabled: true,
+    port: 9229,
+    breakOnErrors: false
+  }
+};
+```
+
+### 5.1.2 Build System Configuration
+
+```typescript
+// Build Configuration
+// webpack.config.js
+const path = require('path');
+const webpack = require('webpack');
+
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
+
+  return {
+    // Multiple entry points for different components
+    entry: {
+      'core': './src/core/index.ts',
+      'vscode-extension': './src/interfaces/vscode-extension/extension.ts',
+      'cli': './src/interfaces/cli/index.ts'
+    },
+
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: '[name]/index.js',
+      library: {
+        type: 'commonjs2'
+      }
+    },
+
+    target: 'node',
+
+    module: {
+      rules: [
+        {
+          test: /\.ts$/,
+          use: [
+            {
+              loader: 'ts-loader',
+              options: {
+                configFile: isProduction
+                  ? 'tsconfig.prod.json'
+                  : 'tsconfig.dev.json'
+              }
+            }
+          ],
+          exclude: /node_modules/
+        },
+        {
+          test: /\.yaml$/,
+          type: 'asset/resource',
+          generator: {
+            filename: 'rules/[name][ext]'
+          }
+        },
+        {
+          test: /\.json$/,
+          type: 'asset/resource'
+        }
+      ]
+    },
+
+    resolve: {
+      extensions: ['.ts', '.js', '.json', '.yaml'],
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
+        '@core': path.resolve(__dirname, 'src/core'),
+        '@interfaces': path.resolve(__dirname, 'src/interfaces'),
+        '@data': path.resolve(__dirname, 'data'),
+        '@tests': path.resolve(__dirname, 'tests')
+      }
+    },
+
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(argv.mode),
+        'process.env.VERSION': JSON.stringify(require('./package.json').version)
+      }),
+
+      // Copy rule library files
+      new webpack.CopyPlugin({
+        patterns: [
+          {
+            from: 'data/rules-library',
+            to: 'rules-library'
+          },
+          {
+            from: 'data/schemas',
+            to: 'schemas'
+          }
+        ]
+      })
+    ],
+
+    optimization: {
+      minimize: isProduction,
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all'
+          }
+        }
+      }
+    },
+
+    externals: {
+      // Don't bundle vscode module for extension
+      vscode: 'commonjs vscode'
+    },
+
+    devtool: isProduction ? 'source-map' : 'inline-source-map',
+
+    stats: {
+      errorDetails: true,
+      colors: true
+    }
+  };
+};
+
+// TypeScript Configuration - tsconfig.dev.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "incremental": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@core/*": ["src/core/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@data/*": ["data/*"],
+      "@tests/*": ["tests/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "tests/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts"
+  ]
+}
+
+// Package.json Scripts
+{
+  "name": "cursor-rules-engine",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm run build:dev && npm run start:dev",
+    "dev:watch": "nodemon --exec npm run dev",
+    "build": "npm run clean && npm run build:prod",
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production",
+    "build:extension": "webpack --config webpack.extension.config.js",
+    "build:cli": "webpack --config webpack.cli.config.js",
+    "clean": "rimraf dist",
+    "start:dev": "node --inspect=9229 dist/core/index.js",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "jest --config jest.unit.config.js",
+    "test:integration": "jest --config jest.integration.config.js",
+    "test:e2e": "jest --config jest.e2e.config.js",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "type-check": "tsc --noEmit",
+    "validate": "npm run lint && npm run type-check && npm run test",
+    "docs": "typedoc src --out docs/api",
+    "package:extension": "vsce package",
+    "package:cli": "pkg dist/cli/index.js --targets node18-linux,node18-win,node18-macos",
+    "release": "semantic-release"
+  }
+}
+```
+
+### 5.1.3 Testing Strategy & Configuration
+
+```typescript
+// Testing Framework Configuration
+// jest.config.base.js
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  roots: ['<rootDir>/src', '<rootDir>/tests'],
+  collectCoverageFrom: [
+    'src/**/*.{ts,js}',
+    '!src/**/*.d.ts',
+    '!src/**/*.test.{ts,js}',
+    '!src/**/__tests__/**',
+    '!src/interfaces/vscode-extension/**' // Exclude extension code from coverage
+  ],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov', 'html', 'json'],
+  setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
+  moduleNameMapping: {
+    '^@/(.*)
+      : '<rootDir>/src/$1',
+    '^@core/(.*)
+      : '<rootDir>/src/core/$1',
+    '^@interfaces/(.*)
+      : '<rootDir>/src/interfaces/$1',
+    '^@data/(.*)
+      : '<rootDir>/data/$1',
+    '^@tests/(.*)
+      : '<rootDir>/tests/$1'
+  },
+  transform: {
+    '^.+\\.ts
+      : 'ts-jest',
+    '^.+\\.yaml
+      : '<rootDir>/tests/yaml-transformer.js'
+  },
+  testMatch: [
+    '**/__tests__/**/*.{ts,js}',
+    '**/*.(test|spec).{ts,js}'
+  ],
+  verbose: true,
+  detectLeaks: true,
+  forceExit: true
+};
+
+// Unit Testing Configuration
+// jest.unit.config.js
+const baseConfig = require('./jest.config.base.js');
+
+module.exports = {
+  ...baseConfig,
+  displayName: 'Unit Tests',
+  testMatch: [
+    '<rootDir>/tests/unit/**/*.test.ts',
+    '<rootDir>/src/**/*.unit.test.ts'
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 85,
+      lines: 85,
+      statements: 85
+    },
+    './src/core/': {
+      branches: 90,
+      functions: 95,
+      lines: 95,
+      statements: 95
+    }
+  }
+};
+
+// Integration Testing Configuration
+// jest.integration.config.js
+const baseConfig = require('./jest.config.base.js');
+
+module.exports = {
+  ...baseConfig,
+  displayName: 'Integration Tests',
+  testMatch: [
+    '<rootDir>/tests/integration/**/*.test.ts'
+  ],
+  setupFilesAfterEnv: [
+    '<rootDir>/tests/setup.ts',
+    '<rootDir>/tests/integration-setup.ts'
+  ],
+  testTimeout: 30000, // Longer timeout for integration tests
+  maxWorkers: 1 // Run integration tests sequentially
+};
+
+// E2E Testing Configuration
+// jest.e2e.config.js
+const baseConfig = require('./jest.config.base.js');
+
+module.exports = {
+  ...baseConfig,
+  displayName: 'E2E Tests',
+  testMatch: [
+    '<rootDir>/tests/e2e/**/*.test.ts'
+  ],
+  setupFilesAfterEnv: [
+    '<rootDir>/tests/setup.ts',
+    '<rootDir>/tests/e2e-setup.ts'
+  ],
+  testTimeout: 60000, // Long timeout for E2E tests
+  maxWorkers: 1
+};
+
+// Test Utilities
+// tests/test-utils.ts
+export class TestProjectFactory {
+  /**
+   * Create test project with specific characteristics
+   */
+  static async createTestProject(config: TestProjectConfig): Promise<TestProject> {
+    const projectPath = await this.createTempDirectory();
+
+    // Create package.json
+    if (config.packageJson) {
+      await fs.writeJSON(
+        path.join(projectPath, 'package.json'),
+        config.packageJson
+      );
+    }
+
+    // Create file structure
+    if (config.files) {
+      for (const [filePath, content] of Object.entries(config.files)) {
+        const fullPath = path.join(projectPath, filePath);
+        await fs.ensureDir(path.dirname(fullPath));
+        await fs.writeFile(fullPath, content);
+      }
+    }
+
+    // Create directories
+    if (config.directories) {
+      for (const dir of config.directories) {
+        await fs.ensureDir(path.join(projectPath, dir));
+      }
+    }
+
+    return new TestProject(projectPath, config);
+  }
+
+  /**
+   * Create React TypeScript project
+   */
+  static async createReactTypeScriptProject(): Promise<TestProject> {
+    return this.createTestProject({
+      packageJson: {
+        name: 'test-react-app',
+        version: '1.0.0',
+        dependencies: {
+          'react': '^18.0.0',
+          'react-dom': '^18.0.0',
+          'typescript': '^4.9.0'
+        },
+        devDependencies: {
+          '@types/react': '^18.0.0',
+          '@types/react-dom': '^18.0.0'
+        }
+      },
+      files: {
+        'tsconfig.json': JSON.stringify({
+          compilerOptions: {
+            target: 'es5',
+            lib: ['dom', 'dom.iterable', 'es6'],
+            allowJs: true,
+            skipLibCheck: true,
+            esModuleInterop: true,
+            allowSyntheticDefaultImports: true,
+            strict: true,
+            forceConsistentCasingInFileNames: true,
+            moduleResolution: 'node',
+            resolveJsonModule: true,
+            isolatedModules: true,
+            noEmit: true,
+            jsx: 'react-jsx'
+          },
+          include: ['src']
+        }, null, 2),
+        'src/App.tsx': `
+          import React from 'react';
+
+          function App() {
+            return (
+              <div className="App">
+                <h1>Test React App</h1>
+              </div>
+            );
+          }
+
+          export default App;
+        `,
+        'src/index.tsx': `
+          import React from 'react';
+          import ReactDOM from 'react-dom/client';
+          import App from './App';
+
+          const root = ReactDOM.createRoot(document.getElementById('root'));
+          root.render(<App />);
+        `
+      },
+      directories: ['src', 'public']
+    });
+  }
+
+  /**
+   * Create Node.js Express project
+   */
+  static async createNodeExpressProject(): Promise<TestProject> {
+    return this.createTestProject({
+      packageJson: {
+        name: 'test-express-app',
+        version: '1.0.0',
+        main: 'src/index.js',
+        dependencies: {
+          'express': '^4.18.0',
+          'cors': '^2.8.5'
+        },
+        devDependencies: {
+          'nodemon': '^2.0.20',
+          '@types/express': '^4.17.14'
+        },
+        scripts: {
+          'start': 'node src/index.js',
+          'dev': 'nodemon src/index.js'
+        }
+      },
+      files: {
+        'src/index.js': `
+          const express = require('express');
+          const cors = require('cors');
+
+          const app = express();
+          const port = process.env.PORT || 3000;
+
+          app.use(cors());
+          app.use(express.json());
+
+          app.get('/', (req, res) => {
+            res.json({ message: 'Test Express App' });
+          });
+
+          app.listen(port, () => {
+            console.log(\`Server running on port \${port}\`);
+          });
+        `,
+        '.env.example': `
+          PORT=3000
+          NODE_ENV=development
+        `
+      },
+      directories: ['src', 'routes', 'middleware']
+    });
+  }
+}
+
+// Test Cases Examples
+// tests/unit/context-detection.test.ts
+describe('Context Detection Engine', () => {
+  let contextDetector: ContextDetectionEngine;
+  let testProject: TestProject;
+
+  beforeEach(async () => {
+    contextDetector = new ContextDetectionEngine();
+    testProject = await TestProjectFactory.createReactTypeScriptProject();
+  });
+
+  afterEach(async () => {
+    await testProject.cleanup();
+  });
+
+  describe('React TypeScript Detection', () => {
+    it('should detect React framework correctly', async () => {
+      const context = await contextDetector.detectContext(testProject.path);
+
+      expect(context.technologies).toContain('react');
+      expect(context.technologies).toContain('typescript');
+      expect(context.projectType).toContain('frontend');
+      expect(context.confidence).toBeGreaterThan(0.8);
+    });
+
+    it('should detect development phase correctly', async () => {
+      const context = await contextDetector.detectContext(testProject.path);
+
+      expect(context.developmentPhase).toBe('setup');
+      expect(context.fileSystem.indicators.hasSource).toBe(true);
+      expect(context.fileSystem.indicators.hasTests).toBe(false);
+    });
+
+    it('should identify code patterns', async () => {
+      const context = await contextDetector.detectContext(testProject.path);
+
+      const reactPatterns = context.codePatterns.filter(p => p.type === 'react-component');
+      expect(reactPatterns).toHaveLength(1);
+      expect(reactPatterns[0].confidence).toBeGreaterThan(0.7);
+    });
+  });
+
+  describe('Caching Behavior', () => {
+    it('should cache context results', async () => {
+      const start1 = Date.now();
+      const context1 = await contextDetector.detectContext(testProject.path);
+      const duration1 = Date.now() - start1;
+
+      const start2 = Date.now();
+      const context2 = await contextDetector.detectContext(testProject.path);
+      const duration2 = Date.now() - start2;
+
+      expect(context2).toEqual(context1);
+      expect(duration2).toBeLessThan(duration1 * 0.1); // Cache should be much faster
+    });
+
+    it('should invalidate cache when files change', async () => {
+      await contextDetector.detectContext(testProject.path);
+
+      // Modify a file
+      await testProject.addFile('src/NewComponent.tsx', `
+        import React from 'react';
+        export const NewComponent = () => <div>New</div>;
+      `);
+
+      const cachedContext = contextDetector.getCachedContext(testProject.path);
+      expect(cachedContext).toBeNull();
+    });
+  });
+});
+
+// tests/integration/rule-composition.test.ts
+describe('Rule Composition Integration', () => {
+  let ruleEngine: CursorRulesEngine;
+  let testProject: TestProject;
+
+  beforeEach(async () => {
+    ruleEngine = new CursorRulesEngine();
+    testProject = await TestProjectFactory.createReactTypeScriptProject();
+  });
+
+  afterEach(async () => {
+    await testProject.cleanup();
+  });
+
+  it('should compose React + TypeScript rules correctly', async () => {
+    const context = await ruleEngine.detectContext(testProject.path);
+    const compatibleRules = await ruleEngine.findCompatibleRules(context);
+    const composedRuleSet = await ruleEngine.composeRules(compatibleRules, context);
+
+    // Verify React rules are applied
+    const reactRules = composedRuleSet.appliedRules.filter(r =>
+      r.ruleId.includes('react')
+    );
+    expect(reactRules.length).toBeGreaterThan(0);
+
+    // Verify TypeScript rules are applied
+    const typeScriptRules = composedRuleSet.appliedRules.filter(r =>
+      r.ruleId.includes('typescript')
+    );
+    expect(typeScriptRules.length).toBeGreaterThan(0);
+
+    // Verify no conflicts
+    expect(composedRuleSet.conflictsResolved).toHaveLength(0);
+
+    // Verify final configuration
+    expect(composedRuleSet.finalConfiguration.cursorRules).toBeDefined();
+    expect(composedRuleSet.finalConfiguration.dependencies.length).toBeGreaterThan(0);
+  });
+
+  it('should handle rule conflicts appropriately', async () => {
+    // Create a scenario with conflicting rules
+    const conflictingRules = [
+      await ruleEngine.getRule('javascript-loose'),
+      await ruleEngine.getRule('typescript-strict')
+    ];
+
+    const context = await ruleEngine.detectContext(testProject.path);
+    const composedRuleSet = await ruleEngine.composeRules(conflictingRules, context);
+
+    expect(composedRuleSet.conflictsResolved.length).toBeGreaterThan(0);
+
+    // TypeScript strict should win due to higher priority
+    const finalRules = composedRuleSet.appliedRules.map(r => r.ruleId);
+    expect(finalRules).toContain('typescript-strict');
+    expect(finalRules).not.toContain('javascript-loose');
+  });
+});
+```
+
+## 5.2 Performance Optimization & Monitoring
+
+### 5.2.1 Performance Optimization Strategy
+
+```typescript
+// Performance Monitor
+class PerformanceMonitor {
+  private readonly metrics: Map<string, PerformanceMetric>;
+  private readonly thresholds: PerformanceThresholds;
+
+  constructor() {
+    this.metrics = new Map();
+    this.thresholds = {
+      contextDetection: 2000, // 2 seconds
+      ruleComposition: 1000,  // 1 second
+      fileGeneration: 500,    // 0.5 seconds
+      memoryUsage: 500 * 1024 * 1024, // 500MB
+      cacheHitRate: 0.8 // 80%
+    };
+  }
+
+  /**
+   * Measure performance of operation
+   */
+  async measurePerformance<T>(
+    operation: string,
+    fn: () => Promise<T>
+  ): Promise<T> {
+    const startTime = process.hrtime.bigint();
+    const startMemory = process.memoryUsage();
+
+    try {
+      const result = await fn();
+
+      const endTime = process.hrtime.bigint();
+      const endMemory = process.memoryUsage();
+
+      const duration = Number(endTime - startTime) / 1000000; // Convert to milliseconds
+      const memoryDelta = endMemory.heapUsed - startMemory.heapUsed;
+
+      this.recordMetric(operation, {
+        duration,
+        memoryUsage: memoryDelta,
+        timestamp: new Date(),
+        success: true
+      });
+
+      // Check thresholds
+      await this.checkThresholds(operation, duration, memoryDelta);
+
+      return result;
+
+    } catch (error) {
+      this.recordMetric(operation, {
+        duration: Number(process.hrtime.bigint() - startTime) / 1000000,
+        memoryUsage: 0,
+        timestamp: new Date(),
+        success: false,
+        error: error.message
+      });
+
+      throw error;
+    }
+  }
+
+  /**
+   * Get performance statistics
+   */
+  getPerformanceStats(operation?: string): PerformanceStats {
+    const relevantMetrics = operation
+      ? Array.from(this.metrics.entries()).filter(([key]) => key.includes(operation))
+      : Array.from(this.metrics.entries());
+
+    if (relevantMetrics.length === 0) {
+      return {
+        operation: operation || 'all',
+        count: 0,
+        averageDuration: 0,
+        medianDuration: 0,
+        p95Duration: 0,
+        averageMemory: 0,
+        successRate: 0
+      };
+    }
+
+    const metrics = relevantMetrics.map(([_, metric]) => metric);
+    const durations = metrics.map(m => m.duration).sort((a, b) => a - b);
+    const memoryUsages = metrics.map(m => m.memoryUsage);
+    const successes = metrics.filter(m => m.success).length;
+
+    return {
+      operation: operation || 'all',
+      count: metrics.length,
+      averageDuration: durations.reduce((a, b) => a + b, 0) / durations.length,
+      medianDuration: durations[Math.floor(durations.length / 2)],
+      p95Duration: durations[Math.floor(durations.length * 0.95)],
+      averageMemory: memoryUsages.reduce((a, b) => a + b, 0) / memoryUsages.length,
+      successRate: successes / metrics.length
+    };
+  }
+
+  private async checkThresholds(
+    operation: string,
+    duration: number,
+    memoryDelta: number
+  ): Promise<void> {
+    const threshold = this.thresholds[operation];
+
+    if (threshold && duration > threshold) {
+      console.warn(`⚠️ Performance threshold exceeded for ${operation}: ${duration}ms > ${threshold}ms`);
+
+      // Emit performance alert
+      await this.emitPerformanceAlert({
+        operation,
+        metric: 'duration',
+        value: duration,
+        threshold,
+        severity: duration > threshold * 2 ? 'HIGH' : 'MEDIUM'
+      });
+    }
+
+    if (memoryDelta > this.thresholds.memoryUsage) {
+      console.warn(`⚠️ Memory usage threshold exceeded for ${operation}: ${memoryDelta} bytes`);
+
+      await this.emitPerformanceAlert({
+        operation,
+        metric: 'memory',
+        value: memoryDelta,
+        threshold: this.thresholds.memoryUsage,
+        severity: 'MEDIUM'
+      });
+    }
+  }
+}
+
+// Caching Strategy
+class IntelligentCache {
+  private readonly memoryCache: Map<string, CacheEntry>;
+  private readonly cacheStats: CacheStatistics;
+  private readonly maxSize: number;
+  private readonly ttl: number;
+
+  constructor(maxSize = 100 * 1024 * 1024, ttl = 300000) { // 100MB, 5 minutes
+    this.memoryCache = new Map();
+    this.maxSize = maxSize;
+    this.ttl = ttl;
+    this.cacheStats = {
+      hits: 0,
+      misses: 0,
+      evictions: 0,
+      totalSize: 0
+    };
+
+    // Cleanup expired entries periodically
+    setInterval(() => this.cleanup(), 60000); // Every minute
+  }
+
+  /**
+   * Get value from cache
+   */
+  get<T>(key: string): T | null {
+    const entry = this.memoryCache.get(key);
+
+    if (!entry) {
+      this.cacheStats.misses++;
+      return null;
+    }
+
+    if (Date.now() - entry.timestamp > this.ttl) {
+      this.memoryCache.delete(key);
+      this.cacheStats.misses++;
+      return null;
+    }
+
+    // Update access time for LRU
+    entry.lastAccessed = Date.now();
+    this.cacheStats.hits++;
+
+    return entry.value as T;
+  }
+
+  /**
+   * Set value in cache
+   */
+  set<T>(key: string, value: T): void {
+    const serialized = JSON.stringify(value);
+    const size = Buffer.byteLength(serialized, 'utf8');
+
+    // Check if we need to evict entries
+    while (this.cacheStats.totalSize + size > this.maxSize && this.memoryCache.size > 0) {
+      this.evictLRU();
+    }
+
+    const entry: CacheEntry = {
+      value,
+      timestamp: Date.now(),
+      lastAccessed: Date.now(),
+      size
+    };
+
+    this.memoryCache.set(key, entry);
+    this.cacheStats.totalSize += size;
+  }
+
+  /**
+   * Intelligent cache key generation
+   */
+  generateContextKey(projectPath: string, options: DetectionOptions): string {
+    const pathHash = this.hashString(projectPath);
+    const optionsHash = this.hashString(JSON.stringify(options));
+
+    // Include file modification times for cache invalidation
+    const fileStats = this.getRelevantFileStats(projectPath);
+    const statsHash = this.hashString(JSON.stringify(fileStats));
+
+    return `context:${pathHash}:${optionsHash}:${statsHash}`;
+  }
+
+  private evictLRU(): void {
+    let oldestEntry: [string, CacheEntry] | null = null;
+    let oldestTime = Date.now();
+
+    for (const [key, entry] of this.memoryCache) {
+      if (entry.lastAccessed < oldestTime) {
+        oldestTime = entry.lastAccessed;
+        oldestEntry = [key, entry];
+      }
+    }
+
+    if (oldestEntry) {
+      this.memoryCache.delete(oldestEntry[0]);
+      this.cacheStats.totalSize -= oldestEntry[1].size;
+      this.cacheStats.evictions++;
+    }
+  }
+
+  private cleanup(): void {
+    const now = Date.now();
+    const expiredKeys: string[] = [];
+
+    for (const [key, entry] of this.memoryCache) {
+      if (now - entry.timestamp > this.ttl) {
+        expiredKeys.push(key);
+      }
+    }
+
+    for (const key of expiredKeys) {
+      const entry = this.memoryCache.get(key);
+      if (entry) {
+        this.memoryCache.delete(key);
+        this.cacheStats.totalSize -= entry.size;
+      }
+    }
+  }
+
+  /**
+   * Get cache hit rate
+   */
+  getHitRate(): number {
+    const total = this.cacheStats.hits + this.cacheStats.misses;
+    return total === 0 ? 0 : this.cacheStats.hits / total;
+  }
+}
+
+// Performance Optimization for File System Operations
+class OptimizedFileSystem {
+  private readonly fileCache: Map<string, FileInfo>;
+  private readonly batchQueue: FileOperation[];
+  private readonly batchSize: number = 50;
+  private batchTimeout: NodeJS.Timeout | null = null;
+
+  /**
+   * Batch file operations for better performance
+   */
+  async batchFileOperations(operations: FileOperation[]): Promise<FileOperationResult[]> {
+    const results: FileOperationResult[] = [];
+
+    // Group operations by type
+    const groupedOps = this.groupOperationsByType(operations);
+
+    // Execute reads in parallel
+    if (groupedOps.read.length > 0) {
+      const readResults = await Promise.allSettled(
+        groupedOps.read.map(op => this.executeFileRead(op))
+      );
+      results.push(...readResults.map(r =>
+        r.status === 'fulfilled' ? r.value : { success: false, error: r.reason }
+      ));
+    }
+
+    // Execute writes sequentially to avoid conflicts
+    for (const writeOp of groupedOps.write) {
+      try {
+        const result = await this.executeFileWrite(writeOp);
+        results.push(result);
+      } catch (error) {
+        results.push({ success: false, error: error.message });
+      }
+    }
+
+    return results;
+  }
+
+  /**
+   * Optimized directory scanning with exclusions
+   */
+  async scanDirectoryOptimized(
+    dirPath: string,
+    options: ScanOptions = {}
+  ): Promise<string[]> {
+    const {
+      maxDepth = 10,
+      excludePatterns = ['node_modules', '.git', 'dist', 'build'],
+      includePatterns = [],
+      maxFiles = 10000
+    } = options;
+
+    const files: string[] = [];
+    const stack: { path: string; depth: number }[] = [{ path: dirPath, depth: 0 }];
+
+    while (stack.length > 0 && files.length < maxFiles) {
+      const { path: currentPath, depth } = stack.pop()!;
+
+      if (depth >= maxDepth) continue;
+
+      try {
+        const entries = await fs.readdir(currentPath, { withFileTypes: true });
+
+        for (const entry of entries) {
+          const fullPath = path.join(currentPath, entry.name);
+          const relativePath = path.relative(dirPath, fullPath);
+
+          // Check exclusion patterns
+          if (excludePatterns.some(pattern => this.matchesPattern(relativePath, pattern))) {
+            continue;
+          }
+
+          // Check inclusion patterns (if specified)
+          if (includePatterns.length > 0 &&
+              !includePatterns.some(pattern => this.matchesPattern(relativePath, pattern))) {
+            continue;
+          }
+
+          if (entry.isDirectory()) {
+            stack.push({ path: fullPath, depth: depth + 1 });
+          } else {
+            files.push(fullPath);
+          }
+        }
+      } catch (error) {
+        // Skip directories that can't be read
+        continue;
+      }
+    }
+
+    return files;
+  }
+
+  /**
+   * Optimized file content analysis with streaming
+   */
+  async analyzeFileContentStream(filePath: string): Promise<FileAnalysis> {
+    const stats = await fs.stat(filePath);
+
+    // For large files, use streaming analysis
+    if (stats.size > 1024 * 1024) { // 1MB
+      return this.analyzeFileStreaming(filePath);
+    } else {
+      return this.analyzeFileInMemory(filePath);
+    }
+  }
+
+  private async analyzeFileStreaming(filePath: string): Promise<FileAnalysis> {
+    return new Promise((resolve, reject) => {
+      const analysis: FileAnalysis = {
+        lineCount: 0,
+        characterCount: 0,
+        patterns: [],
+        imports: [],
+        exports: []
+      };
+
+      const readStream = fs.createReadStream(filePath, { encoding: 'utf8' });
+      let buffer = '';
+
+      readStream.on('data', (chunk: string) => {
+        buffer += chunk;
+        const lines = buffer.split('\n');
+
+        // Keep the last incomplete line in buffer
+        buffer = lines.pop() || '';
+
+        // Analyze complete lines
+        for (const line of lines) {
+          this.analyzeLine(line, analysis);
+          analysis.lineCount++;
+          analysis.characterCount += line.length + 1; // +1 for newline
+        }
+      });
+
+      readStream.on('end', () => {
+        // Analyze the last line
+        if (buffer) {
+          this.analyzeLine(buffer, analysis);
+          analysis.lineCount++;
+          analysis.characterCount += buffer.length;
+        }
+
+        resolve(analysis);
+      });
+
+      readStream.on('error', reject);
+    });
+  }
+}
+```
+
+## 5.3 Deployment & Infrastructure Specifications
+
+### 5.3.1 Container Configuration
+
+```dockerfile
+# Dockerfile
+FROM node:18-alpine AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+COPY tsconfig*.json ./
+COPY webpack*.js ./
+
+# Install dependencies
+RUN npm ci --only=production && npm cache clean --force
+
+# Copy source code
+COPY src/ ./src/
+COPY data/ ./data/
+
+# Build application
+RUN npm run build:prod
+
+# Production stage
+FROM node:18-alpine AS production
+
+# Create app directory
+WORKDIR /app
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S cursoruser -u 1001
+
+# Copy built application
+COPY --from=builder --chown=cursoruser:nodejs /app/dist ./dist
+COPY --from=builder --chown=cursoruser:nodejs /app/data ./data
+COPY --from=builder --chown=cursoruser:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=cursoruser:nodejs /app/package.json ./
+
+# Set up directories
+RUN mkdir -p /app/cache /app/logs && \
+    chown cursoruser:nodejs /app/cache /app/logs
+
+# Switch to non-root user
+USER cursoruser
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD node /app/dist/health-check.js
+
+# Start application
+CMD ["node", "dist/core/index.js"]
+
+# Docker Compose Configuration
+# docker-compose.yml
+version: '3.8'
+
+services:
+  cursor-rules-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: cursor-rules-engine
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - CACHE_ENABLED=true
+      - CACHE_TTL=300000
+      - MONITORING_ENABLED=true
+    volumes:
+      - ./data/rules-library:/app/data/rules-library:ro
+      - ./cache:/app/cache
+      - ./logs:/app/logs
+    ports:
+      - "3000:3000"
+    networks:
+      - cursor-network
+    healthcheck:
+      test: ["CMD", "node", "/app/dist/health-check.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
+  # Redis cache (optional)
+  redis-cache:
+    image: redis:7-alpine
+    container_name: cursor-redis
+    restart: unless-stopped
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis-data:/data
+    networks:
+      - cursor-network
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.25'
+
+  # Monitoring
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: cursor-prometheus
+    restart: unless-stopped
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - cursor-network
+
+volumes:
+  redis-data:
+  prometheus-data:
+
+networks:
+  cursor-network:
+    driver: bridge
+```
+
+### 5.3.2 CI/CD Pipeline Configuration
+
+```yaml
+# .github/workflows/ci-cd.yml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ published ]
+
+env:
+  NODE_VERSION: '18'
+  CACHE_VERSION: 'v1'
+
+jobs:
+  # Code Quality & Testing
+  quality-check:
+    name: Code Quality & Testing
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Lint code
+      run: npm run lint
+
+    - name: Type check
+      run: npm run type-check
+
+    - name: Run unit tests
+      run: npm run test:unit
+
+    - name: Run integration tests
+      run: npm run test:integration
+
+    - name: Generate coverage report
+      run: npm run test:coverage
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage/lcov.info
+        flags: unittests
+        name: codecov-umbrella
+
+    - name: Security audit
+      run: npm audit --audit-level=moderate
+
+  # Build & Package
+  build:
+    name: Build & Package
+    runs-on: ubuntu-latest
+    needs: quality-check
+
+    strategy:
+      matrix:
+        target: [core, vscode-extension, cli]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build ${{ matrix.target }}
+      run: npm run build:${{ matrix.target }}
+
+    - name: Package ${{ matrix.target }}
+      run: npm run package:${{ matrix.target }}
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-${{ matrix.target }}
+        path: dist/${{ matrix.target }}/
+        retention-days: 7
+
+  # End-to-End Testing
+  e2e-test:
+    name: E2E Testing
+    runs-on: ${{ matrix.os }}
+    needs: build
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: build-core
+        path: dist/core/
+
+    - name: Run E2E tests
+      run: npm run test:e2e
+      env:
+        CI: true
+
+  # Docker Build & Push
+  docker-build:
+    name: Docker Build & Push
+    runs-on: ubuntu-latest
+    needs: [quality-check, build]
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: cursortools/rules-engine
+        tags: |
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=raw,value=latest,enable={{is_default_branch}}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+  # Release
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    needs: [quality-check, build, e2e-test]
+    if: github.event_name == 'release'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Download all build artifacts
+      uses: actions/download-artifact@v4
+
+    - name: Publish to npm
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Publish VS Code Extension
+      run: |
+        npm install -g vsce
+        vsce publish -p ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
+      working-directory: ./build-vscode-extension
+
+    - name: Create GitHub Release Assets
+      run: |
+        zip -r cursor-rules-engine-${{ github.ref_name }}-linux.zip build-cli/linux/
+        zip -r cursor-rules-engine-${{ github.ref_name }}-windows.zip build-cli/windows/
+        zip -r cursor-rules-engine-${{ github.ref_name }}-macos.zip build-cli/macos/
+
+    - name: Upload Release Assets
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ./cursor-rules-engine-${{ github.ref_name }}-linux.zip
+        asset_name: cursor-rules-engine-${{ github.ref_name }}-linux.zip
+        asset_content_type: application/zip
+
+  # Deployment
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [docker-build]
+    if: github.ref == 'refs/heads/main'
+    environment: production
+
+    steps:
+    - name: Deploy to production server
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.PROD_HOST }}
+        username: ${{ secrets.PROD_USERNAME }}
+        key: ${{ secrets.PROD_SSH_KEY }}
+        script: |
+          cd /opt/cursor-rules-engine
+          docker-compose pull
+          docker-compose up -d
+          docker system prune -f
+```
+
+### 5.3.3 Infrastructure as Code
+
+```terraform
+# infrastructure/main.tf
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+
+  backend "s3" {
+    bucket = "cursor-rules-engine-terraform-state"
+    key    = "prod/terraform.tfstate"
+    region = "us-west-2"
+  }
+}
+
+provider "aws" {
+  region = var.aws_region
+
+  default_tags {
+    tags = {
+      Project     = "cursor-rules-engine"
+      Environment = var.environment
+      ManagedBy   = "terraform"
+    }
+  }
+}
+
+# VPC Configuration
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
+
+  name = "cursor-rules-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["${var.aws_region}a", "${var.aws_region}b"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24"]
+
+  enable_nat_gateway = true
+  enable_vpn_gateway = false
+
+  tags = {
+    Name = "cursor-rules-vpc"
+  }
+}
+
+# ECS Cluster
+resource "aws_ecs_cluster" "main" {
+  name = "cursor-rules-cluster"
+
+  configuration {
+    execute_command_configuration {
+      logging = "OVERRIDE"
+      log_configuration {
+        cloud_watch_log_group_name = aws_cloudwatch_log_group.ecs.name
+      }
+    }
+  }
+
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+}
+
+# ECS Task Definition
+resource "aws_ecs_task_definition" "app" {
+  family                   = "cursor-rules-engine"
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
+  cpu                      = 512
+  memory                   = 1024
+  execution_role_arn       = aws_iam_role.ecs_execution_role.arn
+  task_role_arn           = aws_iam_role.ecs_task_role.arn
+
+  container_definitions = jsonencode([
+    {
+      name  = "cursor-rules-engine"
+      image = "cursortools/rules-engine:latest"
+
+      portMappings = [
+        {
+          containerPort = 3000
+          hostPort      = 3000
+          protocol      = "tcp"
+        }
+      ]
+
+      environment = [
+        {
+          name  = "NODE_ENV"
+          value = var.environment
+        },
+        {
+          name  = "LOG_LEVEL"
+          value = "info"
+        },
+        {
+          name  = "CACHE_ENABLED"
+          value = "true"
+        }
+      ]
+
+      secrets = [
+        {
+          name      = "DATABASE_URL"
+          valueFrom = aws_ssm_parameter.database_url.arn
+        }
+      ]
+
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = aws_cloudwatch_log_group.app.name
+          awslogs-region        = var.aws_region
+          awslogs-stream-prefix = "ecs"
+        }
+      }
+
+      healthCheck = {
+        command     = ["CMD-SHELL", "node /app/dist/health-check.js"]
+        interval    = 30
+        timeout     = 5
+        retries     = 3
+        startPeriod = 60
+      }
+    }
+  ])
+}
+
+# ECS Service
+resource "aws_ecs_service" "app" {
+  name            = "cursor-rules-engine-service"
+  cluster         = aws_ecs_cluster.main.id
+  task_definition = aws_ecs_task_definition.app.arn
+  desired_count   = var.app_count
+  launch_type     = "FARGATE"
+
+  network_configuration {
+    security_groups  = [aws_security_group.ecs_tasks.id]
+    subnets          = module.vpc.private_subnets
+    assign_public_ip = false
+  }
+
+  load_balancer {
+    target_group_arn = aws_lb_target_group.app.arn
+    container_name   = "cursor-rules-engine"
+    container_port   = 3000
+  }
+
+  depends_on = [aws_lb_listener.app]
+
+  lifecycle {
+    ignore_changes = [desired_count]
+  }
+}
+
+# Application Load Balancer
+resource "aws_lb" "app" {
+  name               = "cursor-rules-alb"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.lb.id]
+  subnets            = module.vpc.public_subnets
+
+  enable_deletion_protection = var.environment == "production"
+}
+
+# Auto Scaling
+resource "aws_appautoscaling_target" "ecs_target" {
+  max_capacity       = var.max_capacity
+  min_capacity       = var.min_capacity
+  resource_id        = "service/${aws_ecs_cluster.main.name}/${aws_ecs_service.app.name}"
+  scalable_dimension = "ecs:service:DesiredCount"
+  service_namespace  = "ecs"
+}
+
+resource "aws_appautoscaling_policy" "ecs_policy_cpu" {
+  name               = "cursor-rules-cpu-scaling"
+  policy_type        = "TargetTrackingScaling"
+  resource_id        = aws_appautoscaling_target.ecs_target.resource_id
+  scalable_dimension = aws_appautoscaling_target.ecs_target.scalable_dimension
+  service_namespace  = aws_appautoscaling_target.ecs_target.service_namespace
+
+  target_tracking_scaling_policy_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ECSServiceAverageCPUUtilization"
+    }
+    target_value = 70.0
+  }
+}
+
+# CloudWatch Monitoring
+resource "aws_cloudwatch_dashboard" "main" {
+  dashboard_name = "cursor-rules-engine-${var.environment}"
+
+  dashboard_body = jsonencode({
+    widgets = [
+      {
+        type   = "metric"
+        x      = 0
+        y      = 0
+        width  = 12
+        height = 6
+
+        properties = {
+          metrics = [
+            ["AWS/ECS", "CPUUtilization", "ServiceName", aws_ecs_service.app.name],
+            [".", "MemoryUtilization", ".", "."]
+          ]
+          view    = "timeSeries"
+          stacked = false
+          region  = var.aws_region
+          title   = "ECS Resource Utilization"
+          period  = 300
+        }
+      },
+      {
+        type   = "metric"
+        x      = 0
+        y      = 6
+        width  = 12
+        height = 6
+
+        properties = {
+          metrics = [
+            ["AWS/ApplicationELB", "RequestCount", "LoadBalancer", aws_lb.app.arn_suffix],
+            [".", "ResponseTime", ".", "."],
+            [".", "HTTPCode_Target_2XX_Count", ".", "."],
+            [".", "HTTPCode_Target_4XX_Count", ".", "."],
+            [".", "HTTPCode_Target_5XX_Count", ".", "."]
+          ]
+          view    = "timeSeries"
+          stacked = false
+          region  = var.aws_region
+          title   = "Application Load Balancer Metrics"
+          period  = 300
+        }
+      }
+    ]
+  })
+}
+
+# Variables
+variable "aws_region" {
+  description = "AWS region"
+  type        = string
+  default     = "us-west-2"
+}
+
+variable "environment" {
+  description = "Environment name"
+  type        = string
+  default     = "production"
+}
+
+variable "app_count" {
+  description = "Number of app instances"
+  type        = number
+  default     = 2
+}
+
+variable "min_capacity" {
+  description = "Minimum number of app instances"
+  type        = number
+  default     = 1
+}
+
+variable "max_capacity" {
+  description = "Maximum number of app instances"
+  type        = number
+  default     = 10
+}
+
+# Outputs
+output "load_balancer_dns" {
+  description = "DNS name of the load balancer"
+  value       = aws_lb.app.dns_name
+}
+
+output "ecs_cluster_name" {
+  description = "Name of the ECS cluster"
+  value       = aws_ecs_cluster.main.name
+}
+```
+
+## 5.4 Monitoring & Maintenance
+
+### 5.4.1 Comprehensive Monitoring Setup
+
+```typescript
+// Monitoring System
+class MonitoringSystem {
+  private readonly metricsCollector: MetricsCollector;
+  private readonly alertManager: AlertManager;
+  private readonly healthChecker: HealthChecker;
+
+  constructor() {
+    this.metricsCollector = new MetricsCollector();
+    this.alertManager = new AlertManager();
+    this.healthChecker = new HealthChecker();
+  }
+
+  /**
+   * Initialize monitoring system
+   */
+  async initialize(): Promise<void> {
+    // Start metrics collection
+    await this.metricsCollector.start();
+
+    // Initialize health checks
+    await this.healthChecker.initialize();
+
+    // Setup alert rules
+    await this.setupAlerts();
+
+    // Start monitoring loops
+    this.startMonitoringLoops();
+  }
+
+  private async setupAlerts(): Promise<void> {
+    // Performance alerts
+    this.alertManager.addRule({
+      name: 'high_response_time',
+      condition: 'avg_response_time > 2000', // 2 seconds
+      severity: 'WARNING',
+      action: 'notify_team'
+    });
+
+    this.alertManager.addRule({
+      name: 'very_high_response_time',
+      condition: 'avg_response_time > 5000', // 5 seconds
+      severity: 'CRITICAL',
+      action: 'page_oncall'
+    });
+
+    // Error rate alerts
+    this.alertManager.addRule({
+      name: 'high_error_rate',
+      condition: 'error_rate > 0.05', // 5%
+      severity: 'WARNING',
+      action: 'notify_team'
+    });
+
+    // Resource usage alerts
+    this.alertManager.addRule({
+      name: 'high_memory_usage',
+      condition: 'memory_usage > 0.85', // 85%
+      severity: 'WARNING',
+      action: 'scale_up'
+    });
+
+    // Cache performance alerts
+    this.alertManager.addRule({
+      name: 'low_cache_hit_rate',
+      condition: 'cache_hit_rate < 0.7', // 70%
+      severity: 'INFO',
+      action: 'investigate_cache'
+    });
+  }
+
+  private startMonitoringLoops(): void {
+    // Real-time metrics (every 30 seconds)
+    setInterval(async () => {
+      await this.collectRealTimeMetrics();
+    }, 30000);
+
+    // Health checks (every minute)
+    setInterval(async () => {
+      await this.performHealthChecks();
+    }, 60000);
+
+    // Resource cleanup (every 5 minutes)
+    setInterval(async () => {
+      await this.performMaintenance();
+    }, 300000);
+
+    // Alert evaluation (every minute)
+    setInterval(async () => {
+      await this.evaluateAlerts();
+    }, 60000);
+  }
+
+  private async collectRealTimeMetrics(): Promise<void> {
+    const metrics = {
+      // Performance metrics
+      responseTime: await this.getAverageResponseTime(),
+      throughput: await this.getThroughput(),
+      errorRate: await this.getErrorRate(),
+
+      // Resource metrics
+      memoryUsage: process.memoryUsage(),
+      cpuUsage: await this.getCPUUsage(),
+
+      // Cache metrics
+      cacheHitRate: await this.getCacheHitRate(),
+      cacheSize: await this.getCacheSize(),
+
+      // Rule engine metrics
+      rulesProcessed: await this.getRulesProcessed(),
+      contextDetections: await this.getContextDetections(),
+      compositionsPerformed: await this.getCompositionsPerformed(),
+
+      timestamp: new Date()
+    };
+
+    await this.metricsCollector.record(metrics);
+  }
+
+  /**
+   * Generate comprehensive health report
+   */
+  async generateHealthReport(): Promise<HealthReport> {
+    const checks = await Promise.allSettled([
+      this.healthChecker.checkCoreEngine(),
+      this.healthChecker.checkRuleLibrary(),
+      this.healthChecker.checkFileSystem(),
+      this.healthChecker.checkCache(),
+      this.healthChecker.checkIntegrations()
+    ]);
+
+    const healthStatus = checks.every(check =>
+      check.status === 'fulfilled' && check.value.healthy
+    ) ? 'HEALTHY' : 'UNHEALTHY';
+
+    return {
+      status: healthStatus,
+      timestamp: new Date(),
+      checks: checks.map((check, index) => ({
+        name: ['core_engine', 'rule_library', 'file_system', 'cache', 'integrations'][index],
+        status: check.status === 'fulfilled' ? check.value.status : 'FAILED',
+        message: check.status === 'fulfilled' ? check.value.message : check.reason,
+        details: check.status === 'fulfilled' ? check.value.details : null
+      })),
+      metrics: await this.getSystemMetrics(),
+      recommendations: await this.generateRecommendations()
+    };
+  }
+}
+
+// Health Check Implementation
+class HealthChecker {
+  /**
+   * Check core engine health
+   */
+  async checkCoreEngine(): Promise<HealthCheckResult> {
+    try {
+      // Test context detection
+      const testPath = path.join(__dirname, '../tests/fixtures/simple-project');
+      const detector = new ContextDetectionEngine();
+      const context = await detector.detectContext(testPath);
+
+      if (!context || !context.projectId) {
+        return {
+          healthy: false,
+          status: 'FAILED',
+          message: 'Context detection failed',
+          details: { testPath }
+        };
+      }
+
+      // Test rule composition
+      const composer = new RuleCompositionEngine();
+      const testRules = await this.getTestRules();
+      const composition = await composer.composeRules(testRules, context);
+
+      if (!composition || composition.appliedRules.length === 0) {
+        return {
+          healthy: false,
+          status: 'FAILED',
+          message: 'Rule composition failed',
+          details: { ruleCount: testRules.length }
+        };
+      }
+
+      return {
+        healthy: true,
+        status: 'HEALTHY',
+        message: 'Core engine functioning normally',
+        details: {
+          contextDetection: 'OK',
+          ruleComposition: 'OK',
+          testDuration: Date.now()
+        }
+      };
+
+    } catch (error) {
+      return {
+        healthy: false,
+        status: 'ERROR',
+        message: `Core engine error: ${error.message}`,
+        details: { error: error.stack }
+      };
+    }
+  }
+
+  /**
+   * Check rule library health
+   */
+  async checkRuleLibrary(): Promise<HealthCheckResult> {
+    try {
+      const ruleLibrary = new RuleLibrary();
+
+      // Check if rule library can be loaded
+      const rules = await ruleLibrary.getAllRules();
+
+      if (rules.length === 0) {
+        return {
+          healthy: false,
+          status: 'WARNING',
+          message: 'No rules found in library',
+          details: { ruleCount: 0 }
+        };
+      }
+
+      // Validate rule schemas
+      let invalidRules = 0;
+      for (const rule of rules) {
+        const validation = await ruleLibrary.validateRule(rule);
+        if (!validation.valid) {
+          invalidRules++;
+        }
+      }
+
+      if (invalidRules > 0) {
+        return {
+          healthy: false,
+          status: 'WARNING',
+          message: `${invalidRules} invalid rules found`,
+          details: { totalRules: rules.length, invalidRules }
+        };
+      }
+
+      return {
+        healthy: true,
+        status: 'HEALTHY',
+        message: 'Rule library functioning normally',
+        details: {
+          totalRules: rules.length,
+          categories: await this.getRuleCategories(rules),
+          lastUpdated: await this.getLastRuleUpdate()
+        }
+      };
+
+    } catch (error) {
+      return {
+        healthy: false,
+        status: 'ERROR',
+        message: `Rule library error: ${error.message}`,
+        details: { error: error.stack }
+      };
+    }
+  }
+
+  /**
+   * Check file system health
+   */
+  async checkFileSystem(): Promise<HealthCheckResult> {
+    try {
+      const checks = {
+        ruleLibraryReadable: false,
+        cacheWritable: false,
+        tempDirWritable: false,
+        diskSpace: 0
+      };
+
+      // Check rule library directory
+      try {
+        await fs.access('./data/rules-library', fs.constants.R_OK);
+        checks.ruleLibraryReadable = true;
+      } catch (error) {
+        // Rule library not readable
+      }
+
+      // Check cache directory
+      try {
+        const testFile = './cache/health-check.tmp';
+        await fs.writeFile(testFile, 'test');
+        await fs.unlink(testFile);
+        checks.cacheWritable = true;
+      } catch (error) {
+        // Cache not writable
+      }
+
+      // Check temp directory
+      try {
+        const testFile = path.join(os.tmpdir(), 'cursor-rules-health-check.tmp');
+        await fs.writeFile(testFile, 'test');
+        await fs.unlink(testFile);
+        checks.tempDirWritable = true;
+      } catch (error) {
+        // Temp not writable
+      }
+
+      // Check disk space
+      const stats = await fs.statfs('./');
+      checks.diskSpace = (stats.free / stats.size) * 100;
+
+      const issues = [];
+      if (!checks.ruleLibraryReadable) issues.push('Rule library not readable');
+      if (!checks.cacheWritable) issues.push('Cache directory not writable');
+      if (!checks.tempDirWritable) issues.push('Temp directory not writable');
+      if (checks.diskSpace < 10) issues.push('Low disk space');
+
+      return {
+        healthy: issues.length === 0,
+        status: issues.length === 0 ? 'HEALTHY' : 'WARNING',
+        message: issues.length === 0 ? 'File system healthy' : `Issues: ${issues.join(', ')}`,
+        details: checks
+      };
+
+    } catch (error) {
+      return {
+        healthy: false,
+        status: 'ERROR',
+        message: `File system check error: ${error.message}`,
+        details: { error: error.stack }
+      };
+    }
+  }
+}
+
+// Maintenance Tasks
+class MaintenanceManager {
+  /**
+   * Perform scheduled maintenance
+   */
+  async performMaintenance(): Promise<MaintenanceReport> {
+    const tasks = [
+      this.cleanupTempFiles(),
+      this.optimizeCache(),
+      this.validateRuleLibrary(),
+      this.updateMetrics(),
+      this.archiveLogs()
+    ];
+
+    const results = await Promise.allSettled(tasks);
+
+    return {
+      timestamp: new Date(),
+      tasksCompleted: results.filter(r => r.status === 'fulfilled').length,
+      tasksFailed: results.filter(r => r.status === 'rejected').length,
+      details: results.map((result, index) => ({
+        task: ['cleanup_temp', 'optimize_cache', 'validate_rules', 'update_metrics', 'archive_logs'][index],
+        status: result.status,
+        message: result.status === 'fulfilled' ? 'Completed' : result.reason
+      }))
+    };
+  }
+
+  private async cleanupTempFiles(): Promise<void> {
+    const tempDir = os.tmpdir();
+    const files = await fs.readdir(tempDir);
+
+    const cursorTempFiles = files.filter(file =>
+      file.startsWith('cursor-rules-') &&
+      file.endsWith('.tmp')
+    );
+
+    for (const file of cursorTempFiles) {
+      const filePath = path.join(tempDir, file);
+      const stats = await fs.stat(filePath);
+
+      // Delete files older than 1 hour
+      if (Date.now() - stats.mtime.getTime() > 3600000) {
+        await fs.unlink(filePath);
+      }
+    }
+  }
+
+  private async optimizeCache(): Promise<void> {
+    const cache = CacheManager.getInstance();
+
+    // Remove expired entries
+    await cache.cleanup();
+
+    // Optimize memory usage
+    if (cache.getMemoryUsage() > 0.8) {
+      await cache.evictLRU(0.3); // Evict 30% of cache
+    }
+
+    // Defragment cache if needed
+    if (cache.getFragmentation() > 0.5) {
+      await cache.defragment();
+    }
+  }
+}
+```
+
+---
+
+# 6. Quality Assurance & Testing Framework
+
+## 6.1 Testing Strategy Overview
+
+**Testing Pyramid Implementation**:
+- **Unit Tests (70%)**: Fast, isolated component testing
+- **Integration Tests (20%)**: Component interaction testing
+- **E2E Tests (10%)**: Full workflow validation
+
+## 6.2 Performance Benchmarks & SLA
+
+### 6.2.1 Performance Requirements
+
+```typescript
+// Performance Benchmarks
+export const PERFORMANCE_BENCHMARKS = {
+  contextDetection: {
+    small_project: { maxTime: 500, files: '<100' },      // 0.5s for <100 files
+    medium_project: { maxTime: 1500, files: '100-1000' }, // 1.5s for 100-1000 files
+    large_project: { maxTime: 3000, files: '1000+' }     // 3s for 1000+ files
+  },
+
+  ruleComposition: {
+    simple: { maxTime: 200, rules: '<5' },      // 0.2s for <5 rules
+    moderate: { maxTime: 500, rules: '5-15' },  // 0.5s for 5-15 rules
+    complex: { maxTime: 1000, rules: '15+' }    // 1s for 15+ rules
+  },
+
+  fileGeneration: {
+    basic: { maxTime: 100, files: '<5' },       // 0.1s for <5 files
+    standard: { maxTime: 300, files: '5-20' },  // 0.3s for 5-20 files
+    extensive: { maxTime: 500, files: '20+' }   // 0.5s for 20+ files
+  },
+
+  memory: {
+    baseline: 50 * 1024 * 1024,      // 50MB baseline
+    context_detection: 100 * 1024 * 1024,  // +100MB during detection
+    rule_composition: 50 * 1024 * 1024,    // +50MB during composition
+    max_total: 500 * 1024 * 1024     // 500MB maximum
+  }
+};
+
+// Service Level Agreements
+export const SLA_TARGETS = {
+  availability: 99.9,        // 99.9% uptime
+  response_time_p95: 2000,   // 95% of requests under 2s
+  response_time_p99: 5000,   // 99% of requests under 5s
+  error_rate: 0.01,          // <1% error rate
+  cache_hit_rate: 0.8        // >80% cache hit rate
+};
+```
+
+This comprehensive technical architecture document provides the complete foundation for implementing the Cursor Rules Management System. It covers all aspects from system design to deployment, ensuring a robust, scalable, and maintainable solution that meets the requirements outlined in the PRD.
+
+The architecture emphasizes:
+- **Modularity** for easy maintenance and extensibility
+- **Performance** through intelligent caching and optimization
+- **Security** with comprehensive validation and audit logging
+- **Scalability** through containerization and cloud deployment
+- **Quality** with extensive testing and monitoring
+
+This technical blueprint is ready to guide development teams through the complete implementation process.

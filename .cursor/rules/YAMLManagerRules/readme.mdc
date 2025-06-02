@@ -1,0 +1,156 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Cursor Rules Management System
+## Universal Development Lifecycle Rule Engine
+
+---
+
+## Overview
+
+The Cursor Rules Management System is an intelligent, context-aware rule management system that automatically detects project context and generates optimized Cursor IDE configurations throughout the entire software development lifecycle. This system eliminates manual IDE configuration overhead and provides developers with context-perfect coding assistance by intelligently composing rules from a comprehensive library.
+
+## Documentation Structure
+
+This documentation provides a comprehensive overview of the Cursor Rules Management System's architecture, specifications, and implementation details:
+
+1. **[PRD (Product Requirements Document)](mdc:.cursor/rules/YAMLManagerRules/prd.mdc)**
+   - Vision, mission, and success metrics
+   - Problem statement and target users
+   - Functional and non-functional requirements
+   - User stories and implementation plan
+
+2. **[Architecture Overview](mdc:.cursor/rules/YAMLManagerRules/01-architecture-overview.mdc)**
+   - System architecture and design patterns
+   - Core component specifications
+   - Technology stack and file structure
+   - Scalability considerations
+
+3. **[Data Model Design](mdc:.cursor/rules/YAMLManagerRules/02-data-model-design.mdc)**
+   - Data architecture overview
+   - Rule definition schema
+   - Project context schema
+   - Storage strategies
+
+4. **[API Specifications](mdc:.cursor/rules/YAMLManagerRules/03-api-specifications.mdc)**
+   - API design patterns
+   - Context detection API
+   - Rule composition API
+   - Integration management API
+   - External integration APIs
+
+5. **[Security & Compliance](mdc:.cursor/rules/YAMLManagerRules/04-security-compliance.mdc)**
+   - Security architecture
+   - Authentication and authorization
+   - Rule validation and sanitization
+   - Privacy and data protection
+   - Compliance requirements
+
+6. **[Project Tasks Plan](mdc:.cursor/rules/YAMLManagerRules/projet_tasks_plan.mdc)**
+   - Detailed implementation tasks
+   - Testing and validation criteria
+   - Project milestones and schedule
+
+## Key Features
+
+### Intelligent Context Detection
+- Automatic project analysis across multiple dimensions (development phase, technology stack, project domain, etc.)
+- Real-time adaptation to project evolution
+- Phase-aware rule selection
+
+### Smart Rule Composition
+- Intelligent merging of compatible rules
+- Conflict detection and resolution
+- Complex scenario handling through layered composition
+
+### Universal Coverage
+- Support for entire development lifecycle
+- Multi-technology stack compatibility
+- Domain-specific optimizations
+
+### Zero-Configuration Experience
+- Automatic rule generation and application
+- Seamless Cursor IDE integration
+- Background operation with minimal user intervention
+
+## System Architecture
+
+The system follows a layered architecture with a plugin-based extension system:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    Cursor Rules Engine                          │
+├─────────────────────────────────────────────────────────────────┤
+│  User Interface Layer                                           │
+│  ├── VS Code Extension                                          │
+│  ├── CLI Interface                                              │
+│  └── Web Dashboard (Future)                                     │
+├─────────────────────────────────────────────────────────────────┤
+│  Business Logic Layer                                           │
+│  ├── Context Detection Engine                                   │
+│  ├── Rule Composition Engine                                    │
+│  ├── Conflict Resolution Engine                                 │
+│  └── Template Generation Engine                                 │
+├─────────────────────────────────────────────────────────────────┤
+│  Data Layer                                                     │
+│  ├── Rule Library                                               │
+│  ├── Context Cache                                              │
+│  ├── Configuration Store                                        │
+│  └── Usage Analytics                                            │
+├─────────────────────────────────────────────────────────────────┤
+│  Integration Layer                                              │
+│  ├── Cursor IDE Integration                                     │
+│  ├── File System Watchers                                       │
+│  ├── Git Integration                                            │
+│  └── Package Manager Integration                                │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## Technology Stack
+
+- **Backend/Core Engine**: TypeScript/Node.js 18+
+- **Rule Storage**: YAML files with JSON Schema validation
+- **Configuration Output**: JSON format
+- **File Watching**: Chokidar
+- **CLI Framework**: Commander.js
+
+## Implementation Plan
+
+The system will be implemented in three phases:
+
+1. **Foundation Phase (Months 1-3)**
+   - Core architecture implementation
+   - Basic integration with Cursor IDE
+   - Simple rule composition and merging
+
+2. **Intelligence Phase (Months 4-6)**
+   - Advanced context detection
+   - Smart composition algorithms
+   - Enhanced user experience
+
+3. **Scale & Polish Phase (Months 7-9)**
+   - Performance optimization
+   - Enterprise features
+   - Ecosystem integration
+
+## Getting Started
+
+Detailed instructions for setting up and using the system will be provided as the implementation progresses. The implementation tasks and schedule can be found in the [Project Tasks Plan](mdc:.cursor/rules/YAMLManagerRules/projet_tasks_plan.mdc). use TaskMaster to regenerate tasks for each phase
+
+## Security Considerations
+
+The system follows a defense-in-depth security model with zero trust principles:
+- Input validation for all data
+- Sandboxed rule execution
+- Minimal privileges for system operations
+- Secure storage for sensitive data
+
+## Future Roadmap
+
+The long-term vision for the system includes:
+- Advanced AI integration for pattern recognition
+- Extended IDE support beyond Cursor
+- Community features for rule sharing
+- Enterprise platform for organization-wide rule management
