@@ -1,0 +1,102 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Agent Configuration System
+
+---
+description: Defines the agent architecture, roles, and capabilities for Cursor AI automation
+globs: .cursor/rules/agents/**/*
+alwaysApply: true
+---
+
+## Agent Architecture Overview
+
+The agent system in Cursor AI automation follows a role-based architecture where different specialized agents handle specific aspects of the development process.
+
+### Core Agent Types
+
+- **Rule Interpreter Agent**: Responsible for parsing, interpreting, and applying workspace rules
+- **Context Manager Agent**: Handles context tracking, updates, and persistence across sessions
+- **Task Manager Agent**: Interfaces with TaskMaster to manage task breakdown, status, and dependencies
+- **Code Generation Agent**: Creates and modifies code based on requirements and rules
+- **Review Agent**: Validates code changes against established rules and best practices
+
+## Agent Communication Protocol
+
+Agents communicate through a standardized protocol that includes:
+
+1. **Request Format**:
+   ```json
+   {
+     "from": "agent_id",
+     "to": "target_agent_id",
+     "action": "action_type",
+     "payload": {},
+     "priority": 1-5,
+     "timestamp": "ISO datetime"
+   }
+   ```
+
+2. **Response Format**:
+   ```json
+   {
+     "from": "target_agent_id",
+     "to": "requesting_agent_id",
+     "status": "success|failure|pending",
+     "payload": {},
+     "timestamp": "ISO datetime"
+   }
+   ```
+
+## Agent Activation Rules
+
+- Agents are activated based on specific triggers or explicit requests
+- Each agent has defined entry points and exit conditions
+- Agents must respect permission boundaries and scope limitations
+- Long-running agents must provide progress updates
+- Agents should gracefully handle interruptions and resumption
+
+## Permission System
+
+Agents operate within a tiered permission system:
+
+- **Level 1**: Read-only access to workspace rules and context
+- **Level 2**: Ability to update context and suggest task modifications
+- **Level 3**: Permission to generate and modify code in specified directories
+- **Level 4**: Authority to create new rules and refactor existing code
+- **Level 5**: Full system access (restricted to human operators)
+
+## Agent Implementation Requirements
+
+- All agents must be implemented in TypeScript for consistency
+- Agents must log their operations for auditing and debugging
+- Each agent should expose a well-defined API for interaction
+- Agents must implement error handling and recovery mechanisms
+- Performance metrics should be collected for optimization
+
+## Agent Directory Structure
+
+```
+.cursor/rules/agents/
+├── src/
+│   ├── common/            # Shared utilities and types
+│   ├── rule-interpreter/  # Rule parsing and application
+│   ├── context-manager/   # Context tracking system
+│   ├── task-manager/      # Task automation components
+│   ├── code-generator/    # Code creation and modification
+│   └── review/            # Validation and quality checks
+├── config/                # Agent configuration files
+├── schemas/               # JSON schemas for validation
+└── tests/                 # Test suites for agents
+```
+
+## Agent Lifecycle Management
+
+- Initialization: Load configuration and establish connections
+- Activation: Begin processing based on triggers or requests
+- Execution: Perform primary function with appropriate logging
+- Suspension: Save state when interrupted or paused
+- Resumption: Restore state and continue operations
+- Termination: Clean up resources and log final status

@@ -1,0 +1,119 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Rule Engine Specification
+
+---
+description: Defines how agents interpret, process, and apply Cursor workspace rules
+globs: .cursor/rules/**/*.mdc
+alwaysApply: true
+---
+
+## Rule Structure Definition
+
+All rules in the Cursor workspace follow a standardized structure:
+
+```markdown
+# Rule Title
+
+---
+description: Clear, one-line description of what the rule enforces
+globs: path/to/files/*.ext, other/path/**/*
+alwaysApply: boolean
+---
+
+- **Main Points in Bold**
+  - Sub-points with details
+  - Examples and explanations
+```
+
+### Required Rule Metadata
+
+- **description**: A concise one-line explanation of the rule's purpose
+- **globs**: File patterns that the rule applies to (comma-separated)
+- **alwaysApply**: Boolean indicating whether the rule should be enforced in all contexts
+
+### Optional Rule Metadata
+
+- **priority**: Numeric value (1-10) indicating rule importance
+- **category**: Classification of the rule (e.g., "formatting", "architecture", "security")
+- **relatedRules**: List of related rule references
+- **version**: Rule version for tracking changes
+
+## Rule Parsing Process
+
+1. **Metadata Extraction**:
+   - Parse the YAML front matter to extract rule metadata
+   - Validate required fields and format
+   - Resolve glob patterns to determine applicable files
+
+2. **Content Processing**:
+   - Parse Markdown structure to extract sections
+   - Identify code examples and their language
+   - Extract actionable directives from bullet points
+   - Build cross-reference map for related rules
+
+3. **Rule Indexing**:
+   - Generate unique identifier for each rule
+   - Create searchable index of rule content
+   - Build category hierarchy for navigation
+   - Establish reference graph for dependencies
+
+## Rule Application Protocol
+
+When applying rules to code or project structure, agents must:
+
+1. **Determine Applicable Rules**:
+   - Match file path against rule glob patterns
+   - Check context conditions for applicability
+   - Resolve rule conflicts based on priority
+
+2. **Rule Interpretation**:
+   - Extract actionable directives from rule content
+   - Translate rule requirements into validation criteria
+   - Resolve any references to other rules
+
+3. **Validation Process**:
+   - Compare code or structure against rule requirements
+   - Generate specific compliance issues with references
+   - Propose resolution actions for non-compliance
+
+4. **Resolution Actions**:
+   - Implement automatic fixes where possible
+   - Suggest manual changes with clear instructions
+   - Document rationale based on rule content
+
+## Rule References
+
+Rules can reference other rules using the following syntax:
+
+```markdown
+See [rule_name](mdc:path/to/rule.mdc) for additional details.
+```
+
+When processing such references, the rule engine must:
+
+1. Resolve the reference path to the actual rule file
+2. Extract the relevant section from the referenced rule
+3. Apply the combined context to the current situation
+
+## Rule Update Mechanism
+
+Rules can evolve over time. The update process must:
+
+1. Track changes to rule files
+2. Maintain version history for rules
+3. Apply rule changes consistently across the project
+4. Notify relevant agents of significant rule updates
+
+## Rule Conflict Resolution
+
+When rules conflict, resolution follows this hierarchy:
+
+1. Higher priority rules take precedence
+2. More specific glob patterns override general patterns
+3. Rules marked with `alwaysApply: true` override others
+4. Most recently updated rules are favored
+5. Human-defined resolution directives are the final authority

@@ -1,0 +1,197 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Task Master Integration System
+
+---
+description: Defines how AI agents interact with the Task Master system for automated task management
+globs: tasks/**/*
+alwaysApply: true
+---
+
+## Task Master Integration Overview
+
+The Task Master Integration System provides a standardized approach for AI agents to interact with the Task Master task management system. This integration enables automated task creation, breakdown, status tracking, and completion verification.
+
+## Task Master Interaction Protocol
+
+AI agents interact with Task Master primarily through MCP tools rather than CLI commands for better performance, structured data exchange, and error handling. Key interaction patterns include:
+
+### Task Discovery Pattern
+
+When beginning work, agents must:
+
+1. Use `get_tasks` to retrieve the current task list
+2. Apply `next_task` to identify the most appropriate task
+3. Read the task file using `get_task` with the specific task ID
+4. Analyze dependencies to ensure prerequisites are met
+
+### Task Analysis Pattern
+
+Before implementation, agents must:
+
+1. Assess task complexity with `analyze_project_complexity`
+2. Review the complexity report using `complexity_report`
+3. For complex tasks (score 7-10), plan a detailed breakdown
+4. For simpler tasks (score 1-6), proceed with direct implementation
+
+### Task Breakdown Pattern
+
+When breaking down tasks, agents must:
+
+1. Use `expand_task` with appropriate flags:
+   - `--research` for knowledge-intensive tasks
+   - `--force` when replacing existing subtasks
+   - `--num=X` when specific subtask count is needed
+2. When existing subtasks need full replacement, first use `clear_subtasks`
+3. Document breakdown rationale in the context file
+4. Generate task files with `generate` after significant changes
+
+### Implementation Tracking Pattern
+
+During implementation, agents must:
+
+1. Set task status to "in-progress" using `set_task_status`
+2. Document implementation details with `update_subtask`
+3. Create detailed timestamped logs of key implementation decisions
+4. Update the context file with progress after every 5-7 tool calls
+
+### Dependency Management Pattern
+
+When handling task dependencies, agents must:
+
+1. Use `add_dependency` when new prerequisites are discovered
+2. Apply `remove_dependency` when prerequisites are no longer needed
+3. Validate dependency integrity with `validate_dependencies`
+4. Fix dependency issues automatically with `fix_dependencies`
+
+### Completion Verification Pattern
+
+Before marking tasks as complete, agents must:
+
+1. Verify all acceptance criteria are met
+2. Ensure all subtasks are completed
+3. Document verification steps in the context file
+4. Set task status to "done" using `set_task_status`
+
+## Task Structure Integration
+
+AI agents must understand and maintain the Task Master task structure:
+
+```json
+{
+  "id": "1",
+  "title": "Initialize Repo",
+  "description": "Create a new repository, set up initial structure.",
+  "status": "pending",
+  "dependencies": [1, 2.1],
+  "priority": "high",
+  "details": "Use GitHub client ID/secret, handle callback, set session token.",
+  "testStrategy": "Deploy and call endpoint to confirm 'Hello World' response.",
+  "subtasks": [
+    {"id": 1, "title": "Configure OAuth", ...}
+  ]
+}
+```
+
+### Key Task Fields
+
+- **id**: Used for referencing tasks in dependencies and commands
+- **title**: Concise description for task listings
+- **description**: Brief summary of task purpose
+- **status**: Current state (pending, in-progress, done, deferred)
+- **dependencies**: Prerequisites that must be completed first
+- **priority**: Importance level (high, medium, low)
+- **details**: Implementation instructions
+- **testStrategy**: Verification approach
+- **subtasks**: Smaller, more specific tasks
+
+## Task Automation Patterns
+
+AI agents should implement these automation patterns:
+
+### Dynamic Task Expansion
+
+For complex tasks, agents should:
+
+1. Analyze task complexity and domain knowledge requirements
+2. Use research-backed expansion for knowledge-intensive tasks
+3. Create hierarchical subtask structures for complex tasks
+4. Ensure each subtask has clear acceptance criteria
+
+### Autonomous Dependency Management
+
+Agents should maintain dependency integrity by:
+
+1. Identifying implicit dependencies from task descriptions
+2. Suggesting new dependencies when detected during analysis
+3. Validating the dependency graph for circular references
+4. Respecting dependency order during implementation
+
+### Proactive Task Updates
+
+When implementation deviates from plan, agents should:
+
+1. Document the deviation and rationale
+2. Update affected future tasks using `update` or `update_task`
+3. Adjust dependencies if implementation order changes
+4. Generate updated task files to reflect changes
+
+## Task Master Tool Usage
+
+Agents must use the appropriate MCP tools for different scenarios:
+
+### Task Management Tools
+
+- `get_tasks`: List tasks with optional status filtering
+- `next_task`: Identify the next available task
+- `get_task`: View details for a specific task
+- `set_task_status`: Update task or subtask status
+
+### Task Creation Tools
+
+- `add_task`: Create a new top-level task
+- `add_subtask`: Add a subtask to a parent task
+- `parse_prd`: Generate initial tasks from requirements
+
+### Task Modification Tools
+
+- `update_task`: Modify a specific task or subtask
+- `update_subtask`: Append implementation notes to subtask
+- `update`: Update multiple future tasks based on changes
+- `clear_subtasks`: Remove all subtasks from a parent task
+
+### Task Analysis Tools
+
+- `analyze_project_complexity`: Evaluate task complexity
+- `complexity_report`: View complexity analysis results
+- `expand_task`: Break down tasks into subtasks
+- `expand_all`: Expand multiple tasks at once
+
+### Dependency Tools
+
+- `add_dependency`: Make one task depend on another
+- `remove_dependency`: Remove a dependency relationship
+- `validate_dependencies`: Check for dependency issues
+- `fix_dependencies`: Automatically fix dependency problems
+
+## Integration with Context Management
+
+Task Master integration must synchronize with the Context Management System:
+
+1. Each task should have a corresponding context file
+2. Context files must reference the task ID and title
+3. Task status changes must be reflected in context files
+4. Implementation notes should be consistent between tasks and context
+
+## Success Criteria for Task Automation
+
+Effective Task Master integration by AI agents will result in:
+
+1. Appropriate task breakdown based on complexity
+2. Accurate dependency tracking and management
+3. Clear implementation notes for each subtask
+4. Proper status updates as work progresses
+5. Complete and verifiable task completion
