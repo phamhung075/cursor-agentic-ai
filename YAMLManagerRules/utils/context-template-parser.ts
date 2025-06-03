@@ -1,357 +1,309 @@
 /**
  * Context Template Parser
  *
- * Utilities for parsing templates and generating context files.
+ * Utilities for parsing and generating context files from templates.
  */
 
 import * as fs from 'fs';
 import * as path from 'path';
 import * as yaml from 'js-yaml';
 import { logger } from './logger';
-
-// Supported template formats
-type TemplateFormat = 'yaml' | 'json' | 'markdown';
-
-// Context data structure (simplified for type checking)
-interface ContextData {
-  metadata: {
-    task_id: string;
-    title: string;
-    last_updated: string;
-    session: number;
-    tool_calls_used: number;
-    tool_calls_limit: number;
-    [key: string]: any;
-  };
-  current_status: {
-    phase: string;
-    progress_percentage: number;
-    progress_summary: string;
-    next_action: string;
-    [key: string]: any;
-  };
-  session_history?: Array<{
-    timestamp: string;
-    session_number: number;
-    actions: Array<{
-      description: string;
-      type: string;
-      details: string;
-    }>;
-  }>;
-  [key: string]: any;
-}
+import {
+  ContextData,
+  ContextFileOptions
+} from '../models/context-data';
 
 /**
- * Options for template generation
+ * Supported template formats
  */
-interface TemplateOptions {
-  format?: TemplateFormat;
-  outputPath?: string;
-  templatePath?: string;
-}
+export type TemplateFormat = 'yaml' | 'json' | 'markdown';
 
 /**
- * Default template options
+ * Default options
  */
-const defaultTemplateOptions: TemplateOptions = {
-  format: 'yaml',
-  outputPath: './contexts/',
-  templatePath: '../templates/'
+const defaultOptions: ContextFileOptions = {
+  format: 'markdown',
+  outputPath: path.join(process.cwd(), 'contexts'),
+  templateDir: path.join(process.cwd(), 'templates')
 };
 
 /**
- * Read a template file based on the specified format
- *
- * @param format The format of the template (yaml, json, markdown)
- * @param templatePath Optional custom template path
- * @returns The template content as a string
+ * Context Template Parser
  */
-export function readTemplate(format: TemplateFormat = 'yaml', templatePath?: string): string {
-  const templatesDir = templatePath || path.resolve(__dirname, defaultTemplateOptions.templatePath as string);
-  const filename = `context-template.${format}`;
-  const templateFilePath = path.join(templatesDir, filename);
-
-  try {
-    return fs.readFileSync(templateFilePath, 'utf-8');
-  } catch (error) {
-    logger.error(`Failed to read template file: ${templateFilePath}`, error);
-    throw new Error(`Template file not found: ${filename}`);
-  }
-}
-
-/**
- * Parse a template string and replace placeholders with actual values
- *
- * @param template The template string
- * @param data The data to inject into the template
- * @param format The format of the template
- * @returns The processed template with placeholders replaced
- */
-export function parseTemplate(template: string, data: Partial<ContextData>, format: TemplateFormat = 'yaml'): string {
-  if (format === 'markdown') {
-    // For markdown, do simple string replacement
-    let result = template;
-
-    // Handle metadata
-    if (data.metadata) {
-      result = result.replace('[TASK_ID]', data.metadata.task_id || '')
-                     .replace('[TASK_TITLE]', data.metadata.title || '')
-                     .replace('[TIMESTAMP]', data.metadata.last_updated || new Date().toISOString())
-                     .replace('[SESSION_NUMBER]', String(data.metadata.session || 1))
-                     .replace('[USED]', String(data.metadata.tool_calls_used || 0))
-                     .replace('[LIMIT]', String(data.metadata.tool_calls_limit || 25));
-    }
-
-    // Handle current status
-    if (data.current_status) {
-      result = result.replace('[Analysis/Planning/Implementation/Testing/Complete]', data.current_status.phase || 'Planning')
-                     .replace('[PERCENTAGE]', String(data.current_status.progress_percentage || 0))
-                     .replace('[BRIEF_SUMMARY]', data.current_status.progress_summary || '')
-                     .replace('[NEXT_ACTION]', data.current_status.next_action || '');
-    }
-
-    // Other placeholders would be replaced similarly based on the data provided
-    // For now, we'll keep other placeholders as is
-
-    return result;
-  } else if (format === 'yaml') {
-    // For YAML, parse the template, merge with data, and convert back to YAML
+const contextTemplateParser = {
+  /**
+   * Read a template file
+   */
+  readTemplate(format: TemplateFormat, templateDir: string = defaultOptions.templateDir || ''): string {
     try {
-      const templateObj = yaml.load(template) as Record<string, any>;
-      const merged = deepMerge(templateObj, data);
-      return yaml.dump(merged, { indent: 2 });
+      const templatePath = path.join(templateDir, `context-template.${format}`);
+      return fs.readFileSync(templatePath, 'utf-8');
     } catch (error) {
-      logger.error('Failed to parse YAML template', error);
-      throw new Error('Failed to process YAML template');
+      logger.error(`Error reading template file: ${error instanceof Error ? error.message : String(error)}`);
+      throw new Error('Template file not found');
     }
-  } else if (format === 'json') {
-    // For JSON, parse the template, merge with data, and convert back to JSON
-    try {
-      const templateObj = JSON.parse(template);
-      const merged = deepMerge(templateObj, data);
-      return JSON.stringify(merged, null, 2);
-    } catch (error) {
-      logger.error('Failed to parse JSON template', error);
-      throw new Error('Failed to process JSON template');
+  },
+
+  /**
+   * Parse a template with data
+   */
+  parseTemplate(template: string, data: Partial<ContextData>, format: TemplateFormat): string {
+    switch (format) {
+      case 'yaml': {
+        // Parse YAML template
+        const yamlObj = yaml.load(template) as Record<string, any>;
+
+        // Deep merge data
+        const mergedObj = this.deepMerge(yamlObj, data);
+
+        // Convert back to YAML
+        return yaml.dump(mergedObj);
+      }
+
+      case 'json': {
+        // Parse JSON template
+        const jsonObj = JSON.parse(template);
+
+        // Deep merge data
+        const mergedObj = this.deepMerge(jsonObj, data);
+
+        // Convert back to JSON
+        return JSON.stringify(mergedObj, null, 2);
+      }
+
+      case 'markdown': {
+        // Replace placeholders in markdown template
+        let result = template;
+
+        // Replace metadata placeholders
+        if (data.metadata) {
+          result = result.replace('[TASK_ID]', data.metadata.task_id || '')
+            .replace('[TASK_TITLE]', data.metadata.title || '')
+            .replace('[TIMESTAMP]', data.metadata.last_updated || '')
+            .replace('[SESSION_NUMBER]', String(data.metadata.session || ''))
+            .replace('[USED]', String(data.metadata.tool_calls_used || ''))
+            .replace('[LIMIT]', String(data.metadata.tool_calls_limit || ''));
+        }
+
+        // Replace status placeholders
+        if (data.current_status) {
+          result = result.replace('[Analysis/Planning/Implementation/Testing/Complete]', data.current_status.phase || '')
+            .replace('[PERCENTAGE]', String(data.current_status.progress_percentage || ''))
+            .replace('[BRIEF_SUMMARY]', data.current_status.progress_summary || '')
+            .replace('[NEXT_ACTION]', data.current_status.next_action || '');
+        }
+
+        // Add session history if available
+        if (data.session_history && data.session_history.length > 0) {
+          let sessionContent = '';
+
+          for (const session of data.session_history) {
+            sessionContent += `\n### Session ${session.session_number} - ${session.timestamp}\n`;
+
+            for (const action of session.actions) {
+              sessionContent += `- ${action.description}\n`;
+            }
+          }
+
+          // Insert session content after the Current Status section
+          const statusSectionEnd = result.indexOf('* **Next Action:**') + '* **Next Action:**'.length + 50;
+          result = result.slice(0, statusSectionEnd) + '\n\n' + sessionContent + result.slice(statusSectionEnd);
+        }
+
+        return result;
+      }
+
+      default:
+        throw new Error('Unsupported template format');
     }
-  }
+  },
 
-  throw new Error(`Unsupported template format: ${format}`);
-}
+  /**
+   * Generate a context file
+   */
+  generateContextFile(data: Partial<ContextData>, options: ContextFileOptions = {}): string {
+    const opts = { ...defaultOptions, ...options };
+    const format = opts.format || 'markdown';
+    const outputPath = opts.outputPath || 'contexts';
 
-/**
- * Generate a context file from a template with the provided data
- *
- * @param data The data to inject into the template
- * @param options Options for template generation
- * @returns The path to the generated context file
- */
-export function generateContextFile(data: Partial<ContextData>, options: TemplateOptions = {}): string {
-  const format = options.format || defaultTemplateOptions.format as TemplateFormat;
-  const outputDir = options.outputPath || defaultTemplateOptions.outputPath as string;
+    // Ensure task_id is available in metadata
+    if (!data.metadata?.task_id) {
+      throw new Error('Task ID is required in metadata');
+    }
 
-  // Ensure the output directory exists
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-  }
+    // Create output directory if it doesn't exist
+    if (!fs.existsSync(outputPath)) {
+      fs.mkdirSync(outputPath, { recursive: true });
+    }
 
-  // Read the template
-  const template = readTemplate(format, options.templatePath);
+    // Read template
+    const template = this.readTemplate(format as TemplateFormat, opts.templateDir);
 
-  // Parse the template with the provided data
-  const content = parseTemplate(template, data, format);
+    // Parse template with data
+    const content = this.parseTemplate(template, data, format as TemplateFormat);
 
-  // Generate filename based on task ID
-  const taskId = data.metadata?.task_id || 'unknown';
-  const filename = `context_${taskId}.${format}`;
-  const outputPath = path.join(outputDir, filename);
+    // Generate output file path
+    const outputFile = path.join(outputPath, `context_${data.metadata.task_id}.${format}`);
 
-  // Write the file
-  fs.writeFileSync(outputPath, content, 'utf-8');
+    // Write to file
+    fs.writeFileSync(outputFile, content, 'utf-8');
 
-  logger.info(`Generated context file: ${outputPath}`);
-  return outputPath;
-}
+    return outputFile;
+  },
 
-/**
- * Update an existing context file with new data
- *
- * @param taskId The task ID to update
- * @param data The new data to merge into the existing context
- * @param options Options for template generation
- * @returns The path to the updated context file
- */
-export function updateContextFile(taskId: string, data: Partial<ContextData>, options: TemplateOptions = {}): string {
-  const format = options.format || defaultTemplateOptions.format as TemplateFormat;
-  const outputDir = options.outputPath || defaultTemplateOptions.outputPath as string;
+  /**
+   * Update an existing context file or create a new one
+   */
+  updateContextFile(taskId: string, data: Partial<ContextData>, options: ContextFileOptions = {}): string {
+    const opts = { ...defaultOptions, ...options };
+    const format = opts.format || 'markdown';
+    const outputPath = opts.outputPath || 'contexts';
 
-  // Generate filename based on task ID
-  const filename = `context_${taskId}.${format}`;
-  const filePath = path.join(outputDir, filename);
-
-  // Check if file exists
-  if (!fs.existsSync(filePath)) {
-    // If it doesn't exist, generate a new one
-    return generateContextFile({
+    // Ensure task ID is included in the data
+    const updatedData = {
       ...data,
       metadata: {
-        task_id: taskId,
-        title: data.metadata?.title || '',
-        last_updated: data.metadata?.last_updated || new Date().toISOString(),
-        session: data.metadata?.session || 1,
-        tool_calls_used: data.metadata?.tool_calls_used || 0,
-        tool_calls_limit: data.metadata?.tool_calls_limit || 25,
-        ...data.metadata
+        ...(data.metadata || {}),
+        task_id: taskId
       }
-    }, options);
-  }
+    };
 
-  // Read existing file
-  const existingContent = fs.readFileSync(filePath, 'utf-8');
+    // Check if file exists
+    const filePath = path.join(outputPath, `context_${taskId}.${format}`);
 
-  // Parse existing content based on format
-  let existingData: any;
-  try {
-    if (format === 'yaml') {
-      existingData = yaml.load(existingContent);
-    } else if (format === 'json') {
-      existingData = JSON.parse(existingContent);
-    } else if (format === 'markdown') {
-      // For markdown, we'll just append the new session data
-      // This is a simplified approach; a more robust solution would parse the markdown
-
-      // Update metadata section
-      let updatedContent = existingContent;
-
-      if (data.metadata) {
-        // Update session and tool calls
-        updatedContent = updatedContent.replace(/\*\*Session:\*\* \d+/, `**Session:** ${data.metadata.session || 1}`)
-                                      .replace(/\*\*Tool Calls Used:\*\* \d+\/\d+/,
-                                              `**Tool Calls Used:** ${data.metadata.tool_calls_used || 0}/${data.metadata.tool_calls_limit || 25}`)
-                                      .replace(/\*\*Last Updated:\*\* .*/,
-                                              `**Last Updated:** ${data.metadata.last_updated || new Date().toISOString()}`);
-      }
-
-      // Update current status section
-      if (data.current_status) {
-        // Find current status section and update it
-        const statusPattern = /## Current Status[\s\S]*?(?=\n## |$)/;
-        const newStatus = `## Current Status
-* **Phase:** ${data.current_status.phase || 'Planning'}
-* **Progress:** ${data.current_status.progress_percentage || 0}% - ${data.current_status.progress_summary || ''}
-* **Next Action:** ${data.current_status.next_action || ''}
-`;
-
-        if (statusPattern.test(updatedContent)) {
-          updatedContent = updatedContent.replace(statusPattern, newStatus);
-        } else {
-          // If no status section exists, add it after the metadata
-          updatedContent = updatedContent.replace(/\*\*Tool Calls Used:\*\* \d+\/\d+\n\n/,
-                                                `**Tool Calls Used:** ${data.metadata?.tool_calls_used || 0}/${data.metadata?.tool_calls_limit || 25}\n\n${newStatus}\n`);
-        }
-      }
-
-      // Add new session entry if provided in data
-      if (data.metadata?.session && data.session_history && data.session_history.length > 0) {
-        const sessionActions = data.session_history[0].actions || [];
-        const actionsText = sessionActions.map((action: { description: string }) => `- ${action.description || ''}`).join('\n');
-
-        const sessionSection = `
-### Session ${data.metadata.session} - ${new Date().toISOString().split('T')[0]}
-${actionsText}
-`;
-
-        // Find "What I Did" section
-        const whatIDidPattern = /## What I Did[\s\S]*?(?=\n## |$)/;
-        if (whatIDidPattern.test(updatedContent)) {
-          // Append to existing section
-          updatedContent = updatedContent.replace(whatIDidPattern, match => `${match.trim()}\n${sessionSection}\n`);
-        } else {
-          // Add new section after current status
-          updatedContent = updatedContent.replace(/## Current Status[\s\S]*?(?=\n## |$)/,
-                                                match => `${match.trim()}\n\n## What I Did${sessionSection}\n`);
-        }
-      }
-
-      // Write updated content to file
-      fs.writeFileSync(filePath, updatedContent, 'utf-8');
-
-      logger.info(`Updated markdown context file: ${filePath}`);
-      return filePath;
+    if (!fs.existsSync(filePath)) {
+      // If file doesn't exist, create a new one
+      return this.generateContextFile(updatedData as ContextData, opts);
     }
-  } catch (error) {
-    logger.error(`Failed to parse existing context file: ${filePath}`, error);
-    throw new Error(`Failed to update context file: ${taskId}`);
-  }
 
-  // For YAML and JSON, merge the existing data with the new data
-  if (existingData) {
-    const mergedData = deepMerge(existingData, data);
+    // Read existing file
+    const existingContent = fs.readFileSync(filePath, 'utf-8');
 
-    // Convert merged data back to string
-    let updatedContent: string;
+    // Parse existing content based on format
+    let existingData: Record<string, any>;
+
+    switch (format) {
+      case 'yaml':
+        existingData = yaml.load(existingContent) as Record<string, any>;
+        break;
+
+      case 'json':
+        existingData = JSON.parse(existingContent);
+        break;
+
+      case 'markdown':
+        // For markdown, we'll just append new content rather than trying to parse
+        let updatedContent = existingContent;
+
+        // Update metadata section
+        if (data.metadata) {
+          updatedContent = updatedContent
+            .replace(/\*\*Last Updated:\*\*.*/, `**Last Updated:** ${data.metadata.last_updated || ''}`)
+            .replace(/\*\*Session:\*\*.*/, `**Session:** ${data.metadata.session || ''}`)
+            .replace(/\*\*Tool Calls Used:\*\*.*/, `**Tool Calls Used:** ${data.metadata.tool_calls_used || ''}/${data.metadata.tool_calls_limit || ''}`);
+
+          // Update title if provided
+          if (data.metadata.title) {
+            updatedContent = updatedContent.replace(/# Context for Task \d+ - .*/, `# Context for Task ${taskId} - ${data.metadata.title}`);
+          }
+        }
+
+        // Update status section
+        if (data.current_status) {
+          if (data.current_status.phase) {
+            updatedContent = updatedContent.replace(/\* \*\*Phase:\*\*.*/, `* **Phase:** ${data.current_status.phase}`);
+          }
+
+          if (data.current_status.progress_percentage !== undefined) {
+            const summary = data.current_status.progress_summary ? ` - ${data.current_status.progress_summary}` : '';
+            updatedContent = updatedContent.replace(/\* \*\*Progress:\*\*.*/, `* **Progress:** ${data.current_status.progress_percentage}%${summary}`);
+          }
+
+          if (data.current_status.next_action) {
+            updatedContent = updatedContent.replace(/\* \*\*Next Action:\*\*.*/, `* **Next Action:** ${data.current_status.next_action}`);
+          }
+        }
+
+        // Add session history if available
+        if (data.session_history && data.session_history.length > 0) {
+          let sessionContent = '';
+
+          for (const session of data.session_history) {
+            sessionContent += `\n### Session ${session.session_number} - ${session.timestamp}\n`;
+
+            for (const action of session.actions) {
+              sessionContent += `- ${action.description}\n`;
+            }
+          }
+
+          // Find where to insert the session content
+          const nextActionIndex = updatedContent.indexOf('* **Next Action:**');
+          if (nextActionIndex !== -1) {
+            // Find the end of the line
+            const lineEnd = updatedContent.indexOf('\n', nextActionIndex);
+
+            // Insert session content after the Next Action line
+            updatedContent = updatedContent.slice(0, lineEnd + 1) +
+              '\n' + sessionContent +
+              updatedContent.slice(lineEnd + 1);
+          } else {
+            // If Next Action not found, just append to the end
+            updatedContent += '\n' + sessionContent;
+          }
+        }
+
+        // Write updated content
+        fs.writeFileSync(filePath, updatedContent, 'utf-8');
+        return filePath;
+    }
+
+    // For YAML and JSON, merge data
+    const mergedData = this.deepMerge(existingData, updatedData);
+
+    // Convert back to string
+    let newContent: string;
+
     if (format === 'yaml') {
-      updatedContent = yaml.dump(mergedData, { indent: 2 });
+      newContent = yaml.dump(mergedData);
     } else {
-      updatedContent = JSON.stringify(mergedData, null, 2);
+      newContent = JSON.stringify(mergedData, null, 2);
     }
 
-    // Write updated content to file
-    fs.writeFileSync(filePath, updatedContent, 'utf-8');
+    // Write to file
+    fs.writeFileSync(filePath, newContent, 'utf-8');
 
-    logger.info(`Updated context file: ${filePath}`);
     return filePath;
-  }
+  },
 
-  throw new Error(`Failed to update context file: ${taskId}`);
-}
+  /**
+   * Deep merge two objects
+   */
+  deepMerge(target: Record<string, any>, source: Record<string, any>): Record<string, any> {
+    const output = { ...target };
 
-/**
- * Utility function to deeply merge objects
- *
- * @param target The target object
- * @param source The source object to merge into the target
- * @returns The merged object
- */
-function deepMerge(target: any, source: any): any {
-  if (!source) return target;
-
-  const output = { ...target };
-
-  if (isObject(target) && isObject(source)) {
-    Object.keys(source).forEach(key => {
-      if (isObject(source[key])) {
-        if (!(key in target)) {
-          Object.assign(output, { [key]: source[key] });
+    if (isObject(target) && isObject(source)) {
+      Object.keys(source).forEach(key => {
+        if (isObject(source[key])) {
+          if (!(key in target)) {
+            Object.assign(output, { [key]: source[key] });
+          } else {
+            output[key] = this.deepMerge(target[key], source[key]);
+          }
         } else {
-          output[key] = deepMerge(target[key], source[key]);
+          Object.assign(output, { [key]: source[key] });
         }
-      } else if (Array.isArray(source[key]) && Array.isArray(target[key])) {
-        // For arrays, append source items to target array
-        output[key] = [...target[key], ...source[key]];
-      } else {
-        Object.assign(output, { [key]: source[key] });
-      }
-    });
-  }
+      });
+    }
 
-  return output;
-}
+    return output;
+  }
+};
 
 /**
  * Check if a value is an object
- *
- * @param item The value to check
- * @returns True if the value is an object, false otherwise
  */
-function isObject(item: any): boolean {
-  return (item && typeof item === 'object' && !Array.isArray(item));
+function isObject(item: any): item is Record<string, any> {
+  return item && typeof item === 'object' && !Array.isArray(item);
 }
 
-export default {
-  readTemplate,
-  parseTemplate,
-  generateContextFile,
-  updateContextFile
-};
+export default contextTemplateParser;

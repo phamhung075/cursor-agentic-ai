@@ -6,6 +6,14 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { expect, jest, test, describe, beforeEach, afterEach } from '@jest/globals';
 import contextTemplateParser from '../../utils/context-template-parser';
+import { createMockModule, typedMockFn } from '../../utils/test-utils';
+import { ContextData } from '../../models/context-data';
+
+// Define types for the required fs functions
+type ReadFileSyncFn = typeof fs.readFileSync;
+type ExistsSyncFn = typeof fs.existsSync;
+type WriteFileSyncFn = typeof fs.writeFileSync;
+type MkdirSyncFn = typeof fs.mkdirSync;
 
 // Mock the fs module
 jest.mock('fs', () => ({
@@ -26,10 +34,9 @@ jest.mock('../../utils/logger', () => ({
 // Mock path.resolve
 jest.mock('path', () => {
   const originalModule = jest.requireActual('path');
-  return {
-    ...originalModule,
+  return createMockModule(originalModule, {
     resolve: jest.fn().mockImplementation((...args: string[]) => args.join('/'))
-  };
+  });
 });
 
 describe('Context Template Parser', () => {
@@ -73,12 +80,14 @@ current_status:
 
     // Setup default mock implementations
     (fs.existsSync as jest.Mock).mockReturnValue(true);
-    (fs.readFileSync as jest.Mock).mockImplementation((filePath: string) => {
-      if (filePath.includes('.yaml')) return yamlTemplate;
-      if (filePath.includes('.json')) return jsonTemplate;
-      if (filePath.includes('.md')) return markdownTemplate;
-      return '';
-    });
+    (fs.readFileSync as jest.Mock<ReturnType<ReadFileSyncFn>, Parameters<ReadFileSyncFn>>)
+      .mockImplementation((filePath: string | number | Buffer | URL, options?: any) => {
+        const pathStr = filePath.toString();
+        if (pathStr.includes('.yaml')) return yamlTemplate;
+        if (pathStr.includes('.json')) return jsonTemplate;
+        if (pathStr.includes('.md') || pathStr.includes('.markdown')) return markdownTemplate;
+        return '';
+      });
   });
 
   describe('readTemplate', () => {
@@ -111,7 +120,7 @@ current_status:
 
   describe('parseTemplate', () => {
     test('should parse YAML template with data correctly', () => {
-      const data = {
+      const data: Partial<ContextData> = {
         metadata: {
           task_id: '123',
           title: 'Test Task',
@@ -144,7 +153,7 @@ current_status:
     });
 
     test('should parse JSON template with data correctly', () => {
-      const data = {
+      const data: Partial<ContextData> = {
         metadata: {
           task_id: '123',
           title: 'Test Task',
@@ -155,7 +164,9 @@ current_status:
         },
         current_status: {
           phase: 'Implementation',
-          progress_percentage: 50
+          progress_percentage: 50,
+          progress_summary: 'Halfway done',
+          next_action: 'Finish implementation'
         }
       };
 
@@ -170,7 +181,7 @@ current_status:
     });
 
     test('should parse Markdown template with data correctly', () => {
-      const data = {
+      const data: Partial<ContextData> = {
         metadata: {
           task_id: '123',
           title: 'Test Task',
@@ -206,7 +217,7 @@ current_status:
 
   describe('generateContextFile', () => {
     test('should generate context file with YAML format', () => {
-      const data = {
+      const data: Partial<ContextData> = {
         metadata: {
           task_id: '123',
           title: 'Test Task',
@@ -234,7 +245,7 @@ current_status:
     test('should create directory if it does not exist', () => {
       (fs.existsSync as jest.Mock).mockReturnValue(false);
 
-      const data = {
+      const data: Partial<ContextData> = {
         metadata: {
           task_id: '123',
           title: 'Test Task',
@@ -242,6 +253,12 @@ current_status:
           session: 1,
           tool_calls_used: 5,
           tool_calls_limit: 25
+        },
+        current_status: {
+          phase: 'Implementation',
+          progress_percentage: 50,
+          progress_summary: 'Halfway done',
+          next_action: 'Finish implementation'
         }
       };
 
@@ -256,13 +273,19 @@ current_status:
     test('should generate new file if it does not exist', () => {
       (fs.existsSync as jest.Mock).mockReturnValue(false);
 
-      const data = {
+      const data: Partial<ContextData> = {
         metadata: {
           title: 'Test Task',
           last_updated: '2025-06-02T12:00:00Z',
           session: 1,
           tool_calls_used: 5,
           tool_calls_limit: 25
+        },
+        current_status: {
+          phase: 'Implementation',
+          progress_percentage: 50,
+          progress_summary: 'Halfway done',
+          next_action: 'Finish implementation'
         }
       };
 
@@ -285,17 +308,19 @@ current_status:
 
       (fs.readFileSync as jest.Mock).mockReturnValue(existingContent);
 
-      const data = {
+      const data: Partial<ContextData> = {
         metadata: {
           title: 'New Title',
-          task_id: '123',
           last_updated: '2025-06-02T12:00:00Z',
           session: 1,
           tool_calls_used: 5,
           tool_calls_limit: 25
         },
         current_status: {
-          progress_percentage: 50
+          phase: 'Implementation',
+          progress_percentage: 50,
+          progress_summary: 'Halfway done',
+          next_action: 'Finish implementation'
         }
       };
 
@@ -320,10 +345,9 @@ current_status:
 
       (fs.readFileSync as jest.Mock).mockReturnValue(existingContent);
 
-      const data = {
+      const data: Partial<ContextData> = {
         metadata: {
           title: 'New Title',
-          task_id: '123',
           last_updated: '2025-06-02T12:00:00Z',
           session: 2,
           tool_calls_used: 8,

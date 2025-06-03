@@ -6,7 +6,15 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { expect, jest, test, describe, beforeEach, afterEach } from '@jest/globals';
 import { RuleEngine } from '../../core/rule-engine';
-import { Rule } from '../../models/rule-schema';
+import { Rule, RuleMetadata } from '../../models/rule-schema';
+import { createMockModule, typedMockFn } from '../../utils/test-utils';
+
+// Define types for the required fs functions
+type ReadFileSyncFn = typeof fs.readFileSync;
+type ExistsSyncFn = typeof fs.existsSync;
+type WriteFileSyncFn = typeof fs.writeFileSync;
+type MkdirSyncFn = typeof fs.mkdirSync;
+type ReaddirSyncFn = typeof fs.readdirSync;
 
 // Mock dependencies
 jest.mock('fs', () => ({
@@ -17,11 +25,13 @@ jest.mock('fs', () => ({
   readdirSync: jest.fn()
 }));
 
-jest.mock('path', () => ({
-  ...jest.requireActual('path'),
-  join: jest.fn().mockImplementation((...args) => args.join('/')),
-  resolve: jest.fn().mockImplementation((...args) => args.join('/'))
-}));
+jest.mock('path', () => {
+  const originalModule = jest.requireActual('path');
+  return createMockModule(originalModule, {
+    join: jest.fn().mockImplementation((...args: string[]) => args.join('/')),
+    resolve: jest.fn().mockImplementation((...args: string[]) => args.join('/'))
+  });
+});
 
 jest.mock('../../utils/logger', () => ({
   logger: {
@@ -52,15 +62,20 @@ describe('RuleEngine', () => {
 
     // Setup default mock responses
     (fs.existsSync as jest.Mock).mockReturnValue(true);
-    (fs.readdirSync as jest.Mock).mockReturnValue(['rule1.yaml', 'rule2.yml', 'not-a-rule.txt']);
+    (fs.readdirSync as jest.Mock<ReturnType<ReaddirSyncFn>, Parameters<ReaddirSyncFn>>)
+      .mockReturnValue(['rule1.yaml', 'rule2.yml', 'not-a-rule.txt']);
+
     (loadRulesFromDirectory as jest.Mock).mockReturnValue([
-      { metadata: { id: 'rule1' } },
-      { metadata: { id: 'rule2' } }
+      { metadata: { id: 'rule1', name: 'Rule 1' } },
+      { metadata: { id: 'rule2', name: 'Rule 2' } }
     ]);
-    (parseRuleFile as jest.Mock).mockReturnValue({ metadata: { id: 'rule1' } });
+
+    (parseRuleFile as jest.Mock).mockReturnValue({ metadata: { id: 'rule1', name: 'Rule 1' } });
+
     (findMatchingRules as jest.Mock).mockReturnValue([
-      { rule: { metadata: { id: 'rule1' } }, matchScore: 0.8 }
+      { rule: { metadata: { id: 'rule1', name: 'Rule 1' } }, matchScore: 0.8 }
     ]);
+
     (generateConfiguration as jest.Mock).mockReturnValue({ agent_prompt: 'test prompt' });
     (saveRuleToFile as jest.Mock).mockReturnValue(true);
   });
@@ -85,7 +100,7 @@ describe('RuleEngine', () => {
     // First call should load from file
     const rule1 = engine.getRule('rule1');
     expect(parseRuleFile).toHaveBeenCalled();
-    expect(rule1).toEqual({ metadata: { id: 'rule1' } });
+    expect(rule1).toEqual({ metadata: { id: 'rule1', name: 'Rule 1' } });
 
     // Reset mock to verify it's not called again
     jest.clearAllMocks();
@@ -93,7 +108,7 @@ describe('RuleEngine', () => {
     // Second call should use cache
     const rule1Again = engine.getRule('rule1');
     expect(parseRuleFile).not.toHaveBeenCalled();
-    expect(rule1Again).toEqual({ metadata: { id: 'rule1' } });
+    expect(rule1Again).toEqual({ metadata: { id: 'rule1', name: 'Rule 1' } });
   });
 
   test('should find rules that match the given context', () => {
@@ -143,13 +158,18 @@ describe('RuleEngine', () => {
 
   test('should add a new rule to the rules directory', () => {
     const engine = new RuleEngine({ rulesDir: './test-rules' });
-    const rule: Rule = {
-      metadata: { id: 'new-rule', name: 'New Rule' },
+
+    // Create a rule object with minimum required properties
+    const rule: Partial<Rule> = {
+      metadata: {
+        id: 'new-rule',
+        name: 'New Rule'
+      },
       conditions: { technologies: ['typescript'] },
       cursor_rules: { agent_prompt: 'test prompt' }
     };
 
-    const result = engine.addRule(rule);
+    const result = engine.addRule(rule as Rule);
 
     expect(saveRuleToFile).toHaveBeenCalledWith(
       rule,

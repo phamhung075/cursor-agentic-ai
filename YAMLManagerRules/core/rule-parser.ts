@@ -7,7 +7,7 @@
 import * as yaml from 'js-yaml';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Rule } from '../models/rule-schema';
+import { Rule, validateRule } from '../models/rule-schema';
 import { logger } from '../utils/logger';
 
 export interface RuleParserOptions {
@@ -58,14 +58,21 @@ export function parseRuleFile(filePath: string, options: RuleParserOptions = {})
 
     // Validate rule against schema if required
     if (opts.validateSchema) {
-      // TODO: Add schema validation using Zod
-      // This will be implemented when schema is finalized
+      const validation = validateRule(parsedRule);
+      if (!validation.valid) {
+        const errorMsg = `Rule validation failed for ${filePath}: ${validation.errors?.toString()}`;
+        if (opts.strict) {
+          throw new Error(errorMsg);
+        }
+        logger.error(errorMsg);
+        return null;
+      }
     }
 
     // Process includes and references if required
-    if (opts.processReferences) {
-      // TODO: Process includes and references
-      // This will be implemented in a later task
+    if (opts.processReferences && parsedRule.includes && parsedRule.includes.length > 0) {
+      // Process includes - will be implemented in a later task
+      logger.info(`Rule ${filePath} has includes that will be processed in a future version`);
     }
 
     return parsedRule;
@@ -133,6 +140,19 @@ export function saveRuleToFile(rule: Rule, filePath: string, options: RuleParser
   const opts = { ...defaultOptions, ...options };
 
   try {
+    // Validate rule against schema if required
+    if (opts.validateSchema) {
+      const validation = validateRule(rule);
+      if (!validation.valid) {
+        const errorMsg = `Cannot save invalid rule to ${filePath}: ${validation.errors?.toString()}`;
+        if (opts.strict) {
+          throw new Error(errorMsg);
+        }
+        logger.error(errorMsg);
+        return false;
+      }
+    }
+
     // Resolve absolute path
     const resolvedPath = path.isAbsolute(filePath)
       ? filePath

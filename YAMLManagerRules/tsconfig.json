@@ -38,13 +38,14 @@
     "resolveJsonModule": true
   },
   "include": [
-    "core/**/*",
-    "models/**/*",
-    "utils/**/*",
-    "services/**/*",
-    "config/**/*",
-    "tests/**/*",
-    "*.ts"
+    "core/**/*.ts",
+    "models/**/*.ts",
+    "utils/**/*.ts",
+    "services/**/*.ts",
+    "config/**/*.ts",
+    "tests/**/*.ts",
+    "*.ts",
+    "index.ts"
   ],
   "exclude": [
     "node_modules",
