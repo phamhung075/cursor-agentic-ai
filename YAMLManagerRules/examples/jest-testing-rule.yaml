@@ -1,0 +1,194 @@
+---
+# Jest Testing Rule Example
+
+metadata:
+  id: jest-testing
+  name: Jest Testing Framework Rule
+  description: Rule for Jest testing configuration and best practices
+  version: 0.1.0
+  category: testing
+  tags:
+    - testing
+    - jest
+    - typescript
+  author: Cursor Team
+  created: "2025-06-02"
+  updated: "2025-06-02"
+
+conditions:
+  phase:
+    - testing
+  technologies:
+    - jest
+    - typescript
+  files_present:
+    - "**/*.test.ts"
+    - "**/*.test.tsx"
+    - "package.json"
+  dependencies:
+    - jest
+    - "@types/jest"
+  project_type:
+    - node
+    - web
+
+compatibility:
+  conflicts_with: []
+  requires: []
+  enhances:
+    - typescript-base
+    - react-framework
+  replaces: []
+
+cursor_rules:
+  agent_prompt: |
+    You are a testing expert specialized in Jest and TypeScript. Help with writing
+    effective unit and integration tests. Suggest test patterns for different scenarios,
+    proper mocking techniques, and test organization. Emphasize test readability,
+    maintainability, and coverage. Follow AAA (Arrange-Act-Assert) pattern and focus
+    on behavior rather than implementation details.
+
+  linting_standards: |
+    Enforce Jest-specific ESLint rules. Ensure proper test descriptions, avoid focused
+    tests in production code, and enforce consistent test structure. Use descriptive
+    test names that explain the expected behavior.
+
+  intellisense_settings:
+    jestSnippets: true
+    testFilePattern: "**/*.test.{ts,tsx}"
+
+file_structure:
+  - path: jest.config.js
+    type: file
+    content: |
+      module.exports = {
+        preset: 'ts-jest',
+        testEnvironment: 'node',
+        roots: ['<rootDir>/src'],
+        transform: {
+          '^.+\\.tsx?$': 'ts-jest',
+        },
+        testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
+        moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+        collectCoverage: true,
+        coverageReporters: ['text', 'lcov'],
+        coverageDirectory: 'coverage',
+        collectCoverageFrom: [
+          'src/**/*.{ts,tsx}',
+          '!src/**/*.d.ts',
+          '!src/**/*.stories.{ts,tsx}',
+          '!src/index.tsx',
+        ],
+        coverageThreshold: {
+          global: {
+            branches: 70,
+            functions: 70,
+            lines: 70,
+            statements: 70,
+          },
+        },
+      };
+    when: "file_not_exists('jest.config.js')"
+
+  - path: src/tests
+    type: directory
+    when: "file_not_exists('src/tests')"
+
+  - path: src/tests/setup.ts
+    type: file
+    content: |
+      // Jest setup file
+
+      // Set up global test environment
+
+      // Example - if using React Testing Library:
+      // import '@testing-library/jest-dom/extend-expect';
+
+      // Example - if you need to mock fetch:
+      // global.fetch = jest.fn();
+
+      // Reset mocks after each test
+      afterEach(() => {
+        jest.clearAllMocks();
+      });
+    when: "file_not_exists('src/tests/setup.ts')"
+
+  - path: src/tests/helpers.ts
+    type: file
+    content: |
+      /**
+       * Test helper functions
+       */
+
+      /**
+       * Helper to wait for a specified amount of time
+       * Useful when testing async operations
+       */
+      export const wait = (ms: number): Promise<void> =>
+        new Promise(resolve => setTimeout(resolve, ms));
+
+      /**
+       * Helper to create a mock function with typed return value
+       */
+      export function createMockFn<T extends (...args: any[]) => any>(
+        returnValue: ReturnType<T>
+      ): jest.MockedFunction<T> {
+        return jest.fn(() => returnValue) as jest.MockedFunction<T>;
+      }
+
+      /**
+       * Helper to create a mock object
+       */
+      export function createMockObj<T extends object>(
+        overrides?: Partial<T>
+      ): jest.Mocked<T> {
+        return {
+          ...((overrides || {}) as T),
+        } as jest.Mocked<T>;
+      }
+    when: "file_not_exists('src/tests/helpers.ts')"
+
+  - path: src/utils/example.test.ts
+    type: file
+    content: |
+      import { sum, capitalize } from './example';
+
+      describe('Utils - Example', () => {
+        describe('sum', () => {
+          it('should add two numbers correctly', () => {
+            // Arrange
+            const a = 5;
+            const b = 10;
+
+            // Act
+            const result = sum(a, b);
+
+            // Assert
+            expect(result).toBe(15);
+          });
+
+          it('should handle negative numbers', () => {
+            expect(sum(-5, 10)).toBe(5);
+            expect(sum(5, -10)).toBe(-5);
+            expect(sum(-5, -10)).toBe(-15);
+          });
+        });
+
+        describe('capitalize', () => {
+          it('should capitalize the first letter of a string', () => {
+            expect(capitalize('hello')).toBe('Hello');
+          });
+
+          it('should not change already capitalized strings', () => {
+            expect(capitalize('Hello')).toBe('Hello');
+          });
+
+          it('should handle empty strings', () => {
+            expect(capitalize('')).toBe('');
+          });
+        });
+      });
+    when: "file_not_exists('src/utils/example.test.ts')"
+
+priority: 500
+weight: 0.7

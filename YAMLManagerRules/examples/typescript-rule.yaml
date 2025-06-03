@@ -1,0 +1,98 @@
+---
+# TypeScript Base Rule Example
+
+metadata:
+  id: typescript-base
+  name: TypeScript Base Rule
+  description: Base rule for TypeScript projects providing essential configurations
+  version: 0.1.0
+  category: language
+  tags:
+    - typescript
+    - language
+    - base
+  author: Cursor Team
+  created: "2025-06-02"
+  updated: "2025-06-02"
+
+conditions:
+  phase:
+    - setup
+    - development
+    - testing
+  technologies:
+    - typescript
+  files_present:
+    - tsconfig.json
+    - "**/*.ts"
+  dependencies:
+    - typescript
+  project_type:
+    - node
+    - web
+
+compatibility:
+  conflicts_with: []
+  requires: []
+  enhances: []
+  replaces: []
+
+cursor_rules:
+  agent_prompt: |
+    You are an expert TypeScript developer assistant. Help with TypeScript best practices,
+    type safety, and modern language features. Suggest strong typing patterns and
+    avoid the use of 'any' type when possible. Prefer interfaces for object shapes
+    that will be extended, and type aliases for unions, intersections, and utility types.
+
+  linting_standards: |
+    Follow the TypeScript ESLint recommended rules. Enforce strict null checks,
+    no implicit any, and no unused variables or parameters. Avoid type assertions
+    when possible and use proper error handling.
+
+  intellisense_settings:
+    autoImportSuggestions: true
+    strictNullChecks: true
+    noImplicitAny: true
+    typeAcquisition: true
+
+file_structure:
+  - path: tsconfig.json
+    type: file
+    content: |
+      {
+        "compilerOptions": {
+          "target": "es2020",
+          "module": "commonjs",
+          "strict": true,
+          "esModuleInterop": true,
+          "skipLibCheck": true,
+          "forceConsistentCasingInFileNames": true,
+          "outDir": "./dist"
+        },
+        "include": ["src/**/*"],
+        "exclude": ["node_modules", "**/*.spec.ts"]
+      }
+    when: "file_not_exists('tsconfig.json')"
+
+  - path: src/types
+    type: directory
+    when: "file_not_exists('src/types')"
+
+  - path: src/types/index.ts
+    type: file
+    content: |
+      /**
+       * Central type definitions for the project
+       */
+
+      export type Maybe<T> = T | null | undefined;
+
+      export interface BaseEntity {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+      }
+    when: "file_not_exists('src/types/index.ts')"
+
+priority: 100
+weight: 0.9

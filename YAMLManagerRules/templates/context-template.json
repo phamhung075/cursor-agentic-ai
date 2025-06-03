@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "task_id": "",
+    "title": "",
+    "last_updated": "",
+    "session": 1,
+    "tool_calls_used": 0,
+    "tool_calls_limit": 25
+  },
+  "current_status": {
+    "phase": "",
+    "progress_percentage": 0,
+    "progress_summary": "",
+    "next_action": ""
+  },
+  "session_history": [
+    {
+      "timestamp": "",
+      "session_number": 1,
+      "actions": [
+        {
+          "description": "",
+          "type": "",
+          "details": ""
+        }
+      ]
+    }
+  ],
+  "files_affected": {
+    "created": [
+      {
+        "path": "",
+        "description": ""
+      }
+    ],
+    "modified": [
+      {
+        "path": "",
+        "description": "",
+        "code_snippets": [
+          {
+            "description": "",
+            "language": "",
+            "code": ""
+          }
+        ]
+      }
+    ]
+  },
+  "technical_decisions": [
+    {
+      "category": "",
+      "decision": "",
+      "reasoning": "",
+      "alternatives_considered": [
+        {
+          "option": "",
+          "pros": "",
+          "cons": ""
+        }
+      ]
+    }
+  ],
+  "problems_encountered": [
+    {
+      "description": "",
+      "solution": "",
+      "impact": ""
+    }
+  ],
+  "dependencies": {
+    "related_tasks": [
+      {
+        "id": "",
+        "relationship": ""
+      }
+    ],
+    "external_dependencies": [
+      {
+        "name": "",
+        "version": "",
+        "purpose": ""
+      }
+    ]
+  },
+  "testing_strategy": {
+    "test_files": [
+      {
+        "path": "",
+        "purpose": ""
+      }
+    ],
+    "test_cases": [
+      {
+        "description": "",
+        "expected_result": ""
+      }
+    ]
+  },
+  "next_steps": [
+    {
+      "priority": 1,
+      "description": "",
+      "estimated_time": ""
+    }
+  ],
+  "continuation_notes": {
+    "current_focus": "",
+    "important_context": "",
+    "avoid": ""
+  }
+}

@@ -1,0 +1,81 @@
+---
+# Context File Template
+# This template defines the structure for AI session context tracking
+
+metadata:
+  task_id: "" # Task identifier
+  title: "" # Task title
+  last_updated: "" # ISO format timestamp
+  session: 1 # Session counter
+  tool_calls_used: 0 # Number of tool calls used in current session
+  tool_calls_limit: 25 # Maximum tool calls allowed
+
+current_status:
+  phase: "" # One of: Analysis, Planning, Implementation, Testing, Complete
+  progress_percentage: 0 # Numeric percentage of completion (0-100)
+  progress_summary: "" # Brief summary of current status
+  next_action: "" # What should be done next
+
+session_history:
+  - timestamp: "" # When this session entry was created
+    session_number: 1
+    actions:
+      - description: "" # Description of action taken
+        type: "" # Type of action (e.g., file_created, file_modified, command_run, decision_made)
+        details: "" # Additional details about the action
+
+files_affected:
+  created:
+    - path: "" # Path to created file
+      description: "" # Brief description of file purpose
+
+  modified:
+    - path: "" # Path to modified file
+      description: "" # What was changed and why
+      code_snippets:
+        - description: "" # Description of the snippet
+          language: "" # Language of the snippet (e.g., typescript, yaml)
+          code: "" # The actual code snippet
+
+technical_decisions:
+  - category: "" # Category of decision (e.g., framework, architecture, library)
+    decision: "" # The actual decision made
+    reasoning: "" # Why this approach was chosen
+    alternatives_considered:
+      - option: "" # Alternative option
+        pros: "" # Advantages of this option
+        cons: "" # Disadvantages of this option
+
+problems_encountered:
+  - description: "" # Description of the problem
+    solution: "" # How it was fixed or workaround applied
+    impact: "" # What changed as a result
+
+dependencies:
+  related_tasks:
+    - id: "" # ID of related task
+      relationship: "" # Relationship type (depends_on, blocked_by, etc.)
+
+  external_dependencies:
+    - name: "" # Name of external dependency
+      version: "" # Version of the dependency
+      purpose: "" # Why this dependency is needed
+
+testing_strategy:
+  test_files:
+    - path: "" # Path to test file
+      purpose: "" # Purpose of this test file
+
+  test_cases:
+    - description: "" # Description of test case
+      expected_result: "" # Expected result of the test
+
+next_steps:
+  - priority: 1 # Priority order
+    description: "" # Description of next step
+    estimated_time: "" # Estimated time to complete (e.g., "1h", "30m")
+
+continuation_notes:
+  current_focus: "" # What to focus on when resuming
+  important_context: "" # Key information to remember
+  avoid: "" # Things to avoid or non-goals

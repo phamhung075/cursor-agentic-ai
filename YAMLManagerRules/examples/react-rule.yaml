@@ -1,0 +1,156 @@
+---
+# React Framework Rule Example
+
+metadata:
+  id: react-framework
+  name: React Framework Rule
+  description: Rule for React projects providing optimized configurations and best practices
+  version: 0.1.0
+  category: framework
+  tags:
+    - react
+    - frontend
+    - web
+  author: Cursor Team
+  created: "2025-06-02"
+  updated: "2025-06-02"
+
+conditions:
+  phase:
+    - development
+    - testing
+  technologies:
+    - react
+    - typescript
+  files_present:
+    - "src/**/*.tsx"
+    - "package.json"
+  dependencies:
+    - react
+    - react-dom
+  project_type:
+    - web
+
+compatibility:
+  conflicts_with: []
+  requires:
+    - typescript-base
+  enhances:
+    - typescript-base
+  replaces: []
+
+cursor_rules:
+  agent_prompt: |
+    You are a React expert specialized in TypeScript. Help with React component design,
+    state management, hooks usage, and performance optimization. Suggest modern React
+    patterns like functional components and hooks over class components. Use TypeScript
+    for component props, state, and context types. Follow React best practices for
+    key handling, memo usage, and dependency arrays in hooks.
+
+  linting_standards: |
+    Follow the React ESLint recommended rules and the react-hooks/recommended rules.
+    Enforce proper dependency arrays for useEffect and useMemo. Ensure keys are
+    provided for list items and avoid using array indices as keys when possible.
+
+  intellisense_settings:
+    reactSnippets: true
+    jsxAutoClose: true
+    importStatementFormat: "ES6"
+
+file_structure:
+  - path: src/components
+    type: directory
+    when: "file_not_exists('src/components')"
+
+  - path: src/hooks
+    type: directory
+    when: "file_not_exists('src/hooks')"
+
+  - path: src/components/Button.tsx
+    type: file
+    content: |
+      import React from 'react';
+
+      interface ButtonProps {
+        label: string;
+        onClick: () => void;
+        variant?: 'primary' | 'secondary' | 'danger';
+        disabled?: boolean;
+      }
+
+      const Button: React.FC<ButtonProps> = ({
+        label,
+        onClick,
+        variant = 'primary',
+        disabled = false
+      }) => {
+        return (
+          <button
+            className={`btn btn-${variant}`}
+            onClick={onClick}
+            disabled={disabled}
+          >
+            {label}
+          </button>
+        );
+      };
+
+      export default Button;
+    when: "file_not_exists('src/components/Button.tsx')"
+
+  - path: src/hooks/useLocalStorage.ts
+    type: file
+    content: |
+      import { useState, useEffect } from 'react';
+
+      function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
+        // Get from local storage then parse
+        const readValue = (): T => {
+          if (typeof window === 'undefined') {
+            return initialValue;
+          }
+
+          try {
+            const item = window.localStorage.getItem(key);
+            return item ? (JSON.parse(item) as T) : initialValue;
+          } catch (error) {
+            console.warn(`Error reading localStorage key "${key}":`, error);
+            return initialValue;
+          }
+        };
+
+        // State to store our value
+        const [storedValue, setStoredValue] = useState<T>(readValue);
+
+        // Return a wrapped version of useState's setter function that
+        // persists the new value to localStorage
+        const setValue = (value: T) => {
+          try {
+            // Allow value to be a function to follow useState's API
+            const valueToStore =
+              value instanceof Function ? value(storedValue) : value;
+
+            // Save state
+            setStoredValue(valueToStore);
+
+            // Save to local storage
+            if (typeof window !== 'undefined') {
+              window.localStorage.setItem(key, JSON.stringify(valueToStore));
+            }
+          } catch (error) {
+            console.warn(`Error setting localStorage key "${key}":`, error);
+          }
+        };
+
+        useEffect(() => {
+          setStoredValue(readValue());
+        }, []);
+
+        return [storedValue, setValue];
+      }
+
+      export default useLocalStorage;
+    when: "file_not_exists('src/hooks/useLocalStorage.ts')"
+
+priority: 200
+weight: 0.8

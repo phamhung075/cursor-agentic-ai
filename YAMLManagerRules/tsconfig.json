@@ -27,7 +27,8 @@
       "@models/*": ["models/*"],
       "@utils/*": ["utils/*"],
       "@services/*": ["services/*"],
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@tests/*": ["tests/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -42,11 +43,11 @@
     "utils/**/*",
     "services/**/*",
     "config/**/*",
+    "tests/**/*",
     "*.ts"
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "tests/**/*"
+    "dist"
   ]
 }

@@ -1,0 +1,82 @@
+# Context for Task 002 - Define Base Rule Formats
+**Last Updated:** June 2, 2025
+**Session:** 1
+**Tool Calls Used:** 12/25
+
+## Current Status
+* **Phase:** Complete
+* **Progress:** [100%] - Created rule schemas and example files
+* **Next Action:** Mark task as complete and proceed to next task
+
+## What I Did
+### Session 1 - June 2, 2025
+- Created schema definitions for Cursor rules using Zod
+- Created schema definitions for metadata rules
+- Implemented YAML formatting and validation utilities
+- Created sample rule files following the schema
+- Added JSON Schema representation for documentation
+
+## Code Created/Modified
+**Files Created:**
+- `YAMLManagerRules/models/rule-schema.ts` - Schema definitions for Cursor rules
+- `YAMLManagerRules/models/metadata-schema.ts` - Schema for metadata and composition rules
+- `YAMLManagerRules/utils/yaml-formatter.ts` - YAML formatting and validation utilities
+- `YAMLManagerRules/examples/typescript-rule.yaml` - Sample TypeScript rule
+- `YAMLManagerRules/examples/react-rule.yaml` - Sample React framework rule
+- `YAMLManagerRules/examples/jest-testing-rule.yaml` - Sample Jest testing rule
+- `YAMLManagerRules/examples/meta-rule.yaml` - Sample metadata rule
+
+**Files Modified:**
+- `YAMLManagerRules/package.json` - Added Zod dependency
+
+## Technical Decisions Made
+* **Schema Format:**
+  - Used Zod for schema validation with TypeScript integration
+  - Structured rules with metadata, conditions, compatibility, and content sections
+  - Implemented proper schema typing and inference
+
+* **Rule Structure:**
+  - **Metadata Section:** Identification and classification information
+  - **Conditions Section:** When and where rules should be applied
+  - **Compatibility Section:** Relationships with other rules
+  - **Cursor Rules Section:** The actual rule content
+  - **File Structure Section:** Templates for generating files
+  - **Priority & Weight:** For rule composition and conflict resolution
+
+* **Composition Strategy:**
+  - Defined layers for organizing rules by priority
+  - Implemented flexible composition strategies (merge, append, override, etc.)
+  - Added conflict resolution mechanisms
+
+* **Reasoning:**
+  Following the specifications in the PRD for a flexible and extensible rule system that can handle multiple rule sources and resolve conflicts intelligently.
+
+## Problems Encountered & Solutions
+* **Problem:** Representing flexible YAML structures in TypeScript
+  - **Solution:** Used `z.record(z.string(), z.any())` for open-ended YAML sections while maintaining type safety where possible
+
+* **Problem:** Error handling in YAML validation
+  - **Solution:** Implemented proper error handling with detailed error messages and optional strict mode
+
+## Dependencies & Integration
+* **Related Tasks:** Depends on Task 1 (Project Infrastructure)
+* **External Dependencies:**
+  - Added Zod for schema validation
+
+## Testing Strategy
+* Manually verified rule schemas with example files
+* Ensured schema validation works as expected
+
+## Next Steps Priority
+1. Update task status to complete
+2. Begin implementation of context detection (Task 3)
+3. Implement rule storage and retrieval system (Task 4)
+
+## Notes for Continuation
+* **Current Focus:** Completed rule schema definitions and validation
+* **Context to Remember:**
+  - The rule system supports different layers and priorities
+  - YAML validation provides clear error messages
+  - Sample rules demonstrate the schema usage
+* **Avoid:**
+  - Over-complicating the rule schema with too many constraints

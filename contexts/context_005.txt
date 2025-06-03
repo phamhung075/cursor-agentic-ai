@@ -1,0 +1,117 @@
+# Context for Task 005 - Develop Rule Parser and Interpreter
+**Last Updated:** June 2, 2025
+**Session:** 1
+**Tool Calls Used:** 20/25
+
+## Current Status
+* **Phase:** Complete
+* **Progress:** [100%] - Implemented Rule Parser, Interpreter, and Engine
+* **Next Action:** Mark task as complete and proceed to next task
+
+## What I Did
+### Session 1 - June 2, 2025
+- Created rule parser (rule-parser.ts) with functions to load and parse YAML rule files
+- Implemented rule interpreter (rule-interpreter.ts) with context matching logic
+- Developed rule engine (rule-engine.ts) that combines parser and interpreter
+- Created main entry point (index.ts) for the YAML Manager Rules system
+- Added tests for the rule engine
+- Fixed TypeScript errors and linting issues
+
+## Code Created/Modified
+**Files Created:**
+- `YAMLManagerRules/core/rule-parser.ts` - Parser for YAML rule files with validation
+- `YAMLManagerRules/core/rule-interpreter.ts` - Interpreter for matching rules to contexts
+- `YAMLManagerRules/core/rule-engine.ts` - Engine combining parser and interpreter
+- `YAMLManagerRules/core/index.ts` - Main entry point for the system
+- `YAMLManagerRules/tests/core/rule-engine.test.ts` - Tests for rule engine
+
+**Files Modified:**
+- None
+
+**Key Code Snippets:**
+
+```typescript
+// Rule parser with error handling
+export function parseRuleFile(filePath: string, options: RuleParserOptions = {}): Rule | null {
+  const opts = { ...defaultOptions, ...options };
+
+  try {
+    // Check if file exists and parse content
+    // ...
+    return parsedRule;
+  } catch (error) {
+    // Handle errors based on strict mode
+    // ...
+  }
+}
+```
+
+```typescript
+// Rule matching logic
+export function matchRule(rule: Rule, context: ProjectContext): RuleMatchResult {
+  const matchedConditions: string[] = [];
+  const missingConditions: string[] = [];
+  let totalConditions = 0;
+
+  // Check various conditions (phase, technologies, files, etc.)
+  // ...
+
+  // Calculate match score
+  const matchScore = totalConditions > 0 ? matchedConditions.length / totalConditions : 0;
+
+  return { rule, matchScore, matchedConditions, missingConditions };
+}
+```
+
+```typescript
+// Main YAML Manager class
+export class YAMLManager {
+  private config: YAMLManagerConfig;
+  private ruleEngine: RuleEngine;
+
+  constructor(config: Partial<YAMLManagerConfig> = {}) {
+    // Initialize with configuration
+    // ...
+  }
+
+  // Methods for generating and saving cursor configurations
+  // ...
+}
+```
+
+## Technical Decisions Made
+* **Architecture:** Used a modular approach with separate parser, interpreter, and engine modules
+* **Error Handling:** Implemented two modes - strict (throws errors) and non-strict (logs errors)
+* **Caching:** Added rule caching for performance with ability to disable
+* **Configuration:** Provided extensive configuration options with sensible defaults
+* **Testing:** Created comprehensive tests with mocking of file system and dependencies
+* **Reasoning:** This modular approach allows for better maintainability and testing while providing flexibility in how rules are processed
+
+## Problems Encountered & Solutions
+- **Problem:** Needed to handle complex rule matching with multiple condition types
+  - **Solution:** Implemented a scoring system that calculates match percentage based on satisfied conditions
+  - **Impact:** Allows for flexible rule matching where not all conditions need to be met
+
+- **Problem:** Rules need to be merged in a particular order
+  - **Solution:** Implemented priority-based sorting with configurable threshold
+  - **Impact:** Higher priority/better matching rules take precedence
+
+## Dependencies & Integration
+* **Related Tasks:** This task builds on the base rule formats defined in Task 2
+* **External Dependencies:** js-yaml for YAML parsing, chokidar for file watching (planned)
+* **Integration Points:** Will integrate with context detection service
+
+## Testing Strategy
+* **Test Files:** Created rule-engine.test.ts with comprehensive unit tests
+* **Test Cases:** Tested rule loading, caching, matching, config generation, and error handling
+* **Mocking:** Used Jest to mock file system and dependencies
+
+## Next Steps Priority
+1. Develop Context Detector Service (Task 4)
+2. Integrate the service with the rule engine
+3. Add file watching capabilities for dynamic rule updates
+
+## Notes for Continuation
+* **Current Focus:** The system can now parse rules, match them to contexts, and generate configurations
+* **Context to Remember:** The rule engine uses a scoring system for flexible matching
+* **Avoid:** Overly complex rule matching logic that's hard to maintain

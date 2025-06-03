@@ -1,0 +1,79 @@
+---
+# Rule Composition Metadata Example
+
+metadata:
+  id: default-composition-rules
+  name: Default Rule Composition Strategy
+  description: Defines the default strategy for composing multiple rules into a single rule set
+  version: 0.1.0
+  author: Cursor Team
+  created: "2025-06-02"
+  updated: "2025-06-02"
+
+layers:
+  - name: base
+    min: 100
+    max: 199
+    description: Fundamental rules that establish core IDE behavior
+
+  - name: technology
+    min: 200
+    max: 299
+    description: Technology-specific rules (languages, frameworks, etc.)
+
+  - name: domain
+    min: 300
+    max: 399
+    description: Domain-specific rules (e-commerce, finance, healthcare, etc.)
+
+  - name: cross-cutting
+    min: 400
+    max: 499
+    description: Cross-cutting concerns (security, accessibility, etc.)
+
+  - name: quality
+    min: 500
+    max: 599
+    description: Quality standards and testing rules
+
+  - name: deployment
+    min: 600
+    max: 699
+    description: Deployment and CI/CD specific rules
+
+composition:
+  default_strategy: merge
+
+  fields:
+    - path: cursor_rules.agent_prompt
+      strategy: append
+      description: Agent prompts from all active rules are combined
+
+    - path: cursor_rules.linting_standards
+      strategy: append
+      description: Linting standards are appended to create a comprehensive set
+
+    - path: cursor_rules.intellisense_settings
+      strategy: merge
+      description: Intellisense settings are merged with higher priority rules taking precedence
+
+    - path: file_structure
+      strategy: union
+      description: File structure templates from all rules are combined, with conflicts resolved by file path
+
+    - path: conditions.phase
+      strategy: intersection
+      description: Only phases present in all rules are considered active
+
+    - path: conditions.technologies
+      strategy: union
+      description: All technologies from all rules are combined
+
+    - path: compatibility.conflicts_with
+      strategy: union
+      description: All conflict rules are combined
+
+conflict_resolution:
+  allow_conflicts: false
+  resolution_strategy: higher_priority
+  manual_resolution: true
